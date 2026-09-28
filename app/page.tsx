@@ -7,11 +7,12 @@ import { SeasonChartSection } from "@/components/season-chart";
 import { Section } from "@/components/ui/Section";
 import { XRay } from "@/components/xray/XRay";
 import { meta, race, simulation, timeline } from "@/lib/data";
+import { SITE_NAME } from "@/lib/site";
 
 export default function Home() {
   return (
     <>
-      <Header name="Painel do Leão" updatedAt={meta.updatedAt} />
+      <Header name={SITE_NAME} updatedAt={meta.updatedAt} />
       <main>
         <Hero />
 

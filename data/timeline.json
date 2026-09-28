@@ -26,10 +26,16 @@
       "title": "Fim do 1º turno"
     },
     {
-      "kind": "manual",
+      "kind": "unbeaten",
       "round": 20,
-      "text": "Rodada 20: primeiro jogo após a troca de técnico. Thiago Carpini saiu em 23/07 e Paulo Autuori foi anunciado em 24/07. Ali começou a sequência de 11 jogos sem perder.",
-      "title": "Chega Paulo Autuori"
+      "text": "Rodada 20: início da sequência de 11 jogos sem perder.",
+      "title": "Começa a invencibilidade"
+    },
+    {
+      "kind": "manual",
+      "round": 21,
+      "text": "Rodada 21: estreia de Paulo Autuori no banco, no 1 x 1 com o Cuiabá. Ele chegou depois da saída de Thiago Carpini, em 23/07; na rodada 20 o time ainda foi comandado por um interino.",
+      "title": "Estreia de Paulo Autuori"
     }
   ],
   "points": [

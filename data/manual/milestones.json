@@ -1,14 +1,13 @@
 [
   {
-    "round": 20,
-    "title": "Chega Paulo Autuori",
-    "text": "Rodada 20: primeiro jogo após a troca de técnico. Thiago Carpini saiu em 23/07 e Paulo Autuori foi anunciado em 24/07.",
+    "round": 21,
+    "title": "Estreia de Paulo Autuori",
+    "text": "Rodada 21: estreia de Paulo Autuori no banco, no 1 x 1 com o Cuiabá. Ele chegou depois da saída de Thiago Carpini, em 23/07; na rodada 20 o time ainda foi comandado por um interino.",
     "sources": [
       "https://www.gazetaesportiva.com/times/fortaleza/fortaleza-anuncia-paulo-autuori-como-tecnico-um-dia-apos-demissao-de-carpini/",
       "https://www.opovo.com.br/esportes/futebol/times/fortaleza/2026/07/24/fortaleza-anuncia-paulo-autuori-como-novo-tecnico-apos-saida-de-carpini.html"
     ],
-    "confirmed": false,
-    "showUnconfirmed": true,
-    "note": "Confirmar com o Lucas (M8): Autuori já estava no banco na rodada 20 (28/07) ou foi interino?"
+    "confirmed": true,
+    "note": "Confirmado pelo Lucas em 28/09/2026: rodada 20 (1x0 Botafogo-SP) teve técnico interino; Autuori estreou na 21."
   }
 ]

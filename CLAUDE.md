@@ -17,10 +17,13 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   vetorizado N×M; playoffs). O pipeline roda 20 mil (semente por rodada) e grava `data/simulation.json`; a API
   (`api/index.py`, rotas `/api/py/health` e `/api/py/simular?p=VED-`) roda 5 mil a partir de `data/model.json`.
 - **Saídas do site:** `pipeline/outputs.py` (modelos) → `data/*.json` → tipos em `lib/generated/` → `lib/data.ts`.
-- **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`); fontes candidatas em `lib/fonts.ts`
-  (classes `.fontset-a/b/c`, `.loss-dark/red`). Seções em `components/` (hero F1, season-chart F2, race F3, xray F5).
+- **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em
+  `lib/site.ts`. Seções em `components/` (hero F1, season-chart F2, race F3, xray F5).
   Relógio do cliente via `lib/useNow.ts` (useSyncExternalStore) — não usar setState em efeito para "agora".
-  `/preview` = checkpoints visuais (noindex); remover/esconder antes do lançamento.
+- **Escolhas visuais do Lucas (checkpoints 1 e 2, 28/09):** nome **Fortaleza em Números**; Bebas Neue + Inter;
+  vermelho contido (só a chance de subir em vermelho); derrota = bolinha vermelha; montanha-russa com linha
+  **branca** e pontos verde (V) / cinza (E) / vermelho (D), faixas G2/G6 preenchidas e Z4 hachurada.
+  A rota `/preview` foi removida; volta só para o checkpoint 3 (cards de compartilhar).
 - **Next.js (App Router) + TypeScript + Tailwind + pnpm** para o site; lê apenas `data/*.json` no build.
 - **GitHub Actions** (cron 2h) roda `pipeline/update_data.py`, commita `data/` e a **Vercel** faz deploy.
 - A chave da API só existe em `.env.local` (local) e GitHub Secrets. Nunca na Vercel nem no navegador.
@@ -61,8 +64,8 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Cores dos clubes em `data/manual/teams.json` são curadoria e aguardam confirmação do Lucas.
 - **Playoffs (regulamento confirmado):** melhor campanha faz a volta em casa; empate no agregado → sobe a melhor
   campanha (sem pênaltis).
-- Marcos manuais em `data/manual/milestones.json`: só aparecem com `confirmed: true` (ou `showUnconfirmed` durante o
-  preview). **Antes do lançamento, trocar para `confirmed` após o Lucas validar (M8).**
+- Marcos manuais em `data/manual/milestones.json`: só aparecem com `confirmed: true`. Troca de técnico confirmada pelo
+  Lucas: rodada 20 com interino, **Autuori estreou na rodada 21**.
 - Vercel: projeto `ascladas-projects/painel-do-leao`, ligado ao GitHub (push na main = deploy de produção).
   Produção: https://painel-do-leao.vercel.app. `.vercelignore` impede enviar `.env*` em deploy pela CLI.
 
@@ -75,4 +78,4 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Andamento do roteiro: seção 17 de `docs/PLANO.md` + `git log --oneline`.
 - Execuções do cron: `gh run list --workflow update-data.yml`.
 
-_Última atualização: 28/09/2026 (Dia 2: F1, F2, F3, F5, rodapé e checkpoints 1 e 2 em /preview; aguardando escolhas)._
+_Última atualização: 28/09/2026 (Dia 2 concluído: escolhas visuais aplicadas; próximo: Dia 3 — simulador e cards)._

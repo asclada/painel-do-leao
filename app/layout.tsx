@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { allFontVars } from "@/lib/fonts";
+import { fontVars } from "@/lib/fonts";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Painel do Leão — Fortaleza na Série B 2026",
-  description: "Onde o Fortaleza está na Série B, a chance real de acesso e o simulador dos jogos que faltam.",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
 };
 
 export const viewport: Viewport = {
@@ -14,7 +15,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={`${allFontVars} fontset-a loss-dark h-full antialiased`}>
+    <html lang="pt-BR" className={`${fontVars} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         {children}
         <Analytics />

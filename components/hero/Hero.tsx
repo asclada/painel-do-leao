@@ -5,18 +5,16 @@ import { FormDots } from "@/components/ui/FormDots";
 import { fortalezaOdds, fortalezaRow, FORTALEZA, meta, nextMatch, standings, xray } from "@/lib/data";
 import { pct, pctNumber, plural } from "@/lib/format";
 import { situation } from "@/lib/situation";
-
-export type Accent = "contained" | "present";
+import { SITE_NAME } from "@/lib/site";
 
 /**
  * F1 — "Como tá o Leão agora". Em 5 segundos: onde o time está e a chance de subir.
  * No celular (390×844) cabe inteiro sem rolar, com o próximo jogo.
- * `accent` controla o uso do vermelho (variante do checkpoint visual 1).
+ * Vermelho contido: só a chance de subir é vermelha (escolha do checkpoint visual 1).
  */
-export function Hero({ accent = "contained", anchor = "agora" }: { accent?: Accent; anchor?: string }) {
+export function Hero({ anchor = "agora" }: { anchor?: string }) {
   const sit = situation(standings, FORTALEZA);
   const chance = pctNumber(fortalezaOdds.pPromotion);
-  const present = accent === "present";
 
   return (
     <section id={anchor} aria-labelledby={`${anchor}-title`} className="spotlight">
@@ -28,7 +26,7 @@ export function Hero({ accent = "contained", anchor = "agora" }: { accent?: Acce
 
           <div className="mt-1 flex items-end gap-4">
             <p
-              className={`font-display text-[7.5rem] leading-[0.85] sm:text-score ${present ? "text-red" : "text-white"}`}
+              className={`font-display text-[7.5rem] leading-[0.85] sm:text-score text-white`}
               aria-label={`${fortalezaRow.position}º lugar`}
             >
               <AnimatedNumber value={fortalezaRow.position} suffix="º" />
@@ -49,22 +47,22 @@ export function Hero({ accent = "contained", anchor = "agora" }: { accent?: Acce
           </div>
 
           <div
-            className={`mt-5 flex items-end justify-between gap-3 rounded-2xl ${present ? "bg-red px-4 py-3" : "border-l-4 border-red pl-4"}`}
+            className="mt-5 flex items-end justify-between gap-3 border-l-4 border-red pl-4"
           >
             <div className="min-w-0">
-              <p className={`text-sm sm:text-base ${present ? "text-white/90" : "text-muted"}`}>Chance de subir para a Série A</p>
-              <p className={`font-display text-[5.5rem] leading-[0.9] sm:text-[6rem] ${present ? "text-white" : "text-red"}`}>
+              <p className="text-sm text-muted sm:text-base">Chance de subir para a Série A</p>
+              <p className="font-display text-[5.5rem] leading-[0.9] text-red sm:text-[6rem]">
                 <AnimatedNumber value={chance} suffix="%" />
               </p>
-              <p className={`text-sm sm:text-base ${present ? "text-white/90" : "text-muted"}`}>
+              <p className="text-sm text-muted sm:text-base">
                 Direto: <strong className="text-white">{pct(fortalezaOdds.pDirect)}</strong> · playoffs:{" "}
                 <strong className="text-white">{pct(fortalezaOdds.pPlayoffPromotion)}</strong>
               </p>
             </div>
             <ShareButton
               compact
-              variant={present ? "light" : "outline"}
-              text={`O Fortaleza tem ${chance}% de chance de subir para a Série A, segundo o Painel do Leão.`}
+              variant="outline"
+              text={`O Fortaleza tem ${chance}% de chance de subir para a Série A, segundo o ${SITE_NAME}.`}
             />
           </div>
         </div>

@@ -14,8 +14,7 @@ import {
 } from "recharts";
 import type { Milestone, Team, Timeline, TimelinePoint } from "@/lib/generated/outputs";
 
-export type ChartStyle = "result" | "uniform";
-
+// Checkpoint 2 (M1, ajustado pelo Lucas): linha branca; ponto verde na vitória, cinza no empate, vermelho na derrota.
 const RESULT_FILL = { V: "var(--win)", E: "var(--draw)", D: "var(--loss)" } as const;
 const TOTAL_ROUNDS = 38;
 
@@ -37,13 +36,11 @@ export function SeasonChart({
   timeline,
   teams,
   rivalIds,
-  style = "result",
   idPrefix = "tl",
 }: {
   timeline: Timeline;
   teams: Record<string, Team>;
   rivalIds: string[];
-  style?: ChartStyle;
   idPrefix?: string;
 }) {
   const reduce = useReducedMotion();
@@ -81,13 +78,33 @@ export function SeasonChart({
   }, [timeline, rivalIds]);
 
   const last = timeline.points.at(-1);
+
+  // marcos acima da linha; quando dois ficam a até 2 rodadas, o seguinte vai para o outro lado
+  const markerY = useMemo(() => {
+    const out: { m: Milestone; y: number }[] = [];
+    let prev: { round: number; above: boolean } | null = null;
+    for (const m of timeline.milestones) {
+      const p = timeline.points.find((x) => x.round === m.round);
+      if (!p) continue;
+      const fitsAbove = p.position - 1.6 >= 0.8;
+      const fitsBelow = p.position + 1.6 <= 20.2;
+      let above = fitsAbove; // perto do topo, vai para baixo
+      let gap = 1.6;
+      if (prev && m.round - prev.round <= 2 && prev.above === above) {
+        if (above ? fitsBelow : fitsAbove) above = !above;
+        else gap = 3.2; // não cabe do outro lado: afasta mais do mesmo lado
+      }
+      out.push({ m, y: above ? p.position - gap : p.position + gap });
+      prev = { round: m.round, above };
+    }
+    return out;
+  }, [timeline]);
   const milestoneIndex = new Map(timeline.milestones.map((m, i) => [m.round, i + 1]));
   const summary = `Gráfico da posição do Fortaleza em cada rodada. ${timeline.headline} Posições: ${timeline.points
     .map((p) => `rodada ${p.round}, ${p.position}º`)
     .join("; ")}.`;
 
   const hatchId = `${idPrefix}-z4`;
-  const uniform = style === "uniform";
 
   return (
     <div>
@@ -107,26 +124,12 @@ export function SeasonChart({
                 </pattern>
               </defs>
 
-              {uniform ? (
-                <>
-                  <ReferenceArea y1={0.5} y2={2.5} fill="var(--blue)" fillOpacity={0.12} ifOverflow="hidden"
-                    label={{ value: "Acesso direto", position: "insideTopRight", fill: "var(--muted)", fontSize: 11 }} />
-                  <ReferenceArea y1={2.5} y2={6.5} fill="none" stroke="var(--blue)" strokeDasharray="3 4" strokeOpacity={0.6}
-                    ifOverflow="hidden"
-                    label={{ value: "Playoffs", position: "insideTopRight", fill: "var(--muted)", fontSize: 11 }} />
-                  <ReferenceArea y1={16.5} y2={20.5} fill={`url(#${hatchId})`} ifOverflow="hidden"
-                    label={{ value: "Rebaixamento", position: "insideBottomRight", fill: "var(--muted)", fontSize: 11 }} />
-                </>
-              ) : (
-                <>
-                  <ReferenceArea y1={0.5} y2={2.5} fill="var(--blue)" fillOpacity={0.38} ifOverflow="hidden"
-                    label={{ value: "G2", position: "insideTopRight", fill: "#fff", fontSize: 12, fontWeight: 700 }} />
-                  <ReferenceArea y1={2.5} y2={6.5} fill="var(--blue)" fillOpacity={0.16} ifOverflow="hidden"
-                    label={{ value: "G6", position: "insideTopRight", fill: "var(--muted)", fontSize: 12, fontWeight: 700 }} />
-                  <ReferenceArea y1={16.5} y2={20.5} fill={`url(#${hatchId})`} ifOverflow="hidden"
-                    label={{ value: "Z4", position: "insideBottomRight", fill: "var(--muted)", fontSize: 12, fontWeight: 700 }} />
-                </>
-              )}
+              <ReferenceArea y1={0.5} y2={2.5} fill="var(--blue)" fillOpacity={0.38} ifOverflow="hidden"
+                label={{ value: "G2", position: "insideTopRight", fill: "#fff", fontSize: 12, fontWeight: 700 }} />
+              <ReferenceArea y1={2.5} y2={6.5} fill="var(--blue)" fillOpacity={0.16} ifOverflow="hidden"
+                label={{ value: "G6", position: "insideTopRight", fill: "var(--muted)", fontSize: 12, fontWeight: 700 }} />
+              <ReferenceArea y1={16.5} y2={20.5} fill={`url(#${hatchId})`} ifOverflow="hidden"
+                label={{ value: "Z4", position: "insideBottomRight", fill: "var(--muted)", fontSize: 12, fontWeight: 700 }} />
 
               <XAxis dataKey="round" type="number" domain={[1, TOTAL_ROUNDS]} ticks={[1, 5, 10, 15, 20, 25, 30, 35, 38]}
                 tick={{ fill: "var(--muted)", fontSize: 12 }} axisLine={{ stroke: "var(--line)" }} tickLine={false} />
@@ -158,9 +161,9 @@ export function SeasonChart({
 
               <Line
                 dataKey="fort"
-                type={uniform ? "monotone" : "linear"}
-                stroke="var(--red)"
-                strokeWidth={uniform ? 4 : 3}
+                type="linear"
+                stroke="var(--white)"
+                strokeWidth={2.5}
                 connectNulls={false}
                 isAnimationActive={!reduce}
                 animationDuration={1600}
@@ -169,19 +172,16 @@ export function SeasonChart({
                   const { cx, cy, payload, index } = props as { cx?: number; cy?: number; payload: Row; index: number };
                   const p = payload.point;
                   if (cx == null || cy == null || !p) return <g key={index} />;
-                  if (uniform) return <circle key={index} cx={cx} cy={cy} r={2.5} fill="var(--red)" />;
                   const fill = p.result ? RESULT_FILL[p.result] : "var(--draw)";
                   return <circle key={index} cx={cx} cy={cy} r={4.5} fill={fill} stroke="var(--bg)" strokeWidth={1.5} />;
                 }}
-                activeDot={{ r: 7, fill: "var(--white)", stroke: "var(--red)", strokeWidth: 3 }}
+                activeDot={{ r: 7, fill: "var(--bg)", stroke: "var(--white)", strokeWidth: 3 }}
               />
 
-              {timeline.milestones.map((m, i) => {
-                const p = timeline.points.find((x) => x.round === m.round);
-                if (!p) return null;
+              {markerY.map(({ m, y }, i) => {
                 const on = active?.round === m.round;
                 return (
-                  <ReferenceDot key={m.round} x={m.round} y={p.position <= 2 ? p.position + 1.6 : p.position - 1.6} r={on ? 12 : 10}
+                  <ReferenceDot key={m.round} x={m.round} y={y} r={on ? 12 : 10}
                     fill={on ? "var(--white)" : "var(--surface-2)"} stroke="var(--white)" strokeWidth={1.5}
                     ifOverflow="visible"
                     label={{ value: i + 1, fill: on ? "var(--bg)" : "var(--white)", fontSize: 11, fontWeight: 700 }}

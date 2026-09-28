@@ -11,20 +11,10 @@
   --muted: #a8b4d8;
   --win: #22c55e;
   --draw: #94a3b8;
-  --loss: #475569;
+  --loss: #e11d2e; /* derrota em vermelho (checkpoint 1) */
   --line: rgb(168 180 216 / 0.16);
 
-  /* fontes ativas (trocadas pelas classes .fontset-*) */
-  --fd: var(--font-bebas);
-  --ft: var(--font-inter);
 }
-
-/* variantes do checkpoint visual 1 */
-.fontset-a { --fd: var(--font-bebas); --ft: var(--font-inter); }
-.fontset-b { --fd: var(--font-anton); --ft: var(--font-manrope); }
-.fontset-c { --fd: var(--font-oswald); --ft: var(--font-dmsans); }
-.loss-red { --loss: #e11d2e; }
-.loss-dark { --loss: #475569; }
 
 @theme inline {
   --color-bg: var(--bg);
@@ -37,8 +27,8 @@
   --color-draw: var(--draw);
   --color-loss: var(--loss);
   --color-line: var(--line);
-  --font-display: var(--fd), "Arial Narrow", sans-serif;
-  --font-sans: var(--ft), system-ui, sans-serif;
+  --font-display: var(--font-bebas), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 
   /* escala: 14 / 16 / 20 / 28 / 40 / 64 / 96 (+ 144 para o placar do topo) */
   --text-score: 9rem;
