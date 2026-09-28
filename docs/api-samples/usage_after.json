@@ -1,0 +1,24 @@
+{
+  "data": {
+    "plan": "free",
+    "per_minute_limit": 60,
+    "per_day_limit": 50,
+    "per_month_limit": null,
+    "used_today": 5,
+    "errors_today": 1,
+    "resets_at": "2026-09-29T00:00:00Z"
+  },
+  "meta": {
+    "data_as_of": "2026-09-28T03:47:30Z",
+    "request_id": "003DA4888134732F",
+    "free_key": {
+      "reaches": "yesterday, today and the fixtures ahead",
+      "from": "2026-09-27",
+      "allowance": 50,
+      "per": "day",
+      "resets": "00:00 UTC",
+      "more": "Matches before 2026-09-27 come with Archive. Prices and the in-play feed come with Archive and Live.",
+      "upgrade_url": "/pricing"
+    }
+  }
+}

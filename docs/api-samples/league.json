@@ -1,0 +1,39 @@
+{
+  "data": {
+    "league_id": "lg_1VQKEDM",
+    "country_name": "Brazil",
+    "league_name": "Serie B",
+    "match_count": 5580,
+    "priced_count": 3967,
+    "season_first": 2012,
+    "season_last": 2026,
+    "coverage": {
+      "held": {
+        "kickoff_price_pct": 71.1
+      },
+      "available": {
+        "season": 2026,
+        "events": true,
+        "lineups": true,
+        "match_statistics": true,
+        "player_statistics": true,
+        "standings": true,
+        "injuries": false,
+        "odds": true
+      }
+    }
+  },
+  "meta": {
+    "data_as_of": "2026-09-28T03:47:30Z",
+    "request_id": "34CAF51444058288",
+    "free_key": {
+      "reaches": "yesterday, today and the fixtures ahead",
+      "from": "2026-09-27",
+      "allowance": 50,
+      "per": "day",
+      "resets": "00:00 UTC",
+      "more": "Matches before 2026-09-27 come with Archive. Prices and the in-play feed come with Archive and Live.",
+      "upgrade_url": "/pricing"
+    }
+  }
+}

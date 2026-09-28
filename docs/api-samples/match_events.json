@@ -1,0 +1,21 @@
+{
+  "error": {
+    "code": "plan_required",
+    "message": "The Archive plan is needed for this endpoint.",
+    "your_plan": "free",
+    "needs_plan": "archive",
+    "upgrade_url": "/pricing?from=v1/matches/1520894/events"
+  },
+  "meta": {
+    "request_id": "C33858C34F832DB9",
+    "free_key": {
+      "reaches": "yesterday, today and the fixtures ahead",
+      "from": "2026-09-27",
+      "allowance": 50,
+      "per": "day",
+      "resets": "00:00 UTC",
+      "more": "Matches before 2026-09-27 come with Archive. Prices and the in-play feed come with Archive and Live.",
+      "upgrade_url": "/pricing"
+    }
+  }
+}

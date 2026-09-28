@@ -243,6 +243,40 @@ Use sempre a **versão estável mais recente** de cada pacote no momento da inst
 
 ## 5. Fonte de dados (API)
 
+> **Decisão tomada em 28/09/2026 (substitui o que estiver em conflito abaixo)**
+>
+> - **Provedor principal: API pública da ESPN** (`site.api.espn.com/.../soccer/bra.2`), sem chave. O endpoint
+>   `/scoreboard?dates=YYYYMMDD` traz, por dia, placar, gols com minuto (inclusive acréscimos), cartões por
+>   jogador e estatísticas por time, além do calendário completo da temporada (`leagues[0].calendar`).
+>   As datas seguem o fuso de Nova York. É não oficial: sem SLA e pode mudar sem aviso.
+> - **Provedor reserva: footballsoccerapi.com** (plano grátis: 50 chamadas/dia; `/matches` e `/matches/{id}`
+>   liberados; `/matches/{id}/events` só no plano pago). Implementado para o essencial: placares, intervalo,
+>   horários (1 chamada por execução).
+>   **Sondagem real (28/09):** no plano grátis a listagem só alcança *ontem, hoje e os próximos jogos*;
+>   horário vem como timestamp Unix; sem estatísticas nem eventos (403). Serve como reserva porque o
+>   histórico já está no cache e o cron de 2h cobre qualquer jogo novo dentro dessa janela.
+> - **Fallback automático:** se a ESPN falhar (rede, HTTP ou validação pydantic), o pipeline usa o reserva
+>   para os placares, mantém os detalhes já em cache e desliga só o que faltar (`hasGoalMinutes`).
+>   Se os dois falharem, sai com erro sem publicar nada (o site fica com os últimos dados válidos).
+> - **Aviso:** o contador de falhas seguidas da ESPN fica em `data/raw/state.json`. Com 2 falhas seguidas,
+>   o workflow abre uma issue (label `fonte-de-dados`) via `gh`; ela é fechada sozinha quando a ESPN volta.
+> - **Gentileza com a ESPN:** cron continua a cada 2h, mas **só consulta quando algum jogo já deveria ter
+>   terminado** (início + 2h15) e ainda não consta como encerrado, decidido pelos horários em cache, sem
+>   chamada. Consulta só as datas desses jogos (+ próximos 3 dias, para horários remarcados, e datas novas do
+>   calendário). Pausa de 1,5s entre chamadas, retry com backoff (3 tentativas). Jogo "travado" há mais de
+>   48h é reconsultado no máximo 1x por dia. Carga inicial: ~133 chamadas, uma única vez.
+> - **Rodadas:** `data/manual/rounds.json` mapeia `"{mandante}--{visitante}" -> rodada` (cada confronto
+>   ocorre uma vez em turno e returno), gerado por `pipeline/build_reference.py` a partir da tabela oficial
+>   publicada pelo ge.globo (a API da CBF exige token). Também gera `data/manual/teams.json` com slug
+>   canônico, sigla oficial, cores (curadoria, a confirmar) e o id de cada clube em cada provedor.
+> - **IDs canônicos:** times por slug (`fortaleza`), jogos por `"{mandante}--{visitante}"`. Assim os dois
+>   provedores se mesclam sem depender dos ids de cada um.
+> - **Qualidade da ESPN:** alguns gols vêm duplicados; o provedor remove duplicatas (mesmo autor, ≤ 2 min)
+>   só quando a soma passa do placar, e corrige gol contra atribuído ao time errado. Cartões diferem da
+>   CBF em 1–3 por time na temporada (afeta só o 6º/7º critério de desempate).
+> - **Regulamento (confirmado no ge.globo):** G2 sobe direto; 3º x 6º e 4º x 5º nos playoffs; Z4 cai;
+>   desempate: vitórias, saldo, gols pró, confronto direto, menos vermelhos, menos amarelos, sorteio.
+
 ### Estratégia
 
 Criar uma **camada de provedor** (`pipeline/providers/`) com uma interface única. O resto do código nunca fala direto com a API: só com os tipos normalizados da [seção 6](#6-modelo-de-dados-normalizado-e-arquivos-json). Assim, trocar de API é trocar um arquivo.
@@ -401,8 +435,8 @@ Arquivos manuais em `/data/manual`:
 | `rounds.json` | mapa jogo → rodada (só se a API não trouxer) | Claude Code |
 
 Arquivos crus em `/data/raw` (cache da API, versionados para não repetir requisição):
-- `raw/matches.json` (última listagem)
-- `raw/details/{matchId}.json` (um por jogo detalhado)
+- `raw/state.json` (estado entre execuções: calendário da ESPN, última consulta por data, contador de falhas)
+- O cache de jogos e detalhes são os próprios `data/matches.json` e `data/details.json` (detalhes de **todos** os jogos, vindos da ESPN). Respostas cruas ficam só em `.cache/` local (fora do Git).
 
 ---
 
@@ -945,11 +979,14 @@ painel-do-leao/
 │   ├── models.py                  # modelos pydantic (entrada e saída)
 │   ├── export_schema.py           # exporta JSON Schema para gerar tipos TS
 │   ├── probe_api.py               # sondagem inicial da API
+│   ├── build_reference.py         # gera manual/teams.json e manual/rounds.json (1x)
+│   ├── http.py                    # cliente com pausa + retry/backoff
+│   ├── fetch.py                   # decide o que consultar, fallback e contador de falhas
 │   ├── update_data.py             # pipeline completo (roda no Actions)
 │   ├── providers/
 │   │   ├── base.py
-│   │   ├── footballsoccerapi.py
-│   │   └── apifootball.py
+│   │   ├── espn.py                # principal (decisão de 28/09)
+│   │   └── footballsoccerapi.py   # reserva
 │   ├── calc/                      # pode usar pandas
 │   │   ├── standings.py
 │   │   ├── timeline.py
@@ -1012,7 +1049,7 @@ painel-do-leao/
 │   │   └── rounds.json            # só se necessário
 │   └── raw/
 │       ├── matches.json
-│       └── details/{matchId}.json
+│       └── state.json
 ├── schema/                        # JSON Schema exportado (gerado)
 ├── docs/
 │   ├── PLANO.md                   # este arquivo
@@ -1055,7 +1092,7 @@ O Lucas nunca precisa decorar isso: o Claude Code roda os comandos. `pnpm dev` s
 ### Pipeline `pipeline/update_data.py`
 
 1. Ler a chave de `os.environ["FOOTBALL_API_KEY"]` (em dev, carregada do `.env.local` via python-dotenv).
-2. Buscar todos os jogos da temporada (provedor configurado), validar com pydantic, salvar em `data/raw/matches.json`.
+2. Decidir pelos horários em cache se há jogo que já terminou (senão, sair sem chamada). Buscar na ESPN só as datas necessárias; se falhar, usar a footballsoccerapi (ver decisão na seção 5). Validar com pydantic e mesclar com o cache (`data/matches.json`, `data/details.json`).
 3. Identificar jogos do Fortaleza encerrados sem detalhe em cache e buscar os detalhes (com pausa e retry).
 4. Normalizar tudo para os tipos da seção 6.
 5. Rodar os cálculos da seção 7.

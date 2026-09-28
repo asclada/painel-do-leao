@@ -1,0 +1,110 @@
+name: Atualizar dados
+
+on:
+  schedule:
+    - cron: "15 */2 * * *" # a cada 2 horas, no minuto 15 (UTC)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Consultar a fonte mesmo sem jogo novo"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+env:
+  ISSUE_LABEL: fonte-de-dados
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+
+      - run: uv python install 3.12
+
+      - run: uv sync --frozen
+
+      # Falha aqui não interrompe o job: o estado (contador de falhas da ESPN)
+      # precisa ser commitado e a issue aberta antes de marcar o run como falho.
+      - name: Atualizar dados
+        id: update
+        continue-on-error: true
+        run: uv run python -m pipeline.update_data ${{ inputs.force && '--force' || '' }}
+        env:
+          FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+
+      - name: Testes
+        id: tests
+        if: steps.update.outcome == 'success'
+        run: uv run pytest -q
+
+      - name: Avisar por issue se a ESPN falhar 2x seguidas
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -f data/raw/state.json ] || exit 0
+          FAILS=$(jq -r '.espnConsecutiveFailures // 0' data/raw/state.json)
+          OPEN=$(gh issue list --label "$ISSUE_LABEL" --state open --json number --jq '.[0].number // empty')
+          if [ "$FAILS" -ge 2 ] && [ -z "$OPEN" ]; then
+            gh label create "$ISSUE_LABEL" --color D93F0B --description "Problemas na fonte de dados" 2>/dev/null || true
+            LAST_ERR=$(jq -r '.espnLastError // "sem detalhes"' data/raw/state.json)
+            PROVIDER=$(jq -r '.lastProvider // "nenhum"' data/raw/state.json)
+            {
+              echo "A ESPN falhou em **$FAILS execuções seguidas** do workflow de atualização."
+              echo
+              echo "- Provedor usado na última atualização: \`$PROVIDER\`"
+              echo "- Enquanto isso, o site usa a footballsoccerapi para os placares (sem minutos dos gols)."
+              echo "- Execução: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+              echo
+              echo "Último erro:"
+              echo
+              echo '```'
+              echo "$LAST_ERR"
+              echo '```'
+              echo
+              echo "O que conferir: se a URL \`https://site.api.espn.com/apis/site/v2/sports/soccer/bra.2/scoreboard\` ainda responde e se o formato mudou (\`pipeline/providers/espn.py\`)."
+              echo "Esta issue é fechada automaticamente quando a ESPN voltar a responder."
+            } > issue.md
+            gh issue create --title "Fonte de dados: ESPN falhou $FAILS vezes seguidas" --label "$ISSUE_LABEL" --body-file issue.md
+          elif [ "$FAILS" -eq 0 ] && [ -n "$OPEN" ]; then
+            gh issue close "$OPEN" --comment "A ESPN voltou a responder normalmente. Fechando automaticamente."
+          elif [ "$FAILS" -ge 2 ] && [ -n "$OPEN" ]; then
+            echo "Issue #$OPEN já aberta ($FAILS falhas seguidas)."
+          fi
+
+      - name: Commit se houver mudança
+        if: always() && steps.tests.outcome != 'failure'
+        run: |
+          if git diff --quiet -- data/; then
+            echo "Sem mudanças nos dados."
+            exit 0
+          fi
+          git config user.name "painel-bot"
+          git config user.email "painel-bot@users.noreply.github.com"
+          git add data/
+          ROUND=$(jq -r '.lastCompletedRound' data/meta.json)
+          if [ "${{ steps.update.outcome }}" = "success" ]; then
+            git commit -m "dados: atualização automática (rodada ${ROUND})"
+          else
+            git commit -m "dados: registra falha da fonte de dados"
+          fi
+          git push
+
+      - name: Marcar falha
+        if: steps.update.outcome == 'failure' || steps.tests.outcome == 'failure'
+        run: |
+          echo "::error::A atualização falhou. O site continua com os últimos dados válidos."
+          exit 1

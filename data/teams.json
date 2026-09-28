@@ -1,0 +1,142 @@
+[
+  {
+    "color": "#00843D",
+    "id": "america-mg",
+    "name": "América-MG",
+    "shortName": "AME",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#1A1A1A",
+    "id": "athletic-club",
+    "name": "Athletic Club",
+    "shortName": "ATH",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#D71920",
+    "id": "atletico-go",
+    "name": "Atlético-GO",
+    "shortName": "ACG",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#0067A5",
+    "id": "avai",
+    "name": "Avaí",
+    "shortName": "AVA",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#C8102E",
+    "id": "botafogo-sp",
+    "name": "Botafogo-SP",
+    "shortName": "BSP",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#D0021B",
+    "id": "crb",
+    "name": "CRB",
+    "shortName": "CRB",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#1A1A1A",
+    "id": "ceara",
+    "name": "Ceará",
+    "shortName": "CEA",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#FFD200",
+    "id": "criciuma",
+    "name": "Criciúma",
+    "shortName": "CRI",
+    "textColor": "#111111"
+  },
+  {
+    "color": "#00843D",
+    "id": "cuiaba",
+    "name": "Cuiabá",
+    "shortName": "CUI",
+    "textColor": "#FFD200"
+  },
+  {
+    "color": "#E11D2E",
+    "id": "fortaleza",
+    "name": "Fortaleza",
+    "shortName": "FOR",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#006B3F",
+    "id": "goias",
+    "name": "Goiás",
+    "shortName": "GOI",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#009845",
+    "id": "juventude",
+    "name": "Juventude",
+    "shortName": "JUV",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#3AA0DC",
+    "id": "londrina",
+    "name": "Londrina",
+    "shortName": "LEC",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#FFD200",
+    "id": "novorizontino",
+    "name": "Novorizontino",
+    "shortName": "NOV",
+    "textColor": "#111111"
+  },
+  {
+    "color": "#D2001F",
+    "id": "nautico",
+    "name": "Náutico",
+    "shortName": "NAU",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#1A1A1A",
+    "id": "operario-pr",
+    "name": "Operário-PR",
+    "shortName": "OPE",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#1A1A1A",
+    "id": "ponte-preta",
+    "name": "Ponte Preta",
+    "shortName": "PON",
+    "textColor": "#FFFFFF"
+  },
+  {
+    "color": "#C8102E",
+    "id": "sport",
+    "name": "Sport",
+    "shortName": "SPT",
+    "textColor": "#FFD200"
+  },
+  {
+    "color": "#FFCC00",
+    "id": "sao-bernardo",
+    "name": "São Bernardo",
+    "shortName": "SBD",
+    "textColor": "#111111"
+  },
+  {
+    "color": "#C8102E",
+    "id": "vila-nova",
+    "name": "Vila Nova",
+    "shortName": "VNO",
+    "textColor": "#FFFFFF"
+  }
+]

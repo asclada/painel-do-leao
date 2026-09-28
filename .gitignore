@@ -49,3 +49,6 @@ __pycache__/
 
 # claude local
 .claude/settings.local.json
+
+# cache local de respostas cruas
+.cache/

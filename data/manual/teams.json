@@ -1,0 +1,306 @@
+[
+  {
+    "id": "america-mg",
+    "name": "América-MG",
+    "shortName": "AME",
+    "color": "#00843D",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "6154",
+      "footballsoccerapi": null,
+      "ge": 327,
+      "names": [
+        "América Mineiro",
+        "América-MG"
+      ]
+    }
+  },
+  {
+    "id": "athletic-club",
+    "name": "Athletic Club",
+    "shortName": "ATH",
+    "color": "#1A1A1A",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "20851",
+      "footballsoccerapi": null,
+      "ge": 4631,
+      "names": [
+        "Athletic",
+        "Athletic Club"
+      ]
+    }
+  },
+  {
+    "id": "atletico-go",
+    "name": "Atlético-GO",
+    "shortName": "ACG",
+    "color": "#D71920",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "10357",
+      "footballsoccerapi": null,
+      "ge": 373,
+      "names": [
+        "Atlético Goianiense",
+        "Atlético-GO"
+      ]
+    }
+  },
+  {
+    "id": "avai",
+    "name": "Avaí",
+    "shortName": "AVA",
+    "color": "#0067A5",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "9966",
+      "footballsoccerapi": null,
+      "ge": 314,
+      "names": [
+        "Avaí"
+      ]
+    }
+  },
+  {
+    "id": "botafogo-sp",
+    "name": "Botafogo-SP",
+    "shortName": "BSP",
+    "color": "#C8102E",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "10281",
+      "footballsoccerapi": null,
+      "ge": 296,
+      "names": [
+        "Botafogo-SP"
+      ]
+    }
+  },
+  {
+    "id": "crb",
+    "name": "CRB",
+    "shortName": "CRB",
+    "color": "#D0021B",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "9970",
+      "footballsoccerapi": null,
+      "ge": 340,
+      "names": [
+        "CRB"
+      ]
+    }
+  },
+  {
+    "id": "ceara",
+    "name": "Ceará",
+    "shortName": "CEA",
+    "color": "#1A1A1A",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "9969",
+      "footballsoccerapi": null,
+      "ge": 354,
+      "names": [
+        "Ceará"
+      ]
+    }
+  },
+  {
+    "id": "criciuma",
+    "name": "Criciúma",
+    "shortName": "CRI",
+    "color": "#FFD200",
+    "textColor": "#111111",
+    "aliases": {
+      "espn": "9971",
+      "footballsoccerapi": null,
+      "ge": 288,
+      "names": [
+        "Criciúma"
+      ]
+    }
+  },
+  {
+    "id": "cuiaba",
+    "name": "Cuiabá",
+    "shortName": "CUI",
+    "color": "#00843D",
+    "textColor": "#FFD200",
+    "aliases": {
+      "espn": "17313",
+      "footballsoccerapi": null,
+      "ge": 1371,
+      "names": [
+        "Cuiabá"
+      ]
+    }
+  },
+  {
+    "id": "fortaleza",
+    "name": "Fortaleza",
+    "shortName": "FOR",
+    "color": "#E11D2E",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "6272",
+      "footballsoccerapi": null,
+      "ge": 356,
+      "names": [
+        "Fortaleza"
+      ]
+    }
+  },
+  {
+    "id": "goias",
+    "name": "Goiás",
+    "shortName": "GOI",
+    "color": "#006B3F",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "3395",
+      "footballsoccerapi": null,
+      "ge": 290,
+      "names": [
+        "Goiás"
+      ]
+    }
+  },
+  {
+    "id": "juventude",
+    "name": "Juventude",
+    "shortName": "JUV",
+    "color": "#009845",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "6270",
+      "footballsoccerapi": null,
+      "ge": 286,
+      "names": [
+        "Juventude"
+      ]
+    }
+  },
+  {
+    "id": "londrina",
+    "name": "Londrina",
+    "shortName": "LEC",
+    "color": "#3AA0DC",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "17333",
+      "footballsoccerapi": null,
+      "ge": 319,
+      "names": [
+        "Londrina"
+      ]
+    }
+  },
+  {
+    "id": "novorizontino",
+    "name": "Novorizontino",
+    "shortName": "NOV",
+    "color": "#FFD200",
+    "textColor": "#111111",
+    "aliases": {
+      "espn": "18127",
+      "footballsoccerapi": null,
+      "ge": 2191,
+      "names": [
+        "Novorizontino"
+      ]
+    }
+  },
+  {
+    "id": "nautico",
+    "name": "Náutico",
+    "shortName": "NAU",
+    "color": "#D2001F",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "7633",
+      "footballsoccerapi": null,
+      "ge": 343,
+      "names": [
+        "Náutico"
+      ]
+    }
+  },
+  {
+    "id": "operario-pr",
+    "name": "Operário-PR",
+    "shortName": "OPE",
+    "color": "#1A1A1A",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "18187",
+      "footballsoccerapi": null,
+      "ge": 321,
+      "names": [
+        "Operário PR",
+        "Operário-PR"
+      ]
+    }
+  },
+  {
+    "id": "ponte-preta",
+    "name": "Ponte Preta",
+    "shortName": "PON",
+    "color": "#1A1A1A",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "3459",
+      "footballsoccerapi": null,
+      "ge": 303,
+      "names": [
+        "Ponte Preta"
+      ]
+    }
+  },
+  {
+    "id": "sport",
+    "name": "Sport",
+    "shortName": "SPT",
+    "color": "#C8102E",
+    "textColor": "#FFD200",
+    "aliases": {
+      "espn": "7635",
+      "footballsoccerapi": null,
+      "ge": 292,
+      "names": [
+        "Sport"
+      ]
+    }
+  },
+  {
+    "id": "sao-bernardo",
+    "name": "São Bernardo",
+    "shortName": "SBD",
+    "color": "#FFCC00",
+    "textColor": "#111111",
+    "aliases": {
+      "espn": "11268",
+      "footballsoccerapi": null,
+      "ge": 2880,
+      "names": [
+        "São Bernardo"
+      ]
+    }
+  },
+  {
+    "id": "vila-nova",
+    "name": "Vila Nova",
+    "shortName": "VNO",
+    "color": "#C8102E",
+    "textColor": "#FFFFFF",
+    "aliases": {
+      "espn": "9973",
+      "footballsoccerapi": null,
+      "ge": 375,
+      "names": [
+        "Vila Nova"
+      ]
+    }
+  }
+]

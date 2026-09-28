@@ -19,7 +19,7 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 
 - `pnpm dev` — site + FastAPI local juntos (`/api/py/*` é reescrito para a porta 8000)
 - `pnpm probe` — sondagem da API → `docs/api-report.md`
-- `pnpm update-data` — pipeline completo
+- `pnpm update-data` — pipeline completo (`-- --force` consulta mesmo sem jogo novo)
 - `pnpm test` — pytest · `pnpm check` — tsc + pytest
 - `pnpm gen:types` — pydantic → JSON Schema → `lib/generated/*.ts`
 - `pnpm gen:requirements` — exporta o grupo `api` para `requirements.txt` (Vercel)
@@ -32,17 +32,30 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Fatos escritos à mão (marcos, técnicos, regulamento) precisam ser pesquisados e confirmados pelo Lucas.
 - Cron do GitHub é desativado após 60 dias sem atividade no repo (durante o campeonato não acontece por causa dos commits automáticos).
 
-## Decisões tomadas
+## Decisões tomadas (detalhes: bloco "Decisão tomada em 28/09/2026" na seção 5 do PLANO)
 
-- Provedor preferencial: footballsoccerapi.com. **Plano grátis: 50 chamadas/dia**, `/matches` e `/matches/{id}` liberados,
-  `/matches/{id}/events` (gols com minuto) só no plano pago → provável `hasGoalMinutes: false`.
-- Detalhes em lote: `/v1/matches?ids=a-b-c` aceita até 50 ids, mas estatísticas por time só vêm no detalhe individual.
+- **Fonte principal: API pública da ESPN** (`/scoreboard?dates=YYYYMMDD`, sem chave, não oficial). Traz placar,
+  gols com minuto, cartões, estatísticas e o calendário. Datas no fuso de Nova York.
+- **Reserva: footballsoccerapi.com** (50 chamadas/dia; plano grátis só lista ontem/hoje/próximos jogos, sem minuto dos
+  gols nem estatísticas). Fallback automático em `pipeline/fetch.py`: nunca sobrescreve jogo encerrado vindo da ESPN.
+  Chave em `.env.local` e no secret `FOOTBALL_API_KEY` do repo.
+- **Gentileza com a ESPN:** só consulta quando um jogo já deveria ter terminado (início + 2h15), decidido pelo cache,
+  sem chamada. Pausa 1,5s, retry com backoff. Nunca rodar carga completa à toa (~133 chamadas).
+  Para reprocessar em dev, use `uv run python -m pipeline.update_data --offline` (lê `.cache/`, zero chamadas).
+- **Aviso:** 2 falhas seguidas da ESPN → o workflow abre issue com label `fonte-de-dados` (fecha sozinha ao voltar).
+- **IDs canônicos:** time = slug (`fortaleza`); jogo = `"{mandante}--{visitante}"`. Rodada vem de
+  `data/manual/rounds.json` (gerado de ge.globo por `pipeline/build_reference.py`; a API da CBF exige token, não usar).
+- ESPN duplica alguns gols: `dedupe_goals` só remove duplicatas quando a soma passa do placar. Cartões da ESPN diferem
+  da CBF em 1–3 por time (só afeta os critérios 6 e 7 de desempate).
+- Cores dos clubes em `data/manual/teams.json` são curadoria e aguardam confirmação do Lucas.
 
 ## Como descobrir o estado atual
 
-- O que a API entrega: `docs/api-report.md` e amostras em `docs/api-samples/`.
+- Fonte usada e flags: `data/meta.json` (`provider`, `hasGoalMinutes`, `lastCompletedRound`).
+- Saúde da ESPN: `data/raw/state.json` (`espnConsecutiveFailures`, `espnLastError`) e `gh issue list --label fonte-de-dados`.
+- O que a footballsoccerapi entrega: `docs/api-report.md` (gerado por `pnpm probe`).
 - Rodada/dados atuais: `data/meta.json`. Features ligadas/desligadas: flags em `data/meta.json`.
 - Andamento do roteiro: seção 17 de `docs/PLANO.md` + `git log --oneline`.
 - Execuções do cron: `gh run list --workflow update-data.yml`.
 
-_Última atualização: 28/09/2026 (Dia 0)._
+_Última atualização: 28/09/2026 (Dia 0 + início do Dia 1: provedores, fallback, tabela)._
