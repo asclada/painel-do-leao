@@ -1,0 +1,36 @@
+{
+  "name": "painel-do-leao",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n web,api \"next dev\" \"uv run uvicorn api.index:app --reload --port 8000\"",
+    "dev:web": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "probe": "uv run python -m pipeline.probe_api",
+    "update-data": "uv run python -m pipeline.update_data",
+    "test": "uv run pytest -q",
+    "gen:types": "uv run python -m pipeline.export_schema && json2ts -i schema -o lib/generated",
+    "gen:requirements": "uv export --only-group api --no-hashes -o requirements.txt",
+    "check": "tsc --noEmit && uv run pytest -q"
+  },
+  "dependencies": {
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^10.0.5",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.6",
+    "json-schema-to-typescript": "^16.0.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@12.6.0"
+}
