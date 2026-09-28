@@ -15,6 +15,7 @@ const eslintConfig = defineConfig([
     // tipos gerados a partir do pydantic (pnpm gen:types)
     "lib/generated/**",
     ".venv/**",
+    ".claude/**",
   ]),
 ]);
 

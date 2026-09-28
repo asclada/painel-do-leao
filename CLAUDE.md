@@ -1,6 +1,9 @@
 @AGENTS.md
 
-# Painel do Leão
+# Fortaleza em Números
+
+> Nome escolhido pelo Lucas em 28/09/2026 (o projeto nasceu como "Painel do Leão"; o repositório e o projeto na
+> Vercel continuam com o slug `painel-do-leao`).
 
 Painel do Fortaleza na Série B 2026, feito para o torcedor comum: posição, chance real de acesso
 (simulando o campeonato inteiro, com os rivais), montanha-russa da temporada, corrida pelo acesso,
@@ -67,7 +70,7 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Marcos manuais em `data/manual/milestones.json`: só aparecem com `confirmed: true`. Troca de técnico confirmada pelo
   Lucas: rodada 20 com interino, **Autuori estreou na rodada 21**.
 - Vercel: projeto `ascladas-projects/painel-do-leao`, ligado ao GitHub (push na main = deploy de produção).
-  Produção: https://painel-do-leao.vercel.app. `.vercelignore` impede enviar `.env*` em deploy pela CLI.
+  Produção: **https://fortaleza-em-numeros.vercel.app** (domínio principal; https://painel-do-leao.vercel.app também responde). `.vercelignore` impede enviar `.env*` em deploy pela CLI.
 
 ## Como descobrir o estado atual
 

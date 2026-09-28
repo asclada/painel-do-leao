@@ -1,8 +1,8 @@
-# Painel do Leão — Plano completo do projeto
+# Fortaleza em Números — Plano completo do projeto
 
 > Painel de desempenho do Fortaleza Esporte Clube na Série B 2026, feito **para o torcedor comum**.
 > Documento escrito em 28/09/2026 para ser entregue ao **Claude Code**, que vai construir, configurar e publicar o projeto praticamente sozinho.
-> Dono do projeto: **Lucas** (desenvolvedor, torcedor do Leão). Nome "Painel do Leão" é provisório.
+> Dono do projeto: **Lucas** (desenvolvedor, torcedor do Leão). Nome provisório era "Painel do Leão"; **nome definido em 28/09/2026: "Fortaleza em Números"** (site: fortaleza-em-numeros.vercel.app).
 > Stack: **Python** para dados, requisições e simulações + **Next.js** para o site.
 
 ---
@@ -935,6 +935,12 @@ Regras:
 - O nome do site e o ícone (favicon) usam um elemento original (ex.: um leão estilizado simples desenhado em SVG pelo Claude Code, ou só tipografia).
 - Se o Lucas quiser usar escudos mesmo assim, é decisão dele; registrar e seguir.
 
+> **Decisões dos checkpoints 1 e 2 (28/09/2026):** nome **Fortaleza em Números**; fontes **Bebas Neue** (números e
+> títulos) + **Inter** (texto); **vermelho contido** (no topo, só a chance de subir em vermelho); **bolinha de derrota
+> vermelha**; montanha-russa **M1 ajustada**: linha **branca** com pontos verde (vitória), cinza (empate) e vermelho
+> (derrota), faixas G2/G6 preenchidas e Z4 hachurada. Marco da troca de técnico: Autuori estreou na **rodada 21**
+> (a rodada 20 teve técnico interino), confirmado pelo Lucas.
+
 ### CHECKPOINT VISUAL 1 (Dia 2, início)
 
 Claude Code cria a rota `/preview` com:
@@ -1206,7 +1212,7 @@ Observações:
 
 ### SEO e compartilhamento
 
-- `metadata` no `layout.tsx`: título "Painel do Leão — Fortaleza na Série B 2026" (ajustar ao nome escolhido), descrição curta, `lang="pt-BR"`.
+- `metadata` no `layout.tsx`: título "Fortaleza em Números — o Leão na Série B 2026", descrição curta, `lang="pt-BR"`.
 - Open Graph e Twitter card com a imagem dinâmica (F6).
 - `robots.txt` e `sitemap.xml` via convenções do App Router.
 - Favicon original (SVG).

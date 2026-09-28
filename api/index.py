@@ -27,7 +27,7 @@ from pipeline.model.types import ModelInput  # noqa: E402
 MODEL_FILE = ROOT / "data" / "model.json"
 CACHE = "public, s-maxage=86400, stale-while-revalidate=3600"
 
-app = FastAPI(title="Painel do Leão — simulador", docs_url="/api/py/docs", openapi_url="/api/py/openapi.json")
+app = FastAPI(title="Fortaleza em Números — simulador", docs_url="/api/py/docs", openapi_url="/api/py/openapi.json")
 
 
 @lru_cache(maxsize=1)
