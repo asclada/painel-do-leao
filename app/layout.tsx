@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { allFontVars } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -12,8 +14,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="pt-BR" className={`${allFontVars} fontset-a loss-dark h-full antialiased`}>
+      <body className="flex min-h-full flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
