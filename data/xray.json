@@ -1,0 +1,98 @@
+{
+  "away": {
+    "draws": 5,
+    "goalsAgainst": 13,
+    "goalsFor": 11,
+    "losses": 5,
+    "pct": 44,
+    "played": 15,
+    "points": 20,
+    "wins": 5
+  },
+  "firstTurn": {
+    "pct": 54,
+    "played": 19,
+    "points": 31,
+    "ppg": 1.63
+  },
+  "goalBins": [
+    {
+      "goalsAgainst": 4,
+      "goalsFor": 2,
+      "label": "1–15"
+    },
+    {
+      "goalsAgainst": 2,
+      "goalsFor": 6,
+      "label": "16–30"
+    },
+    {
+      "goalsAgainst": 9,
+      "goalsFor": 8,
+      "label": "31–45+"
+    },
+    {
+      "goalsAgainst": 6,
+      "goalsFor": 6,
+      "label": "46–60"
+    },
+    {
+      "goalsAgainst": 3,
+      "goalsFor": 2,
+      "label": "61–75"
+    },
+    {
+      "goalsAgainst": 2,
+      "goalsFor": 11,
+      "label": "76–90+"
+    }
+  ],
+  "halves": {
+    "firstAgainst": 15,
+    "firstFor": 16,
+    "pctSecondHalfFor": 54,
+    "secondAgainst": 11,
+    "secondFor": 19
+  },
+  "home": {
+    "draws": 5,
+    "goalsAgainst": 13,
+    "goalsFor": 24,
+    "losses": 1,
+    "pct": 71,
+    "played": 15,
+    "points": 32,
+    "wins": 9
+  },
+  "insights": {
+    "goalBins": "Reta final é com a gente: 11 gols nos últimos 15 minutos.",
+    "halves": "Saldo de +1 no 1º tempo e +8 no 2º: o 2º tempo é o mais forte.",
+    "streaks": "11 jogos sem perder. Última derrota: Vila Nova, em 21/07.",
+    "turns": "Ritmo parecido nos dois turnos: 1,6 e 1,9 pontos por jogo.",
+    "venue": "No Castelão o Leão é outro: 71% dos pontos em casa contra 44% fora."
+  },
+  "secondTurn": {
+    "pct": 64,
+    "played": 11,
+    "points": 21,
+    "ppg": 1.91
+  },
+  "streaks": {
+    "cleanSheets": 13,
+    "currentCount": 11,
+    "currentKind": "unbeaten",
+    "currentLabel": "11 jogos sem perder",
+    "form": [
+      "V",
+      "V",
+      "E",
+      "V",
+      "E"
+    ],
+    "lastLossDate": "2026-07-22T00:35Z",
+    "lastLossOpponentId": "vila-nova",
+    "longestCleanSheets": 2,
+    "longestUnbeaten": 11,
+    "longestWins": 3
+  }
+}

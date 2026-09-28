@@ -9,8 +9,14 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 ## Stack e arquitetura
 
 - **Python 3.12 + uv** para tudo que é dado: `pipeline/` (requisições, cálculos, simulação) e `api/` (FastAPI do simulador).
-  - Grupos no `pyproject.toml`: `api` (fastapi, numpy, pydantic), `pipeline` (httpx, tenacity, pandas, python-dotenv), `dev` (pytest, uvicorn).
-  - `pipeline/model/` importa **só numpy + pydantic** (vai para a função Python da Vercel). Nunca pandas lá.
+  - `pyproject.toml`: `[project].dependencies` = só o que a função da Vercel usa (fastapi, numpy, pydantic);
+    grupos `pipeline` (httpx, tenacity, python-dotenv, tzdata) e `dev` (pytest, uvicorn, httpx). Os cálculos são Python puro (sem pandas).
+  - `pipeline/model/`, `pipeline/models.py` e `pipeline/config.py` importam **só numpy + pydantic + stdlib**: vão para a função
+    Python da Vercel (`vercel.json` → `includeFiles`). Nada de httpx/dotenv nesses arquivos.
+- **Simulação:** `pipeline/model/` (ratings Poisson com mando, encolhimento k=4 e meia-vida 12 rodadas; Monte Carlo
+  vetorizado N×M; playoffs). O pipeline roda 20 mil (semente por rodada) e grava `data/simulation.json`; a API
+  (`api/index.py`, rotas `/api/py/health` e `/api/py/simular?p=VED-`) roda 5 mil a partir de `data/model.json`.
+- **Saídas do site:** `pipeline/outputs.py` (modelos) → `data/*.json` → tipos em `lib/generated/` → `lib/data.ts`.
 - **Next.js (App Router) + TypeScript + Tailwind + pnpm** para o site; lê apenas `data/*.json` no build.
 - **GitHub Actions** (cron 2h) roda `pipeline/update_data.py`, commita `data/` e a **Vercel** faz deploy.
 - A chave da API só existe em `.env.local` (local) e GitHub Secrets. Nunca na Vercel nem no navegador.
@@ -22,7 +28,8 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - `pnpm update-data` — pipeline completo (`-- --force` consulta mesmo sem jogo novo)
 - `pnpm test` — pytest · `pnpm check` — tsc + pytest
 - `pnpm gen:types` — pydantic → JSON Schema → `lib/generated/*.ts`
-- `pnpm gen:requirements` — exporta o grupo `api` para `requirements.txt` (Vercel)
+- `pnpm gen:requirements` — exporta as dependências do projeto (só as da API) para `requirements.txt` (Vercel)
+- `uv run python -m pipeline.update_data --recompute` — recalcula todas as saídas do cache, sem consultar a fonte
 - No Windows, o `uv` fica em `%APPDATA%\Python\Python312\Scripts` (já adicionado ao PATH do usuário).
 
 ## Regras
@@ -48,6 +55,12 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - ESPN duplica alguns gols: `dedupe_goals` só remove duplicatas quando a soma passa do placar. Cartões da ESPN diferem
   da CBF em 1–3 por time (só afeta os critérios 6 e 7 de desempate).
 - Cores dos clubes em `data/manual/teams.json` são curadoria e aguardam confirmação do Lucas.
+- **Playoffs (regulamento confirmado):** melhor campanha faz a volta em casa; empate no agregado → sobe a melhor
+  campanha (sem pênaltis).
+- Marcos manuais em `data/manual/milestones.json`: só aparecem com `confirmed: true` (ou `showUnconfirmed` durante o
+  preview). **Antes do lançamento, trocar para `confirmed` após o Lucas validar (M8).**
+- Vercel: projeto `ascladas-projects/painel-do-leao`, ligado ao GitHub (push na main = deploy de produção).
+  Produção: https://painel-do-leao.vercel.app. `.vercelignore` impede enviar `.env*` em deploy pela CLI.
 
 ## Como descobrir o estado atual
 
@@ -58,4 +71,4 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Andamento do roteiro: seção 17 de `docs/PLANO.md` + `git log --oneline`.
 - Execuções do cron: `gh run list --workflow update-data.yml`.
 
-_Última atualização: 28/09/2026 (Dia 0 + início do Dia 1: provedores, fallback, tabela)._
+_Última atualização: 28/09/2026 (Dias 0 e 1 concluídos: dados, modelo, API e página provisória no ar)._

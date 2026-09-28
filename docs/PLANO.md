@@ -276,6 +276,10 @@ Use sempre a **versão estável mais recente** de cada pacote no momento da inst
 >   CBF em 1–3 por time na temporada (afeta só o 6º/7º critério de desempate).
 > - **Regulamento (confirmado no ge.globo):** G2 sobe direto; 3º x 6º e 4º x 5º nos playoffs; Z4 cai;
 >   desempate: vitórias, saldo, gols pró, confronto direto, menos vermelhos, menos amarelos, sorteio.
+> - **Playoffs (confirmado na imprensa, 28/09):** melhor campanha faz a volta em casa; empate no placar agregado
+>   classifica a melhor campanha (não há pênaltis). Implementado em `pipeline/model/playoffs.py`; substitui a
+>   suposição "pênaltis 50/50" das seções 2 e 8.3.
+> - **Sem pandas:** os cálculos da seção 7 ficaram em Python puro (mais simples e sem dependência pesada no Actions).
 
 ### Estratégia
 

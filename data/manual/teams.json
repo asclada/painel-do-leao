@@ -13,7 +13,8 @@
         "América Mineiro",
         "América-MG"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "athletic-club",
@@ -29,7 +30,8 @@
         "Athletic",
         "Athletic Club"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "atletico-go",
@@ -45,7 +47,8 @@
         "Atlético Goianiense",
         "Atlético-GO"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "avai",
@@ -60,7 +63,8 @@
       "names": [
         "Avaí"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "botafogo-sp",
@@ -75,7 +79,8 @@
       "names": [
         "Botafogo-SP"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "crb",
@@ -90,7 +95,8 @@
       "names": [
         "CRB"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "ceara",
@@ -105,7 +111,8 @@
       "names": [
         "Ceará"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "criciuma",
@@ -120,7 +127,8 @@
       "names": [
         "Criciúma"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "cuiaba",
@@ -135,7 +143,8 @@
       "names": [
         "Cuiabá"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "fortaleza",
@@ -150,7 +159,8 @@
       "names": [
         "Fortaleza"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "goias",
@@ -165,7 +175,8 @@
       "names": [
         "Goiás"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "juventude",
@@ -180,7 +191,8 @@
       "names": [
         "Juventude"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "londrina",
@@ -195,7 +207,8 @@
       "names": [
         "Londrina"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "novorizontino",
@@ -210,7 +223,8 @@
       "names": [
         "Novorizontino"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "nautico",
@@ -225,7 +239,8 @@
       "names": [
         "Náutico"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "operario-pr",
@@ -241,7 +256,8 @@
         "Operário PR",
         "Operário-PR"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "ponte-preta",
@@ -256,7 +272,8 @@
       "names": [
         "Ponte Preta"
       ]
-    }
+    },
+    "article": "a"
   },
   {
     "id": "sport",
@@ -271,7 +288,8 @@
       "names": [
         "Sport"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "sao-bernardo",
@@ -286,7 +304,8 @@
       "names": [
         "São Bernardo"
       ]
-    }
+    },
+    "article": "o"
   },
   {
     "id": "vila-nova",
@@ -301,6 +320,7 @@
       "names": [
         "Vila Nova"
       ]
-    }
+    },
+    "article": "o"
   }
 ]

@@ -1,0 +1,817 @@
+{
+  "focusRemaining": [
+    7,
+    17,
+    27,
+    33,
+    49,
+    56,
+    69,
+    76
+  ],
+  "focusTeam": 9,
+  "lastCompletedRound": 29,
+  "ratings": {
+    "attAway": [
+      0.705901,
+      1.157839,
+      0.914259,
+      0.913897,
+      0.739549,
+      1.019072,
+      0.972721,
+      0.915091,
+      0.953746,
+      0.962784,
+      1.079567,
+      0.982885,
+      0.986306,
+      1.038658,
+      1.567891,
+      1.376126,
+      0.595017,
+      1.305233,
+      0.968545,
+      0.801239
+    ],
+    "attHome": [
+      0.80516,
+      0.992857,
+      1.195637,
+      0.837495,
+      1.050279,
+      0.972723,
+      1.27848,
+      0.840183,
+      1.00834,
+      1.010653,
+      0.749166,
+      0.924548,
+      1.116153,
+      1.062558,
+      1.033257,
+      1.078671,
+      0.654408,
+      0.843887,
+      1.2032,
+      1.311825
+    ],
+    "defAway": [
+      1.25622,
+      0.952697,
+      0.725201,
+      1.157437,
+      0.844399,
+      1.089823,
+      1.048396,
+      1.036176,
+      0.977912,
+      0.693423,
+      0.926962,
+      0.754761,
+      1.107622,
+      1.137633,
+      0.802224,
+      0.96324,
+      1.754229,
+      0.735745,
+      1.03508,
+      1.02213
+    ],
+    "defHome": [
+      1.217147,
+      1.042786,
+      0.854178,
+      0.995435,
+      1.489472,
+      1.08338,
+      0.962878,
+      0.812801,
+      0.692078,
+      0.933358,
+      1.032221,
+      0.772077,
+      1.086493,
+      0.969607,
+      0.866846,
+      1.186913,
+      1.301062,
+      1.134797,
+      0.969145,
+      0.674337
+    ],
+    "muAway": 0.985812,
+    "muHome": 1.419963,
+    "strength": [
+      0.610933,
+      1.077782,
+      1.335902,
+      0.813514,
+      0.766892,
+      0.916525,
+      1.119291,
+      0.949322,
+      1.174908,
+      1.213093,
+      0.933416,
+      1.24927,
+      0.958226,
+      0.997141,
+      1.558442,
+      1.141685,
+      0.408938,
+      1.148928,
+      1.083583,
+      1.245567
+    ]
+  },
+  "remaining": [
+    {
+      "away": 11,
+      "home": 0,
+      "id": "america-mg--juventude",
+      "kickoffUtc": "2026-09-28T22:30Z",
+      "round": 30
+    },
+    {
+      "away": 16,
+      "home": 4,
+      "id": "botafogo-sp--ponte-preta",
+      "kickoffUtc": "2026-09-29T22:30Z",
+      "round": 30
+    },
+    {
+      "away": 18,
+      "home": 1,
+      "id": "athletic-club--sport",
+      "kickoffUtc": "2026-10-01T23:30Z",
+      "round": 31
+    },
+    {
+      "away": 10,
+      "home": 14,
+      "id": "novorizontino--goias",
+      "kickoffUtc": "2026-10-02T00:00Z",
+      "round": 31
+    },
+    {
+      "away": 6,
+      "home": 17,
+      "id": "sao-bernardo--crb",
+      "kickoffUtc": "2026-10-02T22:30Z",
+      "round": 31
+    },
+    {
+      "away": 7,
+      "home": 12,
+      "id": "londrina--criciuma",
+      "kickoffUtc": "2026-10-02T23:30Z",
+      "round": 31
+    },
+    {
+      "away": 15,
+      "home": 11,
+      "id": "juventude--operario-pr",
+      "kickoffUtc": "2026-10-02T23:45Z",
+      "round": 31
+    },
+    {
+      "away": 13,
+      "home": 9,
+      "id": "fortaleza--nautico",
+      "kickoffUtc": "2026-10-03T00:35Z",
+      "round": 31
+    },
+    {
+      "away": 5,
+      "home": 3,
+      "id": "avai--ceara",
+      "kickoffUtc": "2026-10-03T14:00Z",
+      "round": 31
+    },
+    {
+      "away": 0,
+      "home": 2,
+      "id": "atletico-go--america-mg",
+      "kickoffUtc": "2026-10-03T19:00Z",
+      "round": 31
+    },
+    {
+      "away": 16,
+      "home": 8,
+      "id": "cuiaba--ponte-preta",
+      "kickoffUtc": "2026-10-03T20:00Z",
+      "round": 31
+    },
+    {
+      "away": 19,
+      "home": 4,
+      "id": "botafogo-sp--vila-nova",
+      "kickoffUtc": "2026-10-03T21:30Z",
+      "round": 31
+    },
+    {
+      "away": 17,
+      "home": 18,
+      "id": "sport--sao-bernardo",
+      "kickoffUtc": "2026-10-06T22:30Z",
+      "round": 32
+    },
+    {
+      "away": 1,
+      "home": 10,
+      "id": "goias--athletic-club",
+      "kickoffUtc": "2026-10-06T23:30Z",
+      "round": 32
+    },
+    {
+      "away": 11,
+      "home": 16,
+      "id": "ponte-preta--juventude",
+      "kickoffUtc": "2026-10-07T00:35Z",
+      "round": 32
+    },
+    {
+      "away": 12,
+      "home": 3,
+      "id": "avai--londrina",
+      "kickoffUtc": "2026-10-07T22:30Z",
+      "round": 32
+    },
+    {
+      "away": 4,
+      "home": 15,
+      "id": "operario-pr--botafogo-sp",
+      "kickoffUtc": "2026-10-07T22:30Z",
+      "round": 32
+    },
+    {
+      "away": 9,
+      "home": 0,
+      "id": "america-mg--fortaleza",
+      "kickoffUtc": "2026-10-07T23:30Z",
+      "round": 32
+    },
+    {
+      "away": 2,
+      "home": 6,
+      "id": "crb--atletico-go",
+      "kickoffUtc": "2026-10-07T23:30Z",
+      "round": 32
+    },
+    {
+      "away": 8,
+      "home": 19,
+      "id": "vila-nova--cuiaba",
+      "kickoffUtc": "2026-10-07T23:30Z",
+      "round": 32
+    },
+    {
+      "away": 7,
+      "home": 5,
+      "id": "ceara--criciuma",
+      "kickoffUtc": "2026-10-08T22:30Z",
+      "round": 32
+    },
+    {
+      "away": 14,
+      "home": 13,
+      "id": "nautico--novorizontino",
+      "kickoffUtc": "2026-10-08T22:30Z",
+      "round": 32
+    },
+    {
+      "away": 17,
+      "home": 11,
+      "id": "juventude--sao-bernardo",
+      "kickoffUtc": "2026-10-11T19:00Z",
+      "round": 33
+    },
+    {
+      "away": 18,
+      "home": 2,
+      "id": "atletico-go--sport",
+      "kickoffUtc": "2026-10-11T19:10Z",
+      "round": 33
+    },
+    {
+      "away": 19,
+      "home": 13,
+      "id": "nautico--vila-nova",
+      "kickoffUtc": "2026-10-11T20:30Z",
+      "round": 33
+    },
+    {
+      "away": 3,
+      "home": 8,
+      "id": "cuiaba--avai",
+      "kickoffUtc": "2026-10-11T21:30Z",
+      "round": 33
+    },
+    {
+      "away": 10,
+      "home": 15,
+      "id": "operario-pr--goias",
+      "kickoffUtc": "2026-10-11T21:30Z",
+      "round": 33
+    },
+    {
+      "away": 6,
+      "home": 9,
+      "id": "fortaleza--crb",
+      "kickoffUtc": "2026-10-12T19:00Z",
+      "round": 33
+    },
+    {
+      "away": 16,
+      "home": 14,
+      "id": "novorizontino--ponte-preta",
+      "kickoffUtc": "2026-10-12T22:00Z",
+      "round": 33
+    },
+    {
+      "away": 0,
+      "home": 7,
+      "id": "criciuma--america-mg",
+      "kickoffUtc": "2026-10-12T22:30Z",
+      "round": 33
+    },
+    {
+      "away": 5,
+      "home": 4,
+      "id": "botafogo-sp--ceara",
+      "kickoffUtc": "2026-10-13T00:00Z",
+      "round": 33
+    },
+    {
+      "away": 12,
+      "home": 1,
+      "id": "athletic-club--londrina",
+      "kickoffUtc": "2026-10-13T22:30Z",
+      "round": 33
+    },
+    {
+      "away": 2,
+      "home": 16,
+      "id": "ponte-preta--atletico-go",
+      "kickoffUtc": "2026-10-16T22:30Z",
+      "round": 34
+    },
+    {
+      "away": 9,
+      "home": 18,
+      "id": "sport--fortaleza",
+      "kickoffUtc": "2026-10-16T23:30Z",
+      "round": 34
+    },
+    {
+      "away": 11,
+      "home": 5,
+      "id": "ceara--juventude",
+      "kickoffUtc": "2026-10-17T19:30Z",
+      "round": 34
+    },
+    {
+      "away": 15,
+      "home": 0,
+      "id": "america-mg--operario-pr",
+      "kickoffUtc": "2026-10-17T21:30Z",
+      "round": 34
+    },
+    {
+      "away": 1,
+      "home": 3,
+      "id": "avai--athletic-club",
+      "kickoffUtc": "2026-10-18T19:00Z",
+      "round": 34
+    },
+    {
+      "away": 4,
+      "home": 6,
+      "id": "crb--botafogo-sp",
+      "kickoffUtc": "2026-10-18T19:00Z",
+      "round": 34
+    },
+    {
+      "away": 7,
+      "home": 17,
+      "id": "sao-bernardo--criciuma",
+      "kickoffUtc": "2026-10-18T19:00Z",
+      "round": 34
+    },
+    {
+      "away": 14,
+      "home": 19,
+      "id": "vila-nova--novorizontino",
+      "kickoffUtc": "2026-10-18T21:00Z",
+      "round": 34
+    },
+    {
+      "away": 13,
+      "home": 10,
+      "id": "goias--nautico",
+      "kickoffUtc": "2026-10-19T22:30Z",
+      "round": 34
+    },
+    {
+      "away": 8,
+      "home": 12,
+      "id": "londrina--cuiaba",
+      "kickoffUtc": "2026-10-20T22:30Z",
+      "round": 34
+    },
+    {
+      "away": 8,
+      "home": 0,
+      "id": "america-mg--cuiaba",
+      "kickoffUtc": "2026-10-23T18:00Z",
+      "round": 35
+    },
+    {
+      "away": 14,
+      "home": 2,
+      "id": "atletico-go--novorizontino",
+      "kickoffUtc": "2026-10-23T18:00Z",
+      "round": 35
+    },
+    {
+      "away": 4,
+      "home": 3,
+      "id": "avai--botafogo-sp",
+      "kickoffUtc": "2026-10-23T18:00Z",
+      "round": 35
+    },
+    {
+      "away": 10,
+      "home": 5,
+      "id": "ceara--goias",
+      "kickoffUtc": "2026-10-23T18:00Z",
+      "round": 35
+    },
+    {
+      "away": 12,
+      "home": 6,
+      "id": "crb--londrina",
+      "kickoffUtc": "2026-10-23T18:00Z",
+      "round": 35
+    },
+    {
+      "away": 13,
+      "home": 11,
+      "id": "juventude--nautico",
+      "kickoffUtc": "2026-10-23T18:00Z",
+      "round": 35
+    },
+    {
+      "away": 1,
+      "home": 15,
+      "id": "operario-pr--athletic-club",
+      "kickoffUtc": "2026-10-23T18:00Z",
+      "round": 35
+    },
+    {
+      "away": 9,
+      "home": 16,
+      "id": "ponte-preta--fortaleza",
+      "kickoffUtc": "2026-10-23T18:00Z",
+      "round": 35
+    },
+    {
+      "away": 19,
+      "home": 17,
+      "id": "sao-bernardo--vila-nova",
+      "kickoffUtc": "2026-10-23T18:00Z",
+      "round": 35
+    },
+    {
+      "away": 7,
+      "home": 18,
+      "id": "sport--criciuma",
+      "kickoffUtc": "2026-10-23T18:00Z",
+      "round": 35
+    },
+    {
+      "away": 5,
+      "home": 1,
+      "id": "athletic-club--ceara",
+      "kickoffUtc": "2026-10-30T18:00Z",
+      "round": 36
+    },
+    {
+      "away": 18,
+      "home": 4,
+      "id": "botafogo-sp--sport",
+      "kickoffUtc": "2026-10-30T18:00Z",
+      "round": 36
+    },
+    {
+      "away": 16,
+      "home": 7,
+      "id": "criciuma--ponte-preta",
+      "kickoffUtc": "2026-10-30T18:00Z",
+      "round": 36
+    },
+    {
+      "away": 17,
+      "home": 8,
+      "id": "cuiaba--sao-bernardo",
+      "kickoffUtc": "2026-10-30T18:00Z",
+      "round": 36
+    },
+    {
+      "away": 2,
+      "home": 9,
+      "id": "fortaleza--atletico-go",
+      "kickoffUtc": "2026-10-30T18:00Z",
+      "round": 36
+    },
+    {
+      "away": 6,
+      "home": 10,
+      "id": "goias--crb",
+      "kickoffUtc": "2026-10-30T18:00Z",
+      "round": 36
+    },
+    {
+      "away": 0,
+      "home": 12,
+      "id": "londrina--america-mg",
+      "kickoffUtc": "2026-10-30T18:00Z",
+      "round": 36
+    },
+    {
+      "away": 3,
+      "home": 13,
+      "id": "nautico--avai",
+      "kickoffUtc": "2026-10-30T18:00Z",
+      "round": 36
+    },
+    {
+      "away": 15,
+      "home": 14,
+      "id": "novorizontino--operario-pr",
+      "kickoffUtc": "2026-10-30T18:00Z",
+      "round": 36
+    },
+    {
+      "away": 11,
+      "home": 19,
+      "id": "vila-nova--juventude",
+      "kickoffUtc": "2026-10-30T18:00Z",
+      "round": 36
+    },
+    {
+      "away": 2,
+      "home": 1,
+      "id": "athletic-club--atletico-go",
+      "kickoffUtc": "2026-11-06T20:00Z",
+      "round": 37
+    },
+    {
+      "away": 17,
+      "home": 3,
+      "id": "avai--sao-bernardo",
+      "kickoffUtc": "2026-11-06T20:00Z",
+      "round": 37
+    },
+    {
+      "away": 12,
+      "home": 4,
+      "id": "botafogo-sp--londrina",
+      "kickoffUtc": "2026-11-06T20:00Z",
+      "round": 37
+    },
+    {
+      "away": 0,
+      "home": 5,
+      "id": "ceara--america-mg",
+      "kickoffUtc": "2026-11-06T20:00Z",
+      "round": 37
+    },
+    {
+      "away": 11,
+      "home": 8,
+      "id": "cuiaba--juventude",
+      "kickoffUtc": "2026-11-06T20:00Z",
+      "round": 37
+    },
+    {
+      "away": 16,
+      "home": 10,
+      "id": "goias--ponte-preta",
+      "kickoffUtc": "2026-11-06T20:00Z",
+      "round": 37
+    },
+    {
+      "away": 6,
+      "home": 13,
+      "id": "nautico--crb",
+      "kickoffUtc": "2026-11-06T20:00Z",
+      "round": 37
+    },
+    {
+      "away": 9,
+      "home": 14,
+      "id": "novorizontino--fortaleza",
+      "kickoffUtc": "2026-11-06T20:00Z",
+      "round": 37
+    },
+    {
+      "away": 18,
+      "home": 15,
+      "id": "operario-pr--sport",
+      "kickoffUtc": "2026-11-06T20:00Z",
+      "round": 37
+    },
+    {
+      "away": 7,
+      "home": 19,
+      "id": "vila-nova--criciuma",
+      "kickoffUtc": "2026-11-06T20:00Z",
+      "round": 37
+    },
+    {
+      "away": 3,
+      "home": 0,
+      "id": "america-mg--avai",
+      "kickoffUtc": "2026-11-14T20:00Z",
+      "round": 38
+    },
+    {
+      "away": 8,
+      "home": 2,
+      "id": "atletico-go--cuiaba",
+      "kickoffUtc": "2026-11-14T20:00Z",
+      "round": 38
+    },
+    {
+      "away": 5,
+      "home": 6,
+      "id": "crb--ceara",
+      "kickoffUtc": "2026-11-14T20:00Z",
+      "round": 38
+    },
+    {
+      "away": 14,
+      "home": 7,
+      "id": "criciuma--novorizontino",
+      "kickoffUtc": "2026-11-14T20:00Z",
+      "round": 38
+    },
+    {
+      "away": 19,
+      "home": 9,
+      "id": "fortaleza--vila-nova",
+      "kickoffUtc": "2026-11-14T20:00Z",
+      "round": 38
+    },
+    {
+      "away": 4,
+      "home": 11,
+      "id": "juventude--botafogo-sp",
+      "kickoffUtc": "2026-11-14T20:00Z",
+      "round": 38
+    },
+    {
+      "away": 13,
+      "home": 12,
+      "id": "londrina--nautico",
+      "kickoffUtc": "2026-11-14T20:00Z",
+      "round": 38
+    },
+    {
+      "away": 15,
+      "home": 16,
+      "id": "ponte-preta--operario-pr",
+      "kickoffUtc": "2026-11-14T20:00Z",
+      "round": 38
+    },
+    {
+      "away": 1,
+      "home": 17,
+      "id": "sao-bernardo--athletic-club",
+      "kickoffUtc": "2026-11-14T20:00Z",
+      "round": 38
+    },
+    {
+      "away": 10,
+      "home": 18,
+      "id": "sport--goias",
+      "kickoffUtc": "2026-11-14T20:00Z",
+      "round": 38
+    }
+  ],
+  "season": 2026,
+  "table": {
+    "goalDiff": [
+      -28,
+      3,
+      10,
+      -11,
+      -4,
+      -6,
+      4,
+      4,
+      5,
+      9,
+      -6,
+      12,
+      -4,
+      1,
+      22,
+      5,
+      -45,
+      9,
+      8,
+      12
+    ],
+    "goalsFor": [
+      21,
+      36,
+      37,
+      30,
+      32,
+      33,
+      45,
+      31,
+      30,
+      35,
+      30,
+      31,
+      39,
+      38,
+      49,
+      43,
+      17,
+      40,
+      40,
+      43
+    ],
+    "points": [
+      17,
+      42,
+      49,
+      30,
+      32,
+      36,
+      48,
+      50,
+      43,
+      52,
+      42,
+      50,
+      28,
+      41,
+      51,
+      48,
+      13,
+      42,
+      44,
+      54
+    ],
+    "wins": [
+      4,
+      10,
+      13,
+      8,
+      8,
+      9,
+      14,
+      14,
+      10,
+      14,
+      12,
+      14,
+      7,
+      11,
+      14,
+      13,
+      3,
+      11,
+      11,
+      16
+    ]
+  },
+  "teams": [
+    "america-mg",
+    "athletic-club",
+    "atletico-go",
+    "avai",
+    "botafogo-sp",
+    "ceara",
+    "crb",
+    "criciuma",
+    "cuiaba",
+    "fortaleza",
+    "goias",
+    "juventude",
+    "londrina",
+    "nautico",
+    "novorizontino",
+    "operario-pr",
+    "ponte-preta",
+    "sao-bernardo",
+    "sport",
+    "vila-nova"
+  ]
+}

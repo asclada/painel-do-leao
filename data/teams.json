@@ -1,5 +1,6 @@
 [
   {
+    "article": "o",
     "color": "#00843D",
     "id": "america-mg",
     "name": "América-MG",
@@ -7,6 +8,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#1A1A1A",
     "id": "athletic-club",
     "name": "Athletic Club",
@@ -14,6 +16,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#D71920",
     "id": "atletico-go",
     "name": "Atlético-GO",
@@ -21,6 +24,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#0067A5",
     "id": "avai",
     "name": "Avaí",
@@ -28,6 +32,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#C8102E",
     "id": "botafogo-sp",
     "name": "Botafogo-SP",
@@ -35,6 +40,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#D0021B",
     "id": "crb",
     "name": "CRB",
@@ -42,6 +48,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#1A1A1A",
     "id": "ceara",
     "name": "Ceará",
@@ -49,6 +56,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#FFD200",
     "id": "criciuma",
     "name": "Criciúma",
@@ -56,6 +64,7 @@
     "textColor": "#111111"
   },
   {
+    "article": "o",
     "color": "#00843D",
     "id": "cuiaba",
     "name": "Cuiabá",
@@ -63,6 +72,7 @@
     "textColor": "#FFD200"
   },
   {
+    "article": "o",
     "color": "#E11D2E",
     "id": "fortaleza",
     "name": "Fortaleza",
@@ -70,6 +80,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#006B3F",
     "id": "goias",
     "name": "Goiás",
@@ -77,6 +88,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#009845",
     "id": "juventude",
     "name": "Juventude",
@@ -84,6 +96,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#3AA0DC",
     "id": "londrina",
     "name": "Londrina",
@@ -91,6 +104,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#FFD200",
     "id": "novorizontino",
     "name": "Novorizontino",
@@ -98,6 +112,7 @@
     "textColor": "#111111"
   },
   {
+    "article": "o",
     "color": "#D2001F",
     "id": "nautico",
     "name": "Náutico",
@@ -105,6 +120,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#1A1A1A",
     "id": "operario-pr",
     "name": "Operário-PR",
@@ -112,6 +128,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "a",
     "color": "#1A1A1A",
     "id": "ponte-preta",
     "name": "Ponte Preta",
@@ -119,6 +136,7 @@
     "textColor": "#FFFFFF"
   },
   {
+    "article": "o",
     "color": "#C8102E",
     "id": "sport",
     "name": "Sport",
@@ -126,6 +144,7 @@
     "textColor": "#FFD200"
   },
   {
+    "article": "o",
     "color": "#FFCC00",
     "id": "sao-bernardo",
     "name": "São Bernardo",
@@ -133,6 +152,7 @@
     "textColor": "#111111"
   },
   {
+    "article": "o",
     "color": "#C8102E",
     "id": "vila-nova",
     "name": "Vila Nova",

@@ -1,0 +1,168 @@
+{
+  "$defs": {
+    "MagicNumbers": {
+      "additionalProperties": false,
+      "properties": {
+        "pointsFor90Direct": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pointsFor90Top6": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "winsNeededDirect": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "winsNeededTop6": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "remainingGames": {
+          "type": "integer"
+        },
+        "currentPoints": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "pointsFor90Direct",
+        "pointsFor90Top6",
+        "winsNeededDirect",
+        "winsNeededTop6",
+        "remainingGames",
+        "currentPoints"
+      ],
+      "title": "MagicNumbers",
+      "type": "object"
+    },
+    "TeamOdds": {
+      "additionalProperties": false,
+      "properties": {
+        "teamId": {
+          "type": "string"
+        },
+        "pTitle": {
+          "type": "number"
+        },
+        "pDirect": {
+          "type": "number"
+        },
+        "pTop6": {
+          "type": "number"
+        },
+        "pPlayoffPromotion": {
+          "type": "number"
+        },
+        "pPromotion": {
+          "type": "number"
+        },
+        "pRelegation": {
+          "type": "number"
+        },
+        "positionDist": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "expectedPoints": {
+          "type": "number"
+        },
+        "pointsP10": {
+          "type": "integer"
+        },
+        "pointsP50": {
+          "type": "integer"
+        },
+        "pointsP90": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "teamId",
+        "pTitle",
+        "pDirect",
+        "pTop6",
+        "pPlayoffPromotion",
+        "pPromotion",
+        "pRelegation",
+        "positionDist",
+        "expectedPoints",
+        "pointsP10",
+        "pointsP50",
+        "pointsP90"
+      ],
+      "title": "TeamOdds",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "choices": {
+      "type": "string"
+    },
+    "nSims": {
+      "type": "integer"
+    },
+    "fixedPoints": {
+      "type": "integer"
+    },
+    "finalPointsMin": {
+      "type": "integer"
+    },
+    "finalPointsMax": {
+      "type": "integer"
+    },
+    "expectedPoints": {
+      "type": "number"
+    },
+    "mostLikelyPosition": {
+      "type": "integer"
+    },
+    "focus": {
+      "$ref": "#/$defs/TeamOdds"
+    },
+    "magic": {
+      "$ref": "#/$defs/MagicNumbers"
+    }
+  },
+  "required": [
+    "choices",
+    "nSims",
+    "fixedPoints",
+    "finalPointsMin",
+    "finalPointsMax",
+    "expectedPoints",
+    "mostLikelyPosition",
+    "focus",
+    "magic"
+  ],
+  "title": "ScenarioResult",
+  "type": "object"
+}

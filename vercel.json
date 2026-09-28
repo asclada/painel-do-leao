@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/index.py": {
+      "includeFiles": "{pipeline/__init__.py,pipeline/config.py,pipeline/models.py,pipeline/model/**,data/model.json}",
+      "excludeFiles": "{tests/**,docs/**,data/raw/**,data/details.json,data/matches.json,node_modules/**,.next/**}"
+    }
+  },
+  "rewrites": [{ "source": "/api/py/(.*)", "destination": "/api/index" }]
+}

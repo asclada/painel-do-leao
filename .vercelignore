@@ -1,0 +1,7 @@
+.env*
+!.env.example
+.cache
+.venv
+node_modules
+.next
+docs/api-samples

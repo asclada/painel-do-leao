@@ -1,0 +1,1197 @@
+{
+  "$defs": {
+    "GoalBin": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "goalsFor": {
+          "type": "integer"
+        },
+        "goalsAgainst": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "label",
+        "goalsFor",
+        "goalsAgainst"
+      ],
+      "title": "GoalBin",
+      "type": "object"
+    },
+    "HalfSplit": {
+      "additionalProperties": false,
+      "properties": {
+        "firstFor": {
+          "type": "integer"
+        },
+        "firstAgainst": {
+          "type": "integer"
+        },
+        "secondFor": {
+          "type": "integer"
+        },
+        "secondAgainst": {
+          "type": "integer"
+        },
+        "pctSecondHalfFor": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "firstFor",
+        "firstAgainst",
+        "secondFor",
+        "secondAgainst",
+        "pctSecondHalfFor"
+      ],
+      "title": "HalfSplit",
+      "type": "object"
+    },
+    "HeadToHead": {
+      "additionalProperties": false,
+      "properties": {
+        "matchId": {
+          "type": "string"
+        },
+        "round": {
+          "type": "integer"
+        },
+        "kickoffUtc": {
+          "type": "string"
+        },
+        "homeId": {
+          "type": "string"
+        },
+        "awayId": {
+          "type": "string"
+        },
+        "venue": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "matchId",
+        "round",
+        "kickoffUtc",
+        "homeId",
+        "awayId",
+        "venue"
+      ],
+      "title": "HeadToHead",
+      "type": "object"
+    },
+    "HistoryEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "round": {
+          "type": "integer"
+        },
+        "pPromotion": {
+          "type": "number"
+        },
+        "pDirect": {
+          "type": "number"
+        },
+        "pTop6": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "round",
+        "pPromotion",
+        "pDirect",
+        "pTop6"
+      ],
+      "title": "HistoryEntry",
+      "type": "object"
+    },
+    "MagicNumbers": {
+      "additionalProperties": false,
+      "properties": {
+        "pointsFor90Direct": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pointsFor90Top6": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "winsNeededDirect": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "winsNeededTop6": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "remainingGames": {
+          "type": "integer"
+        },
+        "currentPoints": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "pointsFor90Direct",
+        "pointsFor90Top6",
+        "winsNeededDirect",
+        "winsNeededTop6",
+        "remainingGames",
+        "currentPoints"
+      ],
+      "title": "MagicNumbers",
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "season": {
+          "type": "integer"
+        },
+        "fortalezaId": {
+          "type": "string"
+        },
+        "lastCompletedRound": {
+          "type": "integer"
+        },
+        "provider": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hasGoalMinutes": {
+          "type": "boolean"
+        },
+        "hasHalfTime": {
+          "type": "boolean"
+        },
+        "seasonState": {
+          "enum": [
+            "regular",
+            "playoffs",
+            "finished"
+          ],
+          "type": "string"
+        },
+        "updatedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "season",
+        "fortalezaId",
+        "lastCompletedRound",
+        "provider",
+        "hasGoalMinutes",
+        "hasHalfTime",
+        "seasonState",
+        "updatedAt"
+      ],
+      "title": "Meta",
+      "type": "object"
+    },
+    "Milestone": {
+      "additionalProperties": false,
+      "properties": {
+        "round": {
+          "type": "integer"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "round",
+        "kind",
+        "title",
+        "text"
+      ],
+      "title": "Milestone",
+      "type": "object"
+    },
+    "NextMatch": {
+      "additionalProperties": false,
+      "properties": {
+        "matchId": {
+          "type": "string"
+        },
+        "round": {
+          "type": "integer"
+        },
+        "kickoffUtc": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "home": {
+          "type": "boolean"
+        },
+        "opponentId": {
+          "type": "string"
+        },
+        "venue": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "city": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "firstTurn": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "formFortaleza": {
+          "items": {
+            "enum": [
+              "V",
+              "E",
+              "D"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "formOpponent": {
+          "items": {
+            "enum": [
+              "V",
+              "E",
+              "D"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "matchId",
+        "round",
+        "kickoffUtc",
+        "status",
+        "home",
+        "opponentId",
+        "venue",
+        "city",
+        "firstTurn",
+        "formFortaleza",
+        "formOpponent"
+      ],
+      "title": "NextMatch",
+      "type": "object"
+    },
+    "Race": {
+      "additionalProperties": false,
+      "properties": {
+        "teams": {
+          "items": {
+            "$ref": "#/$defs/RaceTeam"
+          },
+          "type": "array"
+        },
+        "headToHead": {
+          "items": {
+            "$ref": "#/$defs/HeadToHead"
+          },
+          "type": "array"
+        },
+        "headline": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "teams",
+        "headToHead",
+        "headline"
+      ],
+      "title": "Race",
+      "type": "object"
+    },
+    "RaceFixture": {
+      "additionalProperties": false,
+      "properties": {
+        "matchId": {
+          "type": "string"
+        },
+        "round": {
+          "type": "integer"
+        },
+        "kickoffUtc": {
+          "type": "string"
+        },
+        "opponentId": {
+          "type": "string"
+        },
+        "home": {
+          "type": "boolean"
+        },
+        "opponentInTop6": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "matchId",
+        "round",
+        "kickoffUtc",
+        "opponentId",
+        "home",
+        "opponentInTop6"
+      ],
+      "title": "RaceFixture",
+      "type": "object"
+    },
+    "RaceTeam": {
+      "additionalProperties": false,
+      "properties": {
+        "teamId": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "points": {
+          "type": "integer"
+        },
+        "played": {
+          "type": "integer"
+        },
+        "goalDiff": {
+          "type": "integer"
+        },
+        "form": {
+          "items": {
+            "enum": [
+              "V",
+              "E",
+              "D"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "remainingHome": {
+          "type": "integer"
+        },
+        "remainingAway": {
+          "type": "integer"
+        },
+        "remainingVsTop6": {
+          "type": "integer"
+        },
+        "difficulty": {
+          "enum": [
+            "Difícil",
+            "Média",
+            "Tranquila"
+          ],
+          "type": "string"
+        },
+        "difficultyScore": {
+          "type": "number"
+        },
+        "pDirect": {
+          "type": "number"
+        },
+        "pTop6": {
+          "type": "number"
+        },
+        "pPromotion": {
+          "type": "number"
+        },
+        "fixtures": {
+          "items": {
+            "$ref": "#/$defs/RaceFixture"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "teamId",
+        "position",
+        "points",
+        "played",
+        "goalDiff",
+        "form",
+        "remainingHome",
+        "remainingAway",
+        "remainingVsTop6",
+        "difficulty",
+        "difficultyScore",
+        "pDirect",
+        "pTop6",
+        "pPromotion",
+        "fixtures"
+      ],
+      "title": "RaceTeam",
+      "type": "object"
+    },
+    "Record": {
+      "additionalProperties": false,
+      "properties": {
+        "played": {
+          "default": 0,
+          "type": "integer"
+        },
+        "wins": {
+          "default": 0,
+          "type": "integer"
+        },
+        "draws": {
+          "default": 0,
+          "type": "integer"
+        },
+        "losses": {
+          "default": 0,
+          "type": "integer"
+        },
+        "goalsFor": {
+          "default": 0,
+          "type": "integer"
+        },
+        "goalsAgainst": {
+          "default": 0,
+          "type": "integer"
+        },
+        "points": {
+          "default": 0,
+          "type": "integer"
+        }
+      },
+      "title": "Record",
+      "type": "object"
+    },
+    "Simulation": {
+      "additionalProperties": false,
+      "properties": {
+        "nSims": {
+          "type": "integer"
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/$defs/TeamOdds"
+          },
+          "type": "array"
+        },
+        "magic": {
+          "$ref": "#/$defs/MagicNumbers"
+        }
+      },
+      "required": [
+        "nSims",
+        "seed",
+        "teams",
+        "magic"
+      ],
+      "title": "Simulation",
+      "type": "object"
+    },
+    "StandingRow": {
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "type": "integer"
+        },
+        "teamId": {
+          "type": "string"
+        },
+        "played": {
+          "type": "integer"
+        },
+        "wins": {
+          "type": "integer"
+        },
+        "draws": {
+          "type": "integer"
+        },
+        "losses": {
+          "type": "integer"
+        },
+        "goalsFor": {
+          "type": "integer"
+        },
+        "goalsAgainst": {
+          "type": "integer"
+        },
+        "goalDiff": {
+          "type": "integer"
+        },
+        "points": {
+          "type": "integer"
+        },
+        "pct": {
+          "type": "integer"
+        },
+        "yellow": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "red": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "home": {
+          "$ref": "#/$defs/Record"
+        },
+        "away": {
+          "$ref": "#/$defs/Record"
+        }
+      },
+      "required": [
+        "position",
+        "teamId",
+        "played",
+        "wins",
+        "draws",
+        "losses",
+        "goalsFor",
+        "goalsAgainst",
+        "goalDiff",
+        "points",
+        "pct",
+        "home",
+        "away"
+      ],
+      "title": "StandingRow",
+      "type": "object"
+    },
+    "Streaks": {
+      "additionalProperties": false,
+      "properties": {
+        "currentKind": {
+          "enum": [
+            "wins",
+            "unbeaten",
+            "winless",
+            "losses",
+            "none"
+          ],
+          "type": "string"
+        },
+        "currentCount": {
+          "type": "integer"
+        },
+        "currentLabel": {
+          "type": "string"
+        },
+        "longestUnbeaten": {
+          "type": "integer"
+        },
+        "longestWins": {
+          "type": "integer"
+        },
+        "cleanSheets": {
+          "type": "integer"
+        },
+        "longestCleanSheets": {
+          "type": "integer"
+        },
+        "form": {
+          "items": {
+            "enum": [
+              "V",
+              "E",
+              "D"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "lastLossDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "lastLossOpponentId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "currentKind",
+        "currentCount",
+        "currentLabel",
+        "longestUnbeaten",
+        "longestWins",
+        "cleanSheets",
+        "longestCleanSheets",
+        "form"
+      ],
+      "title": "Streaks",
+      "type": "object"
+    },
+    "Team": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "shortName": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "textColor": {
+          "default": "#FFFFFF",
+          "type": "string"
+        },
+        "article": {
+          "default": "o",
+          "enum": [
+            "o",
+            "a"
+          ],
+          "type": "string"
+        },
+        "aliases": {
+          "$ref": "#/$defs/TeamAliases",
+          "default": {
+            "espn": null,
+            "footballsoccerapi": null,
+            "ge": null,
+            "names": []
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "shortName",
+        "color"
+      ],
+      "title": "Team",
+      "type": "object"
+    },
+    "TeamAliases": {
+      "additionalProperties": false,
+      "properties": {
+        "espn": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "footballsoccerapi": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "ge": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "names": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "title": "TeamAliases",
+      "type": "object"
+    },
+    "TeamOdds": {
+      "additionalProperties": false,
+      "properties": {
+        "teamId": {
+          "type": "string"
+        },
+        "pTitle": {
+          "type": "number"
+        },
+        "pDirect": {
+          "type": "number"
+        },
+        "pTop6": {
+          "type": "number"
+        },
+        "pPlayoffPromotion": {
+          "type": "number"
+        },
+        "pPromotion": {
+          "type": "number"
+        },
+        "pRelegation": {
+          "type": "number"
+        },
+        "positionDist": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "expectedPoints": {
+          "type": "number"
+        },
+        "pointsP10": {
+          "type": "integer"
+        },
+        "pointsP50": {
+          "type": "integer"
+        },
+        "pointsP90": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "teamId",
+        "pTitle",
+        "pDirect",
+        "pTop6",
+        "pPlayoffPromotion",
+        "pPromotion",
+        "pRelegation",
+        "positionDist",
+        "expectedPoints",
+        "pointsP10",
+        "pointsP50",
+        "pointsP90"
+      ],
+      "title": "TeamOdds",
+      "type": "object"
+    },
+    "Timeline": {
+      "additionalProperties": false,
+      "properties": {
+        "teamId": {
+          "type": "string"
+        },
+        "points": {
+          "items": {
+            "$ref": "#/$defs/TimelinePoint"
+          },
+          "type": "array"
+        },
+        "rivals": {
+          "additionalProperties": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "type": "object"
+        },
+        "milestones": {
+          "items": {
+            "$ref": "#/$defs/Milestone"
+          },
+          "type": "array"
+        },
+        "headline": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "teamId",
+        "points",
+        "rivals",
+        "milestones",
+        "headline"
+      ],
+      "title": "Timeline",
+      "type": "object"
+    },
+    "TimelinePoint": {
+      "additionalProperties": false,
+      "properties": {
+        "round": {
+          "type": "integer"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "points": {
+          "type": "integer"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "enum": [
+                "V",
+                "E",
+                "D"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "matchId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "opponentId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "home": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "goalsFor": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "goalsAgainst": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "round",
+        "position",
+        "points"
+      ],
+      "title": "TimelinePoint",
+      "type": "object"
+    },
+    "TurnSplit": {
+      "additionalProperties": false,
+      "properties": {
+        "played": {
+          "type": "integer"
+        },
+        "points": {
+          "type": "integer"
+        },
+        "ppg": {
+          "type": "number"
+        },
+        "pct": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "played",
+        "points",
+        "ppg",
+        "pct"
+      ],
+      "title": "TurnSplit",
+      "type": "object"
+    },
+    "VenueSplit": {
+      "additionalProperties": false,
+      "properties": {
+        "played": {
+          "type": "integer"
+        },
+        "wins": {
+          "type": "integer"
+        },
+        "draws": {
+          "type": "integer"
+        },
+        "losses": {
+          "type": "integer"
+        },
+        "points": {
+          "type": "integer"
+        },
+        "pct": {
+          "type": "integer"
+        },
+        "goalsFor": {
+          "type": "integer"
+        },
+        "goalsAgainst": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "played",
+        "wins",
+        "draws",
+        "losses",
+        "points",
+        "pct",
+        "goalsFor",
+        "goalsAgainst"
+      ],
+      "title": "VenueSplit",
+      "type": "object"
+    },
+    "XRay": {
+      "additionalProperties": false,
+      "properties": {
+        "home": {
+          "$ref": "#/$defs/VenueSplit"
+        },
+        "away": {
+          "$ref": "#/$defs/VenueSplit"
+        },
+        "halves": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HalfSplit"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "goalBins": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/GoalBin"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "firstTurn": {
+          "$ref": "#/$defs/TurnSplit"
+        },
+        "secondTurn": {
+          "$ref": "#/$defs/TurnSplit"
+        },
+        "streaks": {
+          "$ref": "#/$defs/Streaks"
+        },
+        "insights": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "home",
+        "away",
+        "halves",
+        "goalBins",
+        "firstTurn",
+        "secondTurn",
+        "streaks",
+        "insights"
+      ],
+      "title": "XRay",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Agrupa tudo só para exportar o JSON Schema.",
+  "properties": {
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    },
+    "teams": {
+      "items": {
+        "$ref": "#/$defs/Team"
+      },
+      "type": "array"
+    },
+    "standings": {
+      "items": {
+        "$ref": "#/$defs/StandingRow"
+      },
+      "type": "array"
+    },
+    "timeline": {
+      "$ref": "#/$defs/Timeline"
+    },
+    "xray": {
+      "$ref": "#/$defs/XRay"
+    },
+    "race": {
+      "$ref": "#/$defs/Race"
+    },
+    "nextMatch": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/NextMatch"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "simulation": {
+      "$ref": "#/$defs/Simulation"
+    },
+    "history": {
+      "items": {
+        "$ref": "#/$defs/HistoryEntry"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "meta",
+    "teams",
+    "standings",
+    "timeline",
+    "xray",
+    "race",
+    "nextMatch",
+    "simulation",
+    "history"
+  ],
+  "title": "Outputs",
+  "type": "object"
+}

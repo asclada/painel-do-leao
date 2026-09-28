@@ -36,6 +36,7 @@ class Team(Model):
     short_name: str  # "FOR"
     color: str  # cor principal do clube (fundo do badge)
     text_color: str = "#FFFFFF"  # cor da sigla sobre o badge
+    article: Literal["o", "a"] = "o"  # "o Vila Nova", "a Ponte Preta"
     aliases: TeamAliases = TeamAliases()
 
 

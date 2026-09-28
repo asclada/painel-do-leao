@@ -113,6 +113,7 @@ def main() -> int:
                 short_name=g["sigla"],
                 color=bg,
                 text_color=fg,
+                article="a" if slug == "ponte-preta" else "o",
                 aliases=TeamAliases(
                     espn=e["id"],
                     ge=gid,

@@ -1,0 +1,25 @@
+{
+  "city": "Fortaleza",
+  "firstTurn": "Náutico 0 x 1 Fortaleza",
+  "formFortaleza": [
+    "V",
+    "V",
+    "E",
+    "V",
+    "E"
+  ],
+  "formOpponent": [
+    "V",
+    "D",
+    "E",
+    "D",
+    "V"
+  ],
+  "home": true,
+  "kickoffUtc": "2026-10-03T00:35Z",
+  "matchId": "fortaleza--nautico",
+  "opponentId": "nautico",
+  "round": 31,
+  "status": "scheduled",
+  "venue": "Arena Castelão"
+}

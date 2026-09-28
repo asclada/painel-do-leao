@@ -12,7 +12,7 @@
     "update-data": "uv run python -m pipeline.update_data",
     "test": "uv run pytest -q",
     "gen:types": "uv run python -m pipeline.export_schema && json2ts -i schema -o lib/generated",
-    "gen:requirements": "uv export --only-group api --no-hashes -o requirements.txt",
+    "gen:requirements": "uv export --no-dev --no-default-groups --no-hashes --no-emit-project -o requirements.txt",
     "check": "tsc --noEmit && uv run pytest -q"
   },
   "dependencies": {
