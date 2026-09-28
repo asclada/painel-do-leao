@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Hero } from "@/components/hero/Hero";
+import { SeasonChartSection } from "@/components/season-chart";
 import { FormDots } from "@/components/ui/FormDots";
 import { FONT_SETS } from "@/lib/fonts";
 
@@ -39,7 +40,7 @@ export default function PreviewPage() {
         <h1 className="mt-1 text-3xl font-bold">Escolha o visual do topo</h1>
         <p className="mt-2 max-w-2xl text-muted">
           Tudo aqui usa os dados reais de hoje. Role até o fim e me responda com as letras/números escolhidos:
-          fonte (A, B ou C), vermelho (1 ou 2), bolinha de derrota (X ou Y) e o nome do site.
+          fonte (A, B ou C), vermelho (1 ou 2), bolinha de derrota (X ou Y), nome do site e montanha-russa (M1 ou M2).
         </p>
       </div>
 
@@ -90,6 +91,21 @@ export default function PreviewPage() {
         ))}
       </div>
       <p className="mx-auto max-w-[1100px] px-4 pt-4 text-muted">Pode sugerir outro nome também.</p>
+
+      <h2 className="mx-auto max-w-[1100px] px-4 pb-2 pt-12 font-display text-4xl">5. Montanha-russa (checkpoint 2)</h2>
+      <p className="mx-auto max-w-[1100px] px-4 text-muted">
+        Toque nos marcos e nos pontos. Dá para ligar as linhas dos rivais embaixo de cada gráfico.
+      </p>
+      {([
+        ["M1", "result", "Pontos coloridos pelo resultado (verde vitória, cinza empate, escuro derrota) e faixas preenchidas G2/G6/Z4."],
+        ["M2", "uniform", "Linha mais grossa e suave, pontos discretos, faixas só contornadas com o nome escrito."],
+      ] as const).map(([tag, style, note]) => (
+        <Option key={tag} tag={tag} title={style === "result" ? "Resultado em cada ponto" : "Linha limpa"} note={note}>
+          <div className="mx-auto max-w-[1100px] px-4 py-6">
+            <SeasonChartSection style={style} idPrefix={tag} />
+          </div>
+        </Option>
+      ))}
     </main>
   );
 }

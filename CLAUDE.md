@@ -17,6 +17,10 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   vetorizado N×M; playoffs). O pipeline roda 20 mil (semente por rodada) e grava `data/simulation.json`; a API
   (`api/index.py`, rotas `/api/py/health` e `/api/py/simular?p=VED-`) roda 5 mil a partir de `data/model.json`.
 - **Saídas do site:** `pipeline/outputs.py` (modelos) → `data/*.json` → tipos em `lib/generated/` → `lib/data.ts`.
+- **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`); fontes candidatas em `lib/fonts.ts`
+  (classes `.fontset-a/b/c`, `.loss-dark/red`). Seções em `components/` (hero F1, season-chart F2, race F3, xray F5).
+  Relógio do cliente via `lib/useNow.ts` (useSyncExternalStore) — não usar setState em efeito para "agora".
+  `/preview` = checkpoints visuais (noindex); remover/esconder antes do lançamento.
 - **Next.js (App Router) + TypeScript + Tailwind + pnpm** para o site; lê apenas `data/*.json` no build.
 - **GitHub Actions** (cron 2h) roda `pipeline/update_data.py`, commita `data/` e a **Vercel** faz deploy.
 - A chave da API só existe em `.env.local` (local) e GitHub Secrets. Nunca na Vercel nem no navegador.
@@ -71,4 +75,4 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Andamento do roteiro: seção 17 de `docs/PLANO.md` + `git log --oneline`.
 - Execuções do cron: `gh run list --workflow update-data.yml`.
 
-_Última atualização: 28/09/2026 (Dias 0 e 1 concluídos: dados, modelo, API e página provisória no ar)._
+_Última atualização: 28/09/2026 (Dia 2: F1, F2, F3, F5, rodapé e checkpoints 1 e 2 em /preview; aguardando escolhas)._
