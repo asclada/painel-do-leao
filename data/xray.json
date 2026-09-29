@@ -50,9 +50,13 @@
   "halves": {
     "firstAgainst": 15,
     "firstFor": 16,
+    "improved": 7,
+    "kept": 20,
     "pctSecondHalfFor": 54,
+    "pointsSwing": 7,
     "secondAgainst": 11,
-    "secondFor": 19
+    "secondFor": 19,
+    "worsened": 3
   },
   "home": {
     "draws": 5,

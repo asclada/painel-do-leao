@@ -38,6 +38,22 @@
         },
         "pctSecondHalfFor": {
           "type": "integer"
+        },
+        "improved": {
+          "default": 0,
+          "type": "integer"
+        },
+        "worsened": {
+          "default": 0,
+          "type": "integer"
+        },
+        "kept": {
+          "default": 0,
+          "type": "integer"
+        },
+        "pointsSwing": {
+          "default": 0,
+          "type": "integer"
         }
       },
       "required": [
@@ -351,6 +367,27 @@
       "title": "NextMatch",
       "type": "object"
     },
+    "PointsDist": {
+      "additionalProperties": false,
+      "description": "Chance de terminar com cada pontuação: probs[i] = P(pontos finais = min + i).",
+      "properties": {
+        "min": {
+          "type": "integer"
+        },
+        "probs": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "min",
+        "probs"
+      ],
+      "title": "PointsDist",
+      "type": "object"
+    },
     "Race": {
       "additionalProperties": false,
       "properties": {
@@ -548,13 +585,17 @@
         },
         "magic": {
           "$ref": "#/$defs/MagicNumbers"
+        },
+        "focusPoints": {
+          "$ref": "#/$defs/PointsDist"
         }
       },
       "required": [
         "nSims",
         "seed",
         "teams",
-        "magic"
+        "magic",
+        "focusPoints"
       ],
       "title": "Simulation",
       "type": "object"
@@ -990,6 +1031,17 @@
           "anyOf": [
             {
               "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "kickoffUtc": {
+          "anyOf": [
+            {
+              "type": "string"
             },
             {
               "type": "null"

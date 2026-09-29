@@ -26,6 +26,23 @@ class TeamOdds(Model):
     points_p90: int
 
 
+class PointsDist(Model):
+    """Chance de terminar com cada pontuação: probs[i] = P(pontos finais = min + i)."""
+
+    min: int
+    probs: list[float]
+
+
+def points_dist(sim: SimResult, focus: int, tail: float = 0.001) -> PointsDist:
+    """Histograma dos pontos finais de um time, sem as pontas com menos de 0,1% somadas de cada lado."""
+    pts = sim.points[:, focus]
+    counts = np.bincount(pts - pts.min()) / len(pts)
+    cum = np.cumsum(counts)
+    lo = int(np.searchsorted(cum, tail))
+    hi = int(np.searchsorted(cum, 1 - tail))
+    return PointsDist(min=int(pts.min()) + lo, probs=[_r(x) for x in counts[lo : hi + 1]])
+
+
 class MagicNumbers(Model):
     points_for_90_direct: int | None  # pontuação final que garante >= 90% de acesso direto
     points_for_90_top6: int | None  # idem para terminar no G6 (1º a 6º)

@@ -65,6 +65,7 @@ def team_timeline(
                 home=(m.home_id == team) if m else None,
                 goals_for=gf,
                 goals_against=ga,
+                kickoff_utc=m.kickoff_utc if m else None,
             )
         )
     return points

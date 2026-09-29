@@ -6,7 +6,7 @@ import pytest
 from pipeline.calc.model_input import build_model_input
 from pipeline.calc.standings import compute_standings
 from pipeline.model.playoffs import simulate_playoffs
-from pipeline.model.ratings import fit_ratings
+from pipeline.model.ratings import draw_factors, fit_ratings
 from pipeline.model.scenario import run_scenario, validate_choices
 from pipeline.model.simulate import simulate_season
 from pipeline.model.summarize import sanity_check, team_odds
@@ -87,7 +87,8 @@ def test_playoff_tie_goes_to_better_campaign():
     r = Ratings(mu_home=0.01, mu_away=0.01, att_home=[1] * t, def_home=[1] * t, att_away=[1] * t,
                 def_away=[1] * t, strength=[1] * t)
     positions = np.tile(np.arange(1, t + 1), (4000, 1))  # time i termina em i+1
-    winners = simulate_playoffs(r, positions, np.random.default_rng(0))
+    rng = np.random.default_rng(0)
+    winners = simulate_playoffs(draw_factors(r, 4000, rng), positions, rng)
     # λ é limitado a 0.2: 3º vence o 6º bem mais que 50% das vezes
     assert winners[:, 2].mean() > 0.6 and winners[:, 3].mean() > 0.6
     assert winners.sum(axis=1).tolist() == [2] * 4000
@@ -98,3 +99,21 @@ def test_performance_5000_sims(model):
     t = time.perf_counter()
     run_scenario(model, None, 5000)
     assert time.perf_counter() - t < 0.3
+
+
+def test_posterior_mean_matches_point_ratings(model):
+    """A média da posteriori Gamma de cada fator é o fator pontual (a fórmula de encolhimento)."""
+    r = model.ratings
+    for f in ("att_home", "def_home", "att_away", "def_away"):
+        post = r.posterior[f]
+        mean = np.asarray(post.shape) / np.asarray(post.rate)
+        assert np.allclose(mean, getattr(r, f), atol=1e-4)
+
+
+def test_parameter_uncertainty_widens_final_points(model):
+    """Com a preditiva bayesiana (força sorteada por simulação) a faixa de pontos fica mais larga."""
+    f = model.focus_team
+    with_unc = simulate_season(model, 8000, seed=11, uncertainty=True).points[:, f]
+    without = simulate_season(model, 8000, seed=11, uncertainty=False).points[:, f]
+    assert with_unc.std() > without.std()
+    assert abs(with_unc.mean() - without.mean()) < 1.0  # o centro quase não muda

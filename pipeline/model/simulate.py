@@ -11,7 +11,8 @@ from dataclasses import dataclass
 import numpy as np
 
 from pipeline.model.playoffs import simulate_playoffs
-from pipeline.model.ratings import expected_goals
+from pipeline.config import PARAM_UNCERTAINTY
+from pipeline.model.ratings import draw_factors
 from pipeline.model.types import ModelInput
 
 # Resultado fixado, na visão do MANDANTE
@@ -38,11 +39,13 @@ def sample_scores(
     n: int,
     fixed: np.ndarray | None = None,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Placares (N, M). Jogos com resultado fixado são reamostrados só nas
-    simulações incompatíveis; o que sobrar após 30 tentativas vira 1x0/1x1/0x1."""
-    m = len(lam_h)
-    hg = rng.poisson(lam_h, size=(n, m))
-    ag = rng.poisson(lam_a, size=(n, m))
+    """Placares (N, M). λ vem (M,) ou (N, M) (uma força por simulação). Jogos com resultado fixado
+    são reamostrados só nas simulações incompatíveis; o que sobrar após 30 tentativas vira 1x0/1x1/0x1."""
+    m = lam_h.shape[-1]
+    lam_h = np.broadcast_to(lam_h, (n, m))
+    lam_a = np.broadcast_to(lam_a, (n, m))
+    hg = rng.poisson(lam_h)
+    ag = rng.poisson(lam_a)
     if fixed is None or not (fixed != FREE).any():
         return hg, ag
     cols = np.flatnonzero(fixed != FREE)
@@ -52,8 +55,8 @@ def sample_scores(
             break
         rows, which = np.nonzero(bad)
         c = cols[which]
-        hg[rows, c] = rng.poisson(lam_h[c])
-        ag[rows, c] = rng.poisson(lam_a[c])
+        hg[rows, c] = rng.poisson(lam_h[rows, c])
+        ag[rows, c] = rng.poisson(lam_a[rows, c])
     bad = _outcome(hg[:, cols], ag[:, cols]) != fixed[cols]
     if bad.any():
         rows, which = np.nonzero(bad)
@@ -74,8 +77,11 @@ def rank(points, wins, gd, gf, rng) -> np.ndarray:
     return pos
 
 
-def simulate_season(model: ModelInput, n: int, seed: int, fixed: np.ndarray | None = None) -> SimResult:
+def simulate_season(
+    model: ModelInput, n: int, seed: int, fixed: np.ndarray | None = None, uncertainty: bool = PARAM_UNCERTAINTY
+) -> SimResult:
     rng = np.random.default_rng(seed)
+    factors = draw_factors(model.ratings, n, rng, uncertainty)
     t = len(model.teams)
     home = np.array([r.home for r in model.remaining], dtype=int)
     away = np.array([r.away for r in model.remaining], dtype=int)
@@ -87,7 +93,7 @@ def simulate_season(model: ModelInput, n: int, seed: int, fixed: np.ndarray | No
     gf = np.tile(np.asarray(base.goals_for), (n, 1))
 
     if len(home):
-        lam_h, lam_a = expected_goals(model.ratings, home, away)
+        lam_h, lam_a = factors.lambdas(home, away)
         hg, ag = sample_scores(rng, lam_h, lam_a, n, fixed)
         # matrizes de incidência (M, T): soma por time via produto de matrizes
         H = np.zeros((len(home), t), dtype=np.int32)
@@ -101,6 +107,6 @@ def simulate_season(model: ModelInput, n: int, seed: int, fixed: np.ndarray | No
         gf += hg @ H + ag @ A
 
     positions = rank(pts, wins, gd, gf, rng)
-    playoff_winner = simulate_playoffs(model.ratings, positions, rng)
+    playoff_winner = simulate_playoffs(factors, positions, rng)
     promoted = (positions <= 2) | playoff_winner
     return SimResult(points=pts, positions=positions, promoted=promoted, playoff_winner=playoff_winner)

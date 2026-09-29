@@ -20,10 +20,15 @@ def venue_split(ms: list[Match], team: str) -> VenueSplit:
                       pct=round(100 * pts / (3 * len(ms))) if ms else 0, goals_for=gf, goals_against=ga)
 
 
+def _pts(gf: int, ga: int) -> int:
+    return 3 if gf > ga else 1 if gf == ga else 0
+
+
 def half_split(ms: list[Match], team: str) -> HalfSplit | None:
     if any(m.ht_home_goals is None for m in ms):
         return None
     f1 = a1 = f2 = a2 = 0
+    improved = worsened = kept = swing = 0
     for m in ms:
         home = m.home_id == team
         ht_for = m.ht_home_goals if home else m.ht_away_goals
@@ -31,9 +36,15 @@ def half_split(ms: list[Match], team: str) -> HalfSplit | None:
         gf, ga = goals(m, team)
         f1, a1 = f1 + ht_for, a1 + ht_ag
         f2, a2 = f2 + gf - ht_for, a2 + ga - ht_ag
+        at_ht, final = _pts(ht_for, ht_ag), _pts(gf, ga)
+        improved += final > at_ht
+        worsened += final < at_ht
+        kept += final == at_ht
+        swing += final - at_ht
     total = f1 + f2
     return HalfSplit(first_for=f1, first_against=a1, second_for=f2, second_against=a2,
-                     pct_second_half_for=round(100 * f2 / total) if total else 0)
+                     pct_second_half_for=round(100 * f2 / total) if total else 0,
+                     improved=improved, worsened=worsened, kept=kept, points_swing=swing)
 
 
 def goal_bins(ms: list[Match], team: str, details: dict[str, MatchDetails]) -> list[GoalBin] | None:

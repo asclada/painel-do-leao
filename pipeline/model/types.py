@@ -5,6 +5,13 @@ from __future__ import annotations
 from pipeline.models import Model
 
 
+class GammaPosterior(Model):
+    """Posteriori Gamma(forma, taxa) de um fator por time (média = forma / taxa = o fator pontual)."""
+
+    shape: list[float]
+    rate: list[float]
+
+
 class Ratings(Model):
     mu_home: float
     mu_away: float
@@ -13,6 +20,9 @@ class Ratings(Model):
     att_away: list[float]
     def_away: list[float]
     strength: list[float]
+    # Distribuição preditiva bayesiana: posteriori de cada fator (chaves att_home, def_home, att_away, def_away).
+    # Sem ela, a simulação usa só os fatores pontuais (modelo antigo).
+    posterior: dict[str, GammaPosterior] | None = None
 
 
 class TableState(Model):

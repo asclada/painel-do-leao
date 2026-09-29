@@ -42,3 +42,32 @@ def test_crest_with_solid_background_becomes_transparent_and_trimmed():
     assert out.size[0] <= 102 and out.size[1] <= 102  # margens recortadas
     assert out.getpixel((0, 0))[3] == 0  # canto (fora do círculo) transparente
     assert out.getpixel((out.width // 2, out.height // 2))[:3] == (200, 0, 0)
+
+
+def test_halftime_swing_counts_improvements_and_points():
+    from pipeline.calc.xray import half_split
+
+    def m(mid, h, a, hg, ag, hth, hta):
+        return Match(id=mid, round=1, kickoff_utc="2026-05-01T20:00Z", status="finished", home_id=h, away_id=a,
+                     home_goals=hg, away_goals=ag, ht_home_goals=hth, ht_away_goals=hta, source="espn")
+
+    ms = [
+        m("fortaleza--crb", "fortaleza", "crb", 2, 1, 0, 1),  # perdia no intervalo, venceu: +3
+        m("sport--fortaleza", "sport", "fortaleza", 1, 1, 0, 1),  # vencia no intervalo, empatou: -2
+        m("fortaleza--avai", "fortaleza", "avai", 1, 0, 1, 0),  # manteve
+    ]
+    h = half_split(ms, "fortaleza")
+    assert (h.improved, h.worsened, h.kept, h.points_swing) == (1, 1, 1, 1)
+
+
+def test_points_dist_sums_to_one_and_covers_the_range():
+    import numpy as np
+
+    from pipeline.model.simulate import SimResult
+    from pipeline.model.summarize import points_dist
+
+    pts = np.array([[50], [52], [52], [55]])
+    sim = SimResult(points=pts, positions=pts * 0 + 1, promoted=pts > 0, playoff_winner=pts < 0)
+    d = points_dist(sim, 0, tail=0)
+    assert d.min == 50 and len(d.probs) == 6
+    assert abs(sum(d.probs) - 1) < 1e-9 and d.probs[2] == 0.5

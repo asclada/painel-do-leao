@@ -89,6 +89,7 @@ export interface TimelinePoint {
   home?: boolean | null;
   goalsFor?: number | null;
   goalsAgainst?: number | null;
+  kickoffUtc?: string | null;
 }
 export interface Milestone {
   round: number;
@@ -124,6 +125,10 @@ export interface HalfSplit {
   secondFor: number;
   secondAgainst: number;
   pctSecondHalfFor: number;
+  improved?: number;
+  worsened?: number;
+  kept?: number;
+  pointsSwing?: number;
 }
 export interface GoalBin {
   label: string;
@@ -204,6 +209,7 @@ export interface Simulation {
   seed: number;
   teams: TeamOdds[];
   magic: MagicNumbers;
+  focusPoints: PointsDist;
 }
 export interface TeamOdds {
   teamId: string;
@@ -226,6 +232,13 @@ export interface MagicNumbers {
   winsNeededTop6: number | null;
   remainingGames: number;
   currentPoints: number;
+}
+/**
+ * Chance de terminar com cada pontuação: probs[i] = P(pontos finais = min + i).
+ */
+export interface PointsDist {
+  min: number;
+  probs: number[];
 }
 export interface HistoryEntry {
   round: number;

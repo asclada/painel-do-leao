@@ -38,7 +38,7 @@ from pipeline.calc.xray import compute_xray_parts
 from pipeline.config import DATA, FORTALEZA_ID, N_SIMS_PIPELINE, ROOT, SEASON, TOTAL_ROUNDS
 from pipeline.fetch import DETAILS_FILE, MATCHES_FILE, iso, load_cached, run_fetch, save_state
 from pipeline.model.simulate import simulate_season
-from pipeline.model.summarize import magic_numbers, sanity_check, team_odds
+from pipeline.model.summarize import magic_numbers, points_dist, sanity_check, team_odds
 from pipeline.models import SeasonData, Team
 from pipeline.outputs import HistoryEntry, Meta, Simulation, Timeline, XRay
 from pipeline.providers.base import ProviderError, load_rounds, load_teams
@@ -107,7 +107,10 @@ def compute_outputs(season: SeasonData, teams: list[Team]) -> dict[str, Any]:
         raise ValueError("Checagem de sanidade falhou: " + "; ".join(problems))
     fort_row = next(r for r in standings if r.team_id == FORTALEZA_ID)
     magic = magic_numbers(sim, model.focus_team, fort_row.points, len(model.focus_remaining))
-    simulation = Simulation(n_sims=N_SIMS_PIPELINE, seed=seed, teams=odds, magic=magic)
+    simulation = Simulation(
+        n_sims=N_SIMS_PIPELINE, seed=seed, teams=odds, magic=magic,
+        focus_points=points_dist(sim, model.focus_team),
+    )
 
     # raio-x
     parts = compute_xray_parts(matches, details, FORTALEZA_ID)

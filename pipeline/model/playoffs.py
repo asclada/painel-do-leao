@@ -9,12 +9,12 @@ from __future__ import annotations
 
 import numpy as np
 
-from pipeline.model.ratings import expected_goals
-from pipeline.model.types import Ratings
+from pipeline.model.ratings import Factors
 
 
-def simulate_playoffs(ratings: Ratings, positions: np.ndarray, rng: np.random.Generator) -> np.ndarray:
-    """Recebe as posições finais (N, T) e devolve (N, T) bool: quem subiu pelos playoffs."""
+def simulate_playoffs(factors: Factors, positions: np.ndarray, rng: np.random.Generator) -> np.ndarray:
+    """Recebe as posições finais (N, T) e devolve (N, T) bool: quem subiu pelos playoffs.
+    Cada simulação usa as forças sorteadas para ela (as mesmas da temporada)."""
     n, t = positions.shape
     team_at = np.argsort(positions, axis=1)  # team_at[s, p-1] = time na posição p
     winners = np.zeros((n, t), dtype=bool)
@@ -23,10 +23,10 @@ def simulate_playoffs(ratings: Ratings, positions: np.ndarray, rng: np.random.Ge
         better = team_at[:, better_pos - 1]
         worse = team_at[:, worse_pos - 1]
         # ida: pior campanha em casa
-        lh1, la1 = expected_goals(ratings, worse, better)
+        lh1, la1 = factors.lambdas(worse, better, rows)
         g_worse_1, g_better_1 = rng.poisson(lh1), rng.poisson(la1)
         # volta: melhor campanha em casa
-        lh2, la2 = expected_goals(ratings, better, worse)
+        lh2, la2 = factors.lambdas(better, worse, rows)
         g_better_2, g_worse_2 = rng.poisson(lh2), rng.poisson(la2)
         agg_better = g_better_1 + g_better_2
         agg_worse = g_worse_1 + g_worse_2

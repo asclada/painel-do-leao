@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pipeline.model.summarize import MagicNumbers, TeamOdds
+from pipeline.model.summarize import MagicNumbers, PointsDist, TeamOdds
 from pipeline.models import Model, StandingRow, Team
 
 Result = Literal["V", "E", "D"]
@@ -34,6 +34,7 @@ class TimelinePoint(Model):
     home: bool | None = None
     goals_for: int | None = None
     goals_against: int | None = None
+    kickoff_utc: str | None = None
 
 
 class Milestone(Model):
@@ -84,6 +85,11 @@ class HalfSplit(Model):
     second_for: int
     second_against: int
     pct_second_half_for: int
+    # O que muda depois do intervalo: resultado final comparado com o placar do intervalo
+    improved: int = 0  # jogos em que terminou melhor (ex.: perdia e empatou)
+    worsened: int = 0
+    kept: int = 0
+    points_swing: int = 0  # pontos finais menos os pontos que teria se o jogo acabasse no intervalo
 
 
 class GoalBin(Model):
@@ -180,6 +186,7 @@ class Simulation(Model):
     seed: int
     teams: list[TeamOdds]
     magic: MagicNumbers
+    focus_points: PointsDist  # pontos finais do Fortaleza, para a "faixa mais provável"
 
 
 class HistoryEntry(Model):
