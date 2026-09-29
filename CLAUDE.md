@@ -105,4 +105,12 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Andamento do roteiro: seção 17 de `docs/PLANO.md` + `git log --oneline`.
 - Execuções do cron: `gh run list --workflow update-data.yml`.
 
-_Última atualização: 29/09/2026 (Dia 3: simulador, cards, Open Graph, SEO, escudo e textos de divulgação no ar; faltam os testes do Lucas no celular (M10) e a revisão dos textos (M11))._
+## Próximos passos
+
+- **Dia 4 planejado em `docs/PROXIMOS-PASSOS.md`** (29/09): campanha em números (aproveitamento, V/E/D, média,
+  risco de rebaixamento), faixa mais provável de pontos e a versão bayesiana completa do modelo (preditiva com
+  incerteza nas forças), mais extras do painel do Náutico. **Ler a seção 5 (decisões do Lucas) antes de codar.**
+- Pendente do Lucas: testes no celular (M10) e revisão dos textos (M11).
+
+_Última atualização: 29/09/2026 (Dia 3 no ar: simulador sem sorteio, cards, Open Graph, SEO, escudos e card do
+próximo jogo; Dia 4 planejado em `docs/PROXIMOS-PASSOS.md`)._
