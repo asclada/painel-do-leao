@@ -27,6 +27,11 @@ export function isEmpty(choices: Choice[]) {
   return choices.every((c) => c === "-");
 }
 
+/** Todos os jogos com V, E ou D: só então o simulador calcula (sem sorteio de jogo em aberto). */
+export function isComplete(choices: Choice[]) {
+  return choices.length > 0 && choices.every((c) => c !== "-");
+}
+
 /** Mantém as escolhas na URL (?p=VVEDV-V-E) sem recarregar nem criar histórico novo. */
 export function writeChoicesToUrl(choices: Choice[]) {
   const url = new URL(window.location.href);

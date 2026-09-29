@@ -6,7 +6,7 @@ import { SeasonChartSection } from "@/components/season-chart";
 import { SimulatorSection } from "@/components/simulator";
 import { Section } from "@/components/ui/Section";
 import { XRay } from "@/components/xray/XRay";
-import { meta, race, timeline } from "@/lib/data";
+import { meta, timeline } from "@/lib/data";
 import { SITE_NAME } from "@/lib/site";
 
 export default function Home() {
@@ -20,11 +20,11 @@ export default function Home() {
           <SeasonChartSection />
         </Section>
 
-        <Section id="corrida" title="A corrida pelo acesso" headline={race.headline}>
+        <Section id="corrida" title="A corrida pelo acesso">
           <Race />
         </Section>
 
-        <Section id="simulador" title="E se?" headline="Escolha o resultado dos jogos que faltam e veja onde o Leão termina.">
+        <Section id="simulador" title="Simulador dos próximos jogos" headline="Escolha o resultado dos jogos que faltam e veja onde o Leão termina.">
           <SimulatorSection />
         </Section>
 
