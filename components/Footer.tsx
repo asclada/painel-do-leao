@@ -1,4 +1,4 @@
-import { meta, simulation } from "@/lib/data";
+import { calibration, meta, simulation } from "@/lib/data";
 
 const PROVIDER_LABEL: Record<string, string> = { espn: "ESPN", footballsoccerapi: "Football Soccer API" };
 
@@ -33,6 +33,10 @@ export function Footer() {
             <p>
               Os playoffs também entram na conta: 3º x 6º e 4º x 5º, em ida e volta. Pelo regulamento, a melhor
               campanha decide em casa e, se o placar somado empatar, é ela quem sobe.
+            </p>
+            <p>
+              O gráfico &quot;Como a chance mudou&quot; refaz essa mesma conta depois de cada rodada, usando só os jogos
+              disputados até ali. {calibration.summary}
             </p>
             <p>É uma estimativa, não uma previsão garantida: futebol tem surpresa.</p>
           </div>

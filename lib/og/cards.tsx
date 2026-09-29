@@ -1,7 +1,8 @@
 // Cards de compartilhar (F6) em JSX para o next/og (Satori: só flexbox, estilos inline, sem variáveis CSS).
 import type { ReactNode } from "react";
 import { readableText } from "@/lib/color";
-import { fortalezaOdds, fortalezaRow, FORTALEZA, meta, standings, teamById, xray } from "@/lib/data";
+import { chanceChange, scoreLine } from "@/lib/chance";
+import { fortalezaOdds, fortalezaRow, FORTALEZA, standings, teamById, xray } from "@/lib/data";
 import { pct, plural } from "@/lib/format";
 import type { Team } from "@/lib/generated/outputs";
 import type { ScenarioResult } from "@/lib/generated/scenario";
@@ -121,11 +122,10 @@ function Badge({ team, size = 1 }: { team: Team; size?: number }) {
 /** Card "Chance de acesso" — opção A (Placar), escolhida no checkpoint visual 3: a chance domina a tela. */
 export function AccessCard() {
   const sit = situation(standings, FORTALEZA);
-  const round = meta.lastCompletedRound;
   const chance = pct(fortalezaOdds.pPromotion);
 
   return (
-    <Frame sub={`Fortaleza na Série B · depois da rodada ${round}`} cta="Veja a sua conta em">
+    <Frame sub={`Fortaleza na Série B · ${plural(fortalezaRow.played, "jogo")}`} cta="Veja a sua conta em">
       <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
         <div style={{ fontSize: 48, fontWeight: 700 }}>Chance de subir para a Série A</div>
         <div style={{ fontFamily: "Bebas", fontSize: 520, lineHeight: 0.9, color: C.win, marginTop: 20 }}>{chance}</div>
@@ -154,6 +154,34 @@ export function AccessCard() {
       <div style={{ display: "flex", alignItems: "center", gap: 28, margin: "44px 80px 0" }}>
         <Dots form={xray.streaks.form} size={40} />
         <div style={{ fontSize: 42, fontWeight: 700 }}>{xray.streaks.currentLabel}</div>
+      </div>
+    </Frame>
+  );
+}
+
+// ---------------------------------------------------------------- A conta mudou
+
+/** Card "A conta mudou": a chance antes da rodada do último jogo x agora (lib/chance.ts). */
+export function ChangeCard() {
+  const change = chanceChange();
+  if (!change) return <AccessCard />;
+  const { game, from, to, diff } = change;
+  const verb = diff > 0 ? "subiu" : diff < 0 ? "caiu" : "ficou igual";
+
+  return (
+    <Frame sub={`Fortaleza na Série B · ${plural(fortalezaRow.played, "jogo")}`} cta="Acompanhe a conta em">
+      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
+        <div style={{ fontSize: 60, fontWeight: 800 }}>A conta mudou</div>
+        <div style={{ fontSize: 40, color: C.muted, marginTop: 12 }}>{`Rodada ${game.round}: ${scoreLine(game)}`}</div>
+        <div style={{ display: "flex", flexDirection: "column", marginTop: 90 }}>
+          <div style={{ fontSize: 40, color: C.muted }}>{`Antes da rodada ${change.beforeRound + 1}`}</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 260, lineHeight: 0.9, color: C.muted }}>{`${from}%`}</div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", marginTop: 40 }}>
+          <div style={{ fontSize: 40, color: C.white }}>Agora</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 420, lineHeight: 0.9, color: C.win }}>{`${to}%`}</div>
+        </div>
+        <div style={{ fontSize: 46, fontWeight: 700, marginTop: 30 }}>{`A chance de subir para a Série A ${verb}.`}</div>
       </div>
     </Frame>
   );
@@ -256,7 +284,7 @@ export function OgCard() {
       <div style={{ display: "flex", flex: 1, padding: "56px 72px 48px" }}>
         <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
           <div style={{ fontFamily: "Bebas", fontSize: 60 }}>{SITE_NAME}</div>
-          <div style={{ fontSize: 28, color: C.muted }}>{`O Leão na Série B · depois da rodada ${meta.lastCompletedRound}`}</div>
+          <div style={{ fontSize: 28, color: C.muted }}>{`O Leão na Série B · situação atual, ${plural(fortalezaRow.played, "jogo")}`}</div>
           <div style={{ display: "flex", alignItems: "flex-end", gap: 24, marginTop: "auto" }}>
             <div style={{ fontFamily: "Bebas", fontSize: 230, lineHeight: 0.8 }}>{`${fortalezaRow.position}º`}</div>
             <div style={{ display: "flex", flexDirection: "column", paddingBottom: 10 }}>

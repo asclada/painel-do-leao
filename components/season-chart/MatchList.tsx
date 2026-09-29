@@ -1,27 +1,13 @@
-import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import escudoFortaleza from "@/assets/escudo-fortaleza.png";
-import { TeamBadge } from "@/components/ui/TeamBadge";
-import { crestSrc } from "@/lib/crests";
+import { MiniCrest } from "@/components/ui/MiniCrest";
 import { FORTALEZA, teamById, timeline } from "@/lib/data";
 import { plural, shortDate } from "@/lib/format";
-import type { Team } from "@/lib/generated/outputs";
 
 const RESULT = {
   V: { label: "Vitória", cls: "bg-win text-bg" },
   E: { label: "Empate", cls: "bg-draw text-bg" },
   D: { label: "Derrota", cls: "bg-loss text-white" },
 } as const;
-
-/** Escudo pequeno: o do Fortaleza é sempre o do topo do site (primeiro escudo oficial). */
-function MiniCrest({ team }: { team: Team }) {
-  const src = team.id === FORTALEZA ? escudoFortaleza : crestSrc(team.id);
-  return (
-    <span className="relative flex h-7 w-7 shrink-0 items-center justify-center">
-      {src ? <Image src={src} alt="" fill sizes="28px" className="object-contain" /> : <TeamBadge team={team} size="sm" />}
-    </span>
-  );
-}
 
 /** Jogo a jogo: a campanha completa na Série B (recolhida por padrão, abaixo da montanha-russa). */
 export function MatchList() {

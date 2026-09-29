@@ -8,9 +8,11 @@ const NAV = [
   ["agora", "Agora"],
   ["campanha", "Campanha"],
   ["temporada", "Temporada"],
+  ["chance", "Chance"],
   ["corrida", "Corrida"],
-  ["rodada-38", "Rodada 38"],
+  ["jogos-chave", "Jogos-chave"],
   ["simulador", "Simulador"],
+  ["rodada-38", "Rodada 38"],
   ["raio-x", "Raio-X"],
 ] as const;
 

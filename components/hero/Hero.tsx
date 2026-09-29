@@ -4,7 +4,7 @@ import { NextMatchCard } from "@/components/hero/NextMatchCard";
 import { ShareButton } from "@/components/share/ShareButton";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { FormDots } from "@/components/ui/FormDots";
-import { fortalezaOdds, fortalezaRow, FORTALEZA, meta, nextMatch, standings, xray } from "@/lib/data";
+import { fortalezaOdds, fortalezaRow, FORTALEZA, nextMatch, standings, xray } from "@/lib/data";
 import { pct, pctNumber, plural } from "@/lib/format";
 import { situation } from "@/lib/situation";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -36,7 +36,7 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
             </p>
           </div>
           <h1 id={`${anchor}-title`} className="text-sm text-muted">
-            Fortaleza na Série B · depois da rodada {meta.lastCompletedRound}
+            Situação atual na Série B · {plural(fortalezaRow.played, "jogo")}
           </h1>
 
           <div className="mt-1 flex items-end gap-4">
