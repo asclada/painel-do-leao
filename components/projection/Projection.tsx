@@ -1,4 +1,5 @@
-import { fortalezaOdds, simulation } from "@/lib/data";
+import { chanceLabel, statusOf, type ClinchStatus } from "@/lib/clinch";
+import { FORTALEZA, fortalezaOdds, simulation } from "@/lib/data";
 import { pct, plural } from "@/lib/format";
 
 /** Frase de destaque da seção (usada no título da seção em app/page.tsx). */
@@ -8,8 +9,11 @@ export function projectionHeadline() {
   return `O mais provável é o Leão fechar a Série B com uns ${mid} pontos. Faltam ${plural(remainingGames, "jogo")}.`;
 }
 
-/** Risco perto de zero vira texto (decisão do Lucas: mostrar "praticamente zero"). */
-function riskLabel(p: number) {
+/** Risco perto de zero vira texto (decisão do Lucas: mostrar "praticamente zero"); "zero" só quando a matemática
+ * garante que o Leão não cai. */
+function riskLabel(p: number, status: ClinchStatus) {
+  if (status === "eliminated") return "zero";
+  if (status === "clinched") return "rebaixado";
   return p < 0.01 ? "praticamente zero" : pct(p);
 }
 
@@ -38,6 +42,7 @@ export function Projection() {
   const max = Math.max(...probs, 0.0001);
   const last = min + probs.length - 1;
   const g6 = Math.min(1, pDirect + pTop6);
+  const st = statusOf(FORTALEZA);
 
   const marks = [
     magic.pointsFor90Top6 != null ? { pts: magic.pointsFor90Top6, goal: "a vaga no G6", wins: magic.winsNeededTop6 ?? null } : null,
@@ -106,15 +111,19 @@ export function Projection() {
       <dl className="grid gap-4">
         <div className="rounded-2xl bg-surface p-4 ring-1 ring-line sm:p-6">
           <dt className="text-sm font-semibold text-muted">Chance de terminar no G6</dt>
-          <dd className="mt-1 font-display text-6xl leading-none text-win">{pct(g6)}</dd>
+          <dd className="mt-1 font-display text-6xl leading-none text-win">{chanceLabel(g6, st.g6)}</dd>
           <dd className="mt-1 text-sm text-muted">Do 1º ao 6º lugar: sobe direto ou vai aos playoffs.</dd>
         </div>
         <div className="rounded-2xl bg-surface p-4 ring-1 ring-line sm:p-6">
           <dt className="text-sm font-semibold text-muted">Risco de rebaixamento</dt>
           <dd className={`mt-1 font-display leading-none ${pRelegation < 0.01 ? "text-4xl" : "text-6xl"}`}>
-            {riskLabel(pRelegation)}
+            {riskLabel(pRelegation, st.relegation)}
           </dd>
-          <dd className="mt-1 text-sm text-muted">Chance de terminar entre o 17º e o 20º lugar.</dd>
+          <dd className="mt-1 text-sm text-muted">
+            {st.relegation === "eliminated"
+              ? "Livre do rebaixamento: pela conta de pontos, o Leão já não cai para o Z4."
+              : "Chance de terminar entre o 17º e o 20º lugar."}
+          </dd>
         </div>
       </dl>
     </div>

@@ -16,6 +16,9 @@ modelo dizia com o que aconteceu.
 - Ganho sobre a referência (skill score): **2,3%**
 - Log loss: 1,068 · resultado mais provável acertou 41% dos jogos
 - Favoritos (acima de 50%): 60 jogos, chance média prevista 56%, venceram 57%
+- Resultado mais provável / do meio / menos provável (zebra): 41% / 33% / 26% dos jogos (Chance de Gol, desde 1998: 51% / 27% / 22%)
+- Medida de confiabilidade (como no Chance de Gol: soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%): 0,1332 (Chance de Gol: 0,0251). Com poucos jogos, faixas com 3 ou 4 casos pesam tanto quanto as cheias.
+- O Brier multiclasse acima é a "distância DeFinetti" do Chance de Gol (0,601 no deles, com todas as competições; a Série B, equilibrada, é mais difícil de prever).
 
 Calibração por faixa (todas as chances de vitória do mandante, empate e vitória do visitante):
 

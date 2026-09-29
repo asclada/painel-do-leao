@@ -71,6 +71,42 @@
       "title": "CalibrationBin",
       "type": "object"
     },
+    "Clinch": {
+      "additionalProperties": false,
+      "properties": {
+        "direct": {
+          "enum": [
+            "clinched",
+            "eliminated",
+            "open"
+          ],
+          "type": "string"
+        },
+        "g6": {
+          "enum": [
+            "clinched",
+            "eliminated",
+            "open"
+          ],
+          "type": "string"
+        },
+        "top16": {
+          "enum": [
+            "clinched",
+            "eliminated",
+            "open"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "direct",
+        "g6",
+        "top16"
+      ],
+      "title": "Clinch",
+      "type": "object"
+    },
     "DataStatus": {
       "additionalProperties": false,
       "description": "Saúde da fonte: `delayed` quando a ESPN falha seguidamente e há jogo encerrado sem resultado.",
@@ -438,6 +474,18 @@
         },
         "favoritesObserved": {
           "type": "number"
+        },
+        "favoriteRate": {
+          "type": "number"
+        },
+        "middleRate": {
+          "type": "number"
+        },
+        "upsetRate": {
+          "type": "number"
+        },
+        "reliability": {
+          "type": "number"
         }
       },
       "required": [
@@ -452,9 +500,35 @@
         "bins",
         "favoritesN",
         "favoritesPredicted",
-        "favoritesObserved"
+        "favoritesObserved",
+        "favoriteRate",
+        "middleRate",
+        "upsetRate",
+        "reliability"
       ],
       "title": "MatchCalibration",
+      "type": "object"
+    },
+    "MatchChances": {
+      "additionalProperties": false,
+      "description": "Chance de cada resultado de um jogo, na visão do Fortaleza (mesmo modelo da simulação).",
+      "properties": {
+        "win": {
+          "type": "number"
+        },
+        "draw": {
+          "type": "number"
+        },
+        "loss": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "win",
+        "draw",
+        "loss"
+      ],
+      "title": "MatchChances",
       "type": "object"
     },
     "Meta": {
@@ -621,6 +695,17 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "chances": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MatchChances"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -978,6 +1063,13 @@
         },
         "focusPoints": {
           "$ref": "#/$defs/PointsDist"
+        },
+        "clinch": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Clinch"
+          },
+          "default": {},
+          "type": "object"
         }
       },
       "required": [

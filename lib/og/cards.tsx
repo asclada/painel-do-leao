@@ -2,6 +2,7 @@
 import type { ReactNode } from "react";
 import { readableText } from "@/lib/color";
 import { chanceChange, scoreLine } from "@/lib/chance";
+import { chanceLabel, statusOf } from "@/lib/clinch";
 import { fortalezaOdds, fortalezaRow, FORTALEZA, standings, teamById, xray } from "@/lib/data";
 import { pct, plural } from "@/lib/format";
 import type { Team } from "@/lib/generated/outputs";
@@ -122,7 +123,8 @@ function Badge({ team, size = 1 }: { team: Team; size?: number }) {
 /** Card "Chance de acesso" — opção A (Placar), escolhida no checkpoint visual 3: a chance domina a tela. */
 export function AccessCard() {
   const sit = situation(standings, FORTALEZA);
-  const chance = pct(fortalezaOdds.pPromotion);
+  const st = statusOf(FORTALEZA);
+  const chance = chanceLabel(fortalezaOdds.pPromotion, st.promotion);
 
   return (
     <Frame sub={`Fortaleza na Série B · ${plural(fortalezaRow.played, "jogo")}`} cta="Veja a sua conta em">
@@ -130,7 +132,7 @@ export function AccessCard() {
         <div style={{ fontSize: 48, fontWeight: 700 }}>Chance de subir para a Série A</div>
         <div style={{ fontFamily: "Bebas", fontSize: 520, lineHeight: 0.9, color: C.win, marginTop: 20 }}>{chance}</div>
         <div style={{ fontSize: 40, color: C.muted, marginTop: 10 }}>
-          {`Direto: ${pct(fortalezaOdds.pDirect)} · via playoffs: ${pct(fortalezaOdds.pPlayoffPromotion)}`}
+          {`Direto: ${chanceLabel(fortalezaOdds.pDirect, st.direct)} · via playoffs: ${chanceLabel(fortalezaOdds.pPlayoffPromotion, st.playoffs)}`}
         </div>
       </div>
       <div
@@ -268,6 +270,7 @@ export const OG_ALT = `${SITE_NAME}: posição do Fortaleza na Série B e a chan
 
 export function OgCard() {
   const sit = situation(standings, FORTALEZA);
+  const st = statusOf(FORTALEZA);
   return (
     <div
       style={{
@@ -304,8 +307,8 @@ export function OgCard() {
           }}
         >
           <div style={{ fontSize: 34, fontWeight: 700 }}>Chance de subir</div>
-          <div style={{ fontFamily: "Bebas", fontSize: 250, lineHeight: 0.85, color: C.win }}>{pct(fortalezaOdds.pPromotion)}</div>
-          <div style={{ fontSize: 28, color: C.muted }}>{`direto ${pct(fortalezaOdds.pDirect)} · playoffs ${pct(fortalezaOdds.pPlayoffPromotion)}`}</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 250, lineHeight: 0.85, color: C.win }}>{chanceLabel(fortalezaOdds.pPromotion, st.promotion)}</div>
+          <div style={{ fontSize: 28, color: C.muted }}>{`direto ${chanceLabel(fortalezaOdds.pDirect, st.direct)} · playoffs ${chanceLabel(fortalezaOdds.pPlayoffPromotion, st.playoffs)}`}</div>
         </div>
       </div>
     </div>

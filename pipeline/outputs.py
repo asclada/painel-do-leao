@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Literal
 
 from pipeline.calc.calibration import Calibration
+from pipeline.calc.clinch import Clinch
 from pipeline.calc.key_games import KeyGames
 from pipeline.model.summarize import MagicNumbers, PointsDist, TeamOdds
 from pipeline.models import Model, StandingRow, Team
@@ -174,6 +175,14 @@ class Race(Model):
 # --- Próximo jogo (F1) ----------------------------------------------------------------
 
 
+class MatchChances(Model):
+    """Chance de cada resultado de um jogo, na visão do Fortaleza (mesmo modelo da simulação)."""
+
+    win: float
+    draw: float
+    loss: float
+
+
 class NextMatch(Model):
     match_id: str
     round: int
@@ -186,6 +195,7 @@ class NextMatch(Model):
     first_turn: str | None  # "Fortaleza 2 x 1 Náutico"
     form_fortaleza: list[Result]
     form_opponent: list[Result]
+    chances: MatchChances | None = None
 
 
 # --- Simulação --------------------------------------------------------------------
@@ -197,6 +207,7 @@ class Simulation(Model):
     teams: list[TeamOdds]
     magic: MagicNumbers
     focus_points: PointsDist  # pontos finais do Fortaleza, para a "faixa mais provável"
+    clinch: dict[str, Clinch] = {}  # garantido/eliminado na matemática, por time (pipeline/calc/clinch.py)
 
 
 class HistoryEntry(Model):

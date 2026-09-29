@@ -213,6 +213,15 @@ export interface NextMatch {
   firstTurn: string | null;
   formFortaleza: ("V" | "E" | "D")[];
   formOpponent: ("V" | "E" | "D")[];
+  chances?: MatchChances | null;
+}
+/**
+ * Chance de cada resultado de um jogo, na visão do Fortaleza (mesmo modelo da simulação).
+ */
+export interface MatchChances {
+  win: number;
+  draw: number;
+  loss: number;
 }
 export interface Simulation {
   nSims: number;
@@ -220,6 +229,9 @@ export interface Simulation {
   teams: TeamOdds[];
   magic: MagicNumbers;
   focusPoints: PointsDist;
+  clinch?: {
+    [k: string]: Clinch;
+  };
 }
 export interface TeamOdds {
   teamId: string;
@@ -249,6 +261,11 @@ export interface MagicNumbers {
 export interface PointsDist {
   min: number;
   probs: number[];
+}
+export interface Clinch {
+  direct: "clinched" | "eliminated" | "open";
+  g6: "clinched" | "eliminated" | "open";
+  top16: "clinched" | "eliminated" | "open";
 }
 /**
  * Chance do Fortaleza depois de cada rodada (backtest). A última entrada é sempre a chance de agora:
@@ -320,6 +337,10 @@ export interface MatchCalibration {
   favoritesN: number;
   favoritesPredicted: number;
   favoritesObserved: number;
+  favoriteRate: number;
+  middleRate: number;
+  upsetRate: number;
+  reliability: number;
 }
 export interface CalibrationBin {
   lo: number;

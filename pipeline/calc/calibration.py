@@ -42,6 +42,14 @@ class MatchCalibration(Model):
     favorites_n: int  # jogos com um favorito acima de 50%
     favorites_predicted: float
     favorites_observed: float
+    # Como o Chance de Gol apresenta: em cada jogo, o resultado mais provável ("favorito"), o do meio e o menos
+    # provável ("zebra"); com que frequência cada um aconteceu.
+    favorite_rate: float
+    middle_rate: float
+    upset_rate: float
+    # "Medida de confiabilidade" do Chance de Gol: soma, nas faixas de 10%, do quadrado da distância entre a
+    # frequência real e o meio da faixa (quanto menor, melhor). Não pondera pelo número de casos.
+    reliability: float
 
 
 class SeasonCalibration(Model):
@@ -101,6 +109,9 @@ def match_calibration(backtest: Backtest, matches: list[Match]) -> MatchCalibrat
     log_loss = -np.log(np.clip(p[y == 1], 1e-9, 1)).mean()
     fav = p.max(1) > 0.5
     fav_hit = y[np.arange(len(p)), p.argmax(1)]
+    rank = np.argsort(-p, axis=1)  # [favorito, meio, zebra] por jogo
+    rates = [float(y[np.arange(len(p)), rank[:, i]].mean()) for i in range(3)]
+    bins = _bins(p.ravel(), y.ravel())
     return MatchCalibration(
         n_matches=len(p),
         rounds=[min(rounds), max(rounds)],
@@ -110,10 +121,14 @@ def match_calibration(backtest: Backtest, matches: list[Match]) -> MatchCalibrat
         skill=_r(1 - brier / brier_ref),
         log_loss=_r(log_loss),
         accuracy=_r(fav_hit.mean()),
-        bins=_bins(p.ravel(), y.ravel()),
+        bins=bins,
         favorites_n=int(fav.sum()),
         favorites_predicted=_r(p.max(1)[fav].mean()) if fav.any() else 0.0,
         favorites_observed=_r(fav_hit[fav].mean()) if fav.any() else 0.0,
+        favorite_rate=_r(rates[0]),
+        middle_rate=_r(rates[1]),
+        upset_rate=_r(rates[2]),
+        reliability=_r(sum((b.observed - (b.lo + b.hi) / 2) ** 2 for b in bins)),
     )
 
 
@@ -146,10 +161,12 @@ def summary_phrase(mc: MatchCalibration | None) -> str | None:
     if mc is None or mc.favorites_n < MIN_FAVORITES:
         return None
     pred, obs = round(100 * mc.favorites_predicted), round(100 * mc.favorites_observed)
+    fav, mid, upset = (round(100 * x) for x in (mc.favorite_rate, mc.middle_rate, mc.upset_rate))
     return (
         f"Conferimos as contas com os {mc.n_matches} jogos já disputados, sempre usando só o que se sabia na rodada "
         f"anterior: quando um time aparecia como favorito, com {pred}% de chance de vencer em média, ele venceu "
-        f"{obs}% das vezes."
+        f"{obs}% das vezes. Contando todos os jogos, deu o resultado mais provável em {fav}% deles, o do meio em "
+        f"{mid}% e a zebra (o menos provável) em {upset}%."
     )
 
 
@@ -194,6 +211,13 @@ def calibration_markdown(cal: Calibration, last_round: int) -> str:
             f"- Log loss: {_num(mc.log_loss)} · resultado mais provável acertou {_pct(mc.accuracy)} dos jogos",
             f"- Favoritos (acima de 50%): {mc.favorites_n} jogos, chance média prevista "
             f"{_pct(mc.favorites_predicted)}, venceram {_pct(mc.favorites_observed)}",
+            f"- Resultado mais provável / do meio / menos provável (zebra): {_pct(mc.favorite_rate)} / "
+            f"{_pct(mc.middle_rate)} / {_pct(mc.upset_rate)} dos jogos (Chance de Gol, desde 1998: 51% / 27% / 22%)",
+            f"- Medida de confiabilidade (como no Chance de Gol: soma dos quadrados da distância entre a frequência "
+            f"real e o meio de cada faixa de 10%): {_num(mc.reliability, 4)} (Chance de Gol: 0,0251). "
+            "Com poucos jogos, faixas com 3 ou 4 casos pesam tanto quanto as cheias.",
+            "- O Brier multiclasse acima é a \"distância DeFinetti\" do Chance de Gol (0,601 no deles, com todas as "
+            "competições; a Série B, equilibrada, é mais difícil de prever).",
             "",
             "Calibração por faixa (todas as chances de vitória do mandante, empate e vitória do visitante):",
             "",

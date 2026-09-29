@@ -19,10 +19,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import numpy as np
 from dotenv import load_dotenv
 
 from pipeline.calc.backtest import Backtest, run_backtest
 from pipeline.calc.calibration import calibration_markdown, compute_calibration
+from pipeline.calc.clinch import compute_clinch
 from pipeline.calc.insights import (
     bins_insight,
     halves_insight,
@@ -51,10 +53,12 @@ from pipeline.fetch import (
     run_fetch,
     save_state,
 )
+from pipeline.model.match_probs import outcome_probs
 from pipeline.model.simulate import simulate_season
+from pipeline.model.types import ModelInput
 from pipeline.model.summarize import TeamOdds, magic_numbers, points_dist, sanity_check, team_odds
 from pipeline.models import SeasonData, StandingRow, Team
-from pipeline.outputs import HistoryEntry, Meta, Simulation, Timeline, XRay
+from pipeline.outputs import HistoryEntry, MatchChances, Meta, Simulation, Timeline, XRay
 from pipeline.providers.base import ProviderError, load_rounds, load_teams
 from pipeline.providers.espn import EspnProvider, LocalCacheClient
 
@@ -116,6 +120,19 @@ def chance_history(
     return [h for h in out if h.round != now.round] + [now]
 
 
+def next_match_chances(model: ModelInput, match_id: str, seed: int) -> MatchChances | None:
+    """Vitória/empate/derrota do Fortaleza no próximo jogo, direto da distribuição de gols (sem sorteio de placar)."""
+    m = next((r for r in model.remaining if r.id == match_id), None)
+    if m is None:
+        return None
+    p_home, p_draw, p_away = outcome_probs(
+        model.ratings, np.array([m.home]), np.array([m.away]), np.random.default_rng([seed, 2]), n_draws=20_000
+    )[0]
+    home = m.home == model.focus_team
+    return MatchChances(win=round(float(p_home if home else p_away), 4), draw=round(float(p_draw), 4),
+                        loss=round(float(p_away if home else p_home), 4))
+
+
 def compute_outputs(
     season: SeasonData, teams: list[Team], previous_backtest: Backtest | None = None, log=print
 ) -> dict[str, Any]:
@@ -159,7 +176,7 @@ def compute_outputs(
     magic = magic_numbers(sim, model.focus_team, fort_row.points, len(model.focus_remaining))
     simulation = Simulation(
         n_sims=N_SIMS_PIPELINE, seed=seed, teams=odds, magic=magic,
-        focus_points=points_dist(sim, model.focus_team),
+        focus_points=points_dist(sim, model.focus_team), clinch=compute_clinch(standings),
     )
 
     # raio-x
@@ -179,6 +196,8 @@ def compute_outputs(
     strength = dict(zip(team_ids, model.ratings.strength))
     race = compute_race(standings, matches, odds, strength, names, FORTALEZA_ID, articles)
     nxt = compute_next_match(matches, FORTALEZA_ID, names)
+    if nxt is not None:
+        nxt.chances = next_match_chances(model, nxt.match_id, seed)
     key_games = compute_key_games(model, sim, N_SIMS_PIPELINE, seed)
 
     # backtest e calibração (só as rodadas novas são simuladas)

@@ -164,3 +164,60 @@ def test_data_status(matches_r30):
     assert data_status(matches_r30, failing, later) == {"delayed": True, "lastSuccessAt": ok.last_success_at}
     # antes do jogo terminar não há atraso, mesmo com a fonte falhando
     assert data_status(matches_r30, failing, last_ko - timedelta(days=1))["delayed"] is False
+
+
+# --- garantido/eliminado na matemática e chances do próximo jogo ---------------------------------------
+
+
+def _table(rows):
+    """rows: (time, pontos, jogos) em ordem de classificação."""
+    from pipeline.models import Record, StandingRow
+
+    return [StandingRow(position=i + 1, team_id=t, played=j, wins=0, draws=0, losses=0, goals_for=0,
+                        goals_against=0, goal_diff=0, points=p, pct=0, home=Record(), away=Record())
+            for i, (t, p, j) in enumerate(rows)]
+
+
+def test_clinch_bounds():
+    from pipeline.calc.clinch import compute_clinch
+
+    # 2 rodadas para o fim (36 jogos): 6 pontos em jogo
+    rows = [("a", 80, 36), ("b", 73, 36), ("c", 70, 36), ("d", 68, 36)] + [
+        (f"t{i}", 60 - i, 36) for i in range(16)
+    ]
+    c = compute_clinch(_table(rows))
+    assert c["a"].direct == "clinched"  # só "b" chega a 80 (79 não chega): no máximo 1 time passa
+    assert c["b"].direct == "open"  # "c" e "d" ainda chegam a 73
+    assert c["t0"].g6 == "open"  # máximo 66: só 4 times já têm mais
+    assert c["t10"].g6 == "eliminated"  # máximo 56: a, b, c, d, t0..t3 (8 times) já têm mais
+    assert c["t15"].top16 == "open"
+
+
+def test_clinch_is_conservative_on_ties():
+    from pipeline.calc.clinch import compute_clinch
+
+    rows = [("a", 70, 37), ("b", 67, 37)] + [(f"t{i}", 50, 37) for i in range(18)]
+    c = compute_clinch(_table(rows))
+    assert c["a"].direct == "clinched"
+    assert c["b"].direct == "clinched"  # só "a" chega a 67 ou mais
+    assert c["t0"].direct == "eliminated"  # máximo 53 < 67 e 70
+    rows2 = [("a", 70, 37), ("b", 67, 37), ("c", 64, 37)] + [(f"t{i}", 50, 37) for i in range(17)]
+    assert compute_clinch(_table(rows2))["b"].direct == "open"  # "c" pode empatar com 67: desempate em aberto
+
+
+def test_clinch_after_the_last_round_uses_the_table():
+    from pipeline.calc.clinch import compute_clinch
+
+    rows = [(f"t{i}", 60, 38) for i in range(20)]  # todos empatados em pontos: vale a posição da tabela
+    c = compute_clinch(_table(rows))
+    assert c["t1"].direct == "clinched" and c["t2"].direct == "eliminated"
+    assert c["t16"].top16 == "eliminated" and c["t15"].top16 == "clinched"
+
+
+def test_next_match_chances(model):
+    from pipeline.update_data import next_match_chances
+
+    j = model.focus_remaining[0]
+    ch = next_match_chances(model, model.remaining[j].id, seed=1)
+    assert abs(ch.win + ch.draw + ch.loss - 1) < 1e-3
+    assert next_match_chances(model, "nao-existe", seed=1) is None

@@ -12,14 +12,17 @@ jogos mais pesam e um simulador para montar a própria previsão. Atualiza sozin
 
 ## O que tem no site
 
-- **Agora:** posição, pontos, sequência e a chance de subir (direto e pelos playoffs), com o próximo jogo.
+- **Agora:** posição, pontos, sequência e a chance de subir (direto e pelos playoffs), com o próximo jogo e a chance
+  de vitória, empate e derrota do Leão nele. Quando a matemática decide algo, aparece um selo ("Acesso garantido!",
+  "Vaga no G6 garantida"...).
 - **Campanha em números:** aproveitamento, vitórias/empates/derrotas, média de pontos, saldo (geral, casa e fora).
 - **Montanha-russa da temporada:** posição rodada a rodada, com marcos e os rivais da corrida; jogo a jogo.
 - **Como a chance mudou:** a chance de acesso refeita depois de cada rodada, só com o que se sabia até ali, e o
   card **"A conta mudou"** (antes x agora) gerado automaticamente depois de cada rodada.
 - **Corrida pelo acesso:** os times da briga lado a lado, com a dificuldade da tabela que falta.
 - **Os jogos que mais mexem na chance:** quanto a chance muda se o Leão vencer, empatar ou perder cada jogo, e
-  **"Pra secar nesta rodada"**: o resultado dos jogos dos rivais que mais ajuda.
+  **"Pra secar nesta rodada"**: os três resultados de cada jogo da rodada, do que mais ajuda o Leão para o que mais
+  atrapalha ("Torça pelo X · se não der, o empate serve" ou "Torça contra Y").
 - **Simulador dos próximos jogos:** o torcedor escolhe V/E/D em cada jogo e vê onde o Leão termina (API em Python).
 - **Até a rodada 38:** pontuação mais provável, faixa de pontos e as marcas que deixam G6 e acesso quase garantidos.
 - **Raio-X:** casa x fora, turno x returno, gols por faixa de minuto, o que muda depois do intervalo.
@@ -61,8 +64,15 @@ GitHub Actions (a cada 2h)
    (matriz simulações × jogos, sem laço em Python). A tabela final segue os critérios de desempate do regulamento.
 4. **Playoffs.** 3º x 6º e 4º x 5º em ida e volta, com a melhor campanha decidindo em casa e levando no empate do
    agregado, como no regulamento de 2026.
-5. **Jogos que mais mexem.** Das mesmas simulações, separa as temporadas em que cada jogo terminou em vitória,
-   empate ou derrota e mede a chance de acesso em cada grupo (sem rodar simulações extras).
+5. **Jogos que mais mexem.** Cada jogo é simulado três vezes com o resultado fixado (vitória, empate, derrota) e a
+   mesma semente das simulações do topo. O jogo fixado é re-sorteado com um gerador próprio e os placares dos
+   playoffs saem de números sorteados antes de saber quem joga, então o resto do campeonato é idêntico nos três
+   cenários e a diferença entre eles é só aquele jogo (comparação pareada). A primeira versão separava as
+   simulações do topo pelo resultado de cada jogo; o ruído entre os grupos (~0,8 ponto de chance) era maior que o
+   efeito de um ponto a mais para um rival e chegou a sugerir o resultado errado. Com o pareamento, ~0,15.
+6. **Garantido ou eliminado na matemática.** Além da simulação, uma conta de pontos (sem sorteio) diz quando uma
+   vaga já está garantida ou perdida. O site só mostra 100% ou 0% quando essa conta confirma; perto disso, sem
+   certeza, mostra ">99%" ou "<1%".
 
 ## Validação (backtest e calibração)
 
@@ -74,12 +84,15 @@ O pipeline refaz a conta como ela teria sido feita **depois de cada rodada**, us
   multiclasse, calibração por faixa, favoritos). O resumo é regenerado automaticamente em
   [`docs/CALIBRACAO.md`](docs/CALIBRACAO.md). Até a rodada 30: favoritos com 56% de chance média venceram 57% das
   vezes, e o modelo foi um pouco melhor que uma referência que só conhece a frequência de mandante/empate/visitante
-  da liga (futebol é difícil de prever: o ganho é pequeno, mas as chances são bem calibradas);
+  da liga (futebol é difícil de prever: o ganho é pequeno, mas as chances são bem calibradas). Também no formato
+  do site Chance de Gol: deu o resultado mais provável em 41% dos jogos, o do meio em 33% e a zebra em 26% (a
+  Série B é equilibrada);
 - quando os pontos corridos terminarem, a chance de G2 e de G6 de cada time em cada rodada também é avaliada contra
   a posição final.
 
 O backtest fica em cache (`data/backtest.json`) com uma chave por rodada (hash dos jogos até ali + parâmetros do
-modelo): nas execuções normais só a rodada nova é calculada (~2 s em vez de ~30 s).
+modelo): nas execuções normais só a rodada nova é calculada (~2 s em vez de ~30 s). A execução completa, com os
+cenários dos jogos que mais mexem, leva menos de 1 minuto e só roda quando algum jogo terminou.
 
 ## Decisões técnicas
 

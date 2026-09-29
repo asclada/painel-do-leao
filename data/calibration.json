@@ -62,17 +62,21 @@
     "brier": 0.6448,
     "brierReference": 0.6599,
     "brierUniform": 0.6667,
+    "favoriteRate": 0.4118,
     "favoritesN": 60,
     "favoritesObserved": 0.5667,
     "favoritesPredicted": 0.5649,
     "logLoss": 1.0679,
+    "middleRate": 0.3287,
     "nMatches": 289,
+    "reliability": 0.1332,
     "rounds": [
       2,
       30
     ],
-    "skill": 0.0229
+    "skill": 0.0229,
+    "upsetRate": 0.2595
   },
   "season": null,
-  "summary": "Conferimos as contas com os 289 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 56% de chance de vencer em média, ele venceu 57% das vezes."
+  "summary": "Conferimos as contas com os 289 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 56% de chance de vencer em média, ele venceu 57% das vezes. Contando todos os jogos, deu o resultado mais provável em 41% deles, o do meio em 33% e a zebra (o menos provável) em 26%."
 }

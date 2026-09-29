@@ -1,4 +1,106 @@
 {
+  "clinch": {
+    "america-mg": {
+      "direct": "eliminated",
+      "g6": "eliminated",
+      "top16": "open"
+    },
+    "athletic-club": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "atletico-go": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "avai": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "botafogo-sp": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "ceara": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "crb": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "criciuma": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "cuiaba": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "fortaleza": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "goias": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "juventude": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "londrina": {
+      "direct": "eliminated",
+      "g6": "open",
+      "top16": "open"
+    },
+    "nautico": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "novorizontino": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "operario-pr": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "ponte-preta": {
+      "direct": "eliminated",
+      "g6": "eliminated",
+      "top16": "open"
+    },
+    "sao-bernardo": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "sport": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    },
+    "vila-nova": {
+      "direct": "open",
+      "g6": "open",
+      "top16": "open"
+    }
+  },
   "focusPoints": {
     "min": 54,
     "probs": [

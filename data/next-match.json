@@ -1,4 +1,9 @@
 {
+  "chances": {
+    "draw": 0.2438,
+    "loss": 0.2322,
+    "win": 0.524
+  },
   "city": "Fortaleza",
   "firstTurn": "Náutico 0 x 1 Fortaleza",
   "formFortaleza": [

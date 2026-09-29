@@ -37,6 +37,11 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   simulações do topo por resultado: o ruído (~0,8) era maior que o efeito e sugeriu empate em Londrina x Criciúma.
   "Pra secar" avalia TODOS os jogos até a rodada do próximo jogo do Leão (não só a lista da corrida), guarda a ordem
   dos 3 resultados e `sameTop/sameBottom` (< 1 ponto = "tanto faz"; o site diz "Torça contra X"). ~45 s por execução.
+- **Ideias do Chance de Gol (29/09, pedido do Lucas):** (1) `next-match.json → chances` (V/E/D do Leão no próximo
+  jogo, `outcome_probs`, sem sorteio de placar) no card do próximo jogo; (2) calibração com favorito/médio/zebra e
+  a "medida de confiabilidade" deles (`docs/CALIBRACAO.md` + frase no rodapé); (3) `pipeline/calc/clinch.py` →
+  `simulation.clinch`: garantido/eliminado na matemática (conservador: empate em pontos = em aberto). O site usa
+  `lib/clinch.ts::chanceLabel`: 100%/0% só com a matemática; senão ">99%"/"<1%". Selo no topo (`clinchBadge`).
 - **Dados atrasados:** `meta.dataStatus` (`pipeline/fetch.py::data_status`): `delayed` só com ESPN falhando ≥2x E
   jogo que já deveria ter acabado sem resultado; não mexe no `updatedAt`. Banner em `components/DataStatusBanner.tsx`.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em

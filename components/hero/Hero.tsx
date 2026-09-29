@@ -5,7 +5,8 @@ import { ShareButton } from "@/components/share/ShareButton";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { FormDots } from "@/components/ui/FormDots";
 import { fortalezaOdds, fortalezaRow, FORTALEZA, nextMatch, standings, xray } from "@/lib/data";
-import { pct, pctNumber, plural } from "@/lib/format";
+import { chanceLabel, clinchBadge, statusOf } from "@/lib/clinch";
+import { plural } from "@/lib/format";
 import { situation } from "@/lib/situation";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -16,7 +17,11 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
  */
 export function Hero({ anchor = "agora" }: { anchor?: string }) {
   const sit = situation(standings, FORTALEZA);
-  const chance = pctNumber(fortalezaOdds.pPromotion);
+  const st = statusOf(FORTALEZA);
+  const chanceTxt = chanceLabel(fortalezaOdds.pPromotion, st.promotion);
+  // número animado só quando é um percentual "normal"; ">99%"/"<1%" (sem certeza na matemática) vão como texto
+  const plain = /^\d+%$/.test(chanceTxt);
+  const badge = clinchBadge(FORTALEZA);
 
   return (
     <section id={anchor} aria-labelledby={`${anchor}-title`} className="spotlight">
@@ -68,12 +73,21 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
                 Chances aproximadas do Leão subir pra Série A
               </p>
               <p className="mt-4 font-display text-[5.5rem] leading-[0.9] text-win sm:text-[6rem]">
-                <AnimatedNumber value={chance} suffix="%" />
+                {plain ? <AnimatedNumber value={parseInt(chanceTxt, 10)} suffix="%" /> : chanceTxt}
               </p>
               <p className="text-sm text-muted sm:text-base">
-                Direto: <strong className="text-white">{pct(fortalezaOdds.pDirect)}</strong> · playoffs:{" "}
-                <strong className="text-white">{pct(fortalezaOdds.pPlayoffPromotion)}</strong>
+                Direto: <strong className="text-white">{chanceLabel(fortalezaOdds.pDirect, st.direct)}</strong> · playoffs:{" "}
+                <strong className="text-white">{chanceLabel(fortalezaOdds.pPlayoffPromotion, st.playoffs)}</strong>
               </p>
+              {badge && (
+                <p
+                  className={`mt-2 inline-flex rounded-full px-3 py-1 text-sm font-bold ${
+                    badge.good ? "bg-win text-bg" : "bg-surface-2 text-white ring-1 ring-white/25"
+                  }`}
+                >
+                  {badge.text}
+                </p>
+              )}
             </div>
             <ShareButton
               compact
@@ -81,7 +95,7 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
               image="/api/card/acesso"
               fileName="fortaleza-chance-de-acesso.png"
               link={SITE_URL}
-              text={`O Fortaleza tem ${chance}% de chance de subir para a Série A, segundo o ${SITE_NAME}.`}
+              text={`O Fortaleza tem ${chanceTxt} de chance de subir para a Série A, segundo o ${SITE_NAME}.`}
             />
           </div>
         </div>

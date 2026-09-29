@@ -3,7 +3,8 @@ import { FormDots } from "@/components/ui/FormDots";
 import { GrowBar } from "@/components/ui/GrowBar";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { FORTALEZA, race, teamById } from "@/lib/data";
-import { kickoffLabel, pct, plural, shortDate, venueName } from "@/lib/format";
+import { chanceLabel, statusOf } from "@/lib/clinch";
+import { kickoffLabel, plural, shortDate, venueName } from "@/lib/format";
 import type { RaceTeam } from "@/lib/generated/outputs";
 
 const DIFFICULTY_STYLE = {
@@ -14,6 +15,8 @@ const DIFFICULTY_STYLE = {
 
 function TeamRow({ t }: { t: RaceTeam }) {
   const team = teamById[t.teamId];
+  const st = statusOf(t.teamId);
+  const promo = chanceLabel(t.pPromotion, st.promotion);
   const me = t.teamId === FORTALEZA;
   return (
     <li>
@@ -38,15 +41,15 @@ function TeamRow({ t }: { t: RaceTeam }) {
           </div>
           <div className="flex items-center gap-3 pl-10">
             <GrowBar value={t.pPromotion} color={me ? "var(--win)" : "var(--white)"}
-              label={`Chance de subir: ${pct(t.pPromotion)}`} />
-            <span className="w-12 text-right font-semibold tabular">{pct(t.pPromotion)}</span>
+              label={`Chance de subir: ${promo}`} />
+            <span className="w-12 text-right font-semibold tabular">{promo}</span>
           </div>
         </summary>
 
         <div className="border-t border-line px-3 pb-4 pt-3 text-sm sm:px-4">
           <p className="text-muted">
-            Sobe direto: <strong className="text-white">{pct(t.pDirect)}</strong> · termina 3º a 6º:{" "}
-            <strong className="text-white">{pct(t.pTop6)}</strong> · saldo {t.goalDiff > 0 ? `+${t.goalDiff}` : t.goalDiff}
+            Sobe direto: <strong className="text-white">{chanceLabel(t.pDirect, st.direct)}</strong> · termina 3º a
+            6º: <strong className="text-white">{chanceLabel(t.pTop6, st.top6)}</strong> · saldo {t.goalDiff > 0 ? `+${t.goalDiff}` : t.goalDiff}
           </p>
           <p className="mt-3 font-semibold">
             Faltam {plural(t.fixtures.length, "jogo")}: {t.remainingHome} em casa, {t.remainingAway} fora

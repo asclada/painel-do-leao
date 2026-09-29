@@ -5,8 +5,8 @@ import { FormDots } from "@/components/ui/FormDots";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { crestSrc } from "@/lib/crests";
 import { FORTALEZA, teamById } from "@/lib/data";
-import { kickoffLabel, venueName } from "@/lib/format";
-import type { NextMatch, Team } from "@/lib/generated/outputs";
+import { kickoffLabel, pct, venueName } from "@/lib/format";
+import type { MatchChances, NextMatch, Team } from "@/lib/generated/outputs";
 
 // Os dois escudos do mesmo tamanho (pedido do Lucas, 29/09).
 const CREST_BOX = "h-[88px] w-[88px] sm:h-[104px] sm:w-[104px]";
@@ -90,6 +90,45 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
           {opp.name} nos últimos 5: <FormDots form={match.formOpponent} size="sm" />
         </span>
       </div>
+
+      {match.chances && <MatchChancesBar chances={match.chances} />}
+    </div>
+  );
+}
+
+/**
+ * Chance de vitória, empate e derrota do Leão neste jogo (mesmo modelo da simulação; a ideia do Chance de Gol).
+ * Barra única dividida em três, com as cores de resultado do site; os números ficam em texto, ao lado das bolinhas.
+ */
+function MatchChancesBar({ chances }: { chances: MatchChances }) {
+  const parts = [
+    { key: "V", label: "Vitória", p: chances.win, bar: "bg-win", dot: "bg-win" },
+    { key: "E", label: "Empate", p: chances.draw, bar: "bg-draw", dot: "bg-draw" },
+    { key: "D", label: "Derrota", p: chances.loss, bar: "bg-loss", dot: "bg-loss" },
+  ];
+  return (
+    <div className="mt-4 border-t border-line pt-4">
+      <p className="text-center text-sm font-semibold text-muted">Chances do Leão neste jogo</p>
+      <div
+        className="mt-2 flex h-3 gap-[2px] overflow-hidden rounded-full"
+        role="img"
+        aria-label={`Chances do Leão neste jogo: ${parts.map((x) => `${x.label.toLowerCase()} ${pct(x.p)}`).join(", ")}`}
+      >
+        {parts.map((x) => (
+          <span key={x.key} className={x.bar} style={{ width: `${x.p * 100}%` }} />
+        ))}
+      </div>
+      <ul className="mt-2 grid grid-cols-3 text-center text-sm" aria-hidden>
+        {parts.map((x) => (
+          <li key={x.key} className="flex flex-col items-center">
+            <span className="inline-flex items-center gap-1.5 text-muted">
+              <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${x.dot}`} />
+              {x.label}
+            </span>
+            <strong className="text-lg tabular">{pct(x.p)}</strong>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
