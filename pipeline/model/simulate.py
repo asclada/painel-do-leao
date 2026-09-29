@@ -26,6 +26,7 @@ class SimResult:
     positions: np.ndarray  # (N, T) posição final, 1..T
     promoted: np.ndarray  # (N, T) bool: subiu (direto ou playoffs)
     playoff_winner: np.ndarray  # (N, T) bool: subiu pelos playoffs
+    outcomes: np.ndarray | None = None  # (N, M) resultado de cada jogo restante, na visão do mandante (HOME_WIN/DRAW/AWAY_WIN)
 
 
 def _outcome(hg: np.ndarray, ag: np.ndarray) -> np.ndarray:
@@ -92,6 +93,7 @@ def simulate_season(
     gd = np.tile(np.asarray(base.goal_diff), (n, 1))
     gf = np.tile(np.asarray(base.goals_for), (n, 1))
 
+    outcomes = np.empty((n, 0), dtype=np.int8)
     if len(home):
         lam_h, lam_a = factors.lambdas(home, away)
         hg, ag = sample_scores(rng, lam_h, lam_a, n, fixed)
@@ -105,8 +107,11 @@ def simulate_season(
         wins += hw @ H + aw @ A
         gd += (hg - ag) @ H + (ag - hg) @ A
         gf += hg @ H + ag @ A
+        outcomes = _outcome(hg, ag).astype(np.int8)
 
     positions = rank(pts, wins, gd, gf, rng)
     playoff_winner = simulate_playoffs(factors, positions, rng)
     promoted = (positions <= 2) | playoff_winner
-    return SimResult(points=pts, positions=positions, promoted=promoted, playoff_winner=playoff_winner)
+    return SimResult(
+        points=pts, positions=positions, promoted=promoted, playoff_winner=playoff_winner, outcomes=outcomes
+    )

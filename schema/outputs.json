@@ -1,5 +1,177 @@
 {
   "$defs": {
+    "Calibration": {
+      "additionalProperties": false,
+      "properties": {
+        "matches": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MatchCalibration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "season": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SeasonCalibration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "matches",
+        "season",
+        "summary"
+      ],
+      "title": "Calibration",
+      "type": "object"
+    },
+    "CalibrationBin": {
+      "additionalProperties": false,
+      "properties": {
+        "lo": {
+          "type": "number"
+        },
+        "hi": {
+          "type": "number"
+        },
+        "n": {
+          "type": "integer"
+        },
+        "predicted": {
+          "type": "number"
+        },
+        "observed": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "lo",
+        "hi",
+        "n",
+        "predicted",
+        "observed"
+      ],
+      "title": "CalibrationBin",
+      "type": "object"
+    },
+    "DataStatus": {
+      "additionalProperties": false,
+      "description": "Saúde da fonte: `delayed` quando a ESPN falha seguidamente e há jogo encerrado sem resultado.",
+      "properties": {
+        "delayed": {
+          "default": false,
+          "type": "boolean"
+        },
+        "lastSuccessAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "title": "DataStatus",
+      "type": "object"
+    },
+    "FocusGame": {
+      "additionalProperties": false,
+      "properties": {
+        "matchId": {
+          "type": "string"
+        },
+        "round": {
+          "type": "integer"
+        },
+        "kickoffUtc": {
+          "type": "string"
+        },
+        "opponentId": {
+          "type": "string"
+        },
+        "home": {
+          "type": "boolean"
+        },
+        "pWin": {
+          "type": "number"
+        },
+        "pDraw": {
+          "type": "number"
+        },
+        "pLoss": {
+          "type": "number"
+        },
+        "ifWin": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ifDraw": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ifLoss": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "swing": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "matchId",
+        "round",
+        "kickoffUtc",
+        "opponentId",
+        "home",
+        "pWin",
+        "pDraw",
+        "pLoss",
+        "ifWin",
+        "ifDraw",
+        "ifLoss",
+        "swing"
+      ],
+      "title": "FocusGame",
+      "type": "object"
+    },
     "GoalBin": {
       "additionalProperties": false,
       "properties": {
@@ -108,6 +280,7 @@
     },
     "HistoryEntry": {
       "additionalProperties": false,
+      "description": "Chance do Fortaleza depois de cada rodada (backtest). A última entrada é sempre a chance de agora:\n`partial` = rodada ainda em andamento (há jogos dela, ou de depois, já disputados).",
       "properties": {
         "round": {
           "type": "integer"
@@ -120,15 +293,65 @@
         },
         "pTop6": {
           "type": "number"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "points": {
+          "type": "integer"
+        },
+        "partial": {
+          "default": false,
+          "type": "boolean"
         }
       },
       "required": [
         "round",
         "pPromotion",
         "pDirect",
-        "pTop6"
+        "pTop6",
+        "position",
+        "points"
       ],
       "title": "HistoryEntry",
+      "type": "object"
+    },
+    "KeyGames": {
+      "additionalProperties": false,
+      "properties": {
+        "baseline": {
+          "type": "number"
+        },
+        "round": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "focus": {
+          "items": {
+            "$ref": "#/$defs/FocusGame"
+          },
+          "type": "array"
+        },
+        "rivals": {
+          "items": {
+            "$ref": "#/$defs/RivalGame"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "baseline",
+        "round",
+        "focus",
+        "rivals"
+      ],
+      "title": "KeyGames",
       "type": "object"
     },
     "MagicNumbers": {
@@ -192,6 +415,69 @@
       "title": "MagicNumbers",
       "type": "object"
     },
+    "MatchCalibration": {
+      "additionalProperties": false,
+      "properties": {
+        "nMatches": {
+          "type": "integer"
+        },
+        "rounds": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "brier": {
+          "type": "number"
+        },
+        "brierReference": {
+          "type": "number"
+        },
+        "brierUniform": {
+          "type": "number"
+        },
+        "skill": {
+          "type": "number"
+        },
+        "logLoss": {
+          "type": "number"
+        },
+        "accuracy": {
+          "type": "number"
+        },
+        "bins": {
+          "items": {
+            "$ref": "#/$defs/CalibrationBin"
+          },
+          "type": "array"
+        },
+        "favoritesN": {
+          "type": "integer"
+        },
+        "favoritesPredicted": {
+          "type": "number"
+        },
+        "favoritesObserved": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "nMatches",
+        "rounds",
+        "brier",
+        "brierReference",
+        "brierUniform",
+        "skill",
+        "logLoss",
+        "accuracy",
+        "bins",
+        "favoritesN",
+        "favoritesPredicted",
+        "favoritesObserved"
+      ],
+      "title": "MatchCalibration",
+      "type": "object"
+    },
     "Meta": {
       "additionalProperties": false,
       "properties": {
@@ -237,6 +523,13 @@
               "type": "null"
             }
           ]
+        },
+        "dataStatus": {
+          "$ref": "#/$defs/DataStatus",
+          "default": {
+            "delayed": false,
+            "lastSuccessAt": null
+          }
         }
       },
       "required": [
@@ -566,6 +859,125 @@
         }
       },
       "title": "Record",
+      "type": "object"
+    },
+    "RivalGame": {
+      "additionalProperties": false,
+      "properties": {
+        "matchId": {
+          "type": "string"
+        },
+        "round": {
+          "type": "integer"
+        },
+        "kickoffUtc": {
+          "type": "string"
+        },
+        "homeId": {
+          "type": "string"
+        },
+        "awayId": {
+          "type": "string"
+        },
+        "pHome": {
+          "type": "number"
+        },
+        "pDraw": {
+          "type": "number"
+        },
+        "pAway": {
+          "type": "number"
+        },
+        "ifHome": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ifDraw": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ifAway": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "best": {
+          "enum": [
+            "home",
+            "draw",
+            "away"
+          ],
+          "type": "string"
+        },
+        "gain": {
+          "type": "number"
+        },
+        "swing": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "matchId",
+        "round",
+        "kickoffUtc",
+        "homeId",
+        "awayId",
+        "pHome",
+        "pDraw",
+        "pAway",
+        "ifHome",
+        "ifDraw",
+        "ifAway",
+        "best",
+        "gain",
+        "swing"
+      ],
+      "title": "RivalGame",
+      "type": "object"
+    },
+    "SeasonCalibration": {
+      "additionalProperties": false,
+      "properties": {
+        "n": {
+          "type": "integer"
+        },
+        "brierDirect": {
+          "type": "number"
+        },
+        "brierG6": {
+          "type": "number"
+        },
+        "binsG6": {
+          "items": {
+            "$ref": "#/$defs/CalibrationBin"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "n",
+        "brierDirect",
+        "brierG6",
+        "binsG6"
+      ],
+      "title": "SeasonCalibration",
       "type": "object"
     },
     "Simulation": {
@@ -1231,6 +1643,12 @@
         "$ref": "#/$defs/HistoryEntry"
       },
       "type": "array"
+    },
+    "keyGames": {
+      "$ref": "#/$defs/KeyGames"
+    },
+    "calibration": {
+      "$ref": "#/$defs/Calibration"
     }
   },
   "required": [
@@ -1242,7 +1660,9 @@
     "race",
     "nextMatch",
     "simulation",
-    "history"
+    "history",
+    "keyGames",
+    "calibration"
   ],
   "title": "Outputs",
   "type": "object"

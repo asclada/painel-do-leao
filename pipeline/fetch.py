@@ -17,6 +17,7 @@ from datetime import datetime, timedelta, timezone
 
 from pipeline.config import (
     DATA,
+    ESPN_ISSUE_AFTER_FAILURES,
     MATCH_DONE_AFTER,
     N_TEAMS,
     RAW,
@@ -32,6 +33,7 @@ STATE_FILE = RAW / "state.json"
 MATCHES_FILE = DATA / "matches.json"
 DETAILS_FILE = DATA / "details.json"
 UPCOMING_WINDOW = timedelta(days=3)  # reconfere horários dos jogos dos próximos dias
+DELAY_GRACE = timedelta(hours=2)  # folga antes de avisar no site que um resultado está atrasado
 
 
 def parse_dt(s: str) -> datetime:
@@ -221,9 +223,23 @@ def run_fetch(
             raise ProviderError(f"Nenhum provedor disponível. ESPN: {result.espn_error} | Reserva: {exc}") from exc
 
     state.last_provider = result.provider_used  # type: ignore[assignment]
+    state.last_success_at = iso(now)
     result.season = season
     result.state = state
     return result
+
+
+def data_status(matches: list[Match], state: FetchState, now: datetime) -> dict:
+    """Dados atrasados = a ESPN falhou seguidamente e ainda há jogo que já deveria ter terminado sem resultado
+    (se o reserva trouxe tudo, não há atraso)."""
+    pending = any(
+        m.status in ("scheduled", "live") and parse_dt(m.kickoff_utc) + MATCH_DONE_AFTER + DELAY_GRACE <= now
+        for m in matches
+    )
+    return {
+        "delayed": state.espn_consecutive_failures >= ESPN_ISSUE_AFTER_FAILURES and pending,
+        "lastSuccessAt": state.last_success_at or state.espn_last_success_at,
+    }
 
 
 def save_state(state: FetchState) -> None:

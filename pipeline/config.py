@@ -54,6 +54,7 @@ HALF_LIFE_ROUNDS = 12
 LAMBDA_MIN, LAMBDA_MAX = 0.2, 4.0
 N_SIMS_PIPELINE = 20_000
 N_SIMS_API = 5_000
+N_SIMS_BACKTEST = 10_000  # por rodada do backtest (só a rodada nova é calculada nas execuções normais)
 # Distribuição preditiva bayesiana completa: sorteia a força dos times da posteriori em cada simulação.
 # False volta ao modelo antigo (só os valores médios), útil para comparar.
 PARAM_UNCERTAINTY = True

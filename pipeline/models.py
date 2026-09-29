@@ -123,6 +123,7 @@ class FetchState(Model):
     espn_consecutive_failures: int = 0
     espn_last_error: str | None = None
     espn_last_success_at: str | None = None
+    last_success_at: str | None = None  # última consulta com sucesso, de qualquer provedor
     last_provider: ProviderName | None = None
     calendar: list[str] = []  # datas (YYYYMMDD) com jogo, segundo a ESPN
     date_checked_at: dict[str, str] = {}  # YYYYMMDD -> ISO da última consulta

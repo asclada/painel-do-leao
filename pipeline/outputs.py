@@ -4,10 +4,19 @@ from __future__ import annotations
 
 from typing import Literal
 
+from pipeline.calc.calibration import Calibration
+from pipeline.calc.key_games import KeyGames
 from pipeline.model.summarize import MagicNumbers, PointsDist, TeamOdds
 from pipeline.models import Model, StandingRow, Team
 
 Result = Literal["V", "E", "D"]
+
+
+class DataStatus(Model):
+    """Saúde da fonte: `delayed` quando a ESPN falha seguidamente e há jogo encerrado sem resultado."""
+
+    delayed: bool = False
+    last_success_at: str | None = None  # última consulta que deu certo (ESPN ou reserva)
 
 
 class Meta(Model):
@@ -19,6 +28,7 @@ class Meta(Model):
     has_half_time: bool
     season_state: Literal["regular", "playoffs", "finished"]
     updated_at: str | None
+    data_status: DataStatus = DataStatus()
 
 
 # --- Linha do tempo (F2) --------------------------------------------------------
@@ -190,10 +200,16 @@ class Simulation(Model):
 
 
 class HistoryEntry(Model):
+    """Chance do Fortaleza depois de cada rodada (backtest). A última entrada é sempre a chance de agora:
+    `partial` = rodada ainda em andamento (há jogos dela, ou de depois, já disputados)."""
+
     round: int
     p_promotion: float
     p_direct: float
     p_top6: float
+    position: int
+    points: int
+    partial: bool = False
 
 
 class Outputs(Model):
@@ -208,3 +224,5 @@ class Outputs(Model):
     next_match: NextMatch | None
     simulation: Simulation
     history: list[HistoryEntry]
+    key_games: KeyGames
+    calibration: Calibration

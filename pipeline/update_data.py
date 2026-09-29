@@ -4,8 +4,10 @@ Uso: `uv run python -m pipeline.update_data [--force] [--recompute] [--offline]`
 
 1. Busca (ESPN; reserva footballsoccerapi) só se algum jogo terminou.
 2. Calcula tabela, linha do tempo, marcos, sequências, raio-x, corrida, próximo jogo.
-3. Roda 20.000 simulações do campeonato (semente fixa por rodada) + checagens de sanidade.
-4. Grava os JSON em /data (formatação estável; updatedAt só muda se algo mudou).
+3. Roda 20.000 simulações do campeonato (semente fixa por rodada) + checagens de sanidade, e delas tira os
+   jogos que mais mexem na chance.
+4. Backtest rodada a rodada (só as rodadas novas ou que mudaram) e calibração.
+5. Grava os JSON em /data (formatação estável; updatedAt só muda se algo mudou) e docs/CALIBRACAO.md.
 """
 
 from __future__ import annotations
@@ -19,6 +21,8 @@ from typing import Any
 
 from dotenv import load_dotenv
 
+from pipeline.calc.backtest import Backtest, run_backtest
+from pipeline.calc.calibration import calibration_markdown, compute_calibration
 from pipeline.calc.insights import (
     bins_insight,
     halves_insight,
@@ -26,6 +30,7 @@ from pipeline.calc.insights import (
     turn_insight,
     venue_insight,
 )
+from pipeline.calc.key_games import compute_key_games
 from pipeline.calc.milestones import auto_milestones, headline, load_manual, select_milestones
 from pipeline.calc.model_input import build_model_input
 from pipeline.calc.next_match import compute_next_match
@@ -36,26 +41,50 @@ from pipeline.calc.streaks import compute_streaks
 from pipeline.calc.timeline import positions_by_round, team_timeline
 from pipeline.calc.xray import compute_xray_parts
 from pipeline.config import DATA, FORTALEZA_ID, N_SIMS_PIPELINE, ROOT, SEASON, TOTAL_ROUNDS
-from pipeline.fetch import DETAILS_FILE, MATCHES_FILE, iso, load_cached, run_fetch, save_state
+from pipeline.fetch import (
+    DETAILS_FILE,
+    MATCHES_FILE,
+    data_status,
+    iso,
+    load_cached,
+    load_state,
+    run_fetch,
+    save_state,
+)
 from pipeline.model.simulate import simulate_season
-from pipeline.model.summarize import magic_numbers, points_dist, sanity_check, team_odds
-from pipeline.models import SeasonData, Team
+from pipeline.model.summarize import TeamOdds, magic_numbers, points_dist, sanity_check, team_odds
+from pipeline.models import SeasonData, StandingRow, Team
 from pipeline.outputs import HistoryEntry, Meta, Simulation, Timeline, XRay
 from pipeline.providers.base import ProviderError, load_rounds, load_teams
 from pipeline.providers.espn import EspnProvider, LocalCacheClient
 
 OUTPUT_FILES = ["meta", "teams", "standings", "timeline", "xray", "race", "next-match",
-                "simulation", "model", "history"]
+                "simulation", "model", "history", "backtest", "key-games", "calibration"]
+BACKTEST_FILE = DATA / "backtest.json"
+CALIBRATION_DOC = ROOT / "docs" / "CALIBRACAO.md"
 
 
 def write_json(path: Path, data: Any) -> bool:
     """Grava com formatação estável. Devolve True se o conteúdo mudou."""
     text = json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    return write_text(path, text)
+
+
+def write_text(path: Path, text: str) -> bool:
     if path.exists() and path.read_text(encoding="utf-8") == text:
         return False
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8", newline="\n")
     return True
+
+
+def load_backtest() -> Backtest | None:
+    if not BACKTEST_FILE.exists():
+        return None
+    try:
+        return Backtest.model_validate_json(BACKTEST_FILE.read_text(encoding="utf-8"))
+    except ValueError:
+        return None  # formato antigo: recalcula tudo
 
 
 def last_completed_round(season: SeasonData) -> int:
@@ -68,7 +97,28 @@ def last_completed_round(season: SeasonData) -> int:
     return last
 
 
-def compute_outputs(season: SeasonData, teams: list[Team]) -> dict[str, Any]:
+def chance_history(
+    backtest: Backtest, fort_odds: TeamOdds, fort_row: StandingRow, last_round: int, partial: bool
+) -> list[HistoryEntry]:
+    """Chance do Fortaleza rodada a rodada. O último ponto é sempre a chance de agora (20 mil simulações, a mesma
+    do topo): substitui o retrato da última rodada completa ou, com rodada em andamento, entra depois dele."""
+    out = [
+        HistoryEntry(round=b.round, p_promotion=t.p_promotion, p_direct=t.p_direct, p_top6=t.p_top6,
+                     position=t.position, points=t.points)
+        for b in backtest.rounds
+        if (t := b.teams[FORTALEZA_ID])
+    ]
+    now = HistoryEntry(round=last_round + 1 if partial else last_round, p_promotion=fort_odds.p_promotion,
+                       p_direct=fort_odds.p_direct, p_top6=fort_odds.p_top6, position=fort_row.position,
+                       points=fort_row.points, partial=partial)
+    if now.round < 1:
+        return out
+    return [h for h in out if h.round != now.round] + [now]
+
+
+def compute_outputs(
+    season: SeasonData, teams: list[Team], previous_backtest: Backtest | None = None, log=print
+) -> dict[str, Any]:
     """Calcula todos os arquivos de saída (sem gravar). Levanta ValueError se a sanidade falhar."""
     names = {t.id: t.name for t in teams}
     articles = {t.id: t.article for t in teams}
@@ -129,8 +179,15 @@ def compute_outputs(season: SeasonData, teams: list[Team]) -> dict[str, Any]:
     strength = dict(zip(team_ids, model.ratings.strength))
     race = compute_race(standings, matches, odds, strength, names, FORTALEZA_ID, articles)
     nxt = compute_next_match(matches, FORTALEZA_ID, names)
+    key_games = compute_key_games(model, sim, [t.team_id for t in race.teams])
 
+    # backtest e calibração (só as rodadas novas são simuladas)
+    backtest = run_backtest(teams, matches, details, last_round, previous_backtest, log=log)
+    calibration = compute_calibration(backtest, teams, matches)
     fort_odds = next(o for o in odds if o.team_id == FORTALEZA_ID)
+    partial = any(m.status == "finished" and m.round > last_round for m in matches)
+    history = chance_history(backtest, fort_odds, fort_row, last_round, partial)
+
     return {
         "meta_fields": dict(
             season=SEASON, fortaleza_id=FORTALEZA_ID, last_completed_round=last_round,
@@ -145,33 +202,41 @@ def compute_outputs(season: SeasonData, teams: list[Team]) -> dict[str, Any]:
         "next-match": nxt.dump() if nxt else None,
         "simulation": simulation.dump(),
         "model": model.dump(),
-        "history_entry": HistoryEntry(round=last_round, p_promotion=fort_odds.p_promotion,
-                                      p_direct=fort_odds.p_direct, p_top6=fort_odds.p_top6),
+        "history": [h.dump() for h in history],
+        "key-games": key_games.dump(),
+        "backtest": backtest.dump(),
+        "calibration": calibration.dump(),
+        "calibration_doc": calibration_markdown(calibration, last_round),
     }
 
 
-def write_outputs(out: dict[str, Any], provider: str | None, now: datetime) -> bool:
+def write_outputs(out: dict[str, Any], provider: str | None, now: datetime, status: dict | None = None) -> bool:
     changed = False
-    for name in ["teams", "standings", "timeline", "xray", "race", "next-match", "simulation", "model"]:
+    for name in ["teams", "standings", "timeline", "xray", "race", "next-match", "simulation", "model",
+                 "history", "key-games", "backtest", "calibration"]:
         changed |= write_json(DATA / f"{name}.json", out[name])
-
-    hist_path = DATA / "history.json"
-    history = json.loads(hist_path.read_text(encoding="utf-8")) if hist_path.exists() else []
-    entry = out["history_entry"].dump()
-    if entry["round"] > 0:
-        history = [h for h in history if h["round"] != entry["round"]] + [entry]
-        history.sort(key=lambda h: h["round"])
-    changed |= write_json(hist_path, history)
+    write_text(CALIBRATION_DOC, out["calibration_doc"])
 
     meta_path = DATA / "meta.json"
     old = json.loads(meta_path.read_text(encoding="utf-8")) if meta_path.exists() else {}
     meta = Meta(provider=provider or old.get("provider"), updated_at=old.get("updatedAt"),
-                **out["meta_fields"]).dump()
-    if changed or any(meta[k] != old.get(k) for k in meta if k != "updatedAt"):
+                data_status=status or old.get("dataStatus") or {}, **out["meta_fields"]).dump()
+    # o status da fonte não conta como dado novo: o "Atualizado há..." continua honesto quando a fonte falha
+    if changed or any(meta[k] != old.get(k) for k in meta if k not in ("updatedAt", "dataStatus")):
         meta["updatedAt"] = iso(now)
         changed = True
     write_json(meta_path, meta)
     return changed
+
+
+def write_data_status(status: dict) -> None:
+    """Só atualiza o status da fonte no meta.json (quando nenhum provedor respondeu)."""
+    meta_path = DATA / "meta.json"
+    if not meta_path.exists():
+        return
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    meta["dataStatus"] = status
+    write_json(meta_path, meta)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -203,6 +268,10 @@ def main(argv: list[str] | None = None) -> int:
             res = run_fetch(teams, rounds, now=now, force=args.force, espn=espn)
         except ProviderError as exc:
             print(f"ERRO: {exc}")
+            # nenhum provedor respondeu: o site passa a avisar que os dados podem estar atrasados
+            cached = load_cached()
+            if cached is not None:
+                write_data_status(data_status(cached.matches, load_state(), now))
             return 1
         season = res.season
         provider = res.provider_used
@@ -219,14 +288,15 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     try:
-        out = compute_outputs(season, teams)
+        out = compute_outputs(season, teams, load_backtest())
     except ValueError as exc:
         print(f"ERRO: {exc}")
         return 1
 
     changed = write_json(MATCHES_FILE, [m.dump() for m in season.matches])
     changed |= write_json(DETAILS_FILE, {k: v.dump() for k, v in sorted(season.details.items())})
-    changed |= write_outputs(out, provider, now)
+    status = data_status(season.matches, res.state if res is not None else load_state(), now)
+    changed |= write_outputs(out, provider, now, status)
     if res is not None:
         save_state(res.state)
 

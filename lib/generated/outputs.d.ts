@@ -18,6 +18,8 @@ export interface Outputs {
   nextMatch: NextMatch | null;
   simulation: Simulation;
   history: HistoryEntry[];
+  keyGames: KeyGames;
+  calibration: Calibration;
 }
 export interface Meta {
   season: number;
@@ -28,6 +30,14 @@ export interface Meta {
   hasHalfTime: boolean;
   seasonState: "regular" | "playoffs" | "finished";
   updatedAt: string | null;
+  dataStatus?: DataStatus;
+}
+/**
+ * Saúde da fonte: `delayed` quando a ESPN falha seguidamente e há jogo encerrado sem resultado.
+ */
+export interface DataStatus {
+  delayed?: boolean;
+  lastSuccessAt?: string | null;
 }
 export interface Team {
   id: string;
@@ -240,9 +250,84 @@ export interface PointsDist {
   min: number;
   probs: number[];
 }
+/**
+ * Chance do Fortaleza depois de cada rodada (backtest). A última entrada é sempre a chance de agora:
+ * `partial` = rodada ainda em andamento (há jogos dela, ou de depois, já disputados).
+ */
 export interface HistoryEntry {
   round: number;
   pPromotion: number;
   pDirect: number;
   pTop6: number;
+  position: number;
+  points: number;
+  partial?: boolean;
+}
+export interface KeyGames {
+  baseline: number;
+  round: number | null;
+  focus: FocusGame[];
+  rivals: RivalGame[];
+}
+export interface FocusGame {
+  matchId: string;
+  round: number;
+  kickoffUtc: string;
+  opponentId: string;
+  home: boolean;
+  pWin: number;
+  pDraw: number;
+  pLoss: number;
+  ifWin: number | null;
+  ifDraw: number | null;
+  ifLoss: number | null;
+  swing: number;
+}
+export interface RivalGame {
+  matchId: string;
+  round: number;
+  kickoffUtc: string;
+  homeId: string;
+  awayId: string;
+  pHome: number;
+  pDraw: number;
+  pAway: number;
+  ifHome: number | null;
+  ifDraw: number | null;
+  ifAway: number | null;
+  best: "home" | "draw" | "away";
+  gain: number;
+  swing: number;
+}
+export interface Calibration {
+  matches: MatchCalibration | null;
+  season: SeasonCalibration | null;
+  summary: string | null;
+}
+export interface MatchCalibration {
+  nMatches: number;
+  rounds: number[];
+  brier: number;
+  brierReference: number;
+  brierUniform: number;
+  skill: number;
+  logLoss: number;
+  accuracy: number;
+  bins: CalibrationBin[];
+  favoritesN: number;
+  favoritesPredicted: number;
+  favoritesObserved: number;
+}
+export interface CalibrationBin {
+  lo: number;
+  hi: number;
+  n: number;
+  predicted: number;
+  observed: number;
+}
+export interface SeasonCalibration {
+  n: number;
+  brierDirect: number;
+  brierG6: number;
+  binsG6: CalibrationBin[];
 }

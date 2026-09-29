@@ -1,4 +1,8 @@
 {
+  "dataStatus": {
+    "delayed": false,
+    "lastSuccessAt": "2026-09-29T04:52:54Z"
+  },
   "fortalezaId": "fortaleza",
   "hasGoalMinutes": true,
   "hasHalfTime": true,
@@ -6,5 +10,5 @@
   "provider": "espn",
   "season": 2026,
   "seasonState": "regular",
-  "updatedAt": "2026-09-29T15:45:08Z"
+  "updatedAt": "2026-09-29T18:23:50Z"
 }
