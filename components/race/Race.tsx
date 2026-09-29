@@ -37,7 +37,7 @@ function TeamRow({ t }: { t: RaceTeam }) {
             <span className="text-muted">Pega {t.remainingVsTop6} do G6</span>
           </div>
           <div className="flex items-center gap-3 pl-10">
-            <GrowBar value={t.pPromotion} color={me ? "var(--red)" : "var(--white)"}
+            <GrowBar value={t.pPromotion} color={me ? "var(--win)" : "var(--white)"}
               label={`Chance de subir: ${pct(t.pPromotion)}`} />
             <span className="w-12 text-right font-semibold tabular">{pct(t.pPromotion)}</span>
           </div>

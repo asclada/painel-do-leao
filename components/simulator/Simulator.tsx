@@ -283,7 +283,7 @@ function ResultPanel({
               <>
                 <span className="flex-1">
                   <span className="block text-xs text-muted">Chance de subir</span>
-                  <span className={`font-display text-4xl leading-none text-red transition-opacity ${fade}`}>
+                  <span className={`font-display text-4xl leading-none text-win transition-opacity ${fade}`}>
                     <TweenPct value={result.focus.pPromotion} />
                   </span>
                 </span>
@@ -368,7 +368,7 @@ function ResultPanel({
               <dl className="mt-5 grid grid-cols-3 gap-2 border-t border-line pt-4">
                 <div>
                   <dt className="text-xs text-muted">Acesso</dt>
-                  <dd className="font-display text-4xl leading-none text-red">
+                  <dd className="font-display text-4xl leading-none text-win">
                     <TweenPct value={result.focus.pPromotion} />
                   </dd>
                 </div>

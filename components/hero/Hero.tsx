@@ -12,7 +12,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 /**
  * F1 — "Como tá o Leão agora". Em 5 segundos: onde o time está e a chance de subir.
  * No celular (390×844) cabe inteiro sem rolar, com o próximo jogo.
- * Vermelho contido: só a chance de subir é vermelha (escolha do checkpoint visual 1).
+ * A chance de subir fica em verde, com o selo azul em destaque (pedido do Lucas, 29/09).
  */
 export function Hero({ anchor = "agora" }: { anchor?: string }) {
   const sit = situation(standings, FORTALEZA);
@@ -61,12 +61,13 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
             <span className="font-semibold">{xray.streaks.currentLabel}</span>
           </div>
 
-          <div
-            className="mt-5 flex items-end justify-between gap-3 border-l-4 border-red pl-4"
-          >
+          <div className="mt-6 flex items-end justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-sm text-muted sm:text-base">Chance de subir para a Série A</p>
-              <p className="font-display text-[5.5rem] leading-[0.9] text-red sm:text-[6rem]">
+              {/* selo no mesmo estilo do "Próximo jogo"; a chance vai em verde (pedido do Lucas, 29/09) */}
+              <p className="inline-flex rounded-2xl bg-blue px-4 py-1.5 text-sm font-bold text-white shadow-[0_4px_16px_rgb(29_78_216/0.45)] ring-1 ring-white/20 sm:text-base">
+                Chances aproximadas do Leão subir pra Série A
+              </p>
+              <p className="mt-4 font-display text-[5.5rem] leading-[0.9] text-win sm:text-[6rem]">
                 <AnimatedNumber value={chance} suffix="%" />
               </p>
               <p className="text-sm text-muted sm:text-base">

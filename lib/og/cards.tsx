@@ -128,7 +128,7 @@ export function AccessCard() {
     <Frame sub={`Fortaleza na Série B · depois da rodada ${round}`} cta="Veja a sua conta em">
       <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
         <div style={{ fontSize: 48, fontWeight: 700 }}>Chance de subir para a Série A</div>
-        <div style={{ fontFamily: "Bebas", fontSize: 520, lineHeight: 0.9, color: C.red, marginTop: 20 }}>{chance}</div>
+        <div style={{ fontFamily: "Bebas", fontSize: 520, lineHeight: 0.9, color: C.win, marginTop: 20 }}>{chance}</div>
         <div style={{ fontSize: 40, color: C.muted, marginTop: 10 }}>
           {`Direto: ${pct(fortalezaOdds.pDirect)} · via playoffs: ${pct(fortalezaOdds.pPlayoffPromotion)}`}
         </div>
@@ -223,7 +223,7 @@ export function PredictionCard({
             {`direto ${pct(result.focus.pDirect)} · G6 ${pct(pG6(result))}`}
           </div>
         </div>
-        <div style={{ fontFamily: "Bebas", fontSize: 220, lineHeight: 0.8, color: C.red }}>{pct(result.focus.pPromotion)}</div>
+        <div style={{ fontFamily: "Bebas", fontSize: 220, lineHeight: 0.8, color: C.win }}>{pct(result.focus.pPromotion)}</div>
       </div>
     </Frame>
   );
@@ -276,7 +276,7 @@ export function OgCard() {
           }}
         >
           <div style={{ fontSize: 34, fontWeight: 700 }}>Chance de subir</div>
-          <div style={{ fontFamily: "Bebas", fontSize: 250, lineHeight: 0.85, color: C.red }}>{pct(fortalezaOdds.pPromotion)}</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 250, lineHeight: 0.85, color: C.win }}>{pct(fortalezaOdds.pPromotion)}</div>
           <div style={{ fontSize: 28, color: C.muted }}>{`direto ${pct(fortalezaOdds.pDirect)} · playoffs ${pct(fortalezaOdds.pPlayoffPromotion)}`}</div>
         </div>
       </div>
