@@ -117,6 +117,7 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 
 - Dia 4 (`docs/PROXIMOS-PASSOS.md`) implementado em 29/09 com as 5 decisões sugeridas: campanha em números, "Até a
   rodada 38", modelo bayesiano completo, jogo a jogo e "depois do intervalo".
+- **Próxima fase: `docs/ROADMAP.md`** (pacotes 1 a 4: participação da torcida). Começar pelo pacote 1.
 - Pendente do Lucas: testes no celular (M10) e revisão dos textos (M11).
 
 _Última atualização: 29/09/2026 (Dia 4 no ar: modelo preditivo bayesiano completo, campanha em
