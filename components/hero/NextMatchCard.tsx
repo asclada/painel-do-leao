@@ -1,21 +1,15 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import Image from "next/image";
 import escudoFortaleza from "@/assets/escudo-fortaleza.png";
 import { Countdown } from "@/components/hero/Countdown";
 import { FormDots } from "@/components/ui/FormDots";
 import { TeamBadge } from "@/components/ui/TeamBadge";
+import { crestSrc } from "@/lib/crests";
 import { FORTALEZA, teamById } from "@/lib/data";
 import { kickoffLabel, venueName } from "@/lib/format";
 import type { NextMatch, Team } from "@/lib/generated/outputs";
 
 // Os dois escudos do mesmo tamanho (pedido do Lucas, 29/09).
 const CREST_BOX = "h-[88px] w-[88px] sm:h-[104px] sm:w-[104px]";
-
-/** Escudo do adversário baixado pelo pipeline (pipeline/crests.py); sem arquivo, mostra a sigla. */
-function hasCrest(teamId: string) {
-  return existsSync(join(process.cwd(), "public", "escudos", `${teamId}.png`));
-}
 
 function Crest({ team }: { team: Team }) {
   if (team.id === FORTALEZA) {
@@ -25,10 +19,12 @@ function Crest({ team }: { team: Team }) {
       </span>
     );
   }
+  // escudo baixado pelo pipeline; sem arquivo, mostra a sigla
+  const src = crestSrc(team.id);
   return (
     <span className={`relative flex items-center justify-center ${CREST_BOX}`}>
-      {hasCrest(team.id) ? (
-        <Image src={`/escudos/${team.id}.png`} alt={`Escudo do ${team.name}`} fill sizes="96px" loading="eager" className="object-contain" />
+      {src ? (
+        <Image src={src} alt={`Escudo do ${team.name}`} fill sizes="96px" loading="eager" className="object-contain" />
       ) : (
         <TeamBadge team={team} size="lg" />
       )}
@@ -44,7 +40,7 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
 
   return (
     <div className="rounded-3xl bg-surface p-5 ring-1 ring-line sm:p-7">
-      {/* selo em destaque: azul da faixa tricolor (o vermelho fica reservado para a chance de subir) */}
+      {/* selo em destaque: azul da faixa tricolor (mesmo estilo do selo da chance de subir) */}
       <p className="flex justify-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-blue px-4 py-1.5 text-sm text-white shadow-[0_4px_16px_rgb(29_78_216/0.45)] ring-1 ring-white/20 sm:text-base">
           <span className="font-bold">Próximo jogo</span>

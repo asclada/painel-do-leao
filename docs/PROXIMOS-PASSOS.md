@@ -2,7 +2,9 @@
 
 > Preparado em 29/09/2026 a pedido do Lucas, depois de comparar o site com o painel do Náutico
 > (https://xkegbqgnf8ghsf2vhqyjy8.streamlit.app/, de Pablo Melo, a inspiração do projeto).
-> **Nada daqui foi implementado ainda.** Antes de começar, responder as decisões da seção 5.
+> **Status (29/09/2026): implementado.** O Lucas aprovou as 5 decisões sugeridas na seção 5 e pediu que o modelo
+> bayesiano completo valha para todos os números do site. Fases A, B, C e os extras 1 e 2 estão no ar; extras 3 e 4
+> ficaram de fora. Antes/depois do modelo: chance de acesso do Fortaleza 64,9% → 62,2% (rodada 29).
 
 ## 1. O que o Lucas pediu
 

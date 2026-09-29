@@ -109,6 +109,16 @@ export function XRay() {
               </div>
             ))}
           </div>
+          {/* o que muda depois do intervalo (ideia do painel do Náutico) */}
+          <p className="mt-4 rounded-xl bg-surface-2/60 p-3 text-sm leading-relaxed text-white/90">
+            <strong className="text-white">Depois do intervalo:</strong> terminou melhor em {plural(halves.improved ?? 0, "jogo")},
+            pior em {plural(halves.worsened ?? 0, "jogo")} e igual em {plural(halves.kept ?? 0, "jogo")}. Saldo:{" "}
+            <strong className={(halves.pointsSwing ?? 0) > 0 ? "text-win" : "text-white"}>
+              {(halves.pointsSwing ?? 0) > 0 ? "+" : ""}
+              {plural(halves.pointsSwing ?? 0, "ponto")}
+            </strong>{" "}
+            em relação ao placar do intervalo.
+          </p>
         </Block>
       )}
 

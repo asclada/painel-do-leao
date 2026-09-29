@@ -6,8 +6,10 @@ import { useNow } from "@/lib/useNow";
 
 const NAV = [
   ["agora", "Agora"],
+  ["campanha", "Campanha"],
   ["temporada", "Temporada"],
   ["corrida", "Corrida"],
+  ["rodada-38", "Rodada 38"],
   ["simulador", "Simulador"],
   ["raio-x", "Raio-X"],
 ] as const;

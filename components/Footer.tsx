@@ -25,6 +25,12 @@ export function Footer() {
               em quantas dessas temporadas o Fortaleza terminou em cada posição.
             </p>
             <p>
+              Ninguém sabe ao certo o quanto cada time é bom de verdade: com poucos jogos, uma fase boa ou ruim engana.
+              Por isso, em cada simulação a força dos times também é sorteada, perto do que os resultados mostram (e
+              mais perto da média da Série B quando há poucos jogos). Assim a conta inclui a sorte dos jogos e essa
+              dúvida. A &quot;faixa mais provável&quot; de pontos é onde o Leão terminou em 8 de cada 10 simulações.
+            </p>
+            <p>
               Os playoffs também entram na conta: 3º x 6º e 4º x 5º, em ida e volta. Pelo regulamento, a melhor
               campanha decide em casa e, se o placar somado empatar, é ela quem sobe.
             </p>

@@ -17,11 +17,18 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   - `pipeline/model/`, `pipeline/models.py` e `pipeline/config.py` importam **só numpy + pydantic + stdlib**: vão para a função
     Python da Vercel (`vercel.json` → `includeFiles`). Nada de httpx/dotenv nesses arquivos.
 - **Simulação:** `pipeline/model/` (ratings Poisson com mando, encolhimento k=4 e meia-vida 12 rodadas; Monte Carlo
-  vetorizado N×M; playoffs). O pipeline roda 20 mil (semente por rodada) e grava `data/simulation.json`; a API
+  vetorizado N×M; playoffs). **Distribuição preditiva bayesiana completa (29/09, decisão do Lucas):** o encolhimento é
+  a média de uma posteriori Gamma-Poisson; `fit_ratings` exporta essa posteriori (`ratings.posterior` no model.json) e
+  `draw_factors` sorteia a força de cada time em cada simulação (inclusive nos playoffs). `PARAM_UNCERTAINTY` em
+  `pipeline/config.py` liga/desliga (False = modelo antigo, só as médias). Vale para TODOS os números do site. O pipeline roda 20 mil (semente por rodada) e grava `data/simulation.json`; a API
   (`api/index.py`, rotas `/api/py/health` e `/api/py/simular?p=VED-`) roda 5 mil a partir de `data/model.json`.
 - **Saídas do site:** `pipeline/outputs.py` (modelos) → `data/*.json` → tipos em `lib/generated/` → `lib/data.ts`.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em
-  `lib/site.ts` (inclui `SITE_URL`). Seções em `components/` (hero F1, season-chart F2, race F3, simulator F4, xray F5).
+  `lib/site.ts` (inclui `SITE_URL`). Seções em `components/` (hero F1, campaign, season-chart F2 + `MatchList`
+  "jogo a jogo", race F3, projection "Até a rodada 38", simulator F4, xray F5 com "depois do intervalo").
+  Campanha em números: `CampaignStats` (aproveitamento, V/E/D, média, saldo; recorte todos/casa/fora) lê
+  `standings.json`. "Até a rodada 38": faixa de 80% dos pontos (`pointsP10`–`pointsP90`), histograma
+  `simulation.focusPoints`, chance de G6 e risco de rebaixamento ("praticamente zero" abaixo de 1%).
   O Recharts do F2 é carregado sob demanda (`SeasonChartPlot.tsx` via `next/dynamic`) para o Lighthouse mobile ficar ≥ 90.
   Relógio do cliente via `lib/useNow.ts` (useSyncExternalStore) — não usar setState em efeito para "agora".
 - **Simulador (F4, "Simulador dos próximos jogos"):** `components/simulator/` + `lib/simulator-client.ts` (debounce
@@ -44,7 +51,8 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   `display: flex`, e número puro como filho quebra (use template string/`String()`).
   Rotas: `/api/card/acesso`, `/api/card/previsao?p=`, `app/opengraph-image.tsx`, `twitter-image`, `apple-icon`, `icon.svg`.
 - **Escolhas visuais do Lucas (checkpoints 1 e 2, 28/09):** nome **Fortaleza em Números**; Bebas Neue + Inter;
-  vermelho contido (só a chance de subir em vermelho); derrota = bolinha vermelha; montanha-russa com linha
+  derrota = bolinha vermelha; **chance de subir em verde** em todo o site (topo, simulador, corrida, cards, preview
+  do link), com o selo azul "Chances aproximadas do Leão subir pra Série A" no topo (pedido do Lucas, 29/09); montanha-russa com linha
   **branca** e pontos verde (V) / cinza (E) / vermelho (D), faixas G2/G6 preenchidas e Z4 hachurada.
   **Checkpoint 3 (29/09):** card "Chance de acesso" opção A (Placar) e card "Minha previsão" opção A (Lista); a rota
   `/preview` foi removida depois da escolha.
@@ -107,10 +115,9 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 
 ## Próximos passos
 
-- **Dia 4 planejado em `docs/PROXIMOS-PASSOS.md`** (29/09): campanha em números (aproveitamento, V/E/D, média,
-  risco de rebaixamento), faixa mais provável de pontos e a versão bayesiana completa do modelo (preditiva com
-  incerteza nas forças), mais extras do painel do Náutico. **Ler a seção 5 (decisões do Lucas) antes de codar.**
+- Dia 4 (`docs/PROXIMOS-PASSOS.md`) implementado em 29/09 com as 5 decisões sugeridas: campanha em números, "Até a
+  rodada 38", modelo bayesiano completo, jogo a jogo e "depois do intervalo".
 - Pendente do Lucas: testes no celular (M10) e revisão dos textos (M11).
 
-_Última atualização: 29/09/2026 (Dia 3 no ar: simulador sem sorteio, cards, Open Graph, SEO, escudos e card do
-próximo jogo; Dia 4 planejado em `docs/PROXIMOS-PASSOS.md`)._
+_Última atualização: 29/09/2026 (Dia 4 no ar: modelo preditivo bayesiano completo, campanha em
+números, "Até a rodada 38", jogo a jogo, depois do intervalo e chance de subir em verde)._
