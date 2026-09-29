@@ -4,13 +4,15 @@ import { readableText } from "@/lib/color";
 import { chanceChange, scoreLine } from "@/lib/chance";
 import { chanceLabel, statusOf } from "@/lib/clinch";
 import { fortalezaOdds, fortalezaRow, FORTALEZA, standings, teamById, xray } from "@/lib/data";
-import { pct, plural } from "@/lib/format";
-import type { Team } from "@/lib/generated/outputs";
+import type { Curiosity } from "@/lib/curiosities";
+import { kickoffLabel, pct, plural, venueName } from "@/lib/format";
+import type { NextMatch, Team } from "@/lib/generated/outputs";
 import type { ScenarioResult } from "@/lib/generated/scenario";
 import { C } from "@/lib/og/fonts";
 import { SITE_HOST, SITE_NAME } from "@/lib/site";
 import type { Choice } from "@/lib/simulator-client";
-import { finalPoints, pG6 } from "@/lib/simulator-text";
+import { finalPoints, pG6, predictionPersona } from "@/lib/simulator-text";
+import type { Pick } from "@/lib/challenge";
 import { situation } from "@/lib/situation";
 
 export const STORY = { width: 1080, height: 1920 } as const;
@@ -203,10 +205,16 @@ export function PredictionCard({
 }) {
   const pts = finalPoints(result);
   const ptsLabel = String(pts.value);
+  const persona = predictionPersona(result.choices, result);
+  const extras = result.extra ? result.extra.split(",").length : 0;
 
   // Lista de jogos à esquerda do resultado, números grandes embaixo.
   return (
     <Frame sub="Minha previsão para o Leão na Série B" cta="Faça a sua em">
+      <div style={{ display: "flex", flexDirection: "column", margin: "0 80px 40px" }}>
+        <div style={{ fontFamily: "Bebas", fontSize: 88, lineHeight: 0.95, color: C.win }}>{persona.title}</div>
+        <div style={{ fontSize: 32, color: C.muted, marginTop: 6 }}>{persona.line}</div>
+      </div>
       <div style={{ display: "flex", flexDirection: "column", margin: "0 80px", gap: 14 }}>
         {games.map((g) => (
           <div key={g.round} style={{ display: "flex", alignItems: "center", gap: 28, height: 76 }}>
@@ -252,8 +260,245 @@ export function PredictionCard({
           <div style={{ fontSize: 32, color: C.muted, marginTop: 6 }}>
             {`direto ${pct(result.focus.pDirect)} · G6 ${pct(pG6(result))}`}
           </div>
+          {extras > 0 && (
+            <div style={{ fontSize: 28, color: C.muted, marginTop: 6 }}>
+              {`+ ${extras} ${extras === 1 ? "confronto direto escolhido" : "confrontos diretos escolhidos"}`}
+            </div>
+          )}
         </div>
         <div style={{ fontFamily: "Bebas", fontSize: 220, lineHeight: 0.8, color: C.win }}>{pct(result.focus.pPromotion)}</div>
+      </div>
+    </Frame>
+  );
+}
+
+// ---------------------------------------------------------------- Curiosidade do Raio-X
+
+/** Uma curiosidade do Raio-X: número grande + a frase de destaque do pipeline. */
+export function CuriosityCard({ c }: { c: Curiosity }) {
+  return (
+    <Frame sub={`Raio-X do Leão · ${c.title}`} cta="Mais números do Leão em">
+      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
+        <div style={{ fontFamily: "Bebas", fontSize: 460, lineHeight: 0.85, color: C.win }}>{c.big}</div>
+        <div style={{ fontSize: 52, fontWeight: 700, marginTop: 10 }}>{c.bigLabel}</div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 56,
+            fontWeight: 800,
+            lineHeight: 1.2,
+            marginTop: 90,
+            paddingTop: 50,
+            borderTop: `2px solid ${C.line}`,
+          }}
+        >
+          {c.text}
+        </div>
+      </div>
+    </Frame>
+  );
+}
+
+// ---------------------------------------------------------------- Próximo jogo
+
+function StoryCrest({ team, src }: { team: Team; src: string | null }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 380 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 260, height: 260 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- Satori só entende <img> */}
+        {src ? <img src={src} width={240} height={240} style={{ objectFit: "contain" }} alt="" /> : <Badge team={team} size={2} />}
+      </div>
+      <div style={{ fontSize: 52, fontWeight: 800, marginTop: 24 }}>{team.name}</div>
+    </div>
+  );
+}
+
+/** Card de story do próximo jogo: escudos na ordem mandante x visitante, data, estádio e as chances do Leão. */
+export function NextMatchStoryCard({
+  match,
+  crests,
+}: {
+  match: NextMatch;
+  crests: { home: string | null; away: string | null };
+}) {
+  const opp = teamById[match.opponentId];
+  const fort = teamById[FORTALEZA];
+  const [home, away] = match.home ? [fort, opp] : [opp, fort];
+  const ch = match.chances;
+  return (
+    <Frame sub={`Próximo jogo · Rodada ${match.round}`} cta="Acompanhe o Leão em">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "0 60px" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <StoryCrest team={home} src={crests.home} />
+          <div style={{ display: "flex", fontFamily: "Bebas", fontSize: 120, color: C.muted }}>x</div>
+          <StoryCrest team={away} src={crests.away} />
+        </div>
+        <div style={{ fontSize: 56, fontWeight: 800, marginTop: 70 }}>{kickoffLabel(match.kickoffUtc)}</div>
+        {match.venue && (
+          <div style={{ fontSize: 40, color: C.muted, marginTop: 12 }}>
+            {`Estádio: ${venueName(match.venue)}${match.city ? ` · ${match.city}` : ""}`}
+          </div>
+        )}
+        {ch && (
+          <div style={{ display: "flex", flexDirection: "column", width: "100%", marginTop: 110 }}>
+            <div style={{ fontSize: 40, fontWeight: 700, color: C.muted, alignSelf: "center" }}>Chances do Leão neste jogo</div>
+            <div style={{ display: "flex", width: "100%", height: 36, marginTop: 24, gap: 6 }}>
+              <div style={{ display: "flex", width: `${ch.win * 100}%`, background: C.win, borderRadius: 18 }} />
+              <div style={{ display: "flex", width: `${ch.draw * 100}%`, background: C.draw, borderRadius: 18 }} />
+              <div style={{ display: "flex", width: `${ch.loss * 100}%`, background: C.loss, borderRadius: 18 }} />
+            </div>
+            <div style={{ display: "flex", marginTop: 26 }}>
+              {(
+                [
+                  ["Vitória", ch.win],
+                  ["Empate", ch.draw],
+                  ["Derrota", ch.loss],
+                ] as const
+              ).map(([label, v]) => (
+                <div key={label} style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
+                  <div style={{ fontFamily: "Bebas", fontSize: 130, lineHeight: 0.9 }}>{pct(v)}</div>
+                  <div style={{ fontSize: 38, color: C.muted }}>{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </Frame>
+  );
+}
+
+// ---------------------------------------------------------------- Provocação (modelo x eu)
+
+/** "O modelo dá 62%. Eu dou 81%." — a previsão do torcedor contra a chance de agora. */
+export function ProvocationCard({ result }: { result: ScenarioResult }) {
+  const persona = predictionPersona(result.choices, result);
+  const model = pct(fortalezaOdds.pPromotion);
+  const mine = pct(result.focus.pPromotion);
+  const diff = Math.round(100 * (result.focus.pPromotion - fortalezaOdds.pPromotion));
+  const verdict =
+    diff >= 10 ? "Sou mais otimista que o modelo." : diff <= -10 ? "Sou mais pé atrás que o modelo." : "Eu e o modelo pensamos parecido.";
+  const pts = finalPoints(result).value;
+
+  return (
+    <Frame sub="Chance de o Leão subir para a Série A" cta="Faça a sua previsão em">
+      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
+        <div style={{ fontSize: 60, fontWeight: 800 }}>Quem tem razão?</div>
+        <div style={{ display: "flex", marginTop: 70 }}>
+          <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+            <div style={{ fontSize: 44, color: C.muted }}>O modelo</div>
+            <div style={{ fontFamily: "Bebas", fontSize: 260, lineHeight: 0.9, color: C.muted }}>{model}</div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+            <div style={{ fontSize: 44, color: C.white }}>Eu</div>
+            <div style={{ fontFamily: "Bebas", fontSize: 260, lineHeight: 0.9, color: C.win }}>{mine}</div>
+          </div>
+        </div>
+        <div style={{ fontSize: 48, fontWeight: 700, marginTop: 50 }}>{verdict}</div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginTop: 70,
+            paddingTop: 44,
+            borderTop: `2px solid ${C.line}`,
+          }}
+        >
+          <div style={{ fontFamily: "Bebas", fontSize: 96, lineHeight: 0.95, color: C.win }}>{persona.title}</div>
+          <div style={{ fontSize: 36, color: C.muted, marginTop: 10 }}>{persona.line}</div>
+          <div style={{ fontSize: 36, color: C.white, marginTop: 24 }}>
+            {`Na minha conta: ${pts} pontos e ${result.mostLikelyPosition}º lugar.`}
+          </div>
+        </div>
+      </div>
+    </Frame>
+  );
+}
+
+// ---------------------------------------------------------------- Duelo
+
+export type DuelRow = { round: number; opponent: Team; home: boolean; a: Pick | null; b: Pick | null; result: Pick | null };
+
+/** "Lucas x João: quem conhece mais o Leão?" — as duas previsões lado a lado, com o placar de acertos. */
+export function DuelCard({
+  aName,
+  bName,
+  rows,
+  score,
+  points,
+  chances,
+}: {
+  aName: string;
+  bName: string;
+  rows: DuelRow[];
+  score: { a: number; b: number; counted: number };
+  points: [number, number];
+  chances: [number, number] | null;
+}) {
+  const chip = (p: Pick | null, hit: boolean) => (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: 84,
+        height: 64,
+        borderRadius: 16,
+        fontFamily: "Bebas",
+        fontSize: 48,
+        background: p ? RESULT_COLOR[p] : "transparent",
+        color: p ? RESULT_TEXT[p] : C.muted,
+        border: hit ? `5px solid ${C.white}` : p ? "none" : `2px dashed ${C.line}`,
+      }}
+    >
+      {p ?? "–"}
+    </div>
+  );
+  const shown = rows.slice(-10);
+  return (
+    <Frame sub="Quem conhece mais o Leão?" cta="Entre no duelo em">
+      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 24, fontFamily: "Bebas", fontSize: 110, lineHeight: 1 }}>
+          <div style={{ display: "flex" }}>{aName}</div>
+          <div style={{ display: "flex", color: C.muted, fontSize: 80 }}>x</div>
+          <div style={{ display: "flex" }}>{bName}</div>
+        </div>
+        <div style={{ fontSize: 44, fontWeight: 700, marginTop: 10 }}>
+          {score.counted > 0 ? `Placar: ${score.a} x ${score.b} em acertos` : "O placar começa no próximo jogo do Leão"}
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", marginTop: 50, gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 24, fontSize: 28, color: C.muted }}>
+            <div style={{ display: "flex", flex: 1 }}>Jogo</div>
+            <div style={{ display: "flex", width: 84, justifyContent: "center" }}>{aName.slice(0, 6)}</div>
+            <div style={{ display: "flex", width: 84, justifyContent: "center" }}>{bName.slice(0, 6)}</div>
+            <div style={{ display: "flex", width: 84, justifyContent: "center" }}>Deu</div>
+          </div>
+          {shown.map((r) => (
+            <div key={r.round} style={{ display: "flex", alignItems: "center", gap: 24 }}>
+              <div style={{ display: "flex", flex: 1, alignItems: "center", gap: 20 }}>
+                <div style={{ display: "flex", width: 76, fontSize: 30, color: C.muted }}>{`R${r.round}`}</div>
+                <Badge team={r.opponent} size={0.8} />
+                <div style={{ display: "flex", fontSize: 30, color: C.muted }}>{r.home ? "casa" : "fora"}</div>
+              </div>
+              {chip(r.a, !!r.result && r.a === r.result)}
+              {chip(r.b, !!r.result && r.b === r.result)}
+              {r.result ? chip(r.result, false) : (
+                <div style={{ display: "flex", width: 84, justifyContent: "center", fontSize: 24, color: C.muted }}>—</div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div style={{ display: "flex", marginTop: 56, paddingTop: 40, borderTop: `2px solid ${C.line}` }}>
+          {[aName, bName].map((n, i) => (
+            <div key={i} style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+              <div style={{ fontSize: 34, color: C.muted }}>{n}</div>
+              <div style={{ fontFamily: "Bebas", fontSize: 120, lineHeight: 0.9 }}>{`${points[i]} pts`}</div>
+              {chances && (
+                <div style={{ fontSize: 34, color: C.win, fontWeight: 700 }}>{`${pct(chances[i])} de chance de subir`}</div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </Frame>
   );

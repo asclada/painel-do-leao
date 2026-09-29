@@ -42,6 +42,16 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   a "medida de confiabilidade" deles (`docs/CALIBRACAO.md` + frase no rodapé); (3) `pipeline/calc/clinch.py` →
   `simulation.clinch`: garantido/eliminado na matemática (conservador: empate em pontos = em aberto). O site usa
   `lib/clinch.ts::chanceLabel`: 100%/0% só com a matemática; senão ">99%"/"<1%". Selo no topo (`clinchBadge`).
+- **Pacote 2 (29/09):** desafio 100% na URL (`lib/challenge.ts`): `a`/`ap` = desafiante, `b`/`bp` = quem respondeu;
+  previsão = rodada inicial + um V/E/D por rodada até a 38 (mapeada por RODADA, não por posição). Placar = acertos
+  nos jogos já disputados a partir da previsão mais recente dos dois; o duelo só mostra essas rodadas.
+  Componentes em `components/simulator/Challenge.tsx` (apelido lembrado em localStorage `fen:apelido`) e
+  `RivalGames.tsx` (confrontos diretos opcionais → `?x=`, API `x=mandante--visitante:1|X|2`, `parse_extra` em
+  `pipeline/model/scenario.py`; sem `x` a semente é a mesma de antes). Cards novos: `/api/card/duelo`,
+  `/api/card/provocacao`, `/api/card/curiosidade?t=`, `/api/card/proximo-jogo` (escudos embutidos via
+  `lib/og/crests.ts`). Persona da previsão: `predictionPersona` em `lib/simulator-text.ts`. Curiosidades:
+  `lib/curiosities.ts`; "Conteúdo da rodada" em `components/content/RoundContent.tsx`.
+  Para testar o simulador localmente: `.claude/launch.json` → `dev` (site + FastAPI).
 - **Dados atrasados:** `meta.dataStatus` (`pipeline/fetch.py::data_status`): `delayed` só com ESPN falhando ≥2x E
   jogo que já deveria ter acabado sem resultado; não mexe no `updatedAt`. Banner em `components/DataStatusBanner.tsx`.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em
@@ -142,10 +152,10 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Dia 4 (`docs/PROXIMOS-PASSOS.md`) implementado em 29/09 com as 5 decisões sugeridas: campanha em números, "Até a
   rodada 38", modelo bayesiano completo, jogo a jogo e "depois do intervalo".
 - **Fase atual: `docs/ROADMAP.md`** (pacotes 1 a 4: participação da torcida). Pacote 1 implementado em 29/09
-  (status no próprio ROADMAP); próximo: pacote 2.
+  (status no próprio ROADMAP); pacote 2 implementado em 29/09; próximo: pacote 3.
 - README de portfólio na raiz: descrever o modelo como "Poisson com incerteza nas forças dos times" (não
   "bayesiano completo").
 - Pendente do Lucas: testes no celular (M10) e revisão dos textos (M11).
 
-_Última atualização: 29/09/2026 (Pacote 1: backtest e "Como a chance mudou", calibração, "A conta mudou",
-jogos que mais mexem, "Pra secar", quiz da rodada 1, aviso de dados atrasados, README)._
+_Última atualização: 29/09/2026 (Pacote 2: desafio do Leão e duelo, provocação modelo x eu, persona da previsão,
+confrontos diretos no simulador, cards de curiosidade e do próximo jogo, "Conteúdo da rodada")._

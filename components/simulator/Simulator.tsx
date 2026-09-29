@@ -10,20 +10,37 @@ import { TweenPct } from "@/components/ui/TweenPct";
 import { shortDate } from "@/lib/format";
 import type { Team } from "@/lib/generated/outputs";
 import type { MagicNumbers, ScenarioResult } from "@/lib/generated/scenario";
+import { ChallengeBanner, DuelPanel, NameShare, type PlayedInfo } from "@/components/simulator/Challenge";
+import { type RivalFixture, RivalGames } from "@/components/simulator/RivalGames";
+import { type Challenge, challengeUrl, parseChallenge, type Pick, type Player } from "@/lib/challenge";
 import {
   type Choice,
   createScenarioRunner,
+  type Extra,
+  type ExtraPick,
   isComplete,
   parseChoices,
+  parseExtra,
   serializeChoices,
+  serializeExtra,
   warmUpWhenNear,
   writeChoicesToUrl,
 } from "@/lib/simulator-client";
-import { finalPoints, pG6, pointsPhrase, scenarioPhrase } from "@/lib/simulator-text";
+import { finalPoints, pG6, pointsPhrase, predictionPersona, scenarioPhrase } from "@/lib/simulator-text";
 
 export type SimFixture = { matchId: string; round: number; kickoffUtc: string; home: boolean; opponent: Team };
 
-type Props = { fixtures: SimFixture[]; baseline: ScenarioResult; siteUrl: string; siteName: string };
+type Props = {
+  fixtures: SimFixture[];
+  baseline: ScenarioResult;
+  siteUrl: string;
+  siteName: string;
+  /** confrontos diretos entre os rivais da corrida (opcionais no simulador) */
+  rivalFixtures: RivalFixture[];
+  /** jogos do Leão já disputados (para o placar do desafio) */
+  played: PlayedInfo[];
+};
+type UrlState = { initial: Choice[]; initialExtra: Extra; challenge: Challenge | null };
 
 /**
  * F4 — Simulador dos próximos jogos. O torcedor escolhe V/E/D em TODOS os jogos que faltam
@@ -33,7 +50,7 @@ type Props = { fixtures: SimFixture[]; baseline: ScenarioResult; siteUrl: string
 export function Simulator(props: Props) {
   const empty = Array<Choice>(props.fixtures.length).fill("-");
   return (
-    <Suspense fallback={<SimulatorView {...props} initial={empty} />}>
+    <Suspense fallback={<SimulatorView {...props} initial={empty} initialExtra={{}} challenge={null} />}>
       <SimulatorFromUrl {...props} />
     </Suspense>
   );
@@ -41,7 +58,12 @@ export function Simulator(props: Props) {
 
 function SimulatorFromUrl(props: Props) {
   const params = useSearchParams();
-  return <SimulatorView {...props} initial={parseChoices(params.get("p"), props.fixtures.length)} />;
+  const url: UrlState = {
+    initial: parseChoices(params.get("p"), props.fixtures.length),
+    initialExtra: parseExtra(params.get("x"), props.rivalFixtures.map((g) => g.matchId)),
+    challenge: parseChallenge(params),
+  };
+  return <SimulatorView {...props} {...url} />;
 }
 
 const OPTIONS = [
@@ -50,8 +72,21 @@ const OPTIONS = [
   { c: "D", label: "Derrota", on: "bg-loss text-white ring-loss" },
 ] as const;
 
-function SimulatorView({ fixtures, baseline, siteUrl, siteName, initial }: Props & { initial: Choice[] }) {
+function SimulatorView({
+  fixtures,
+  baseline,
+  siteUrl,
+  siteName,
+  rivalFixtures,
+  played,
+  initial,
+  initialExtra,
+  challenge,
+}: Props & UrlState) {
   const [choices, setChoices] = useState<Choice[]>(initial);
+  const [extra, setExtra] = useState<Extra>(initialExtra);
+  const rivalOrder = rivalFixtures.map((g) => g.matchId);
+  const x = serializeExtra(extra, rivalOrder);
   const [result, setResult] = useState<ScenarioResult>(baseline);
   const [loading, setLoading] = useState(isComplete(initial));
   const [error, setError] = useState<string | null>(null);
@@ -72,7 +107,7 @@ function SimulatorView({ fixtures, baseline, siteUrl, siteName, initial }: Props
 
   // Link aberto com ?p= completo: simula na hora.
   useEffect(() => {
-    if (isComplete(initial)) runner.request(serializeChoices(initial), { immediate: true });
+    if (isComplete(initial)) runner.request(serializeChoices(initial), { immediate: true, x });
     return () => runner.cancel();
     // só na montagem: as escolhas seguintes chegam pelos cliques
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -92,11 +127,13 @@ function SimulatorView({ fixtures, baseline, siteUrl, siteName, initial }: Props
   }, []);
 
   // Sem sorteio: o resultado só é calculado quando todos os jogos têm V, E ou D.
-  function update(next: Choice[]) {
+  function update(next: Choice[], nextExtra: Extra = extra) {
     setChoices(next);
-    writeChoicesToUrl(next);
+    setExtra(nextExtra);
+    const nx = serializeExtra(nextExtra, rivalOrder);
+    writeChoicesToUrl(next, nx);
     if (isComplete(next)) {
-      runner.request(serializeChoices(next));
+      runner.request(serializeChoices(next), { x: nx });
     } else {
       runner.cancel();
       setLoading(false);
@@ -109,14 +146,33 @@ function SimulatorView({ fixtures, baseline, siteUrl, siteName, initial }: Props
     update(next);
   }
 
+  function pickRival(matchId: string, c: ExtraPick) {
+    const next = { ...extra };
+    if (next[matchId] === c) delete next[matchId];
+    else next[matchId] = c;
+    update(choices, next);
+  }
+
   const p = serializeChoices(choices);
   const chosen = choices.filter((c) => c !== "-").length;
   const complete = chosen === fixtures.length;
   const missing = fixtures.length - chosen;
+  const persona = complete && !result.choices.includes("-") ? predictionPersona(result.choices, result) : null;
+  const xParam = x ? `&x=${encodeURIComponent(x)}` : "";
+
+  // Desafio: a previsão de quem está na página, por rodada (vale depois que os jogos acontecem)
+  const mine: Player["picks"] | null = complete ? { start: fixtures[0].round, picks: choices as Pick[] } : null;
+  const duelFixtures = fixtures.map((f) => ({ round: f.round, kickoffUtc: f.kickoffUtc, home: f.home, opponent: f.opponent }));
+  const currentPoints = baseline.magic.currentPoints;
 
   return (
     <div ref={rootRef} className="grid gap-6 lg:grid-cols-[1fr_380px] lg:items-start lg:gap-10">
       <div className="min-w-0 pb-24 lg:pb-0">
+        {challenge?.b && (
+          <DuelPanel a={challenge.a} b={challenge.b} fixtures={duelFixtures} played={played} currentPoints={currentPoints} />
+        )}
+        {challenge && !challenge.b && !complete && <ChallengeBanner from={challenge.a.name} total={fixtures.length} />}
+
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-muted">
             Toque em <strong className="text-white">V</strong> (vitória do Leão), <strong className="text-white">E</strong>{" "}
@@ -172,6 +228,54 @@ function SimulatorView({ fixtures, baseline, siteUrl, siteName, initial }: Props
             ? "Todos os jogos escolhidos."
             : `${chosen} de ${fixtures.length} jogos escolhidos. ${missing === 1 ? "Falta 1" : `Faltam ${missing}`} para ver onde o Leão termina.`}
         </p>
+
+        <RivalGames games={rivalFixtures} extra={extra} onPick={pickRival} />
+
+        {/* Respondendo a um desafio: com tudo escolhido, os dois lado a lado e o link para mandar de volta */}
+        {challenge && !challenge.b && mine && (
+          <div className="mt-6">
+            <DuelPanel
+              a={challenge.a}
+              b={{ name: "Você", picks: mine }}
+              fixtures={duelFixtures}
+              played={played}
+              currentPoints={currentPoints}
+            />
+            <NameShare
+              label="Mandar o duelo"
+              buildLink={(name) => challengeUrl(siteUrl, challenge.a, { name, picks: mine })}
+              text={(name) => `${challenge.a.name} x ${name}: quem conhece mais o Leão? Veja o nosso duelo no ${siteName}:`}
+              image={(name) => {
+                const q = new URLSearchParams({
+                  a: challenge.a.name,
+                  ap: `${challenge.a.picks.start}${challenge.a.picks.picks.join("")}`,
+                  b: name,
+                  bp: `${mine.start}${mine.picks.join("")}`,
+                });
+                return `/api/card/duelo?${q.toString()}`;
+              }}
+              fileName="fortaleza-duelo.png"
+            />
+          </div>
+        )}
+
+        {/* Sem desafio: com tudo escolhido, dá para desafiar um amigo */}
+        {!challenge && mine && (
+          <div className="mt-6 rounded-2xl bg-surface p-4 ring-1 ring-line">
+            <h3 className="text-lg font-semibold">Desafie um amigo</h3>
+            <p className="mt-1 text-sm text-muted">
+              Ele recebe um link, faz a previsão dele sem ver a sua e depois vocês comparam. A cada jogo do Leão, o
+              placar de acertos se atualiza.
+            </p>
+            <div className="mt-3">
+              <NameShare
+                label="Criar desafio"
+                buildLink={(name) => challengeUrl(siteUrl, { name, picks: mine })}
+                text={(name) => `${name} te desafiou: quem acerta mais os jogos do Leão até o fim da Série B? Faça a sua previsão:`}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       <ResultPanel
@@ -182,19 +286,31 @@ function SimulatorView({ fixtures, baseline, siteUrl, siteName, initial }: Props
         complete={complete}
         chosen={chosen}
         total={fixtures.length}
-        onRetry={() => runner.request(p, { immediate: true })}
+        onRetry={() => runner.request(p, { immediate: true, x })}
         inView={inView}
         open={open}
         setOpen={setOpen}
+        persona={persona}
         share={
-          <ShareButton
-            label="Compartilhar minha previsão"
-            image={`/api/card/previsao?p=${p}`}
-            fileName="fortaleza-minha-previsao.png"
-            link={`${siteUrl}/?p=${p}#simulador`}
-            text={`Minha previsão para o Leão na Série B: ${finalPoints(result).value} pontos e ${Math.round(result.focus.pPromotion * 100)}% de chance de acesso. Faça a sua no ${siteName}:`}
-            disabled={!complete || loading || !!error}
-          />
+          <>
+            <ShareButton
+              label="Compartilhar minha previsão"
+              image={`/api/card/previsao?p=${p}${xParam}`}
+              fileName="fortaleza-minha-previsao.png"
+              link={`${siteUrl}/?p=${p}${xParam}#simulador`}
+              text={`Minha previsão para o Leão na Série B: ${finalPoints(result).value} pontos e ${Math.round(result.focus.pPromotion * 100)}% de chance de acesso. Faça a sua no ${siteName}:`}
+              disabled={!complete || loading || !!error}
+            />
+            <ShareButton
+              label="Provocar: modelo x eu"
+              variant="outline"
+              image={`/api/card/provocacao?p=${p}${xParam}`}
+              fileName="fortaleza-modelo-x-eu.png"
+              link={`${siteUrl}/?p=${p}${xParam}#simulador`}
+              text={`O modelo dá ${Math.round(baseline.focus.pPromotion * 100)}% de chance de acesso pro Leão. Eu dou ${Math.round(result.focus.pPromotion * 100)}%. E você?`}
+              disabled={!complete || loading || !!error}
+            />
+          </>
         }
       />
     </div>
@@ -214,7 +330,9 @@ function ResultPanel({
   open,
   setOpen,
   share,
+  persona,
 }: {
+  persona: { title: string; line: string } | null;
   result: ScenarioResult;
   /** marcas de pontos do cenário geral (20 mil simulações), comparadas com os pontos da previsão */
   magic: MagicNumbers;
@@ -351,6 +469,12 @@ function ResultPanel({
             <p className="py-6 text-muted lg:mt-4">Calculando onde o Leão termina…</p>
           ) : (
             <div className={`transition-opacity ${fade}`} aria-busy={loading}>
+              {persona && (
+                <div className="mb-4 rounded-2xl bg-bg/50 p-3 lg:mt-4">
+                  <p className="font-display text-2xl leading-none text-win">{persona.title}</p>
+                  <p className="mt-1 text-sm text-white/90">{persona.line}</p>
+                </div>
+              )}
               <div className="grid grid-cols-2 gap-4 lg:mt-4">
                 <div>
                   <p className="text-sm text-muted">Pontos no fim</p>

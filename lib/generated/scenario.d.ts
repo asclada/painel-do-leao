@@ -7,6 +7,7 @@
 
 export interface ScenarioResult {
   choices: string;
+  extra?: string;
   nSims: number;
   fixedPoints: number;
   finalPointsMin: number;

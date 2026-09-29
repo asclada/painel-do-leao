@@ -2,6 +2,7 @@
 
 GET /api/py/health          -> acorda a função (o front chama quando o simulador chega na tela)
 GET /api/py/simular?p=VVE-D -> chances do Fortaleza com os resultados escolhidos
+    &x=vila-nova--juventude:X    -> opcional: fixa também jogos de outros times (1 / X / 2)
 
 Lê só data/model.json (gerado pelo pipeline) e usa o MESMO modelo do pipeline
 (pipeline/model), para o número do simulador e o do topo nunca divergirem.
@@ -42,14 +43,17 @@ def health():
 
 
 @app.get("/api/py/simular")
-def simular(p: str = Query("", max_length=38, description="V/E/D/- por jogo restante do Fortaleza")):
+def simular(
+    p: str = Query("", max_length=38, description="V/E/D/- por jogo restante do Fortaleza"),
+    x: str = Query("", max_length=2000, description="jogos de outros times: 'mandante--visitante:1|X|2,...'"),
+):
     model = load_model()
     n_games = len(model.focus_remaining)
     try:
         choices = validate_choices(p or "-" * n_games, n_games)
+        result = run_scenario(model, choices, N_SIMS_API, x or None)
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
-    result = run_scenario(model, choices, N_SIMS_API)
     body = result.dump()
     body["lastCompletedRound"] = model.last_completed_round
     return JSONResponse(body, headers={"Cache-Control": CACHE})

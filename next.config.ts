@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Fontes lidas com fs pelas imagens do next/og (cards e Open Graph).
   outputFileTracingIncludes: {
-    "/api/card/*": ["./assets/fonts/*.woff"],
+    "/api/card/*": ["./assets/fonts/*.woff", "./assets/escudo-fortaleza.png", "./public/escudos/*.png"],
     "/opengraph-image": ["./assets/fonts/*.woff"],
     "/twitter-image": ["./assets/fonts/*.woff"],
   },

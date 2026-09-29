@@ -127,6 +127,10 @@
     "choices": {
       "type": "string"
     },
+    "extra": {
+      "default": "",
+      "type": "string"
+    },
     "nSims": {
       "type": "integer"
     },

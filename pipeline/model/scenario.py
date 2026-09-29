@@ -1,8 +1,11 @@
-"""Cenário do simulador "E se?": resultados escolhidos para os jogos do Fortaleza.
+"""Cenário do simulador "E se?": resultados escolhidos para os jogos do Fortaleza (e, opcionalmente, dos rivais).
 
-Usado pela FastAPI (/api/py/simular) e pelos testes. As escolhas vêm como texto,
+Usado pela FastAPI (/api/py/simular) e pelos testes. As escolhas do Fortaleza vêm como texto,
 um caractere por jogo restante do Fortaleza, em ordem cronológica:
 V = vitória do Fortaleza, E = empate, D = derrota, - = deixar o modelo sortear.
+
+Jogos de outros times (os confrontos diretos da corrida, no site) vêm à parte, em `extra`:
+"mandante--visitante:1,outro--jogo:X", com 1 = vitória do mandante, X = empate, 2 = vitória do visitante.
 """
 
 from __future__ import annotations
@@ -17,10 +20,13 @@ from pipeline.model.types import ModelInput
 from pipeline.models import Model
 
 VALID = set("VED-")
+EXTRA_CODES = {"1": HOME_WIN, "X": DRAW, "2": AWAY_WIN}
+MAX_EXTRA = 30
 
 
 class ScenarioResult(Model):
     choices: str
+    extra: str = ""  # jogos de outros times fixados, na forma canônica (ordem cronológica)
     n_sims: int
     fixed_points: int  # pontos garantidos pelas escolhas (V=3, E=1)
     final_points_min: int  # pontos finais se todos os jogos livres forem derrota
@@ -41,12 +47,42 @@ def validate_choices(choices: str, n_games: int) -> str:
     return choices
 
 
-def scenario_seed(choices: str, last_round: int) -> int:
-    h = hashlib.sha256(f"{last_round}:{choices}".encode()).hexdigest()
+def parse_extra(model: ModelInput, raw: str | None) -> dict[int, int]:
+    """'id:1,id:X' -> {índice em model.remaining: resultado}. Só jogos que faltam e que não são do Fortaleza."""
+    if not raw:
+        return {}
+    index = {r.id: j for j, r in enumerate(model.remaining)}
+    out: dict[int, int] = {}
+    for part in raw.split(","):
+        match_id, sep, code = part.strip().partition(":")
+        j = index.get(match_id)
+        if not sep or j is None:
+            raise ValueError(f"Jogo desconhecido ou já disputado: {match_id or part}.")
+        m = model.remaining[j]
+        if model.focus_team in (m.home, m.away):
+            raise ValueError("Os jogos do Fortaleza vão no parâmetro p.")
+        code = code.upper()
+        if code not in EXTRA_CODES:
+            raise ValueError(f"Use 1, X ou 2 para {match_id} (recebi {code or 'nada'}).")
+        out[j] = EXTRA_CODES[code]
+    if len(out) > MAX_EXTRA:
+        raise ValueError(f"No máximo {MAX_EXTRA} jogos de outros times.")
+    return out
+
+
+def canonical_extra(model: ModelInput, extra: dict[int, int]) -> str:
+    code = {v: k for k, v in EXTRA_CODES.items()}
+    return ",".join(f"{model.remaining[j].id}:{code[o]}" for j, o in sorted(extra.items()))
+
+
+def scenario_seed(choices: str, last_round: int, extra: str = "") -> int:
+    # sem jogos extras, a semente é a mesma de antes (os links antigos dão o mesmo número)
+    key = f"{last_round}:{choices}" + (f":{extra}" if extra else "")
+    h = hashlib.sha256(key.encode()).hexdigest()
     return int(h[:12], 16)
 
 
-def fixed_vector(model: ModelInput, choices: str) -> np.ndarray:
+def fixed_vector(model: ModelInput, choices: str, extra: dict[int, int] | None = None) -> np.ndarray:
     fixed = np.full(len(model.remaining), FREE)
     for c, j in zip(choices, model.focus_remaining):
         if c == "-":
@@ -58,14 +94,18 @@ def fixed_vector(model: ModelInput, choices: str) -> np.ndarray:
             fixed[j] = HOME_WIN
         else:
             fixed[j] = AWAY_WIN
+    for j, o in (extra or {}).items():
+        fixed[j] = o
     return fixed
 
 
-def run_scenario(model: ModelInput, choices: str | None, n: int) -> ScenarioResult:
+def run_scenario(model: ModelInput, choices: str | None, n: int, extra: str | None = None) -> ScenarioResult:
     n_games = len(model.focus_remaining)
     choices = validate_choices(choices if choices else "-" * n_games, n_games)
-    seed = scenario_seed(choices, model.last_completed_round)
-    sim = simulate_season(model, n, seed, fixed_vector(model, choices))
+    fixed_extra = parse_extra(model, extra)
+    extra_key = canonical_extra(model, fixed_extra)
+    seed = scenario_seed(choices, model.last_completed_round, extra_key)
+    sim = simulate_season(model, n, seed, fixed_vector(model, choices, fixed_extra))
     f = model.focus_team
     odds = team_odds(sim, model.teams)[f]
     cur = model.table.points[f]
@@ -73,6 +113,7 @@ def run_scenario(model: ModelInput, choices: str | None, n: int) -> ScenarioResu
     free = choices.count("-")
     return ScenarioResult(
         choices=choices,
+        extra=extra_key,
         n_sims=n,
         fixed_points=fixed_pts,
         final_points_min=cur + fixed_pts,

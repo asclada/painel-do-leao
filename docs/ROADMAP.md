@@ -51,6 +51,13 @@
 
 ## Pacote 2 — Desafio e conteúdo (sem banco) · ~meio dia
 
+> **Status (29/09/2026): implementado** (itens 1–7). Desafio pelo link (`?a=&ap=31VVED...`, previsão guardada por
+> rodada, então o placar de acertos continua valendo depois dos jogos; `lib/challenge.ts`), duelo lado a lado no
+> simulador e card `/api/card/duelo`, card `/api/card/provocacao` (modelo x eu), persona da previsão
+> (`predictionPersona`), confrontos diretos opcionais no simulador (API `x=id:1|X|2`), cards de curiosidade do
+> Raio-X (`/api/card/curiosidade?t=`) e a seção "Conteúdo da rodada" (acesso, conta mudou, próximo jogo com escudos
+> e chances, curiosidade que roda a cada rodada).
+
 1. **Desafio do Leão**: previsão completa + apelido no link; o amigo abre, faz a dele e vê a comparação lado a lado.
 2. **Card duelo** ("Lucas x João: quem conhece mais o Leão?").
 3. **Card de provocação**: "Modelo: 62% · Meu palpite: 81%".

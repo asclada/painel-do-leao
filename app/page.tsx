@@ -1,6 +1,7 @@
 import { CampaignStats } from "@/components/campaign/CampaignStats";
 import { RoundOneQuiz } from "@/components/campaign/RoundOneQuiz";
 import { ChanceHistory, chanceHeadline } from "@/components/chance/ChanceHistory";
+import { RoundContent } from "@/components/content/RoundContent";
 import { DataStatusBanner } from "@/components/DataStatusBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -67,6 +68,14 @@ export default function Home() {
 
         <Section id="raio-x" title="Raio-X do time">
           <XRay />
+        </Section>
+
+        <Section
+          id="para-postar"
+          title="Conteúdo da rodada"
+          headline="Cards prontos para postar depois de cada jogo. Eles se atualizam sozinhos: é só escolher e compartilhar."
+        >
+          <RoundContent />
         </Section>
       </main>
       <Footer />

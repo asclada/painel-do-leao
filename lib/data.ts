@@ -67,6 +67,9 @@ export const focusFixtures: FocusFixture[] = model.focusRemaining.map((j) => {
   };
 });
 
+/** Ids dos jogos que ainda faltam (de todos os times), como a API do simulador conhece. */
+export const remainingMatchIds = new Set(model.remaining.map((m) => m.id));
+
 /** Cenário "sem escolhas" direto do build (20 mil simulações): bate com o topo e evita uma chamada. */
 export const baselineScenario: ScenarioResult = {
   choices: "-".repeat(focusFixtures.length),

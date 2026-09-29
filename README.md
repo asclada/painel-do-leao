@@ -23,10 +23,18 @@ jogos mais pesam e um simulador para montar a própria previsão. Atualiza sozin
 - **Os jogos que mais mexem na chance:** quanto a chance muda se o Leão vencer, empatar ou perder cada jogo, e
   **"Pra secar nesta rodada"**: os três resultados de cada jogo da rodada, do que mais ajuda o Leão para o que mais
   atrapalha ("Torça pelo X · se não der, o empate serve" ou "Torça contra Y").
-- **Simulador dos próximos jogos:** o torcedor escolhe V/E/D em cada jogo e vê onde o Leão termina (API em Python).
+- **Simulador dos próximos jogos:** o torcedor escolhe V/E/D em cada jogo e vê onde o Leão termina (API em Python),
+  com uma "cara" para a previsão ("Fé inabalável", "Vai ser nos playoffs"...) e, se quiser, também os confrontos
+  diretos entre os rivais.
+- **Desafio do Leão:** a previsão vira um link com apelido; o amigo faz a dele sem ver a primeira e os dois
+  aparecem lado a lado, com placar de acertos que se atualiza a cada jogo. Tudo no link, sem cadastro nem banco.
 - **Até a rodada 38:** pontuação mais provável, faixa de pontos e as marcas que deixam G6 e acesso quase garantidos.
-- **Raio-X:** casa x fora, turno x returno, gols por faixa de minuto, o que muda depois do intervalo.
-- **Cards para compartilhar** (story 1080×1920 e prévia de link), gerados no servidor.
+- **Raio-X:** casa x fora, turno x returno, gols por faixa de minuto, o que muda depois do intervalo; cada
+  curiosidade vira um card para compartilhar.
+- **Conteúdo da rodada:** cards prontos para postar depois de cada jogo (chance de acesso, a conta mudou, próximo
+  jogo com os escudos e as chances, curiosidade da vez).
+- **Cards para compartilhar** (story 1080×1920 e prévia de link), gerados no servidor: chance de acesso, minha
+  previsão, modelo x eu, duelo, próximo jogo, curiosidades.
 
 ## Arquitetura
 

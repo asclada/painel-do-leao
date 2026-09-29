@@ -64,6 +64,33 @@ export function pointsPhrase(points: number, m: MagicNumbers) {
     : `${base} Para ficar no G6 com mais de 90% de chance, a marca é ${top6}.`;
 }
 
+/** "5 vitórias, 2 empates e 1 derrota" */
+function tally(w: number, d: number, l: number) {
+  return `${plural(w, "vitória")}, ${plural(d, "empate")} e ${plural(l, "derrota")}`;
+}
+
+/**
+ * A "cara" da previsão (card "Minha previsão", provocação e simulador): um título curto e uma frase, pelas
+ * escolhas e pelo que a simulação diz delas. A primeira regra que se aplica vence. Sem IA, sem texto livre.
+ */
+export function predictionPersona(choices: string, r: ScenarioResult): { title: string; line: string } {
+  const picks = choices.split("").filter((c) => c === "V" || c === "E" || c === "D");
+  const n = picks.length;
+  const w = picks.filter((c) => c === "V").length;
+  const d = picks.filter((c) => c === "E").length;
+  const l = picks.filter((c) => c === "D").length;
+  const { pDirect, pTop6, pPromotion } = r.focus;
+
+  if (n > 0 && w === n) return { title: "Fé inabalável", line: `${n} vitórias em ${n} jogos. Coração tricolor não conhece derrota.` };
+  if (l === 0 && w >= n - 2) return { title: "Otimista de carteirinha", line: `Nenhuma derrota nos ${plural(n, "jogo")} que faltam.` };
+  if (n > 0 && l >= Math.ceil(n / 2)) return { title: "Pessimista de plantão", line: `${plural(l, "derrota")} em ${n} jogos. Tá secando o próprio time?` };
+  if (n > 0 && d >= Math.ceil(n / 2)) return { title: "O rei do empate", line: `${plural(d, "empate")} em ${n} jogos. Nem tanto ao céu, nem tanto à terra.` };
+  if (pDirect >= 0.9) return { title: "Sobe direto, sem sustos", line: `${tally(w, d, l)} bastam para o G2.` };
+  if (pPromotion >= 0.5 && pTop6 > pDirect) return { title: "Vai ser nos playoffs", line: "Emoção até o fim: o caminho mais provável é o mata-mata." };
+  if (pPromotion < 0.2) return { title: "Sofrimento até a rodada 38", line: "Com esses resultados, o acesso vira missão difícil." };
+  return { title: "Pé no chão", line: `${tally(w, d, l)}: nem oba-oba, nem desespero.` };
+}
+
 /** Pontos finais: exato quando tudo foi escolhido, senão o valor mais provável com a faixa. */
 export function finalPoints(r: ScenarioResult) {
   const exact = r.finalPointsMin === r.finalPointsMax;

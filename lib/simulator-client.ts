@@ -6,6 +6,9 @@
 import type { ScenarioResult } from "@/lib/generated/scenario";
 
 export type Choice = "V" | "E" | "D" | "-";
+/** Resultado de um jogo entre outros times (confrontos diretos): 1 = mandante vence, X = empate, 2 = visitante. */
+export type ExtraPick = "1" | "X" | "2";
+export type Extra = Record<string, ExtraPick>;
 
 export const DEBOUNCE_MS = 400;
 export const ERROR_MESSAGE = "Não deu para simular agora. Tente de novo em instantes.";
@@ -32,11 +35,28 @@ export function isComplete(choices: Choice[]) {
   return choices.length > 0 && choices.every((c) => c !== "-");
 }
 
-/** Mantém as escolhas na URL (?p=VVEDV-V-E) sem recarregar nem criar histórico novo. */
-export function writeChoicesToUrl(choices: Choice[]) {
+/** "id:1,id:X" na ordem dada (a do simulador); só os jogos permitidos e escolhidos. */
+export function serializeExtra(extra: Extra, order: string[]) {
+  return order.filter((id) => extra[id]).map((id) => `${id}:${extra[id]}`).join(",");
+}
+
+export function parseExtra(raw: string | null | undefined, allowed: string[]): Extra {
+  const out: Extra = {};
+  for (const part of (raw ?? "").split(",")) {
+    const [id, code] = part.split(":");
+    const c = (code ?? "").toUpperCase();
+    if (allowed.includes(id) && (c === "1" || c === "X" || c === "2")) out[id] = c;
+  }
+  return out;
+}
+
+/** Mantém as escolhas na URL (?p=VVEDV-V-E&x=...) sem recarregar nem criar histórico novo. */
+export function writeChoicesToUrl(choices: Choice[], x = "") {
   const url = new URL(window.location.href);
   if (isEmpty(choices)) url.searchParams.delete("p");
   else url.searchParams.set("p", serializeChoices(choices));
+  if (x) url.searchParams.set("x", x);
+  else url.searchParams.delete("x");
   window.history.replaceState(window.history.state, "", url);
 }
 
@@ -70,8 +90,10 @@ export function warmUpWhenNear(el: Element) {
   return () => io.disconnect();
 }
 
-export async function fetchScenario(p: string, signal?: AbortSignal): Promise<ScenarioResult> {
-  const res = await fetch(`/api/py/simular?p=${encodeURIComponent(p)}`, { signal });
+export async function fetchScenario(p: string, x = "", signal?: AbortSignal): Promise<ScenarioResult> {
+  const q = new URLSearchParams({ p });
+  if (x) q.set("x", x);
+  const res = await fetch(`/api/py/simular?${q.toString()}`, { signal });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }
@@ -98,12 +120,12 @@ export function createScenarioRunner({ onLoading, onResult, onError }: Listener)
     controller = null;
   }
 
-  async function run(p: string) {
+  async function run(p: string, x: string) {
     controller = new AbortController();
     const { signal } = controller;
     try {
-      const result = await fetchScenario(p, signal);
-      cache.set(p, result);
+      const result = await fetchScenario(p, x, signal);
+      cache.set(`${p}|${x}`, result);
       if (!signal.aborted) {
         onResult(result);
         onLoading(false);
@@ -116,22 +138,22 @@ export function createScenarioRunner({ onLoading, onResult, onError }: Listener)
   }
 
   return {
-    /** `immediate` pula o debounce (ex.: botão "Tentar de novo" ou link aberto com ?p=). */
-    request(p: string, { immediate = false } = {}) {
+    /** `immediate` pula o debounce (ex.: botão "Tentar de novo" ou link aberto com ?p=); `x` = confrontos diretos. */
+    request(p: string, { immediate = false, x = "" } = {}) {
       cancel();
-      const hit = cache.get(p);
+      const hit = cache.get(`${p}|${x}`);
       if (hit) {
         onResult(hit);
         onLoading(false);
         return;
       }
       onLoading(true);
-      if (immediate) void run(p);
-      else timer = setTimeout(() => void run(p), DEBOUNCE_MS);
+      if (immediate) void run(p, x);
+      else timer = setTimeout(() => void run(p, x), DEBOUNCE_MS);
     },
     /** Resultado já conhecido (ex.: o cenário sem escolhas, que vem do build). */
     seed(p: string, result: ScenarioResult) {
-      cache.set(p, result);
+      cache.set(`${p}|`, result);
     },
     cancel,
   };
