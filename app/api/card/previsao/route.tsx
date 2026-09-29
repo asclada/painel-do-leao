@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { baselineScenario, focusFixtures } from "@/lib/data";
 import type { ScenarioResult } from "@/lib/generated/scenario";
-import { PredictionCard, predictionGames, STORY, type CardVariant } from "@/lib/og/cards";
+import { PredictionCard, predictionGames, STORY } from "@/lib/og/cards";
 import { ogFonts } from "@/lib/og/fonts";
 import { isEmpty, parseChoices, serializeChoices } from "@/lib/simulator-client";
 
@@ -17,7 +17,6 @@ export async function GET(req: Request) {
   if (raw && raw.toUpperCase() !== p) {
     return new Response("Escolhas inválidas: use V, E, D ou - para cada jogo que falta.", { status: 400 });
   }
-  const variant: CardVariant = url.searchParams.get("v") === "b" ? "b" : "a";
 
   let result: ScenarioResult = baselineScenario;
   if (!isEmpty(choices)) {
@@ -28,7 +27,7 @@ export async function GET(req: Request) {
     result = await res.json();
   }
 
-  return new ImageResponse(<PredictionCard variant={variant} games={predictionGames(focusFixtures, choices)} result={result} />, {
+  return new ImageResponse(<PredictionCard games={predictionGames(focusFixtures, choices)} result={result} />, {
     ...STORY,
     fonts: await ogFonts(),
     headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=3600" },

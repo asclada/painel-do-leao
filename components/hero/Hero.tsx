@@ -1,3 +1,5 @@
+import Image from "next/image";
+import escudo from "@/assets/escudo-fortaleza.png";
 import { NextMatchCard } from "@/components/hero/NextMatchCard";
 import { ShareButton } from "@/components/share/ShareButton";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
@@ -20,6 +22,19 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
     <section id={anchor} aria-labelledby={`${anchor}-title`} className="spotlight">
       <div className="mx-auto grid w-full max-w-[1100px] gap-5 px-4 pb-8 pt-4 sm:pt-10 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
         <div className="min-w-0">
+          {/* Resumo do site para quem chega pelo link: o que é e para que serve, em uma frase */}
+          <div className="mb-5 flex items-center gap-4">
+            <Image
+              src={escudo}
+              alt="Escudo do Fortaleza Esporte Clube"
+              loading="eager"
+              className="h-16 w-auto shrink-0 sm:h-20"
+            />
+            <p className="text-[15px] leading-snug text-white/90 sm:text-base">
+              Aqui você acompanha o Fortaleza na Série B: a posição na tabela, a chance de subir para a Série A e os
+              jogos que faltam. Tudo se atualiza sozinho depois de cada rodada.
+            </p>
+          </div>
           <h1 id={`${anchor}-title`} className="text-sm text-muted">
             Fortaleza na Série B · depois da rodada {meta.lastCompletedRound}
           </h1>

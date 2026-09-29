@@ -21,12 +21,24 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   (`api/index.py`, rotas `/api/py/health` e `/api/py/simular?p=VED-`) roda 5 mil a partir de `data/model.json`.
 - **Saídas do site:** `pipeline/outputs.py` (modelos) → `data/*.json` → tipos em `lib/generated/` → `lib/data.ts`.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em
-  `lib/site.ts`. Seções em `components/` (hero F1, season-chart F2, race F3, xray F5).
+  `lib/site.ts` (inclui `SITE_URL`). Seções em `components/` (hero F1, season-chart F2, race F3, simulator F4, xray F5).
+  O Recharts do F2 é carregado sob demanda (`SeasonChartPlot.tsx` via `next/dynamic`) para o Lighthouse mobile ficar ≥ 90.
   Relógio do cliente via `lib/useNow.ts` (useSyncExternalStore) — não usar setState em efeito para "agora".
+- **Simulador (F4):** `components/simulator/` + `lib/simulator-client.ts` (debounce 400ms, AbortController, cache em
+  memória, aquecimento de `/api/py/health`) + `lib/simulator-text.ts` (frases). Jogos e cenário sem escolhas vêm de
+  `data/model.json`/`simulation.json` no build (`focusFixtures`, `baselineScenario` em `lib/data.ts`); escolhas em `?p=`.
+- **Imagens (next/og):** `lib/og/cards.tsx` (cards de story e Open Graph) e `lib/og/fonts.ts` (fontes WOFF em
+  `assets/fonts`, OFL, incluídas via `outputFileTracingIncludes`). Satori: todo `div` com mais de um filho precisa de
+  `display: flex`, e número puro como filho quebra (use template string/`String()`).
+  Rotas: `/api/card/acesso`, `/api/card/previsao?p=`, `app/opengraph-image.tsx`, `twitter-image`, `apple-icon`, `icon.svg`.
 - **Escolhas visuais do Lucas (checkpoints 1 e 2, 28/09):** nome **Fortaleza em Números**; Bebas Neue + Inter;
   vermelho contido (só a chance de subir em vermelho); derrota = bolinha vermelha; montanha-russa com linha
   **branca** e pontos verde (V) / cinza (E) / vermelho (D), faixas G2/G6 preenchidas e Z4 hachurada.
-  A rota `/preview` foi removida; volta só para o checkpoint 3 (cards de compartilhar).
+  **Checkpoint 3 (29/09):** card "Chance de acesso" opção A (Placar) e card "Minha previsão" opção A (Lista); a rota
+  `/preview` foi removida depois da escolha.
+- **Escudo:** por decisão do Lucas (29/09), o topo usa o **primeiro escudo oficial** do Fortaleza (`assets/escudo-fortaleza.png`,
+  fundo removido a partir de `D:\painel-do-leao\assets\escudo-fec.jpg`), com um resumo curto do site ao lado.
+  Os badges dos outros clubes continuam só com a sigla; o favicon é original (barras tricolores).
 - **Next.js (App Router) + TypeScript + Tailwind + pnpm** para o site; lê apenas `data/*.json` no build.
 - **GitHub Actions** (cron 2h) roda `pipeline/update_data.py`, commita `data/` e a **Vercel** faz deploy.
 - A chave da API só existe em `.env.local` (local) e GitHub Secrets. Nunca na Vercel nem no navegador.
@@ -81,4 +93,4 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Andamento do roteiro: seção 17 de `docs/PLANO.md` + `git log --oneline`.
 - Execuções do cron: `gh run list --workflow update-data.yml`.
 
-_Última atualização: 28/09/2026 (Dia 2 concluído: escolhas visuais aplicadas; próximo: Dia 3 — simulador e cards)._
+_Última atualização: 29/09/2026 (Dia 3: simulador, cards, Open Graph, SEO, escudo e textos de divulgação no ar; faltam os testes do Lucas no celular (M10) e a revisão dos textos (M11))._
