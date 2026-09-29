@@ -9,7 +9,7 @@ import { TeamBadge } from "@/components/ui/TeamBadge";
 import { TweenPct } from "@/components/ui/TweenPct";
 import { shortDate } from "@/lib/format";
 import type { Team } from "@/lib/generated/outputs";
-import type { ScenarioResult } from "@/lib/generated/scenario";
+import type { MagicNumbers, ScenarioResult } from "@/lib/generated/scenario";
 import {
   type Choice,
   createScenarioRunner,
@@ -19,7 +19,7 @@ import {
   warmUpWhenNear,
   writeChoicesToUrl,
 } from "@/lib/simulator-client";
-import { finalPoints, magicPhrase, pG6, scenarioPhrase } from "@/lib/simulator-text";
+import { finalPoints, pG6, pointsPhrase, scenarioPhrase } from "@/lib/simulator-text";
 
 export type SimFixture = { matchId: string; round: number; kickoffUtc: string; home: boolean; opponent: Team };
 
@@ -176,7 +176,7 @@ function SimulatorView({ fixtures, baseline, siteUrl, siteName, initial }: Props
 
       <ResultPanel
         result={result}
-        magic={magicPhrase(baseline.magic)}
+        magic={baseline.magic}
         loading={loading}
         error={error}
         complete={complete}
@@ -216,8 +216,8 @@ function ResultPanel({
   share,
 }: {
   result: ScenarioResult;
-  /** "quantos pontos a gente precisa?" vem do cenário geral: não muda a cada clique */
-  magic: string | null;
+  /** marcas de pontos do cenário geral (20 mil simulações), comparadas com os pontos da previsão */
+  magic: MagicNumbers;
   loading: boolean;
   error: string | null;
   /** todos os jogos têm resultado escolhido: só então o painel mostra números */
@@ -233,6 +233,7 @@ function ResultPanel({
   const pts = finalPoints(result);
   // o resultado guardado pode ser de um cenário anterior: enquanto o novo não chega, aparece apagado
   const hasResult = complete && !result.choices.includes("-");
+  const ptsText = hasResult ? pointsPhrase(pts.value, magic) : null;
   const fade = loading ? "opacity-50" : "opacity-100";
   const missing = total - chosen;
   const lockedText =
@@ -388,7 +389,7 @@ function ResultPanel({
               <p className="mt-4 font-semibold leading-snug" aria-live="polite">
                 {scenarioPhrase(result)}
               </p>
-              {magic && <p className="mt-2 text-sm text-muted">{magic}</p>}
+              {ptsText && <p className="mt-2 text-sm text-muted">{ptsText}</p>}
             </div>
           )}
 

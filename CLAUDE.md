@@ -28,6 +28,10 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   400ms, AbortController, cache em memória, aquecimento de `/api/py/health`) + `lib/simulator-text.ts` (frases).
   **Sem sorteio (pedido do Lucas, 29/09):** o painel "Onde o Leão termina" fica bloqueado até V/E/D em TODOS os jogos;
   sem atalhos de "tudo vitória". O card `/api/card/previsao` também exige todas as escolhas (400 se faltar).
+  A frase de pontos (`pointsPhrase`) compara os pontos finais da previsão com as marcas do cenário geral
+  (`simulation.magic`: pontos para >90% de acesso direto e de G6); não usar o `magic` da resposta da API, que com
+  todos os jogos fixados vira o próprio total. No painel oculto do navegador de testes o simulador não hidrata
+  (React adia o Suspense com a aba em segundo plano): tire uma captura de tela antes de testar.
   Jogos vêm de `data/model.json` no build (`focusFixtures` em `lib/data.ts`); escolhas em `?p=`.
 - **Card do próximo jogo:** escudos dos dois times na ordem mandante/visitante, do mesmo tamanho (pedido do Lucas,
   29/09), e sempre o `assets/escudo-fortaleza.png` para o Fortaleza. Selo azul "Próximo jogo • Rodada X". Escudos dos adversários em `public/escudos/{time}.png`, baixados

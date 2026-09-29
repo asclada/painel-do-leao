@@ -18,12 +18,24 @@ export function scenarioPhrase(r: ScenarioResult) {
   return "Ainda dá para subir, mas vai depender bastante dos rivais.";
 }
 
-/** "Com 68 pontos, a chance de subir direto passa de 90%." (+ tradução em vitórias) */
-export function magicPhrase(m: MagicNumbers) {
-  if (m.pointsFor90Direct == null) return null;
-  const pts = `Com ${m.pointsFor90Direct} pontos, a chance de subir direto passa de 90%.`;
-  if (m.winsNeededDirect == null || m.winsNeededDirect === 0) return pts;
-  return `${pts} Dá para chegar lá com ${plural(m.winsNeededDirect, "vitória")} nos ${m.remainingGames} jogos que faltam.`;
+/**
+ * Compara os pontos finais da previsão com as "marcas" do cenário geral (20 mil simulações):
+ * a partir de `pointsFor90Direct` pontos, o Fortaleza subiu direto em mais de 90% das temporadas;
+ * a partir de `pointsFor90Top6`, terminou no G6 em mais de 90%. Muda a cada previsão.
+ */
+export function pointsPhrase(points: number, m: MagicNumbers) {
+  const direct = m.pointsFor90Direct;
+  const top6 = m.pointsFor90Top6;
+  if (direct == null) return null;
+  if (points >= direct) {
+    return `Com ${points} pontos, o Leão ${points === direct ? "chega à" : "passa da"} marca de ${direct}: a partir dela, a chance de subir direto fica acima de 90%.`;
+  }
+  const gap = direct - points;
+  const base = `Com ${points} pontos, ${gap === 1 ? "faltaria" : "faltariam"} ${plural(gap, "ponto")} para a marca de ${direct}, que deixa a chance de subir direto acima de 90%.`;
+  if (top6 == null || top6 >= direct) return base;
+  return points >= top6
+    ? `${base} Mas já passa dos ${top6}, que deixam a chance de ficar no G6 acima de 90%.`
+    : `${base} Para ficar no G6 com mais de 90% de chance, a marca é ${top6}.`;
 }
 
 /** Pontos finais: exato quando tudo foi escolhido, senão o valor mais provável com a faixa. */

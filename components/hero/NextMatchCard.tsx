@@ -53,7 +53,7 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
         </span>
       </p>
 
-      <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+      <div className="mt-6 grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:mt-7">
         {[home, away].map((t, i) => (
           <div key={t.id} className={`flex flex-col items-center gap-2 text-center ${i === 1 ? "col-start-3" : ""}`}>
             <Crest team={t} />
