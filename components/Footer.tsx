@@ -2,6 +2,30 @@ import { calibration, meta, simulation } from "@/lib/data";
 
 const PROVIDER_LABEL: Record<string, string> = { espn: "ESPN", footballsoccerapi: "Football Soccer API" };
 
+// Redes do Lucas (pedido dele, 29/09)
+const INSTAGRAM = "https://www.instagram.com/slucah";
+const X_PROFILE = "https://twitter.com/ascladaz";
+
+// Ícones desenhados aqui: a versão do lucide-react do projeto não traz logos de marcas.
+function InstagramIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+      strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function XIcon() {
+  return (
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78L17.75 3Zm-1.08 16.17h1.7L7.4 4.74H5.58l11.09 14.43Z" />
+    </svg>
+  );
+}
+
 function updatedLabel(iso: string | null) {
   if (!iso) return "";
   return new Intl.DateTimeFormat("pt-BR", {
@@ -47,7 +71,25 @@ export function Footer() {
           <p>
             Dados: {PROVIDER_LABEL[meta.provider ?? ""] ?? meta.provider}. Atualizado em {updatedLabel(meta.updatedAt)}.
           </p>
-          <p>Feito por Lucas.</p>
+          <p>
+            Feito por{" "}
+            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer"
+              className="font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white">
+              Lucas
+            </a>
+            .
+          </p>
+          <div className="flex items-center gap-2">
+            <span>Minhas redes sociais</span>
+            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram do Lucas"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white hover:bg-white/10">
+              <InstagramIcon />
+            </a>
+            <a href={X_PROFILE} target="_blank" rel="noopener noreferrer" aria-label="X (antigo Twitter) do Lucas"
+              className="-ml-1 inline-flex h-11 w-11 items-center justify-center rounded-full text-white hover:bg-white/10">
+              <XIcon />
+            </a>
+          </div>
         </div>
       </div>
       <div className="tricolor h-1" aria-hidden />
