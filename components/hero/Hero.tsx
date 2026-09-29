@@ -5,7 +5,7 @@ import { FormDots } from "@/components/ui/FormDots";
 import { fortalezaOdds, fortalezaRow, FORTALEZA, meta, nextMatch, standings, xray } from "@/lib/data";
 import { pct, pctNumber, plural } from "@/lib/format";
 import { situation } from "@/lib/situation";
-import { SITE_NAME } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 /**
  * F1 — "Como tá o Leão agora". Em 5 segundos: onde o time está e a chance de subir.
@@ -62,6 +62,9 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
             <ShareButton
               compact
               variant="outline"
+              image="/api/card/acesso"
+              fileName="fortaleza-chance-de-acesso.png"
+              link={SITE_URL}
               text={`O Fortaleza tem ${chance}% de chance de subir para a Série A, segundo o ${SITE_NAME}.`}
             />
           </div>

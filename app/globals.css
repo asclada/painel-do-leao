@@ -13,7 +13,7 @@
   --draw: #94a3b8;
   --loss: #e11d2e; /* derrota em vermelho (checkpoint 1) */
   --line: rgb(168 180 216 / 0.16);
-
+  --sky: #7aa2ff; /* G6 em gráficos pequenos (contraste sobre o --surface) */
 }
 
 @theme inline {
@@ -27,6 +27,7 @@
   --color-draw: var(--draw);
   --color-loss: var(--loss);
   --color-line: var(--line);
+  --color-sky: var(--sky);
   --font-display: var(--font-bebas), "Arial Narrow", sans-serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
 
