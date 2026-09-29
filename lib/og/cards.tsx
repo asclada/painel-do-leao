@@ -1,6 +1,7 @@
 // Cards de compartilhar (F6) em JSX para o next/og (Satori: só flexbox, estilos inline, sem variáveis CSS).
 // Duas variações de cada card para o checkpoint visual 3: "placar" (A) e "pôster" (B).
 import type { ReactNode } from "react";
+import { readableText } from "@/lib/color";
 import { fortalezaOdds, fortalezaRow, FORTALEZA, meta, standings, teamById, timeline, xray } from "@/lib/data";
 import { pct, plural } from "@/lib/format";
 import type { Team } from "@/lib/generated/outputs";
@@ -106,7 +107,7 @@ function Badge({ team, size = 1 }: { team: Team; size?: number }) {
         padding: `0 ${12 * size}px`,
         borderRadius: 12 * size,
         background: team.color,
-        color: team.textColor ?? C.white,
+        color: readableText(team.color, team.textColor),
         fontFamily: "Bebas",
         fontSize: 44 * size,
         border: "2px solid rgba(255,255,255,0.18)",
@@ -385,4 +386,55 @@ export function PredictionCard({
 
 export function predictionGames(fixtures: { opponentId: string; home: boolean; round: number }[], choices: Choice[]) {
   return fixtures.map((f, i) => ({ opponent: teamById[f.opponentId], home: f.home, round: f.round, choice: choices[i] }));
+}
+
+// ---------------------------------------------------------------- Preview de link (Open Graph, 1200×630)
+
+export const OG = { width: 1200, height: 630 } as const;
+export const OG_ALT = `${SITE_NAME}: posição do Fortaleza na Série B e a chance de acesso`;
+
+export function OgCard() {
+  const sit = situation(standings, FORTALEZA);
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        background: `radial-gradient(900px 500px at 20% -150px, rgba(29,78,216,0.5), ${C.bg} 70%)`,
+        color: C.white,
+        fontFamily: "Inter",
+      }}
+    >
+      <Tricolor height={12} />
+      <div style={{ display: "flex", flex: 1, padding: "56px 72px 48px" }}>
+        <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+          <div style={{ fontFamily: "Bebas", fontSize: 60 }}>{SITE_NAME}</div>
+          <div style={{ fontSize: 28, color: C.muted }}>{`O Leão na Série B · depois da rodada ${meta.lastCompletedRound}`}</div>
+          <div style={{ display: "flex", alignItems: "flex-end", gap: 24, marginTop: "auto" }}>
+            <div style={{ fontFamily: "Bebas", fontSize: 230, lineHeight: 0.8 }}>{`${fortalezaRow.position}º`}</div>
+            <div style={{ display: "flex", flexDirection: "column", paddingBottom: 10 }}>
+              <div style={{ fontSize: 34, fontWeight: 800, maxWidth: 360 }}>{sit.title}</div>
+              <div style={{ fontSize: 28, color: C.muted, marginTop: 4 }}>{`${plural(fortalezaRow.points, "ponto")} · ${xray.streaks.currentLabel.toLowerCase()}`}</div>
+            </div>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            alignItems: "flex-end",
+            paddingLeft: 40,
+            borderLeft: `3px solid ${C.line}`,
+          }}
+        >
+          <div style={{ fontSize: 34, fontWeight: 700 }}>Chance de subir</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 250, lineHeight: 0.85, color: C.red }}>{pct(fortalezaOdds.pPromotion)}</div>
+          <div style={{ fontSize: 28, color: C.muted }}>{`direto ${pct(fortalezaOdds.pDirect)} · playoffs ${pct(fortalezaOdds.pPlayoffPromotion)}`}</div>
+        </div>
+      </div>
+    </div>
+  );
 }

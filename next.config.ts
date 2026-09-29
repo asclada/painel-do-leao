@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api/card/*": ["./assets/fonts/*.woff"],
     "/opengraph-image": ["./assets/fonts/*.woff"],
+    "/twitter-image": ["./assets/fonts/*.woff"],
   },
   // Em dev, /api/py/* vai para a FastAPI local (uvicorn na porta 8000).
   // Em produção, a Vercel roteia direto para a função Python.

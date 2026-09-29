@@ -1,3 +1,4 @@
+import { readableText } from "@/lib/color";
 import type { Team } from "@/lib/generated/outputs";
 
 const SIZES = {
@@ -11,7 +12,7 @@ export function TeamBadge({ team, size = "md" }: { team: Team; size?: keyof type
   return (
     <span
       className={`inline-flex items-center justify-center rounded-md px-1.5 font-display leading-none tracking-wide ring-1 ring-white/15 ${SIZES[size]}`}
-      style={{ background: team.color, color: team.textColor }}
+      style={{ background: team.color, color: readableText(team.color, team.textColor) }}
       title={team.name}
     >
       {team.shortName}

@@ -128,15 +128,16 @@ function SimulatorView({ fixtures, baseline, siteUrl, siteName, initial }: Props
           {fixtures.map((f, i) => {
             const c = choices[i];
             return (
-              <li key={f.matchId} className="flex items-center gap-3 px-3 py-3 sm:px-4">
+              <li key={f.matchId} className="flex items-center gap-2 px-3 py-3 sm:gap-3 sm:px-4">
                 <TeamBadge team={f.opponent} size="sm" />
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-semibold leading-tight">{f.opponent.name}</p>
                   <p className="truncate text-xs text-muted sm:text-sm">
-                    R{f.round} · {f.home ? "Castelão" : "fora"} · {shortDate(f.kickoffUtc)}
+                    R{f.round} · {f.home ? "Castelão" : "fora"}
+                    <span className="hidden min-[400px]:inline"> · {shortDate(f.kickoffUtc)}</span>
                   </p>
                 </div>
-                <div className="flex shrink-0 gap-1.5" role="group" aria-label={`Resultado contra ${f.opponent.name}`}>
+                <div className="flex shrink-0 gap-1 sm:gap-1.5" role="group" aria-label={`Resultado contra ${f.opponent.name}`}>
                   {OPTIONS.map((o) => {
                     const on = c === o.c;
                     return (
@@ -147,7 +148,7 @@ function SimulatorView({ fixtures, baseline, siteUrl, siteName, initial }: Props
                         aria-label={o.label}
                         title={o.label}
                         onClick={() => pick(i, o.c)}
-                        className={`h-12 w-12 rounded-xl font-display text-2xl leading-none ring-1 transition-colors ${on ? o.on : "bg-bg/40 text-muted ring-line hover:bg-surface-2 hover:text-white"}`}
+                        className={`h-11 w-11 rounded-xl font-display min-[400px]:h-12 min-[400px]:w-12 text-2xl leading-none ring-1 transition-colors ${on ? o.on : "bg-bg/40 text-muted ring-line hover:bg-surface-2 hover:text-white"}`}
                       >
                         {o.c}
                       </button>

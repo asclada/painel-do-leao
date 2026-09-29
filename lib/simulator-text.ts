@@ -14,6 +14,7 @@ export function scenarioPhrase(r: ScenarioResult, noChoices: boolean) {
   if (noChoices) return "Sem escolhas, todos os jogos são sorteados: são os mesmos números do topo da página.";
   if (pDirect >= 0.5) return "Boa chance de subir direto, mas ainda depende dos rivais.";
   if (pG6(r) >= 0.6) return "Com isso, o caminho mais provável é pelos playoffs.";
+  if (pPromotion < 0.01) return "Com esses resultados, o acesso fica praticamente fora de alcance.";
   if (pPromotion < 0.2) return "Com esses resultados, o acesso vira missão difícil.";
   return "Ainda dá para subir, mas vai depender bastante dos rivais.";
 }
