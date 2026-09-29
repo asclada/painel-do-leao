@@ -29,8 +29,8 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   **Sem sorteio (pedido do Lucas, 29/09):** o painel "Onde o Leão termina" fica bloqueado até V/E/D em TODOS os jogos;
   sem atalhos de "tudo vitória". O card `/api/card/previsao` também exige todas as escolhas (400 se faltar).
   Jogos vêm de `data/model.json` no build (`focusFixtures` em `lib/data.ts`); escolhas em `?p=`.
-- **Card do próximo jogo:** escudos dos dois times na ordem mandante/visitante, o do Fortaleza ~23% maior (pedido:
-  20–25%) e sempre o `assets/escudo-fortaleza.png`. Escudos dos adversários em `public/escudos/{time}.png`, baixados
+- **Card do próximo jogo:** escudos dos dois times na ordem mandante/visitante, do mesmo tamanho (pedido do Lucas,
+  29/09), e sempre o `assets/escudo-fortaleza.png` para o Fortaleza. Selo azul "Próximo jogo • Rodada X". Escudos dos adversários em `public/escudos/{time}.png`, baixados
   da ESPN por `pipeline/crests.py` (só os que faltam; fundo transparente garantido; roda dentro do `update_data` e o
   workflow commita `public/escudos/`). Estádio sempre como "Estádio: {nome popular}" (`venueName` em `lib/format.ts`);
   sem estádio na ESPN, usa o estádio mais usado pelo mandante (`usual_venue` em `pipeline/calc/next_match.py`).

@@ -9,9 +9,8 @@ import { FORTALEZA, teamById } from "@/lib/data";
 import { kickoffLabel, venueName } from "@/lib/format";
 import type { NextMatch, Team } from "@/lib/generated/outputs";
 
-// Escudo do Fortaleza ~23% maior que o do adversário (pedido do Lucas: 20–25%).
-const FORT_BOX = "h-24 w-24 sm:h-28 sm:w-28"; // 96px / 112px
-const OPP_BOX = "h-[78px] w-[78px] sm:h-[91px] sm:w-[91px]"; // 78px / 91px
+// Os dois escudos do mesmo tamanho (pedido do Lucas, 29/09).
+const CREST_BOX = "h-[88px] w-[88px] sm:h-[104px] sm:w-[104px]";
 
 /** Escudo do adversário baixado pelo pipeline (pipeline/crests.py); sem arquivo, mostra a sigla. */
 function hasCrest(teamId: string) {
@@ -21,13 +20,13 @@ function hasCrest(teamId: string) {
 function Crest({ team }: { team: Team }) {
   if (team.id === FORTALEZA) {
     return (
-      <span className={`relative flex items-center justify-center ${FORT_BOX}`}>
+      <span className={`relative flex items-center justify-center ${CREST_BOX}`}>
         <Image src={escudoFortaleza} alt="Escudo do Fortaleza" className="h-full w-auto object-contain" loading="eager" />
       </span>
     );
   }
   return (
-    <span className={`relative flex items-center justify-center ${OPP_BOX}`}>
+    <span className={`relative flex items-center justify-center ${CREST_BOX}`}>
       {hasCrest(team.id) ? (
         <Image src={`/escudos/${team.id}.png`} alt={`Escudo do ${team.name}`} fill sizes="96px" loading="eager" className="object-contain" />
       ) : (
@@ -45,17 +44,19 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
 
   return (
     <div className="rounded-3xl bg-surface p-5 ring-1 ring-line sm:p-7">
-      <p className="text-center text-sm text-muted sm:text-base">
-        Próximo jogo · rodada {match.round}
+      {/* selo em destaque: azul da faixa tricolor (o vermelho fica reservado para a chance de subir) */}
+      <p className="flex justify-center">
+        <span className="inline-flex items-center gap-2 rounded-full bg-blue px-4 py-1.5 text-sm text-white shadow-[0_4px_16px_rgb(29_78_216/0.45)] ring-1 ring-white/20 sm:text-base">
+          <span className="font-bold">Próximo jogo</span>
+          <span aria-hidden className="h-1 w-1 rounded-full bg-white/70" />
+          <span>Rodada {match.round}</span>
+        </span>
       </p>
 
       <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-2">
         {[home, away].map((t, i) => (
           <div key={t.id} className={`flex flex-col items-center gap-2 text-center ${i === 1 ? "col-start-3" : ""}`}>
-            {/* mesma altura para os dois lados: escudos apoiados na mesma linha e nomes alinhados */}
-            <span className="flex h-24 items-end sm:h-28">
-              <Crest team={t} />
-            </span>
+            <Crest team={t} />
             <span className={`text-lg leading-tight sm:text-xl ${t.id === FORTALEZA ? "font-bold" : "font-semibold"}`}>
               {t.name}
             </span>
