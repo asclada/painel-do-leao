@@ -24,9 +24,17 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   `lib/site.ts` (inclui `SITE_URL`). Seções em `components/` (hero F1, season-chart F2, race F3, simulator F4, xray F5).
   O Recharts do F2 é carregado sob demanda (`SeasonChartPlot.tsx` via `next/dynamic`) para o Lighthouse mobile ficar ≥ 90.
   Relógio do cliente via `lib/useNow.ts` (useSyncExternalStore) — não usar setState em efeito para "agora".
-- **Simulador (F4):** `components/simulator/` + `lib/simulator-client.ts` (debounce 400ms, AbortController, cache em
-  memória, aquecimento de `/api/py/health`) + `lib/simulator-text.ts` (frases). Jogos e cenário sem escolhas vêm de
-  `data/model.json`/`simulation.json` no build (`focusFixtures`, `baselineScenario` em `lib/data.ts`); escolhas em `?p=`.
+- **Simulador (F4, "Simulador dos próximos jogos"):** `components/simulator/` + `lib/simulator-client.ts` (debounce
+  400ms, AbortController, cache em memória, aquecimento de `/api/py/health`) + `lib/simulator-text.ts` (frases).
+  **Sem sorteio (pedido do Lucas, 29/09):** o painel "Onde o Leão termina" fica bloqueado até V/E/D em TODOS os jogos;
+  sem atalhos de "tudo vitória". O card `/api/card/previsao` também exige todas as escolhas (400 se faltar).
+  Jogos vêm de `data/model.json` no build (`focusFixtures` em `lib/data.ts`); escolhas em `?p=`.
+- **Card do próximo jogo:** escudos dos dois times na ordem mandante/visitante, o do Fortaleza ~23% maior (pedido:
+  20–25%) e sempre o `assets/escudo-fortaleza.png`. Escudos dos adversários em `public/escudos/{time}.png`, baixados
+  da ESPN por `pipeline/crests.py` (só os que faltam; fundo transparente garantido; roda dentro do `update_data` e o
+  workflow commita `public/escudos/`). Estádio sempre como "Estádio: {nome popular}" (`venueName` em `lib/format.ts`);
+  sem estádio na ESPN, usa o estádio mais usado pelo mandante (`usual_venue` em `pipeline/calc/next_match.py`).
+- **Corrida (F3):** sem frase de destaque na página (pedido do Lucas); o pipeline ainda gera `race.headline`.
 - **Imagens (next/og):** `lib/og/cards.tsx` (cards de story e Open Graph) e `lib/og/fonts.ts` (fontes WOFF em
   `assets/fonts`, OFL, incluídas via `outputFileTracingIncludes`). Satori: todo `div` com mais de um filho precisa de
   `display: flex`, e número puro como filho quebra (use template string/`String()`).

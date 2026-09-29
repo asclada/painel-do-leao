@@ -29,6 +29,7 @@ from pipeline.calc.insights import (
 from pipeline.calc.milestones import auto_milestones, headline, load_manual, select_milestones
 from pipeline.calc.model_input import build_model_input
 from pipeline.calc.next_match import compute_next_match
+from pipeline.crests import ensure_crests
 from pipeline.calc.race import compute_race
 from pipeline.calc.standings import compute_standings
 from pipeline.calc.streaks import compute_streaks
@@ -181,6 +182,10 @@ def main(argv: list[str] | None = None) -> int:
     now = datetime.now(timezone.utc)
     teams = load_teams()
     rounds = load_rounds()
+    if not args.offline:
+        new_crests = ensure_crests(teams)  # só baixa o que falta (0 chamadas no dia a dia)
+        if new_crests:
+            print(f"Escudos novos: {', '.join(new_crests)}")
 
     provider = None
     if args.recompute:

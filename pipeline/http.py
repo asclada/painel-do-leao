@@ -52,5 +52,23 @@ class PoliteClient:
         r.raise_for_status()
         return r.json()
 
+    @retry(
+        retry=retry_if_exception(_retryable),
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=2, min=2, max=20),
+        reraise=True,
+    )
+    def get_bytes(self, url: str) -> bytes:
+        wait = self.pause_s - (time.monotonic() - self._last)
+        if wait > 0:
+            time.sleep(wait)
+        self.calls += 1
+        try:
+            r = self.client.get(url)
+        finally:
+            self._last = time.monotonic()
+        r.raise_for_status()
+        return r.content
+
     def close(self) -> None:
         self.client.close()

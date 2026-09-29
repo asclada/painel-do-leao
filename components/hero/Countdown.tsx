@@ -10,9 +10,9 @@ function parts(ms: number) {
 }
 
 /** Contagem regressiva até o jogo; vira "Bola rolando agora!" durante a partida. */
-export function Countdown({ kickoffUtc }: { kickoffUtc: string }) {
+export function Countdown({ kickoffUtc, large = false }: { kickoffUtc: string; large?: boolean }) {
   const now = useNow();
-  if (now === null) return <span className="block h-8" aria-hidden />;
+  if (now === null) return <span className={`block ${large ? "h-12" : "h-8"}`} aria-hidden />;
   const diff = new Date(kickoffUtc).getTime() - now;
 
   if (diff <= 0 && -diff < LIVE_WINDOW_MS) {
@@ -33,11 +33,11 @@ export function Countdown({ kickoffUtc }: { kickoffUtc: string }) {
   ] as const;
   return (
     <span className="flex items-baseline gap-3" aria-label={`Faltam ${d} dias, ${h} horas e ${min} minutos`}>
-      <span className="text-muted">Faltam</span>
+      <span className={`text-muted ${large ? "text-lg" : ""}`}>Faltam</span>
       {units.map(([n, s, p]) => (
         <span key={s} className="tabular">
-          <span className="font-display text-[1.75rem] leading-none">{n}</span>{" "}
-          <span className="text-sm text-muted">{n === 1 ? s : p}</span>
+          <span className={`font-display leading-none ${large ? "text-[2.5rem] sm:text-5xl" : "text-[1.75rem]"}`}>{n}</span>{" "}
+          <span className={`text-muted ${large ? "text-base" : "text-sm"}`}>{n === 1 ? s : p}</span>
         </span>
       ))}
     </span>

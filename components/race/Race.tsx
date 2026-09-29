@@ -3,7 +3,7 @@ import { FormDots } from "@/components/ui/FormDots";
 import { GrowBar } from "@/components/ui/GrowBar";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { FORTALEZA, race, teamById } from "@/lib/data";
-import { kickoffLabel, pct, plural, shortDate } from "@/lib/format";
+import { kickoffLabel, pct, plural, shortDate, venueName } from "@/lib/format";
 import type { RaceTeam } from "@/lib/generated/outputs";
 
 const DIFFICULTY_STYLE = {
@@ -100,7 +100,7 @@ export function Race() {
                   </p>
                   <p className="text-sm text-muted">
                     Rodada {h.round} · {kickoffLabel(h.kickoffUtc)}
-                    {h.venue && ` · ${h.venue}`}
+                    {h.venue && ` · Estádio: ${venueName(h.venue)}`}
                   </p>
                 </li>
               );

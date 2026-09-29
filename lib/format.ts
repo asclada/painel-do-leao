@@ -46,3 +46,14 @@ export function relativeTime(iso: string, now: number = Date.now()) {
 export function ordinal(n: number) {
   return `${n}º`;
 }
+
+// Nome popular do estádio: "Arena Castelão" -> "Castelão", "Estádio Raimundo Sampaio (Independência)" -> "Independência",
+// "Estádio dos Aflitos" -> "Aflitos". Usado sempre no formato "Estádio: {nome}".
+const VENUE_OVERRIDES: Record<string, string> = { "Arena Castelão": "Castelão" };
+
+export function venueName(venue: string) {
+  if (VENUE_OVERRIDES[venue]) return VENUE_OVERRIDES[venue];
+  const nick = venue.match(/\(([^)]+)\)\s*$/);
+  if (nick) return nick[1];
+  return venue.replace(/^Est[aá]dio\s+/i, "").replace(/^(Dr\.|da|do|dos|das)\s+/i, "") || venue;
+}

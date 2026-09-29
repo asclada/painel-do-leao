@@ -13,6 +13,7 @@ DATA = ROOT / "data"
 MANUAL = DATA / "manual"
 RAW = DATA / "raw"
 LOCAL_CACHE = ROOT / ".cache"  # respostas cruas, só local (gitignored)
+CRESTS_DIR = ROOT / "public" / "escudos"  # escudos dos adversários (pipeline/crests.py)
 
 SEASON = 2026
 TOTAL_ROUNDS = 38
@@ -25,6 +26,7 @@ TIMEZONE = "America/Fortaleza"
 ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.2"
 ESPN_PAUSE_S = 1.5  # pausa entre chamadas para ser gentil com a ESPN
 ESPN_ISSUE_AFTER_FAILURES = 2  # abre issue no GitHub após N falhas seguidas
+ESPN_CREST_URL = "https://a.espncdn.com/i/teamlogos/soccer/500/{espn_id}.png"
 
 FSA_BASE = "https://api.footballsoccerapi.com/v1"
 FSA_LEAGUE = "lg_1VQKEDM"

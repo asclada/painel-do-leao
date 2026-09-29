@@ -88,13 +88,13 @@ jobs:
       - name: Commit se houver mudança
         if: always() && steps.tests.outcome != 'failure'
         run: |
-          if git diff --quiet -- data/; then
+          if git diff --quiet -- data/ && [ -z "$(git status --porcelain -- public/escudos/)" ]; then
             echo "Sem mudanças nos dados."
             exit 0
           fi
           git config user.name "painel-bot"
           git config user.email "painel-bot@users.noreply.github.com"
-          git add data/
+          git add data/ public/escudos/
           ROUND=$(jq -r '.lastCompletedRound' data/meta.json)
           if [ "${{ steps.update.outcome }}" = "success" ]; then
             git commit -m "dados: atualização automática (rodada ${ROUND})"
