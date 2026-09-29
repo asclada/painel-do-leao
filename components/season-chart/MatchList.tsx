@@ -1,15 +1,27 @@
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import escudoFortaleza from "@/assets/escudo-fortaleza.png";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { crestSrc } from "@/lib/crests";
 import { FORTALEZA, teamById, timeline } from "@/lib/data";
 import { plural, shortDate } from "@/lib/format";
+import type { Team } from "@/lib/generated/outputs";
 
 const RESULT = {
   V: { label: "Vitória", cls: "bg-win text-bg" },
   E: { label: "Empate", cls: "bg-draw text-bg" },
   D: { label: "Derrota", cls: "bg-loss text-white" },
 } as const;
+
+/** Escudo pequeno: o do Fortaleza é sempre o do topo do site (primeiro escudo oficial). */
+function MiniCrest({ team }: { team: Team }) {
+  const src = team.id === FORTALEZA ? escudoFortaleza : crestSrc(team.id);
+  return (
+    <span className="relative flex h-7 w-7 shrink-0 items-center justify-center">
+      {src ? <Image src={src} alt="" fill sizes="28px" className="object-contain" /> : <TeamBadge team={team} size="sm" />}
+    </span>
+  );
+}
 
 /** Jogo a jogo: a campanha completa na Série B (recolhida por padrão, abaixo da montanha-russa). */
 export function MatchList() {
@@ -26,42 +38,35 @@ export function MatchList() {
       <ol className="divide-y divide-line border-t border-line">
         {played.map((p) => {
           const opp = teamById[p.opponentId!];
-          const src = crestSrc(opp.id);
           const [home, away] = p.home ? [fort, opp] : [opp, fort];
           const [hg, ag] = p.home ? [p.goalsFor, p.goalsAgainst] : [p.goalsAgainst, p.goalsFor];
           const r = RESULT[p.result!];
           return (
-            <li key={p.round} className="flex items-center gap-3 px-4 py-2.5 sm:px-5">
-              <span className="w-12 shrink-0 text-xs leading-tight text-muted tabular">
-                R{p.round}
-                {p.kickoffUtc && <span className="block">{shortDate(p.kickoffUtc)}</span>}
-              </span>
-              <span className="relative flex h-8 w-8 shrink-0 items-center justify-center">
-                {src ? (
-                  <Image src={src} alt="" fill sizes="32px" className="object-contain" />
-                ) : (
-                  <TeamBadge team={opp} size="sm" />
-                )}
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm font-semibold sm:text-base">{opp.name}</span>
-                <span className="block text-xs text-muted">
-                  <span className="text-white tabular">
-                    Fortaleza {p.goalsFor} x {p.goalsAgainst}
+            <li key={p.round} className="px-4 py-3 sm:px-5">
+              <div className="flex items-center justify-between gap-3 text-xs text-muted">
+                <span className="tabular">
+                  Rodada {p.round}
+                  {p.kickoffUtc && ` · ${shortDate(p.kickoffUtc)}`} · {p.home ? "em casa" : "fora"}
+                </span>
+                <span className="flex shrink-0 items-center gap-3">
+                  <span className={`rounded-full px-2.5 py-0.5 font-bold ${r.cls}`}>{r.label}</span>
+                  <span className="w-12 text-right text-sm tabular">
+                    <strong className="text-white">{p.points}</strong> pts
+                  </span>
+                </span>
+              </div>
+              {/* mandante à esquerda, visitante à direita, cada um com o seu escudo */}
+              <p className="mt-2 flex items-center gap-2">
+                <MiniCrest team={home} />
+                <span className="min-w-0 truncate text-sm sm:text-base">
+                  <span className={home.id === FORTALEZA ? "font-bold" : "font-semibold"}>{home.name}</span>{" "}
+                  <span className="font-display text-lg tabular">
+                    {hg} x {ag}
                   </span>{" "}
-                  · {p.home ? "em casa" : "fora de casa"}
+                  <span className={away.id === FORTALEZA ? "font-bold" : "font-semibold"}>{away.name}</span>
                 </span>
-                <span className="sr-only">
-                  {home.name} {hg} x {ag} {away.name}
-                </span>
-              </span>
-              <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-bold ${r.cls}`}>
-                <span className="sm:hidden" aria-hidden>{p.result}</span>
-                <span className="max-sm:sr-only">{r.label}</span>
-              </span>
-              <span className="w-12 shrink-0 text-right text-sm tabular">
-                <strong>{p.points}</strong> <span className="text-xs text-muted">pts</span>
-              </span>
+                <MiniCrest team={away} />
+              </p>
             </li>
           );
         })}

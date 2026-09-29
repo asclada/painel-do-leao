@@ -234,6 +234,7 @@ function ResultPanel({
   // o resultado guardado pode ser de um cenário anterior: enquanto o novo não chega, aparece apagado
   const hasResult = complete && !result.choices.includes("-");
   const ptsText = hasResult ? pointsPhrase(pts.value, magic) : null;
+  const phrase = scenarioPhrase(result);
   const fade = loading ? "opacity-50" : "opacity-100";
   const missing = total - chosen;
   const lockedText =
@@ -386,9 +387,10 @@ function ResultPanel({
                 </div>
               </dl>
 
-              <p className="mt-4 font-semibold leading-snug" aria-live="polite">
-                {scenarioPhrase(result)}
-              </p>
+              <div aria-live="polite">
+                <p className="mt-4 font-semibold leading-snug">{phrase.title}</p>
+                {phrase.detail && <p className="mt-2 text-sm leading-relaxed text-white/85">{phrase.detail}</p>}
+              </div>
               {ptsText && <p className="mt-2 text-sm text-muted">{ptsText}</p>}
             </div>
           )}
