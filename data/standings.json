@@ -34,6 +34,39 @@
   },
   {
     "away": {
+      "draws": 4,
+      "goalsAgainst": 13,
+      "goalsFor": 13,
+      "losses": 5,
+      "played": 15,
+      "points": 22,
+      "wins": 6
+    },
+    "draws": 8,
+    "goalDiff": 13,
+    "goalsAgainst": 19,
+    "goalsFor": 32,
+    "home": {
+      "draws": 4,
+      "goalsAgainst": 6,
+      "goalsFor": 19,
+      "losses": 2,
+      "played": 15,
+      "points": 31,
+      "wins": 9
+    },
+    "losses": 7,
+    "pct": 59,
+    "played": 30,
+    "points": 53,
+    "position": 2,
+    "red": 2,
+    "teamId": "juventude",
+    "wins": 15,
+    "yellow": 65
+  },
+  {
+    "away": {
       "draws": 5,
       "goalsAgainst": 13,
       "goalsFor": 11,
@@ -59,7 +92,7 @@
     "pct": 58,
     "played": 30,
     "points": 52,
-    "position": 2,
+    "position": 3,
     "red": 8,
     "teamId": "fortaleza",
     "wins": 14,
@@ -92,44 +125,11 @@
     "pct": 57,
     "played": 30,
     "points": 51,
-    "position": 3,
+    "position": 4,
     "red": 2,
     "teamId": "novorizontino",
     "wins": 14,
     "yellow": 64
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 13,
-      "goalsFor": 12,
-      "losses": 5,
-      "played": 14,
-      "points": 19,
-      "wins": 5
-    },
-    "draws": 8,
-    "goalDiff": 12,
-    "goalsAgainst": 19,
-    "goalsFor": 31,
-    "home": {
-      "draws": 4,
-      "goalsAgainst": 6,
-      "goalsFor": 19,
-      "losses": 2,
-      "played": 15,
-      "points": 31,
-      "wins": 9
-    },
-    "losses": 7,
-    "pct": 57,
-    "played": 29,
-    "points": 50,
-    "position": 4,
-    "red": 2,
-    "teamId": "juventude",
-    "wins": 14,
-    "yellow": 63
   },
   {
     "away": {
@@ -604,27 +604,27 @@
       "wins": 1
     },
     "draws": 5,
-    "goalDiff": -28,
-    "goalsAgainst": 49,
+    "goalDiff": -29,
+    "goalsAgainst": 50,
     "goalsFor": 21,
     "home": {
       "draws": 3,
-      "goalsAgainst": 20,
+      "goalsAgainst": 21,
       "goalsFor": 12,
-      "losses": 8,
-      "played": 14,
+      "losses": 9,
+      "played": 15,
       "points": 12,
       "wins": 3
     },
-    "losses": 20,
-    "pct": 20,
-    "played": 29,
+    "losses": 21,
+    "pct": 19,
+    "played": 30,
     "points": 17,
     "position": 19,
     "red": 2,
     "teamId": "america-mg",
     "wins": 4,
-    "yellow": 61
+    "yellow": 62
   },
   {
     "away": {

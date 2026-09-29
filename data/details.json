@@ -303,6 +303,38 @@
       }
     }
   },
+  "america-mg--juventude": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 61,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "america-mg--juventude",
+    "stats": {
+      "america-mg": {
+        "corners": 3,
+        "possession": 41.7,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 4,
+        "yellow": 1
+      },
+      "juventude": {
+        "corners": 7,
+        "possession": 58.3,
+        "red": 0,
+        "shots": 17,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      }
+    }
+  },
   "america-mg--londrina": {
     "goals": [
       {

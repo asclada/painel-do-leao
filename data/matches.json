@@ -4470,18 +4470,18 @@
     "venue": "Arena Castelão"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "juventude",
     "city": "Belo Horizonte",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "america-mg",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "america-mg--juventude",
     "kickoffUtc": "2026-09-28T22:30Z",
     "round": 30,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Raimundo Sampaio (Independência)"
   },
   {
