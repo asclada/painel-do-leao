@@ -111,6 +111,8 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 ## Regras
 
 - UI 100% em pt-BR, sem termos técnicos ("chance", não "probabilidade"). Código em inglês, commits em pt-BR.
+- Nunca "sorteio"/"sorteia" na interface (pedido do Lucas, 29/09): passa a ideia de resultado aleatório. Falar em
+  "previsão do modelo" / "chances pela força dos times" (jogos sem escolha no simulador seguem a previsão do modelo).
 - Nunca commitar/pushar sem confirmação explícita do Lucas. Sem menção a Claude/Anthropic em commits.
 - Fatos escritos à mão (marcos, técnicos, regulamento) precisam ser pesquisados e confirmados pelo Lucas.
 - Cron do GitHub é desativado após 60 dias sem atividade no repo (durante o campeonato não acontece por causa dos commits automáticos).

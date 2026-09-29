@@ -10,7 +10,8 @@ export type RivalFixture = { matchId: string; round: number; kickoffUtc: string;
 
 /**
  * "E os confrontos diretos?" (opcional): o torcedor também pode escolher os jogos entre os rivais da corrida.
- * Nada escolhido = o modelo sorteia esses jogos, como antes.
+ * Nada escolhido = esses jogos seguem a previsão do modelo (força de ataque e defesa, mando, jogos recentes), como
+ * antes. Na interface nunca falar em "sorteio" (pedido do Lucas, 29/09): passa a ideia de algo aleatório.
  */
 export function RivalGames({
   games,
@@ -31,8 +32,8 @@ export function RivalGames({
           <span className="block font-semibold">E os confrontos diretos? (opcional)</span>
           <span className="block text-sm text-muted">
             {chosen > 0
-              ? `${chosen} de ${games.length} escolhidos · os outros o modelo sorteia`
-              : `${games.length} jogos entre os rivais da corrida. Sem escolha, o modelo sorteia.`}
+              ? `${chosen} de ${games.length} escolhidos · os outros seguem a previsão do modelo`
+              : `${games.length} jogos entre os rivais da corrida. Sem escolha, vale a previsão do modelo, pela força de cada time.`}
           </span>
         </span>
         <ChevronDown size={20} className="shrink-0 text-muted transition-transform group-open:rotate-180" aria-hidden />

@@ -239,7 +239,7 @@ export function PredictionCard({
                 border: g.choice === "-" ? `2px dashed ${C.line}` : "none",
               }}
             >
-              {g.choice === "-" ? "sorteio" : RESULT_WORD[g.choice]}
+              {g.choice === "-" ? "modelo" : RESULT_WORD[g.choice]}
             </div>
           </div>
         ))}
