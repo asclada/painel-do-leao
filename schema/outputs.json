@@ -122,34 +122,13 @@
           "type": "number"
         },
         "ifWin": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "type": "number"
         },
         "ifDraw": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "type": "number"
         },
         "ifLoss": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "type": "number"
         },
         "swing": {
           "type": "number"
@@ -889,34 +868,13 @@
           "type": "number"
         },
         "ifHome": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "type": "number"
         },
         "ifDraw": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "type": "number"
         },
         "ifAway": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "type": "number"
         },
         "best": {
           "enum": [
@@ -925,6 +883,23 @@
             "away"
           ],
           "type": "string"
+        },
+        "order": {
+          "items": {
+            "enum": [
+              "home",
+              "draw",
+              "away"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sameTop": {
+          "type": "boolean"
+        },
+        "sameBottom": {
+          "type": "boolean"
         },
         "gain": {
           "type": "number"
@@ -946,6 +921,9 @@
         "ifDraw",
         "ifAway",
         "best",
+        "order",
+        "sameTop",
+        "sameBottom",
         "gain",
         "swing"
       ],

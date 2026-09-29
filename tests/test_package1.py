@@ -87,19 +87,46 @@ def test_match_calibration(teams, matches_r30):
 # --- jogos que mais mexem na chance ----------------------------------------------------------------
 
 
-def test_key_games(model):
+@pytest.fixture(scope="module")
+def key_games(model):
     sim = simulate_season(model, 4000, seed=3)
-    rivals = ["vila-nova", "juventude", "novorizontino", "criciuma", "atletico-go", "crb"]
-    kg = compute_key_games(model, sim, rivals)
+    return compute_key_games(model, sim, 4000, 3)
+
+
+def test_key_games(model, key_games):
+    kg = key_games
     assert len(kg.focus) == len(model.focus_remaining)
-    assert all(g.if_win > g.if_loss for g in kg.focus)
+    assert all(g.if_win > g.if_draw > g.if_loss for g in kg.focus)
     assert [g.swing for g in kg.focus] == sorted((g.swing for g in kg.focus), reverse=True)
     assert all(abs(g.p_win + g.p_draw + g.p_loss - 1) < 1e-3 for g in kg.focus)
     assert kg.round == model.remaining[model.focus_remaining[0]].round
     for g in kg.rivals:
         assert "fortaleza" not in (g.home_id, g.away_id)
-        assert {g.home_id, g.away_id} & set(rivals)
         assert g.round <= kg.round
+        assert sorted(g.order) == ["away", "draw", "home"] and g.order[0] == g.best
+
+
+def test_rival_win_is_never_best_against_a_bottom_team(key_games):
+    """Londrina (Z4, 28 pts) x Criciúma (5º, 50 pts): o pior para o Leão é o Criciúma vencer, e a vitória do Londrina
+    nunca pode sair pior que o empate (regressão: o método antigo, por grupos de simulações, sugeria o empate)."""
+    g = next(g for g in key_games.rivals if g.match_id == "londrina--criciuma")
+    assert g.order[-1] == "away"
+    assert g.if_home > g.if_away and g.if_draw > g.if_away
+    assert g.order[0] == "home" or g.same_top
+
+
+def test_forced_scenarios_share_the_rest_of_the_season(model):
+    """Mesma semente: fixar um jogo não muda os sorteios dos outros jogos (comparação pareada)."""
+    from pipeline.model.simulate import FREE, HOME_WIN
+
+    j = next(i for i in range(len(model.remaining)) if i not in model.focus_remaining)
+    fixed = np.full(len(model.remaining), FREE)
+    fixed[j] = HOME_WIN
+    a = simulate_season(model, 2000, seed=5)
+    b = simulate_season(model, 2000, seed=5, fixed=fixed)
+    others = np.arange(len(model.remaining)) != j
+    assert np.array_equal(a.outcomes[:, others], b.outcomes[:, others])
+    assert (b.outcomes[:, j] == HOME_WIN).all()
 
 
 # --- histórico da chance e status da fonte -----------------------------------------------------------

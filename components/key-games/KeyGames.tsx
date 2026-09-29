@@ -77,20 +77,47 @@ function FocusRow({ g, top }: { g: FocusGame; top: boolean }) {
   );
 }
 
+type Outcome = RivalGame["order"][number];
+
+/** "vitória do Londrina" / "vitória da Ponte Preta" / "empate" */
+function outcomeLabel(o: Outcome, home: Team, away: Team) {
+  if (o === "draw") return "empate";
+  const t = o === "home" ? home : away;
+  return `vitória ${t.article === "a" ? "da" : "do"} ${t.name}`;
+}
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+/**
+ * O que dizer ao torcedor, a partir da ordem dos três resultados (melhor -> pior) calculada no pipeline.
+ * Quando dois resultados dão praticamente a mesma chance (sameTop/sameBottom), não escolhe um por um fio.
+ */
+export function rivalAdvice(g: RivalGame, home: Team, away: Team) {
+  const [first, second, third] = g.order;
+  const label = (o: Outcome) => outcomeLabel(o, home, away);
+  if (g.sameTop) {
+    // os dois melhores empatam: o que importa é evitar o pior
+    const cheer =
+      third === "draw"
+        ? "Só não pode dar empate"
+        : `Torça contra ${third === "home" ? home.article : away.article} ${(third === "home" ? home : away).name}`;
+    return { cheer, detail: `${capitalize(label(first))} ou ${label(second)}: dá quase no mesmo para o Leão.` };
+  }
+  const cheer = first === "draw" ? "Torça pelo empate" : `Torça ${forTeam(first === "home" ? home : away)}`;
+  const detail = g.sameBottom
+    ? "Qualquer outro resultado atrapalha."
+    : `Se não der, ${second === "draw" ? "o empate" : `a ${label(second)}`} ainda serve.`;
+  return { cheer, detail };
+}
+
 function RivalRow({ g }: { g: RivalGame }) {
   const home = teamById[g.homeId];
   const away = teamById[g.awayId];
-  const outcomes = [
-    ["home", g.ifHome],
-    ["draw", g.ifDraw],
-    ["away", g.ifAway],
-  ] as const;
-  const best = outcomes.find(([k]) => k === g.best)![1]!;
-  const worst = Math.min(...outcomes.map(([, v]) => v ?? 1));
-  const cheer = g.best === "draw" ? "Torça pelo empate" : `Torça ${forTeam(g.best === "home" ? home : away)}`;
-  const worstLabel = outcomes.find(([, v]) => v === worst)?.[0];
-  const badWinner = worstLabel === "home" ? home : away;
-  const worstTxt = worstLabel === "draw" ? "com empate" : `se ${badWinner.article} ${badWinner.name} vencer`;
+  const chance = { home: g.ifHome, draw: g.ifDraw, away: g.ifAway };
+  const { cheer, detail } = rivalAdvice(g, home, away);
+  // verde = o que ajuda, vermelho = o que atrapalha; resultados "quase iguais" ganham a mesma cor
+  const dot = (i: number) =>
+    i === 0 || (i === 1 && g.sameTop) ? DOT.V : i === 2 || (i === 1 && g.sameBottom) ? DOT.D : DOT.E;
 
   return (
     <li className="rounded-2xl bg-surface p-4 ring-1 ring-line">
@@ -105,9 +132,18 @@ function RivalRow({ g }: { g: RivalGame }) {
         <MiniCrest team={away} />
       </p>
       <p className="mt-3 text-lg font-bold">{cheer}</p>
-      <p className="mt-1 text-sm text-white/90">
-        A chance do Leão vai a <strong>{pct(best)}</strong>. Na pior hipótese ({worstTxt}), fica em {pct(worst)}.
-      </p>
+      <p className="mt-0.5 text-sm text-white/90">{detail}</p>
+      <dl className="mt-3 space-y-1.5 text-sm">
+        {g.order.map((o, i) => (
+          <div key={o} className="flex items-center gap-2">
+            <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${dot(i)}`} aria-hidden />
+            <dt className="min-w-0 flex-1 truncate">{capitalize(outcomeLabel(o, home, away))}</dt>
+            <dd className="text-muted">
+              chance do Leão <strong className="text-white tabular">{pct(chance[o])}</strong>
+            </dd>
+          </div>
+        ))}
+      </dl>
     </li>
   );
 }
@@ -156,16 +192,29 @@ export function KeyGames() {
         {rivals.length > 0 ? (
           <>
             <p className="mt-1 text-white/90">
-              Os jogos dos rivais da corrida que mais mexem na chance do Leão, e o resultado que mais ajuda.
+              Os outros jogos da rodada que mais mexem na chance do Leão, com os três resultados do melhor para o pior.
             </p>
             <ul className="mt-4 flex flex-col gap-2.5">
               {rivals.slice(0, RIVALS_SHOWN).map((g) => (
                 <RivalRow key={g.matchId} g={g} />
               ))}
             </ul>
+            {rivals.length > RIVALS_SHOWN && (
+              <details className="group mt-2.5">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-semibold [&::-webkit-details-marker]:hidden">
+                  Ver mais {plural(rivals.length - RIVALS_SHOWN, "jogo")}
+                  <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
+                </summary>
+                <ul className="mt-2 flex flex-col gap-2.5">
+                  {rivals.slice(RIVALS_SHOWN).map((g) => (
+                    <RivalRow key={g.matchId} g={g} />
+                  ))}
+                </ul>
+              </details>
+            )}
           </>
         ) : (
-          <p className="mt-1 text-white/90">Nenhum jogo de rival da corrida mexe de verdade na chance do Leão nesta rodada.</p>
+          <p className="mt-1 text-white/90">Nenhum outro jogo da rodada mexe de verdade na chance do Leão.</p>
         )}
       </div>
     </div>

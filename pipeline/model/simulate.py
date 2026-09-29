@@ -39,9 +39,15 @@ def sample_scores(
     lam_a: np.ndarray,
     n: int,
     fixed: np.ndarray | None = None,
+    rng_fix: np.random.Generator | None = None,
 ) -> tuple[np.ndarray, np.ndarray]:
     """Placares (N, M). λ vem (M,) ou (N, M) (uma força por simulação). Jogos com resultado fixado
-    são reamostrados só nas simulações incompatíveis; o que sobrar após 30 tentativas vira 1x0/1x1/0x1."""
+    são reamostrados só nas simulações incompatíveis; o que sobrar após 30 tentativas vira 1x0/1x1/0x1.
+
+    A reamostragem usa `rng_fix` (gerador próprio): assim o `rng` principal consome sempre os mesmos números,
+    com ou sem resultado fixado, e dois cenários com a mesma semente só diferem nos jogos fixados
+    (comparação justa, por exemplo "Londrina vence" x "empate" com o resto do campeonato idêntico)."""
+    rng_fix = rng_fix or rng
     m = lam_h.shape[-1]
     lam_h = np.broadcast_to(lam_h, (n, m))
     lam_a = np.broadcast_to(lam_a, (n, m))
@@ -56,8 +62,8 @@ def sample_scores(
             break
         rows, which = np.nonzero(bad)
         c = cols[which]
-        hg[rows, c] = rng.poisson(lam_h[rows, c])
-        ag[rows, c] = rng.poisson(lam_a[rows, c])
+        hg[rows, c] = rng_fix.poisson(lam_h[rows, c])
+        ag[rows, c] = rng_fix.poisson(lam_a[rows, c])
     bad = _outcome(hg[:, cols], ag[:, cols]) != fixed[cols]
     if bad.any():
         rows, which = np.nonzero(bad)
@@ -96,7 +102,7 @@ def simulate_season(
     outcomes = np.empty((n, 0), dtype=np.int8)
     if len(home):
         lam_h, lam_a = factors.lambdas(home, away)
-        hg, ag = sample_scores(rng, lam_h, lam_a, n, fixed)
+        hg, ag = sample_scores(rng, lam_h, lam_a, n, fixed, np.random.default_rng([seed, 1]))
         # matrizes de incidência (M, T): soma por time via produto de matrizes
         H = np.zeros((len(home), t), dtype=np.int32)
         A = np.zeros((len(home), t), dtype=np.int32)

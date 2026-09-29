@@ -30,9 +30,13 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   (20 mil, a do topo), com `partial` se a rodada está em andamento. `pipeline/calc/calibration.py` compara as
   previsões V/E/D da rodada seguinte com o resultado → `data/calibration.json` (frase leiga no rodapé) e
   `docs/CALIBRACAO.md` (gerado; o workflow commita). Calibração da temporada só quando os pontos corridos acabarem.
-- **Jogos que mais mexem (Pacote 1):** `pipeline/calc/key_games.py` usa as MESMAS 20 mil simulações do topo
-  (`SimResult.outcomes`) e condiciona no resultado de cada jogo, sem simular de novo → `data/key-games.json`
-  (jogos do Fortaleza por impacto; "Pra secar": jogos dos rivais da corrida até a rodada do próximo jogo do Leão).
+- **Jogos que mais mexem (Pacote 1, corrigido em 29/09):** `pipeline/calc/key_games.py` simula cada jogo com o
+  resultado FIXADO (V/E/D) com a MESMA semente do topo; a reamostragem do jogo fixado usa gerador próprio
+  (`sample_scores(rng_fix=...)`) e os playoffs tiram os gols de uniformes sorteados antes (`poisson_from_uniform`),
+  então os cenários só diferem naquele jogo (comparação pareada, ruído ~0,15 ponto). NÃO voltar a separar as
+  simulações do topo por resultado: o ruído (~0,8) era maior que o efeito e sugeriu empate em Londrina x Criciúma.
+  "Pra secar" avalia TODOS os jogos até a rodada do próximo jogo do Leão (não só a lista da corrida), guarda a ordem
+  dos 3 resultados e `sameTop/sameBottom` (< 1 ponto = "tanto faz"; o site diz "Torça contra X"). ~45 s por execução.
 - **Dados atrasados:** `meta.dataStatus` (`pipeline/fetch.py::data_status`): `delayed` só com ESPN falhando ≥2x E
   jogo que já deveria ter acabado sem resultado; não mexe no `updatedAt`. Banner em `components/DataStatusBanner.tsx`.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em

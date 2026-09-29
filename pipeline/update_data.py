@@ -179,7 +179,7 @@ def compute_outputs(
     strength = dict(zip(team_ids, model.ratings.strength))
     race = compute_race(standings, matches, odds, strength, names, FORTALEZA_ID, articles)
     nxt = compute_next_match(matches, FORTALEZA_ID, names)
-    key_games = compute_key_games(model, sim, [t.team_id for t in race.teams])
+    key_games = compute_key_games(model, sim, N_SIMS_PIPELINE, seed)
 
     # backtest e calibração (só as rodadas novas são simuladas)
     backtest = run_backtest(teams, matches, details, last_round, previous_backtest, log=log)

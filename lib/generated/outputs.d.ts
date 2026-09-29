@@ -278,9 +278,9 @@ export interface FocusGame {
   pWin: number;
   pDraw: number;
   pLoss: number;
-  ifWin: number | null;
-  ifDraw: number | null;
-  ifLoss: number | null;
+  ifWin: number;
+  ifDraw: number;
+  ifLoss: number;
   swing: number;
 }
 export interface RivalGame {
@@ -292,10 +292,13 @@ export interface RivalGame {
   pHome: number;
   pDraw: number;
   pAway: number;
-  ifHome: number | null;
-  ifDraw: number | null;
-  ifAway: number | null;
+  ifHome: number;
+  ifDraw: number;
+  ifAway: number;
   best: "home" | "draw" | "away";
+  order: ("home" | "draw" | "away")[];
+  sameTop: boolean;
+  sameBottom: boolean;
   gain: number;
   swing: number;
 }
