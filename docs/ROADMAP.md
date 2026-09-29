@@ -16,6 +16,13 @@
 
 ## Pacote 1 — Chance e contexto (sem banco) · ~1 dia
 
+> **Status (29/09/2026): implementado** (itens 1–10). Backtest com cache por rodada (`data/backtest.json`, 10 mil
+> simulações por rodada; só a rodada nova é calculada), calibração em `docs/CALIBRACAO.md` (gerado pelo pipeline),
+> jogos-chave e "Pra secar" das mesmas 20 mil simulações do topo, card `/api/card/conta`, quiz da rodada 1,
+> "Até a rodada 38" com a pontuação mais provável e as marcas explicadas, "Situação atual · N jogos", aviso de
+> dados atrasados (`meta.dataStatus`), simulador antes de "Até a rodada 38" e README. A calibração da temporada
+> (G2/G6) entra sozinha quando os pontos corridos acabarem.
+
 1. **Backtest rodada a rodada** (pipeline): recalcular a chance de acesso/direto/G6 do Fortaleza em cada rodada
    passada usando só os jogos disputados até ali (`data/matches.json`), com o mesmo modelo e semente fixa. Hoje o
    `data/history.json` só tem a rodada 29.

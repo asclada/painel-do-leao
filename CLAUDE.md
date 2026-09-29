@@ -23,9 +23,24 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   `pipeline/config.py` liga/desliga (False = modelo antigo, só as médias). Vale para TODOS os números do site. O pipeline roda 20 mil (semente por rodada) e grava `data/simulation.json`; a API
   (`api/index.py`, rotas `/api/py/health` e `/api/py/simular?p=VED-`) roda 5 mil a partir de `data/model.json`.
 - **Saídas do site:** `pipeline/outputs.py` (modelos) → `data/*.json` → tipos em `lib/generated/` → `lib/data.ts`.
+- **Backtest e calibração (Pacote 1, 29/09):** `pipeline/calc/backtest.py` refaz a simulação "depois da rodada r"
+  (só jogos das rodadas 1..r, 10 mil simulações, semente fixa) e guarda em `data/backtest.json` com chave por rodada
+  (hash dos jogos + parâmetros; `BACKTEST_VERSION` força recalcular tudo). Execução normal só calcula a rodada nova
+  (~2 s; tudo do zero ~30 s). `data/history.json` = Fortaleza por rodada; o último ponto é sempre a chance de agora
+  (20 mil, a do topo), com `partial` se a rodada está em andamento. `pipeline/calc/calibration.py` compara as
+  previsões V/E/D da rodada seguinte com o resultado → `data/calibration.json` (frase leiga no rodapé) e
+  `docs/CALIBRACAO.md` (gerado; o workflow commita). Calibração da temporada só quando os pontos corridos acabarem.
+- **Jogos que mais mexem (Pacote 1):** `pipeline/calc/key_games.py` usa as MESMAS 20 mil simulações do topo
+  (`SimResult.outcomes`) e condiciona no resultado de cada jogo, sem simular de novo → `data/key-games.json`
+  (jogos do Fortaleza por impacto; "Pra secar": jogos dos rivais da corrida até a rodada do próximo jogo do Leão).
+- **Dados atrasados:** `meta.dataStatus` (`pipeline/fetch.py::data_status`): `delayed` só com ESPN falhando ≥2x E
+  jogo que já deveria ter acabado sem resultado; não mexe no `updatedAt`. Banner em `components/DataStatusBanner.tsx`.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em
-  `lib/site.ts` (inclui `SITE_URL`). Seções em `components/` (hero F1, campaign, season-chart F2 + `MatchList`
-  "jogo a jogo", race F3, projection "Até a rodada 38", simulator F4, xray F5 com "depois do intervalo").
+  `lib/site.ts` (inclui `SITE_URL`). Seções em `components/`, nesta ordem na página: hero F1, campaign (+ quiz
+  `RoundOneQuiz` "onde o Leão estava na rodada 1"), season-chart F2 + `MatchList` "jogo a jogo", chance ("Como a
+  chance mudou", SVG próprio + "A conta mudou", `lib/chance.ts`), race F3, key-games ("jogos que mais mexem" +
+  "Pra secar"), simulator F4, projection "Até a rodada 38", xray F5 com "depois do intervalo".
+  O topo diz "Situação atual na Série B · N jogos" (não "depois da rodada X", que confundia com rodada em andamento).
   Campanha em números: `CampaignStats` (aproveitamento, V/E/D, média, saldo; recorte todos/casa/fora) lê
   `standings.json`. "Até a rodada 38": faixa de 80% dos pontos (`pointsP10`–`pointsP90`), histograma
   `simulation.focusPoints`, chance de G6 e risco de rebaixamento ("praticamente zero" abaixo de 1%).
@@ -49,7 +64,7 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - **Imagens (next/og):** `lib/og/cards.tsx` (cards de story e Open Graph) e `lib/og/fonts.ts` (fontes WOFF em
   `assets/fonts`, OFL, incluídas via `outputFileTracingIncludes`). Satori: todo `div` com mais de um filho precisa de
   `display: flex`, e número puro como filho quebra (use template string/`String()`).
-  Rotas: `/api/card/acesso`, `/api/card/previsao?p=`, `app/opengraph-image.tsx`, `twitter-image`, `apple-icon`, `icon.svg`.
+  Rotas: `/api/card/acesso`, `/api/card/conta` ("A conta mudou"), `/api/card/previsao?p=`, `app/opengraph-image.tsx`, `twitter-image`, `apple-icon`, `icon.svg`.
 - **Escolhas visuais do Lucas (checkpoints 1 e 2, 28/09):** nome **Fortaleza em Números**; Bebas Neue + Inter;
   derrota = bolinha vermelha; **chance de subir em verde** em todo o site (topo, simulador, corrida, cards, preview
   do link), com o selo azul "Chances aproximadas do Leão subir pra Série A" no topo (pedido do Lucas, 29/09); montanha-russa com linha
@@ -117,8 +132,11 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 
 - Dia 4 (`docs/PROXIMOS-PASSOS.md`) implementado em 29/09 com as 5 decisões sugeridas: campanha em números, "Até a
   rodada 38", modelo bayesiano completo, jogo a jogo e "depois do intervalo".
-- **Próxima fase: `docs/ROADMAP.md`** (pacotes 1 a 4: participação da torcida). Começar pelo pacote 1.
+- **Fase atual: `docs/ROADMAP.md`** (pacotes 1 a 4: participação da torcida). Pacote 1 implementado em 29/09
+  (status no próprio ROADMAP); próximo: pacote 2.
+- README de portfólio na raiz: descrever o modelo como "Poisson com incerteza nas forças dos times" (não
+  "bayesiano completo").
 - Pendente do Lucas: testes no celular (M10) e revisão dos textos (M11).
 
-_Última atualização: 29/09/2026 (Dia 4 no ar: modelo preditivo bayesiano completo, campanha em
-números, "Até a rodada 38", jogo a jogo, depois do intervalo e chance de subir em verde)._
+_Última atualização: 29/09/2026 (Pacote 1: backtest e "Como a chance mudou", calibração, "A conta mudou",
+jogos que mais mexem, "Pra secar", quiz da rodada 1, aviso de dados atrasados, README)._
