@@ -130,63 +130,6 @@
       "title": "DataStatus",
       "type": "object"
     },
-    "FocusGame": {
-      "additionalProperties": false,
-      "properties": {
-        "matchId": {
-          "type": "string"
-        },
-        "round": {
-          "type": "integer"
-        },
-        "kickoffUtc": {
-          "type": "string"
-        },
-        "opponentId": {
-          "type": "string"
-        },
-        "home": {
-          "type": "boolean"
-        },
-        "pWin": {
-          "type": "number"
-        },
-        "pDraw": {
-          "type": "number"
-        },
-        "pLoss": {
-          "type": "number"
-        },
-        "ifWin": {
-          "type": "number"
-        },
-        "ifDraw": {
-          "type": "number"
-        },
-        "ifLoss": {
-          "type": "number"
-        },
-        "swing": {
-          "type": "number"
-        }
-      },
-      "required": [
-        "matchId",
-        "round",
-        "kickoffUtc",
-        "opponentId",
-        "home",
-        "pWin",
-        "pDraw",
-        "pLoss",
-        "ifWin",
-        "ifDraw",
-        "ifLoss",
-        "swing"
-      ],
-      "title": "FocusGame",
-      "type": "object"
-    },
     "GoalBin": {
       "additionalProperties": false,
       "properties": {
@@ -354,12 +297,6 @@
             }
           ]
         },
-        "focus": {
-          "items": {
-            "$ref": "#/$defs/FocusGame"
-          },
-          "type": "array"
-        },
         "rivals": {
           "items": {
             "$ref": "#/$defs/RivalGame"
@@ -371,7 +308,6 @@
         "metric",
         "baseline",
         "round",
-        "focus",
         "rivals"
       ],
       "title": "KeyGames",

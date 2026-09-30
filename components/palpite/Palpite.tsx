@@ -465,7 +465,7 @@ function Achievements({ unlocked, loading }: { unlocked: Set<string>; loading: b
           </p>
         )}
       </div>
-      <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      <ul className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
         {ACHIEVEMENTS.map((a) => {
           const got = unlocked.has(a.id);
           const Icon = got ? ICONS[a.id] : Lock;
@@ -479,7 +479,7 @@ function Achievements({ unlocked, loading }: { unlocked: Set<string>; loading: b
               >
                 <Icon size={20} aria-hidden />
               </span>
-              <span className="min-w-0">
+              <span className="min-w-0 [overflow-wrap:anywhere]">
                 <span className={`block font-semibold leading-tight ${got ? "" : "text-white/80"}`}>{a.title}</span>
                 <span className="mt-0.5 block text-xs leading-snug text-muted">
                   <span className="sr-only">{got ? "Conquistada: " : "Ainda não: "}</span>

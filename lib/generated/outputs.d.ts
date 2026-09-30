@@ -284,22 +284,7 @@ export interface KeyGames {
   metric: "direct" | "g6";
   baseline: number;
   round: number | null;
-  focus: FocusGame[];
   rivals: RivalGame[];
-}
-export interface FocusGame {
-  matchId: string;
-  round: number;
-  kickoffUtc: string;
-  opponentId: string;
-  home: boolean;
-  pWin: number;
-  pDraw: number;
-  pLoss: number;
-  ifWin: number;
-  ifDraw: number;
-  ifLoss: number;
-  swing: number;
 }
 export interface RivalGame {
   matchId: string;

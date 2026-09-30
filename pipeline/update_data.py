@@ -4,8 +4,8 @@ Uso: `uv run python -m pipeline.update_data [--force] [--recompute] [--offline]`
 
 1. Busca (ESPN; reserva footballsoccerapi) só se algum jogo terminou.
 2. Calcula tabela, linha do tempo, marcos, sequências, raio-x, corrida, próximo jogo.
-3. Roda 20.000 simulações do campeonato (semente fixa por rodada) + checagens de sanidade, e delas tira os
-   jogos que mais mexem na chance.
+3. Roda 20.000 simulações do campeonato (semente fixa por rodada) + checagens de sanidade e, com a mesma
+   semente, o "Pra secar" (jogos dos rivais que mais mexem na chance).
 4. Backtest rodada a rodada (só as rodadas novas ou que mudaram) e calibração.
 5. Grava os JSON em /data (formatação estável; updatedAt só muda se algo mudou) e docs/CALIBRACAO.md.
 """

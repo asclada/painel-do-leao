@@ -35,13 +35,17 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   (20 mil, a do topo), com `partial` se a rodada está em andamento. `pipeline/calc/calibration.py` compara as
   previsões V/E/D da rodada seguinte com o resultado → `data/calibration.json` (frase leiga no rodapé) e
   `docs/CALIBRACAO.md` (gerado; o workflow commita). Calibração da temporada só quando os pontos corridos acabarem.
-- **Jogos que mais mexem (Pacote 1, corrigido em 29/09):** `pipeline/calc/key_games.py` simula cada jogo com o
+- **"Pra secar" (Pacote 1, corrigido em 29/09):** `pipeline/calc/key_games.py` simula cada jogo com o
   resultado FIXADO (V/E/D) com a MESMA semente do topo; a reamostragem do jogo fixado usa gerador próprio
   (`sample_scores(rng_fix=...)`) e os playoffs tiram os gols de uniformes sorteados antes (`poisson_from_uniform`),
   então os cenários só diferem naquele jogo (comparação pareada, ruído ~0,15 ponto). NÃO voltar a separar as
   simulações do topo por resultado: o ruído (~0,8) era maior que o efeito e sugeriu empate em Londrina x Criciúma.
   "Pra secar" avalia TODOS os jogos até a rodada do próximo jogo do Leão (não só a lista da corrida), guarda a ordem
   dos 3 resultados e `sameTop/sameBottom` (< 1 ponto = "tanto faz"; o site diz "Torça contra X"). ~45 s por execução.
+  No site (30/09, pedido do Lucas): os 3 jogos que mais mexem abertos, só com "Torça pelo X / se não der..."; as
+  porcentagens de cada jogo ficam recolhidas no card; o resto em "Ver mais jogos que importam para o Leão".
+  **Os "jogos do Leão que mais mexem" foram REMOVIDOS (30/09, pedido do Lucas)**, do site e do pipeline: a chance
+  "se o Leão vencer na rodada 37" depende de tudo o que acontecer antes e tirava credibilidade. Não recriar.
 - **Ideias do Chance de Gol (29/09, pedido do Lucas):** (1) `next-match.json → chances` (V/E/D do Leão no próximo
   jogo, `outcome_probs`, sem sorteio de placar) no card do próximo jogo; (2) calibração com favorito/médio/zebra e
   a "medida de confiabilidade" deles (`docs/CALIBRACAO.md` + frase no rodapé); (3) `pipeline/calc/clinch.py` →
@@ -74,8 +78,7 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   `lib/site.ts` (inclui `SITE_URL`). **Hierarquia da página (30/09, aprovada pelo Lucas após a auditoria: proteger o
   "torcedor em 5 segundos")**, em blocos com rótulo (`Section eyebrow`): campinho pixel art → topo (hero F1) →
   **Esta rodada**: palpite (`#palpite`, histórico e conquistas recolhidos) + "Pra secar" (`#pra-secar`,
-  `PraSecar`) → **A briga pelo acesso**: corrida F3, jogos do Leão que mais mexem (`#jogos-chave`, `LeaoKeyGames`),
-  "Até a rodada 38", simulador F4 → **A campanha**: campanha em números + montanha-russa F2 com "jogo a jogo" →
+  `PraSecar`) → **A briga pelo acesso**: corrida F3, "Até a rodada 38", simulador F4 → **A campanha**: campanha em números + montanha-russa F2 com "jogo a jogo" →
   **Para quem gosta de números** (visual discreto, `Section quiet`): "Como a chance mudou" (`lib/chance.ts`) e raio-x
   F5 → **Para compartilhar**: "Meu Leão" e "Conteúdo da rodada". Menu com 7 itens (Agora, Rodada, Corrida,
   Simulador, Campanha, Números, Compartilhar); as âncoras antigas continuam valendo. O quiz "onde o Leão estava na
@@ -119,7 +122,7 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   matemática; `accessChances` em `lib/clinch.ts`). A chance total de subir (`pPromotion`, direto + vencer o
   mata-mata) e o "sobe pelos playoffs" (`pPlayoffPromotion`) NÃO aparecem mais em lugar nenhum (topo, corrida,
   simulador, desafio, cards, prévia do link): somavam a campanha com dois jogos de ida e volta e enganavam. O pipeline
-  continua calculando (backtest/calibração usam). "Jogos que mais mexem" e "Pra secar" medem o acesso direto
+  continua calculando (backtest/calibração usam). O "Pra secar" mede o acesso direto
   (`key-games.json → metric`; vira "g6" sozinho se o direto cair abaixo de 5%). Quando começarem os playoffs, a ideia
   combinada é mostrar a chance de passar de cada confronto.
 - **Escolhas visuais do Lucas (checkpoints 1 e 2, 28/09):** nome **Fortaleza em Números**; Bebas Neue + Inter;

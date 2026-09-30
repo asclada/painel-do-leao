@@ -27,15 +27,14 @@ ao que é para quem gosta de números. O menu leva direto a cada bloco.
   resultado, 2). O palpite fica salvo no aparelho, trava quando a bola rola e é conferido sozinho com os placares do
   pipeline. Tem histórico, pontos acumulados, conquistas automáticas ("Olho de lince", "Professor Pardal",
   "Secador profissional"...) e um link de backup para levar os palpites para outro celular. Sem cadastro nem banco.
-- **Pra secar nesta rodada:** os outros jogos da rodada que mais mexem na chance do Leão, com os três resultados do
-  que mais ajuda para o que mais atrapalha ("Torça pelo X · se não der, o empate serve" ou "Torça contra Y").
+- **Pra secar nesta rodada:** os jogos dos rivais que mais mexem na chance do Leão, com a torcida certa para cada
+  um ("Torça pelo X · se não der, o empate serve" ou "Torça contra Y"); tocando no jogo, aparece a chance de acesso
+  direto do Leão em cada resultado.
 
 **A briga pelo acesso**
 
 - **Corrida pelo acesso:** os times da briga lado a lado, com as duas chances de cada um e a dificuldade da tabela
   que falta.
-- **Os jogos que mais mexem na chance:** quanto a chance de acesso direto muda se o Leão vencer, empatar ou perder
-  cada jogo.
 - **Até a rodada 38:** pontuação mais provável, faixa de pontos e as marcas que deixam G6 e acesso quase garantidos.
 - **Simulador dos próximos jogos:** o torcedor escolhe V/E/D em cada jogo e vê onde o Leão termina (API em Python),
   com uma "cara" para a previsão ("Fé inabalável", "Vai ser nos playoffs"...) e, se quiser, também os confrontos
@@ -71,7 +70,7 @@ GitHub Actions (a cada 2h)
   └─ pipeline/update_data.py (Python 3.12 + uv)
        ├─ busca resultados na ESPN só se algum jogo já deveria ter terminado (reserva: footballsoccerapi)
        ├─ tabela, linha do tempo, raio-x, corrida, próximo jogo
-       ├─ 20 mil simulações do campeonato + jogos que mais mexem na chance
+       ├─ 20 mil simulações do campeonato + "Pra secar"
        ├─ backtest rodada a rodada (só a rodada nova) + calibração → docs/CALIBRACAO.md
        └─ grava data/*.json e commita
                 └─ push na main → Vercel
@@ -101,7 +100,7 @@ GitHub Actions (a cada 2h)
    hoje como aproximação, porque a simulação não prevê cartões).
 4. **Playoffs.** 3º x 6º e 4º x 5º em ida e volta, com a melhor campanha decidindo em casa e levando no empate do
    agregado, como no regulamento de 2026.
-5. **Jogos que mais mexem.** Cada jogo é simulado três vezes com o resultado fixado (vitória, empate, derrota) e a
+5. **Pra secar.** Cada jogo dos rivais é simulado três vezes com o resultado fixado (vitória, empate, derrota) e a
    mesma semente das simulações do topo. O jogo fixado é re-sorteado com um gerador próprio e os placares dos
    playoffs saem de números sorteados antes de saber quem joga, então o resto do campeonato é idêntico nos três
    cenários e a diferença entre eles é só aquele jogo (comparação pareada). A primeira versão separava as
@@ -129,7 +128,7 @@ O pipeline refaz a conta como ela teria sido feita **depois de cada rodada**, us
 
 O backtest fica em cache (`data/backtest.json`) com uma chave por rodada (hash dos jogos até ali + parâmetros do
 modelo): nas execuções normais só a rodada nova é calculada (~2 s em vez de ~30 s). A execução completa, com os
-cenários dos jogos que mais mexem, leva menos de 1 minuto e só roda quando algum jogo terminou.
+cenários do "Pra secar", leva menos de 1 minuto e só roda quando algum jogo terminou.
 
 ## Decisões técnicas
 
@@ -170,7 +169,7 @@ A chave da API reserva (opcional) vai em `.env.local` (veja `.env.example`); nun
 ```
 pipeline/            coleta, cálculos e modelo (Python)
   model/             ratings, simulação, playoffs, cenários (vai para a função da Vercel)
-  calc/              tabela, linha do tempo, raio-x, corrida, backtest, calibração, jogos-chave
+  calc/              tabela, linha do tempo, raio-x, corrida, backtest, calibração, pra secar
   providers/         ESPN e footballsoccerapi
 api/index.py         FastAPI do simulador
 app/, components/    site em Next.js

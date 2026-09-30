@@ -5,7 +5,7 @@ import { DataStatusBanner } from "@/components/DataStatusBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/hero/Hero";
-import { keyGamesMetric, LeaoKeyGames, PraSecar } from "@/components/key-games/KeyGames";
+import { keyGamesMetric, PraSecar } from "@/components/key-games/KeyGames";
 import { MeuLeaoSection } from "@/components/meu-leao";
 import { Projection, projectionHeadline } from "@/components/projection/Projection";
 import { Race } from "@/components/race/Race";
@@ -43,11 +43,11 @@ export default function Home() {
           <PalpiteSection />
         </Section>
 
-        {keyGames.focus.length > 0 && (
+        {keyGames.round != null && (
           <Section
             id="pra-secar"
             title="Pra secar nesta rodada"
-            headline={`${keyGames.round ? `Rodada ${keyGames.round}: os` : "Os"} outros jogos que mais mexem na chance de ${keyGamesMetric} do Leão, com os três resultados do melhor para o pior.`}
+            headline={`Rodada ${keyGames.round}: os jogos dos rivais que mais mexem na chance de ${keyGamesMetric} do Leão, e para quem torcer em cada um.`}
           >
             <PraSecar />
           </Section>
@@ -56,16 +56,6 @@ export default function Home() {
         <Section id="corrida" eyebrow="A briga pelo acesso" title="A corrida pelo acesso">
           <Race />
         </Section>
-
-        {keyGames.focus.length > 0 && (
-          <Section
-            id="jogos-chave"
-            title="Os jogos que mais mexem na chance"
-            headline={`Quanto a chance de ${keyGamesMetric} muda com cada resultado do Leão.`}
-          >
-            <LeaoKeyGames />
-          </Section>
-        )}
 
         <Section id="rodada-38" title="Até a rodada 38" headline={projectionHeadline()}>
           <Projection />

@@ -85,7 +85,7 @@ def test_match_calibration(teams, matches_r30):
     assert cal.summary is None  # poucos favoritos para a frase do site
 
 
-# --- jogos que mais mexem na chance ----------------------------------------------------------------
+# --- pra secar (jogos dos rivais que mais mexem na chance) ------------------------------------
 
 
 @pytest.fixture(scope="module")
@@ -96,10 +96,8 @@ def key_games(model):
 
 def test_key_games(model, key_games):
     kg = key_games
-    assert len(kg.focus) == len(model.focus_remaining)
-    assert all(g.if_win > g.if_draw > g.if_loss for g in kg.focus)
-    assert [g.swing for g in kg.focus] == sorted((g.swing for g in kg.focus), reverse=True)
-    assert all(abs(g.p_win + g.p_draw + g.p_loss - 1) < 1e-3 for g in kg.focus)
+    assert kg.rivals and [g.swing for g in kg.rivals] == sorted((g.swing for g in kg.rivals), reverse=True)
+    assert all(abs(g.p_home + g.p_draw + g.p_away - 1) < 1e-3 for g in kg.rivals)
     assert kg.round == model.remaining[model.focus_remaining[0]].round
     for g in kg.rivals:
         assert "fortaleza" not in (g.home_id, g.away_id)
@@ -108,7 +106,7 @@ def test_key_games(model, key_games):
 
 
 def test_key_games_measure_direct_access(model, key_games):
-    """Decisão de 30/09: os jogos que mais mexem medem a chance de acesso direto (1º ou 2º), não a chance total."""
+    """Decisão de 30/09: o "Pra secar" mede a chance de acesso direto (1º ou 2º), não a chance total."""
     sim = simulate_season(model, 4000, seed=3)
     direct = float((sim.positions[:, model.focus_team] <= 2).mean())
     assert key_games.metric == "direct"

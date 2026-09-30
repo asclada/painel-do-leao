@@ -1,4 +1,4 @@
-"""Jogos que mais mexem na chance de acesso direto do Fortaleza.
+"""Pra secar: os jogos dos rivais que mais mexem na chance de acesso direto do Fortaleza.
 
 Medida (decisão do Lucas, 30/09): a chance de ACESSO DIRETO (terminar em 1º ou 2º), a mesma pergunta que o GE
 responde. A chance total de subir (direto + vencer os playoffs) saiu do site porque engana: soma a campanha com um
@@ -17,7 +17,9 @@ como "melhor resultado" em Londrina x Criciúma, quando o certo é o Londrina ve
 Os placares dos playoffs também saem de números sorteados antes (pipeline/model/playoffs.py), senão a troca de um
 classificado sorteava tudo de novo e o ruído voltava.
 
-- Jogos do Fortaleza: os próximos (até MAX_FOCUS), do que mais mexe para o que menos mexe.
+(Os "jogos do Leão que mais mexem" saíram em 30/09, a pedido do Lucas: a chance de acesso se o Leão vencer um jogo
+da rodada 37 depende de tudo o que acontecer antes, então o número de hoje não se sustenta e tirava credibilidade.)
+
 - "Pra secar": TODOS os outros jogos até a rodada do próximo jogo do Leão (inclui sobras de rodadas anteriores);
   ficam os que mexem pelo menos MIN_RIVAL_SWING. Não depende da lista da corrida: um 8º colocado brigando pelo G6
   também conta. Cada jogo traz a ordem dos três resultados, do melhor para o pior, e se dois deles praticamente
@@ -37,28 +39,12 @@ from pipeline.models import Model
 MIN_RIVAL_SWING = 0.01  # jogos que mexem menos de 1 ponto na chance não aparecem
 SAME_EPS = 0.01  # dois resultados a menos de 1 ponto de chance um do outro contam como "tanto faz" (e na tela
 # mostram o mesmo número arredondado); o ruído que sobra entre cenários fica em ~0,15 ponto
-MAX_FOCUS = 12  # no começo do campeonato, só os 12 próximos jogos do Leão (tempo do Actions)
 MIN_DIRECT = 0.05  # abaixo disso, a medida passa a ser a chance de terminar no G6
 
 Metric = Literal["direct", "g6"]
 
 Outcome = Literal["home", "draw", "away"]
 OUTCOME_NAME: dict[int, Outcome] = {HOME_WIN: "home", DRAW: "draw", AWAY_WIN: "away"}
-
-
-class FocusGame(Model):
-    match_id: str
-    round: int
-    kickoff_utc: str
-    opponent_id: str
-    home: bool
-    p_win: float  # chance do resultado, segundo o modelo
-    p_draw: float
-    p_loss: float
-    if_win: float  # chance do Fortaleza (acesso direto ou G6, ver KeyGames.metric) se o jogo terminar assim
-    if_draw: float
-    if_loss: float
-    swing: float  # vitória menos derrota
 
 
 class RivalGame(Model):
@@ -85,7 +71,6 @@ class KeyGames(Model):
     metric: Metric  # "direct": acesso direto (1º ou 2º); "g6": terminar entre os 6 primeiros
     baseline: float  # a chance de agora nessa medida (a mesma do topo)
     round: int | None  # rodada do próximo jogo do Fortaleza ("nesta rodada")
-    focus: list[FocusGame]
     rivals: list[RivalGame]
 
 
@@ -121,21 +106,6 @@ def compute_key_games(model: ModelInput, sim: SimResult, n: int, seed: int) -> K
     metric: Metric = "direct" if metric_chance(sim, f, "direct") >= MIN_DIRECT else "g6"
     baseline = metric_chance(sim, f, metric)
 
-    focus_games = []
-    for j in model.focus_remaining[:MAX_FOCUS]:
-        m = model.remaining[j]
-        home = m.home == f
-        win, loss = (HOME_WIN, AWAY_WIN) if home else (AWAY_WIN, HOME_WIN)
-        chance, freq = forced_chances(model, j, n, seed, metric), _freq(sim, j)
-        focus_games.append(FocusGame(
-            match_id=m.id, round=m.round, kickoff_utc=m.kickoff_utc,
-            opponent_id=model.teams[m.away if home else m.home], home=home,
-            p_win=_r(freq[win]), p_draw=_r(freq[DRAW]), p_loss=_r(freq[loss]),
-            if_win=_r(chance[win]), if_draw=_r(chance[DRAW]), if_loss=_r(chance[loss]),
-            swing=_r(chance[win] - chance[loss]),
-        ))
-    focus_games.sort(key=lambda g: -g.swing)
-
     target = model.remaining[model.focus_remaining[0]].round if model.focus_remaining else None
     rival_games = []
     if target is not None:
@@ -159,4 +129,4 @@ def compute_key_games(model: ModelInput, sim: SimResult, n: int, seed: int) -> K
                 gain=_r(chance[best] - baseline), swing=_r(swing),
             ))
     rival_games.sort(key=lambda g: -g.swing)
-    return KeyGames(metric=metric, baseline=_r(baseline), round=target, focus=focus_games, rivals=rival_games)
+    return KeyGames(metric=metric, baseline=_r(baseline), round=target, rivals=rival_games)
