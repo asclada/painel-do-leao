@@ -72,13 +72,15 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
             <span className="font-semibold">{xray.streaks.currentLabel}</span>
           </div>
 
-          <div className="mt-6 flex items-end justify-between gap-3">
+          {/* no computador (lg+): playoffs embaixo do acesso direto e o compartilhar embaixo dos dois (pedido do Lucas,
+              30/09); no celular, lado a lado como antes */}
+          <div className="mt-6 flex items-end justify-between gap-3 lg:flex-col lg:items-start lg:gap-5">
             <div className="min-w-0">
               {/* selo no mesmo estilo do "Próximo jogo"; o acesso direto vai em verde */}
               <p className="inline-flex rounded-2xl bg-blue px-4 py-1.5 text-sm font-bold text-white shadow-[0_4px_16px_rgb(29_78_216/0.45)] ring-1 ring-white/20 sm:text-base">
                 Chances do Leão na Série B
               </p>
-              <dl className="mt-4 grid grid-cols-2 gap-x-5">
+              <dl className="mt-4 grid grid-cols-2 gap-x-5 lg:grid-cols-1 lg:gap-y-4">
                 <div>
                   <dt className="text-sm font-semibold sm:text-base">Acesso direto</dt>
                   <dd className="font-display text-[3.5rem] leading-[0.95] text-win min-[400px]:text-[4rem] sm:text-[5rem]">
