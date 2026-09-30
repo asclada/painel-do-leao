@@ -151,84 +151,82 @@ function RivalRow({ g }: { g: RivalGame }) {
   );
 }
 
+/** Métrica das chances desta seção, para os títulos na página ("acesso direto" ou "ficar no G6"). */
+export const keyGamesMetric = METRIC;
+
 /**
- * "O jogo que mais mexe na chance" e "Pra secar nesta rodada". Tudo vem de data/key-games.json, calculado pelo
- * pipeline com as mesmas simulações do topo (a chance quando aquele jogo termina de cada jeito).
+ * Os jogos do Leão que mais mexem na chance. Tudo vem de data/key-games.json, calculado pelo pipeline com as mesmas
+ * simulações do topo (a chance quando aquele jogo termina de cada jeito).
  */
-export function KeyGames() {
-  const { focus, rivals, baseline, round } = keyGames;
+export function LeaoKeyGames() {
+  const { focus, baseline } = keyGames;
   if (focus.length === 0) return null;
   const top = focus[0];
   const topOpp = teamById[top.opponentId];
 
   return (
-    <div className="grid gap-10 lg:grid-cols-2 lg:gap-8">
-      <div>
-        <h3 className="text-xl font-semibold">Os jogos do Leão</h3>
-        <p className="mt-1 text-white/90">
-          O que mais mexe na chance é contra {topOpp.article === "a" ? "a" : "o"} <strong>{topOpp.name}</strong>, na
-          rodada {top.round}: vencendo, a chance de {METRIC} vai a <strong>{pct1(top.ifWin ?? baseline)}</strong>; perdendo,
-          cai para <strong>{pct1(top.ifLoss ?? baseline)}</strong>. Hoje ela é {pct1(baseline)}.
-        </p>
-        <ol className="mt-4 flex flex-col gap-2.5" aria-label="Jogos do Fortaleza que mais mexem na chance">
-          {focus.slice(0, FOCUS_SHOWN).map((g, i) => (
-            <FocusRow key={g.matchId} g={g} top={i === 0} />
-          ))}
-        </ol>
-        {focus.length > FOCUS_SHOWN && (
-          <LazyDetails
-            className="group mt-2.5"
-            summary={
-              <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-semibold [&::-webkit-details-marker]:hidden">
-                Ver os outros {plural(focus.length - FOCUS_SHOWN, "jogo")}
-                <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
-              </summary>
-            }
-          >
-            <ol className="mt-2 flex flex-col gap-2.5" aria-label="Demais jogos do Fortaleza">
-              {focus.slice(FOCUS_SHOWN).map((g) => (
-                <FocusRow key={g.matchId} g={g} top={false} />
-              ))}
-            </ol>
-          </LazyDetails>
-        )}
-      </div>
+    <div className="max-w-3xl">
+      <p className="text-white/90">
+        O que mais mexe na chance é contra {topOpp.article === "a" ? "a" : "o"} <strong>{topOpp.name}</strong>, na
+        rodada {top.round}: vencendo, a chance de {METRIC} vai a <strong>{pct1(top.ifWin ?? baseline)}</strong>; perdendo,
+        cai para <strong>{pct1(top.ifLoss ?? baseline)}</strong>. Hoje ela é {pct1(baseline)}.
+      </p>
+      <ol className="mt-4 flex flex-col gap-2.5" aria-label="Jogos do Fortaleza que mais mexem na chance">
+        {focus.slice(0, FOCUS_SHOWN).map((g, i) => (
+          <FocusRow key={g.matchId} g={g} top={i === 0} />
+        ))}
+      </ol>
+      {focus.length > FOCUS_SHOWN && (
+        <LazyDetails
+          className="group mt-2.5"
+          summary={
+            <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-semibold [&::-webkit-details-marker]:hidden">
+              Ver os outros {plural(focus.length - FOCUS_SHOWN, "jogo")}
+              <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
+            </summary>
+          }
+        >
+          <ol className="mt-2 flex flex-col gap-2.5" aria-label="Demais jogos do Fortaleza">
+            {focus.slice(FOCUS_SHOWN).map((g) => (
+              <FocusRow key={g.matchId} g={g} top={false} />
+            ))}
+          </ol>
+        </LazyDetails>
+      )}
+    </div>
+  );
+}
 
-      <div>
-        <h3 className="text-xl font-semibold">Pra secar nesta rodada{round ? ` (rodada ${round})` : ""}</h3>
-        {rivals.length > 0 ? (
-          <>
-            <p className="mt-1 text-white/90">
-              Os outros jogos da rodada que mais mexem na chance de {METRIC} do Leão, com os três resultados do
-              melhor para o pior.
-            </p>
-            <ul className="mt-4 flex flex-col gap-2.5">
-              {rivals.slice(0, RIVALS_SHOWN).map((g) => (
-                <RivalRow key={g.matchId} g={g} />
-              ))}
-            </ul>
-            {rivals.length > RIVALS_SHOWN && (
-              <LazyDetails
-                className="group mt-2.5"
-                summary={
-                  <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-semibold [&::-webkit-details-marker]:hidden">
-                    Ver mais {plural(rivals.length - RIVALS_SHOWN, "jogo")}
-                    <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
-                  </summary>
-                }
-              >
-                <ul className="mt-2 flex flex-col gap-2.5">
-                  {rivals.slice(RIVALS_SHOWN).map((g) => (
-                    <RivalRow key={g.matchId} g={g} />
-                  ))}
-                </ul>
-              </LazyDetails>
-            )}
-          </>
-        ) : (
-          <p className="mt-1 text-white/90">Nenhum outro jogo da rodada mexe de verdade na chance do Leão.</p>
-        )}
-      </div>
+/** "Pra secar nesta rodada": os outros jogos da rodada que mais mexem na chance, do melhor ao pior resultado. */
+export function PraSecar() {
+  const { rivals } = keyGames;
+  if (rivals.length === 0) {
+    return <p className="text-white/90">Nenhum outro jogo da rodada mexe de verdade na chance do Leão.</p>;
+  }
+  return (
+    <div className="max-w-3xl">
+      <ul className="flex flex-col gap-2.5">
+        {rivals.slice(0, RIVALS_SHOWN).map((g) => (
+          <RivalRow key={g.matchId} g={g} />
+        ))}
+      </ul>
+      {rivals.length > RIVALS_SHOWN && (
+        <LazyDetails
+          className="group mt-2.5"
+          summary={
+            <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-semibold [&::-webkit-details-marker]:hidden">
+              Ver mais {plural(rivals.length - RIVALS_SHOWN, "jogo")}
+              <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
+            </summary>
+          }
+        >
+          <ul className="mt-2 flex flex-col gap-2.5">
+            {rivals.slice(RIVALS_SHOWN).map((g) => (
+              <RivalRow key={g.matchId} g={g} />
+            ))}
+          </ul>
+        </LazyDetails>
+      )}
     </div>
   );
 }

@@ -6,17 +6,12 @@ import { useNow } from "@/lib/useNow";
 
 const NAV = [
   ["agora", "Agora"],
-  ["palpite", "Palpite"],
-  ["campanha", "Campanha"],
-  ["temporada", "Temporada"],
-  ["chance", "Chance"],
+  ["palpite", "Rodada"],
   ["corrida", "Corrida"],
-  ["jogos-chave", "Jogos-chave"],
   ["simulador", "Simulador"],
-  ["rodada-38", "Rodada 38"],
-  ["raio-x", "Raio-X"],
-  ["meu-leao", "Meu Leão"],
-  ["para-postar", "Para postar"],
+  ["campanha", "Campanha"],
+  ["chance", "Números"],
+  ["meu-leao", "Compartilhar"],
 ] as const;
 
 export function Header({ name, updatedAt }: { name: string; updatedAt: string | null }) {

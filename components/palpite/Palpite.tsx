@@ -2,6 +2,7 @@
 
 import {
   Check,
+  ChevronDown,
   Eye,
   Flag,
   Flame,
@@ -21,6 +22,7 @@ import {
 import Image from "next/image";
 import { useState, useSyncExternalStore } from "react";
 import { ShareButton } from "@/components/share/ShareButton";
+import { LazyDetails } from "@/components/ui/LazyDetails";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { kickoffLabel, plural } from "@/lib/format";
 import type { Team } from "@/lib/generated/outputs";
@@ -127,7 +129,7 @@ export function Palpite({ games, open, teams, crests, fortalezaId, siteUrl, site
         </div>
       )}
 
-      <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr]">
+      <div className="grid gap-4 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-6">
         {open ? (
           <OpenGame
             key={open.round}
@@ -146,12 +148,33 @@ export function Palpite({ games, open, teams, crests, fortalezaId, siteUrl, site
           </div>
         )}
 
-        <MyPoints scored={scored} loading={!guesses} names={names} siteUrl={siteUrl} siteName={siteName} />
+        <div className="flex flex-col gap-4">
+          <MyPoints scored={scored} loading={!guesses} names={names} siteUrl={siteUrl} siteName={siteName} />
+          {/* histórico e conquistas recolhidos: a seção fica com cerca de uma tela no celular */}
+          <LazyDetails
+            className="group rounded-2xl bg-surface ring-1 ring-line"
+            summary={
+              <summary className="flex min-h-12 cursor-pointer list-none items-center gap-2 px-4 font-semibold [&::-webkit-details-marker]:hidden">
+                <span className="flex-1">
+                  {scored.length > 0 ? "Seus palpites e conquistas" : "Conquistas"}
+                  {guesses && (
+                    <span className="ml-2 text-sm font-normal text-muted">
+                      {unlocked.size} de {ACHIEVEMENTS.length}
+                    </span>
+                  )}
+                </span>
+                <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
+              </summary>
+            }
+          >
+            <div className="space-y-5 px-4 pb-4">
+              {scored.length > 0 && <History scored={scored} names={names} />}
+              <Achievements unlocked={unlocked} loading={!guesses} />
+            </div>
+          </LazyDetails>
+          {guesses && guesses.length > 0 && <Backup guesses={guesses} siteUrl={siteUrl} siteName={siteName} />}
+        </div>
       </div>
-
-      <Achievements unlocked={unlocked} loading={!guesses} />
-
-      {guesses && guesses.length > 0 && <Backup guesses={guesses} siteUrl={siteUrl} siteName={siteName} />}
     </div>
   );
 }
@@ -215,6 +238,9 @@ function OpenGame({
   const locked = now !== null && now >= kickoff;
   const ready = guesses !== null && now !== null;
   const showForm = ready && !locked && (!mine || editing);
+  // antes de ler o aparelho, o formulário aparece travado (mesma altura): a seção não cresce na hidratação,
+  // o que tirava do lugar as âncoras das seções abaixo em celular lento
+  const formShape = showForm || !ready;
   const homeGoals = h ?? mine?.home ?? 0;
   const awayGoals = a ?? mine?.away ?? 0;
 
@@ -251,7 +277,7 @@ function OpenGame({
           <div key={side} className={`flex flex-col items-center gap-2 text-center ${side === "away" ? "col-start-3" : ""}`}>
             <Crest team={team} src={crests[team.id] ?? null} />
             <span className="text-base font-semibold leading-tight sm:text-lg">{team.name}</span>
-            {showForm ? (
+            {formShape ? (
               <Stepper value={value} onChange={set} team={team.name} disabled={!ready} />
             ) : (
               <span className="font-display text-6xl leading-none tabular">{mine ? (side === "home" ? mine.home : mine.away) : "–"}</span>
@@ -264,14 +290,13 @@ function OpenGame({
       </div>
 
       <div className="mt-5 border-t border-line pt-4 text-center">
-        {!ready && <p className="text-muted">Carregando seu palpite…</p>}
-
-        {showForm && (
+        {formShape && (
           <>
             <button
               type="button"
               onClick={save}
-              className="inline-flex min-h-12 items-center gap-2 rounded-full bg-red px-6 font-semibold text-white hover:bg-[#c81727]"
+              disabled={!ready}
+              className="inline-flex min-h-12 items-center gap-2 rounded-full bg-red px-6 font-semibold text-white hover:bg-[#c81727] disabled:opacity-60"
             >
               <Check size={18} aria-hidden /> {mine ? "Salvar novo palpite" : "Cravar palpite"}
             </button>
@@ -350,10 +375,16 @@ function MyPoints({
     <div className="rounded-3xl bg-surface p-5 ring-1 ring-line sm:p-6">
       <h3 className="text-sm font-semibold text-muted">Seus pontos</h3>
       {loading ? (
-        <p className="mt-2 text-muted">Carregando…</p>
+        // mesma altura do placar carregado: a seção não cresce na hidratação (isso tirava as âncoras do lugar)
+        <>
+          <p className="mt-1 font-display text-6xl leading-none text-muted sm:text-7xl" aria-hidden>
+            –
+          </p>
+          <p className="text-sm text-muted">Carregando…</p>
+        </>
       ) : (
         <>
-          <p className="mt-1 font-display text-7xl leading-none">
+          <p className="mt-1 font-display text-6xl leading-none sm:text-7xl">
             {total} <span className="text-3xl text-muted">{total === 1 ? "ponto" : "pontos"}</span>
           </p>
           <p className="text-sm text-muted">
@@ -361,39 +392,6 @@ function MyPoints({
               ? "Os pontos entram depois de cada jogo do Leão."
               : `${plural(done.length, "jogo conferido", "jogos conferidos")} · ${plural(exact, "placar exato", "placares exatos")}`}
           </p>
-
-          {scored.length > 0 && (
-            <ul className="mt-4 divide-y divide-line border-t border-line">
-              {[...scored].reverse().map((s) => {
-                const t = names(s.game);
-                const onTime = s.guess.at * 1000 < Date.parse(s.game.kickoffUtc);
-                return (
-                  <li key={s.guess.round} className="flex items-center gap-3 py-2.5 text-sm">
-                    <span className="w-8 shrink-0 text-muted tabular">R{s.game.round}</span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block truncate font-semibold">
-                        {t.home.name} x {t.away.name}
-                      </span>
-                      <span className="block truncate text-muted">
-                        Você: <strong className="text-white">{s.guess.home} x {s.guess.away}</strong>
-                        {s.game.score ? ` · Deu: ${s.game.score.home} x ${s.game.score.away}` : " · aguardando o jogo"}
-                        {!onTime && " · depois do apito, não vale"}
-                      </span>
-                    </span>
-                    {s.verdict && (
-                      <span
-                        className={`shrink-0 rounded-full px-2.5 py-1 font-bold tabular ${
-                          s.verdict.exact ? "bg-win text-bg" : s.verdict.result ? "bg-win/20 text-win" : "bg-surface-2 text-muted"
-                        }`}
-                      >
-                        {s.verdict.points > 0 ? `+${s.verdict.points}` : "0"}
-                      </span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
 
           {last?.verdict && (
             <div className="mt-4 flex flex-col items-start gap-2 border-t border-line pt-4">
@@ -412,6 +410,44 @@ function MyPoints({
           )}
         </>
       )}
+    </div>
+  );
+}
+
+function History({ scored, names }: { scored: Scored[]; names: (g: PalpiteGame) => { home: Team; away: Team } }) {
+  return (
+    <div>
+      <h3 className="text-xl font-semibold">Seus palpites</h3>
+      <ul className="mt-2 divide-y divide-line border-t border-line">
+        {[...scored].reverse().map((s) => {
+          const t = names(s.game);
+          const onTime = s.guess.at * 1000 < Date.parse(s.game.kickoffUtc);
+          return (
+            <li key={s.guess.round} className="flex items-center gap-3 py-2.5 text-sm">
+              <span className="w-8 shrink-0 text-muted tabular">R{s.game.round}</span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate font-semibold">
+                  {t.home.name} x {t.away.name}
+                </span>
+                <span className="block truncate text-muted">
+                  Você: <strong className="text-white">{s.guess.home} x {s.guess.away}</strong>
+                  {s.game.score ? ` · Deu: ${s.game.score.home} x ${s.game.score.away}` : " · aguardando o jogo"}
+                  {!onTime && " · depois do apito, não vale"}
+                </span>
+              </span>
+              {s.verdict && (
+                <span
+                  className={`shrink-0 rounded-full px-2.5 py-1 font-bold tabular ${
+                    s.verdict.exact ? "bg-win text-bg" : s.verdict.result ? "bg-win/20 text-win" : "bg-surface-2 text-muted"
+                  }`}
+                >
+                  {s.verdict.points > 0 ? `+${s.verdict.points}` : "0"}
+                </span>
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { DataStatusBanner } from "@/components/DataStatusBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/hero/Hero";
-import { KeyGames } from "@/components/key-games/KeyGames";
+import { keyGamesMetric, LeaoKeyGames, PraSecar } from "@/components/key-games/KeyGames";
 import { MeuLeaoSection } from "@/components/meu-leao";
 import { Projection, projectionHeadline } from "@/components/projection/Projection";
 import { Race } from "@/components/race/Race";
@@ -32,15 +32,50 @@ export default function Home() {
         <PixelPitch celebrate={lastGame?.result === "V"} />
         <Hero />
 
+        {/* Ordem pensada para o torcedor (30/09): o que fazer nesta rodada, a briga pelo acesso, a campanha, os
+            números para quem gosta e, por último, o que compartilhar. Os rótulos (eyebrow) abrem cada bloco. */}
         <Section
           id="palpite"
+          eyebrow="Esta rodada"
           title="Palpite da rodada"
           headline="Crave o placar do próximo jogo do Leão. Resultado certo vale 2 pontos; placar exato, 5. Sem cadastro: fica guardado no seu celular."
         >
           <PalpiteSection />
         </Section>
 
-        <Section id="campanha" title="A campanha em números" className="!pt-6 sm:!pt-10">
+        {keyGames.focus.length > 0 && (
+          <Section
+            id="pra-secar"
+            title="Pra secar nesta rodada"
+            headline={`${keyGames.round ? `Rodada ${keyGames.round}: os` : "Os"} outros jogos que mais mexem na chance de ${keyGamesMetric} do Leão, com os três resultados do melhor para o pior.`}
+          >
+            <PraSecar />
+          </Section>
+        )}
+
+        <Section id="corrida" eyebrow="A briga pelo acesso" title="A corrida pelo acesso">
+          <Race />
+        </Section>
+
+        {keyGames.focus.length > 0 && (
+          <Section
+            id="jogos-chave"
+            title="Os jogos que mais mexem na chance"
+            headline={`Quanto a chance de ${keyGamesMetric} muda com cada resultado do Leão.`}
+          >
+            <LeaoKeyGames />
+          </Section>
+        )}
+
+        <Section id="rodada-38" title="Até a rodada 38" headline={projectionHeadline()}>
+          <Projection />
+        </Section>
+
+        <Section id="simulador" lazyRender={false} title="Simulador dos próximos jogos" headline="Escolha o resultado dos jogos que faltam e veja onde o Leão termina.">
+          <SimulatorSection />
+        </Section>
+
+        <Section id="campanha" eyebrow="A campanha" title="A campanha em números">
           <CampaignStats row={fortalezaRow} />
         </Section>
 
@@ -49,38 +84,17 @@ export default function Home() {
           <MatchList />
         </Section>
 
-        <Section id="chance" title="Como a chance mudou" headline={chanceHeadline()}>
+        <Section id="chance" eyebrow="Para quem gosta de números" quiet title="Como a chance mudou" headline={chanceHeadline()}>
           <ChanceHistory />
         </Section>
 
-        <Section id="corrida" title="A corrida pelo acesso">
-          <Race />
-        </Section>
-
-        {keyGames.focus.length > 0 && (
-          <Section
-            id="jogos-chave"
-            title="Os jogos que mais mexem na chance"
-            headline={`Quanto a chance de ${keyGames.metric === "direct" ? "acesso direto" : "ficar no G6"} muda com cada resultado, do Leão e dos rivais.`}
-          >
-            <KeyGames />
-          </Section>
-        )}
-
-        <Section id="simulador" lazyRender={false} title="Simulador dos próximos jogos" headline="Escolha o resultado dos jogos que faltam e veja onde o Leão termina.">
-          <SimulatorSection />
-        </Section>
-
-        <Section id="rodada-38" title="Até a rodada 38" headline={projectionHeadline()}>
-          <Projection />
-        </Section>
-
-        <Section id="raio-x" title="Raio-X do time">
+        <Section id="raio-x" quiet title="Raio-X do time">
           <XRay />
         </Section>
 
         <Section
           id="meu-leao"
+          eyebrow="Para compartilhar"
           title="Meu Leão"
           headline="Responda 4 perguntas e ganhe um cartão de torcedor para o story."
         >

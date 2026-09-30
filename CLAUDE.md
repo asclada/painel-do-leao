@@ -71,11 +71,17 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - **Dados atrasados:** `meta.dataStatus` (`pipeline/fetch.py::data_status`): `delayed` só com ESPN falhando ≥2x E
   jogo que já deveria ter acabado sem resultado; não mexe no `updatedAt`. Banner em `components/DataStatusBanner.tsx`.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em
-  `lib/site.ts` (inclui `SITE_URL`). Seções em `components/`, nesta ordem na página: hero F1, campaign (o quiz
-  "onde o Leão estava na rodada 1" foi retirado a pedido do Lucas em 30/09: repetia sempre a mesma pergunta), season-chart F2 + `MatchList` "jogo a jogo", chance ("Como a
-  chance mudou", SVG próprio + "A conta mudou", `lib/chance.ts`), race F3, key-games ("jogos que mais mexem" +
-  "Pra secar"), simulator F4, projection "Até a rodada 38", xray F5 com "depois do intervalo".
-  Antes do topo vem a faixa do campinho pixel art; depois do topo vem o "Palpite da rodada" e, antes de "Conteúdo da rodada", o cartão "Meu Leão".
+  `lib/site.ts` (inclui `SITE_URL`). **Hierarquia da página (30/09, aprovada pelo Lucas após a auditoria: proteger o
+  "torcedor em 5 segundos")**, em blocos com rótulo (`Section eyebrow`): campinho pixel art → topo (hero F1) →
+  **Esta rodada**: palpite (`#palpite`, histórico e conquistas recolhidos) + "Pra secar" (`#pra-secar`,
+  `PraSecar`) → **A briga pelo acesso**: corrida F3, jogos do Leão que mais mexem (`#jogos-chave`, `LeaoKeyGames`),
+  "Até a rodada 38", simulador F4 → **A campanha**: campanha em números + montanha-russa F2 com "jogo a jogo" →
+  **Para quem gosta de números** (visual discreto, `Section quiet`): "Como a chance mudou" (`lib/chance.ts`) e raio-x
+  F5 → **Para compartilhar**: "Meu Leão" e "Conteúdo da rodada". Menu com 7 itens (Agora, Rodada, Corrida,
+  Simulador, Campanha, Números, Compartilhar); as âncoras antigas continuam valendo. O quiz "onde o Leão estava na
+  rodada 1" foi retirado a pedido do Lucas em 30/09 (repetia sempre a mesma pergunta).
+  Nada acima de uma âncora pode mudar de altura na hidratação (o palpite mostra o formulário travado antes de ler o
+  aparelho): o script de âncoras só segura o destino por 2 s sem mudança.
   O topo diz "Situação atual na Série B · N jogos" (não "depois da rodada X", que confundia com rodada em andamento).
   Campanha em números: `CampaignStats` (aproveitamento, V/E/D, média, saldo; recorte todos/casa/fora) lê
   `standings.json`. "Até a rodada 38": faixa de 80% dos pontos (`pointsP10`–`pointsP90`), histograma
