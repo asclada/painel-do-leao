@@ -29,7 +29,7 @@ from pipeline.model.summarize import team_odds
 from pipeline.models import Match, MatchDetails, Model, Team
 
 # Muda quando a forma de calcular o backtest muda: força recalcular todas as rodadas.
-BACKTEST_VERSION = 1
+BACKTEST_VERSION = 2  # 2: confronto direto e cartões no desempate; placar fixado sem placar padrão
 SEED_BASE = 90_000
 
 

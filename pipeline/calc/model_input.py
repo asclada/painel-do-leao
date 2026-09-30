@@ -27,11 +27,25 @@ def build_model_input(
         rounds=np.array([m.round for m in done]),
     )
     row = {r.team_id: r for r in standings}
+    n_teams = len(team_ids)
+    h2h_points = np.zeros((n_teams, n_teams), dtype=int)
+    h2h_gd = np.zeros((n_teams, n_teams), dtype=int)
+    for m in done:
+        h, a, hg, ag = idx[m.home_id], idx[m.away_id], m.home_goals, m.away_goals
+        h2h_points[h, a] += 3 * (hg > ag) + (hg == ag)
+        h2h_points[a, h] += 3 * (ag > hg) + (hg == ag)
+        h2h_gd[h, a] += hg - ag
+        h2h_gd[a, h] += ag - hg
+    has_cards = all(row[t].red is not None and row[t].yellow is not None for t in team_ids)
     table = TableState(
         points=[row[t].points for t in team_ids],
         wins=[row[t].wins for t in team_ids],
         goal_diff=[row[t].goal_diff for t in team_ids],
         goals_for=[row[t].goals_for for t in team_ids],
+        h2h_points=h2h_points.tolist(),
+        h2h_goal_diff=h2h_gd.tolist(),
+        red=[row[t].red for t in team_ids] if has_cards else None,
+        yellow=[row[t].yellow for t in team_ids] if has_cards else None,
     )
     left = sorted(
         (m for m in matches if m.status not in ("finished", "cancelled")),

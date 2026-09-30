@@ -30,6 +30,12 @@ class TableState(Model):
     wins: list[int]
     goal_diff: list[int]
     goals_for: list[int]
+    # Critérios depois de gols pró (regulamento): confronto direto e cartões. Opcionais: sem eles, a simulação
+    # desempata só pelos quatro primeiros critérios e sorteio (formato antigo do model.json).
+    h2h_points: list[list[int]] | None = None  # [i][j] = pontos de i contra j nos jogos já disputados
+    h2h_goal_diff: list[list[int]] | None = None  # [i][j] = saldo de i contra j nos jogos já disputados
+    red: list[int] | None = None  # cartões até agora (a simulação não prevê cartões: é uma aproximação)
+    yellow: list[int] | None = None
 
 
 class RemainingMatch(Model):

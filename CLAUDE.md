@@ -20,7 +20,12 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   vetorizado N×M; playoffs). **Distribuição preditiva bayesiana completa (29/09, decisão do Lucas):** o encolhimento é
   a média de uma posteriori Gamma-Poisson; `fit_ratings` exporta essa posteriori (`ratings.posterior` no model.json) e
   `draw_factors` sorteia a força de cada time em cada simulação (inclusive nos playoffs). `PARAM_UNCERTAINTY` em
-  `pipeline/config.py` liga/desliga (False = modelo antigo, só as médias). Vale para TODOS os números do site. O pipeline roda 20 mil (semente por rodada) e grava `data/simulation.json`; a API
+  `pipeline/config.py` liga/desliga (False = modelo antigo, só as médias). Vale para TODOS os números do site.
+  **Desempate e placar fixado (30/09, auditoria):** `rank()` em `simulate.py` segue o regulamento como o
+  `standings.py`: pontos → vitórias → saldo → gols pró → confronto direto (só entre 2; jogos disputados em
+  `model.json → table.h2hPoints/h2hGoalDiff` + o jogo simulado) → cartões de HOJE (aproximação) → sorteio. Resultado
+  fixado improvável: depois de 30 tentativas o placar sai da Poisson condicionada (`_conditional_scores`), nunca
+  1x0/1x1/0x1. Efeito medido nas chances: ≤ 0,01 ponto. Mudou o cálculo do backtest? Suba `BACKTEST_VERSION`. O pipeline roda 20 mil (semente por rodada) e grava `data/simulation.json`; a API
   (`api/index.py`, rotas `/api/py/health` e `/api/py/simular?p=VED-`) roda 5 mil a partir de `data/model.json`.
 - **Saídas do site:** `pipeline/outputs.py` (modelos) → `data/*.json` → tipos em `lib/generated/` → `lib/data.ts`.
 - **Backtest e calibração (Pacote 1, 29/09):** `pipeline/calc/backtest.py` refaz a simulação "depois da rodada r"

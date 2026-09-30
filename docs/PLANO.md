@@ -584,14 +584,14 @@ para s = 1 até N:
          golsCasa ~ Poisson(λCasa), golsFora ~ Poisson(λFora)
      atualizar tabela
   ordenar tabela com os critérios de desempate
-     (pontos → vitórias → saldo → gols pró → sorteio aleatório entre empatados)
+     (pontos → vitórias → saldo → gols pró → confronto direto, só entre 2 → menos vermelhos → menos amarelos → sorteio)
   registrar posição final de cada time
   simular playoffs (8.3) e registrar quem subiu
 ```
 
 - `N = 20000` no pipeline; `N = 5000` na FastAPI do simulador.
 - **Gerador aleatório com semente** (`numpy.random.default_rng(seed)`) para resultados reproduzíveis nos testes. No Actions, semente fixa por rodada (ex.: `seed = lastCompletedRound * 1000`) para o número não "pular" entre execuções sem jogo novo.
-- **Vetorização:** para cada jogo restante, `rng.poisson(λ, size=N)` gera o placar das N temporadas de uma vez. A tabela vira matrizes N×20 (pontos, vitórias, saldo, gols pró) e a ordenação final usa `np.lexsort` com uma chave aleatória no fim para fazer o papel do sorteio.
+- **Vetorização:** para cada jogo restante, `rng.poisson(λ, size=N)` gera o placar das N temporadas de uma vez. A tabela vira matrizes N×20 (pontos, vitórias, saldo, gols pró) e a ordenação final usa `np.lexsort` (cartões de hoje como aproximação, porque a simulação não prevê cartões, e uma chave aleatória no fim no papel do sorteio); depois, onde exatamente 2 times empatam nos quatro primeiros critérios, o confronto direto (jogos disputados, guardados no `model.json`, + o jogo simulado entre eles) decide. Atualizado em 30/09/2026: antes a simulação ia de gols pró direto para o sorteio (efeito medido: no máximo 0,01 ponto nas chances).
 - Jogos adiados sem data continuam como "restantes" e são simulados.
 - Nada de loop Python por temporada: o loop é só sobre os jogos restantes (~80), cada passo vetorizado. Meta: **5.000 simulações em menos de 300ms** e 20.000 em poucos segundos.
 
@@ -608,7 +608,7 @@ Após cada temporada simulada:
 
 Quando o torcedor escolhe V, E ou D para um jogo do Fortaleza:
 - Sortear placares de Poisson e reamostrar **só as simulações incompatíveis** com o resultado escolhido, até todas baterem (no máximo 30 rodadas de reamostragem).
-- As que não baterem após 30 rodadas: usar placar padrão (V = 1x0, E = 1x1, D = 0x1, na orientação correta de mandante/visitante).
+- As que não baterem após 30 rodadas: placar tirado direto da distribuição de Poisson condicionada ao resultado escolhido (grade 0–15 gols). Até 30/09/2026 elas viravam placar padrão (1x0, 1x1, 0x1), o que acontecia em até 1/3 das simulações de resultados muito improváveis.
 
 Isso mantém saldo e gols realistas para o desempate.
 

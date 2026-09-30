@@ -1,11 +1,11 @@
 {
-  "baseline": 0.3761,
+  "baseline": 0.376,
   "focus": [
     {
       "home": false,
       "ifDraw": 0.3597,
       "ifLoss": 0.2504,
-      "ifWin": 0.5598,
+      "ifWin": 0.5597,
       "kickoffUtc": "2026-11-06T20:00Z",
       "matchId": "novorizontino--fortaleza",
       "opponentId": "novorizontino",
@@ -13,12 +13,12 @@
       "pLoss": 0.3892,
       "pWin": 0.2909,
       "round": 37,
-      "swing": 0.3094
+      "swing": 0.3093
     },
     {
       "home": true,
-      "ifDraw": 0.2846,
-      "ifLoss": 0.1873,
+      "ifDraw": 0.2845,
+      "ifLoss": 0.1872,
       "ifWin": 0.485,
       "kickoffUtc": "2026-11-14T20:00Z",
       "matchId": "fortaleza--vila-nova",
@@ -27,7 +27,7 @@
       "pLoss": 0.1955,
       "pWin": 0.5338,
       "round": 38,
-      "swing": 0.2977
+      "swing": 0.2978
     },
     {
       "home": true,
@@ -41,12 +41,12 @@
       "pLoss": 0.2951,
       "pWin": 0.3876,
       "round": 36,
-      "swing": 0.2858
+      "swing": 0.2859
     },
     {
       "home": true,
       "ifDraw": 0.2974,
-      "ifLoss": 0.2129,
+      "ifLoss": 0.2128,
       "ifWin": 0.4849,
       "kickoffUtc": "2026-10-12T19:00Z",
       "matchId": "fortaleza--crb",
@@ -55,12 +55,12 @@
       "pLoss": 0.2339,
       "pWin": 0.5122,
       "round": 33,
-      "swing": 0.272
+      "swing": 0.2721
     },
     {
       "home": false,
       "ifDraw": 0.3544,
-      "ifLoss": 0.2771,
+      "ifLoss": 0.277,
       "ifWin": 0.5317,
       "kickoffUtc": "2026-10-16T23:30Z",
       "matchId": "sport--fortaleza",
@@ -69,13 +69,13 @@
       "pLoss": 0.414,
       "pWin": 0.2959,
       "round": 34,
-      "swing": 0.2546
+      "swing": 0.2547
     },
     {
       "home": false,
       "ifDraw": 0.3133,
-      "ifLoss": 0.243,
-      "ifWin": 0.4881,
+      "ifLoss": 0.2429,
+      "ifWin": 0.488,
       "kickoffUtc": "2026-10-07T23:30Z",
       "matchId": "america-mg--fortaleza",
       "opponentId": "america-mg",
@@ -89,7 +89,7 @@
       "home": true,
       "ifDraw": 0.2979,
       "ifLoss": 0.2283,
-      "ifWin": 0.4709,
+      "ifWin": 0.4708,
       "kickoffUtc": "2026-10-03T00:35Z",
       "matchId": "fortaleza--nautico",
       "opponentId": "nautico",
@@ -103,7 +103,7 @@
       "home": false,
       "ifDraw": 0.3013,
       "ifLoss": 0.2341,
-      "ifWin": 0.4742,
+      "ifWin": 0.4741,
       "kickoffUtc": "2026-10-23T18:00Z",
       "matchId": "ponte-preta--fortaleza",
       "opponentId": "ponte-preta",
@@ -119,11 +119,11 @@
     {
       "awayId": "vila-nova",
       "best": "home",
-      "gain": 0.0179,
+      "gain": 0.0178,
       "homeId": "botafogo-sp",
-      "ifAway": 0.3378,
+      "ifAway": 0.3377,
       "ifDraw": 0.376,
-      "ifHome": 0.394,
+      "ifHome": 0.3939,
       "kickoffUtc": "2026-10-03T21:30Z",
       "matchId": "botafogo-sp--vila-nova",
       "order": [
@@ -137,7 +137,7 @@
       "round": 31,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0562
+      "swing": 0.0561
     },
     {
       "awayId": "goias",
@@ -167,7 +167,7 @@
       "best": "draw",
       "gain": 0.0161,
       "homeId": "juventude",
-      "ifAway": 0.3888,
+      "ifAway": 0.3887,
       "ifDraw": 0.3922,
       "ifHome": 0.3548,
       "kickoffUtc": "2026-10-02T23:45Z",
@@ -188,10 +188,10 @@
     {
       "awayId": "america-mg",
       "best": "away",
-      "gain": 0.0176,
+      "gain": 0.0177,
       "homeId": "atletico-go",
       "ifAway": 0.3937,
-      "ifDraw": 0.3887,
+      "ifDraw": 0.3886,
       "ifHome": 0.37,
       "kickoffUtc": "2026-10-03T19:00Z",
       "matchId": "atletico-go--america-mg",
@@ -238,7 +238,7 @@
       "homeId": "sao-bernardo",
       "ifAway": 0.3661,
       "ifDraw": 0.3801,
-      "ifHome": 0.3832,
+      "ifHome": 0.3831,
       "kickoffUtc": "2026-10-02T22:30Z",
       "matchId": "sao-bernardo--crb",
       "order": [

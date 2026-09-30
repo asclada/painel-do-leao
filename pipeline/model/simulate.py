@@ -7,17 +7,19 @@ Tudo vetorizado: os placares de todas as N temporadas e M jogos saem de uma vez
 from __future__ import annotations
 
 from dataclasses import dataclass
+from math import lgamma
 
 import numpy as np
 
 from pipeline.model.playoffs import simulate_playoffs
 from pipeline.config import PARAM_UNCERTAINTY
 from pipeline.model.ratings import draw_factors
-from pipeline.model.types import ModelInput
+from pipeline.model.types import ModelInput, TableState
 
 # Resultado fixado, na visão do MANDANTE
 FREE, HOME_WIN, DRAW, AWAY_WIN = -1, 0, 1, 2
 MAX_RESAMPLE = 30
+MAX_GOALS = 15  # grade de placares da amostragem condicional (0 a 15 gols de cada lado)
 
 
 @dataclass
@@ -42,7 +44,9 @@ def sample_scores(
     rng_fix: np.random.Generator | None = None,
 ) -> tuple[np.ndarray, np.ndarray]:
     """Placares (N, M). λ vem (M,) ou (N, M) (uma força por simulação). Jogos com resultado fixado
-    são reamostrados só nas simulações incompatíveis; o que sobrar após 30 tentativas vira 1x0/1x1/0x1.
+    são reamostrados só nas simulações incompatíveis; o que sobrar após 30 tentativas (resultado muito improvável
+    naquela simulação) sai direto da distribuição de placares condicionada ao resultado. Assim todo placar fixado
+    segue a distribuição "dado que o mandante venceu" (ou empatou, ou perdeu), sem placar padrão.
 
     A reamostragem usa `rng_fix` (gerador próprio): assim o `rng` principal consome sempre os mesmos números,
     com ou sem resultado fixado, e dois cenários com a mesma semente só diferem nos jogos fixados
@@ -68,17 +72,119 @@ def sample_scores(
     if bad.any():
         rows, which = np.nonzero(bad)
         c = cols[which]
-        want = fixed[c]
-        hg[rows, c] = np.where(want == AWAY_WIN, 0, 1)
-        ag[rows, c] = np.where(want == HOME_WIN, 0, 1)
+        hg[rows, c], ag[rows, c] = _conditional_scores(lam_h[rows, c], lam_a[rows, c], fixed[c], rng_fix)
     return hg, ag
 
 
-def rank(points, wins, gd, gf, rng) -> np.ndarray:
-    """Posição final (1..T) de cada time em cada simulação.
-    pontos -> vitórias -> saldo -> gols pró -> sorteio."""
+_GOALS = np.arange(MAX_GOALS + 1)
+_LOG_FACT = np.array([lgamma(k + 1) for k in _GOALS])
+_GRID_OUTCOME = _outcome(*np.meshgrid(_GOALS, _GOALS, indexing="ij")).ravel()  # resultado de cada placar da grade
+
+
+def _conditional_scores(
+    lam_h: np.ndarray, lam_a: np.ndarray, want: np.ndarray, rng: np.random.Generator
+) -> tuple[np.ndarray, np.ndarray]:
+    """Um placar por elemento, da Poisson dupla (lam_h, lam_a) condicionada ao resultado `want`."""
+    ph = np.exp(_GOALS * np.log(lam_h[:, None]) - lam_h[:, None] - _LOG_FACT)
+    pa = np.exp(_GOALS * np.log(lam_a[:, None]) - lam_a[:, None] - _LOG_FACT)
+    joint = (ph[:, :, None] * pa[:, None, :]).reshape(len(want), -1)
+    joint *= _GRID_OUTCOME[None, :] == want[:, None]
+    cdf = np.cumsum(joint, axis=1)
+    k = (cdf < rng.random(len(want))[:, None] * cdf[:, -1:]).sum(axis=1)
+    return k // (MAX_GOALS + 1), k % (MAX_GOALS + 1)
+
+
+def _pair_slots(home: np.ndarray, away: np.ndarray, t: int) -> list[np.ndarray]:
+    """Jogos restantes entre cada par de times: slots[k][i, j] = índice do k-ésimo jogo entre i e j, ou -1.
+    Quase sempre um slot só (o jogo do returno); jogos adiados podem deixar dois entre o mesmo par."""
+    slots: list[np.ndarray] = []
+    for j, (h, a) in enumerate(zip(home, away)):
+        free = [sl for sl in slots if sl[h, a] < 0]
+        if free:
+            sl = free[0]
+        else:
+            sl = np.full((t, t), -1)
+            slots.append(sl)
+        sl[h, a] = sl[a, h] = j
+    return slots
+
+
+@dataclass
+class TieBreak:
+    """O que o desempate usa depois de gols pró: confronto direto (jogos disputados + placares simulados)
+    e cartões."""
+
+    h2h_points: np.ndarray  # (T, T): pontos de i contra j nos jogos disputados
+    h2h_gd: np.ndarray  # (T, T): saldo de i contra j
+    red: np.ndarray | None  # (T,)
+    yellow: np.ndarray | None
+    slots: list[np.ndarray]  # _pair_slots dos jogos restantes
+    home: np.ndarray  # (M,) mandante de cada jogo restante
+    hg: np.ndarray | None = None  # (N, M) placares simulados
+    ag: np.ndarray | None = None
+
+    @classmethod
+    def from_table(cls, table: TableState, home: np.ndarray, away: np.ndarray) -> TieBreak | None:
+        if table.h2h_points is None or table.h2h_goal_diff is None:
+            return None
+        cards = table.red is not None and table.yellow is not None
+        return cls(
+            h2h_points=np.asarray(table.h2h_points),
+            h2h_gd=np.asarray(table.h2h_goal_diff),
+            red=np.asarray(table.red) if cards else None,
+            yellow=np.asarray(table.yellow) if cards else None,
+            slots=_pair_slots(home, away, len(table.points)),
+            home=home,
+        )
+
+
+def _head_to_head(order: np.ndarray, stats: tuple[np.ndarray, ...], tb: TieBreak) -> np.ndarray:
+    """Confronto direto onde EXATAMENTE 2 times empatam em pontos, vitórias, saldo e gols pró (regulamento, igual a
+    pipeline/calc/standings.py): mais pontos nos jogos entre os dois, depois o saldo neles. Empate também no
+    confronto mantém a ordem dos cartões/sorteio."""
+    keys = np.stack([np.take_along_axis(x, order, axis=1) for x in stats], axis=-1)  # (N, T, 4) na ordem final
+    eq = (keys[:, 1:] == keys[:, :-1]).all(-1)  # (N, T-1): a posição p empata com a p+1
+    pad = np.pad(eq, ((0, 0), (1, 1)))
+    pair = eq & ~pad[:, :-2] & ~pad[:, 2:]  # só 2: nem o de cima nem o de baixo entram no empate
+    s, p = np.nonzero(pair)
+    if not len(s):
+        return order
+    a, b = order[s, p], order[s, p + 1]
+    dp = tb.h2h_points[a, b] - tb.h2h_points[b, a]
+    dg = tb.h2h_gd[a, b].copy()
+    if tb.hg is not None:
+        for slot in tb.slots:
+            j = slot[a, b]
+            has = j >= 0
+            if not has.any():
+                continue
+            sj, jj = s[has], j[has]
+            a_home = tb.home[jj] == a[has]
+            g_a = np.where(a_home, tb.hg[sj, jj], tb.ag[sj, jj])
+            g_b = np.where(a_home, tb.ag[sj, jj], tb.hg[sj, jj])
+            dp[has] += 3 * (g_a > g_b) - 3 * (g_b > g_a)
+            dg[has] += g_a - g_b
+    swap = (dp < 0) | ((dp == 0) & (dg < 0))
+    if swap.any():
+        order = order.copy()
+        order[s[swap], p[swap]] = b[swap]
+        order[s[swap], p[swap] + 1] = a[swap]
+    return order
+
+
+def rank(points, wins, gd, gf, rng, tb: TieBreak | None = None) -> np.ndarray:
+    """Posição final (1..T) de cada time em cada simulação, com os critérios do regulamento:
+    pontos -> vitórias -> saldo -> gols pró -> confronto direto (só entre 2) -> menos vermelhos ->
+    menos amarelos -> sorteio. Os cartões são os de hoje (a simulação não prevê cartões): uma aproximação.
+    Sem `tb` (model.json antigo): pontos -> vitórias -> saldo -> gols pró -> sorteio."""
     tie = rng.random(points.shape)
-    order = np.lexsort((tie, -gf, -gd, -wins, -points), axis=-1)  # (N, T): índices dos times, do 1º ao último
+    keys = [tie]
+    if tb is not None and tb.red is not None:
+        keys += [np.broadcast_to(tb.yellow, points.shape), np.broadcast_to(tb.red, points.shape)]
+    keys += [-gf, -gd, -wins, -points]
+    order = np.lexsort(keys, axis=-1)  # (N, T): índices dos times, do 1º ao último
+    if tb is not None:
+        order = _head_to_head(order, (points, wins, gd, gf), tb)
     pos = np.empty_like(order)
     np.put_along_axis(pos, order, np.arange(1, points.shape[1] + 1)[None, :].repeat(len(points), 0), axis=-1)
     return pos
@@ -100,6 +206,7 @@ def simulate_season(
     gf = np.tile(np.asarray(base.goals_for), (n, 1))
 
     outcomes = np.empty((n, 0), dtype=np.int8)
+    tb = TieBreak.from_table(base, home, away)
     if len(home):
         lam_h, lam_a = factors.lambdas(home, away)
         hg, ag = sample_scores(rng, lam_h, lam_a, n, fixed, np.random.default_rng([seed, 1]))
@@ -114,8 +221,10 @@ def simulate_season(
         gd += (hg - ag) @ H + (ag - hg) @ A
         gf += hg @ H + ag @ A
         outcomes = _outcome(hg, ag).astype(np.int8)
+        if tb is not None:
+            tb.hg, tb.ag = hg, ag
 
-    positions = rank(pts, wins, gd, gf, rng)
+    positions = rank(pts, wins, gd, gf, rng, tb)
     playoff_winner = simulate_playoffs(factors, positions, rng)
     promoted = (positions <= 2) | playoff_winner
     return SimResult(
