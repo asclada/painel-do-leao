@@ -1,6 +1,6 @@
 # Fortaleza em Números
 
-Painel do Fortaleza na Série B 2026 feito para o torcedor comum: onde o Leão está, as chances reais de acesso
+Painel do Fortaleza na Série B 2026 feito para o torcedor comum: onde o Leão está, as chances de acesso
 direto e de ir aos playoffs (simulando o campeonato inteiro, com todos os rivais), como essas chances mudaram rodada
 a rodada, quais jogos mais pesam e um simulador para montar a própria previsão. Atualiza sozinho depois de cada jogo.
 
@@ -12,35 +12,53 @@ a rodada, quais jogos mais pesam e um simulador para montar a própria previsão
 
 ## O que tem no site
 
+A página é organizada em blocos, do que o torcedor quer saber primeiro (onde o Leão está e o que fazer nesta rodada)
+ao que é para quem gosta de números. O menu leva direto a cada bloco.
+
 - **Agora:** posição, pontos, sequência e as duas chances no formato do GE, com uma casa decimal: **acesso direto**
   (terminar em 1º ou 2º) e **ir aos playoffs** (terminar entre 3º e 6º). O site não soma as duas numa "chance de
   subir": os playoffs são um mata-mata de ida e volta, e o número único passaria uma segurança que ele não dá. Mostra
   também o próximo jogo, com a chance de vitória, empate e derrota do Leão nele. Quando a matemática decide algo,
   aparece um selo ("Acesso garantido!", "Vaga no G6 garantida"...).
-- **Campanha em números:** aproveitamento, vitórias/empates/derrotas, média de pontos, saldo (geral, casa e fora).
-- **Montanha-russa da temporada:** posição rodada a rodada, com marcos e os rivais da corrida; jogo a jogo.
-- **Como a chance mudou:** as chances de acesso direto e de ir aos playoffs refeitas depois de cada rodada, só com o
-  que se sabia até ali, e o card **"A conta mudou"** (antes x agora) gerado automaticamente depois de cada rodada.
+
+**Esta rodada**
+
+- **Palpite da rodada:** o torcedor crava o placar do próximo jogo do Leão (placar exato vale 5 pontos; só o
+  resultado, 2). O palpite fica salvo no aparelho, trava quando a bola rola e é conferido sozinho com os placares do
+  pipeline. Tem histórico, pontos acumulados, conquistas automáticas ("Olho de lince", "Professor Pardal",
+  "Secador profissional"...) e um link de backup para levar os palpites para outro celular. Sem cadastro nem banco.
+- **Pra secar nesta rodada:** os outros jogos da rodada que mais mexem na chance do Leão, com os três resultados do
+  que mais ajuda para o que mais atrapalha ("Torça pelo X · se não der, o empate serve" ou "Torça contra Y").
+
+**A briga pelo acesso**
+
 - **Corrida pelo acesso:** os times da briga lado a lado, com as duas chances de cada um e a dificuldade da tabela
   que falta.
 - **Os jogos que mais mexem na chance:** quanto a chance de acesso direto muda se o Leão vencer, empatar ou perder
-  cada jogo, e
-  **"Pra secar nesta rodada"**: os três resultados de cada jogo da rodada, do que mais ajuda o Leão para o que mais
-  atrapalha ("Torça pelo X · se não der, o empate serve" ou "Torça contra Y").
+  cada jogo.
+- **Até a rodada 38:** pontuação mais provável, faixa de pontos e as marcas que deixam G6 e acesso quase garantidos.
 - **Simulador dos próximos jogos:** o torcedor escolhe V/E/D em cada jogo e vê onde o Leão termina (API em Python),
   com uma "cara" para a previsão ("Fé inabalável", "Vai ser nos playoffs"...) e, se quiser, também os confrontos
   diretos entre os rivais.
 - **Desafio do Leão:** a previsão vira um link com apelido; o amigo faz a dele sem ver a primeira e os dois
   aparecem lado a lado, com placar de acertos que se atualiza a cada jogo. Tudo no link, sem cadastro nem banco.
-- **Palpite da rodada:** o torcedor crava o placar do próximo jogo do Leão (placar exato vale 5 pontos; só o
-  resultado, 2). O palpite fica salvo no aparelho, trava quando a bola rola e é conferido sozinho com os placares do
-  pipeline. Tem histórico, pontos acumulados, conquistas automáticas ("Olho de lince", "Professor Pardal",
-  "Secador profissional"...) e um link de backup para levar os palpites para outro celular. Sem cadastro nem banco.
-- **Meu Leão:** quatro perguntas com opções prontas (o jogo inesquecível sai das vitórias da temporada; o "onde o
-  Leão termina" mostra a chance do modelo) viram um cartão de torcedor para o story.
-- **Até a rodada 38:** pontuação mais provável, faixa de pontos e as marcas que deixam G6 e acesso quase garantidos.
+
+**A campanha**
+
+- **Campanha em números:** aproveitamento, vitórias/empates/derrotas, média de pontos, saldo (geral, casa e fora).
+- **Montanha-russa da temporada:** posição rodada a rodada, com marcos e os rivais da corrida; jogo a jogo.
+
+**Para quem gosta de números**
+
+- **Como a chance mudou:** as chances de acesso direto e de ir aos playoffs refeitas depois de cada rodada, só com o
+  que se sabia até ali, e o card **"A conta mudou"** (antes x agora) gerado automaticamente depois de cada rodada.
 - **Raio-X:** casa x fora, turno x returno, gols por faixa de minuto, o que muda depois do intervalo; cada
   curiosidade vira um card para compartilhar.
+
+**Para compartilhar**
+
+- **Meu Leão:** quatro perguntas com opções prontas (o jogo inesquecível sai das vitórias da temporada; o "onde o
+  Leão termina" mostra a chance do modelo) viram um cartão de torcedor para o story.
 - **Conteúdo da rodada:** cards prontos para postar depois de cada jogo (chances de acesso, a conta mudou, próximo
   jogo com os escudos e as chances, curiosidade da vez).
 - **Cards para compartilhar** (story 1080×1920 e prévia de link), gerados no servidor: chances de acesso, minha
@@ -79,7 +97,8 @@ GitHub Actions (a cada 2h)
    cada simulação sorteia a força dos times dessa distribuição: a conta leva em conta a sorte dos jogos **e** a
    dúvida sobre o quanto cada time é bom de verdade.
 3. **Monte Carlo.** Os jogos restantes de todos os 20 times são simulados 20 mil vezes, de forma vetorizada
-   (matriz simulações × jogos, sem laço em Python). A tabela final segue os critérios de desempate do regulamento.
+   (matriz simulações × jogos, sem laço em Python). A tabela final segue os critérios de desempate do regulamento, inclusive o confronto direto (com os cartões de
+   hoje como aproximação, porque a simulação não prevê cartões).
 4. **Playoffs.** 3º x 6º e 4º x 5º em ida e volta, com a melhor campanha decidindo em casa e levando no empate do
    agregado, como no regulamento de 2026.
 5. **Jogos que mais mexem.** Cada jogo é simulado três vezes com o resultado fixado (vitória, empate, derrota) e a
@@ -100,11 +119,11 @@ O pipeline refaz a conta como ela teria sido feita **depois de cada rodada**, us
 - o site mostra a linha **"Como a chance mudou"** desde a rodada 1;
 - cada rodada prevê os jogos da rodada seguinte, e essas previsões são comparadas com o que aconteceu (Brier
   multiclasse, calibração por faixa, favoritos). O resumo é regenerado automaticamente em
-  [`docs/CALIBRACAO.md`](docs/CALIBRACAO.md). Até a rodada 30: favoritos com 56% de chance média venceram 57% das
-  vezes, e o modelo foi um pouco melhor que uma referência que só conhece a frequência de mandante/empate/visitante
-  da liga (futebol é difícil de prever: o ganho é pequeno, mas as chances são bem calibradas). Também no formato
-  do site Chance de Gol: deu o resultado mais provável em 41% dos jogos, o do meio em 33% e a zebra em 26% (a
-  Série B é equilibrada);
+  [`docs/CALIBRACAO.md`](docs/CALIBRACAO.md), com os números atualizados a cada rodada. Em resumo: os favoritos
+  vencem mais ou menos na proporção que o modelo previa, e ele é um pouco melhor que uma referência que só conhece a
+  frequência de mandante/empate/visitante da liga (futebol é difícil de prever: o ganho é pequeno, mas as chances são
+  bem calibradas). Os indicadores no formato do site Chance de Gol aparecem como referência de ordem de grandeza,
+  não como comparação direta (outro método, todas as competições desde 1998);
 - quando os pontos corridos terminarem, a chance de G2 e de G6 de cada time em cada rodada também é avaliada contra
   a posição final.
 
@@ -120,7 +139,7 @@ cenários dos jogos que mais mexem, leva menos de 1 minuto e só roda quando alg
   encerrado vindo da ESPN. Duas falhas seguidas abrem uma issue no GitHub (que fecha sozinha quando a fonte volta) e,
   se faltar resultado, o site avisa até quando os dados estão atualizados.
 - **Desempenho no celular.** Página estática, gráfico pesado (Recharts) carregado sob demanda, gráfico da chance em
-  SVG próprio. Lighthouse mobile em produção: desempenho 94, acessibilidade 100, SEO 100.
+  SVG próprio, seções desenhadas só quando chegam perto da tela e blocos recolhidos montados só ao abrir.
 - **Linguagem de torcedor.** Tudo em pt-BR, sem termos técnicos na página ("chance", não "probabilidade").
 - **Nada manual por rodada.** Todo texto que depende de resultado é gerado pelo pipeline; fatos escritos à mão só
   entram depois de confirmados.
