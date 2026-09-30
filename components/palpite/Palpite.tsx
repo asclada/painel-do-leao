@@ -174,11 +174,11 @@ function Stepper({ value, onChange, team, disabled }: { value: number; onChange:
   const btn =
     "inline-flex h-11 w-11 items-center justify-center rounded-full bg-surface-2 ring-1 ring-line transition-colors hover:bg-white/15 disabled:opacity-40";
   return (
-    <div className="flex items-center gap-2" role="group" aria-label={`Gols do ${team}`}>
+    <div className="flex items-center gap-1 sm:gap-2" role="group" aria-label={`Gols do ${team}`}>
       <button type="button" className={btn} onClick={() => onChange(value - 1)} disabled={disabled || value <= 0} aria-label={`Menos um gol do ${team}`}>
         <Minus size={18} aria-hidden />
       </button>
-      <output className="w-10 text-center font-display text-6xl leading-none tabular" aria-live="polite">
+      <output className="w-9 text-center font-display text-6xl leading-none tabular sm:w-10" aria-live="polite">
         {value}
       </output>
       <button type="button" className={btn} onClick={() => onChange(value + 1)} disabled={disabled || value >= GOALS_MAX} aria-label={`Mais um gol do ${team}`}>
@@ -234,7 +234,7 @@ function OpenGame({
   const line = scoreText(teams.home.name, teams.away.name, shown.home, shown.away);
 
   return (
-    <div className="rounded-3xl bg-surface p-5 ring-1 ring-line sm:p-6">
+    <div className="rounded-3xl bg-surface p-4 ring-1 ring-line sm:p-6">
       <p className="flex justify-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-blue px-4 py-1.5 text-sm text-white ring-1 ring-white/20">
           <span className="font-bold">Seu palpite</span>
@@ -243,7 +243,7 @@ function OpenGame({
         </span>
       </p>
 
-      <div className="mt-5 grid grid-cols-[1fr_auto_1fr] items-start gap-2">
+      <div className="mt-5 grid grid-cols-[1fr_auto_1fr] items-start gap-1 sm:gap-2">
         {([
           ["home", teams.home, homeGoals, setH],
           ["away", teams.away, awayGoals, setA],

@@ -14,6 +14,8 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
  * F1 — "Como tá o Leão agora". Em 5 segundos: onde o time está e a chance de subir.
  * No celular (390×844) cabe inteiro sem rolar, com o próximo jogo.
  * A chance de subir fica em verde, com o selo azul em destaque (pedido do Lucas, 29/09).
+ * "Agora" (menu e nome do site) leva ao topo de verdade, com o campinho à vista: margem de rolagem maior que a
+ * distância até o topo.
  */
 export function Hero({ anchor = "agora" }: { anchor?: string }) {
   const sit = situation(standings, FORTALEZA);
@@ -24,7 +26,7 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
   const badge = clinchBadge(FORTALEZA);
 
   return (
-    <section id={anchor} aria-labelledby={`${anchor}-title`} className="spotlight">
+    <section id={anchor} aria-labelledby={`${anchor}-title`} className="spotlight scroll-mt-60">
       <div className="mx-auto grid w-full max-w-[1100px] gap-5 px-4 pb-8 pt-4 sm:pt-10 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
         <div className="min-w-0">
           {/* Resumo do site para quem chega pelo link: o que é e para que serve, em uma frase */}

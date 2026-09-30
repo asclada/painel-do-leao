@@ -75,6 +75,11 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   Campanha em números: `CampaignStats` (aproveitamento, V/E/D, média, saldo; recorte todos/casa/fora) lê
   `standings.json`. "Até a rodada 38": faixa de 80% dos pontos (`pointsP10`–`pointsP90`), histograma
   `simulation.focusPoints`, chance de G6 e risco de rebaixamento ("praticamente zero" abaixo de 1%).
+  **Desenho sob demanda (30/09, Lighthouse):** toda `Section` tem `content-visibility: auto` (classe `.cv-auto`,
+  prop `lazyRender`; o simulador fica de fora por causa da barra fixa no celular). Regras: nada `position: fixed`
+  dentro de seção (o aviso do ShareButton vai por portal para o body); `lib/anchor-reveal.ts` (script inline no fim
+  do `<main>`) acerta âncoras (#simulador do desafio, #palpite, menu), recarregar/voltar e desenha o resto depois do
+  primeiro gesto. Testar âncoras com `?t=N#id` (força carregamento novo) medindo `top` = 112px.
   O Recharts do F2 é carregado sob demanda (`SeasonChartPlot.tsx` via `next/dynamic`) para o Lighthouse mobile ficar ≥ 90.
   Relógio do cliente via `lib/useNow.ts` (useSyncExternalStore) — não usar setState em efeito para "agora".
 - **Simulador (F4, "Simulador dos próximos jogos"):** `components/simulator/` + `lib/simulator-client.ts` (debounce

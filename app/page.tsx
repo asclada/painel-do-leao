@@ -19,6 +19,7 @@ import { Section } from "@/components/ui/Section";
 import { XRay } from "@/components/xray/XRay";
 import { scoreLine } from "@/lib/chance";
 import { fortalezaRow, keyGames, meta, timeline } from "@/lib/data";
+import { ANCHOR_REVEAL_SCRIPT } from "@/lib/anchor-reveal";
 import { SITE_NAME } from "@/lib/site";
 
 export default function Home() {
@@ -72,7 +73,7 @@ export default function Home() {
           </Section>
         )}
 
-        <Section id="simulador" title="Simulador dos próximos jogos" headline="Escolha o resultado dos jogos que faltam e veja onde o Leão termina.">
+        <Section id="simulador" lazyRender={false} title="Simulador dos próximos jogos" headline="Escolha o resultado dos jogos que faltam e veja onde o Leão termina.">
           <SimulatorSection />
         </Section>
 
@@ -100,6 +101,8 @@ export default function Home() {
           <RoundContent />
         </Section>
       </main>
+      {/* logo depois das seções: acerta os pulos para âncoras com as seções desenhadas sob demanda */}
+      <script dangerouslySetInnerHTML={{ __html: ANCHOR_REVEAL_SCRIPT }} />
       <Footer />
     </>
   );

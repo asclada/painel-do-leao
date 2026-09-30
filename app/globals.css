@@ -89,3 +89,13 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .pitch-flag { animation: none; }
 }
+
+/* Seções abaixo do topo: o navegador só desenha quando chegam perto da tela (página longa, ~2.400 elementos).
+   Até lá, a altura estimada é 900px (depois de desenhada, vale a real). Âncoras, recarregar a página e o desenho
+   do resto depois do primeiro gesto: lib/anchor-reveal.ts.
+   A contenção de pintura muda o "fixed" dos filhos: o aviso do compartilhar vai por portal para o body e o simulador
+   (barra fixa no celular) fica de fora. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 900px;
+}

@@ -7,15 +7,18 @@ export function Section({
   headline,
   children,
   className = "",
+  lazyRender = true,
 }: {
   id: string;
   title: string;
   headline?: string;
   children: ReactNode;
   className?: string;
+  /** o navegador só desenha a seção quando ela chega perto da tela (desligar se houver algo "fixed" dentro) */
+  lazyRender?: boolean;
 }) {
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className={`mx-auto w-full max-w-[1100px] px-4 py-14 sm:py-20 ${className}`}>
+    <section id={id} aria-labelledby={`${id}-title`} className={`mx-auto w-full max-w-[1100px] px-4 py-14 sm:py-20 ${lazyRender ? "cv-auto" : ""} ${className}`}>
       <h2 id={`${id}-title`} className="font-display text-[2.5rem] leading-none sm:text-[4rem]">
         {title}
       </h2>

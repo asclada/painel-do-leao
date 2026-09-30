@@ -2,6 +2,7 @@
 
 import { Check, Link2, LoaderCircle, Share2, X } from "lucide-react";
 import { useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { trackUsage, type UsageEvent } from "@/lib/track";
 
 const STYLES = {
@@ -159,7 +160,7 @@ export function ShareButton({
       </button>
 
       <div aria-live="polite">
-        {status.kind !== "idle" && status.kind !== "loading" && (
+        {status.kind !== "idle" && status.kind !== "loading" && createPortal(
           <div
             role="status"
             className="fixed inset-x-4 top-24 z-50 mx-auto flex max-w-sm items-start gap-3 rounded-2xl bg-white p-4 text-sm text-bg shadow-2xl"
@@ -202,7 +203,9 @@ export function ShareButton({
               className="-m-2 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full hover:bg-bg/10">
               <X size={18} aria-hidden />
             </button>
-          </div>
+          </div>,
+          // por portal: dentro de uma seção com contenção de pintura, o "fixed" ficaria preso à seção
+          document.body,
         )}
       </div>
     </>
