@@ -1,5 +1,6 @@
 import { ChanceChart, type ChancePoint } from "@/components/chance/ChanceChart";
 import { ShareButton } from "@/components/share/ShareButton";
+import { LazyDetails } from "@/components/ui/LazyDetails";
 import { chanceChange, changeText, scoreLine } from "@/lib/chance";
 import { history } from "@/lib/data";
 import { pct } from "@/lib/format";
@@ -45,10 +46,14 @@ export function ChanceHistory() {
         <div className="mt-3" role="img" aria-label={summary}>
           <ChanceChart points={points} />
         </div>
-        <details className="mt-3 text-sm">
-          <summary className="inline-flex min-h-11 cursor-pointer items-center font-semibold text-white">
-            Ver os números rodada a rodada
-          </summary>
+        <LazyDetails
+          className="mt-3 text-sm"
+          summary={
+            <summary className="inline-flex min-h-11 cursor-pointer items-center font-semibold text-white">
+              Ver os números rodada a rodada
+            </summary>
+          }
+        >
           <div className="mt-2 max-h-72 overflow-y-auto rounded-xl ring-1 ring-line">
             <table className="w-full text-left tabular">
               <thead className="sticky top-0 bg-surface-2 text-muted">
@@ -71,7 +76,7 @@ export function ChanceHistory() {
               </tbody>
             </table>
           </div>
-        </details>
+        </LazyDetails>
       </div>
 
       {change && (

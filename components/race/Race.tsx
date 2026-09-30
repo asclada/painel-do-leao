@@ -1,6 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import { FormDots } from "@/components/ui/FormDots";
 import { GrowBar } from "@/components/ui/GrowBar";
+import { LazyDetails } from "@/components/ui/LazyDetails";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { FORTALEZA, race, teamById } from "@/lib/data";
 import { chanceLabel, statusOf } from "@/lib/clinch";
@@ -20,32 +21,33 @@ function TeamRow({ t }: { t: RaceTeam }) {
   const me = t.teamId === FORTALEZA;
   return (
     <li>
-      <details
+      <LazyDetails
         className={`group rounded-2xl ring-1 ${me ? "bg-red/10 ring-red" : "bg-surface ring-line"}`}
+        summary={
+          <summary className="flex min-h-11 cursor-pointer list-none flex-col gap-2 p-3 sm:p-4 [&::-webkit-details-marker]:hidden">
+            <div className="flex items-center gap-3">
+              <span className="w-7 font-display text-2xl leading-none text-muted tabular">{t.position}º</span>
+              <TeamBadge team={team} size="sm" />
+              <span className={`min-w-0 flex-1 truncate ${me ? "font-bold" : "font-semibold"}`}>{team.name}</span>
+              <span className="font-display text-3xl leading-none tabular">{t.points}</span>
+              <span className="text-xs text-muted">pts</span>
+              <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
+            </div>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 pl-10 text-sm">
+              <FormDots form={t.form} size="sm" />
+              <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${DIFFICULTY_STYLE[t.difficulty]}`}>
+                Tabela {t.difficulty.toLowerCase()}
+              </span>
+              <span className="text-muted">Pega {t.remainingVsTop6} do G6</span>
+            </div>
+            <div className="flex items-center gap-3 pl-10">
+              <GrowBar value={t.pPromotion} color={me ? "var(--win)" : "var(--white)"}
+                label={`Chance de subir: ${promo}`} />
+              <span className="w-12 text-right font-semibold tabular">{promo}</span>
+            </div>
+          </summary>
+        }
       >
-        <summary className="flex min-h-11 cursor-pointer list-none flex-col gap-2 p-3 sm:p-4 [&::-webkit-details-marker]:hidden">
-          <div className="flex items-center gap-3">
-            <span className="w-7 font-display text-2xl leading-none text-muted tabular">{t.position}º</span>
-            <TeamBadge team={team} size="sm" />
-            <span className={`min-w-0 flex-1 truncate ${me ? "font-bold" : "font-semibold"}`}>{team.name}</span>
-            <span className="font-display text-3xl leading-none tabular">{t.points}</span>
-            <span className="text-xs text-muted">pts</span>
-            <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
-          </div>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 pl-10 text-sm">
-            <FormDots form={t.form} size="sm" />
-            <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${DIFFICULTY_STYLE[t.difficulty]}`}>
-              Tabela {t.difficulty.toLowerCase()}
-            </span>
-            <span className="text-muted">Pega {t.remainingVsTop6} do G6</span>
-          </div>
-          <div className="flex items-center gap-3 pl-10">
-            <GrowBar value={t.pPromotion} color={me ? "var(--win)" : "var(--white)"}
-              label={`Chance de subir: ${promo}`} />
-            <span className="w-12 text-right font-semibold tabular">{promo}</span>
-          </div>
-        </summary>
-
         <div className="border-t border-line px-3 pb-4 pt-3 text-sm sm:px-4">
           <p className="text-muted">
             Sobe direto: <strong className="text-white">{chanceLabel(t.pDirect, st.direct)}</strong> · termina 3º a
@@ -72,7 +74,7 @@ function TeamRow({ t }: { t: RaceTeam }) {
             })}
           </ul>
         </div>
-      </details>
+      </LazyDetails>
     </li>
   );
 }

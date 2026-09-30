@@ -1,4 +1,5 @@
 import { ChevronDown } from "lucide-react";
+import { LazyDetails } from "@/components/ui/LazyDetails";
 import { MiniCrest } from "@/components/ui/MiniCrest";
 import { FORTALEZA, teamById, timeline } from "@/lib/data";
 import { plural, shortDate } from "@/lib/format";
@@ -16,11 +17,15 @@ export function MatchList() {
   const fort = teamById[FORTALEZA];
 
   return (
-    <details className="group mt-8 rounded-2xl bg-surface ring-1 ring-line">
-      <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-base font-semibold sm:px-5 [&::-webkit-details-marker]:hidden">
-        Jogo a jogo: os {plural(played.length, "jogo")} da campanha
-        <ChevronDown size={20} className="shrink-0 text-muted transition-transform group-open:rotate-180" aria-hidden />
-      </summary>
+    <LazyDetails
+      className="group mt-8 rounded-2xl bg-surface ring-1 ring-line"
+      summary={
+        <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-base font-semibold sm:px-5 [&::-webkit-details-marker]:hidden">
+          Jogo a jogo: os {plural(played.length, "jogo")} da campanha
+          <ChevronDown size={20} className="shrink-0 text-muted transition-transform group-open:rotate-180" aria-hidden />
+        </summary>
+      }
+    >
       <ol className="divide-y divide-line border-t border-line">
         {played.map((p) => {
           const opp = teamById[p.opponentId!];
@@ -57,6 +62,6 @@ export function MatchList() {
           );
         })}
       </ol>
-    </details>
+    </LazyDetails>
   );
 }

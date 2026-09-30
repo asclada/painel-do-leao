@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { shortDate } from "@/lib/format";
 import type { Team } from "@/lib/generated/outputs";
@@ -22,11 +23,17 @@ export function RivalGames({
   extra: Extra;
   onPick: (matchId: string, pick: ExtraPick) => void;
 }) {
+  // a lista só é montada quando o torcedor abre o bloco (ou quando o link já traz escolhas)
+  const [opened, setOpened] = useState(false);
   if (games.length === 0) return null;
   const chosen = games.filter((g) => extra[g.matchId]).length;
 
   return (
-    <details className="group mt-4 rounded-2xl bg-surface ring-1 ring-line" open={chosen > 0}>
+    <details
+      className="group mt-4 rounded-2xl bg-surface ring-1 ring-line"
+      open={chosen > 0}
+      onToggle={(e) => e.currentTarget.open && setOpened(true)}
+    >
       <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
         <span>
           <span className="block font-semibold">E os confrontos diretos? (opcional)</span>
@@ -38,49 +45,51 @@ export function RivalGames({
         </span>
         <ChevronDown size={20} className="shrink-0 text-muted transition-transform group-open:rotate-180" aria-hidden />
       </summary>
-      <ol className="divide-y divide-line border-t border-line">
-        {games.map((g) => {
-          const opts: { c: ExtraPick; label: string; text: string }[] = [
-            { c: "1", label: `Vitória ${g.home.article === "a" ? "da" : "do"} ${g.home.name}`, text: g.home.shortName },
-            { c: "X", label: "Empate", text: "E" },
-            { c: "2", label: `Vitória ${g.away.article === "a" ? "da" : "do"} ${g.away.name}`, text: g.away.shortName },
-          ];
-          return (
-            <li key={g.matchId} className="flex items-center gap-2 px-3 py-3 sm:px-4">
-              <div className="min-w-0 flex-1">
-                <p className="flex items-center gap-1.5 font-semibold leading-tight">
-                  <TeamBadge team={g.home} size="sm" />
-                  <span className="text-muted">x</span>
-                  <TeamBadge team={g.away} size="sm" />
-                </p>
-                <p className="mt-1 truncate text-xs text-muted">
-                  R{g.round} · {shortDate(g.kickoffUtc)}
-                </p>
-              </div>
-              <div className="flex shrink-0 gap-1" role="group" aria-label={`${g.home.name} x ${g.away.name}`}>
-                {opts.map((o) => {
-                  const on = extra[g.matchId] === o.c;
-                  return (
-                    <button
-                      key={o.c}
-                      type="button"
-                      aria-pressed={on}
-                      aria-label={o.label}
-                      title={o.label}
-                      onClick={() => onPick(g.matchId, o.c)}
-                      className={`h-11 min-w-11 rounded-xl px-1.5 font-display text-lg leading-none ring-1 transition-colors ${
-                        on ? "bg-white text-bg ring-white" : "bg-bg/40 text-muted ring-line hover:bg-surface-2 hover:text-white"
-                      }`}
-                    >
-                      {o.text}
-                    </button>
-                  );
-                })}
-              </div>
-            </li>
-          );
-        })}
-      </ol>
+      {(opened || chosen > 0) && (
+        <ol className="divide-y divide-line border-t border-line">
+          {games.map((g) => {
+            const opts: { c: ExtraPick; label: string; text: string }[] = [
+              { c: "1", label: `Vitória ${g.home.article === "a" ? "da" : "do"} ${g.home.name}`, text: g.home.shortName },
+              { c: "X", label: "Empate", text: "E" },
+              { c: "2", label: `Vitória ${g.away.article === "a" ? "da" : "do"} ${g.away.name}`, text: g.away.shortName },
+            ];
+            return (
+              <li key={g.matchId} className="flex items-center gap-2 px-3 py-3 sm:px-4">
+                <div className="min-w-0 flex-1">
+                  <p className="flex items-center gap-1.5 font-semibold leading-tight">
+                    <TeamBadge team={g.home} size="sm" />
+                    <span className="text-muted">x</span>
+                    <TeamBadge team={g.away} size="sm" />
+                  </p>
+                  <p className="mt-1 truncate text-xs text-muted">
+                    R{g.round} · {shortDate(g.kickoffUtc)}
+                  </p>
+                </div>
+                <div className="flex shrink-0 gap-1" role="group" aria-label={`${g.home.name} x ${g.away.name}`}>
+                  {opts.map((o) => {
+                    const on = extra[g.matchId] === o.c;
+                    return (
+                      <button
+                        key={o.c}
+                        type="button"
+                        aria-pressed={on}
+                        aria-label={o.label}
+                        title={o.label}
+                        onClick={() => onPick(g.matchId, o.c)}
+                        className={`h-11 min-w-11 rounded-xl px-1.5 font-display text-lg leading-none ring-1 transition-colors ${
+                          on ? "bg-white text-bg ring-white" : "bg-bg/40 text-muted ring-line hover:bg-surface-2 hover:text-white"
+                        }`}
+                      >
+                        {o.text}
+                      </button>
+                    );
+                  })}
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      )}
     </details>
   );
 }

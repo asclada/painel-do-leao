@@ -24,7 +24,7 @@ function Crest({ team }: { team: Team }) {
   return (
     <span className={`relative flex items-center justify-center ${CREST_BOX}`}>
       {src ? (
-        <Image src={src} alt={`Escudo do ${team.name}`} fill sizes="96px" loading="eager" className="object-contain" />
+        <Image src={src} alt={`Escudo do ${team.name}`} width={104} height={104} loading="eager" className="h-full w-full object-contain" />
       ) : (
         <TeamBadge team={team} size="lg" />
       )}

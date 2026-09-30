@@ -1,4 +1,5 @@
 import { ChevronDown } from "lucide-react";
+import { LazyDetails } from "@/components/ui/LazyDetails";
 import { MiniCrest } from "@/components/ui/MiniCrest";
 import { FORTALEZA, keyGames, teamById } from "@/lib/data";
 import { kickoffLabel, pct, plural } from "@/lib/format";
@@ -173,17 +174,21 @@ export function KeyGames() {
           ))}
         </ol>
         {focus.length > FOCUS_SHOWN && (
-          <details className="group mt-2.5">
-            <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-semibold [&::-webkit-details-marker]:hidden">
-              Ver os outros {plural(focus.length - FOCUS_SHOWN, "jogo")}
-              <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
-            </summary>
+          <LazyDetails
+            className="group mt-2.5"
+            summary={
+              <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-semibold [&::-webkit-details-marker]:hidden">
+                Ver os outros {plural(focus.length - FOCUS_SHOWN, "jogo")}
+                <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
+              </summary>
+            }
+          >
             <ol className="mt-2 flex flex-col gap-2.5" aria-label="Demais jogos do Fortaleza">
               {focus.slice(FOCUS_SHOWN).map((g) => (
                 <FocusRow key={g.matchId} g={g} top={false} />
               ))}
             </ol>
-          </details>
+          </LazyDetails>
         )}
       </div>
 
@@ -200,17 +205,21 @@ export function KeyGames() {
               ))}
             </ul>
             {rivals.length > RIVALS_SHOWN && (
-              <details className="group mt-2.5">
-                <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-semibold [&::-webkit-details-marker]:hidden">
-                  Ver mais {plural(rivals.length - RIVALS_SHOWN, "jogo")}
-                  <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
-                </summary>
+              <LazyDetails
+                className="group mt-2.5"
+                summary={
+                  <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-semibold [&::-webkit-details-marker]:hidden">
+                    Ver mais {plural(rivals.length - RIVALS_SHOWN, "jogo")}
+                    <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
+                  </summary>
+                }
+              >
                 <ul className="mt-2 flex flex-col gap-2.5">
                   {rivals.slice(RIVALS_SHOWN).map((g) => (
                     <RivalRow key={g.matchId} g={g} />
                   ))}
                 </ul>
-              </details>
+              </LazyDetails>
             )}
           </>
         ) : (

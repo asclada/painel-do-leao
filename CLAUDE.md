@@ -80,6 +80,8 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   dentro de seção (o aviso do ShareButton vai por portal para o body); `lib/anchor-reveal.ts` (script inline no fim
   do `<main>`) acerta âncoras (#simulador do desafio, #palpite, menu), recarregar/voltar e desenha o resto depois do
   primeiro gesto. Testar âncoras com `?t=N#id` (força carregamento novo) medindo `top` = 112px.
+  Blocos recolhidos usam `components/ui/LazyDetails.tsx` (conteúdo montado só ao abrir; era ~60% do HTML) e escudos
+  pequenos usam `next/image` com tamanho fixo, nunca `fill` com `sizes` em px (gerava ~16 tamanhos por imagem).
   O Recharts do F2 é carregado sob demanda (`SeasonChartPlot.tsx` via `next/dynamic`) para o Lighthouse mobile ficar ≥ 90.
   Relógio do cliente via `lib/useNow.ts` (useSyncExternalStore) — não usar setState em efeito para "agora".
 - **Simulador (F4, "Simulador dos próximos jogos"):** `components/simulator/` + `lib/simulator-client.ts` (debounce

@@ -162,7 +162,7 @@ function Crest({ team, src }: { team: Team; src: string | null }) {
   return (
     <span className="relative flex h-16 w-16 items-center justify-center sm:h-20 sm:w-20">
       {src ? (
-        <Image src={src} alt={`Escudo do ${team.name}`} fill sizes="80px" className="object-contain" />
+        <Image src={src} alt={`Escudo do ${team.name}`} width={80} height={80} className="h-full w-full object-contain" />
       ) : (
         <TeamBadge team={team} size="lg" />
       )}
