@@ -3097,6 +3097,46 @@
       }
     }
   },
+  "botafogo-sp--ponte-preta": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 6,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 1,
+        "teamId": "botafogo-sp"
+      },
+      {
+        "extra": null,
+        "minute": 40,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "botafogo-sp"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "botafogo-sp--ponte-preta",
+    "stats": {
+      "botafogo-sp": {
+        "corners": 5,
+        "possession": 63.8,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 4,
+        "yellow": 1
+      },
+      "ponte-preta": {
+        "corners": 2,
+        "possession": 36.2,
+        "red": 0,
+        "shots": 7,
+        "shotsOnTarget": 1,
+        "yellow": 2
+      }
+    }
+  },
   "botafogo-sp--sao-bernardo": {
     "goals": [
       {

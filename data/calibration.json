@@ -1,6 +1,6 @@
 {
   "matches": {
-    "accuracy": 0.4118,
+    "accuracy": 0.4138,
     "bins": [
       {
         "hi": 0.1,
@@ -12,9 +12,9 @@
       {
         "hi": 0.2,
         "lo": 0.1,
-        "n": 36,
-        "observed": 0.1111,
-        "predicted": 0.1661
+        "n": 38,
+        "observed": 0.1053,
+        "predicted": 0.1645
       },
       {
         "hi": 0.3,
@@ -54,29 +54,29 @@
       {
         "hi": 0.8,
         "lo": 0.7,
-        "n": 3,
-        "observed": 0.6667,
-        "predicted": 0.7666
+        "n": 4,
+        "observed": 0.75,
+        "predicted": 0.7572
       }
     ],
-    "brier": 0.6448,
-    "brierReference": 0.6599,
+    "brier": 0.6429,
+    "brierReference": 0.6592,
     "brierUniform": 0.6667,
-    "favoriteRate": 0.4118,
-    "favoritesN": 60,
-    "favoritesObserved": 0.5667,
-    "favoritesPredicted": 0.5649,
-    "logLoss": 1.0679,
-    "middleRate": 0.3287,
-    "nMatches": 289,
-    "reliability": 0.1332,
+    "favoriteRate": 0.4138,
+    "favoritesN": 61,
+    "favoritesObserved": 0.5738,
+    "favoritesPredicted": 0.5676,
+    "logLoss": 1.0653,
+    "middleRate": 0.3276,
+    "nMatches": 290,
+    "reliability": 0.1268,
     "rounds": [
       2,
       30
     ],
-    "skill": 0.0229,
-    "upsetRate": 0.2595
+    "skill": 0.0246,
+    "upsetRate": 0.2586
   },
   "season": null,
-  "summary": "Conferimos as contas com os 289 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 56% de chance de vencer em média, ele venceu 57% das vezes. Contando todos os jogos, deu o resultado mais provável em 41% deles, o do meio em 33% e a zebra (o menos provável) em 26%."
+  "summary": "Conferimos as contas com os 290 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 57% de chance de vencer em média, ele venceu 57% das vezes. Contando todos os jogos, deu o resultado mais provável em 41% deles, o do meio em 33% e a zebra (o menos provável) em 26%."
 }

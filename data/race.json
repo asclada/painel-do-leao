@@ -85,7 +85,7 @@
   "teams": [
     {
       "difficulty": "Difícil",
-      "difficultyScore": 1.14,
+      "difficultyScore": 1.147,
       "fixtures": [
         {
           "home": false,
@@ -160,9 +160,9 @@
         "V"
       ],
       "goalDiff": 12,
-      "pDirect": 0.5395,
-      "pPromotion": 0.7443,
-      "pTop6": 0.4029,
+      "pDirect": 0.5335,
+      "pPromotion": 0.7419,
+      "pTop6": 0.4101,
       "played": 30,
       "points": 54,
       "position": 1,
@@ -173,7 +173,7 @@
     },
     {
       "difficulty": "Tranquila",
-      "difficultyScore": 0.975,
+      "difficultyScore": 0.981,
       "fixtures": [
         {
           "home": true,
@@ -248,9 +248,9 @@
         "V"
       ],
       "goalDiff": 13,
-      "pDirect": 0.3821,
-      "pPromotion": 0.6506,
-      "pTop6": 0.5013,
+      "pDirect": 0.3755,
+      "pPromotion": 0.6426,
+      "pTop6": 0.5086,
       "played": 30,
       "points": 53,
       "position": 2,
@@ -261,7 +261,7 @@
     },
     {
       "difficulty": "Difícil",
-      "difficultyScore": 1.042,
+      "difficultyScore": 1.041,
       "fixtures": [
         {
           "home": true,
@@ -336,9 +336,9 @@
         "E"
       ],
       "goalDiff": 9,
-      "pDirect": 0.3716,
-      "pPromotion": 0.6218,
-      "pTop6": 0.4883,
+      "pDirect": 0.3761,
+      "pPromotion": 0.6226,
+      "pTop6": 0.4857,
       "played": 30,
       "points": 52,
       "position": 3,
@@ -349,7 +349,7 @@
     },
     {
       "difficulty": "Média",
-      "difficultyScore": 1.028,
+      "difficultyScore": 1.027,
       "fixtures": [
         {
           "home": true,
@@ -424,9 +424,9 @@
         "E"
       ],
       "goalDiff": 22,
-      "pDirect": 0.3211,
-      "pPromotion": 0.6172,
-      "pTop6": 0.5034,
+      "pDirect": 0.3226,
+      "pPromotion": 0.6183,
+      "pTop6": 0.5005,
       "played": 30,
       "points": 51,
       "position": 4,
@@ -437,7 +437,7 @@
     },
     {
       "difficulty": "Tranquila",
-      "difficultyScore": 0.988,
+      "difficultyScore": 0.987,
       "fixtures": [
         {
           "home": false,
@@ -512,9 +512,9 @@
         "V"
       ],
       "goalDiff": 4,
-      "pDirect": 0.0659,
-      "pPromotion": 0.2215,
-      "pTop6": 0.4142,
+      "pDirect": 0.0671,
+      "pPromotion": 0.2281,
+      "pTop6": 0.4128,
       "played": 30,
       "points": 50,
       "position": 5,
@@ -525,7 +525,7 @@
     },
     {
       "difficulty": "Média",
-      "difficultyScore": 1.028,
+      "difficultyScore": 1.026,
       "fixtures": [
         {
           "home": true,
@@ -600,9 +600,9 @@
         "V"
       ],
       "goalDiff": 10,
-      "pDirect": 0.1456,
-      "pPromotion": 0.4223,
-      "pTop6": 0.5069,
+      "pDirect": 0.1492,
+      "pPromotion": 0.4286,
+      "pTop6": 0.5041,
       "played": 30,
       "points": 49,
       "position": 6,
@@ -613,7 +613,7 @@
     },
     {
       "difficulty": "Difícil",
-      "difficultyScore": 1.034,
+      "difficultyScore": 1.041,
       "fixtures": [
         {
           "home": false,
@@ -688,9 +688,9 @@
         "V"
       ],
       "goalDiff": 4,
-      "pDirect": 0.0819,
-      "pPromotion": 0.2896,
-      "pTop6": 0.4412,
+      "pDirect": 0.0801,
+      "pPromotion": 0.2861,
+      "pTop6": 0.4435,
       "played": 30,
       "points": 48,
       "position": 7,

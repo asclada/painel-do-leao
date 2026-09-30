@@ -4485,18 +4485,18 @@
     "venue": "Estádio Raimundo Sampaio (Independência)"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "ponte-preta",
     "city": "Ribeirão Preto",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "botafogo-sp",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 2,
     "id": "botafogo-sp--ponte-preta",
     "kickoffUtc": "2026-09-29T22:30Z",
     "round": 30,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Santa Cruz"
   },
   {

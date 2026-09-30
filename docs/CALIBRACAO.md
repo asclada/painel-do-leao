@@ -1,7 +1,7 @@
 # Calibração do modelo
 
 > Gerado automaticamente pelo pipeline (`pipeline/calc/calibration.py`) a cada atualização dos dados.
-> Dados até a rodada 29.
+> Dados até a rodada 30.
 
 O backtest refaz a conta do jeito que o modelo teria feito depois de cada rodada, usando **só os jogos
 disputados até ali** (mesmo modelo, semente fixa por rodada). Com esses retratos dá para comparar o que o
@@ -9,15 +9,15 @@ modelo dizia com o que aconteceu.
 
 ## Jogo a jogo (previsão feita uma rodada antes)
 
-- Jogos avaliados: **289** (rodadas 2 a 30)
-- Brier multiclasse do modelo: **0,645** (quanto menor, melhor)
-- Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,660
+- Jogos avaliados: **290** (rodadas 2 a 30)
+- Brier multiclasse do modelo: **0,643** (quanto menor, melhor)
+- Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,659
 - Chutar 1/3 para cada resultado: 0,667
-- Ganho sobre a referência (skill score): **2,3%**
-- Log loss: 1,068 · resultado mais provável acertou 41% dos jogos
-- Favoritos (acima de 50%): 60 jogos, chance média prevista 56%, venceram 57%
+- Ganho sobre a referência (skill score): **2,5%**
+- Log loss: 1,065 · resultado mais provável acertou 41% dos jogos
+- Favoritos (acima de 50%): 61 jogos, chance média prevista 57%, venceram 57%
 - Resultado mais provável / do meio / menos provável (zebra): 41% / 33% / 26% dos jogos (Chance de Gol, desde 1998: 51% / 27% / 22%)
-- Medida de confiabilidade (como no Chance de Gol: soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%): 0,1332 (Chance de Gol: 0,0251). Com poucos jogos, faixas com 3 ou 4 casos pesam tanto quanto as cheias.
+- Medida de confiabilidade (como no Chance de Gol: soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%): 0,1268 (Chance de Gol: 0,0251). Com poucos jogos, faixas com 3 ou 4 casos pesam tanto quanto as cheias.
 - O Brier multiclasse acima é a "distância DeFinetti" do Chance de Gol (0,601 no deles, com todas as competições; a Série B, equilibrada, é mais difícil de prever).
 
 Calibração por faixa (todas as chances de vitória do mandante, empate e vitória do visitante):
@@ -25,13 +25,13 @@ Calibração por faixa (todas as chances de vitória do mandante, empate e vitó
 | Faixa prevista | Casos | Chance média prevista | Aconteceu |
 |---|---:|---:|---:|
 | 0%–10% | 4 | 9% | 25% |
-| 10%–20% | 36 | 17% | 11% |
+| 10%–20% | 38 | 16% | 11% |
 | 20%–30% | 339 | 26% | 27% |
 | 30%–40% | 294 | 34% | 36% |
 | 40%–50% | 134 | 45% | 37% |
 | 50%–60% | 45 | 53% | 47% |
 | 60%–70% | 12 | 64% | 92% |
-| 70%–80% | 3 | 77% | 67% |
+| 70%–80% | 4 | 76% | 75% |
 
 ## Temporada (chance de G2 e de G6)
 
