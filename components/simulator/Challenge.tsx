@@ -17,6 +17,7 @@ import {
 import { pct, shortDate } from "@/lib/format";
 import type { Team } from "@/lib/generated/outputs";
 import { fetchScenario, serializeChoices } from "@/lib/simulator-client";
+import type { UsageEvent } from "@/lib/track";
 
 export type DuelFixture = { round: number; kickoffUtc: string; home: boolean; opponent: Team };
 export type PlayedInfo = DuelFixture & { result: Pick };
@@ -52,12 +53,14 @@ export function NameShare({
   text,
   image,
   fileName,
+  event,
 }: {
   label: string;
   buildLink: (name: string) => string;
   text: (name: string) => string;
   image?: (name: string) => string;
   fileName?: string;
+  event?: UsageEvent;
 }) {
   const id = useId();
   // só aparece depois que o torcedor escolhe todos os jogos (nunca no HTML do servidor): pode ler o aparelho já
@@ -88,6 +91,7 @@ export function NameShare({
           image={name && image ? image(name) : undefined}
           fileName={fileName}
           disabled={!name}
+          event={event}
         />
       </div>
     </div>

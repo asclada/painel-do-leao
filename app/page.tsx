@@ -7,10 +7,12 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/hero/Hero";
 import { KeyGames } from "@/components/key-games/KeyGames";
+import { MeuLeaoSection } from "@/components/meu-leao";
 import { Projection, projectionHeadline } from "@/components/projection/Projection";
 import { Race } from "@/components/race/Race";
 import { SeasonChartSection } from "@/components/season-chart";
 import { MatchList } from "@/components/season-chart/MatchList";
+import { PalpiteSection } from "@/components/palpite";
 import { SimulatorSection } from "@/components/simulator";
 import { Section } from "@/components/ui/Section";
 import { XRay } from "@/components/xray/XRay";
@@ -27,6 +29,14 @@ export default function Home() {
       <DataStatusBanner />
       <main>
         <Hero />
+
+        <Section
+          id="palpite"
+          title="Palpite da rodada"
+          headline="Crave o placar do próximo jogo do Leão. Resultado certo vale 2 pontos; placar exato, 5. Sem cadastro: fica guardado no seu celular."
+        >
+          <PalpiteSection />
+        </Section>
 
         <Section id="campanha" title="A campanha em números" className="!pt-6 sm:!pt-10">
           <CampaignStats row={fortalezaRow} />
@@ -68,6 +78,14 @@ export default function Home() {
 
         <Section id="raio-x" title="Raio-X do time">
           <XRay />
+        </Section>
+
+        <Section
+          id="meu-leao"
+          title="Meu Leão"
+          headline="Responda 4 perguntas e ganhe um cartão de torcedor para o story."
+        >
+          <MeuLeaoSection />
         </Section>
 
         <Section

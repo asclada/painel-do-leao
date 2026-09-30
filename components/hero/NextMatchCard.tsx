@@ -92,6 +92,15 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
       </div>
 
       {match.chances && <MatchChancesBar chances={match.chances} />}
+
+      <p className="mt-4 flex justify-center">
+        <a
+          href="#palpite"
+          className="inline-flex min-h-11 items-center rounded-full bg-red px-5 text-sm font-semibold text-white hover:bg-[#c81727]"
+        >
+          Dê seu palpite para o placar
+        </a>
+      </p>
     </div>
   );
 }

@@ -68,6 +68,13 @@
 
 ## Pacote 3 — Jogo contínuo (sem banco, localStorage) · ~1 dia
 
+> **Status (30/09/2026): versão enxuta implementada** (itens 1, 2 e 5, mais link de backup e eventos de uso).
+> Palpite do próximo jogo do Leão (placar exato 5, resultado 2), travado no horário do jogo e conferido no navegador
+> com os placares do pipeline; histórico e pontos; 9 conquistas por regra automática (`lib/palpite.ts`); cards
+> `/api/card/palpite` (antes e depois do jogo) e `/api/card/meu-leao`; link de backup `?palpites=` para trocar de
+> aparelho; eventos da Vercel Analytics (`desafio_criado`, `palpite_feito`, `cartao_gerado`...). Itens 3 (bingo) e
+> 4 (quiz) ficam para depois, conforme os números de uso.
+
 1. **Palpite da rodada** com **placar exato** (resultado +2, placar exato +5), conferido pelo pipeline.
 2. **Conquistas** locais ("Olho de lince", "Professor Pardal", "Fé inabalável", "Secador profissional").
 3. **Bingo da campanha** marcado sozinho com eventos que o pipeline já calcula.

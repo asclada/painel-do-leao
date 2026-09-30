@@ -28,13 +28,19 @@ jogos mais pesam e um simulador para montar a própria previsão. Atualiza sozin
   diretos entre os rivais.
 - **Desafio do Leão:** a previsão vira um link com apelido; o amigo faz a dele sem ver a primeira e os dois
   aparecem lado a lado, com placar de acertos que se atualiza a cada jogo. Tudo no link, sem cadastro nem banco.
+- **Palpite da rodada:** o torcedor crava o placar do próximo jogo do Leão (placar exato vale 5 pontos; só o
+  resultado, 2). O palpite fica salvo no aparelho, trava quando a bola rola e é conferido sozinho com os placares do
+  pipeline. Tem histórico, pontos acumulados, conquistas automáticas ("Olho de lince", "Professor Pardal",
+  "Secador profissional"...) e um link de backup para levar os palpites para outro celular. Sem cadastro nem banco.
+- **Meu Leão:** quatro perguntas com opções prontas (o jogo inesquecível sai das vitórias da temporada; o "onde o
+  Leão termina" mostra a chance do modelo) viram um cartão de torcedor para o story.
 - **Até a rodada 38:** pontuação mais provável, faixa de pontos e as marcas que deixam G6 e acesso quase garantidos.
 - **Raio-X:** casa x fora, turno x returno, gols por faixa de minuto, o que muda depois do intervalo; cada
   curiosidade vira um card para compartilhar.
 - **Conteúdo da rodada:** cards prontos para postar depois de cada jogo (chance de acesso, a conta mudou, próximo
   jogo com os escudos e as chances, curiosidade da vez).
 - **Cards para compartilhar** (story 1080×1920 e prévia de link), gerados no servidor: chance de acesso, minha
-  previsão, modelo x eu, duelo, próximo jogo, curiosidades.
+  previsão, modelo x eu, duelo, próximo jogo, curiosidades, palpite (antes e depois do jogo) e Meu Leão.
 
 ## Arquitetura
 

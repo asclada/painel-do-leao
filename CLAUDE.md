@@ -52,6 +52,17 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   `lib/og/crests.ts`). Persona da previsão: `predictionPersona` em `lib/simulator-text.ts`. Curiosidades:
   `lib/curiosities.ts`; "Conteúdo da rodada" em `components/content/RoundContent.tsx`.
   Para testar o simulador localmente: `.claude/launch.json` → `dev` (site + FastAPI).
+- **Pacote 3 enxuto (30/09, sem banco):** palpite da rodada em `lib/palpite.ts` (puro: pontos 5 exato / 2 resultado,
+  conquistas por regra automática, link de backup `?palpites=31-2-1-{segundos base36}_...`), `lib/palpite-data.ts`
+  (servidor: placares da timeline, chances V/E/D do backtest antes da rodada, rivais do top 8 que tropeçaram; só
+  rodadas >= 31) e `lib/palpite-store.ts` (localStorage `fen:palpites` via useSyncExternalStore; sem armazenamento vale
+  até fechar a aba). Palpite só no próximo jogo, trava no `kickoffUtc` e só conta se feito antes dele. Componentes em
+  `components/palpite/` (seção `#palpite` logo depois do topo) e card `/api/card/palpite?r=&g=2-1[&t=&q=]`.
+  Cartão "Meu Leão": `lib/meu-leao.ts` (opções fixas), `lib/meu-leao-data.ts` (vitórias marcantes e finais com a
+  chance do modelo), `components/meu-leao/`, card `/api/card/meu-leao`. Uso medido com `lib/track.ts` (Vercel
+  Analytics: `desafio_criado`, `duelo_respondido`, `palpite_feito`, `cartao_gerado` em todo ShareButton com imagem,
+  `backup_palpites`). O projeto está no plano grátis (Hobby, confirmado pelo Lucas em 30/09): eventos personalizados
+  não aparecem no painel; por enquanto contar pelas chamadas das rotas `/api/card/*` em Observability.
 - **Dados atrasados:** `meta.dataStatus` (`pipeline/fetch.py::data_status`): `delayed` só com ESPN falhando ≥2x E
   jogo que já deveria ter acabado sem resultado; não mexe no `updatedAt`. Banner em `components/DataStatusBanner.tsx`.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em
@@ -59,6 +70,7 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   `RoundOneQuiz` "onde o Leão estava na rodada 1"), season-chart F2 + `MatchList` "jogo a jogo", chance ("Como a
   chance mudou", SVG próprio + "A conta mudou", `lib/chance.ts`), race F3, key-games ("jogos que mais mexem" +
   "Pra secar"), simulator F4, projection "Até a rodada 38", xray F5 com "depois do intervalo".
+  Depois do topo vem o "Palpite da rodada" e, antes de "Conteúdo da rodada", o cartão "Meu Leão".
   O topo diz "Situação atual na Série B · N jogos" (não "depois da rodada X", que confundia com rodada em andamento).
   Campanha em números: `CampaignStats` (aproveitamento, V/E/D, média, saldo; recorte todos/casa/fora) lê
   `standings.json`. "Até a rodada 38": faixa de 80% dos pontos (`pointsP10`–`pointsP90`), histograma
@@ -154,10 +166,13 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Dia 4 (`docs/PROXIMOS-PASSOS.md`) implementado em 29/09 com as 5 decisões sugeridas: campanha em números, "Até a
   rodada 38", modelo bayesiano completo, jogo a jogo e "depois do intervalo".
 - **Fase atual: `docs/ROADMAP.md`** (pacotes 1 a 4: participação da torcida). Pacote 1 implementado em 29/09
-  (status no próprio ROADMAP); pacote 2 implementado em 29/09; próximo: pacote 3.
+  (status no próprio ROADMAP); pacote 2 implementado em 29/09; pacote 3 enxuto em 30/09 (palpite, conquistas,
+  Meu Leão, backup, eventos de uso). Bingo e quiz ficaram para depois.
+- **Animação pixel art (Tarefa 2 de 30/09):** protótipo com 3 posições (A faixa no menu, B janelinha no canto,
+  C gramado no rodapé) aguardando a escolha do Lucas; a sugestão é A. Canvas 2D próprio, sprites 7x12 em código.
 - README de portfólio na raiz: descrever o modelo como "Poisson com incerteza nas forças dos times" (não
   "bayesiano completo").
 - Pendente do Lucas: testes no celular (M10) e revisão dos textos (M11).
 
-_Última atualização: 29/09/2026 (Pacote 2: desafio do Leão e duelo, provocação modelo x eu, persona da previsão,
-confrontos diretos no simulador, cards de curiosidade e do próximo jogo, "Conteúdo da rodada")._
+_Última atualização: 30/09/2026 (Pacote 3 enxuto: palpite da rodada com placar exato, conquistas, cartão "Meu Leão",
+link de backup dos palpites e eventos de uso; protótipo da animação pixel art)._

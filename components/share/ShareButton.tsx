@@ -2,6 +2,7 @@
 
 import { Check, Link2, LoaderCircle, Share2, X } from "lucide-react";
 import { useRef, useState } from "react";
+import { trackUsage, type UsageEvent } from "@/lib/track";
 
 const STYLES = {
   solid: "bg-red text-white hover:bg-[#c81727]",
@@ -31,6 +32,7 @@ export function ShareButton({
   variant = "solid",
   compact = false,
   disabled = false,
+  event,
 }: {
   text: string;
   /** caminho do card PNG (ex.: /api/card/acesso) */
@@ -43,6 +45,8 @@ export function ShareButton({
   /** no celular vira só o ícone (o texto fica para leitores de tela) */
   compact?: boolean;
   disabled?: boolean;
+  /** evento de uso contado no toque (padrão: "cartao_gerado" com o nome do arquivo do card) */
+  event?: UsageEvent;
 }) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const file = useRef<{ src: string; promise: Promise<File> } | null>(null);
@@ -103,6 +107,8 @@ export function ShareButton({
   }
 
   async function onClick() {
+    const ev = event ?? (image ? { name: "cartao_gerado" as const, tipo: fileName.replace(/\.png$/, "") } : null);
+    if (ev) trackUsage(ev);
     if (!image) {
       // só o link (sem imagem)
       if (navigator.share) {

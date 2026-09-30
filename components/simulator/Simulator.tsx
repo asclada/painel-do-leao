@@ -255,6 +255,7 @@ function SimulatorView({
                 return `/api/card/duelo?${q.toString()}`;
               }}
               fileName="fortaleza-duelo.png"
+              event={{ name: "duelo_respondido" }}
             />
           </div>
         )}
@@ -272,6 +273,7 @@ function SimulatorView({
                 label="Criar desafio"
                 buildLink={(name) => challengeUrl(siteUrl, { name, picks: mine })}
                 text={(name) => `${name} te desafiou: quem acerta mais os jogos do Leão até o fim da Série B? Faça a sua previsão:`}
+                event={{ name: "desafio_criado" }}
               />
             </div>
           </div>

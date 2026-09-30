@@ -13,6 +13,8 @@ import { SITE_HOST, SITE_NAME } from "@/lib/site";
 import type { Choice } from "@/lib/simulator-client";
 import { finalPoints, pG6, predictionPersona } from "@/lib/simulator-text";
 import type { Pick } from "@/lib/challenge";
+import type { FinishOption, GameOption } from "@/lib/meu-leao";
+import { type PalpiteGame, scoreGuess, verdictText } from "@/lib/palpite";
 import { situation } from "@/lib/situation";
 
 export const STORY = { width: 1080, height: 1920 } as const;
@@ -557,5 +559,132 @@ export function OgCard() {
         </div>
       </div>
     </div>
+  );
+}
+
+// ---------------------------------------------------------------- Palpite da rodada
+
+/**
+ * "Cravei Fortaleza 2 x 1 Náutico": o palpite antes do jogo (com as chances do modelo) e, depois, o placar real e
+ * os pontos. Os escudos seguem a ordem mandante x visitante, como no card do próximo jogo.
+ */
+export function PalpiteCard({
+  game,
+  guess,
+  crests,
+  total,
+}: {
+  game: PalpiteGame;
+  guess: { home: number; away: number };
+  crests: { home: string | null; away: string | null };
+  total: { points: number; games: number } | null;
+}) {
+  const opp = teamById[game.opponentId];
+  const fort = teamById[FORTALEZA];
+  const [home, away] = game.home ? [fort, opp] : [opp, fort];
+  const verdict = game.score ? scoreGuess({ round: game.round, ...guess, at: 0 }, game) : null;
+  const crest = (team: Team, src: string | null) => (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 300 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 220, height: 220 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- Satori só entende <img> */}
+        {src ? <img src={src} width={200} height={200} style={{ objectFit: "contain" }} alt="" /> : <Badge team={team} size={1.8} />}
+      </div>
+      <div style={{ fontSize: 44, fontWeight: 800, marginTop: 20 }}>{team.name}</div>
+    </div>
+  );
+  const scoreRow = (h: number, a: number, color: string, size: number) => (
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Bebas", fontSize: size, lineHeight: 0.9, color }}>
+      <div style={{ display: "flex", width: size * 0.7, justifyContent: "center" }}>{String(h)}</div>
+      <div style={{ display: "flex", fontSize: size * 0.5, color: C.muted, margin: "0 20px" }}>x</div>
+      <div style={{ display: "flex", width: size * 0.7, justifyContent: "center" }}>{String(a)}</div>
+    </div>
+  );
+
+  return (
+    <Frame sub={`Palpite da rodada ${game.round}`} cta={game.score ? "Dê o seu palpite em" : "E você, quanto crava? Palpite em"}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "0 60px" }}>
+        <div style={{ fontFamily: "Bebas", fontSize: 130, lineHeight: 0.9, color: C.win }}>Cravei</div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: 50 }}>
+          {crest(home, crests.home)}
+          {crest(away, crests.away)}
+        </div>
+        <div style={{ display: "flex", marginTop: 30 }}>{scoreRow(guess.home, guess.away, C.white, 300)}</div>
+        {game.score && verdict ? (
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", marginTop: 50, paddingTop: 44, borderTop: `2px solid ${C.line}` }}>
+            <div style={{ fontSize: 40, color: C.muted }}>Deu</div>
+            {scoreRow(game.score.home, game.score.away, C.muted, 170)}
+            <div style={{ fontSize: 56, fontWeight: 800, marginTop: 30, color: verdict.result ? C.win : C.white }}>{verdictText(verdict)}</div>
+            {total && (
+              <div style={{ fontSize: 38, color: C.muted, marginTop: 16 }}>
+                {`No total: ${plural(total.points, "ponto")} em ${plural(total.games, "palpite")}`}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 60 }}>
+            <div style={{ fontSize: 48, fontWeight: 800 }}>{kickoffLabel(game.kickoffUtc)}</div>
+            {game.chances && (
+              <div style={{ fontSize: 38, color: C.muted, marginTop: 20 }}>
+                {`O modelo dá ${pct(game.chances.win)} de vitória do Leão`}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </Frame>
+  );
+}
+
+// ---------------------------------------------------------------- Meu Leão
+
+/** Cartão "Meu Leão": as 4 respostas do torcedor (todas de opções prontas) e, se houver, os pontos do palpite. */
+export function MeuLeaoCard({
+  name,
+  where,
+  game,
+  finish,
+  phrase,
+  palpite,
+}: {
+  name: string | null;
+  where: string;
+  game: GameOption;
+  finish: FinishOption;
+  phrase: string;
+  palpite: { points: number; achievements: number } | null;
+}) {
+  const row = (label: string, value: string, note?: string) => (
+    <div style={{ display: "flex", flexDirection: "column", paddingTop: 34, marginTop: 34, borderTop: `2px solid ${C.line}` }}>
+      <div style={{ fontSize: 34, color: C.muted }}>{label}</div>
+      <div style={{ fontSize: 58, fontWeight: 800, marginTop: 6, lineHeight: 1.1 }}>{value}</div>
+      {note && <div style={{ fontSize: 32, color: C.muted, marginTop: 8 }}>{note}</div>}
+    </div>
+  );
+  return (
+    <Frame sub="Meu Leão · Série B 2026" cta="Faça o seu cartão em">
+      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
+        <div style={{ fontFamily: "Bebas", fontSize: 140, lineHeight: 0.9 }}>{name ? `O Leão de ${name}` : "Meu Leão"}</div>
+        {row("Vejo os jogos", where)}
+        {row("Jogo inesquecível de 2026", game.line, `Rodada ${game.round}${game.tag ? ` · ${game.tag}` : ""}`)}
+        {row("Pra mim, o Leão termina", finish.label, `O modelo dá ${pct(finish.chance)}`)}
+        <div
+          style={{
+            display: "flex",
+            fontFamily: "Bebas",
+            fontSize: 110,
+            lineHeight: 1,
+            color: C.win,
+            marginTop: 60,
+          }}
+        >
+          {`“${phrase}”`}
+        </div>
+        {palpite && (
+          <div style={{ fontSize: 36, color: C.muted, marginTop: 30 }}>
+            {`No palpite da rodada: ${plural(palpite.points, "ponto")} e ${plural(palpite.achievements, "conquista")}`}
+          </div>
+        )}
+      </div>
+    </Frame>
   );
 }
