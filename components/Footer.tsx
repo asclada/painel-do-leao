@@ -67,7 +67,11 @@ export function Footer() {
               O gráfico &quot;Como a chance mudou&quot; refaz essa mesma conta depois de cada rodada, usando só os jogos
               disputados até ali. {calibration.summary}
             </p>
-            <p>É uma estimativa, não uma previsão garantida: futebol tem surpresa.</p>
+            <p>
+              O modelo só enxerga os placares: não sabe de desfalques, suspensões, troca de técnico, cansaço nem de
+              quem ainda briga por alguma coisa na reta final. É uma estimativa, não uma previsão garantida: futebol
+              tem surpresa.
+            </p>
           </div>
         </details>
 

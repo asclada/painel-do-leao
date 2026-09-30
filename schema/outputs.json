@@ -494,6 +494,12 @@
         },
         "reliability": {
           "type": "number"
+        },
+        "reliabilitySmallBins": {
+          "type": "number"
+        },
+        "reliabilityWeighted": {
+          "type": "number"
         }
       },
       "required": [
@@ -512,7 +518,9 @@
         "favoriteRate",
         "middleRate",
         "upsetRate",
-        "reliability"
+        "reliability",
+        "reliabilitySmallBins",
+        "reliabilityWeighted"
       ],
       "title": "MatchCalibration",
       "type": "object"

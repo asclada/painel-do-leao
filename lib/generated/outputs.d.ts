@@ -342,6 +342,8 @@ export interface MatchCalibration {
   middleRate: number;
   upsetRate: number;
   reliability: number;
+  reliabilitySmallBins: number;
+  reliabilityWeighted: number;
 }
 export interface CalibrationBin {
   lo: number;

@@ -18,6 +18,7 @@ from pipeline.calc.standings import compute_standings
 from pipeline.models import Match, Model, Team
 
 N_BINS = 10
+SMALL_BIN = 30  # faixas com menos casos que isso são ruído (ver reliability_small_bins)
 MIN_FAVORITES = 30  # abaixo disso a frase do site não aparece
 
 
@@ -50,6 +51,10 @@ class MatchCalibration(Model):
     # "Medida de confiabilidade" do Chance de Gol: soma, nas faixas de 10%, do quadrado da distância entre a
     # frequência real e o meio da faixa (quanto menor, melhor). Não pondera pelo número de casos.
     reliability: float
+    # A mesma medida só com as faixas pequenas (< SMALL_BIN casos): mostra quanto do total vem delas.
+    reliability_small_bins: float
+    # Forma usual (termo de confiabilidade do Brier): cada faixa pesa pelo número de casos.
+    reliability_weighted: float
 
 
 class SeasonCalibration(Model):
@@ -128,8 +133,14 @@ def match_calibration(backtest: Backtest, matches: list[Match]) -> MatchCalibrat
         favorite_rate=_r(rates[0]),
         middle_rate=_r(rates[1]),
         upset_rate=_r(rates[2]),
-        reliability=_r(sum((b.observed - (b.lo + b.hi) / 2) ** 2 for b in bins)),
+        reliability=_r(sum(_cdg_term(b) for b in bins)),
+        reliability_small_bins=_r(sum(_cdg_term(b) for b in bins if b.n < SMALL_BIN)),
+        reliability_weighted=_r(sum(b.n * (b.observed - b.predicted) ** 2 for b in bins) / sum(b.n for b in bins)),
     )
+
+
+def _cdg_term(b: CalibrationBin) -> float:
+    return (b.observed - (b.lo + b.hi) / 2) ** 2
 
 
 def _result(m: Match) -> int:
@@ -212,12 +223,19 @@ def calibration_markdown(cal: Calibration, last_round: int) -> str:
             f"- Favoritos (acima de 50%): {mc.favorites_n} jogos, chance média prevista "
             f"{_pct(mc.favorites_predicted)}, venceram {_pct(mc.favorites_observed)}",
             f"- Resultado mais provável / do meio / menos provável (zebra): {_pct(mc.favorite_rate)} / "
-            f"{_pct(mc.middle_rate)} / {_pct(mc.upset_rate)} dos jogos (Chance de Gol, desde 1998: 51% / 27% / 22%)",
-            f"- Medida de confiabilidade (como no Chance de Gol: soma dos quadrados da distância entre a frequência "
-            f"real e o meio de cada faixa de 10%): {_num(mc.reliability, 4)} (Chance de Gol: 0,0251). "
-            "Com poucos jogos, faixas com 3 ou 4 casos pesam tanto quanto as cheias.",
-            "- O Brier multiclasse acima é a \"distância DeFinetti\" do Chance de Gol (0,601 no deles, com todas as "
-            "competições; a Série B, equilibrada, é mais difícil de prever).",
+            f"{_pct(mc.middle_rate)} / {_pct(mc.upset_rate)} dos jogos",
+            f"- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o "
+            f"que aconteceu, faixa a faixa; quanto menor, melhor): **{_num(mc.reliability_weighted, 4)}**",
+            f"- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada "
+            f"faixa de 10%, sem ponderar): {_num(mc.reliability, 4)}. Com poucos jogos essa conta é dominada pelas "
+            f"faixas pequenas: as de menos de {SMALL_BIN} casos respondem por "
+            f"{_pct(mc.reliability_small_bins / mc.reliability) if mc.reliability else '0%'} do valor.",
+            "",
+            "**Referência, não comparação direta.** O site Chance de Gol publica os mesmos indicadores para o modelo dele,",
+            "com outro método e todas as competições desde 1998: resultado mais provável / do meio / zebra em 51% / 27% /",
+            "22% dos jogos, confiabilidade 0,0251 e Brier multiclasse (\"distância DeFinetti\") 0,601. São populações",
+            "diferentes (milhares de jogos de várias ligas x uma temporada da Série B, que é equilibrada), então os",
+            "números servem de ordem de grandeza, não de placar entre os dois modelos.",
             "",
             "Calibração por faixa (todas as chances de vitória do mandante, empate e vitória do visitante):",
             "",

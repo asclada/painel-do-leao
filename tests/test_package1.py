@@ -79,6 +79,7 @@ def test_match_calibration(teams, matches_r30):
     assert mc.n_matches == 10 and mc.rounds == [2, 2]
     assert 0 <= mc.brier <= 2
     assert sum(b.n for b in mc.bins) == 30  # 3 chances por jogo
+    assert 0 <= mc.reliability_small_bins <= mc.reliability and mc.reliability_weighted >= 0
     cal = compute_calibration(bt.Backtest(version=bt.BACKTEST_VERSION, rounds=[rnd]), teams, matches_r30)
     assert cal.season is None  # temporada não terminou
     assert cal.summary is None  # poucos favoritos para a frase do site

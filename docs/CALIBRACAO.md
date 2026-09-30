@@ -16,9 +16,15 @@ modelo dizia com o que aconteceu.
 - Ganho sobre a referência (skill score): **2,5%**
 - Log loss: 1,065 · resultado mais provável acertou 41% dos jogos
 - Favoritos (acima de 50%): 61 jogos, chance média prevista 57%, venceram 57%
-- Resultado mais provável / do meio / menos provável (zebra): 41% / 33% / 26% dos jogos (Chance de Gol, desde 1998: 51% / 27% / 22%)
-- Medida de confiabilidade (como no Chance de Gol: soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%): 0,1268 (Chance de Gol: 0,0251). Com poucos jogos, faixas com 3 ou 4 casos pesam tanto quanto as cheias.
-- O Brier multiclasse acima é a "distância DeFinetti" do Chance de Gol (0,601 no deles, com todas as competições; a Série B, equilibrada, é mais difícil de prever).
+- Resultado mais provável / do meio / menos provável (zebra): 41% / 33% / 26% dos jogos
+- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0027**
+- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,1268. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 88% do valor.
+
+**Referência, não comparação direta.** O site Chance de Gol publica os mesmos indicadores para o modelo dele,
+com outro método e todas as competições desde 1998: resultado mais provável / do meio / zebra em 51% / 27% /
+22% dos jogos, confiabilidade 0,0251 e Brier multiclasse ("distância DeFinetti") 0,601. São populações
+diferentes (milhares de jogos de várias ligas x uma temporada da Série B, que é equilibrada), então os
+números servem de ordem de grandeza, não de placar entre os dois modelos.
 
 Calibração por faixa (todas as chances de vitória do mandante, empate e vitória do visitante):
 

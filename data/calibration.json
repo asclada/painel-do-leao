@@ -70,6 +70,8 @@
     "middleRate": 0.3276,
     "nMatches": 290,
     "reliability": 0.1268,
+    "reliabilitySmallBins": 0.1111,
+    "reliabilityWeighted": 0.0027,
     "rounds": [
       2,
       30
