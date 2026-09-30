@@ -13,6 +13,7 @@ import { Race } from "@/components/race/Race";
 import { SeasonChartSection } from "@/components/season-chart";
 import { MatchList } from "@/components/season-chart/MatchList";
 import { PalpiteSection } from "@/components/palpite";
+import { PixelPitch } from "@/components/pitch/PixelPitch";
 import { SimulatorSection } from "@/components/simulator";
 import { Section } from "@/components/ui/Section";
 import { XRay } from "@/components/xray/XRay";
@@ -22,12 +23,15 @@ import { SITE_NAME } from "@/lib/site";
 
 export default function Home() {
   const roundOne = timeline.points.find((p) => p.round === 1);
+  // depois de vitória do Leão, a turma do campinho comemora ao abrir a página
+  const lastGame = timeline.points.filter((p) => p.result).at(-1);
 
   return (
     <>
       <Header name={SITE_NAME} updatedAt={meta.updatedAt} />
       <DataStatusBanner />
       <main>
+        <PixelPitch celebrate={lastGame?.result === "V"} />
         <Hero />
 
         <Section

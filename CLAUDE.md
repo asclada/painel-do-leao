@@ -70,7 +70,7 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   `RoundOneQuiz` "onde o Leão estava na rodada 1"), season-chart F2 + `MatchList` "jogo a jogo", chance ("Como a
   chance mudou", SVG próprio + "A conta mudou", `lib/chance.ts`), race F3, key-games ("jogos que mais mexem" +
   "Pra secar"), simulator F4, projection "Até a rodada 38", xray F5 com "depois do intervalo".
-  Depois do topo vem o "Palpite da rodada" e, antes de "Conteúdo da rodada", o cartão "Meu Leão".
+  Antes do topo vem a faixa do campinho pixel art; depois do topo vem o "Palpite da rodada" e, antes de "Conteúdo da rodada", o cartão "Meu Leão".
   O topo diz "Situação atual na Série B · N jogos" (não "depois da rodada X", que confundia com rodada em andamento).
   Campanha em números: `CampaignStats` (aproveitamento, V/E/D, média, saldo; recorte todos/casa/fora) lê
   `standings.json`. "Até a rodada 38": faixa de 80% dos pontos (`pointsP10`–`pointsP90`), histograma
@@ -168,11 +168,17 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - **Fase atual: `docs/ROADMAP.md`** (pacotes 1 a 4: participação da torcida). Pacote 1 implementado em 29/09
   (status no próprio ROADMAP); pacote 2 implementado em 29/09; pacote 3 enxuto em 30/09 (palpite, conquistas,
   Meu Leão, backup, eventos de uso). Bingo e quiz ficaram para depois.
-- **Animação pixel art (Tarefa 2 de 30/09):** protótipo com 3 posições (A faixa no menu, B janelinha no canto,
-  C gramado no rodapé) aguardando a escolha do Lucas; a sugestão é A. Canvas 2D próprio, sprites 7x12 em código.
+- **Campinho pixel art (30/09, opção A do protótipo com ajustes do Lucas):** faixa de gramado no início da página,
+  logo abaixo do menu, que rola junto e some (NÃO fixa no header). `components/pitch/PixelPitch.tsx` (gramado em CSS
+  no HTML, sem pulo de layout; pausar/continuar lembrado em localStorage `fen:campinho`; fechar vale só na visita;
+  sem escolha, segue o "reduzir movimento") carrega sob demanda `lib/pixel-pitch.ts` (Canvas 2D próprio, ~3 KB
+  compactado, 30 quadros/s, para fora da tela e com a aba escondida). Uniforme pedido pelo Lucas: camisa com listras
+  HORIZONTAIS azul/branco/vermelho, calção azul, meião branco, chuteira preta; jogadores genéricos, sem rosto.
+  Depois de vitória do Leão (último resultado da timeline = V) a turma comemora com papel picado e o selo
+  "Vitória do Leão!". Lighthouse mobile local: igual com e sem a faixa.
 - README de portfólio na raiz: descrever o modelo como "Poisson com incerteza nas forças dos times" (não
   "bayesiano completo").
 - Pendente do Lucas: testes no celular (M10) e revisão dos textos (M11).
 
 _Última atualização: 30/09/2026 (Pacote 3 enxuto: palpite da rodada com placar exato, conquistas, cartão "Meu Leão",
-link de backup dos palpites e eventos de uso; protótipo da animação pixel art)._
+link de backup dos palpites e eventos de uso; campinho pixel art no início da página)._

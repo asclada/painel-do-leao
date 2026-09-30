@@ -74,3 +74,18 @@ body {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* Campinho pixel art do topo: o gramado aparece já no HTML (sem pulo de layout) e o canvas entra por cima. */
+.pitch-strip {
+  background: repeating-linear-gradient(90deg, #2e8b3e 0 20px, #28803a 20px 40px);
+}
+.pitch-flag {
+  animation: pitch-flag 5s forwards;
+}
+@keyframes pitch-flag {
+  0%, 85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pitch-flag { animation: none; }
+}
