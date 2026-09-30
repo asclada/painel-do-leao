@@ -179,4 +179,11 @@ docs/                plano, roadmap e calibração
 tests/               pytest
 ```
 
+## Licença
+
+© 2026 Lucas Santana. **Todos os direitos reservados.** O código está aberto para leitura e avaliação: fique à
+vontade para explorar a arquitetura, rodar o projeto localmente para estudá-lo e citar trechos com crédito. Copiar,
+reaproveitar ou publicar o projeto (ou uma versão derivada), com ou sem fins lucrativos, só com autorização por
+escrito. Nomes e escudos dos clubes pertencem aos respectivos clubes. Detalhes em [`LICENSE`](LICENSE).
+
 Feito por Lucas Santana.

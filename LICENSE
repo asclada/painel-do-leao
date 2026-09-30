@@ -1,0 +1,37 @@
+Fortaleza em Números
+Copyright (c) 2026 Lucas Santana. Todos os direitos reservados.
+
+Este repositório é público apenas para leitura e avaliação: para que desenvolvedores, recrutadores e
+interessados conheçam o código, a arquitetura e as decisões do projeto. Ele NÃO é software livre nem de
+código aberto, e nenhuma licença de uso é concedida além do que está escrito abaixo.
+
+O QUE É PERMITIDO
+- Ler e navegar pelo código no GitHub.
+- Fazer fork dentro do GitHub, apenas na medida exigida pelos Termos de Serviço do GitHub.
+- Clonar e rodar o projeto localmente, de forma temporária, só para avaliá-lo ou estudá-lo.
+- Citar trechos curtos em análises, artigos ou conversas técnicas, com crédito ao autor e link para
+  este repositório.
+
+O QUE NÃO É PERMITIDO SEM AUTORIZAÇÃO POR ESCRITO DO AUTOR
+- Copiar, modificar, adaptar, traduzir ou reaproveitar o código, os textos ou o visual, no todo ou em
+  parte, em outro projeto, site, aplicativo, produto ou serviço, com ou sem fins lucrativos.
+- Publicar, hospedar ou distribuir este projeto ou uma versão derivada dele.
+- Sublicenciar, vender ou ceder qualquer parte do projeto.
+
+CONTEÚDO DE TERCEIROS (não coberto por este copyright)
+- Nomes, escudos e marcas dos clubes pertencem aos respectivos clubes. O projeto é independente e não tem
+  vínculo com o Fortaleza Esporte Clube nem com os demais clubes.
+- Resultados e estatísticas das partidas vêm de fontes públicas de terceiros.
+- As fontes em assets/fonts são distribuídas sob a SIL Open Font License (arquivos OFL-*.txt na mesma
+  pasta).
+- As dependências (pacotes npm e Python) seguem as próprias licenças.
+
+O projeto é oferecido "no estado em que se encontra", sem garantia de qualquer tipo. Para pedir
+autorização de uso, fale com o autor pelo GitHub: https://github.com/asclada
+
+---
+
+English summary: All rights reserved. This repository is public for viewing and evaluation only. You may
+read the code, fork it on GitHub as allowed by GitHub's Terms of Service, and run it locally to evaluate it.
+Copying, modifying, redistributing, hosting or reusing any part of it in another project, commercial or
+not, requires the author's written permission. Club names and crests belong to their respective clubs.

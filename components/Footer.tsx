@@ -99,6 +99,9 @@ export function Footer() {
               <XIcon />
             </a>
           </div>
+          <p className="mt-2 text-xs">
+            © 2026 Lucas Santana · Fortaleza em Números. Nomes e escudos dos clubes pertencem aos respectivos clubes.
+          </p>
         </div>
       </div>
       <div className="tricolor h-1" aria-hidden />
