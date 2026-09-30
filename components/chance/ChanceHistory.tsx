@@ -1,15 +1,16 @@
 import { ChanceChart, type ChancePoint } from "@/components/chance/ChanceChart";
 import { ShareButton } from "@/components/share/ShareButton";
 import { LazyDetails } from "@/components/ui/LazyDetails";
-import { chanceChange, changeText, scoreLine } from "@/lib/chance";
+import { chanceChange, changeText, same, type Shift, scoreLine } from "@/lib/chance";
 import { history } from "@/lib/data";
-import { pct } from "@/lib/format";
+import { pct1 } from "@/lib/format";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 function chancePoints(): ChancePoint[] {
   return history.map((h, i) => ({
     round: h.round,
-    p: h.pPromotion,
+    direct: h.pDirect,
+    playoffs: h.pTop6,
     position: h.position,
     points: h.points,
     partial: !!h.partial,
@@ -17,15 +18,21 @@ function chancePoints(): ChancePoint[] {
   }));
 }
 
-/** Frase de destaque da seção: de onde a chance saiu, o pico e onde está agora. */
+/** Frase de destaque da seção: de onde a chance de acesso direto saiu, o pico e onde está agora. */
 export function chanceHeadline() {
   if (history.length < 2) return undefined;
   const first = history[0];
   const now = history.at(-1)!;
-  const peak = history.reduce((a, b) => (b.pPromotion > a.pPromotion ? b : a));
+  const peak = history.reduce((a, b) => (b.pDirect > a.pDirect ? b : a));
   const peakTxt =
-    peak === now ? "e nunca foi tão alta quanto agora" : `e chegou a ${pct(peak.pPromotion)} depois da rodada ${peak.round}`;
-  return `Depois da rodada ${first.round}, a chance de subir era ${pct(first.pPromotion)}. Hoje é ${pct(now.pPromotion)}, ${peakTxt}.`;
+    peak === now ? "e nunca foi tão alta quanto agora" : `e chegou a ${pct1(peak.pDirect)} depois da rodada ${peak.round}`;
+  return `Depois da rodada ${first.round}, a chance de acesso direto era ${pct1(first.pDirect)}. Hoje é ${pct1(now.pDirect)}, ${peakTxt}.`;
+}
+
+/** "o acesso direto caiu para 37,6%" / "a ida aos playoffs continua em 48,6%" */
+function moved(name: string, s: Shift) {
+  if (same(s)) return `${name} continua em ${pct1(s.to)}`;
+  return `${name} ${s.to > s.from ? "subiu" : "caiu"} para ${pct1(s.to)}`;
 }
 
 /**
@@ -35,14 +42,14 @@ export function chanceHeadline() {
 export function ChanceHistory() {
   const points = chancePoints();
   const change = chanceChange();
-  const summary = `Gráfico da chance de o Fortaleza subir depois de cada rodada: ${points
-    .map((p) => `rodada ${p.round}, ${pct(p.p)}`)
+  const summary = `Gráfico das chances do Fortaleza depois de cada rodada (acesso direto e ir aos playoffs): ${points
+    .map((p) => `rodada ${p.round}, ${pct1(p.direct)} e ${pct1(p.playoffs)}`)
     .join("; ")}.`;
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
       <div className="rounded-2xl bg-surface p-4 ring-1 ring-line sm:p-6">
-        <h3 className="text-sm font-semibold text-muted">Chance de subir depois de cada rodada</h3>
+        <h3 className="text-sm font-semibold text-muted">As chances depois de cada rodada</h3>
         <div className="mt-3" role="img" aria-label={summary}>
           <ChanceChart points={points} />
         </div>
@@ -61,7 +68,8 @@ export function ChanceHistory() {
                   <th className="px-3 py-2 font-semibold">Rodada</th>
                   <th className="px-3 py-2 font-semibold">Posição</th>
                   <th className="px-3 py-2 font-semibold">Pontos</th>
-                  <th className="px-3 py-2 text-right font-semibold">Chance de subir</th>
+                  <th className="px-3 py-2 text-right font-semibold">Direto</th>
+                  <th className="px-3 py-2 text-right font-semibold">Playoffs</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-line">
@@ -70,7 +78,8 @@ export function ChanceHistory() {
                     <td className="px-3 py-2">{p.live ? `${p.round} (agora)` : p.round}</td>
                     <td className="px-3 py-2">{p.position}º</td>
                     <td className="px-3 py-2">{p.points}</td>
-                    <td className="px-3 py-2 text-right font-semibold">{pct(p.p)}</td>
+                    <td className="px-3 py-2 text-right font-semibold text-win">{pct1(p.direct)}</td>
+                    <td className="px-3 py-2 text-right font-semibold">{pct1(p.playoffs)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -85,24 +94,36 @@ export function ChanceHistory() {
           <p className="mt-1 text-sm text-muted">
             Rodada {change.game.round}: {scoreLine(change.game)}
           </p>
-          <div className="mt-5 flex items-end gap-3 font-display leading-none">
-            <span className="text-5xl text-muted">{change.from}%</span>
-            <span className="pb-1 text-3xl text-muted" aria-hidden>
-              →
-            </span>
-            <span className="text-7xl text-win">{change.to}%</span>
-          </div>
+          <dl className="mt-5 space-y-3">
+            {(
+              [
+                ["Acesso direto", change.direct, "text-win"],
+                ["Ir aos playoffs", change.playoffs, "text-white"],
+              ] as const
+            ).map(([name, s, color]) => (
+              <div key={name}>
+                <dt className="text-sm text-muted">{name}</dt>
+                <dd className="flex items-end gap-3 font-display leading-none">
+                  <span className="text-4xl text-muted">{pct1(s.from)}</span>
+                  <span className="pb-1 text-2xl text-muted" aria-hidden>
+                    →
+                  </span>
+                  <span className={`text-6xl ${color}`}>{pct1(s.to)}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
           <p className="mt-3 text-white/90">
-            Antes da rodada {change.beforeRound + 1}, a chance de subir era {change.from}%. Agora, contando todos os
-            jogos já disputados,{" "}
-            {change.diff === 0 ? "ela continua igual" : `ela ${change.diff > 0 ? "subiu" : "caiu"} para ${change.to}%`}.
+            Antes da rodada {change.beforeRound + 1}: acesso direto {pct1(change.direct.from)} e ida aos playoffs{" "}
+            {pct1(change.playoffs.from)}. Agora, contando todos os jogos já disputados,{" "}
+            {moved("o acesso direto", change.direct)} e {moved("a ida aos playoffs", change.playoffs)}.
           </p>
           <div className="mt-auto pt-5">
             <ShareButton
               image="/api/card/conta"
               fileName="fortaleza-a-conta-mudou.png"
               link={SITE_URL}
-              text={`A chance de o Fortaleza subir ${changeText(change)}, segundo o ${SITE_NAME}.`}
+              text={`A chance de acesso direto do Fortaleza ${changeText(change.direct)} e a de ir aos playoffs ${changeText(change.playoffs)}, segundo o ${SITE_NAME}.`}
             />
           </div>
         </div>

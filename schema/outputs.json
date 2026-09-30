@@ -334,6 +334,13 @@
     "KeyGames": {
       "additionalProperties": false,
       "properties": {
+        "metric": {
+          "enum": [
+            "direct",
+            "g6"
+          ],
+          "type": "string"
+        },
         "baseline": {
           "type": "number"
         },
@@ -361,6 +368,7 @@
         }
       },
       "required": [
+        "metric",
         "baseline",
         "round",
         "focus",

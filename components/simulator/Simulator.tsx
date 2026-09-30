@@ -7,7 +7,7 @@ import { PositionBars } from "@/components/simulator/PositionBars";
 import { ShareButton } from "@/components/share/ShareButton";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { TweenPct } from "@/components/ui/TweenPct";
-import { shortDate } from "@/lib/format";
+import { pct1, shortDate } from "@/lib/format";
 import type { Team } from "@/lib/generated/outputs";
 import type { MagicNumbers, ScenarioResult } from "@/lib/generated/scenario";
 import { ChallengeBanner, DuelPanel, NameShare, type PlayedInfo } from "@/components/simulator/Challenge";
@@ -26,7 +26,7 @@ import {
   warmUpWhenNear,
   writeChoicesToUrl,
 } from "@/lib/simulator-client";
-import { finalPoints, pG6, pointsPhrase, predictionPersona, scenarioPhrase } from "@/lib/simulator-text";
+import { finalPoints, pointsPhrase, predictionPersona, scenarioPhrase } from "@/lib/simulator-text";
 
 export type SimFixture = { matchId: string; round: number; kickoffUtc: string; home: boolean; opponent: Team };
 
@@ -300,7 +300,7 @@ function SimulatorView({
               image={`/api/card/previsao?p=${p}${xParam}`}
               fileName="fortaleza-minha-previsao.png"
               link={`${siteUrl}/?p=${p}${xParam}#simulador`}
-              text={`Minha previsão para o Leão na Série B: ${finalPoints(result).value} pontos e ${Math.round(result.focus.pPromotion * 100)}% de chance de acesso. Faça a sua no ${siteName}:`}
+              text={`Minha previsão para o Leão na Série B: ${finalPoints(result).value} pontos, ${pct1(result.focus.pDirect)} de acesso direto e ${pct1(result.focus.pTop6)} de ir aos playoffs. Faça a sua no ${siteName}:`}
               disabled={!complete || loading || !!error}
             />
             <ShareButton
@@ -309,7 +309,7 @@ function SimulatorView({
               image={`/api/card/provocacao?p=${p}${xParam}`}
               fileName="fortaleza-modelo-x-eu.png"
               link={`${siteUrl}/?p=${p}${xParam}#simulador`}
-              text={`O modelo dá ${Math.round(baseline.focus.pPromotion * 100)}% de chance de acesso pro Leão. Eu dou ${Math.round(result.focus.pPromotion * 100)}%. E você?`}
+              text={`O modelo dá ${pct1(baseline.focus.pDirect)} de chance de acesso direto pro Leão. Eu dou ${pct1(result.focus.pDirect)}. E você?`}
               disabled={!complete || loading || !!error}
             />
           </>
@@ -403,16 +403,16 @@ function ResultPanel({
             ) : hasResult ? (
               <>
                 <span className="flex-1">
-                  <span className="block text-xs text-muted">Chance de subir</span>
+                  <span className="block text-xs text-muted">Acesso direto</span>
                   <span className={`font-display text-4xl leading-none text-win transition-opacity ${fade}`}>
-                    <TweenPct value={result.focus.pPromotion} />
+                    <TweenPct value={result.focus.pDirect} />
                   </span>
                 </span>
                 <span className={`text-sm transition-opacity ${fade}`}>
                   <span className="block text-muted">
-                    Direto{" "}
+                    Playoffs{" "}
                     <strong className="text-white">
-                      <TweenPct value={result.focus.pDirect} />
+                      <TweenPct value={result.focus.pTop6} />
                     </strong>
                   </span>
                   <span className="block text-muted">
@@ -492,24 +492,20 @@ function ResultPanel({
                 <PositionBars dist={result.focus.positionDist} best={result.mostLikelyPosition} />
               </div>
 
-              <dl className="mt-5 grid grid-cols-3 gap-2 border-t border-line pt-4">
+              <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-line pt-4">
                 <div>
-                  <dt className="text-xs text-muted">Acesso</dt>
-                  <dd className="font-display text-4xl leading-none text-win">
-                    <TweenPct value={result.focus.pPromotion} />
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs text-muted">Direto (G2)</dt>
-                  <dd className="font-display text-4xl leading-none">
+                  <dt className="text-sm text-muted">Acesso direto</dt>
+                  <dd className="font-display text-5xl leading-none text-win">
                     <TweenPct value={result.focus.pDirect} />
                   </dd>
+                  <dd className="text-xs text-muted">terminar em 1º ou 2º</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-muted">No G6</dt>
-                  <dd className="font-display text-4xl leading-none">
-                    <TweenPct value={pG6(result)} />
+                  <dt className="text-sm text-muted">Ir aos playoffs</dt>
+                  <dd className="font-display text-5xl leading-none">
+                    <TweenPct value={result.focus.pTop6} />
                   </dd>
+                  <dd className="text-xs text-muted">terminar entre 3º e 6º</dd>
                 </div>
               </dl>
 

@@ -3,6 +3,8 @@
 import { animate, useReducedMotion } from "motion/react";
 import { useEffect, useRef } from "react";
 
+const fmt = (v: number, decimals: number) => v.toFixed(decimals).replace(".", ",");
+
 /**
  * Número que "conta" do zero até o valor (o único momento orquestrado da página).
  * O valor final já vem no HTML (SSR); a animação só roda no cliente e respeita
@@ -13,11 +15,14 @@ export function AnimatedNumber({
   suffix = "",
   duration = 1.2,
   animateOnChange = false,
+  decimals = 0,
 }: {
   value: number;
   suffix?: string;
   duration?: number;
   animateOnChange?: boolean;
+  /** casas decimais, com vírgula (37,6) */
+  decimals?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduce = useReducedMotion();
@@ -30,16 +35,16 @@ export function AnimatedNumber({
       duration: animateOnChange && from.current !== 0 ? 0.5 : duration,
       ease: [0.16, 1, 0.3, 1],
       onUpdate: (v) => {
-        el.textContent = `${Math.round(v)}${suffix}`;
+        el.textContent = `${fmt(v, decimals)}${suffix}`;
       },
     });
     from.current = value;
     return () => controls.stop();
-  }, [value, suffix, duration, reduce, animateOnChange]);
+  }, [value, suffix, duration, reduce, animateOnChange, decimals]);
 
   return (
     <span ref={ref} className="tabular">
-      {value}
+      {fmt(value, decimals)}
       {suffix}
     </span>
   );

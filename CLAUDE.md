@@ -103,9 +103,17 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   `assets/fonts`, OFL, incluídas via `outputFileTracingIncludes`). Satori: todo `div` com mais de um filho precisa de
   `display: flex`, e número puro como filho quebra (use template string/`String()`).
   Rotas: `/api/card/acesso`, `/api/card/conta` ("A conta mudou"), `/api/card/previsao?p=`, `app/opengraph-image.tsx`, `twitter-image`, `apple-icon`, `icon.svg`.
+- **Chances no formato do GE (decisão do Lucas, 30/09):** o site mostra só **acesso direto** (1º ou 2º, `pDirect`) e
+  **ir aos playoffs** (3º a 6º, `pTop6`), com uma casa decimal (`pct1`/`chanceLabel`: "37,6%"; 100%/0% só com a
+  matemática; `accessChances` em `lib/clinch.ts`). A chance total de subir (`pPromotion`, direto + vencer o
+  mata-mata) e o "sobe pelos playoffs" (`pPlayoffPromotion`) NÃO aparecem mais em lugar nenhum (topo, corrida,
+  simulador, desafio, cards, prévia do link): somavam a campanha com dois jogos de ida e volta e enganavam. O pipeline
+  continua calculando (backtest/calibração usam). "Jogos que mais mexem" e "Pra secar" medem o acesso direto
+  (`key-games.json → metric`; vira "g6" sozinho se o direto cair abaixo de 5%). Quando começarem os playoffs, a ideia
+  combinada é mostrar a chance de passar de cada confronto.
 - **Escolhas visuais do Lucas (checkpoints 1 e 2, 28/09):** nome **Fortaleza em Números**; Bebas Neue + Inter;
-  derrota = bolinha vermelha; **chance de subir em verde** em todo o site (topo, simulador, corrida, cards, preview
-  do link), com o selo azul "Chances aproximadas do Leão subir pra Série A" no topo (pedido do Lucas, 29/09); montanha-russa com linha
+  derrota = bolinha vermelha; **acesso direto em verde** em todo o site (topo, simulador, corrida, cards, preview
+  do link), com o selo azul "Chances do Leão na Série B" no topo; montanha-russa com linha
   **branca** e pontos verde (V) / cinza (E) / vermelho (D), faixas G2/G6 preenchidas e Z4 hachurada.
   **Checkpoint 3 (29/09):** card "Chance de acesso" opção A (Placar) e card "Minha previsão" opção A (Lista); a rota
   `/preview` foi removida depois da escolha.

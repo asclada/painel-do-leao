@@ -61,7 +61,7 @@ export default function Home() {
           <Section
             id="jogos-chave"
             title="Os jogos que mais mexem na chance"
-            headline="Quanto a chance de subir muda com cada resultado, do Leão e dos rivais."
+            headline={`Quanto a chance de ${keyGames.metric === "direct" ? "acesso direto" : "ficar no G6"} muda com cada resultado, do Leão e dos rivais.`}
           >
             <KeyGames />
           </Section>

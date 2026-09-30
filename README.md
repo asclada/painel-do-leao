@@ -1,8 +1,8 @@
 # Fortaleza em Números
 
-Painel do Fortaleza na Série B 2026 feito para o torcedor comum: onde o Leão está, qual a chance real de subir
-para a Série A (simulando o campeonato inteiro, com todos os rivais), como essa chance mudou rodada a rodada, quais
-jogos mais pesam e um simulador para montar a própria previsão. Atualiza sozinho depois de cada jogo.
+Painel do Fortaleza na Série B 2026 feito para o torcedor comum: onde o Leão está, as chances reais de acesso
+direto e de ir aos playoffs (simulando o campeonato inteiro, com todos os rivais), como essas chances mudaram rodada
+a rodada, quais jogos mais pesam e um simulador para montar a própria previsão. Atualiza sozinho depois de cada jogo.
 
 **No ar:** https://fortaleza-em-numeros.vercel.app
 
@@ -12,15 +12,19 @@ jogos mais pesam e um simulador para montar a própria previsão. Atualiza sozin
 
 ## O que tem no site
 
-- **Agora:** posição, pontos, sequência e a chance de subir (direto e pelos playoffs), com o próximo jogo e a chance
-  de vitória, empate e derrota do Leão nele. Quando a matemática decide algo, aparece um selo ("Acesso garantido!",
-  "Vaga no G6 garantida"...).
+- **Agora:** posição, pontos, sequência e as duas chances no formato do GE, com uma casa decimal: **acesso direto**
+  (terminar em 1º ou 2º) e **ir aos playoffs** (terminar entre 3º e 6º). O site não soma as duas numa "chance de
+  subir": os playoffs são um mata-mata de ida e volta, e o número único passaria uma segurança que ele não dá. Mostra
+  também o próximo jogo, com a chance de vitória, empate e derrota do Leão nele. Quando a matemática decide algo,
+  aparece um selo ("Acesso garantido!", "Vaga no G6 garantida"...).
 - **Campanha em números:** aproveitamento, vitórias/empates/derrotas, média de pontos, saldo (geral, casa e fora).
 - **Montanha-russa da temporada:** posição rodada a rodada, com marcos e os rivais da corrida; jogo a jogo.
-- **Como a chance mudou:** a chance de acesso refeita depois de cada rodada, só com o que se sabia até ali, e o
-  card **"A conta mudou"** (antes x agora) gerado automaticamente depois de cada rodada.
-- **Corrida pelo acesso:** os times da briga lado a lado, com a dificuldade da tabela que falta.
-- **Os jogos que mais mexem na chance:** quanto a chance muda se o Leão vencer, empatar ou perder cada jogo, e
+- **Como a chance mudou:** as chances de acesso direto e de ir aos playoffs refeitas depois de cada rodada, só com o
+  que se sabia até ali, e o card **"A conta mudou"** (antes x agora) gerado automaticamente depois de cada rodada.
+- **Corrida pelo acesso:** os times da briga lado a lado, com as duas chances de cada um e a dificuldade da tabela
+  que falta.
+- **Os jogos que mais mexem na chance:** quanto a chance de acesso direto muda se o Leão vencer, empatar ou perder
+  cada jogo, e
   **"Pra secar nesta rodada"**: os três resultados de cada jogo da rodada, do que mais ajuda o Leão para o que mais
   atrapalha ("Torça pelo X · se não der, o empate serve" ou "Torça contra Y").
 - **Simulador dos próximos jogos:** o torcedor escolhe V/E/D em cada jogo e vê onde o Leão termina (API em Python),
@@ -37,9 +41,9 @@ jogos mais pesam e um simulador para montar a própria previsão. Atualiza sozin
 - **Até a rodada 38:** pontuação mais provável, faixa de pontos e as marcas que deixam G6 e acesso quase garantidos.
 - **Raio-X:** casa x fora, turno x returno, gols por faixa de minuto, o que muda depois do intervalo; cada
   curiosidade vira um card para compartilhar.
-- **Conteúdo da rodada:** cards prontos para postar depois de cada jogo (chance de acesso, a conta mudou, próximo
+- **Conteúdo da rodada:** cards prontos para postar depois de cada jogo (chances de acesso, a conta mudou, próximo
   jogo com os escudos e as chances, curiosidade da vez).
-- **Cards para compartilhar** (story 1080×1920 e prévia de link), gerados no servidor: chance de acesso, minha
+- **Cards para compartilhar** (story 1080×1920 e prévia de link), gerados no servidor: chances de acesso, minha
   previsão, modelo x eu, duelo, próximo jogo, curiosidades, palpite (antes e depois do jogo) e Meu Leão.
 
 ## Arquitetura

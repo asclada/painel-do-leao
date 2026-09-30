@@ -9,7 +9,7 @@ import { isComplete, serializeChoices } from "@/lib/simulator-client";
 /**
  * Card de story do "Desafio do Leão" (1080×1920): /api/card/duelo?a=Lucas&ap=31VVED...&b=João&bp=31VEED...
  * As duas previsões por rodada, o resultado real dos jogos já disputados, o placar de acertos, os pontos finais e
- * a chance de acesso de cada previsão. Tudo vem do link (sem banco).
+ * as chances de acesso direto e de ir aos playoffs de cada previsão. Tudo vem do link (sem banco).
  */
 export async function GET(req: Request) {
   const url = new URL(req.url);
@@ -41,13 +41,17 @@ export async function GET(req: Request) {
   const score = duelScore(a.picks, b.picks, played);
   const pa = choicesFor(a.picks, rounds);
   const pb = choicesFor(b.picks, rounds);
-  let chances: [number, number] | null = null;
+  let chances: [{ direct: number; playoffs: number }, { direct: number; playoffs: number }] | null = null;
   if (isComplete(pa) && isComplete(pb)) {
     const [ra, rb] = await Promise.all([
       simulate(url.origin, serializeChoices(pa)),
       simulate(url.origin, serializeChoices(pb)),
     ]);
-    if (ra && rb) chances = [ra.focus.pPromotion, rb.focus.pPromotion];
+    if (ra && rb)
+      chances = [
+        { direct: ra.focus.pDirect, playoffs: ra.focus.pTop6 },
+        { direct: rb.focus.pDirect, playoffs: rb.focus.pTop6 },
+      ];
   }
 
   return new ImageResponse(

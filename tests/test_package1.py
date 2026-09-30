@@ -106,6 +106,14 @@ def test_key_games(model, key_games):
         assert sorted(g.order) == ["away", "draw", "home"] and g.order[0] == g.best
 
 
+def test_key_games_measure_direct_access(model, key_games):
+    """Decisão de 30/09: os jogos que mais mexem medem a chance de acesso direto (1º ou 2º), não a chance total."""
+    sim = simulate_season(model, 4000, seed=3)
+    direct = float((sim.positions[:, model.focus_team] <= 2).mean())
+    assert key_games.metric == "direct"
+    assert abs(key_games.baseline - direct) < 1e-3
+
+
 def test_rival_win_is_never_best_against_a_bottom_team(key_games):
     """Londrina (Z4, 28 pts) x Criciúma (5º, 50 pts): o pior para o Leão é o Criciúma vencer, e a vitória do Londrina
     nunca pode sair pior que o empate (regressão: o método antigo, por grupos de simulações, sugeria o empate)."""

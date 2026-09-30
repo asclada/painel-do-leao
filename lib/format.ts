@@ -13,6 +13,20 @@ export function pct(x: number) {
   return `${Math.round(v)}%`;
 }
 
+/**
+ * Chance de acesso com uma casa decimal, no formato do GE: 0.3761 -> "37,6%" (decisão do Lucas, 30/09). Com 20 mil
+ * simulações a margem é de ~0,7 ponto, então a segunda casa não seria confiável. Sem certeza na matemática, nunca
+ * "100,0%" ou "0,0%": vira ">99,9%" ou "<0,1%" (o 100%/0% de verdade vem de chanceLabel, em lib/clinch.ts).
+ */
+export function pct1(x: number) {
+  if (x === 0) return "0%";
+  if (x === 1) return "100%";
+  const v = x * 100;
+  if (v > 0 && v < 0.05) return "<0,1%";
+  if (v < 100 && v >= 99.95) return ">99,9%";
+  return `${v.toFixed(1).replace(".", ",")}%`;
+}
+
 export function pctNumber(x: number) {
   return Math.round(x * 100);
 }

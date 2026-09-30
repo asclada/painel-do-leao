@@ -281,6 +281,7 @@ export interface HistoryEntry {
   partial?: boolean;
 }
 export interface KeyGames {
+  metric: "direct" | "g6";
   baseline: number;
   round: number | null;
   focus: FocusGame[];

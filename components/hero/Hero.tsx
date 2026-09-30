@@ -5,25 +5,29 @@ import { ShareButton } from "@/components/share/ShareButton";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { FormDots } from "@/components/ui/FormDots";
 import { fortalezaOdds, fortalezaRow, FORTALEZA, nextMatch, standings, xray } from "@/lib/data";
-import { chanceLabel, clinchBadge, statusOf } from "@/lib/clinch";
+import { accessChances, clinchBadge } from "@/lib/clinch";
 import { plural } from "@/lib/format";
 import { situation } from "@/lib/situation";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 /**
- * F1 — "Como tá o Leão agora". Em 5 segundos: onde o time está e a chance de subir.
- * No celular (390×844) cabe inteiro sem rolar, com o próximo jogo.
- * A chance de subir fica em verde, com o selo azul em destaque (pedido do Lucas, 29/09).
+ * F1 — "Como tá o Leão agora". Em 5 segundos: onde o time está e as chances de acesso.
+ * As chances seguem o formato do GE (decisão do Lucas, 30/09): acesso direto em verde e ida aos playoffs ao lado,
+ * com uma casa decimal, sob o selo azul em destaque.
  * "Agora" (menu e nome do site) leva ao topo de verdade, com o campinho à vista: margem de rolagem maior que a
  * distância até o topo.
  */
 export function Hero({ anchor = "agora" }: { anchor?: string }) {
   const sit = situation(standings, FORTALEZA);
-  const st = statusOf(FORTALEZA);
-  const chanceTxt = chanceLabel(fortalezaOdds.pPromotion, st.promotion);
-  // número animado só quando é um percentual "normal"; ">99%"/"<1%" (sem certeza na matemática) vão como texto
-  const plain = /^\d+%$/.test(chanceTxt);
+  const ch = accessChances(FORTALEZA, fortalezaOdds);
   const badge = clinchBadge(FORTALEZA);
+  // número animado só quando é um percentual "normal" (37,6%); 100%, 0%, ">99,9%" e "<0,1%" vão como texto
+  const num = (label: string) =>
+    /^\d+,\d%$/.test(label) ? (
+      <AnimatedNumber value={parseFloat(label.replace(",", "."))} suffix="%" decimals={1} />
+    ) : (
+      label
+    );
 
   return (
     <section id={anchor} aria-labelledby={`${anchor}-title`} className="spotlight scroll-mt-60">
@@ -38,7 +42,7 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
               className="h-16 w-auto shrink-0 sm:h-20"
             />
             <p className="text-[15px] leading-snug text-white/90 sm:text-base">
-              Aqui você acompanha o Fortaleza na Série B: a posição na tabela, a chance de subir para a Série A e os
+              Aqui você acompanha o Fortaleza na Série B: a posição na tabela, as chances de acesso à Série A e os
               jogos que faltam. Tudo se atualiza sozinho depois de cada rodada.
             </p>
           </div>
@@ -70,17 +74,26 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
 
           <div className="mt-6 flex items-end justify-between gap-3">
             <div className="min-w-0">
-              {/* selo no mesmo estilo do "Próximo jogo"; a chance vai em verde (pedido do Lucas, 29/09) */}
+              {/* selo no mesmo estilo do "Próximo jogo"; o acesso direto vai em verde */}
               <p className="inline-flex rounded-2xl bg-blue px-4 py-1.5 text-sm font-bold text-white shadow-[0_4px_16px_rgb(29_78_216/0.45)] ring-1 ring-white/20 sm:text-base">
-                Chances aproximadas do Leão subir pra Série A
+                Chances do Leão na Série B
               </p>
-              <p className="mt-4 font-display text-[5.5rem] leading-[0.9] text-win sm:text-[6rem]">
-                {plain ? <AnimatedNumber value={parseInt(chanceTxt, 10)} suffix="%" /> : chanceTxt}
-              </p>
-              <p className="text-sm text-muted sm:text-base">
-                Direto: <strong className="text-white">{chanceLabel(fortalezaOdds.pDirect, st.direct)}</strong> · playoffs:{" "}
-                <strong className="text-white">{chanceLabel(fortalezaOdds.pPlayoffPromotion, st.playoffs)}</strong>
-              </p>
+              <dl className="mt-4 grid grid-cols-2 gap-x-5">
+                <div>
+                  <dt className="text-sm font-semibold sm:text-base">Acesso direto</dt>
+                  <dd className="font-display text-[3.5rem] leading-[0.95] text-win min-[400px]:text-[4rem] sm:text-[5rem]">
+                    {num(ch.direct)}
+                  </dd>
+                  <dd className="text-xs text-muted sm:text-sm">1º ou 2º lugar</dd>
+                </div>
+                <div>
+                  <dt className="text-sm font-semibold sm:text-base">Ir aos playoffs</dt>
+                  <dd className="font-display text-[3.5rem] leading-[0.95] min-[400px]:text-[4rem] sm:text-[5rem]">
+                    {num(ch.playoffs)}
+                  </dd>
+                  <dd className="text-xs text-muted sm:text-sm">do 3º ao 6º lugar</dd>
+                </div>
+              </dl>
               {badge && (
                 <p
                   className={`mt-2 inline-flex rounded-full px-3 py-1 text-sm font-bold ${
@@ -97,7 +110,7 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
               image="/api/card/acesso"
               fileName="fortaleza-chance-de-acesso.png"
               link={SITE_URL}
-              text={`O Fortaleza tem ${chanceTxt} de chance de subir para a Série A, segundo o ${SITE_NAME}.`}
+              text={`Chances do Fortaleza na Série B, segundo o ${SITE_NAME}: acesso direto ${ch.direct} e ir aos playoffs ${ch.playoffs}.`}
             />
           </div>
         </div>

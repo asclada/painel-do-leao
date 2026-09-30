@@ -1,4 +1,9 @@
-"""Jogos que mais mexem na chance de acesso do Fortaleza.
+"""Jogos que mais mexem na chance de acesso direto do Fortaleza.
+
+Medida (decisão do Lucas, 30/09): a chance de ACESSO DIRETO (terminar em 1º ou 2º), a mesma pergunta que o GE
+responde. A chance total de subir (direto + vencer os playoffs) saiu do site porque engana: soma a campanha com um
+mata-mata de ida e volta. Se o acesso direto ficar quase impossível (abaixo de MIN_DIRECT), a medida passa a ser a
+chance de terminar no G6 (1º a 6º), para os jogos não virarem todos "tanto faz".
 
 Para cada jogo, simula o campeonato três vezes com o resultado FIXADO (vitória do mandante, empate, vitória do
 visitante), com a MESMA semente das simulações do topo. Como a reamostragem do jogo fixado usa um gerador próprio
@@ -33,6 +38,9 @@ MIN_RIVAL_SWING = 0.01  # jogos que mexem menos de 1 ponto na chance não aparec
 SAME_EPS = 0.01  # dois resultados a menos de 1 ponto de chance um do outro contam como "tanto faz" (e na tela
 # mostram o mesmo número arredondado); o ruído que sobra entre cenários fica em ~0,15 ponto
 MAX_FOCUS = 12  # no começo do campeonato, só os 12 próximos jogos do Leão (tempo do Actions)
+MIN_DIRECT = 0.05  # abaixo disso, a medida passa a ser a chance de terminar no G6
+
+Metric = Literal["direct", "g6"]
 
 Outcome = Literal["home", "draw", "away"]
 OUTCOME_NAME: dict[int, Outcome] = {HOME_WIN: "home", DRAW: "draw", AWAY_WIN: "away"}
@@ -47,7 +55,7 @@ class FocusGame(Model):
     p_win: float  # chance do resultado, segundo o modelo
     p_draw: float
     p_loss: float
-    if_win: float  # chance de acesso do Fortaleza se o jogo terminar assim
+    if_win: float  # chance do Fortaleza (acesso direto ou G6, ver KeyGames.metric) se o jogo terminar assim
     if_draw: float
     if_loss: float
     swing: float  # vitória menos derrota
@@ -74,7 +82,8 @@ class RivalGame(Model):
 
 
 class KeyGames(Model):
-    baseline: float  # chance de acesso agora (a mesma do topo)
+    metric: Metric  # "direct": acesso direto (1º ou 2º); "g6": terminar entre os 6 primeiros
+    baseline: float  # a chance de agora nessa medida (a mesma do topo)
     round: int | None  # rodada do próximo jogo do Fortaleza ("nesta rodada")
     focus: list[FocusGame]
     rivals: list[RivalGame]
@@ -84,14 +93,19 @@ def _r(x: float) -> float:
     return round(float(x), 4)
 
 
-def forced_chances(model: ModelInput, j: int, n: int, seed: int) -> dict[int, float]:
-    """Resultado fixado do jogo j (visão do mandante) -> chance de acesso do Fortaleza."""
+def metric_chance(sim: SimResult, team: int, metric: Metric) -> float:
+    """Acesso direto (1º ou 2º) ou G6 (1º a 6º) de um time nas simulações."""
+    return float((sim.positions[:, team] <= (2 if metric == "direct" else 6)).mean())
+
+
+def forced_chances(model: ModelInput, j: int, n: int, seed: int, metric: Metric) -> dict[int, float]:
+    """Resultado fixado do jogo j (visão do mandante) -> chance do Fortaleza na medida escolhida."""
     out = {}
     for o in (HOME_WIN, DRAW, AWAY_WIN):
         fixed = np.full(len(model.remaining), FREE)
         fixed[j] = o
         sim = simulate_season(model, n, seed, fixed)
-        out[o] = float(sim.promoted[:, model.focus_team].mean())
+        out[o] = metric_chance(sim, model.focus_team, metric)
     return out
 
 
@@ -104,14 +118,15 @@ def _freq(sim: SimResult, j: int) -> dict[int, float]:
 def compute_key_games(model: ModelInput, sim: SimResult, n: int, seed: int) -> KeyGames:
     """`sim`, `n` e `seed`: as simulações do topo (mesma semente = cenários comparáveis com a chance de agora)."""
     f = model.focus_team
-    baseline = float(sim.promoted[:, f].mean())
+    metric: Metric = "direct" if metric_chance(sim, f, "direct") >= MIN_DIRECT else "g6"
+    baseline = metric_chance(sim, f, metric)
 
     focus_games = []
     for j in model.focus_remaining[:MAX_FOCUS]:
         m = model.remaining[j]
         home = m.home == f
         win, loss = (HOME_WIN, AWAY_WIN) if home else (AWAY_WIN, HOME_WIN)
-        chance, freq = forced_chances(model, j, n, seed), _freq(sim, j)
+        chance, freq = forced_chances(model, j, n, seed, metric), _freq(sim, j)
         focus_games.append(FocusGame(
             match_id=m.id, round=m.round, kickoff_utc=m.kickoff_utc,
             opponent_id=model.teams[m.away if home else m.home], home=home,
@@ -127,7 +142,7 @@ def compute_key_games(model: ModelInput, sim: SimResult, n: int, seed: int) -> K
         for j, m in enumerate(model.remaining):
             if m.round > target or f in (m.home, m.away):
                 continue
-            chance, freq = forced_chances(model, j, n, seed), _freq(sim, j)
+            chance, freq = forced_chances(model, j, n, seed, metric), _freq(sim, j)
             order = sorted(chance, key=chance.get, reverse=True)
             best = order[0]
             swing = chance[best] - chance[order[2]]
@@ -144,4 +159,4 @@ def compute_key_games(model: ModelInput, sim: SimResult, n: int, seed: int) -> K
                 gain=_r(chance[best] - baseline), swing=_r(swing),
             ))
     rival_games.sort(key=lambda g: -g.swing)
-    return KeyGames(baseline=_r(baseline), round=target, focus=focus_games, rivals=rival_games)
+    return KeyGames(metric=metric, baseline=_r(baseline), round=target, focus=focus_games, rivals=rival_games)

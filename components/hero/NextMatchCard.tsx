@@ -40,7 +40,7 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
 
   return (
     <div className="rounded-3xl bg-surface p-5 ring-1 ring-line sm:p-7">
-      {/* selo em destaque: azul da faixa tricolor (mesmo estilo do selo da chance de subir) */}
+      {/* selo em destaque: azul da faixa tricolor (mesmo estilo do selo das chances do topo) */}
       <p className="flex justify-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-blue px-4 py-1.5 text-sm text-white shadow-[0_4px_16px_rgb(29_78_216/0.45)] ring-1 ring-white/20 sm:text-base">
           <span className="font-bold">Próximo jogo</span>

@@ -58,13 +58,16 @@ export function winById(matchId: string): GameOption | null {
   return gameOptions().find((o) => o.matchId === matchId) ?? { matchId, round: w.round, line: line(w), tag: "" };
 }
 
-/** Onde o Leão termina: título, 2º lugar, playoffs ou fica na Série B (as chances somam 100%). */
+/**
+ * Onde o Leão termina nos pontos corridos: campeão, 2º, playoffs (3º a 6º) ou fora do G6 (as chances somam 100%).
+ * Mesmas perguntas do GE (decisão do Lucas, 30/09): nada de "sobe pelos playoffs", que junta o mata-mata.
+ */
 export function finishOptions(): FinishOption[] {
   const o = fortalezaOdds;
   return [
     { label: "Campeão da Série B", chance: o.pTitle },
     { label: "Sobe direto, em 2º", chance: Math.max(0, o.pDirect - o.pTitle) },
-    { label: "Sobe pelos playoffs", chance: o.pPlayoffPromotion },
-    { label: "Fica mais um ano na Série B", chance: Math.max(0, 1 - o.pPromotion) },
+    { label: "Nos playoffs (3º a 6º)", chance: o.pTop6 },
+    { label: "Fora do G6", chance: Math.max(0, 1 - o.pDirect - o.pTop6) },
   ];
 }

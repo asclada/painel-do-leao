@@ -58,8 +58,10 @@ export function Footer() {
               terminou em 8 de cada 10 simulações.
             </p>
             <p>
-              Os playoffs também entram na conta: 3º x 6º e 4º x 5º, em ida e volta. Pelo regulamento, a melhor
-              campanha decide em casa e, se o placar somado empatar, é ela quem sobe.
+              O site mostra duas chances, como o GE: acesso direto (terminar em 1º ou 2º) e ir aos playoffs (terminar
+              entre 3º e 6º). Os playoffs são 3º x 6º e 4º x 5º, em ida e volta; pelo regulamento, a melhor campanha
+              decide em casa e, se o placar somado empatar, é ela quem sobe. Como o mata-mata são só dois jogos, a
+              chance de passar por ele não é somada à de acesso direto.
             </p>
             <p>
               O gráfico &quot;Como a chance mudou&quot; refaz essa mesma conta depois de cada rodada, usando só os jogos

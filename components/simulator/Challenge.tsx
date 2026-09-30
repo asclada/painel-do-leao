@@ -14,7 +14,7 @@ import {
   type Player,
   NAME_MAX,
 } from "@/lib/challenge";
-import { pct, shortDate } from "@/lib/format";
+import { pct1, shortDate } from "@/lib/format";
 import type { Team } from "@/lib/generated/outputs";
 import { fetchScenario, serializeChoices } from "@/lib/simulator-client";
 import type { UsageEvent } from "@/lib/track";
@@ -128,7 +128,7 @@ function PickChip({ pick, hit }: { pick: Pick | null; hit?: boolean }) {
 
 /**
  * Os dois lado a lado: escolha de cada um por jogo, o resultado real dos jogos já disputados, placar de acertos,
- * pontos finais e a chance de acesso de cada previsão (mesma API do simulador).
+ * pontos finais e as chances de acesso direto e de ir aos playoffs de cada previsão (mesma API do simulador).
  */
 export function DuelPanel({
   a,
@@ -157,16 +157,25 @@ export function DuelPanel({
   );
   const nextGame = fixtures[0];
 
-  // chance de acesso de cada previsão (a mesma API do simulador); a chave é o texto das escolhas, para não
+  // chances de cada previsão (acesso direto e ir aos playoffs, pela mesma API do simulador); a chave é o texto das escolhas, para não
   // refazer a busca a cada renderização (o objeto da previsão é recriado a partir da URL)
   const pa = serializeChoices(choicesFor(a.picks, remainingRounds));
   const pb = serializeChoices(choicesFor(b.picks, remainingRounds));
-  const [chance, setChance] = useState<{ key: string; a: number; b: number } | null>(null);
+  type Two = { direct: number; playoffs: number };
+  const [chance, setChance] = useState<{ key: string; a: Two; b: Two } | null>(null);
   useEffect(() => {
     if (pa.includes("-") || pb.includes("-")) return;
     let alive = true;
     Promise.all([fetchScenario(pa), fetchScenario(pb)])
-      .then(([ra, rb]) => alive && setChance({ key: `${pa}|${pb}`, a: ra.focus.pPromotion, b: rb.focus.pPromotion }))
+      .then(
+        ([ra, rb]) =>
+          alive &&
+          setChance({
+            key: `${pa}|${pb}`,
+            a: { direct: ra.focus.pDirect, playoffs: ra.focus.pTop6 },
+            b: { direct: rb.focus.pDirect, playoffs: rb.focus.pTop6 },
+          }),
+      )
       .catch(() => {});
     return () => {
       alive = false;
@@ -247,8 +256,14 @@ export function DuelPanel({
               {finalPointsFor(p.picks, currentPoints, remainingRounds)} <span className="text-lg text-muted">pts</span>
             </dd>
             <dd className="text-sm text-muted">
-              Chance de acesso:{" "}
-              <strong className="text-win">{shownChance ? pct(i === 0 ? shownChance.a : shownChance.b) : "…"}</strong>
+              Acesso direto:{" "}
+              <strong className="text-win">{shownChance ? pct1((i === 0 ? shownChance.a : shownChance.b).direct) : "…"}</strong>
+            </dd>
+            <dd className="text-sm text-muted">
+              Ir aos playoffs:{" "}
+              <strong className="text-white">
+                {shownChance ? pct1((i === 0 ? shownChance.a : shownChance.b).playoffs) : "…"}
+              </strong>
             </dd>
           </div>
         ))}

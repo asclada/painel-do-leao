@@ -1,17 +1,17 @@
 // Cards de compartilhar (F6) em JSX para o next/og (Satori: só flexbox, estilos inline, sem variáveis CSS).
 import type { ReactNode } from "react";
 import { readableText } from "@/lib/color";
-import { chanceChange, scoreLine } from "@/lib/chance";
-import { chanceLabel, statusOf } from "@/lib/clinch";
+import { chanceChange, same, scoreLine } from "@/lib/chance";
+import { accessChances } from "@/lib/clinch";
 import { fortalezaOdds, fortalezaRow, FORTALEZA, standings, teamById, xray } from "@/lib/data";
 import type { Curiosity } from "@/lib/curiosities";
-import { kickoffLabel, pct, plural, venueName } from "@/lib/format";
+import { kickoffLabel, pct, pct1, plural, venueName } from "@/lib/format";
 import type { NextMatch, Team } from "@/lib/generated/outputs";
 import type { ScenarioResult } from "@/lib/generated/scenario";
 import { C } from "@/lib/og/fonts";
 import { SITE_HOST, SITE_NAME } from "@/lib/site";
 import type { Choice } from "@/lib/simulator-client";
-import { finalPoints, pG6, predictionPersona } from "@/lib/simulator-text";
+import { finalPoints, predictionPersona } from "@/lib/simulator-text";
 import type { Pick } from "@/lib/challenge";
 import type { FinishOption, GameOption } from "@/lib/meu-leao";
 import { type PalpiteGame, scoreGuess, verdictText } from "@/lib/palpite";
@@ -122,27 +122,37 @@ function Badge({ team, size = 1 }: { team: Team; size?: number }) {
   );
 }
 
-// ---------------------------------------------------------------- Chance de acesso
+// ---------------------------------------------------------------- Chances de acesso
 
-/** Card "Chance de acesso" — opção A (Placar), escolhida no checkpoint visual 3: a chance domina a tela. */
+/** Uma das duas chances do GE, grande: nome, número e o que ela quer dizer. */
+function BigChance({ label, value, hint, color, size }: { label: string; value: string; hint: string; color: string; size: number }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{ fontSize: 46, fontWeight: 700 }}>{label}</div>
+      <div style={{ fontFamily: "Bebas", fontSize: size, lineHeight: 0.9, color, marginTop: 6 }}>{value}</div>
+      <div style={{ fontSize: 34, color: C.muted }}>{hint}</div>
+    </div>
+  );
+}
+
+/**
+ * Card "Chances de acesso" — opção A (Placar), escolhida no checkpoint visual 3, agora com as duas chances do GE
+ * (decisão do Lucas, 30/09): acesso direto e ir aos playoffs.
+ */
 export function AccessCard() {
   const sit = situation(standings, FORTALEZA);
-  const st = statusOf(FORTALEZA);
-  const chance = chanceLabel(fortalezaOdds.pPromotion, st.promotion);
+  const ch = accessChances(FORTALEZA, fortalezaOdds);
 
   return (
     <Frame sub={`Fortaleza na Série B · ${plural(fortalezaRow.played, "jogo")}`} cta="Veja a sua conta em">
-      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
-        <div style={{ fontSize: 48, fontWeight: 700 }}>Chance de subir para a Série A</div>
-        <div style={{ fontFamily: "Bebas", fontSize: 520, lineHeight: 0.9, color: C.win, marginTop: 20 }}>{chance}</div>
-        <div style={{ fontSize: 40, color: C.muted, marginTop: 10 }}>
-          {`Direto: ${chanceLabel(fortalezaOdds.pDirect, st.direct)} · via playoffs: ${chanceLabel(fortalezaOdds.pPlayoffPromotion, st.playoffs)}`}
-        </div>
+      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px", gap: 50 }}>
+        <BigChance label="Acesso direto" value={ch.direct} hint="terminar em 1º ou 2º" color={C.win} size={300} />
+        <BigChance label="Ir aos playoffs" value={ch.playoffs} hint="terminar entre 3º e 6º" color={C.white} size={300} />
       </div>
       <div
         style={{
           display: "flex",
-          margin: "110px 80px 0",
+          margin: "80px 80px 0",
           padding: "44px 0",
           borderTop: `2px solid ${C.line}`,
           borderBottom: `2px solid ${C.line}`,
@@ -167,27 +177,31 @@ export function AccessCard() {
 
 // ---------------------------------------------------------------- A conta mudou
 
-/** Card "A conta mudou": a chance antes da rodada do último jogo x agora (lib/chance.ts). */
+/** Card "A conta mudou": as duas chances antes da rodada do último jogo x agora (lib/chance.ts). */
 export function ChangeCard() {
   const change = chanceChange();
   if (!change) return <AccessCard />;
-  const { game, from, to, diff } = change;
-  const verb = diff > 0 ? "subiu" : diff < 0 ? "caiu" : "ficou igual";
+  const { game } = change;
+  const verb = (s: { from: number; to: number }) => (same(s) ? "ficou igual" : s.to > s.from ? "subiu" : "caiu");
+  const row = (label: string, s: { from: number; to: number }, color: string) => (
+    <div style={{ display: "flex", flexDirection: "column", marginTop: 70 }}>
+      <div style={{ fontSize: 44, fontWeight: 700 }}>{`${label}: ${verb(s)}`}</div>
+      <div style={{ display: "flex", alignItems: "flex-end", gap: 30, marginTop: 10 }}>
+        <div style={{ fontFamily: "Bebas", fontSize: 150, lineHeight: 0.9, color: C.muted }}>{pct1(s.from)}</div>
+        <div style={{ fontFamily: "Bebas", fontSize: 90, lineHeight: 1, color: C.muted }}>→</div>
+        <div style={{ fontFamily: "Bebas", fontSize: 220, lineHeight: 0.9, color }}>{pct1(s.to)}</div>
+      </div>
+    </div>
+  );
 
   return (
     <Frame sub={`Fortaleza na Série B · ${plural(fortalezaRow.played, "jogo")}`} cta="Acompanhe a conta em">
       <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
         <div style={{ fontSize: 60, fontWeight: 800 }}>A conta mudou</div>
         <div style={{ fontSize: 40, color: C.muted, marginTop: 12 }}>{`Rodada ${game.round}: ${scoreLine(game)}`}</div>
-        <div style={{ display: "flex", flexDirection: "column", marginTop: 90 }}>
-          <div style={{ fontSize: 40, color: C.muted }}>{`Antes da rodada ${change.beforeRound + 1}`}</div>
-          <div style={{ fontFamily: "Bebas", fontSize: 260, lineHeight: 0.9, color: C.muted }}>{`${from}%`}</div>
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", marginTop: 40 }}>
-          <div style={{ fontSize: 40, color: C.white }}>Agora</div>
-          <div style={{ fontFamily: "Bebas", fontSize: 420, lineHeight: 0.9, color: C.win }}>{`${to}%`}</div>
-        </div>
-        <div style={{ fontSize: 46, fontWeight: 700, marginTop: 30 }}>{`A chance de subir para a Série A ${verb}.`}</div>
+        <div style={{ fontSize: 36, color: C.muted, marginTop: 50 }}>{`Antes da rodada ${change.beforeRound + 1} → agora`}</div>
+        {row("Acesso direto", change.direct, C.win)}
+        {row("Ir aos playoffs", change.playoffs, C.white)}
       </div>
     </Frame>
   );
@@ -256,20 +270,21 @@ export function PredictionCard({
           <div style={{ fontSize: 32, color: C.muted }}>posição mais provável</div>
         </div>
       </div>
-      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", margin: "48px 80px 0" }}>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 40, fontWeight: 700 }}>Chance de acesso</div>
-          <div style={{ fontSize: 32, color: C.muted, marginTop: 6 }}>
-            {`direto ${pct(result.focus.pDirect)} · G6 ${pct(pG6(result))}`}
-          </div>
-          {extras > 0 && (
-            <div style={{ fontSize: 28, color: C.muted, marginTop: 6 }}>
-              {`+ ${extras} ${extras === 1 ? "confronto direto escolhido" : "confrontos diretos escolhidos"}`}
-            </div>
-          )}
+      <div style={{ display: "flex", margin: "48px 80px 0" }}>
+        <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+          <div style={{ fontFamily: "Bebas", fontSize: 170, lineHeight: 0.85, color: C.win }}>{pct1(result.focus.pDirect)}</div>
+          <div style={{ fontSize: 32, color: C.muted }}>acesso direto</div>
         </div>
-        <div style={{ fontFamily: "Bebas", fontSize: 220, lineHeight: 0.8, color: C.win }}>{pct(result.focus.pPromotion)}</div>
+        <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+          <div style={{ fontFamily: "Bebas", fontSize: 170, lineHeight: 0.85 }}>{pct1(result.focus.pTop6)}</div>
+          <div style={{ fontSize: 32, color: C.muted }}>ir aos playoffs</div>
+        </div>
       </div>
+      {extras > 0 && (
+        <div style={{ fontSize: 28, color: C.muted, margin: "16px 80px 0" }}>
+          {`+ ${extras} ${extras === 1 ? "confronto direto escolhido" : "confrontos diretos escolhidos"}`}
+        </div>
+      )}
     </Frame>
   );
 }
@@ -372,29 +387,33 @@ export function NextMatchStoryCard({
 
 // ---------------------------------------------------------------- Provocação (modelo x eu)
 
-/** "O modelo dá 62%. Eu dou 81%." — a previsão do torcedor contra a chance de agora. */
+/** "O modelo dá 37,6% de acesso direto. Eu dou 81,2%." — a previsão do torcedor contra as chances de agora. */
 export function ProvocationCard({ result }: { result: ScenarioResult }) {
   const persona = predictionPersona(result.choices, result);
-  const model = pct(fortalezaOdds.pPromotion);
-  const mine = pct(result.focus.pPromotion);
-  const diff = Math.round(100 * (result.focus.pPromotion - fortalezaOdds.pPromotion));
+  const diff = Math.round(100 * (result.focus.pDirect - fortalezaOdds.pDirect));
   const verdict =
     diff >= 10 ? "Sou mais otimista que o modelo." : diff <= -10 ? "Sou mais pé atrás que o modelo." : "Eu e o modelo pensamos parecido.";
   const pts = finalPoints(result).value;
 
   return (
-    <Frame sub="Chance de o Leão subir para a Série A" cta="Faça a sua previsão em">
+    <Frame sub="Chances do Leão na Série B" cta="Faça a sua previsão em">
       <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
         <div style={{ fontSize: 60, fontWeight: 800 }}>Quem tem razão?</div>
-        <div style={{ display: "flex", marginTop: 70 }}>
-          <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-            <div style={{ fontSize: 44, color: C.muted }}>O modelo</div>
-            <div style={{ fontFamily: "Bebas", fontSize: 260, lineHeight: 0.9, color: C.muted }}>{model}</div>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-            <div style={{ fontSize: 44, color: C.white }}>Eu</div>
-            <div style={{ fontFamily: "Bebas", fontSize: 260, lineHeight: 0.9, color: C.win }}>{mine}</div>
-          </div>
+        <div style={{ display: "flex", marginTop: 60 }}>
+          {(
+            [
+              ["O modelo", fortalezaOdds, C.muted, C.muted],
+              ["Eu", result.focus, C.white, C.win],
+            ] as const
+          ).map(([who, o, labelColor, color]) => (
+            <div key={who} style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+              <div style={{ fontSize: 44, color: labelColor }}>{who}</div>
+              <div style={{ fontFamily: "Bebas", fontSize: 200, lineHeight: 0.9, color }}>{pct1(o.pDirect)}</div>
+              <div style={{ fontSize: 32, color: C.muted }}>acesso direto</div>
+              <div style={{ fontFamily: "Bebas", fontSize: 110, lineHeight: 0.9, color: labelColor, marginTop: 24 }}>{pct1(o.pTop6)}</div>
+              <div style={{ fontSize: 32, color: C.muted }}>ir aos playoffs</div>
+            </div>
+          ))}
         </div>
         <div style={{ fontSize: 48, fontWeight: 700, marginTop: 50 }}>{verdict}</div>
         <div
@@ -435,7 +454,7 @@ export function DuelCard({
   rows: DuelRow[];
   score: { a: number; b: number; counted: number };
   points: [number, number];
-  chances: [number, number] | null;
+  chances: [{ direct: number; playoffs: number }, { direct: number; playoffs: number }] | null;
 }) {
   const chip = (p: Pick | null, hit: boolean) => (
     <div
@@ -496,7 +515,10 @@ export function DuelCard({
               <div style={{ fontSize: 34, color: C.muted }}>{n}</div>
               <div style={{ fontFamily: "Bebas", fontSize: 120, lineHeight: 0.9 }}>{`${points[i]} pts`}</div>
               {chances && (
-                <div style={{ fontSize: 34, color: C.win, fontWeight: 700 }}>{`${pct(chances[i])} de chance de subir`}</div>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div style={{ fontSize: 34, color: C.win, fontWeight: 700 }}>{`${pct1(chances[i].direct)} acesso direto`}</div>
+                  <div style={{ fontSize: 30, color: C.muted }}>{`${pct1(chances[i].playoffs)} ir aos playoffs`}</div>
+                </div>
               )}
             </div>
           ))}
@@ -513,11 +535,11 @@ export function predictionGames(fixtures: { opponentId: string; home: boolean; r
 // ---------------------------------------------------------------- Preview de link (Open Graph, 1200×630)
 
 export const OG = { width: 1200, height: 630 } as const;
-export const OG_ALT = `${SITE_NAME}: posição do Fortaleza na Série B e a chance de acesso`;
+export const OG_ALT = `${SITE_NAME}: posição do Fortaleza na Série B e as chances de acesso`;
 
 export function OgCard() {
   const sit = situation(standings, FORTALEZA);
-  const st = statusOf(FORTALEZA);
+  const ch = accessChances(FORTALEZA, fortalezaOdds);
   return (
     <div
       style={{
@@ -553,9 +575,10 @@ export function OgCard() {
             borderLeft: `3px solid ${C.line}`,
           }}
         >
-          <div style={{ fontSize: 34, fontWeight: 700 }}>Chance de subir</div>
-          <div style={{ fontFamily: "Bebas", fontSize: 250, lineHeight: 0.85, color: C.win }}>{chanceLabel(fortalezaOdds.pPromotion, st.promotion)}</div>
-          <div style={{ fontSize: 28, color: C.muted }}>{`direto ${chanceLabel(fortalezaOdds.pDirect, st.direct)} · playoffs ${chanceLabel(fortalezaOdds.pPlayoffPromotion, st.playoffs)}`}</div>
+          <div style={{ fontSize: 30, fontWeight: 700 }}>Acesso direto</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 170, lineHeight: 0.85, color: C.win }}>{ch.direct}</div>
+          <div style={{ fontSize: 30, fontWeight: 700, marginTop: 18 }}>Ir aos playoffs</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 120, lineHeight: 0.85 }}>{ch.playoffs}</div>
         </div>
       </div>
     </div>
@@ -666,7 +689,7 @@ export function MeuLeaoCard({
         <div style={{ fontFamily: "Bebas", fontSize: 140, lineHeight: 0.9 }}>{name ? `O Leão de ${name}` : "Meu Leão"}</div>
         {row("Vejo os jogos", where)}
         {row("Jogo inesquecível de 2026", game.line, `Rodada ${game.round}${game.tag ? ` · ${game.tag}` : ""}`)}
-        {row("Pra mim, o Leão termina", finish.label, `O modelo dá ${pct(finish.chance)}`)}
+        {row("Pra mim, o Leão termina", finish.label, `O modelo dá ${pct1(finish.chance)}`)}
         <div
           style={{
             display: "flex",

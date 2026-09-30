@@ -2,11 +2,13 @@ import { ChevronDown } from "lucide-react";
 import { LazyDetails } from "@/components/ui/LazyDetails";
 import { MiniCrest } from "@/components/ui/MiniCrest";
 import { FORTALEZA, keyGames, teamById } from "@/lib/data";
-import { kickoffLabel, pct, plural } from "@/lib/format";
+import { kickoffLabel, pct1, plural } from "@/lib/format";
 import type { FocusGame, RivalGame, Team } from "@/lib/generated/outputs";
 
 const DOT = { V: "bg-win", E: "bg-draw", D: "bg-loss" } as const;
 const FOCUS_SHOWN = 3;
+// o que o pipeline mediu (decisão de 30/09): acesso direto; se ele ficar quase impossível, ficar no G6
+const METRIC = keyGames.metric === "direct" ? "acesso direto" : "ficar no G6";
 const RIVALS_SHOWN = 4;
 
 /** "pelo Vila Nova" / "pela Ponte Preta" */
@@ -14,7 +16,7 @@ function forTeam(t: Team) {
   return `${t.article === "a" ? "pela" : "pelo"} ${t.name}`;
 }
 
-/** Faixa de 0% a 100% com a chance do Leão se vencer, empatar ou perder aquele jogo. */
+/** Faixa de 0% a 100% com a chance do Leão (acesso direto) se vencer, empatar ou perder aquele jogo. */
 function RangeBar({ win, draw, loss }: { win: number | null | undefined; draw: number | null | undefined; loss: number | null | undefined }) {
   const marks = (
     [
@@ -70,7 +72,7 @@ function FocusRow({ g, top }: { g: FocusGame; top: boolean }) {
               <span className={`h-2.5 w-2.5 rounded-full ${DOT[k]}`} aria-hidden />
               {label}
             </dt>
-            <dd className="mt-0.5 text-lg font-bold tabular">{v != null ? pct(v) : "—"}</dd>
+            <dd className="mt-0.5 text-lg font-bold tabular">{v != null ? pct1(v) : "—"}</dd>
           </div>
         ))}
       </dl>
@@ -140,7 +142,7 @@ function RivalRow({ g }: { g: RivalGame }) {
             <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${dot(i)}`} aria-hidden />
             <dt className="min-w-0 flex-1 truncate">{capitalize(outcomeLabel(o, home, away))}</dt>
             <dd className="text-muted">
-              chance do Leão <strong className="text-white tabular">{pct(chance[o])}</strong>
+              {METRIC} <strong className="text-white tabular">{pct1(chance[o])}</strong>
             </dd>
           </div>
         ))}
@@ -165,8 +167,8 @@ export function KeyGames() {
         <h3 className="text-xl font-semibold">Os jogos do Leão</h3>
         <p className="mt-1 text-white/90">
           O que mais mexe na chance é contra {topOpp.article === "a" ? "a" : "o"} <strong>{topOpp.name}</strong>, na
-          rodada {top.round}: vencendo, a chance de subir vai a <strong>{pct(top.ifWin ?? baseline)}</strong>; perdendo,
-          cai para <strong>{pct(top.ifLoss ?? baseline)}</strong>. Hoje ela é {pct(baseline)}.
+          rodada {top.round}: vencendo, a chance de {METRIC} vai a <strong>{pct1(top.ifWin ?? baseline)}</strong>; perdendo,
+          cai para <strong>{pct1(top.ifLoss ?? baseline)}</strong>. Hoje ela é {pct1(baseline)}.
         </p>
         <ol className="mt-4 flex flex-col gap-2.5" aria-label="Jogos do Fortaleza que mais mexem na chance">
           {focus.slice(0, FOCUS_SHOWN).map((g, i) => (
@@ -197,7 +199,8 @@ export function KeyGames() {
         {rivals.length > 0 ? (
           <>
             <p className="mt-1 text-white/90">
-              Os outros jogos da rodada que mais mexem na chance do Leão, com os três resultados do melhor para o pior.
+              Os outros jogos da rodada que mais mexem na chance de {METRIC} do Leão, com os três resultados do
+              melhor para o pior.
             </p>
             <ul className="mt-4 flex flex-col gap-2.5">
               {rivals.slice(0, RIVALS_SHOWN).map((g) => (

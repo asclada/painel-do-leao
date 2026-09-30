@@ -3,7 +3,7 @@
 import { useId, useState, useSyncExternalStore } from "react";
 import { ShareButton } from "@/components/share/ShareButton";
 import { cleanName, NAME_MAX } from "@/lib/challenge";
-import { pct } from "@/lib/format";
+import { pct1 } from "@/lib/format";
 import { cardQuery, type FinishOption, type GameOption, PHRASE_OPTIONS, WHERE_OPTIONS } from "@/lib/meu-leao";
 import { type PalpiteGame, scoreAll, totalPoints, unlockedAchievements } from "@/lib/palpite";
 import { useGuesses } from "@/lib/palpite-store";
@@ -129,7 +129,7 @@ export function MeuLeao({
         />
         <Question
           title="Pra você, onde o Leão termina?"
-          options={finishes.map((f) => ({ label: f.label, note: `o modelo dá ${pct(f.chance)}` }))}
+          options={finishes.map((f) => ({ label: f.label, note: `o modelo dá ${pct1(f.chance)}` }))}
           value={finish}
           onChange={setFinish}
         />

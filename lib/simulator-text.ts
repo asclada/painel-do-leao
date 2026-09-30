@@ -1,5 +1,5 @@
 // Frases do simulador "E se?" (F4) e do card "Minha previsão" (F6). Regras simples, sem IA.
-import { pct, plural } from "@/lib/format";
+import { pct, pct1, plural } from "@/lib/format";
 import type { MagicNumbers, ScenarioResult } from "@/lib/generated/scenario";
 
 /** Chance de terminar entre os 6 primeiros (G2 + 3º a 6º). */
@@ -14,19 +14,20 @@ export function pG6(r: ScenarioResult) {
  * contradizer.
  */
 export function scenarioPhrase(r: ScenarioResult): { title: string; detail: string | null } {
-  const { pDirect, pTop6, pRelegation, pPromotion } = r.focus;
+  const { pDirect, pTop6, pRelegation } = r.focus;
+  const g6 = pG6(r);
   const best = r.mostLikelyPosition;
   const split =
     pDirect > 0 && pTop6 > 0
-      ? `Em ${pct(pDirect)} das simulações o Leão termina no G2 e sobe direto; em ${pct(pTop6)}, fica entre o 3º e o 6º e vai aos playoffs. A diferença está nos pontos que os rivais diretos fizerem.`
+      ? `Em ${pct1(pDirect)} das simulações o Leão termina no G2 e sobe direto; em ${pct1(pTop6)}, fica entre o 3º e o 6º e vai aos playoffs. A diferença está nos pontos que os rivais diretos fizerem.`
       : null;
 
   if (pRelegation > 0.05)
     return { title: "Cuidado: com esses resultados o risco lá embaixo aparece.", detail: `Chance de terminar no Z4: ${pct(pRelegation)}.` };
   if (pDirect >= 0.9)
     return { title: "Com esses resultados, o acesso direto fica praticamente garantido.", detail: null };
-  if (pPromotion < 0.01)
-    return { title: "Com esses resultados, o acesso fica praticamente fora de alcance.", detail: null };
+  if (g6 < 0.01)
+    return { title: "Com esses resultados, o Leão fica fora do G6 e o acesso sai de alcance.", detail: null };
   if (pDirect >= 0.5)
     return { title: "Boa chance de subir direto, mas ainda depende dos rivais.", detail: split };
   if (best <= 2 && pTop6 > pDirect)
@@ -36,10 +37,10 @@ export function scenarioPhrase(r: ScenarioResult): { title: string; detail: stri
     };
   if (pTop6 >= 0.5)
     return { title: "Com isso, o caminho mais provável é pelos playoffs.", detail: split };
-  if (pPromotion < 0.2)
+  if (g6 < 0.35)
     return {
       title: "Com esses resultados, o acesso vira missão difícil.",
-      detail: pG6(r) > 0 ? `O Leão fica no G6 em só ${pct(pG6(r))} das simulações.` : null,
+      detail: `O Leão fica no G6 em só ${pct1(g6)} das simulações.`,
     };
   return { title: "Ainda dá para subir, mas vai depender bastante dos rivais.", detail: split };
 }
@@ -54,10 +55,10 @@ export function pointsPhrase(points: number, m: MagicNumbers) {
   const top6 = m.pointsFor90Top6;
   if (direct == null) return null;
   if (points >= direct) {
-    return `Com ${points} pontos, o Leão ${points === direct ? "chega à" : "passa da"} marca de ${direct}: a partir dela, a chance de subir direto fica acima de 90%.`;
+    return `Com ${points} pontos, o Leão ${points === direct ? "chega à" : "passa da"} marca de ${direct}: a partir dela, a chance de acesso direto fica acima de 90%.`;
   }
   const gap = direct - points;
-  const base = `Com ${points} pontos, ${gap === 1 ? "faltaria" : "faltariam"} ${plural(gap, "ponto")} para a marca de ${direct}, que deixa a chance de subir direto acima de 90%.`;
+  const base = `Com ${points} pontos, ${gap === 1 ? "faltaria" : "faltariam"} ${plural(gap, "ponto")} para a marca de ${direct}, que deixa a chance de acesso direto acima de 90%.`;
   if (top6 == null || top6 >= direct) return base;
   return points >= top6
     ? `${base} Mas já passa dos ${top6}, que deixam a chance de ficar no G6 acima de 90%.`
@@ -79,15 +80,16 @@ export function predictionPersona(choices: string, r: ScenarioResult): { title: 
   const w = picks.filter((c) => c === "V").length;
   const d = picks.filter((c) => c === "E").length;
   const l = picks.filter((c) => c === "D").length;
-  const { pDirect, pTop6, pPromotion } = r.focus;
+  const { pDirect, pTop6 } = r.focus;
+  const g6 = pG6(r);
 
   if (n > 0 && w === n) return { title: "Fé inabalável", line: `${n} vitórias em ${n} jogos. Coração tricolor não conhece derrota.` };
   if (l === 0 && w >= n - 2) return { title: "Otimista de carteirinha", line: `Nenhuma derrota nos ${plural(n, "jogo")} que faltam.` };
   if (n > 0 && l >= Math.ceil(n / 2)) return { title: "Pessimista de plantão", line: `${plural(l, "derrota")} em ${n} jogos. Tá secando o próprio time?` };
   if (n > 0 && d >= Math.ceil(n / 2)) return { title: "O rei do empate", line: `${plural(d, "empate")} em ${n} jogos. Nem tanto ao céu, nem tanto à terra.` };
   if (pDirect >= 0.9) return { title: "Sobe direto, sem sustos", line: `${tally(w, d, l)} bastam para o G2.` };
-  if (pPromotion >= 0.5 && pTop6 > pDirect) return { title: "Vai ser nos playoffs", line: "Emoção até o fim: o caminho mais provável é o mata-mata." };
-  if (pPromotion < 0.2) return { title: "Sofrimento até a rodada 38", line: "Com esses resultados, o acesso vira missão difícil." };
+  if (g6 >= 0.7 && pTop6 > pDirect) return { title: "Vai ser nos playoffs", line: "Emoção até o fim: o caminho mais provável é o mata-mata." };
+  if (g6 < 0.35) return { title: "Sofrimento até a rodada 38", line: "Com esses resultados, o acesso vira missão difícil." };
   return { title: "Pé no chão", line: `${tally(w, d, l)}: nem oba-oba, nem desespero.` };
 }
 

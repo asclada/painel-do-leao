@@ -1,10 +1,9 @@
 import { ChevronDown } from "lucide-react";
 import { FormDots } from "@/components/ui/FormDots";
-import { GrowBar } from "@/components/ui/GrowBar";
 import { LazyDetails } from "@/components/ui/LazyDetails";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { FORTALEZA, race, teamById } from "@/lib/data";
-import { chanceLabel, statusOf } from "@/lib/clinch";
+import { accessChances } from "@/lib/clinch";
 import { kickoffLabel, plural, shortDate, venueName } from "@/lib/format";
 import type { RaceTeam } from "@/lib/generated/outputs";
 
@@ -16,8 +15,7 @@ const DIFFICULTY_STYLE = {
 
 function TeamRow({ t }: { t: RaceTeam }) {
   const team = teamById[t.teamId];
-  const st = statusOf(t.teamId);
-  const promo = chanceLabel(t.pPromotion, st.promotion);
+  const ch = accessChances(t.teamId, t);
   const me = t.teamId === FORTALEZA;
   return (
     <li>
@@ -40,18 +38,31 @@ function TeamRow({ t }: { t: RaceTeam }) {
               </span>
               <span className="text-muted">Pega {t.remainingVsTop6} do G6</span>
             </div>
-            <div className="flex items-center gap-3 pl-10">
-              <GrowBar value={t.pPromotion} color={me ? "var(--win)" : "var(--white)"}
-                label={`Chance de subir: ${promo}`} />
-              <span className="w-12 text-right font-semibold tabular">{promo}</span>
+            {/* as duas chances do GE numa barra só: acesso direto (cheio) + ir aos playoffs (claro) */}
+            <div className="pl-10">
+              <div
+                className="flex h-2.5 w-full overflow-hidden rounded-full bg-[rgb(168_180_216/0.14)]"
+                role="img"
+                aria-label={`Acesso direto: ${ch.direct}. Ir aos playoffs: ${ch.playoffs}.`}
+              >
+                <span className={me ? "bg-win" : "bg-white"} style={{ width: `${t.pDirect * 100}%` }} />
+                <span className="bg-white/35" style={{ width: `${t.pTop6 * 100}%` }} />
+              </div>
+              <p className="mt-1.5 flex flex-wrap justify-between gap-x-3 text-sm" aria-hidden>
+                <span className="text-muted">
+                  Acesso direto <strong className={`tabular ${me ? "text-win" : "text-white"}`}>{ch.direct}</strong>
+                </span>
+                <span className="text-muted">
+                  Playoffs <strong className="tabular text-white">{ch.playoffs}</strong>
+                </span>
+              </p>
             </div>
           </summary>
         }
       >
         <div className="border-t border-line px-3 pb-4 pt-3 text-sm sm:px-4">
           <p className="text-muted">
-            Sobe direto: <strong className="text-white">{chanceLabel(t.pDirect, st.direct)}</strong> · termina 3º a
-            6º: <strong className="text-white">{chanceLabel(t.pTop6, st.top6)}</strong> · saldo {t.goalDiff > 0 ? `+${t.goalDiff}` : t.goalDiff}
+            Saldo de gols: <strong className="text-white">{t.goalDiff > 0 ? `+${t.goalDiff}` : t.goalDiff}</strong>
           </p>
           <p className="mt-3 font-semibold">
             Faltam {plural(t.fixtures.length, "jogo")}: {t.remainingHome} em casa, {t.remainingAway} fora

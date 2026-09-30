@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { AccessCard, STORY } from "@/lib/og/cards";
 import { ogFonts } from "@/lib/og/fonts";
 
-/** F6 — card de story "Chance de acesso" (1080×1920). Gerado no build, que acontece a cada atualização de dados. */
+/** F6 — card de story "Chances de acesso" (acesso direto e ir aos playoffs) (1080×1920). Gerado no build, que acontece a cada atualização de dados. */
 export async function GET() {
   return new ImageResponse(<AccessCard />, {
     ...STORY,

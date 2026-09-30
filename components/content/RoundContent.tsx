@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ShareButton } from "@/components/share/ShareButton";
 import { chanceChange, changeText } from "@/lib/chance";
-import { chanceLabel, statusOf } from "@/lib/clinch";
+import { accessChances } from "@/lib/clinch";
 import { curiosityOfTheRound } from "@/lib/curiosities";
 import { FORTALEZA, fortalezaOdds, nextMatch, teamById } from "@/lib/data";
 import { kickoffLabel } from "@/lib/format";
@@ -17,14 +17,14 @@ type Item = { key: string; title: string; image: string; fileName: string; text:
 export function RoundContent() {
   const change = chanceChange();
   const cur = curiosityOfTheRound();
-  const chance = chanceLabel(fortalezaOdds.pPromotion, statusOf(FORTALEZA).promotion);
+  const ch = accessChances(FORTALEZA, fortalezaOdds);
   const items: Item[] = [
     {
       key: "acesso",
-      title: "Chance de acesso",
+      title: "Chances de acesso",
       image: "/api/card/acesso",
       fileName: "fortaleza-chance-de-acesso.png",
-      text: `O Fortaleza tem ${chance} de chance de subir para a Série A, segundo o ${SITE_NAME}.`,
+      text: `Chances do Fortaleza na Série B, segundo o ${SITE_NAME}: acesso direto ${ch.direct} e ir aos playoffs ${ch.playoffs}.`,
     },
   ];
   if (change) {
@@ -33,7 +33,7 @@ export function RoundContent() {
       title: "A conta mudou",
       image: "/api/card/conta",
       fileName: "fortaleza-a-conta-mudou.png",
-      text: `A chance de o Fortaleza subir ${changeText(change)}, segundo o ${SITE_NAME}.`,
+      text: `A chance de acesso direto do Fortaleza ${changeText(change.direct)} e a de ir aos playoffs ${changeText(change.playoffs)}, segundo o ${SITE_NAME}.`,
     });
   }
   if (nextMatch) {
