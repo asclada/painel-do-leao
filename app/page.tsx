@@ -1,5 +1,4 @@
 import { CampaignStats } from "@/components/campaign/CampaignStats";
-import { RoundOneQuiz } from "@/components/campaign/RoundOneQuiz";
 import { ChanceHistory, chanceHeadline } from "@/components/chance/ChanceHistory";
 import { RoundContent } from "@/components/content/RoundContent";
 import { DataStatusBanner } from "@/components/DataStatusBanner";
@@ -17,13 +16,11 @@ import { PixelPitch } from "@/components/pitch/PixelPitch";
 import { SimulatorSection } from "@/components/simulator";
 import { Section } from "@/components/ui/Section";
 import { XRay } from "@/components/xray/XRay";
-import { scoreLine } from "@/lib/chance";
 import { fortalezaRow, keyGames, meta, timeline } from "@/lib/data";
 import { ANCHOR_REVEAL_SCRIPT } from "@/lib/anchor-reveal";
 import { SITE_NAME } from "@/lib/site";
 
 export default function Home() {
-  const roundOne = timeline.points.find((p) => p.round === 1);
   // depois de vitória do Leão, a turma do campinho comemora ao abrir a página
   const lastGame = timeline.points.filter((p) => p.result).at(-1);
 
@@ -45,9 +42,6 @@ export default function Home() {
 
         <Section id="campanha" title="A campanha em números" className="!pt-6 sm:!pt-10">
           <CampaignStats row={fortalezaRow} />
-          {roundOne?.result && (
-            <RoundOneQuiz position={roundOne.position} score={scoreLine(roundOne)} nowPosition={fortalezaRow.position} />
-          )}
         </Section>
 
         <Section id="temporada" title="A montanha-russa da temporada" headline={timeline.headline}>

@@ -66,8 +66,8 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - **Dados atrasados:** `meta.dataStatus` (`pipeline/fetch.py::data_status`): `delayed` só com ESPN falhando ≥2x E
   jogo que já deveria ter acabado sem resultado; não mexe no `updatedAt`. Banner em `components/DataStatusBanner.tsx`.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em
-  `lib/site.ts` (inclui `SITE_URL`). Seções em `components/`, nesta ordem na página: hero F1, campaign (+ quiz
-  `RoundOneQuiz` "onde o Leão estava na rodada 1"), season-chart F2 + `MatchList` "jogo a jogo", chance ("Como a
+  `lib/site.ts` (inclui `SITE_URL`). Seções em `components/`, nesta ordem na página: hero F1, campaign (o quiz
+  "onde o Leão estava na rodada 1" foi retirado a pedido do Lucas em 30/09: repetia sempre a mesma pergunta), season-chart F2 + `MatchList` "jogo a jogo", chance ("Como a
   chance mudou", SVG próprio + "A conta mudou", `lib/chance.ts`), race F3, key-games ("jogos que mais mexem" +
   "Pra secar"), simulator F4, projection "Até a rodada 38", xray F5 com "depois do intervalo".
   Antes do topo vem a faixa do campinho pixel art; depois do topo vem o "Palpite da rodada" e, antes de "Conteúdo da rodada", o cartão "Meu Leão".
