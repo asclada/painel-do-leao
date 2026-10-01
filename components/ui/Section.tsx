@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 /**
  * Seção com âncora, título em frase normal e a frase de destaque logo abaixo.
  * `eyebrow` abre um bloco da página ("Esta rodada", "A briga pelo acesso"...) com um rótulo pequeno acima do título;
- * `quiet` é o visual discreto do bloco "Para quem gosta de números" (título menor, menos espaço).
+ * `quiet` é o visual discreto (título menor, menos espaço); `tight` só tira espaço vertical, para uma sequência de
+ * seções recolhidas ler como uma lista de opções (bloco "Para ir além").
  */
 export function Section({
   id,
@@ -14,6 +15,7 @@ export function Section({
   lazyRender = true,
   eyebrow,
   quiet = false,
+  tight = false,
 }: {
   id: string;
   title: string;
@@ -24,12 +26,13 @@ export function Section({
   lazyRender?: boolean;
   eyebrow?: string;
   quiet?: boolean;
+  tight?: boolean;
 }) {
   return (
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={`mx-auto w-full max-w-[1100px] px-4 ${quiet ? "py-10 sm:py-14" : "py-14 sm:py-20"} ${lazyRender ? "cv-auto" : ""} ${className}`}
+      className={`mx-auto w-full max-w-[1100px] px-4 ${tight ? "py-7 sm:py-9" : quiet ? "py-10 sm:py-14" : "py-14 sm:py-20"} ${lazyRender ? "cv-auto" : ""} ${className}`}
     >
       {eyebrow && (
         <p className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-muted sm:mb-6">

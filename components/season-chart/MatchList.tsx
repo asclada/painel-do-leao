@@ -9,7 +9,7 @@ const RESULT = {
   D: { label: "Derrota", cls: "bg-loss text-white" },
 } as const;
 
-/** Jogo a jogo: a campanha completa na Série B (recolhida por padrão, abaixo da montanha-russa). */
+/** Jogo a jogo: a campanha completa na Série B (seção própria "Os jogos da campanha", recolhida por padrão). */
 export function MatchList() {
   const played = timeline.points.filter((p) => p.result && p.opponentId);
   if (played.length === 0) return null;
@@ -17,7 +17,6 @@ export function MatchList() {
 
   return (
     <Collapsible
-      className="mt-8"
       cta={played.length === 1 ? "Ver o jogo do Leão" : `Ver os ${played.length} jogos do Leão`}
       description="Os jogos da campanha do Fortaleza até aqui: adversário, placar e pontos depois de cada rodada."
     >

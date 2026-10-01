@@ -74,25 +74,23 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - **Dados atrasados:** `meta.dataStatus` (`pipeline/fetch.py::data_status`): `delayed` só com ESPN falhando ≥2x E
   jogo que já deveria ter acabado sem resultado; não mexe no `updatedAt`. Banner em `components/DataStatusBanner.tsx`.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em
-  `lib/site.ts` (inclui `SITE_URL`). **Hierarquia da página (30/09, aprovada pelo Lucas após a auditoria: proteger o
-  "torcedor em 5 segundos")**, em blocos com rótulo (`Section eyebrow`): campinho pixel art → topo (hero F1) →
-  **Esta rodada**: palpite (`#palpite`, histórico e conquistas recolhidos) + "Pra secar" (`#pra-secar`,
-  `PraSecar`) → **A briga pelo acesso**: corrida F3, "Até a rodada 38" (aberto), simulador F4 → **A campanha**:
-  campanha em números (aberto) + montanha-russa F2 com "jogo a jogo" →
-  **Para quem gosta de números** (visual discreto, `Section quiet`): "Como a chance mudou" (`lib/chance.ts`) e raio-x
-  F5 → **Para compartilhar**: "Conteúdo da rodada". Menu com 7 itens (Agora, Rodada, Corrida,
-  Simulador, Campanha, Números, Compartilhar); as âncoras antigas continuam valendo. O quiz "onde o Leão estava na
-  rodada 1" foi retirado a pedido do Lucas em 30/09 (repetia sempre a mesma pergunta).
-  **Seções recolhidas (30/09, pedido do Lucas: menos informação de cara):** "Pra secar", corrida, simulador,
-  "Conteúdo da rodada" e o "jogo a jogo" ficam dentro de `components/ui/Collapsible.tsx`: card inteiro clicável com
+  `lib/site.ts` (inclui `SITE_URL`). **Ordem da página (01/10, proposta do Lucas: o foco é o Fortaleza em números)**, em blocos
+  com rótulo (`Section eyebrow`): campinho pixel art → topo (hero F1) → **Esta rodada**: palpite (`#palpite`) →
+  **A campanha**: campanha em números + montanha-russa F2 (abertas) → **As chances**: "Como a chance mudou"
+  (`lib/chance.ts`) + "Até a rodada 38" (abertas) → **Para ir além** (recolhidas, `Section tight` = menos espaço
+  vertical, para lerem como lista): simulador F4, "Pra secar" (`#pra-secar`, `PraSecar`), corrida F3, raio-x F5 e
+  "Os jogos da campanha" (`#jogos-da-campanha`, `MatchList`) → **Para compartilhar**: "Conteúdo da rodada"
+  (recolhido). Menu com 7 itens (Agora, Palpite, Campanha, Chances, Simulador, Corrida, Compartilhar); as âncoras
+  antigas continuam valendo. O quiz "onde o Leão estava na rodada 1" foi retirado a pedido do Lucas em 30/09.
+  **Seções recolhidas (30/09, pedido do Lucas: menos informação de cara):** simulador, "Pra secar", corrida, raio-x,
+  "Os jogos da campanha" e "Conteúdo da rodada" ficam dentro de `components/ui/Collapsible.tsx`: card inteiro clicável com
   frase do que tem dentro e botão escrito ("Ver para quem torcer", "Ver a corrida completa", "Abrir o simulador"...),
   conteúdo montado só ao abrir. Abre sozinho quando a página chega com `#id` da seção ou com parâmetros
   (`openOnParams`): o simulador abre com `?p=`, `?a=`, `?b=`, `?x=` (Desafio do Leão e "Minha previsão" NÃO podem cair
   num card fechado). O menu só leva até o card. A barra fixa do simulador só existe com ele aberto; o aquecimento da
   função Python é feito pelo card (`warmSimulator`).
   Nada acima de uma âncora pode mudar de altura na hidratação (o palpite mostra o formulário travado antes de ler
-  o aparelho): o script de âncoras só segura o destino por
-  2 s sem mudança.
+  o aparelho): o script de âncoras só segura o destino por 2 s sem mudança.
   **Topo (01/10, opção B do Lucas):** frase de apresentação numa faixa e dois cards gêmeos, "Situação atual · N rodadas"
   (N = jogos do Leão; não "depois da rodada X", que confundia com rodada em andamento) com posição, pontos em negrito,
   sequência e as duas chances, e "Próximo jogo" (sem contagem regressiva, 1º turno discreto). Mesma altura no

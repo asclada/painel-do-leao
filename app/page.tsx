@@ -33,8 +33,9 @@ export default function Home() {
         <PixelPitch celebrate={lastGame?.result === "V"} />
         <Hero />
 
-        {/* Ordem pensada para o torcedor (30/09): o que fazer nesta rodada, a briga pelo acesso, a campanha, os
-            números para quem gosta e, por último, o que compartilhar. Os rótulos (eyebrow) abrem cada bloco. */}
+        {/* Ordem (01/10, proposta do Lucas): o foco é o Fortaleza em números. Primeiro o que o torcedor faz nesta rodada,
+            depois os números do Leão abertos (campanha e chances) e, no fim, as ferramentas e os detalhes recolhidos
+            ("Para ir além", em sequência mais compacta). Os rótulos (eyebrow) abrem cada bloco. */}
         <Section
           id="palpite"
           eyebrow="Esta rodada"
@@ -44,9 +45,39 @@ export default function Home() {
           <PalpiteSection />
         </Section>
 
+        <Section id="campanha" eyebrow="A campanha" title="A campanha em números">
+          <CampaignStats row={fortalezaRow} />
+        </Section>
+
+        <Section id="temporada" title="A montanha-russa da temporada" headline={timeline.headline}>
+          <SeasonChartSection />
+        </Section>
+
+        <Section id="chance" eyebrow="As chances" title="Como a chance mudou" headline={chanceHeadline()}>
+          <ChanceHistory />
+        </Section>
+
+        <Section id="rodada-38" title="Até a rodada 38" headline={projectionHeadline()}>
+          <Projection />
+        </Section>
+
+        <Section id="simulador" eyebrow="Para ir além" tight lazyRender={false} title="Simulador dos próximos jogos" headline="Escolha o resultado dos jogos que faltam e veja onde o Leão termina.">
+          {/* links do Desafio do Leão e do "Minha previsão" (?p=, ?a=, ?b=, #simulador) abrem o simulador sozinhos */}
+          <Collapsible
+            cta="Abrir o simulador"
+            openOnHash="simulador"
+            openOnParams={["p", "a", "b", "x"]}
+            warmSimulator
+            description="Escolha vitória, empate ou derrota em cada jogo, veja a chance do Leão com os seus resultados e desafie os amigos."
+          >
+            <SimulatorSection />
+          </Collapsible>
+        </Section>
+
         {keyGames.round != null && (
           <Section
             id="pra-secar"
+            tight
             title="Pra secar nesta rodada"
             headline={`Rodada ${keyGames.round}: os jogos dos rivais que mais mexem na chance de ${keyGamesMetric} do Leão, e para quem torcer em cada um.`}
           >
@@ -64,7 +95,7 @@ export default function Home() {
           </Section>
         )}
 
-        <Section id="corrida" eyebrow="A briga pelo acesso" title="A corrida pelo acesso">
+        <Section id="corrida" tight title="A corrida pelo acesso">
           <Collapsible
             cta="Ver a corrida completa"
             openOnHash="corrida"
@@ -74,39 +105,21 @@ export default function Home() {
           </Collapsible>
         </Section>
 
-        <Section id="rodada-38" title="Até a rodada 38" headline={projectionHeadline()}>
-          <Projection />
-        </Section>
-
-        <Section id="simulador" lazyRender={false} title="Simulador dos próximos jogos" headline="Escolha o resultado dos jogos que faltam e veja onde o Leão termina.">
-          {/* links do Desafio do Leão e do "Minha previsão" (?p=, ?a=, ?b=, #simulador) abrem o simulador sozinhos */}
+        <Section id="raio-x" tight title="Raio-X do time">
           <Collapsible
-            cta="Abrir o simulador"
-            openOnHash="simulador"
-            openOnParams={["p", "a", "b", "x"]}
-            warmSimulator
-            description="Escolha vitória, empate ou derrota em cada jogo, veja a chance do Leão com os seus resultados e desafie os amigos."
+            cta="Ver o raio-x do time"
+            openOnHash="raio-x"
+            description="Casa x fora, 1º x 2º tempo, gols por faixa de minutos e as sequências da temporada."
           >
-            <SimulatorSection />
+            <XRay />
           </Collapsible>
         </Section>
 
-        <Section id="campanha" eyebrow="A campanha" title="A campanha em números">
-          <CampaignStats row={fortalezaRow} />
-        </Section>
-
-        <Section id="temporada" title="A montanha-russa da temporada" headline={timeline.headline}>
-          <SeasonChartSection />
-          <MatchList />
-        </Section>
-
-        <Section id="chance" eyebrow="Para quem gosta de números" quiet title="Como a chance mudou" headline={chanceHeadline()}>
-          <ChanceHistory />
-        </Section>
-
-        <Section id="raio-x" quiet title="Raio-X do time">
-          <XRay />
-        </Section>
+        {lastGame && (
+          <Section id="jogos-da-campanha" tight title="Os jogos da campanha">
+            <MatchList />
+          </Section>
+        )}
 
         <Section
           id="para-postar"

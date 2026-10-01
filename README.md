@@ -12,14 +12,14 @@ a rodada, quais jogos mais pesam e um simulador para montar a própria previsão
 
 ## O que tem no site
 
-A página é organizada em blocos, do que o torcedor quer saber primeiro (onde o Leão está e o que fazer nesta rodada)
-ao que é para quem gosta de números. O menu leva direto a cada bloco, e as partes mais longas (pra secar, corrida,
-simulador, jogo a jogo, cards para postar) ficam recolhidas: o torcedor abre só o que quiser.
+A página é organizada em blocos: primeiro o que o torcedor faz nesta rodada, depois os números do Leão (campanha e
+chances) e, no fim, as ferramentas e os detalhes para quem quer ir além, recolhidos: o torcedor abre só o que quiser.
+O menu leva direto a cada bloco.
 
 - **Agora:** posição, pontos, sequência e as duas chances no formato do GE, com uma casa decimal: **acesso direto**
   (terminar em 1º ou 2º) e **ir aos playoffs** (terminar entre 3º e 6º). O site não soma as duas numa "chance de
-  subir": os playoffs são um mata-mata de ida e volta, e o número único passaria uma segurança que ele não dá. Mostra
-  também o próximo jogo, com a chance de vitória, empate e derrota do Leão nele. Quando a matemática decide algo,
+  subir": os playoffs são um mata-mata de ida e volta, e o número único passaria uma segurança que ele não dá. Ao
+  lado, o próximo jogo, com a chance de vitória, empate e derrota do Leão nele. Quando a matemática decide algo,
   aparece um selo ("Acesso garantido!", "Vaga no G6 garantida"...).
 
 **Esta rodada**
@@ -28,33 +28,33 @@ simulador, jogo a jogo, cards para postar) ficam recolhidas: o torcedor abre só
   resultado, 2). O palpite fica salvo no aparelho, trava quando a bola rola e é conferido sozinho com os placares do
   pipeline. Tem histórico, pontos acumulados, conquistas automáticas ("Olho de lince", "Professor Pardal",
   "Secador profissional"...) e um link de backup para levar os palpites para outro celular. Sem cadastro nem banco.
-- **Pra secar nesta rodada:** os jogos dos rivais que mais mexem na chance do Leão, com a torcida certa para cada
-  um ("Torça pelo X · se não der, o empate serve" ou "Torça contra Y"); tocando no jogo, aparece a chance de acesso
-  direto do Leão em cada resultado.
 
-**A briga pelo acesso**
+**A campanha**
 
-- **Corrida pelo acesso:** os times da briga lado a lado, com as duas chances de cada um e a dificuldade da tabela
-  que falta.
+- **Campanha em números:** aproveitamento, vitórias/empates/derrotas, média de pontos, saldo (geral, casa e fora).
+- **Montanha-russa da temporada:** posição rodada a rodada, com as faixas de G2, G6 e Z4.
+
+**As chances**
+
+- **Como a chance mudou:** as chances de acesso direto e de ir aos playoffs refeitas depois de cada rodada, só com o
+  que se sabia até ali, e o card **"A conta mudou"** (antes x agora) gerado automaticamente depois de cada rodada.
 - **Até a rodada 38:** pontuação mais provável, faixa de pontos e as marcas que deixam G6 e acesso quase garantidos.
+
+**Para ir além**
+
 - **Simulador dos próximos jogos:** o torcedor escolhe V/E/D em cada jogo e vê onde o Leão termina (API em Python),
   com uma "cara" para a previsão ("Fé inabalável", "Vai ser nos playoffs"...) e, se quiser, também os confrontos
   diretos entre os rivais.
 - **Desafio do Leão:** a previsão vira um link com apelido; o amigo faz a dele sem ver a primeira e os dois
   aparecem lado a lado, com placar de acertos que se atualiza a cada jogo. Tudo no link, sem cadastro nem banco.
-
-**A campanha**
-
-- **Campanha em números:** aproveitamento, vitórias/empates/derrotas, média de pontos, saldo (geral, casa e fora).
-- **Montanha-russa da temporada:** posição rodada a rodada, com as faixas de G2, G6 e Z4; e os jogos da campanha
-  um a um.
-
-**Para quem gosta de números**
-
-- **Como a chance mudou:** as chances de acesso direto e de ir aos playoffs refeitas depois de cada rodada, só com o
-  que se sabia até ali, e o card **"A conta mudou"** (antes x agora) gerado automaticamente depois de cada rodada.
+- **Pra secar nesta rodada:** os jogos dos rivais que mais mexem na chance do Leão, com a torcida certa para cada
+  um ("Torça pelo X · se não der, o empate serve" ou "Torça contra Y"); tocando no jogo, aparece a chance de acesso
+  direto do Leão em cada resultado.
+- **Corrida pelo acesso:** os times da briga lado a lado, com as duas chances de cada um e a dificuldade da tabela
+  que falta.
 - **Raio-X:** casa x fora, turno x returno, gols por faixa de minuto, o que muda depois do intervalo; cada
   curiosidade vira um card para compartilhar.
+- **Os jogos da campanha:** todos os jogos do Leão até aqui, com placar e pontos depois de cada rodada.
 
 **Para compartilhar**
 
