@@ -7,7 +7,7 @@
 
 Painel do Fortaleza na Série B 2026, feito para o torcedor comum: posição, chance real de acesso
 (simulando o campeonato inteiro, com os rivais), montanha-russa da temporada, corrida pelo acesso,
-simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PLANO.md` (fonte da verdade).
+simulador "E se?" e raio-x. Atualiza sozinho (cron com tentativa a cada 30 min). Plano completo: `docs/PLANO.md` (fonte da verdade).
 
 ## Stack e arquitetura
 
@@ -151,7 +151,10 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   fundo removido a partir de `D:\painel-do-leao\assets\escudo-fec.jpg`), com um resumo curto do site ao lado.
   Os badges dos outros clubes continuam só com a sigla; o favicon é original (barras tricolores).
 - **Next.js (App Router) + TypeScript + Tailwind + pnpm** para o site; lê apenas `data/*.json` no build.
-- **GitHub Actions** (cron 2h) roda `pipeline/update_data.py`, commita `data/` e a **Vercel** faz deploy.
+- **GitHub Actions** (cron `7,37 * * * *`, desde 01/10) roda `pipeline/update_data.py`, commita `data/` e a **Vercel** faz
+  deploy. Era a cada 2h no minuto 15, mas o GitHub pulava execuções (3 a 6 por dia): conferir com
+  `gh run list --workflow update-data.yml`. Mais execuções não aumentam as chamadas à ESPN (consulta só com jogo
+  terminado). Disparo externo (cron-job.org + token) é a próxima opção se ainda faltar execução; exige o Lucas.
 - A chave da API só existe em `.env.local` (local) e GitHub Secrets. Nunca na Vercel nem no navegador.
 
 ## Comandos

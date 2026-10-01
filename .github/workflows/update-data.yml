@@ -2,7 +2,11 @@ name: Atualizar dados
 
 on:
   schedule:
-    - cron: "15 */2 * * *" # a cada 2 horas, no minuto 15 (UTC)
+    # Tentativa a cada 30 minutos, nos minutos 7 e 37 (UTC). O GitHub atrasa ou pula agendamentos em horário de pico,
+    # principalmente na virada da hora: com "15 */2 * * *" saíam só 3 a 6 execuções por dia (medido em 01/10/2026), e
+    # o resultado de um jogo podia demorar horas para entrar. Rodar mais vezes não aumenta as chamadas à ESPN: o
+    # pipeline só consulta quando algum jogo já deveria ter terminado (sem jogo, sai em ~25 s, sem commit).
+    - cron: "7,37 * * * *"
   workflow_dispatch:
     inputs:
       force:
@@ -101,6 +105,8 @@ jobs:
           else
             git commit -m "dados: registra falha da fonte de dados"
           fi
+          # traz o que chegou na main durante a execução (ex.: um commit de código) antes de enviar os dados
+          git pull --rebase origin main
           git push
 
       - name: Marcar falha

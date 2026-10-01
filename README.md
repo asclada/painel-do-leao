@@ -67,7 +67,7 @@ O menu leva direto a cada bloco.
 ## Arquitetura
 
 ```
-GitHub Actions (a cada 2h)
+GitHub Actions (tentativa a cada 30 min)
   └─ pipeline/update_data.py (Python 3.12 + uv)
        ├─ busca resultados na ESPN só se algum jogo já deveria ter terminado (reserva: footballsoccerapi)
        ├─ tabela, linha do tempo, raio-x, corrida, próximo jogo

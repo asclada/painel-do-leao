@@ -1099,6 +1099,10 @@ O Lucas nunca precisa decorar isso: o Claude Code roda os comandos. `pnpm dev` s
 
 ## 13. Automação: atualização sozinha a cada 2 horas
 
+> **Atualização em 01/10/2026:** o GitHub pulava agendamentos (só 3 a 6 execuções por dia em vez de 12). O cron
+> passou a tentar a cada 30 minutos, em minutos "quebrados" (`7,37 * * * *`). As chamadas à ESPN não mudam: o
+> pipeline continua consultando só quando algum jogo já deveria ter terminado.
+
 ### Pipeline `pipeline/update_data.py`
 
 1. Ler a chave de `os.environ["FOOTBALL_API_KEY"]` (em dev, carregada do `.env.local` via python-dotenv).
