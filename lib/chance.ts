@@ -30,11 +30,16 @@ export function chanceChange() {
   };
 }
 
-/** Mudou menos de 0,1 ponto (aparece igual na tela, com uma casa decimal). */
-export const same = (s: Shift) => pct1(s.from) === pct1(s.to);
+/**
+ * Mudou menos de 1 ponto: "praticamente igual". O "antes" (backtest, 10 mil simulações) e o "agora" (20 mil) vêm de
+ * simulações diferentes, com ±0,5 ponto de variação aleatória entre elas (medido em 01/10); abaixo de 1 ponto, "subiu"
+ * ou "caiu" poderia ser só acaso.
+ */
+export const SAME_THRESHOLD = 0.01;
+export const same = (s: Shift) => Math.abs(s.to - s.from) < SAME_THRESHOLD;
 
-/** "subiu de 45,2% para 37,6%" / "caiu de..." / "ficou em 37,6%" (sem "pontos percentuais"). */
+/** "subiu de 45,2% para 37,6%" / "caiu de..." / "ficou praticamente igual, em 37,6%" (sem "pontos percentuais"). */
 export function changeText({ from, to }: Shift) {
-  if (same({ from, to })) return `ficou em ${pct1(to)}`;
+  if (same({ from, to })) return `ficou praticamente igual, em ${pct1(to)}`;
   return `${to > from ? "subiu" : "caiu"} de ${pct1(from)} para ${pct1(to)}`;
 }

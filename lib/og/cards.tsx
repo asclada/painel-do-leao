@@ -181,15 +181,22 @@ export function ChangeCard() {
   const change = chanceChange();
   if (!change) return <AccessCard />;
   const { game } = change;
-  const verb = (s: { from: number; to: number }) => (same(s) ? "ficou igual" : s.to > s.from ? "subiu" : "caiu");
+  const verb = (s: { from: number; to: number }) => (same(s) ? "praticamente igual" : s.to > s.from ? "subiu" : "caiu");
   const row = (label: string, s: { from: number; to: number }, color: string) => (
     <div style={{ display: "flex", flexDirection: "column", marginTop: 70 }}>
       <div style={{ fontSize: 44, fontWeight: 700 }}>{`${label}: ${verb(s)}`}</div>
-      <div style={{ display: "flex", alignItems: "flex-end", gap: 30, marginTop: 10 }}>
-        <div style={{ fontFamily: "Bebas", fontSize: 150, lineHeight: 0.9, color: C.muted }}>{pct1(s.from)}</div>
-        <div style={{ fontFamily: "Bebas", fontSize: 90, lineHeight: 1, color: C.muted }}>→</div>
-        <div style={{ fontFamily: "Bebas", fontSize: 220, lineHeight: 0.9, color }}>{pct1(s.to)}</div>
-      </div>
+      {/* abaixo de 1 ponto de mudança, só o valor de agora (lib/chance.ts: a diferença pode ser só acaso) */}
+      {same(s) ? (
+        <div style={{ display: "flex", alignItems: "flex-end", marginTop: 10 }}>
+          <div style={{ fontFamily: "Bebas", fontSize: 220, lineHeight: 0.9, color }}>{pct1(s.to)}</div>
+        </div>
+      ) : (
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 30, marginTop: 10 }}>
+          <div style={{ fontFamily: "Bebas", fontSize: 150, lineHeight: 0.9, color: C.muted }}>{pct1(s.from)}</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 90, lineHeight: 1, color: C.muted }}>→</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 220, lineHeight: 0.9, color }}>{pct1(s.to)}</div>
+        </div>
+      )}
     </div>
   );
 

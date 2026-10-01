@@ -31,7 +31,7 @@ export function chanceHeadline() {
 
 /** "o acesso direto caiu para 37,6%" / "a ida aos playoffs continua em 48,6%" */
 function moved(name: string, s: Shift) {
-  if (same(s)) return `${name} continua em ${pct1(s.to)}`;
+  if (same(s)) return `${name} ficou praticamente igual, em ${pct1(s.to)}`;
   return `${name} ${s.to > s.from ? "subiu" : "caiu"} para ${pct1(s.to)}`;
 }
 
@@ -104,11 +104,21 @@ export function ChanceHistory() {
               <div key={name}>
                 <dt className="text-sm text-muted">{name}</dt>
                 <dd className="flex items-end gap-3 font-display leading-none">
-                  <span className="text-4xl text-muted">{pct1(s.from)}</span>
-                  <span className="pb-1 text-2xl text-muted" aria-hidden>
-                    →
-                  </span>
-                  <span className={`text-6xl ${color}`}>{pct1(s.to)}</span>
+                  {/* mudança abaixo de 1 ponto: só o valor de agora (a diferença pode ser só acaso das simulações) */}
+                  {same(s) ? (
+                    <>
+                      <span className={`text-6xl ${color}`}>{pct1(s.to)}</span>
+                      <span className="pb-1 font-sans text-sm text-muted">praticamente igual</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-4xl text-muted">{pct1(s.from)}</span>
+                      <span className="pb-1 text-2xl text-muted" aria-hidden>
+                        →
+                      </span>
+                      <span className={`text-6xl ${color}`}>{pct1(s.to)}</span>
+                    </>
+                  )}
                 </dd>
               </div>
             ))}

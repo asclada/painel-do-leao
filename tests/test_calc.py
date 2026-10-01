@@ -61,6 +61,8 @@ def test_insight_rules():
     assert venue_insight(_v(50), _v(55)).startswith("Fora de casa")
     h = HalfSplit(first_for=3, first_against=2, second_for=7, second_against=1, pct_second_half_for=70)
     assert halves_insight(h) == "Time de segundo tempo: 70% dos gols saíram depois do intervalo."
+    tie = HalfSplit(first_for=5, first_against=3, second_for=5, second_against=3, pct_second_half_for=50)
+    assert halves_insight(tie) == "Saldo de +2 no 1º tempo e +2 no 2º: equilíbrio entre os dois tempos."
     t1 = TurnSplit(played=19, points=25, ppg=1.32, pct=44)
     t2 = TurnSplit(played=11, points=22, ppg=2.0, pct=67)
     assert turn_insight(t1, t2) == "O returno é outro campeonato: 2,0 pontos por jogo contra 1,3 no 1º turno."

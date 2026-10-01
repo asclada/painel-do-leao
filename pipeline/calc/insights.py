@@ -25,6 +25,8 @@ def halves_insight(h: HalfSplit) -> str:
     if total and 100 - h.pct_second_half_for >= 60:
         return f"O Leão resolve cedo: {100 - h.pct_second_half_for}% dos gols vieram no 1º tempo."
     s1, s2 = h.first_for - h.first_against, h.second_for - h.second_against
+    if s1 == s2:
+        return f"Saldo de {s1:+d} no 1º tempo e {s2:+d} no 2º: equilíbrio entre os dois tempos."
     better = "1º" if s1 > s2 else "2º"
     return f"Saldo de {s1:+d} no 1º tempo e {s2:+d} no 2º: o {better} tempo é o mais forte."
 
