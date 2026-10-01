@@ -90,10 +90,13 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   (`openOnParams`): o simulador abre com `?p=`, `?a=`, `?b=`, `?x=` (Desafio do Leão e "Minha previsão" NÃO podem cair
   num card fechado). O menu só leva até o card. A barra fixa do simulador só existe com ele aberto; o aquecimento da
   função Python é feito pelo card (`warmSimulator`).
-  Nada acima de uma âncora pode mudar de altura na hidratação (o palpite mostra o formulário travado e a contagem
-  regressiva desenha a mesma estrutura invisível antes de saber a hora): o script de âncoras só segura o destino por
+  Nada acima de uma âncora pode mudar de altura na hidratação (o palpite mostra o formulário travado antes de ler
+  o aparelho): o script de âncoras só segura o destino por
   2 s sem mudança.
-  O topo diz "Situação atual na Série B · N jogos" (não "depois da rodada X", que confundia com rodada em andamento).
+  **Topo (01/10, opção B do Lucas):** frase de apresentação numa faixa e dois cards gêmeos, "Situação atual · N rodadas"
+  (N = jogos do Leão; não "depois da rodada X", que confundia com rodada em andamento) com posição, pontos em negrito,
+  sequência e as duas chances, e "Próximo jogo" (sem contagem regressiva, 1º turno discreto). Mesma altura no
+  computador; "Compartilhar" e "Dê seu palpite" no rodapé de cada card.
   Campanha em números: `CampaignStats` (aproveitamento, V/E/D, média, saldo; recorte todos/casa/fora) lê
   `standings.json`. "Até a rodada 38": faixa de 80% dos pontos (`pointsP10`–`pointsP90`), histograma
   `simulation.focusPoints`, chance de G6 e risco de rebaixamento ("praticamente zero" abaixo de 1%).

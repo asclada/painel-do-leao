@@ -1,6 +1,5 @@
 import Image from "next/image";
 import escudoFortaleza from "@/assets/escudo-fortaleza.png";
-import { Countdown } from "@/components/hero/Countdown";
 import { FormDots } from "@/components/ui/FormDots";
 import { TeamBadge } from "@/components/ui/TeamBadge";
 import { crestSrc } from "@/lib/crests";
@@ -32,14 +31,17 @@ function Crest({ team }: { team: Team }) {
   );
 }
 
-/** Card do próximo jogo (F1): mandante à esquerda, visitante à direita, sempre com os escudos. */
+/**
+ * Card do próximo jogo (F1): mandante à esquerda, visitante à direita, sempre com os escudos. Gêmeo do card
+ * "Situação atual" (mesma altura no computador). A contagem regressiva saiu em 01/10, a pedido do Lucas.
+ */
 export function NextMatchCard({ match }: { match: NextMatch }) {
   const opp = teamById[match.opponentId];
   const fort = teamById[FORTALEZA];
   const [home, away] = match.home ? [fort, opp] : [opp, fort];
 
   return (
-    <div className="rounded-3xl bg-surface p-5 ring-1 ring-line sm:p-7">
+    <div className="flex h-full flex-col rounded-3xl bg-surface p-5 ring-1 ring-line sm:p-7">
       {/* selo em destaque: azul da faixa tricolor (mesmo estilo do selo das chances do topo) */}
       <p className="flex justify-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-blue px-4 py-1.5 text-sm text-white shadow-[0_4px_16px_rgb(29_78_216/0.45)] ring-1 ring-white/20 sm:text-base">
@@ -76,16 +78,9 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
         )}
       </div>
 
-      <div className="mt-4 flex justify-center border-t border-line pt-4">
-        <Countdown kickoffUtc={match.kickoffUtc} large />
-      </div>
-
-      <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-muted sm:text-base">
-        {match.firstTurn && (
-          <span>
-            1º turno: <span className="text-white">{match.firstTurn}</span>
-          </span>
-        )}
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 border-t border-line pt-4 text-sm text-muted">
+        {/* 1º turno discreto (pedido do Lucas, 01/10) */}
+        {match.firstTurn && <span>1º turno: {match.firstTurn}</span>}
         <span className="inline-flex items-center gap-2">
           {opp.name} nos últimos 5: <FormDots form={match.formOpponent} size="sm" />
         </span>
@@ -93,7 +88,8 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
 
       {match.chances && <MatchChancesBar chances={match.chances} />}
 
-      <p className="mt-4 flex justify-center">
+      {/* no rodapé do card, alinhado com o "Compartilhar" do card ao lado */}
+      <p className="mt-auto flex justify-center pt-4">
         <a
           href="#palpite"
           className="inline-flex min-h-11 items-center rounded-full bg-red px-5 text-sm font-semibold text-white hover:bg-[#c81727]"
