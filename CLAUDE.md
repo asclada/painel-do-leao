@@ -154,7 +154,12 @@ simulador "E se?" e raio-x. Atualiza sozinho (cron com tentativa a cada 30 min).
 - **GitHub Actions** (cron `7,37 * * * *`, desde 01/10) roda `pipeline/update_data.py`, commita `data/` e a **Vercel** faz
   deploy. Era a cada 2h no minuto 15, mas o GitHub pulava execuções (3 a 6 por dia): conferir com
   `gh run list --workflow update-data.yml`. Mais execuções não aumentam as chamadas à ESPN (consulta só com jogo
-  terminado). Disparo externo (cron-job.org + token) é a próxima opção se ainda faltar execução; exige o Lucas.
+  terminado). **Disparo externo (desde 01/10):** o cron-job.org (conta do Lucas) chama
+  `POST /repos/asclada/painel-do-leao/actions/workflows/update-data.yml/dispatches` com `{"ref":"main"}` a cada 30 min,
+  com um token fine-grained do Lucas (só este repositório, Actions: read and write) que **vence em 31/12/2026**. As
+  execuções "workflow_dispatch" na aba Actions vêm dele; se pararem, suspeitar do token (401 no cron-job.org). O
+  schedule do GitHub fica como reserva. Nunca pedir o token no chat. Resultado no site: o jogo é consultado 2h15
+  depois do início, então o site atualiza de 5 a 35 minutos depois disso.
 - A chave da API só existe em `.env.local` (local) e GitHub Secrets. Nunca na Vercel nem no navegador.
 
 ## Comandos
