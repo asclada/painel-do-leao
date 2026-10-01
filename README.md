@@ -13,7 +13,8 @@ a rodada, quais jogos mais pesam e um simulador para montar a própria previsão
 ## O que tem no site
 
 A página é organizada em blocos, do que o torcedor quer saber primeiro (onde o Leão está e o que fazer nesta rodada)
-ao que é para quem gosta de números. O menu leva direto a cada bloco.
+ao que é para quem gosta de números. O menu leva direto a cada bloco, e as partes mais longas (pra secar, corrida,
+simulador, jogo a jogo, cards para postar) ficam recolhidas: o torcedor abre só o que quiser.
 
 - **Agora:** posição, pontos, sequência e as duas chances no formato do GE, com uma casa decimal: **acesso direto**
   (terminar em 1º ou 2º) e **ir aos playoffs** (terminar entre 3º e 6º). O site não soma as duas numa "chance de
@@ -45,7 +46,8 @@ ao que é para quem gosta de números. O menu leva direto a cada bloco.
 **A campanha**
 
 - **Campanha em números:** aproveitamento, vitórias/empates/derrotas, média de pontos, saldo (geral, casa e fora).
-- **Montanha-russa da temporada:** posição rodada a rodada, com marcos e os rivais da corrida; jogo a jogo.
+- **Montanha-russa da temporada:** posição rodada a rodada, com as faixas de G2, G6 e Z4; e os jogos da campanha
+  um a um.
 
 **Para quem gosta de números**
 
@@ -56,12 +58,10 @@ ao que é para quem gosta de números. O menu leva direto a cada bloco.
 
 **Para compartilhar**
 
-- **Meu Leão:** quatro perguntas com opções prontas (o jogo inesquecível sai das vitórias da temporada; o "onde o
-  Leão termina" mostra a chance do modelo) viram um cartão de torcedor para o story.
 - **Conteúdo da rodada:** cards prontos para postar depois de cada jogo (chances de acesso, a conta mudou, próximo
   jogo com os escudos e as chances, curiosidade da vez).
 - **Cards para compartilhar** (story 1080×1920 e prévia de link), gerados no servidor: chances de acesso, minha
-  previsão, modelo x eu, duelo, próximo jogo, curiosidades, palpite (antes e depois do jogo) e Meu Leão.
+  previsão, modelo x eu, duelo, próximo jogo, curiosidades e palpite (antes e depois do jogo).
 
 ## Arquitetura
 

@@ -8,8 +8,6 @@ import type { RivalGame, Team } from "@/lib/generated/outputs";
 const DOT = { V: "bg-win", E: "bg-draw", D: "bg-loss" } as const;
 // o que o pipeline mediu (decisão de 30/09): acesso direto; se ele ficar quase impossível, ficar no G6
 const METRIC = keyGames.metric === "direct" ? "acesso direto" : "ficar no G6";
-// os jogos que mais mexem ficam abertos; o resto, recolhido em "Ver mais jogos que importam para o Leão"
-const RIVALS_SHOWN = 3;
 
 /** "pelo Vila Nova" / "pela Ponte Preta" */
 function forTeam(t: Team) {
@@ -110,30 +108,12 @@ export function PraSecar() {
   if (rivals.length === 0) {
     return <p className="text-white/90">Nenhum outro jogo da rodada mexe de verdade na chance do Leão.</p>;
   }
+  // a seção inteira já vem recolhida na página: aberta, mostra todos os jogos que importam de uma vez
   return (
-    <div className="max-w-3xl">
-      <ul className="flex flex-col gap-2.5">
-        {rivals.slice(0, RIVALS_SHOWN).map((g) => (
-          <RivalRow key={g.matchId} g={g} />
-        ))}
-      </ul>
-      {rivals.length > RIVALS_SHOWN && (
-        <LazyDetails
-          className="group mt-2.5"
-          summary={
-            <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-semibold [&::-webkit-details-marker]:hidden">
-              Ver mais jogos que importam para o Leão
-              <ChevronDown size={18} className="text-muted transition-transform group-open:rotate-180" aria-hidden />
-            </summary>
-          }
-        >
-          <ul className="mt-2 flex flex-col gap-2.5">
-            {rivals.slice(RIVALS_SHOWN).map((g) => (
-              <RivalRow key={g.matchId} g={g} />
-            ))}
-          </ul>
-        </LazyDetails>
-      )}
-    </div>
+    <ul className="grid max-w-5xl gap-2.5 lg:grid-cols-2">
+      {rivals.map((g) => (
+        <RivalRow key={g.matchId} g={g} />
+      ))}
+    </ul>
   );
 }

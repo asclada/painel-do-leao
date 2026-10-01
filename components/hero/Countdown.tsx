@@ -12,7 +12,9 @@ function parts(ms: number) {
 /** Contagem regressiva até o jogo; vira "Bola rolando agora!" durante a partida. */
 export function Countdown({ kickoffUtc, large = false }: { kickoffUtc: string; large?: boolean }) {
   const now = useNow();
-  if (now === null) return <span className={`block ${large ? "h-12" : "h-8"}`} aria-hidden />;
+  // antes de saber a hora: a mesma contagem, invisível, para o card não crescer na hidratação (isso tirava do lugar
+  // as âncoras abaixo do topo em aparelho lento)
+  if (now === null) return <Units d={0} h={0} min={0} large={large} placeholder />;
   const diff = new Date(kickoffUtc).getTime() - now;
 
   if (diff <= 0 && -diff < LIVE_WINDOW_MS) {
@@ -26,13 +28,21 @@ export function Countdown({ kickoffUtc, large = false }: { kickoffUtc: string; l
   if (diff <= 0) return <span className="text-muted">Jogo encerrado. O resultado entra na próxima atualização.</span>;
 
   const { d, h, min } = parts(diff);
+  return <Units d={d} h={h} min={min} large={large} />;
+}
+
+function Units({ d, h, min, large, placeholder = false }: { d: number; h: number; min: number; large: boolean; placeholder?: boolean }) {
   const units = [
     [d, "dia", "dias"],
     [h, "h", "h"],
     [min, "min", "min"],
   ] as const;
   return (
-    <span className="flex items-baseline gap-3" aria-label={`Faltam ${d} dias, ${h} horas e ${min} minutos`}>
+    <span
+      className={`flex items-baseline gap-3 ${placeholder ? "invisible" : ""}`}
+      aria-hidden={placeholder || undefined}
+      aria-label={placeholder ? undefined : `Faltam ${d} dias, ${h} horas e ${min} minutos`}
+    >
       <span className={`text-muted ${large ? "text-lg" : ""}`}>Faltam</span>
       {units.map(([n, s, p]) => (
         <span key={s} className="tabular">

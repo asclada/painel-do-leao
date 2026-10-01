@@ -13,7 +13,6 @@ import { SITE_HOST, SITE_NAME } from "@/lib/site";
 import type { Choice } from "@/lib/simulator-client";
 import { finalPoints, predictionPersona } from "@/lib/simulator-text";
 import type { Pick } from "@/lib/challenge";
-import type { FinishOption, GameOption } from "@/lib/meu-leao";
 import { type PalpiteGame, scoreGuess, verdictText } from "@/lib/palpite";
 import { situation } from "@/lib/situation";
 
@@ -651,60 +650,6 @@ export function PalpiteCard({
                 {`O modelo dá ${pct(game.chances.win)} de vitória do Leão`}
               </div>
             )}
-          </div>
-        )}
-      </div>
-    </Frame>
-  );
-}
-
-// ---------------------------------------------------------------- Meu Leão
-
-/** Cartão "Meu Leão": as 4 respostas do torcedor (todas de opções prontas) e, se houver, os pontos do palpite. */
-export function MeuLeaoCard({
-  name,
-  where,
-  game,
-  finish,
-  phrase,
-  palpite,
-}: {
-  name: string | null;
-  where: string;
-  game: GameOption;
-  finish: FinishOption;
-  phrase: string;
-  palpite: { points: number; achievements: number } | null;
-}) {
-  const row = (label: string, value: string, note?: string) => (
-    <div style={{ display: "flex", flexDirection: "column", paddingTop: 34, marginTop: 34, borderTop: `2px solid ${C.line}` }}>
-      <div style={{ fontSize: 34, color: C.muted }}>{label}</div>
-      <div style={{ fontSize: 58, fontWeight: 800, marginTop: 6, lineHeight: 1.1 }}>{value}</div>
-      {note && <div style={{ fontSize: 32, color: C.muted, marginTop: 8 }}>{note}</div>}
-    </div>
-  );
-  return (
-    <Frame sub="Meu Leão · Série B 2026" cta="Faça o seu cartão em">
-      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
-        <div style={{ fontFamily: "Bebas", fontSize: 140, lineHeight: 0.9 }}>{name ? `O Leão de ${name}` : "Meu Leão"}</div>
-        {row("Vejo os jogos", where)}
-        {row("Jogo inesquecível de 2026", game.line, `Rodada ${game.round}${game.tag ? ` · ${game.tag}` : ""}`)}
-        {row("Pra mim, o Leão termina", finish.label, `O modelo dá ${pct1(finish.chance)}`)}
-        <div
-          style={{
-            display: "flex",
-            fontFamily: "Bebas",
-            fontSize: 110,
-            lineHeight: 1,
-            color: C.win,
-            marginTop: 60,
-          }}
-        >
-          {`“${phrase}”`}
-        </div>
-        {palpite && (
-          <div style={{ fontSize: 36, color: C.muted, marginTop: 30 }}>
-            {`No palpite da rodada: ${plural(palpite.points, "ponto")} e ${plural(palpite.achievements, "conquista")}`}
           </div>
         )}
       </div>

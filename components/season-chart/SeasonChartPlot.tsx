@@ -6,13 +6,12 @@ import {
   Line,
   LineChart,
   ReferenceArea,
-  ReferenceDot,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
-import type { Milestone, Team, TimelinePoint } from "@/lib/generated/outputs";
+import type { Team, TimelinePoint } from "@/lib/generated/outputs";
 import { RESULT_FILL, TOTAL_ROUNDS, type Row } from "@/components/season-chart/shared";
 
 function scoreLine(p: TimelinePoint, teams: Record<string, Team>) {
@@ -26,23 +25,13 @@ function scoreLine(p: TimelinePoint, teams: Record<string, Team>) {
 export default function SeasonChartPlot({
   rows,
   teams,
-  rivalIds,
-  showRivals,
   reduce,
   hatchId,
-  markerY,
-  active,
-  setActive,
 }: {
   rows: Row[];
   teams: Record<string, Team>;
-  rivalIds: string[];
-  showRivals: boolean;
   reduce: boolean;
   hatchId: string;
-  markerY: { m: Milestone; y: number }[];
-  active: Milestone | null;
-  setActive: (m: Milestone | null) => void;
 }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -83,12 +72,6 @@ export default function SeasonChartPlot({
           }}
         />
 
-        {showRivals &&
-          rivalIds.map((id) => (
-            <Line key={id} dataKey={id} type="monotone" stroke="rgb(168 180 216 / 0.45)" strokeWidth={1.25}
-              dot={false} activeDot={false} isAnimationActive={false} connectNulls={false} />
-          ))}
-
         <Line
           dataKey="fort"
           type="linear"
@@ -108,18 +91,6 @@ export default function SeasonChartPlot({
           activeDot={{ r: 7, fill: "var(--bg)", stroke: "var(--white)", strokeWidth: 3 }}
         />
 
-        {markerY.map(({ m, y }, i) => {
-          const on = active?.round === m.round;
-          return (
-            <ReferenceDot key={m.round} x={m.round} y={y} r={on ? 12 : 10}
-              fill={on ? "var(--white)" : "var(--surface-2)"} stroke="var(--white)" strokeWidth={1.5}
-              ifOverflow="visible"
-              label={{ value: i + 1, fill: on ? "var(--bg)" : "var(--white)", fontSize: 11, fontWeight: 700 }}
-              onClick={() => setActive(on ? null : m)}
-              style={{ cursor: "pointer" }}
-            />
-          );
-        })}
       </LineChart>
     </ResponsiveContainer>
   );

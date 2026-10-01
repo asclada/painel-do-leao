@@ -378,9 +378,9 @@ function MyPoints({
         // mesma altura do placar carregado: a seção não cresce na hidratação (isso tirava as âncoras do lugar)
         <>
           <p className="mt-1 font-display text-6xl leading-none text-muted sm:text-7xl" aria-hidden>
-            –
+            – <span className="text-3xl">pontos</span>
           </p>
-          <p className="text-sm text-muted">Carregando…</p>
+          <p className="text-sm text-muted">Os pontos entram depois de cada jogo do Leão.</p>
         </>
       ) : (
         <>

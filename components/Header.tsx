@@ -11,7 +11,7 @@ const NAV = [
   ["simulador", "Simulador"],
   ["campanha", "Campanha"],
   ["chance", "Números"],
-  ["meu-leao", "Compartilhar"],
+  ["para-postar", "Compartilhar"],
 ] as const;
 
 export function Header({ name, updatedAt }: { name: string; updatedAt: string | null }) {

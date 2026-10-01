@@ -67,8 +67,7 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   rodadas >= 31) e `lib/palpite-store.ts` (localStorage `fen:palpites` via useSyncExternalStore; sem armazenamento vale
   até fechar a aba). Palpite só no próximo jogo, trava no `kickoffUtc` e só conta se feito antes dele. Componentes em
   `components/palpite/` (seção `#palpite` logo depois do topo) e card `/api/card/palpite?r=&g=2-1[&t=&q=]`.
-  Cartão "Meu Leão": `lib/meu-leao.ts` (opções fixas), `lib/meu-leao-data.ts` (vitórias marcantes e finais com a
-  chance do modelo), `components/meu-leao/`, card `/api/card/meu-leao`. Uso medido com `lib/track.ts` (Vercel
+  O cartão "Meu Leão" foi REMOVIDO em 30/09 (pedido do Lucas; código só no histórico do Git). Uso medido com `lib/track.ts` (Vercel
   Analytics: `desafio_criado`, `duelo_respondido`, `palpite_feito`, `cartao_gerado` em todo ShareButton com imagem,
   `backup_palpites`). O projeto está no plano grátis (Hobby, confirmado pelo Lucas em 30/09): eventos personalizados
   não aparecem no painel; por enquanto contar pelas chamadas das rotas `/api/card/*` em Observability.
@@ -78,13 +77,22 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   `lib/site.ts` (inclui `SITE_URL`). **Hierarquia da página (30/09, aprovada pelo Lucas após a auditoria: proteger o
   "torcedor em 5 segundos")**, em blocos com rótulo (`Section eyebrow`): campinho pixel art → topo (hero F1) →
   **Esta rodada**: palpite (`#palpite`, histórico e conquistas recolhidos) + "Pra secar" (`#pra-secar`,
-  `PraSecar`) → **A briga pelo acesso**: corrida F3, "Até a rodada 38", simulador F4 → **A campanha**: campanha em números + montanha-russa F2 com "jogo a jogo" →
+  `PraSecar`) → **A briga pelo acesso**: corrida F3, "Até a rodada 38" (aberto), simulador F4 → **A campanha**:
+  campanha em números (aberto) + montanha-russa F2 com "jogo a jogo" →
   **Para quem gosta de números** (visual discreto, `Section quiet`): "Como a chance mudou" (`lib/chance.ts`) e raio-x
-  F5 → **Para compartilhar**: "Meu Leão" e "Conteúdo da rodada". Menu com 7 itens (Agora, Rodada, Corrida,
+  F5 → **Para compartilhar**: "Conteúdo da rodada". Menu com 7 itens (Agora, Rodada, Corrida,
   Simulador, Campanha, Números, Compartilhar); as âncoras antigas continuam valendo. O quiz "onde o Leão estava na
   rodada 1" foi retirado a pedido do Lucas em 30/09 (repetia sempre a mesma pergunta).
-  Nada acima de uma âncora pode mudar de altura na hidratação (o palpite mostra o formulário travado antes de ler o
-  aparelho): o script de âncoras só segura o destino por 2 s sem mudança.
+  **Seções recolhidas (30/09, pedido do Lucas: menos informação de cara):** "Pra secar", corrida, simulador,
+  "Conteúdo da rodada" e o "jogo a jogo" ficam dentro de `components/ui/Collapsible.tsx`: card inteiro clicável com
+  frase do que tem dentro e botão escrito ("Ver para quem torcer", "Ver a corrida completa", "Abrir o simulador"...),
+  conteúdo montado só ao abrir. Abre sozinho quando a página chega com `#id` da seção ou com parâmetros
+  (`openOnParams`): o simulador abre com `?p=`, `?a=`, `?b=`, `?x=` (Desafio do Leão e "Minha previsão" NÃO podem cair
+  num card fechado). O menu só leva até o card. A barra fixa do simulador só existe com ele aberto; o aquecimento da
+  função Python é feito pelo card (`warmSimulator`).
+  Nada acima de uma âncora pode mudar de altura na hidratação (o palpite mostra o formulário travado e a contagem
+  regressiva desenha a mesma estrutura invisível antes de saber a hora): o script de âncoras só segura o destino por
+  2 s sem mudança.
   O topo diz "Situação atual na Série B · N jogos" (não "depois da rodada X", que confundia com rodada em andamento).
   Campanha em números: `CampaignStats` (aproveitamento, V/E/D, média, saldo; recorte todos/casa/fora) lê
   `standings.json`. "Até a rodada 38": faixa de 80% dos pontos (`pointsP10`–`pointsP90`), histograma
@@ -176,7 +184,8 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
 - Cores dos clubes em `data/manual/teams.json` são curadoria e aguardam confirmação do Lucas.
 - **Playoffs (regulamento confirmado):** melhor campanha faz a volta em casa; empate no agregado → sobe a melhor
   campanha (sem pênaltis).
-- Marcos manuais em `data/manual/milestones.json`: só aparecem com `confirmed: true`. Troca de técnico confirmada pelo
+- Marcos manuais em `data/manual/milestones.json`: só entram com `confirmed: true`. Desde 30/09 (pedido do Lucas) a
+  montanha-russa NÃO mostra marcos nem as linhas dos rivais (o pipeline ainda gera `timeline.milestones`). Troca de técnico confirmada pelo
   Lucas: rodada 20 com interino, **Autuori estreou na rodada 21**.
 - Vercel: projeto `ascladas-projects/painel-do-leao`, ligado ao GitHub (push na main = deploy de produção).
   Produção: **https://fortaleza-em-numeros.vercel.app** (domínio principal; https://painel-do-leao.vercel.app também responde). `.vercelignore` impede enviar `.env*` em deploy pela CLI.
@@ -209,5 +218,6 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   "bayesiano completo").
 - Pendente do Lucas: testes no celular (M10) e revisão dos textos (M11).
 
-_Última atualização: 30/09/2026 (Pacote 3 enxuto: palpite da rodada com placar exato, conquistas, cartão "Meu Leão",
-link de backup dos palpites e eventos de uso; campinho pixel art no início da página)._
+_Última atualização: 30/09/2026 (auditoria: desempate com confronto direto, hierarquia em blocos, "Pra secar"
+enxuto, seções recolhidas, "Meu Leão" e "jogos do Leão que mais mexem" removidos, licença "todos os direitos
+reservados")._
