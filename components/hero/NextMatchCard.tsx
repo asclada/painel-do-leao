@@ -78,12 +78,29 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
         )}
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 border-t border-line pt-4 text-sm text-muted">
-        {/* 1º turno discreto (pedido do Lucas, 01/10) */}
-        {match.firstTurn && <span>1º turno: {match.firstTurn}</span>}
-        <span className="inline-flex items-center gap-2">
-          {opp.name} nos últimos 5: <FormDots form={match.formOpponent} size="sm" />
-        </span>
+      {/* duas informações separadas por um traço (pedido do Lucas, 01/10); 1º turno discreto. No celular, uma
+          embaixo da outra (cada uma inteira na sua linha) com um traço curto entre elas; com mais espaço, duas colunas
+          com título em cima e o traço vertical no meio, qualquer que seja o tamanho do nome do adversário */}
+      <div
+        className={`mt-4 flex flex-col items-center gap-2 border-t border-line pt-4 text-center text-sm text-muted sm:grid sm:gap-3 ${
+          match.firstTurn ? "sm:grid-cols-[1fr_auto_1fr]" : "sm:grid-cols-1"
+        }`}
+      >
+        {match.firstTurn && (
+          <>
+            <p>
+              1º turno<span className="sm:hidden">:</span>{" "}
+              <span className="sm:mt-0.5 sm:block">{match.firstTurn}</span>
+            </p>
+            <span aria-hidden className="h-px w-10 bg-white/25 sm:h-10 sm:w-px" />
+          </>
+        )}
+        <div className="flex items-center gap-2 sm:flex-col sm:gap-1">
+          <p>
+            {opp.name} nos últimos 5<span className="sm:hidden">:</span>
+          </p>
+          <FormDots form={match.formOpponent} size="sm" />
+        </div>
       </div>
 
       {match.chances && <MatchChancesBar chances={match.chances} />}

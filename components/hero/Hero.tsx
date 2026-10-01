@@ -34,18 +34,22 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
   return (
     <section id={anchor} aria-labelledby={`${anchor}-title`} className="spotlight scroll-mt-60">
       <div className="mx-auto w-full max-w-[1100px] px-4 pb-8 pt-4 sm:pt-10">
-        {/* Resumo do site para quem chega pelo link: o que é e para que serve, em uma frase */}
-        <div className="mb-5 flex items-center gap-4">
-          <Image
-            src={escudo}
-            alt="Escudo do Fortaleza Esporte Clube"
-            loading="eager"
-            className="h-16 w-auto shrink-0 sm:h-20"
-          />
-          <p className="max-w-2xl text-[15px] leading-snug text-white/90 sm:text-base">
+        {/* Resumo do site para quem chega pelo link: o que é e para que serve, em uma frase. Faixa centralizada
+            (pedido do Lucas, 01/10): no computador "escudo · tracinhos · texto · tracinhos · escudo"; no celular, onde
+            não cabe tudo numa linha, o escudo no centro entre os tracinhos e o texto embaixo. */}
+        <div className="mb-5 flex flex-col items-center gap-3 lg:flex-row lg:justify-center lg:gap-4">
+          <div className="flex items-center gap-3 lg:contents">
+            <span className="tricolor h-1 w-10 rounded-full lg:hidden" aria-hidden />
+            <Image src={escudo} alt="Escudo do Fortaleza Esporte Clube" loading="eager" className="h-12 w-auto shrink-0 lg:h-11" />
+            <span className="tricolor h-1 w-10 rotate-180 rounded-full lg:hidden" aria-hidden />
+          </div>
+          <span className="tricolor hidden h-1 w-10 shrink-0 rounded-full lg:block" aria-hidden />
+          <p className="max-w-2xl text-center text-[15px] leading-snug text-white/90 sm:text-base">
             Aqui você acompanha o Fortaleza na Série B: a posição na tabela, as chances de acesso à Série A e os
             jogos que faltam. Tudo se atualiza sozinho depois de cada rodada.
           </p>
+          <span className="tricolor hidden h-1 w-10 shrink-0 rotate-180 rounded-full lg:block" aria-hidden />
+          <Image src={escudo} alt="" aria-hidden loading="eager" className="hidden h-11 w-auto shrink-0 lg:block" />
         </div>
 
         <div className="grid gap-5 lg:grid-cols-2 lg:gap-6">
