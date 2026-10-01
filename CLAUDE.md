@@ -122,6 +122,13 @@ simulador "E se?" e raio-x. Atualiza sozinho a cada 2h. Plano completo: `docs/PL
   workflow commita `public/escudos/`). Estádio sempre como "Estádio: {nome popular}" (`venueName` em `lib/format.ts`);
   sem estádio na ESPN, usa o estádio mais usado pelo mandante (`usual_venue` em `pipeline/calc/next_match.py`).
 - **Corrida (F3):** sem frase de destaque na página (pedido do Lucas); o pipeline ainda gera `race.headline`.
+  **Dificuldade da tabela (refeita em 01/10, pedido do Lucas):** `schedule_points` em `pipeline/calc/race.py` = pontos
+  que um time MÉDIO faria nos jogos que faltam (previsão do modelo, com mando: `expected_points` em
+  `pipeline/model/match_probs.py`) menos uma tabela comum; faixas fixas de ±0,5 ponto (`SCHEDULE_BAND`). NÃO usa a força
+  do próprio time nem o "Pega X do G6" (que é só informativo). Antes eram terços da média da força dos adversários,
+  sem mando: o Fortaleza saía "Difícil" pegando América-MG e Ponte Preta. O site explica o rótulo acima da lista e, ao
+  abrir cada time, diz em frase se os adversários que faltam são mais fáceis, parecidos ou mais difíceis que os de uma
+  sequência comum (sem número nem "time médio" na tela, escolha do Lucas).
 - **Imagens (next/og):** `lib/og/cards.tsx` (cards de story e Open Graph) e `lib/og/fonts.ts` (fontes WOFF em
   `assets/fonts`, OFL, incluídas via `outputFileTracingIncludes`). Satori: todo `div` com mais de um filho precisa de
   `display: flex`, e número puro como filho quebra (use template string/`String()`).

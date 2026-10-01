@@ -2,10 +2,12 @@ from datetime import datetime, timedelta, timezone
 
 from pipeline.calc.common import plural
 from pipeline.calc.insights import halves_insight, streak_insight, turn_insight, venue_insight
+from pipeline.calc.race import difficulty_label, schedule_points
 from pipeline.calc.streaks import compute_streaks
 from pipeline.calc.timeline import positions_by_round, team_timeline
+from pipeline.model.types import Ratings
 from pipeline.models import Match, Team
-from pipeline.outputs import HalfSplit, Streaks, TurnSplit, VenueSplit
+from pipeline.outputs import HalfSplit, RaceFixture, Streaks, TurnSplit, VenueSplit
 
 
 def test_timeline_real_season(teams, matches_r30):
@@ -65,3 +67,40 @@ def test_insight_rules():
     s = Streaks(current_kind="unbeaten", current_count=1, current_label="", longest_unbeaten=1, longest_wins=0,
                 clean_sheets=1, longest_clean_sheets=1, form=[])
     assert streak_insight(s, {}) == "Maior sequência invicta da temporada: 1 jogo."
+
+
+# --- dificuldade da tabela (corrida) -------------------------------------------------------------
+
+
+def _ratings(att, dfn):
+    """Times com o mesmo fator em casa e fora: att/def < 1 = mais fraco."""
+    return Ratings(mu_home=1.4, mu_away=1.1, att_home=att, def_home=dfn, att_away=att, def_away=dfn,
+                   strength=[1.0] * len(att))
+
+
+def _fx(opp, home):
+    return RaceFixture(match_id=f"x--{opp}", round=31, kickoff_utc="2026-10-01T00:00Z", opponent_id=opp, home=home,
+                       opponent_in_top6=False)
+
+
+def test_schedule_against_average_teams_is_average():
+    r = _ratings([1.0, 1.0], [1.0, 1.0])
+    pts = schedule_points(r, {"a": 0, "b": 1}, [_fx("b", True), _fx("b", False)])
+    assert abs(pts) < 1e-9 and difficulty_label(pts) == "Média"
+
+
+def test_away_games_make_the_schedule_harder():
+    r = _ratings([1.0, 1.0], [1.0, 1.0])
+    idx = {"a": 0, "b": 1}
+    home_heavy = schedule_points(r, idx, [_fx("b", True)] * 3 + [_fx("b", False)])
+    away_heavy = schedule_points(r, idx, [_fx("b", True)] + [_fx("b", False)] * 3)
+    assert home_heavy > 0 > away_heavy
+
+
+def test_weak_and_strong_opponents_set_the_label():
+    # "fraco": ataca pouco e sofre muito; "forte": o contrário
+    r = _ratings([1.0, 0.5, 1.6], [1.0, 1.6, 0.6])
+    idx = {"a": 0, "fraco": 1, "forte": 2}
+    easy = schedule_points(r, idx, [_fx("fraco", True), _fx("fraco", False)] * 2)
+    hard = schedule_points(r, idx, [_fx("forte", True), _fx("forte", False)] * 2)
+    assert difficulty_label(easy) == "Tranquila" and difficulty_label(hard) == "Difícil"

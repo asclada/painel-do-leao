@@ -13,6 +13,18 @@ const DIFFICULTY_STYLE = {
   Tranquila: "bg-transparent text-muted ring-1 ring-line",
 } as const;
 
+/**
+ * O que o rótulo da tabela quer dizer (pipeline/calc/race.py: previsão do modelo para os jogos que faltam, com o mando,
+ * comparada com uma sequência comum da Série B). Sem número e sem time de referência na frase (escolha do Lucas, 01/10):
+ * "um time médio faria 0,8 ponto a mais" fazia o torcedor achar que o Fortaleza era comparado com outro time.
+ */
+function scheduleText(t: RaceTeam) {
+  const base = "os adversários que faltam, contando o mando de campo,";
+  if (t.difficulty === "Tranquila") return `${base} são mais fáceis que os de uma sequência comum da Série B.`;
+  if (t.difficulty === "Difícil") return `${base} são mais difíceis que os de uma sequência comum da Série B.`;
+  return `${base} se parecem com os de uma sequência comum da Série B.`;
+}
+
 function TeamRow({ t }: { t: RaceTeam }) {
   const team = teamById[t.teamId];
   const ch = accessChances(t.teamId, t);
@@ -67,6 +79,11 @@ function TeamRow({ t }: { t: RaceTeam }) {
           <p className="mt-3 font-semibold">
             Faltam {plural(t.fixtures.length, "jogo")}: {t.remainingHome} em casa, {t.remainingAway} fora
           </p>
+          {t.fixtures.length > 0 && (
+            <p className="mt-1 text-muted">
+              Tabela {t.difficulty.toLowerCase()}: {scheduleText(t)}
+            </p>
+          )}
           <ul className="mt-2 divide-y divide-line">
             {t.fixtures.map((f) => {
               const opp = teamById[f.opponentId];
@@ -94,11 +111,18 @@ function TeamRow({ t }: { t: RaceTeam }) {
 export function Race() {
   return (
     <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
-      <ol className="flex flex-col gap-2.5" aria-label="Times na briga pelo acesso">
-        {race.teams.map((t) => (
-          <TeamRow key={t.teamId} t={t} />
-        ))}
-      </ol>
+      <div>
+        {/* o rótulo não é o "Pega X do G6": é a previsão do modelo para a tabela que falta (01/10) */}
+        <p className="mb-3 text-sm text-muted">
+          A dificuldade compara os jogos que faltam (adversários e mando de campo) com uma sequência comum da Série
+          B. Fala da tabela, não da força de quem vai jogá-la.
+        </p>
+        <ol className="flex flex-col gap-2.5" aria-label="Times na briga pelo acesso">
+          {race.teams.map((t) => (
+            <TeamRow key={t.teamId} t={t} />
+          ))}
+        </ol>
+      </div>
 
       {race.headToHead.length > 0 && (
         <div>

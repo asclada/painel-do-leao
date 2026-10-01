@@ -1,14 +1,46 @@
-"""Corrida pelo acesso (F3): Fortaleza + times no G6 ou a até 6 pontos do 6º (máx. 7)."""
+"""Corrida pelo acesso (F3): Fortaleza + times no G6 ou a até 6 pontos do 6º (máx. 7).
+
+Dificuldade da tabela (refeita em 01/10, pedido do Lucas): quantos pontos um time MÉDIO da Série B faria nos jogos que
+faltam a cada time, contra aqueles adversários e com aqueles mandos, comparado com uma tabela média (metade em casa,
+metade fora, contra adversários médios). Usa o próprio modelo (Poisson com mando): pegar times muito fracos rende
+muitos pontos e jogar fora de casa custa pontos. O time médio, e não o próprio time, para a força dele não entrar
+na conta (senão o líder teria sempre "tabela fácil"). Faixas fixas em pontos, não terços: tabelas parecidas
+recebem o mesmo rótulo, e perto do fim, com poucos jogos, as diferenças diminuem sozinhas.
+(Antes: média da força dos adversários, sem mando, e terços entre os 7 da corrida; diferenças de 0,015 mudavam o
+rótulo e o Fortaleza saía "Difícil" pegando os dois piores do campeonato.)
+"""
 
 from __future__ import annotations
 
 from pipeline.calc.common import form, plural
+from pipeline.model.match_probs import expected_points
 from pipeline.model.summarize import TeamOdds
+from pipeline.model.types import Ratings
 from pipeline.models import Match, StandingRow
 from pipeline.outputs import HeadToHead, Race, RaceFixture, RaceTeam
 
 MAX_TEAMS = 7
 GAP_TO_SIXTH = 6
+SCHEDULE_BAND = 0.5  # até meio ponto a mais ou a menos que uma tabela média = "Média"
+
+
+def schedule_points(ratings: Ratings, idx: dict[str, int], fixtures: list[RaceFixture]) -> float:
+    """Pontos a mais (+, mais fácil) ou a menos (−, mais difícil) que um time médio faria nesses jogos, comparado
+    com a mesma quantidade de jogos numa tabela média."""
+    r = ratings
+    reference = (expected_points(r.mu_home, r.mu_away) + expected_points(r.mu_away, r.mu_home)) / 2
+    total = 0.0
+    for f in fixtures:
+        o = idx[f.opponent_id]
+        if f.home:  # time médio em casa: ataque/defesa = 1
+            total += expected_points(r.mu_home * r.def_away[o], r.mu_away * r.att_away[o])
+        else:
+            total += expected_points(r.mu_away * r.def_home[o], r.mu_home * r.att_home[o])
+    return total - reference * len(fixtures)
+
+
+def difficulty_label(points: float) -> str:
+    return "Difícil" if points <= -SCHEDULE_BAND else "Tranquila" if points >= SCHEDULE_BAND else "Média"
 
 
 def race_team_ids(standings: list[StandingRow], focus: str) -> list[str]:
@@ -25,7 +57,8 @@ def compute_race(
     standings: list[StandingRow],
     matches: list[Match],
     odds: list[TeamOdds],
-    strength: dict[str, float],
+    ratings: Ratings,
+    team_ids: list[str],
     names: dict[str, str],
     focus: str,
     articles: dict[str, str] | None = None,
@@ -37,7 +70,8 @@ def compute_race(
     left = sorted((m for m in matches if m.status not in ("finished", "cancelled")),
                   key=lambda m: (m.kickoff_utc, m.id))
 
-    teams, scores = [], {}
+    idx = {t: i for i, t in enumerate(team_ids)}
+    teams = []
     for tid in ids:
         fx = [
             RaceFixture(match_id=m.id, round=m.round, kickoff_utc=m.kickoff_utc,
@@ -45,23 +79,17 @@ def compute_race(
                         opponent_in_top6=(m.away_id if m.home_id == tid else m.home_id) in top6)
             for m in left if tid in (m.home_id, m.away_id)
         ]
-        scores[tid] = sum(strength[f.opponent_id] for f in fx) / len(fx) if fx else 0.0
+        sched = schedule_points(ratings, idx, fx)
         r, o = row[tid], odd[tid]
         teams.append(dict(
             team_id=tid, position=r.position, points=r.points, played=r.played, goal_diff=r.goal_diff,
             form=form(matches, tid), remaining_home=sum(f.home for f in fx),
             remaining_away=sum(not f.home for f in fx), remaining_vs_top6=sum(f.opponent_in_top6 for f in fx),
-            difficulty_score=round(scores[tid], 3), p_direct=o.p_direct, p_top6=o.p_top6,
+            difficulty=difficulty_label(sched), schedule_points=round(sched, 2), p_direct=o.p_direct, p_top6=o.p_top6,
             p_promotion=o.p_promotion, fixtures=fx,
         ))
 
-    # tercis entre os times da corrida: mais forte = "Difícil"
-    ranked = sorted(ids, key=lambda t: -scores[t])
-    n = len(ranked)
-    label = {}
-    for i, t in enumerate(ranked):
-        label[t] = "Difícil" if i < n / 3 else "Média" if i < 2 * n / 3 else "Tranquila"
-    race_teams = [RaceTeam(**t, difficulty=label[t["team_id"]]) for t in teams]
+    race_teams = [RaceTeam(**t) for t in teams]
 
     idset = set(ids)
     h2h = [
@@ -85,5 +113,5 @@ def race_headline(teams: list[RaceTeam], h2h: list[HeadToHead], names: dict[str,
                 f"O Fortaleza, só {me.remaining_vs_top6}.")
     if len(h2h) >= 3:
         return f"{plural(len(h2h), 'confronto direto', 'confrontos diretos')} até o fim: é aí que se decide."
-    easiest = min(teams, key=lambda t: t.difficulty_score)
+    easiest = max(teams, key=lambda t: t.schedule_points)
     return f"Tabela mais tranquila entre os candidatos: {names[easiest.team_id]}."

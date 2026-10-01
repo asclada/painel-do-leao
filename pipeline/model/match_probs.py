@@ -10,7 +10,7 @@ from math import lgamma
 
 import numpy as np
 
-from pipeline.config import PARAM_UNCERTAINTY
+from pipeline.config import LAMBDA_MAX, LAMBDA_MIN, PARAM_UNCERTAINTY
 from pipeline.model.ratings import draw_factors
 from pipeline.model.types import Ratings
 
@@ -44,3 +44,10 @@ def outcome_probs(
     p_draw = (ph * pa).sum(-1)
     probs = np.stack([p_home, p_draw, 1 - p_home - p_draw], axis=-1).mean(axis=0)
     return np.clip(probs, 0, 1)
+
+
+def expected_points(lam_for: float, lam_against: float) -> float:
+    """Pontos esperados (vitória 3, empate 1) de quem faz gols com média `lam_for` e sofre com `lam_against`."""
+    lam = np.clip(np.array([lam_for, lam_against], dtype=float), LAMBDA_MIN, LAMBDA_MAX)
+    joint = np.outer(_pmf(lam[0]), _pmf(lam[1]))  # linhas: gols a favor; colunas: gols contra
+    return float(3 * np.tril(joint, -1).sum() + np.trace(joint))

@@ -179,7 +179,7 @@ export interface RaceTeam {
   remainingAway: number;
   remainingVsTop6: number;
   difficulty: "Difícil" | "Média" | "Tranquila";
-  difficultyScore: number;
+  schedulePoints: number;
   pDirect: number;
   pTop6: number;
   pPromotion: number;

@@ -150,7 +150,8 @@ class RaceTeam(Model):
     remaining_away: int
     remaining_vs_top6: int
     difficulty: Literal["Difícil", "Média", "Tranquila"]
-    difficulty_score: float
+    # pontos a mais (+) ou a menos (−) que um time médio faria nos jogos que faltam, comparado com uma tabela média
+    schedule_points: float
     p_direct: float
     p_top6: float
     p_promotion: float

@@ -51,7 +51,8 @@ O menu leva direto a cada bloco.
   um ("Torça pelo X · se não der, o empate serve" ou "Torça contra Y"); tocando no jogo, aparece a chance de acesso
   direto do Leão em cada resultado.
 - **Corrida pelo acesso:** os times da briga lado a lado, com as duas chances de cada um e a dificuldade da tabela
-  que falta.
+  que falta, medida pela previsão do modelo: quantos pontos um time médio faria naqueles jogos, com o mando de campo,
+  comparado com uma tabela comum.
 - **Raio-X:** casa x fora, turno x returno, gols por faixa de minuto, o que muda depois do intervalo; cada
   curiosidade vira um card para compartilhar.
 - **Os jogos da campanha:** todos os jogos do Leão até aqui, com placar e pontos depois de cada rodada.

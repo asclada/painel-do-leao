@@ -803,7 +803,7 @@
           ],
           "type": "string"
         },
-        "difficultyScore": {
+        "schedulePoints": {
           "type": "number"
         },
         "pDirect": {
@@ -833,7 +833,7 @@
         "remainingAway",
         "remainingVsTop6",
         "difficulty",
-        "difficultyScore",
+        "schedulePoints",
         "pDirect",
         "pTop6",
         "pPromotion",

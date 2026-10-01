@@ -193,8 +193,7 @@ def compute_outputs(
         insights["goalBins"] = bins_insight(parts["goal_bins"])
     xray = XRay(**parts, streaks=streaks, insights=insights)
 
-    strength = dict(zip(team_ids, model.ratings.strength))
-    race = compute_race(standings, matches, odds, strength, names, FORTALEZA_ID, articles)
+    race = compute_race(standings, matches, odds, model.ratings, team_ids, names, FORTALEZA_ID, articles)
     nxt = compute_next_match(matches, FORTALEZA_ID, names)
     if nxt is not None:
         nxt.chances = next_match_chances(model, nxt.match_id, seed)
