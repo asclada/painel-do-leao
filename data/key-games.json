@@ -1,15 +1,15 @@
 {
-  "baseline": 0.376,
+  "baseline": 0.329,
   "metric": "direct",
   "rivals": [
     {
       "awayId": "vila-nova",
       "best": "home",
-      "gain": 0.0178,
+      "gain": 0.019,
       "homeId": "botafogo-sp",
-      "ifAway": 0.3377,
-      "ifDraw": 0.376,
-      "ifHome": 0.3939,
+      "ifAway": 0.2927,
+      "ifDraw": 0.328,
+      "ifHome": 0.348,
       "kickoffUtc": "2026-10-03T21:30Z",
       "matchId": "botafogo-sp--vila-nova",
       "order": [
@@ -17,45 +17,22 @@
         "draw",
         "away"
       ],
-      "pAway": 0.2708,
-      "pDraw": 0.2431,
-      "pHome": 0.486,
+      "pAway": 0.2716,
+      "pDraw": 0.2449,
+      "pHome": 0.4835,
       "round": 31,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0561
-    },
-    {
-      "awayId": "goias",
-      "best": "away",
-      "gain": 0.0257,
-      "homeId": "novorizontino",
-      "ifAway": 0.4018,
-      "ifDraw": 0.3893,
-      "ifHome": 0.3537,
-      "kickoffUtc": "2026-10-02T00:00Z",
-      "matchId": "novorizontino--goias",
-      "order": [
-        "away",
-        "draw",
-        "home"
-      ],
-      "pAway": 0.265,
-      "pDraw": 0.2679,
-      "pHome": 0.4672,
-      "round": 31,
-      "sameBottom": false,
-      "sameTop": false,
-      "swing": 0.0481
+      "swing": 0.0553
     },
     {
       "awayId": "operario-pr",
       "best": "draw",
-      "gain": 0.0161,
+      "gain": 0.0141,
       "homeId": "juventude",
-      "ifAway": 0.3887,
-      "ifDraw": 0.3922,
-      "ifHome": 0.3548,
+      "ifAway": 0.3414,
+      "ifDraw": 0.3431,
+      "ifHome": 0.3081,
       "kickoffUtc": "2026-10-02T23:45Z",
       "matchId": "juventude--operario-pr",
       "order": [
@@ -63,22 +40,22 @@
         "away",
         "home"
       ],
-      "pAway": 0.3145,
-      "pDraw": 0.273,
-      "pHome": 0.4125,
+      "pAway": 0.315,
+      "pDraw": 0.2717,
+      "pHome": 0.4133,
       "round": 31,
       "sameBottom": false,
       "sameTop": true,
-      "swing": 0.0374
+      "swing": 0.0349
     },
     {
       "awayId": "america-mg",
       "best": "away",
-      "gain": 0.0177,
+      "gain": 0.0158,
       "homeId": "atletico-go",
-      "ifAway": 0.3937,
-      "ifDraw": 0.3886,
-      "ifHome": 0.37,
+      "ifAway": 0.3448,
+      "ifDraw": 0.3408,
+      "ifHome": 0.3239,
       "kickoffUtc": "2026-10-03T19:00Z",
       "matchId": "atletico-go--america-mg",
       "order": [
@@ -86,22 +63,22 @@
         "draw",
         "home"
       ],
-      "pAway": 0.1025,
-      "pDraw": 0.1933,
-      "pHome": 0.7042,
+      "pAway": 0.1089,
+      "pDraw": 0.1938,
+      "pHome": 0.6973,
       "round": 31,
       "sameBottom": false,
       "sameTop": true,
-      "swing": 0.0237
+      "swing": 0.0209
     },
     {
       "awayId": "criciuma",
       "best": "home",
-      "gain": 0.0065,
+      "gain": 0.0057,
       "homeId": "londrina",
-      "ifAway": 0.3626,
-      "ifDraw": 0.3794,
-      "ifHome": 0.3826,
+      "ifAway": 0.3168,
+      "ifDraw": 0.3317,
+      "ifHome": 0.3347,
       "kickoffUtc": "2026-10-02T23:30Z",
       "matchId": "londrina--criciuma",
       "order": [
@@ -109,22 +86,22 @@
         "draw",
         "away"
       ],
-      "pAway": 0.2389,
-      "pDraw": 0.2398,
-      "pHome": 0.5212,
+      "pAway": 0.2352,
+      "pDraw": 0.2464,
+      "pHome": 0.5184,
       "round": 31,
       "sameBottom": false,
       "sameTop": true,
-      "swing": 0.02
+      "swing": 0.0178
     },
     {
       "awayId": "crb",
       "best": "home",
-      "gain": 0.0071,
+      "gain": 0.0051,
       "homeId": "sao-bernardo",
-      "ifAway": 0.3661,
-      "ifDraw": 0.3801,
-      "ifHome": 0.3831,
+      "ifAway": 0.321,
+      "ifDraw": 0.3316,
+      "ifHome": 0.3341,
       "kickoffUtc": "2026-10-02T22:30Z",
       "matchId": "sao-bernardo--crb",
       "order": [
@@ -133,12 +110,12 @@
         "away"
       ],
       "pAway": 0.3192,
-      "pDraw": 0.2747,
-      "pHome": 0.406,
+      "pDraw": 0.2782,
+      "pHome": 0.4027,
       "round": 31,
       "sameBottom": false,
       "sameTop": true,
-      "swing": 0.0171
+      "swing": 0.0131
     }
   ],
   "round": 31

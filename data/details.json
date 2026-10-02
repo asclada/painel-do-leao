@@ -1173,6 +1173,54 @@
       }
     }
   },
+  "athletic-club--sport": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 14,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "sport"
+      },
+      {
+        "extra": null,
+        "minute": 24,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "athletic-club"
+      },
+      {
+        "extra": null,
+        "minute": 33,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "sport"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "athletic-club--sport",
+    "stats": {
+      "athletic-club": {
+        "corners": 8,
+        "possession": 56.3,
+        "red": 0,
+        "shots": 29,
+        "shotsOnTarget": 8,
+        "yellow": 2
+      },
+      "sport": {
+        "corners": 6,
+        "possession": 43.7,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 5,
+        "yellow": 2
+      }
+    }
+  },
   "athletic-club--vila-nova": {
     "goals": [
       {
@@ -9224,6 +9272,54 @@
         "shots": 25,
         "shotsOnTarget": 6,
         "yellow": 0
+      }
+    }
+  },
+  "novorizontino--goias": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 20,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": null,
+        "minute": 61,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": 3,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "novorizontino"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "novorizontino--goias",
+    "stats": {
+      "goias": {
+        "corners": 2,
+        "possession": 66.9,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 4,
+        "yellow": 1
+      },
+      "novorizontino": {
+        "corners": 4,
+        "possession": 33.1,
+        "red": 0,
+        "shots": 31,
+        "shotsOnTarget": 13,
+        "yellow": 3
       }
     }
   },

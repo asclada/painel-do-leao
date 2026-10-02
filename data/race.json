@@ -159,9 +159,9 @@
         "V"
       ],
       "goalDiff": 12,
-      "pDirect": 0.5335,
-      "pPromotion": 0.7419,
-      "pTop6": 0.4101,
+      "pDirect": 0.5101,
+      "pPromotion": 0.7259,
+      "pTop6": 0.4258,
       "played": 30,
       "points": 54,
       "position": 1,
@@ -170,6 +170,86 @@
       "remainingVsTop6": 4,
       "schedulePoints": -0.49,
       "teamId": "vila-nova"
+    },
+    {
+      "difficulty": "Difícil",
+      "fixtures": [
+        {
+          "home": false,
+          "kickoffUtc": "2026-10-08T22:30Z",
+          "matchId": "nautico--novorizontino",
+          "opponentId": "nautico",
+          "opponentInTop6": false,
+          "round": 32
+        },
+        {
+          "home": true,
+          "kickoffUtc": "2026-10-12T22:00Z",
+          "matchId": "novorizontino--ponte-preta",
+          "opponentId": "ponte-preta",
+          "opponentInTop6": false,
+          "round": 33
+        },
+        {
+          "home": false,
+          "kickoffUtc": "2026-10-18T21:00Z",
+          "matchId": "vila-nova--novorizontino",
+          "opponentId": "vila-nova",
+          "opponentInTop6": true,
+          "round": 34
+        },
+        {
+          "home": false,
+          "kickoffUtc": "2026-10-23T18:00Z",
+          "matchId": "atletico-go--novorizontino",
+          "opponentId": "atletico-go",
+          "opponentInTop6": true,
+          "round": 35
+        },
+        {
+          "home": true,
+          "kickoffUtc": "2026-10-30T18:00Z",
+          "matchId": "novorizontino--operario-pr",
+          "opponentId": "operario-pr",
+          "opponentInTop6": false,
+          "round": 36
+        },
+        {
+          "home": true,
+          "kickoffUtc": "2026-11-06T20:00Z",
+          "matchId": "novorizontino--fortaleza",
+          "opponentId": "fortaleza",
+          "opponentInTop6": true,
+          "round": 37
+        },
+        {
+          "home": false,
+          "kickoffUtc": "2026-11-14T20:00Z",
+          "matchId": "criciuma--novorizontino",
+          "opponentId": "criciuma",
+          "opponentInTop6": true,
+          "round": 38
+        }
+      ],
+      "form": [
+        "V",
+        "E",
+        "D",
+        "E",
+        "V"
+      ],
+      "goalDiff": 25,
+      "pDirect": 0.4528,
+      "pPromotion": 0.7383,
+      "pTop6": 0.4666,
+      "played": 31,
+      "points": 54,
+      "position": 2,
+      "remainingAway": 4,
+      "remainingHome": 3,
+      "remainingVsTop6": 4,
+      "schedulePoints": -0.87,
+      "teamId": "novorizontino"
     },
     {
       "difficulty": "Difícil",
@@ -247,16 +327,16 @@
         "V"
       ],
       "goalDiff": 13,
-      "pDirect": 0.3755,
-      "pPromotion": 0.6426,
-      "pTop6": 0.5086,
+      "pDirect": 0.3521,
+      "pPromotion": 0.6329,
+      "pTop6": 0.5212,
       "played": 30,
       "points": 53,
-      "position": 2,
+      "position": 3,
       "remainingAway": 4,
       "remainingHome": 4,
       "remainingVsTop6": 1,
-      "schedulePoints": -0.7,
+      "schedulePoints": -0.69,
       "teamId": "juventude"
     },
     {
@@ -335,105 +415,17 @@
         "E"
       ],
       "goalDiff": 9,
-      "pDirect": 0.376,
-      "pPromotion": 0.6226,
-      "pTop6": 0.4857,
+      "pDirect": 0.329,
+      "pPromotion": 0.588,
+      "pTop6": 0.5095,
       "played": 30,
       "points": 52,
-      "position": 3,
-      "remainingAway": 4,
-      "remainingHome": 4,
-      "remainingVsTop6": 3,
-      "schedulePoints": 0.77,
-      "teamId": "fortaleza"
-    },
-    {
-      "difficulty": "Difícil",
-      "fixtures": [
-        {
-          "home": true,
-          "kickoffUtc": "2026-10-02T00:00Z",
-          "matchId": "novorizontino--goias",
-          "opponentId": "goias",
-          "opponentInTop6": false,
-          "round": 31
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-08T22:30Z",
-          "matchId": "nautico--novorizontino",
-          "opponentId": "nautico",
-          "opponentInTop6": false,
-          "round": 32
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-10-12T22:00Z",
-          "matchId": "novorizontino--ponte-preta",
-          "opponentId": "ponte-preta",
-          "opponentInTop6": false,
-          "round": 33
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-18T21:00Z",
-          "matchId": "vila-nova--novorizontino",
-          "opponentId": "vila-nova",
-          "opponentInTop6": true,
-          "round": 34
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-23T18:00Z",
-          "matchId": "atletico-go--novorizontino",
-          "opponentId": "atletico-go",
-          "opponentInTop6": true,
-          "round": 35
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-10-30T18:00Z",
-          "matchId": "novorizontino--operario-pr",
-          "opponentId": "operario-pr",
-          "opponentInTop6": false,
-          "round": 36
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-06T20:00Z",
-          "matchId": "novorizontino--fortaleza",
-          "opponentId": "fortaleza",
-          "opponentInTop6": true,
-          "round": 37
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-14T20:00Z",
-          "matchId": "criciuma--novorizontino",
-          "opponentId": "criciuma",
-          "opponentInTop6": true,
-          "round": 38
-        }
-      ],
-      "form": [
-        "V",
-        "V",
-        "E",
-        "D",
-        "E"
-      ],
-      "goalDiff": 22,
-      "pDirect": 0.3225,
-      "pPromotion": 0.6183,
-      "pTop6": 0.5006,
-      "played": 30,
-      "points": 51,
       "position": 4,
       "remainingAway": 4,
       "remainingHome": 4,
-      "remainingVsTop6": 4,
-      "schedulePoints": -0.7,
-      "teamId": "novorizontino"
+      "remainingVsTop6": 3,
+      "schedulePoints": 0.63,
+      "teamId": "fortaleza"
     },
     {
       "difficulty": "Média",
@@ -511,16 +503,16 @@
         "V"
       ],
       "goalDiff": 4,
-      "pDirect": 0.0671,
-      "pPromotion": 0.2281,
-      "pTop6": 0.4128,
+      "pDirect": 0.0626,
+      "pPromotion": 0.2134,
+      "pTop6": 0.4078,
       "played": 30,
       "points": 50,
       "position": 5,
       "remainingAway": 5,
       "remainingHome": 3,
       "remainingVsTop6": 2,
-      "schedulePoints": -0.25,
+      "schedulePoints": -0.26,
       "teamId": "criciuma"
     },
     {
@@ -599,16 +591,16 @@
         "V"
       ],
       "goalDiff": 10,
-      "pDirect": 0.1492,
-      "pPromotion": 0.4286,
-      "pTop6": 0.5041,
+      "pDirect": 0.1326,
+      "pPromotion": 0.4014,
+      "pTop6": 0.5009,
       "played": 30,
       "points": 49,
       "position": 6,
       "remainingAway": 4,
       "remainingHome": 4,
       "remainingVsTop6": 2,
-      "schedulePoints": 0.24,
+      "schedulePoints": 0.23,
       "teamId": "atletico-go"
     },
     {
@@ -687,16 +679,16 @@
         "V"
       ],
       "goalDiff": 4,
-      "pDirect": 0.0801,
-      "pPromotion": 0.286,
-      "pTop6": 0.4435,
+      "pDirect": 0.0714,
+      "pPromotion": 0.2692,
+      "pTop6": 0.4354,
       "played": 30,
       "points": 48,
       "position": 7,
       "remainingAway": 4,
       "remainingHome": 4,
       "remainingVsTop6": 2,
-      "schedulePoints": 0.37,
+      "schedulePoints": 0.36,
       "teamId": "crb"
     }
   ]

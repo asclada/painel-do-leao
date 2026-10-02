@@ -9,7 +9,7 @@ modelo dizia com o que aconteceu.
 
 ## Jogo a jogo (previsão feita uma rodada antes)
 
-- Jogos avaliados: **290** (rodadas 2 a 30)
+- Jogos avaliados: **292** (rodadas 2 a 31)
 - Brier multiclasse do modelo: **0,643** (quanto menor, melhor)
 - Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,659
 - Chutar 1/3 para cada resultado: 0,667
@@ -17,8 +17,8 @@ modelo dizia com o que aconteceu.
 - Log loss: 1,065 · resultado mais provável acertou 41% dos jogos
 - Favoritos (acima de 50%): 61 jogos, chance média prevista 57%, venceram 57%
 - Resultado mais provável / do meio / menos provável (zebra): 41% / 33% / 26% dos jogos
-- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0027**
-- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,1268. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 88% do valor.
+- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0026**
+- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,1265. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 88% do valor.
 
 **Referência, não comparação direta.** O site Chance de Gol publica os mesmos indicadores para o modelo dele,
 com outro método e todas as competições desde 1998: resultado mais provável / do meio / zebra em 51% / 27% /
@@ -32,9 +32,9 @@ Calibração por faixa (todas as chances de vitória do mandante, empate e vitó
 |---|---:|---:|---:|
 | 0%–10% | 4 | 9% | 25% |
 | 10%–20% | 38 | 16% | 11% |
-| 20%–30% | 339 | 26% | 27% |
+| 20%–30% | 343 | 26% | 27% |
 | 30%–40% | 294 | 34% | 36% |
-| 40%–50% | 134 | 45% | 37% |
+| 40%–50% | 136 | 45% | 38% |
 | 50%–60% | 45 | 53% | 47% |
 | 60%–70% | 12 | 64% | 92% |
 | 70%–80% | 4 | 76% | 75% |
