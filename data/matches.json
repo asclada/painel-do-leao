@@ -4590,18 +4590,18 @@
     "venue": "Arena Castelão"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "ceara",
     "city": "Florianópolis",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "avai",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "avai--ceara",
     "kickoffUtc": "2026-10-03T14:00Z",
     "round": 31,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio da Ressacada"
   },
   {

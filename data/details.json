@@ -2019,6 +2019,38 @@
       }
     }
   },
+  "avai--ceara": {
+    "goals": [
+      {
+        "extra": 6,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "ceara"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "avai--ceara",
+    "stats": {
+      "avai": {
+        "corners": 8,
+        "possession": 56.1,
+        "red": 0,
+        "shots": 20,
+        "shotsOnTarget": 5,
+        "yellow": 4
+      },
+      "ceara": {
+        "corners": 6,
+        "possession": 43.9,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 5,
+        "yellow": 2
+      }
+    }
+  },
   "avai--crb": {
     "goals": [
       {
