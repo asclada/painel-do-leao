@@ -4575,18 +4575,18 @@
     "venue": "Alfredo Jaconi"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "nautico",
     "city": "Fortaleza",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "fortaleza",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 1,
     "id": "fortaleza--nautico",
     "kickoffUtc": "2026-10-03T00:35Z",
     "round": 31,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Arena Castelão"
   },
   {

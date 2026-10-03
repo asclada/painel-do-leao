@@ -141,28 +141,28 @@
       "points": 20,
       "wins": 5
     },
-    "draws": 10,
+    "draws": 11,
     "goalDiff": 9,
-    "goalsAgainst": 26,
-    "goalsFor": 35,
+    "goalsAgainst": 27,
+    "goalsFor": 36,
     "home": {
-      "draws": 5,
-      "goalsAgainst": 13,
-      "goalsFor": 24,
+      "draws": 6,
+      "goalsAgainst": 14,
+      "goalsFor": 25,
       "losses": 1,
-      "played": 15,
-      "points": 32,
+      "played": 16,
+      "points": 33,
       "wins": 9
     },
     "losses": 6,
-    "pct": 58,
-    "played": 30,
-    "points": 52,
+    "pct": 57,
+    "played": 31,
+    "points": 53,
     "position": 5,
     "red": 8,
     "teamId": "fortaleza",
     "wins": 14,
-    "yellow": 73
+    "yellow": 74
   },
   {
     "away": {
@@ -397,6 +397,39 @@
   },
   {
     "away": {
+      "draws": 6,
+      "goalsAgainst": 25,
+      "goalsFor": 20,
+      "losses": 7,
+      "played": 16,
+      "points": 15,
+      "wins": 3
+    },
+    "draws": 9,
+    "goalDiff": 1,
+    "goalsAgainst": 38,
+    "goalsFor": 39,
+    "home": {
+      "draws": 3,
+      "goalsAgainst": 13,
+      "goalsFor": 19,
+      "losses": 4,
+      "played": 15,
+      "points": 27,
+      "wins": 8
+    },
+    "losses": 11,
+    "pct": 45,
+    "played": 31,
+    "points": 42,
+    "position": 13,
+    "red": 6,
+    "teamId": "nautico",
+    "wins": 11,
+    "yellow": 87
+  },
+  {
+    "away": {
       "draws": 7,
       "goalsAgainst": 19,
       "goalsFor": 18,
@@ -422,44 +455,11 @@
     "pct": 45,
     "played": 31,
     "points": 42,
-    "position": 13,
+    "position": 14,
     "red": 9,
     "teamId": "athletic-club",
     "wins": 10,
     "yellow": 73
-  },
-  {
-    "away": {
-      "draws": 5,
-      "goalsAgainst": 24,
-      "goalsFor": 19,
-      "losses": 7,
-      "played": 15,
-      "points": 14,
-      "wins": 3
-    },
-    "draws": 8,
-    "goalDiff": 1,
-    "goalsAgainst": 37,
-    "goalsFor": 38,
-    "home": {
-      "draws": 3,
-      "goalsAgainst": 13,
-      "goalsFor": 19,
-      "losses": 4,
-      "played": 15,
-      "points": 27,
-      "wins": 8
-    },
-    "losses": 11,
-    "pct": 46,
-    "played": 30,
-    "points": 41,
-    "position": 14,
-    "red": 6,
-    "teamId": "nautico",
-    "wins": 11,
-    "yellow": 84
   },
   {
     "away": {

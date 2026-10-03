@@ -1,30 +1,30 @@
 {
   "chances": {
-    "draw": 0.245,
-    "loss": 0.2343,
-    "win": 0.5207
+    "draw": 0.3139,
+    "loss": 0.2445,
+    "win": 0.4415
   },
-  "city": "Fortaleza",
-  "firstTurn": "Náutico 0 x 1 Fortaleza",
+  "city": "Belo Horizonte",
+  "firstTurn": "Fortaleza 0 x 3 América-MG",
   "formFortaleza": [
-    "V",
     "V",
     "E",
     "V",
+    "E",
     "E"
   ],
   "formOpponent": [
+    "D",
     "V",
     "D",
-    "E",
     "D",
-    "V"
+    "D"
   ],
-  "home": true,
-  "kickoffUtc": "2026-10-03T00:35Z",
-  "matchId": "fortaleza--nautico",
-  "opponentId": "nautico",
-  "round": 31,
-  "status": "live",
-  "venue": "Arena Castelão"
+  "home": false,
+  "kickoffUtc": "2026-10-07T23:30Z",
+  "matchId": "america-mg--fortaleza",
+  "opponentId": "america-mg",
+  "round": 32,
+  "status": "scheduled",
+  "venue": "Estádio Raimundo Sampaio (Independência)"
 }

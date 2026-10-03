@@ -1,15 +1,38 @@
 {
-  "baseline": 0.299,
+  "baseline": 0.218,
   "metric": "direct",
   "rivals": [
     {
+      "awayId": "juventude",
+      "best": "home",
+      "gain": 0.0337,
+      "homeId": "ponte-preta",
+      "ifAway": 0.1954,
+      "ifDraw": 0.2315,
+      "ifHome": 0.2517,
+      "kickoffUtc": "2026-10-07T00:35Z",
+      "matchId": "ponte-preta--juventude",
+      "order": [
+        "home",
+        "draw",
+        "away"
+      ],
+      "pAway": 0.495,
+      "pDraw": 0.3065,
+      "pHome": 0.1984,
+      "round": 32,
+      "sameBottom": false,
+      "sameTop": false,
+      "swing": 0.0563
+    },
+    {
       "awayId": "vila-nova",
       "best": "home",
-      "gain": 0.0174,
+      "gain": 0.0152,
       "homeId": "botafogo-sp",
-      "ifAway": 0.2634,
-      "ifDraw": 0.3004,
-      "ifHome": 0.3164,
+      "ifAway": 0.1864,
+      "ifDraw": 0.2196,
+      "ifHome": 0.2333,
       "kickoffUtc": "2026-10-03T21:30Z",
       "matchId": "botafogo-sp--vila-nova",
       "order": [
@@ -17,22 +40,114 @@
         "draw",
         "away"
       ],
-      "pAway": 0.2716,
-      "pDraw": 0.2472,
-      "pHome": 0.4813,
+      "pAway": 0.2689,
+      "pDraw": 0.2582,
+      "pHome": 0.4729,
       "round": 31,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.053
+      "swing": 0.0469
+    },
+    {
+      "awayId": "novorizontino",
+      "best": "home",
+      "gain": 0.0252,
+      "homeId": "nautico",
+      "ifAway": 0.1965,
+      "ifDraw": 0.2282,
+      "ifHome": 0.2432,
+      "kickoffUtc": "2026-10-08T22:30Z",
+      "matchId": "nautico--novorizontino",
+      "order": [
+        "home",
+        "draw",
+        "away"
+      ],
+      "pAway": 0.4331,
+      "pDraw": 0.2449,
+      "pHome": 0.3221,
+      "round": 32,
+      "sameBottom": false,
+      "sameTop": false,
+      "swing": 0.0467
+    },
+    {
+      "awayId": "cuiaba",
+      "best": "away",
+      "gain": 0.0305,
+      "homeId": "vila-nova",
+      "ifAway": 0.2485,
+      "ifDraw": 0.2366,
+      "ifHome": 0.2061,
+      "kickoffUtc": "2026-10-07T23:30Z",
+      "matchId": "vila-nova--cuiaba",
+      "order": [
+        "away",
+        "draw",
+        "home"
+      ],
+      "pAway": 0.1363,
+      "pDraw": 0.2283,
+      "pHome": 0.6354,
+      "round": 32,
+      "sameBottom": false,
+      "sameTop": false,
+      "swing": 0.0423
+    },
+    {
+      "awayId": "criciuma",
+      "best": "home",
+      "gain": 0.0125,
+      "homeId": "ceara",
+      "ifAway": 0.1993,
+      "ifDraw": 0.2238,
+      "ifHome": 0.2305,
+      "kickoffUtc": "2026-10-08T22:30Z",
+      "matchId": "ceara--criciuma",
+      "order": [
+        "home",
+        "draw",
+        "away"
+      ],
+      "pAway": 0.3181,
+      "pDraw": 0.2687,
+      "pHome": 0.4132,
+      "round": 32,
+      "sameBottom": false,
+      "sameTop": true,
+      "swing": 0.0312
+    },
+    {
+      "awayId": "atletico-go",
+      "best": "home",
+      "gain": 0.0065,
+      "homeId": "crb",
+      "ifAway": 0.205,
+      "ifDraw": 0.2214,
+      "ifHome": 0.2245,
+      "kickoffUtc": "2026-10-07T23:30Z",
+      "matchId": "crb--atletico-go",
+      "order": [
+        "home",
+        "draw",
+        "away"
+      ],
+      "pAway": 0.2529,
+      "pDraw": 0.2792,
+      "pHome": 0.4679,
+      "round": 32,
+      "sameBottom": false,
+      "sameTop": true,
+      "swing": 0.0195
     },
     {
       "awayId": "america-mg",
       "best": "away",
-      "gain": 0.013,
+      "gain": 0.0115,
       "homeId": "atletico-go",
-      "ifAway": 0.312,
-      "ifDraw": 0.309,
-      "ifHome": 0.2953,
+      "ifAway": 0.2296,
+      "ifDraw": 0.2258,
+      "ifHome": 0.2149,
       "kickoffUtc": "2026-10-03T19:00Z",
       "matchId": "atletico-go--america-mg",
       "order": [
@@ -40,14 +155,14 @@
         "draw",
         "home"
       ],
-      "pAway": 0.1092,
-      "pDraw": 0.1895,
-      "pHome": 0.7013,
+      "pAway": 0.1069,
+      "pDraw": 0.1882,
+      "pHome": 0.7049,
       "round": 31,
       "sameBottom": false,
       "sameTop": true,
-      "swing": 0.0168
+      "swing": 0.0147
     }
   ],
-  "round": 31
+  "round": 32
 }

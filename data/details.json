@@ -6227,6 +6227,46 @@
       }
     }
   },
+  "fortaleza--nautico": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 5,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "nautico"
+      },
+      {
+        "extra": null,
+        "minute": 43,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "fortaleza"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "fortaleza--nautico",
+    "stats": {
+      "fortaleza": {
+        "corners": 7,
+        "possession": 51.4,
+        "red": 0,
+        "shots": 16,
+        "shotsOnTarget": 4,
+        "yellow": 1
+      },
+      "nautico": {
+        "corners": 4,
+        "possession": 48.6,
+        "red": 0,
+        "shots": 12,
+        "shotsOnTarget": 3,
+        "yellow": 3
+      }
+    }
+  },
   "fortaleza--novorizontino": {
     "goals": [
       {

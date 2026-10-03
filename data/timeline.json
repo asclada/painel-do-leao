@@ -28,7 +28,7 @@
     {
       "kind": "unbeaten",
       "round": 20,
-      "text": "Rodada 20: início da sequência de 11 jogos sem perder.",
+      "text": "Rodada 20: início da sequência de 12 jogos sem perder.",
       "title": "Começa a invencibilidade"
     },
     {
@@ -400,15 +400,15 @@
       "round": 30
     },
     {
-      "goalsAgainst": null,
-      "goalsFor": null,
+      "goalsAgainst": 1,
+      "goalsFor": 1,
       "home": true,
       "kickoffUtc": "2026-10-03T00:35Z",
       "matchId": "fortaleza--nautico",
       "opponentId": "nautico",
-      "points": 52,
+      "points": 53,
       "position": 5,
-      "result": null,
+      "result": "E",
       "round": 31
     }
   ],
@@ -477,7 +477,7 @@
       10,
       13,
       13,
-      13
+      14
     ],
     "atletico-go": [
       15,
@@ -840,7 +840,7 @@
       14,
       14,
       14,
-      14
+      13
     ],
     "novorizontino": [
       18,
