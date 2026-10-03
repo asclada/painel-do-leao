@@ -73,6 +73,9 @@ simulador "E se?" e raio-x. Atualiza sozinho (cron com tentativa a cada 30 min).
   não aparecem no painel; por enquanto contar pelas chamadas das rotas `/api/card/*` em Observability.
 - **Dados atrasados:** `meta.dataStatus` (`pipeline/fetch.py::data_status`): `delayed` só com ESPN falhando ≥2x E
   jogo que já deveria ter acabado sem resultado; não mexe no `updatedAt`. Banner em `components/DataStatusBanner.tsx`.
+- **`/api/status` (03/10):** `app/api/status/route.ts`, rota estática (`force-static`) gerada no build com o que está NO AR em
+  JSON: `meta` (inclui `updatedAt` dos dados), classificação, próximo jogo, chances (`pDirect`, `pTop6` etc.), jogos da temporada,
+  `builtAt` (hora do deploy) e `commit` (só existe na Vercel). Só leitura, sem segredos; serve para conferir de fora o que o site publicou.
 - **Front:** tokens de cor/fonte em `app/globals.css` (Tailwind v4 `@theme`), fontes em `lib/fonts.ts`, nome do site em
   `lib/site.ts` (inclui `SITE_URL`). **Ordem da página (01/10, proposta do Lucas: o foco é o Fortaleza em números)**, em blocos
   com rótulo (`Section eyebrow`): campinho pixel art → topo (hero F1) → **Esta rodada**: palpite (`#palpite`) →
@@ -236,4 +239,4 @@ simulador "E se?" e raio-x. Atualiza sozinho (cron com tentativa a cada 30 min).
 
 _Última atualização: 30/09/2026 (auditoria: desempate com confronto direto, hierarquia em blocos, "Pra secar"
 enxuto, seções recolhidas, "Meu Leão" e "jogos do Leão que mais mexem" removidos, licença "todos os direitos
-reservados")._
+reservados"). Em 03/10/2026: rota `/api/status`._
