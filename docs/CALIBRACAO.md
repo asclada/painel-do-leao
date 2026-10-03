@@ -9,16 +9,16 @@ modelo dizia com o que aconteceu.
 
 ## Jogo a jogo (previsão feita uma rodada antes)
 
-- Jogos avaliados: **298** (rodadas 2 a 31)
-- Brier multiclasse do modelo: **0,642** (quanto menor, melhor)
+- Jogos avaliados: **299** (rodadas 2 a 31)
+- Brier multiclasse do modelo: **0,640** (quanto menor, melhor)
 - Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,658
 - Chutar 1/3 para cada resultado: 0,667
-- Ganho sobre a referência (skill score): **2,4%**
-- Log loss: 1,065 · resultado mais provável acertou 42% dos jogos
-- Favoritos (acima de 50%): 64 jogos, chance média prevista 57%, venceram 56%
-- Resultado mais provável / do meio / menos provável (zebra): 42% / 33% / 26% dos jogos
+- Ganho sobre a referência (skill score): **2,6%**
+- Log loss: 1,062 · resultado mais provável acertou 42% dos jogos
+- Favoritos (acima de 50%): 65 jogos, chance média prevista 57%, venceram 57%
+- Resultado mais provável / do meio / menos provável (zebra): 42% / 33% / 25% dos jogos
 - Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0027**
-- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,1323. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 86% do valor.
+- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,1376. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 86% do valor.
 
 **Referência, não comparação direta.** O site Chance de Gol publica os mesmos indicadores para o modelo dele,
 com outro método e todas as competições desde 1998: resultado mais provável / do meio / zebra em 51% / 27% /
@@ -30,14 +30,15 @@ Calibração por faixa (todas as chances de vitória do mandante, empate e vitó
 
 | Faixa prevista | Casos | Chance média prevista | Aconteceu |
 |---|---:|---:|---:|
-| 0%–10% | 4 | 9% | 25% |
-| 10%–20% | 40 | 16% | 10% |
+| 0%–10% | 5 | 8% | 20% |
+| 10%–20% | 41 | 16% | 10% |
 | 20%–30% | 351 | 26% | 28% |
 | 30%–40% | 296 | 34% | 36% |
 | 40%–50% | 139 | 45% | 38% |
 | 50%–60% | 47 | 53% | 45% |
 | 60%–70% | 12 | 64% | 92% |
 | 70%–80% | 5 | 75% | 80% |
+| 80%–90% | 1 | 81% | 100% |
 
 ## Temporada (chance de G2 e de G6)
 

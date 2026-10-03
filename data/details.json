@@ -5789,6 +5789,46 @@
       }
     }
   },
+  "cuiaba--ponte-preta": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 26,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "cuiaba"
+      },
+      {
+        "extra": null,
+        "minute": 73,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 2,
+        "teamId": "cuiaba"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "cuiaba--ponte-preta",
+    "stats": {
+      "cuiaba": {
+        "corners": 7,
+        "possession": 73.7,
+        "red": 0,
+        "shots": 15,
+        "shotsOnTarget": 7,
+        "yellow": 3
+      },
+      "ponte-preta": {
+        "corners": 0,
+        "possession": 26.3,
+        "red": 0,
+        "shots": 2,
+        "shotsOnTarget": 0,
+        "yellow": 3
+      }
+    }
+  },
   "cuiaba--sport": {
     "goals": [],
     "goalsComplete": true,

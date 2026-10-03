@@ -4620,18 +4620,18 @@
     "venue": "Estádio Antônio Accioly"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "ponte-preta",
     "city": "Cuiabá",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "cuiaba",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 1,
     "id": "cuiaba--ponte-preta",
     "kickoffUtc": "2026-10-03T20:00Z",
     "round": 31,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Arena Pantanal"
   },
   {
@@ -4646,7 +4646,7 @@
     "kickoffUtc": "2026-10-03T21:30Z",
     "round": 31,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Santa Cruz"
   },
   {
@@ -4682,7 +4682,7 @@
   {
     "awayGoals": null,
     "awayId": "juventude",
-    "city": "Ponte Preta",
+    "city": "Indaiatuba",
     "homeGoals": null,
     "homeId": "ponte-preta",
     "htAwayGoals": null,
@@ -4692,7 +4692,7 @@
     "round": 32,
     "source": "espn",
     "status": "scheduled",
-    "venue": "Moisés Lucarelli"
+    "venue": "Estádio Italo Mário Limongi"
   },
   {
     "awayGoals": null,
