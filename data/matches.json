@@ -4530,18 +4530,18 @@
     "venue": "Estádio Dr. Jorge Ismael de Biasi"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "crb",
     "city": "São Bernardo do Campo ",
-    "homeGoals": null,
+    "homeGoals": 3,
     "homeId": "sao-bernardo",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "sao-bernardo--crb",
     "kickoffUtc": "2026-10-02T22:30Z",
     "round": 31,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Primeiro de Maio"
   },
   {
@@ -4556,7 +4556,7 @@
     "kickoffUtc": "2026-10-02T23:30Z",
     "round": 31,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estadio VGD"
   },
   {
@@ -4571,7 +4571,7 @@
     "kickoffUtc": "2026-10-02T23:45Z",
     "round": 31,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Alfredo Jaconi"
   },
   {
@@ -4586,7 +4586,7 @@
     "kickoffUtc": "2026-10-03T00:35Z",
     "round": 31,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Arena Castelão"
   },
   {

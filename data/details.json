@@ -11110,6 +11110,62 @@
       }
     }
   },
+  "sao-bernardo--crb": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 51,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "crb"
+      },
+      {
+        "extra": null,
+        "minute": 59,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": null,
+        "minute": 64,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": null,
+        "minute": 81,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "sao-bernardo--crb",
+    "stats": {
+      "crb": {
+        "corners": 7,
+        "possession": 57.0,
+        "red": 0,
+        "shots": 26,
+        "shotsOnTarget": 8,
+        "yellow": 1
+      },
+      "sao-bernardo": {
+        "corners": 5,
+        "possession": 43.0,
+        "red": 0,
+        "shots": 12,
+        "shotsOnTarget": 5,
+        "yellow": 2
+      }
+    }
+  },
   "sao-bernardo--cuiaba": {
     "goals": [
       {

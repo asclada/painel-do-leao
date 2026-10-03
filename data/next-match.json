@@ -1,8 +1,8 @@
 {
   "chances": {
-    "draw": 0.2444,
-    "loss": 0.2337,
-    "win": 0.5219
+    "draw": 0.2456,
+    "loss": 0.2347,
+    "win": 0.5197
   },
   "city": "Fortaleza",
   "firstTurn": "Náutico 0 x 1 Fortaleza",
@@ -25,6 +25,6 @@
   "matchId": "fortaleza--nautico",
   "opponentId": "nautico",
   "round": 31,
-  "status": "scheduled",
+  "status": "live",
   "venue": "Arena Castelão"
 }
