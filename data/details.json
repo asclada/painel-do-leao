@@ -7472,6 +7472,54 @@
       }
     }
   },
+  "juventude--operario-pr": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 22,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "juventude"
+      },
+      {
+        "extra": null,
+        "minute": 41,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "juventude"
+      },
+      {
+        "extra": null,
+        "minute": 56,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "juventude--operario-pr",
+    "stats": {
+      "juventude": {
+        "corners": 3,
+        "possession": 48.9,
+        "red": 0,
+        "shots": 25,
+        "shotsOnTarget": 6,
+        "yellow": 2
+      },
+      "operario-pr": {
+        "corners": 5,
+        "possession": 51.1,
+        "red": 0,
+        "shots": 22,
+        "shotsOnTarget": 4,
+        "yellow": 2
+      }
+    }
+  },
   "juventude--ponte-preta": {
     "goals": [
       {
@@ -7818,6 +7866,46 @@
         "shots": 12,
         "shotsOnTarget": 8,
         "yellow": 3
+      }
+    }
+  },
+  "londrina--criciuma": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 49,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "criciuma"
+      },
+      {
+        "extra": null,
+        "minute": 52,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "criciuma"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "londrina--criciuma",
+    "stats": {
+      "criciuma": {
+        "corners": 4,
+        "possession": 51.7,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      },
+      "londrina": {
+        "corners": 6,
+        "possession": 48.3,
+        "red": 1,
+        "shots": 14,
+        "shotsOnTarget": 4,
+        "yellow": 1
       }
     }
   },

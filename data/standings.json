@@ -2,6 +2,39 @@
   {
     "away": {
       "draws": 4,
+      "goalsAgainst": 13,
+      "goalsFor": 13,
+      "losses": 5,
+      "played": 15,
+      "points": 22,
+      "wins": 6
+    },
+    "draws": 8,
+    "goalDiff": 16,
+    "goalsAgainst": 19,
+    "goalsFor": 35,
+    "home": {
+      "draws": 4,
+      "goalsAgainst": 6,
+      "goalsFor": 22,
+      "losses": 2,
+      "played": 16,
+      "points": 34,
+      "wins": 10
+    },
+    "losses": 7,
+    "pct": 60,
+    "played": 31,
+    "points": 56,
+    "position": 1,
+    "red": 2,
+    "teamId": "juventude",
+    "wins": 16,
+    "yellow": 67
+  },
+  {
+    "away": {
+      "draws": 4,
       "goalsAgainst": 20,
       "goalsFor": 12,
       "losses": 7,
@@ -26,7 +59,7 @@
     "pct": 60,
     "played": 30,
     "points": 54,
-    "position": 1,
+    "position": 2,
     "red": 7,
     "teamId": "vila-nova",
     "wins": 16,
@@ -59,7 +92,7 @@
     "pct": 58,
     "played": 31,
     "points": 54,
-    "position": 2,
+    "position": 3,
     "red": 2,
     "teamId": "novorizontino",
     "wins": 15,
@@ -68,35 +101,35 @@
   {
     "away": {
       "draws": 4,
-      "goalsAgainst": 13,
-      "goalsFor": 13,
+      "goalsAgainst": 17,
+      "goalsFor": 15,
       "losses": 5,
       "played": 15,
       "points": 22,
       "wins": 6
     },
     "draws": 8,
-    "goalDiff": 13,
-    "goalsAgainst": 19,
-    "goalsFor": 32,
+    "goalDiff": 6,
+    "goalsAgainst": 27,
+    "goalsFor": 33,
     "home": {
       "draws": 4,
-      "goalsAgainst": 6,
-      "goalsFor": 19,
-      "losses": 2,
-      "played": 15,
+      "goalsAgainst": 10,
+      "goalsFor": 18,
+      "losses": 3,
+      "played": 16,
       "points": 31,
       "wins": 9
     },
-    "losses": 7,
-    "pct": 59,
-    "played": 30,
+    "losses": 8,
+    "pct": 57,
+    "played": 31,
     "points": 53,
-    "position": 3,
-    "red": 2,
-    "teamId": "juventude",
+    "position": 4,
+    "red": 1,
+    "teamId": "criciuma",
     "wins": 15,
-    "yellow": 65
+    "yellow": 75
   },
   {
     "away": {
@@ -125,42 +158,9 @@
     "pct": 58,
     "played": 30,
     "points": 52,
-    "position": 4,
+    "position": 5,
     "red": 8,
     "teamId": "fortaleza",
-    "wins": 14,
-    "yellow": 73
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 17,
-      "goalsFor": 13,
-      "losses": 5,
-      "played": 14,
-      "points": 19,
-      "wins": 5
-    },
-    "draws": 8,
-    "goalDiff": 4,
-    "goalsAgainst": 27,
-    "goalsFor": 31,
-    "home": {
-      "draws": 4,
-      "goalsAgainst": 10,
-      "goalsFor": 18,
-      "losses": 3,
-      "played": 16,
-      "points": 31,
-      "wins": 9
-    },
-    "losses": 8,
-    "pct": 56,
-    "played": 30,
-    "points": 50,
-    "position": 5,
-    "red": 1,
-    "teamId": "criciuma",
     "wins": 14,
     "yellow": 73
   },
@@ -233,16 +233,16 @@
   {
     "away": {
       "draws": 4,
-      "goalsAgainst": 20,
+      "goalsAgainst": 23,
       "goalsFor": 21,
-      "losses": 5,
-      "played": 15,
+      "losses": 6,
+      "played": 16,
       "points": 22,
       "wins": 6
     },
     "draws": 9,
-    "goalDiff": 5,
-    "goalsAgainst": 38,
+    "goalDiff": 2,
+    "goalsAgainst": 41,
     "goalsFor": 43,
     "home": {
       "draws": 5,
@@ -253,15 +253,15 @@
       "points": 26,
       "wins": 7
     },
-    "losses": 8,
-    "pct": 53,
-    "played": 30,
+    "losses": 9,
+    "pct": 52,
+    "played": 31,
     "points": 48,
     "position": 8,
     "red": 2,
     "teamId": "operario-pr",
     "wins": 13,
-    "yellow": 73
+    "yellow": 75
   },
   {
     "away": {
@@ -571,27 +571,27 @@
       "wins": 3
     },
     "draws": 7,
-    "goalDiff": -4,
-    "goalsAgainst": 43,
+    "goalDiff": -6,
+    "goalsAgainst": 45,
     "goalsFor": 39,
     "home": {
       "draws": 5,
-      "goalsAgainst": 18,
+      "goalsAgainst": 20,
       "goalsFor": 23,
-      "losses": 6,
-      "played": 15,
+      "losses": 7,
+      "played": 16,
       "points": 17,
       "wins": 4
     },
-    "losses": 16,
-    "pct": 31,
-    "played": 30,
+    "losses": 17,
+    "pct": 30,
+    "played": 31,
     "points": 28,
     "position": 18,
-    "red": 4,
+    "red": 5,
     "teamId": "londrina",
     "wins": 7,
-    "yellow": 77
+    "yellow": 78
   },
   {
     "away": {

@@ -1,15 +1,15 @@
 {
-  "baseline": 0.352,
+  "baseline": 0.299,
   "metric": "direct",
   "rivals": [
     {
       "awayId": "vila-nova",
       "best": "home",
-      "gain": 0.0197,
+      "gain": 0.0174,
       "homeId": "botafogo-sp",
-      "ifAway": 0.3134,
-      "ifDraw": 0.3519,
-      "ifHome": 0.3718,
+      "ifAway": 0.2634,
+      "ifDraw": 0.3004,
+      "ifHome": 0.3164,
       "kickoffUtc": "2026-10-03T21:30Z",
       "matchId": "botafogo-sp--vila-nova",
       "order": [
@@ -17,45 +17,22 @@
         "draw",
         "away"
       ],
-      "pAway": 0.2756,
-      "pDraw": 0.241,
-      "pHome": 0.4834,
+      "pAway": 0.2716,
+      "pDraw": 0.2472,
+      "pHome": 0.4813,
       "round": 31,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0584
-    },
-    {
-      "awayId": "operario-pr",
-      "best": "draw",
-      "gain": 0.0166,
-      "homeId": "juventude",
-      "ifAway": 0.3674,
-      "ifDraw": 0.3686,
-      "ifHome": 0.3301,
-      "kickoffUtc": "2026-10-02T23:45Z",
-      "matchId": "juventude--operario-pr",
-      "order": [
-        "draw",
-        "away",
-        "home"
-      ],
-      "pAway": 0.3103,
-      "pDraw": 0.2807,
-      "pHome": 0.409,
-      "round": 31,
-      "sameBottom": false,
-      "sameTop": true,
-      "swing": 0.0384
+      "swing": 0.053
     },
     {
       "awayId": "america-mg",
       "best": "away",
-      "gain": 0.0159,
+      "gain": 0.013,
       "homeId": "atletico-go",
-      "ifAway": 0.3679,
-      "ifDraw": 0.3638,
-      "ifHome": 0.3471,
+      "ifAway": 0.312,
+      "ifDraw": 0.309,
+      "ifHome": 0.2953,
       "kickoffUtc": "2026-10-03T19:00Z",
       "matchId": "atletico-go--america-mg",
       "order": [
@@ -63,36 +40,13 @@
         "draw",
         "home"
       ],
-      "pAway": 0.109,
-      "pDraw": 0.1906,
-      "pHome": 0.7004,
+      "pAway": 0.1092,
+      "pDraw": 0.1895,
+      "pHome": 0.7013,
       "round": 31,
       "sameBottom": false,
       "sameTop": true,
-      "swing": 0.0208
-    },
-    {
-      "awayId": "criciuma",
-      "best": "home",
-      "gain": 0.0058,
-      "homeId": "londrina",
-      "ifAway": 0.3406,
-      "ifDraw": 0.3547,
-      "ifHome": 0.3579,
-      "kickoffUtc": "2026-10-02T23:30Z",
-      "matchId": "londrina--criciuma",
-      "order": [
-        "home",
-        "draw",
-        "away"
-      ],
-      "pAway": 0.2377,
-      "pDraw": 0.2382,
-      "pHome": 0.5242,
-      "round": 31,
-      "sameBottom": false,
-      "sameTop": true,
-      "swing": 0.0173
+      "swing": 0.0168
     }
   ],
   "round": 31
