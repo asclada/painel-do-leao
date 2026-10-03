@@ -4605,18 +4605,18 @@
     "venue": "Estádio da Ressacada"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "america-mg",
     "city": "Goiãnia",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "atletico-go",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 1,
     "id": "atletico-go--america-mg",
     "kickoffUtc": "2026-10-03T19:00Z",
     "round": 31,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Antônio Accioly"
   },
   {
@@ -4631,7 +4631,7 @@
     "kickoffUtc": "2026-10-03T20:00Z",
     "round": 31,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Arena Pantanal"
   },
   {

@@ -1,8 +1,8 @@
 {
   "chances": {
-    "draw": 0.314,
-    "loss": 0.2466,
-    "win": 0.4394
+    "draw": 0.3124,
+    "loss": 0.2454,
+    "win": 0.4422
   },
   "city": "Belo Horizonte",
   "firstTurn": "Fortaleza 0 x 3 América-MG",
@@ -14,8 +14,8 @@
     "E"
   ],
   "formOpponent": [
-    "D",
     "V",
+    "D",
     "D",
     "D",
     "D"

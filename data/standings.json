@@ -175,27 +175,27 @@
       "wins": 5
     },
     "draws": 10,
-    "goalDiff": 10,
+    "goalDiff": 12,
     "goalsAgainst": 27,
-    "goalsFor": 37,
+    "goalsFor": 39,
     "home": {
       "draws": 4,
       "goalsAgainst": 13,
-      "goalsFor": 24,
+      "goalsFor": 26,
       "losses": 3,
-      "played": 15,
-      "points": 28,
-      "wins": 8
+      "played": 16,
+      "points": 31,
+      "wins": 9
     },
     "losses": 7,
-    "pct": 54,
-    "played": 30,
-    "points": 49,
+    "pct": 56,
+    "played": 31,
+    "points": 52,
     "position": 6,
     "red": 4,
     "teamId": "atletico-go",
-    "wins": 13,
-    "yellow": 65
+    "wins": 14,
+    "yellow": 66
   },
   {
     "away": {
@@ -596,16 +596,16 @@
   {
     "away": {
       "draws": 2,
-      "goalsAgainst": 29,
+      "goalsAgainst": 31,
       "goalsFor": 9,
-      "losses": 12,
-      "played": 15,
+      "losses": 13,
+      "played": 16,
       "points": 5,
       "wins": 1
     },
     "draws": 5,
-    "goalDiff": -29,
-    "goalsAgainst": 50,
+    "goalDiff": -31,
+    "goalsAgainst": 52,
     "goalsFor": 21,
     "home": {
       "draws": 3,
@@ -616,15 +616,15 @@
       "points": 12,
       "wins": 3
     },
-    "losses": 21,
-    "pct": 19,
-    "played": 30,
+    "losses": 22,
+    "pct": 18,
+    "played": 31,
     "points": 17,
     "position": 19,
     "red": 2,
     "teamId": "america-mg",
     "wins": 4,
-    "yellow": 62
+    "yellow": 64
   },
   {
     "away": {

@@ -151,9 +151,9 @@
         "V"
       ],
       "goalDiff": 16,
-      "pDirect": 0.5386,
-      "pPromotion": 0.7814,
-      "pTop6": 0.4289,
+      "pDirect": 0.5351,
+      "pPromotion": 0.7797,
+      "pTop6": 0.4314,
       "played": 31,
       "points": 56,
       "position": 1,
@@ -239,9 +239,9 @@
         "V"
       ],
       "goalDiff": 12,
-      "pDirect": 0.472,
-      "pPromotion": 0.7028,
-      "pTop6": 0.46,
+      "pDirect": 0.4505,
+      "pPromotion": 0.6864,
+      "pTop6": 0.4763,
       "played": 30,
       "points": 54,
       "position": 2,
@@ -319,16 +319,16 @@
         "V"
       ],
       "goalDiff": 25,
-      "pDirect": 0.4458,
-      "pPromotion": 0.7437,
-      "pTop6": 0.4797,
+      "pDirect": 0.4434,
+      "pPromotion": 0.7341,
+      "pTop6": 0.4793,
       "played": 31,
       "points": 54,
       "position": 3,
       "remainingAway": 4,
       "remainingHome": 3,
       "remainingVsTop6": 4,
-      "schedulePoints": -0.7,
+      "schedulePoints": -0.76,
       "teamId": "novorizontino"
     },
     {
@@ -399,16 +399,16 @@
         "V"
       ],
       "goalDiff": 6,
-      "pDirect": 0.1548,
-      "pPromotion": 0.4024,
-      "pTop6": 0.6031,
+      "pDirect": 0.1499,
+      "pPromotion": 0.3955,
+      "pTop6": 0.5981,
       "played": 31,
       "points": 53,
       "position": 4,
       "remainingAway": 4,
       "remainingHome": 3,
       "remainingVsTop6": 2,
-      "schedulePoints": -0.03,
+      "schedulePoints": 0.02,
       "teamId": "criciuma"
     },
     {
@@ -479,9 +479,9 @@
         "E"
       ],
       "goalDiff": 9,
-      "pDirect": 0.223,
-      "pPromotion": 0.5064,
-      "pTop6": 0.5792,
+      "pDirect": 0.217,
+      "pPromotion": 0.5007,
+      "pTop6": 0.5756,
       "played": 31,
       "points": 53,
       "position": 5,
@@ -492,16 +492,8 @@
       "teamId": "fortaleza"
     },
     {
-      "difficulty": "Média",
+      "difficulty": "Difícil",
       "fixtures": [
-        {
-          "home": true,
-          "kickoffUtc": "2026-10-03T19:00Z",
-          "matchId": "atletico-go--america-mg",
-          "opponentId": "america-mg",
-          "opponentInTop6": false,
-          "round": 31
-        },
         {
           "home": false,
           "kickoffUtc": "2026-10-07T23:30Z",
@@ -560,23 +552,23 @@
         }
       ],
       "form": [
-        "E",
         "V",
         "V",
         "D",
+        "V",
         "V"
       ],
-      "goalDiff": 10,
-      "pDirect": 0.1169,
-      "pPromotion": 0.3998,
-      "pTop6": 0.5166,
-      "played": 30,
-      "points": 49,
+      "goalDiff": 12,
+      "pDirect": 0.1558,
+      "pPromotion": 0.4774,
+      "pTop6": 0.5675,
+      "played": 31,
+      "points": 52,
       "position": 6,
       "remainingAway": 4,
-      "remainingHome": 4,
+      "remainingHome": 3,
       "remainingVsTop6": 2,
-      "schedulePoints": 0.26,
+      "schedulePoints": -0.5,
       "teamId": "atletico-go"
     },
     {
@@ -647,9 +639,9 @@
         "D"
       ],
       "goalDiff": 2,
-      "pDirect": 0.0205,
-      "pPromotion": 0.1603,
-      "pTop6": 0.3131,
+      "pDirect": 0.0226,
+      "pPromotion": 0.1457,
+      "pTop6": 0.2899,
       "played": 31,
       "points": 48,
       "position": 7,

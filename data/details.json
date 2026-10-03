@@ -1285,6 +1285,46 @@
       }
     }
   },
+  "atletico-go--america-mg": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 5,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "atletico-go"
+      },
+      {
+        "extra": null,
+        "minute": 53,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "atletico-go"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "atletico-go--america-mg",
+    "stats": {
+      "america-mg": {
+        "corners": 6,
+        "possession": 45.2,
+        "red": 0,
+        "shots": 8,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      },
+      "atletico-go": {
+        "corners": 8,
+        "possession": 54.8,
+        "red": 0,
+        "shots": 24,
+        "shotsOnTarget": 7,
+        "yellow": 1
+      }
+    }
+  },
   "atletico-go--athletic-club": {
     "goals": [],
     "goalsComplete": true,
