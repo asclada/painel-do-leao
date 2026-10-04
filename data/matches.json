@@ -4635,18 +4635,18 @@
     "venue": "Arena Pantanal"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "vila-nova",
     "city": "Ribeirão Preto",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "botafogo-sp",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 0,
     "id": "botafogo-sp--vila-nova",
     "kickoffUtc": "2026-10-03T21:30Z",
     "round": 31,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio Santa Cruz"
   },
   {

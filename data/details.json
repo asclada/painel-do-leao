@@ -3305,6 +3305,38 @@
       }
     }
   },
+  "botafogo-sp--vila-nova": {
+    "goals": [
+      {
+        "extra": 2,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "vila-nova"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "botafogo-sp--vila-nova",
+    "stats": {
+      "botafogo-sp": {
+        "corners": 12,
+        "possession": 61.8,
+        "red": 0,
+        "shots": 16,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      },
+      "vila-nova": {
+        "corners": 1,
+        "possession": 38.2,
+        "red": 0,
+        "shots": 5,
+        "shotsOnTarget": 3,
+        "yellow": 3
+      }
+    }
+  },
   "ceara--athletic-club": {
     "goals": [],
     "goalsComplete": true,

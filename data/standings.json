@@ -2,6 +2,39 @@
   {
     "away": {
       "draws": 4,
+      "goalsAgainst": 20,
+      "goalsFor": 13,
+      "losses": 7,
+      "played": 16,
+      "points": 19,
+      "wins": 5
+    },
+    "draws": 6,
+    "goalDiff": 13,
+    "goalsAgainst": 31,
+    "goalsFor": 44,
+    "home": {
+      "draws": 2,
+      "goalsAgainst": 11,
+      "goalsFor": 31,
+      "losses": 1,
+      "played": 15,
+      "points": 38,
+      "wins": 12
+    },
+    "losses": 8,
+    "pct": 61,
+    "played": 31,
+    "points": 57,
+    "position": 1,
+    "red": 7,
+    "teamId": "vila-nova",
+    "wins": 17,
+    "yellow": 83
+  },
+  {
+    "away": {
+      "draws": 4,
       "goalsAgainst": 13,
       "goalsFor": 13,
       "losses": 5,
@@ -26,44 +59,11 @@
     "pct": 60,
     "played": 31,
     "points": 56,
-    "position": 1,
+    "position": 2,
     "red": 2,
     "teamId": "juventude",
     "wins": 16,
     "yellow": 67
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 20,
-      "goalsFor": 12,
-      "losses": 7,
-      "played": 15,
-      "points": 16,
-      "wins": 4
-    },
-    "draws": 6,
-    "goalDiff": 12,
-    "goalsAgainst": 31,
-    "goalsFor": 43,
-    "home": {
-      "draws": 2,
-      "goalsAgainst": 11,
-      "goalsFor": 31,
-      "losses": 1,
-      "played": 15,
-      "points": 38,
-      "wins": 12
-    },
-    "losses": 8,
-    "pct": 60,
-    "played": 30,
-    "points": 54,
-    "position": 2,
-    "red": 7,
-    "teamId": "vila-nova",
-    "wins": 16,
-    "yellow": 80
   },
   {
     "away": {
@@ -505,27 +505,27 @@
       "wins": 3
     },
     "draws": 8,
-    "goalDiff": -2,
-    "goalsAgainst": 36,
+    "goalDiff": -3,
+    "goalsAgainst": 37,
     "goalsFor": 34,
     "home": {
       "draws": 3,
-      "goalsAgainst": 21,
+      "goalsAgainst": 22,
       "goalsFor": 25,
-      "losses": 6,
-      "played": 15,
+      "losses": 7,
+      "played": 16,
       "points": 21,
       "wins": 6
     },
-    "losses": 13,
-    "pct": 39,
-    "played": 30,
+    "losses": 14,
+    "pct": 38,
+    "played": 31,
     "points": 35,
     "position": 16,
     "red": 1,
     "teamId": "botafogo-sp",
     "wins": 9,
-    "yellow": 75
+    "yellow": 77
   },
   {
     "away": {
