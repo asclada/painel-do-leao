@@ -6667,6 +6667,54 @@
       }
     }
   },
+  "goias--athletic-club": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 58,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "goias"
+      },
+      {
+        "extra": null,
+        "minute": 63,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "athletic-club"
+      },
+      {
+        "extra": 1,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "goias"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "goias--athletic-club",
+    "stats": {
+      "athletic-club": {
+        "corners": 5,
+        "possession": 37.4,
+        "red": 0,
+        "shots": 17,
+        "shotsOnTarget": 5,
+        "yellow": 1
+      },
+      "goias": {
+        "corners": 5,
+        "possession": 62.6,
+        "red": 0,
+        "shots": 20,
+        "shotsOnTarget": 7,
+        "yellow": 3
+      }
+    }
+  },
   "goias--atletico-go": {
     "goals": [
       {

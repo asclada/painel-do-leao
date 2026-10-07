@@ -4665,18 +4665,18 @@
     "venue": "Ilha do Retiro"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "athletic-club",
     "city": "Goiãnia",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "goias",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "goias--athletic-club",
     "kickoffUtc": "2026-10-06T23:30Z",
     "round": 32,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio da Serrinha"
   },
   {
