@@ -4680,18 +4680,18 @@
     "venue": "Estádio da Serrinha"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "juventude",
     "city": "Indaiatuba",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "ponte-preta",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 0,
     "id": "ponte-preta--juventude",
     "kickoffUtc": "2026-10-07T00:35Z",
     "round": 32,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio Italo Mário Limongi"
   },
   {

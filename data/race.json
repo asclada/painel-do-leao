@@ -96,6 +96,78 @@
       "fixtures": [
         {
           "home": true,
+          "kickoffUtc": "2026-10-11T19:00Z",
+          "matchId": "juventude--sao-bernardo",
+          "opponentId": "sao-bernardo",
+          "opponentInTop6": false,
+          "round": 33
+        },
+        {
+          "home": false,
+          "kickoffUtc": "2026-10-17T19:30Z",
+          "matchId": "ceara--juventude",
+          "opponentId": "ceara",
+          "opponentInTop6": false,
+          "round": 34
+        },
+        {
+          "home": true,
+          "kickoffUtc": "2026-10-23T18:00Z",
+          "matchId": "juventude--nautico",
+          "opponentId": "nautico",
+          "opponentInTop6": false,
+          "round": 35
+        },
+        {
+          "home": false,
+          "kickoffUtc": "2026-10-30T18:00Z",
+          "matchId": "vila-nova--juventude",
+          "opponentId": "vila-nova",
+          "opponentInTop6": true,
+          "round": 36
+        },
+        {
+          "home": false,
+          "kickoffUtc": "2026-11-06T20:00Z",
+          "matchId": "cuiaba--juventude",
+          "opponentId": "cuiaba",
+          "opponentInTop6": false,
+          "round": 37
+        },
+        {
+          "home": true,
+          "kickoffUtc": "2026-11-14T20:00Z",
+          "matchId": "juventude--botafogo-sp",
+          "opponentId": "botafogo-sp",
+          "opponentInTop6": false,
+          "round": 38
+        }
+      ],
+      "form": [
+        "D",
+        "D",
+        "V",
+        "V",
+        "V"
+      ],
+      "goalDiff": 18,
+      "pDirect": 0.6493,
+      "pPromotion": 0.8583,
+      "pTop6": 0.3434,
+      "played": 32,
+      "points": 59,
+      "position": 1,
+      "remainingAway": 3,
+      "remainingHome": 3,
+      "remainingVsTop6": 1,
+      "schedulePoints": -0.96,
+      "teamId": "juventude"
+    },
+    {
+      "difficulty": "Difícil",
+      "fixtures": [
+        {
+          "home": true,
           "kickoffUtc": "2026-10-07T23:30Z",
           "matchId": "vila-nova--cuiaba",
           "opponentId": "cuiaba",
@@ -159,97 +231,17 @@
         "V"
       ],
       "goalDiff": 13,
-      "pDirect": 0.6538,
-      "pPromotion": 0.8324,
-      "pTop6": 0.3295,
+      "pDirect": 0.6052,
+      "pPromotion": 0.8083,
+      "pTop6": 0.3752,
       "played": 31,
       "points": 57,
-      "position": 1,
+      "position": 2,
       "remainingAway": 3,
       "remainingHome": 4,
       "remainingVsTop6": 4,
-      "schedulePoints": -0.59,
+      "schedulePoints": -0.73,
       "teamId": "vila-nova"
-    },
-    {
-      "difficulty": "Difícil",
-      "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-07T00:35Z",
-          "matchId": "ponte-preta--juventude",
-          "opponentId": "ponte-preta",
-          "opponentInTop6": false,
-          "round": 32
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-10-11T19:00Z",
-          "matchId": "juventude--sao-bernardo",
-          "opponentId": "sao-bernardo",
-          "opponentInTop6": false,
-          "round": 33
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-17T19:30Z",
-          "matchId": "ceara--juventude",
-          "opponentId": "ceara",
-          "opponentInTop6": false,
-          "round": 34
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-10-23T18:00Z",
-          "matchId": "juventude--nautico",
-          "opponentId": "nautico",
-          "opponentInTop6": false,
-          "round": 35
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-30T18:00Z",
-          "matchId": "vila-nova--juventude",
-          "opponentId": "vila-nova",
-          "opponentInTop6": true,
-          "round": 36
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-06T20:00Z",
-          "matchId": "cuiaba--juventude",
-          "opponentId": "cuiaba",
-          "opponentInTop6": false,
-          "round": 37
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-14T20:00Z",
-          "matchId": "juventude--botafogo-sp",
-          "opponentId": "botafogo-sp",
-          "opponentInTop6": false,
-          "round": 38
-        }
-      ],
-      "form": [
-        "V",
-        "D",
-        "D",
-        "V",
-        "V"
-      ],
-      "goalDiff": 16,
-      "pDirect": 0.4916,
-      "pPromotion": 0.7609,
-      "pTop6": 0.471,
-      "played": 31,
-      "points": 56,
-      "position": 2,
-      "remainingAway": 4,
-      "remainingHome": 3,
-      "remainingVsTop6": 1,
-      "schedulePoints": -0.74,
-      "teamId": "juventude"
     },
     {
       "difficulty": "Difícil",
@@ -319,16 +311,16 @@
         "V"
       ],
       "goalDiff": 25,
-      "pDirect": 0.3856,
-      "pPromotion": 0.7012,
-      "pTop6": 0.5248,
+      "pDirect": 0.3466,
+      "pPromotion": 0.6842,
+      "pTop6": 0.5632,
       "played": 31,
       "points": 54,
       "position": 3,
       "remainingAway": 4,
       "remainingHome": 3,
       "remainingVsTop6": 4,
-      "schedulePoints": -0.74,
+      "schedulePoints": -0.73,
       "teamId": "novorizontino"
     },
     {
@@ -399,16 +391,16 @@
         "V"
       ],
       "goalDiff": 6,
-      "pDirect": 0.127,
-      "pPromotion": 0.3704,
-      "pTop6": 0.6127,
+      "pDirect": 0.1066,
+      "pPromotion": 0.3536,
+      "pTop6": 0.6209,
       "played": 31,
       "points": 53,
       "position": 4,
       "remainingAway": 4,
       "remainingHome": 3,
       "remainingVsTop6": 2,
-      "schedulePoints": 0.02,
+      "schedulePoints": 0.03,
       "teamId": "criciuma"
     },
     {
@@ -479,20 +471,20 @@
         "E"
       ],
       "goalDiff": 9,
-      "pDirect": 0.1743,
-      "pPromotion": 0.46,
-      "pTop6": 0.5864,
+      "pDirect": 0.1547,
+      "pPromotion": 0.4484,
+      "pTop6": 0.6056,
       "played": 31,
       "points": 53,
       "position": 5,
       "remainingAway": 4,
       "remainingHome": 3,
       "remainingVsTop6": 3,
-      "schedulePoints": 0.17,
+      "schedulePoints": 0.29,
       "teamId": "fortaleza"
     },
     {
-      "difficulty": "Difícil",
+      "difficulty": "Média",
       "fixtures": [
         {
           "home": false,
@@ -559,16 +551,16 @@
         "V"
       ],
       "goalDiff": 12,
-      "pDirect": 0.1281,
-      "pPromotion": 0.4451,
-      "pTop6": 0.5712,
+      "pDirect": 0.1085,
+      "pPromotion": 0.4432,
+      "pTop6": 0.6009,
       "played": 31,
       "points": 52,
       "position": 6,
       "remainingAway": 4,
       "remainingHome": 3,
       "remainingVsTop6": 2,
-      "schedulePoints": -0.5,
+      "schedulePoints": -0.38,
       "teamId": "atletico-go"
     },
     {
@@ -631,9 +623,9 @@
         "V"
       ],
       "goalDiff": 10,
-      "pDirect": 0.0083,
-      "pPromotion": 0.1221,
-      "pTop6": 0.2521,
+      "pDirect": 0.0057,
+      "pPromotion": 0.1119,
+      "pTop6": 0.2427,
       "played": 32,
       "points": 50,
       "position": 7,

@@ -10934,6 +10934,46 @@
       }
     }
   },
+  "ponte-preta--juventude": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 36,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "juventude"
+      },
+      {
+        "extra": null,
+        "minute": 83,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "ponte-preta--juventude",
+    "stats": {
+      "juventude": {
+        "corners": 6,
+        "possession": 54.9,
+        "red": 0,
+        "shots": 15,
+        "shotsOnTarget": 6,
+        "yellow": 3
+      },
+      "ponte-preta": {
+        "corners": 4,
+        "possession": 45.1,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 2,
+        "yellow": 4
+      }
+    }
+  },
   "ponte-preta--londrina": {
     "goals": [
       {

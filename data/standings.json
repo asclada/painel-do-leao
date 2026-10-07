@@ -2,6 +2,39 @@
   {
     "away": {
       "draws": 4,
+      "goalsAgainst": 13,
+      "goalsFor": 15,
+      "losses": 5,
+      "played": 16,
+      "points": 25,
+      "wins": 7
+    },
+    "draws": 8,
+    "goalDiff": 18,
+    "goalsAgainst": 19,
+    "goalsFor": 37,
+    "home": {
+      "draws": 4,
+      "goalsAgainst": 6,
+      "goalsFor": 22,
+      "losses": 2,
+      "played": 16,
+      "points": 34,
+      "wins": 10
+    },
+    "losses": 7,
+    "pct": 61,
+    "played": 32,
+    "points": 59,
+    "position": 1,
+    "red": 2,
+    "teamId": "juventude",
+    "wins": 17,
+    "yellow": 70
+  },
+  {
+    "away": {
+      "draws": 4,
       "goalsAgainst": 20,
       "goalsFor": 13,
       "losses": 7,
@@ -26,44 +59,11 @@
     "pct": 61,
     "played": 31,
     "points": 57,
-    "position": 1,
+    "position": 2,
     "red": 7,
     "teamId": "vila-nova",
     "wins": 17,
     "yellow": 83
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 13,
-      "goalsFor": 13,
-      "losses": 5,
-      "played": 15,
-      "points": 22,
-      "wins": 6
-    },
-    "draws": 8,
-    "goalDiff": 16,
-    "goalsAgainst": 19,
-    "goalsFor": 35,
-    "home": {
-      "draws": 4,
-      "goalsAgainst": 6,
-      "goalsFor": 22,
-      "losses": 2,
-      "played": 16,
-      "points": 34,
-      "wins": 10
-    },
-    "losses": 7,
-    "pct": 60,
-    "played": 31,
-    "points": 56,
-    "position": 2,
-    "red": 2,
-    "teamId": "juventude",
-    "wins": 16,
-    "yellow": 67
   },
   {
     "away": {
@@ -637,26 +637,26 @@
       "wins": 1
     },
     "draws": 4,
-    "goalDiff": -49,
-    "goalsAgainst": 66,
+    "goalDiff": -51,
+    "goalsAgainst": 68,
     "goalsFor": 17,
     "home": {
       "draws": 4,
-      "goalsAgainst": 23,
+      "goalsAgainst": 25,
       "goalsFor": 10,
-      "losses": 9,
-      "played": 15,
+      "losses": 10,
+      "played": 16,
       "points": 10,
       "wins": 2
     },
-    "losses": 24,
+    "losses": 25,
     "pct": 14,
-    "played": 31,
+    "played": 32,
     "points": 13,
     "position": 20,
     "red": 10,
     "teamId": "ponte-preta",
     "wins": 3,
-    "yellow": 87
+    "yellow": 91
   }
 ]
