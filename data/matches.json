@@ -4650,18 +4650,18 @@
     "venue": "Estádio Santa Cruz"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "sao-bernardo",
     "city": "Recife",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "sport",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 1,
     "id": "sport--sao-bernardo",
     "kickoffUtc": "2026-10-06T22:30Z",
     "round": 32,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Ilha do Retiro"
   },
   {
@@ -4676,7 +4676,7 @@
     "kickoffUtc": "2026-10-06T23:30Z",
     "round": 32,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio da Serrinha"
   },
   {
@@ -4691,7 +4691,7 @@
     "kickoffUtc": "2026-10-07T00:35Z",
     "round": 32,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Italo Mário Limongi"
   },
   {

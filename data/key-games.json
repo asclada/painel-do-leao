@@ -1,15 +1,15 @@
 {
-  "baseline": 0.1794,
+  "baseline": 0.1765,
   "metric": "direct",
   "rivals": [
     {
       "awayId": "juventude",
       "best": "home",
-      "gain": 0.0314,
+      "gain": 0.0284,
       "homeId": "ponte-preta",
-      "ifAway": 0.1595,
-      "ifDraw": 0.1936,
-      "ifHome": 0.2109,
+      "ifAway": 0.1578,
+      "ifDraw": 0.1911,
+      "ifHome": 0.2049,
       "kickoffUtc": "2026-10-07T00:35Z",
       "matchId": "ponte-preta--juventude",
       "order": [
@@ -17,22 +17,22 @@
         "draw",
         "away"
       ],
-      "pAway": 0.4976,
-      "pDraw": 0.3059,
-      "pHome": 0.1964,
+      "pAway": 0.4904,
+      "pDraw": 0.3025,
+      "pHome": 0.2071,
       "round": 32,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0514
+      "swing": 0.0471
     },
     {
       "awayId": "cuiaba",
       "best": "away",
-      "gain": 0.034,
+      "gain": 0.0321,
       "homeId": "vila-nova",
-      "ifAway": 0.2135,
-      "ifDraw": 0.1974,
-      "ifHome": 0.1659,
+      "ifAway": 0.2086,
+      "ifDraw": 0.1941,
+      "ifHome": 0.1641,
       "kickoffUtc": "2026-10-07T23:30Z",
       "matchId": "vila-nova--cuiaba",
       "order": [
@@ -40,22 +40,22 @@
         "draw",
         "home"
       ],
-      "pAway": 0.1378,
-      "pDraw": 0.2281,
-      "pHome": 0.6342,
+      "pAway": 0.1392,
+      "pDraw": 0.2249,
+      "pHome": 0.6359,
       "round": 32,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0475
+      "swing": 0.0445
     },
     {
       "awayId": "novorizontino",
       "best": "home",
-      "gain": 0.0232,
+      "gain": 0.0226,
       "homeId": "nautico",
-      "ifAway": 0.1587,
-      "ifDraw": 0.1885,
-      "ifHome": 0.2026,
+      "ifAway": 0.1591,
+      "ifDraw": 0.1867,
+      "ifHome": 0.1991,
       "kickoffUtc": "2026-10-08T22:30Z",
       "matchId": "nautico--novorizontino",
       "order": [
@@ -63,22 +63,22 @@
         "draw",
         "away"
       ],
-      "pAway": 0.4302,
-      "pDraw": 0.2525,
-      "pHome": 0.3172,
+      "pAway": 0.4334,
+      "pDraw": 0.245,
+      "pHome": 0.3216,
       "round": 32,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0439
+      "swing": 0.04
     },
     {
       "awayId": "criciuma",
       "best": "home",
-      "gain": 0.0095,
+      "gain": 0.0106,
       "homeId": "ceara",
-      "ifAway": 0.1641,
-      "ifDraw": 0.1827,
-      "ifHome": 0.189,
+      "ifAway": 0.1623,
+      "ifDraw": 0.1812,
+      "ifHome": 0.1871,
       "kickoffUtc": "2026-10-08T22:30Z",
       "matchId": "ceara--criciuma",
       "order": [
@@ -86,22 +86,22 @@
         "draw",
         "away"
       ],
-      "pAway": 0.3189,
-      "pDraw": 0.2696,
-      "pHome": 0.4115,
+      "pAway": 0.31,
+      "pDraw": 0.2727,
+      "pHome": 0.4173,
       "round": 32,
       "sameBottom": false,
       "sameTop": true,
-      "swing": 0.0249
+      "swing": 0.0248
     },
     {
       "awayId": "atletico-go",
       "best": "home",
-      "gain": 0.0076,
+      "gain": 0.007,
       "homeId": "crb",
-      "ifAway": 0.1649,
-      "ifDraw": 0.1819,
-      "ifHome": 0.187,
+      "ifAway": 0.1633,
+      "ifDraw": 0.1798,
+      "ifHome": 0.1835,
       "kickoffUtc": "2026-10-07T23:30Z",
       "matchId": "crb--atletico-go",
       "order": [
@@ -109,13 +109,13 @@
         "draw",
         "away"
       ],
-      "pAway": 0.2579,
-      "pDraw": 0.2787,
-      "pHome": 0.4634,
+      "pAway": 0.2556,
+      "pDraw": 0.2784,
+      "pHome": 0.466,
       "round": 32,
       "sameBottom": false,
       "sameTop": true,
-      "swing": 0.0222
+      "swing": 0.0202
     }
   ],
   "round": 32

@@ -12485,6 +12485,54 @@
       }
     }
   },
+  "sport--sao-bernardo": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 17,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "sport"
+      },
+      {
+        "extra": null,
+        "minute": 46,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": null,
+        "minute": 86,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sport"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "sport--sao-bernardo",
+    "stats": {
+      "sao-bernardo": {
+        "corners": 9,
+        "possession": 52.2,
+        "red": 0,
+        "shots": 20,
+        "shotsOnTarget": 4,
+        "yellow": 4
+      },
+      "sport": {
+        "corners": 5,
+        "possession": 47.8,
+        "red": 0,
+        "shots": 19,
+        "shotsOnTarget": 5,
+        "yellow": 5
+      }
+    }
+  },
   "sport--vila-nova": {
     "goals": [
       {

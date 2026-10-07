@@ -199,6 +199,39 @@
   },
   {
     "away": {
+      "draws": 4,
+      "goalsAgainst": 18,
+      "goalsFor": 16,
+      "losses": 7,
+      "played": 16,
+      "points": 19,
+      "wins": 5
+    },
+    "draws": 11,
+    "goalDiff": 10,
+    "goalsAgainst": 34,
+    "goalsFor": 44,
+    "home": {
+      "draws": 7,
+      "goalsAgainst": 16,
+      "goalsFor": 28,
+      "losses": 1,
+      "played": 16,
+      "points": 31,
+      "wins": 8
+    },
+    "losses": 8,
+    "pct": 52,
+    "played": 32,
+    "points": 50,
+    "position": 7,
+    "red": 3,
+    "teamId": "sport",
+    "wins": 13,
+    "yellow": 74
+  },
+  {
+    "away": {
       "draws": 3,
       "goalsAgainst": 27,
       "goalsFor": 18,
@@ -224,7 +257,7 @@
     "pct": 52,
     "played": 31,
     "points": 48,
-    "position": 7,
+    "position": 8,
     "red": 4,
     "teamId": "crb",
     "wins": 14,
@@ -257,44 +290,11 @@
     "pct": 52,
     "played": 31,
     "points": 48,
-    "position": 8,
+    "position": 9,
     "red": 2,
     "teamId": "operario-pr",
     "wins": 13,
     "yellow": 75
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 18,
-      "goalsFor": 16,
-      "losses": 7,
-      "played": 16,
-      "points": 19,
-      "wins": 5
-    },
-    "draws": 11,
-    "goalDiff": 9,
-    "goalsAgainst": 33,
-    "goalsFor": 42,
-    "home": {
-      "draws": 7,
-      "goalsAgainst": 15,
-      "goalsFor": 26,
-      "losses": 1,
-      "played": 15,
-      "points": 28,
-      "wins": 7
-    },
-    "losses": 8,
-    "pct": 51,
-    "played": 31,
-    "points": 47,
-    "position": 9,
-    "red": 3,
-    "teamId": "sport",
-    "wins": 12,
-    "yellow": 69
   },
   {
     "away": {
@@ -332,17 +332,17 @@
   {
     "away": {
       "draws": 3,
-      "goalsAgainst": 14,
-      "goalsFor": 24,
-      "losses": 4,
-      "played": 15,
+      "goalsAgainst": 16,
+      "goalsFor": 25,
+      "losses": 5,
+      "played": 16,
       "points": 27,
       "wins": 8
     },
     "draws": 9,
-    "goalDiff": 11,
-    "goalsAgainst": 32,
-    "goalsFor": 43,
+    "goalDiff": 10,
+    "goalsAgainst": 34,
+    "goalsFor": 44,
     "home": {
       "draws": 6,
       "goalsAgainst": 18,
@@ -352,15 +352,15 @@
       "points": 18,
       "wins": 4
     },
-    "losses": 10,
-    "pct": 48,
-    "played": 31,
+    "losses": 11,
+    "pct": 47,
+    "played": 32,
     "points": 45,
     "position": 11,
     "red": 2,
     "teamId": "sao-bernardo",
     "wins": 12,
-    "yellow": 66
+    "yellow": 70
   },
   {
     "away": {
