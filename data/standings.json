@@ -274,27 +274,27 @@
       "wins": 6
     },
     "draws": 9,
-    "goalDiff": 2,
-    "goalsAgainst": 41,
-    "goalsFor": 43,
+    "goalDiff": 1,
+    "goalsAgainst": 43,
+    "goalsFor": 44,
     "home": {
       "draws": 5,
-      "goalsAgainst": 18,
-      "goalsFor": 22,
-      "losses": 3,
-      "played": 15,
+      "goalsAgainst": 20,
+      "goalsFor": 23,
+      "losses": 4,
+      "played": 16,
       "points": 26,
       "wins": 7
     },
-    "losses": 9,
-    "pct": 52,
-    "played": 31,
+    "losses": 10,
+    "pct": 50,
+    "played": 32,
     "points": 48,
     "position": 9,
-    "red": 2,
+    "red": 3,
     "teamId": "operario-pr",
     "wins": 13,
-    "yellow": 75
+    "yellow": 78
   },
   {
     "away": {
@@ -497,17 +497,17 @@
   {
     "away": {
       "draws": 5,
-      "goalsAgainst": 15,
-      "goalsFor": 9,
+      "goalsAgainst": 16,
+      "goalsFor": 11,
       "losses": 7,
-      "played": 15,
-      "points": 14,
-      "wins": 3
+      "played": 16,
+      "points": 17,
+      "wins": 4
     },
     "draws": 8,
-    "goalDiff": -3,
-    "goalsAgainst": 37,
-    "goalsFor": 34,
+    "goalDiff": -2,
+    "goalsAgainst": 38,
+    "goalsFor": 36,
     "home": {
       "draws": 3,
       "goalsAgainst": 22,
@@ -518,14 +518,14 @@
       "wins": 6
     },
     "losses": 14,
-    "pct": 38,
-    "played": 31,
-    "points": 35,
+    "pct": 40,
+    "played": 32,
+    "points": 38,
     "position": 16,
     "red": 1,
     "teamId": "botafogo-sp",
-    "wins": 9,
-    "yellow": 77
+    "wins": 10,
+    "yellow": 80
   },
   {
     "away": {
@@ -538,42 +538,42 @@
       "wins": 3
     },
     "draws": 6,
-    "goalDiff": -12,
-    "goalsAgainst": 42,
-    "goalsFor": 30,
+    "goalDiff": -11,
+    "goalsAgainst": 43,
+    "goalsFor": 32,
     "home": {
       "draws": 4,
-      "goalsAgainst": 15,
-      "goalsFor": 15,
+      "goalsAgainst": 16,
+      "goalsFor": 17,
       "losses": 6,
-      "played": 15,
-      "points": 19,
-      "wins": 5
+      "played": 16,
+      "points": 22,
+      "wins": 6
     },
     "losses": 17,
-    "pct": 32,
-    "played": 31,
-    "points": 30,
+    "pct": 34,
+    "played": 32,
+    "points": 33,
     "position": 17,
     "red": 6,
     "teamId": "avai",
-    "wins": 8,
-    "yellow": 89
+    "wins": 9,
+    "yellow": 94
   },
   {
     "away": {
       "draws": 2,
-      "goalsAgainst": 25,
-      "goalsFor": 16,
-      "losses": 10,
-      "played": 15,
+      "goalsAgainst": 27,
+      "goalsFor": 17,
+      "losses": 11,
+      "played": 16,
       "points": 11,
       "wins": 3
     },
     "draws": 7,
-    "goalDiff": -6,
-    "goalsAgainst": 45,
-    "goalsFor": 39,
+    "goalDiff": -7,
+    "goalsAgainst": 47,
+    "goalsFor": 40,
     "home": {
       "draws": 5,
       "goalsAgainst": 20,
@@ -583,15 +583,15 @@
       "points": 17,
       "wins": 4
     },
-    "losses": 17,
-    "pct": 30,
-    "played": 31,
+    "losses": 18,
+    "pct": 29,
+    "played": 32,
     "points": 28,
     "position": 18,
     "red": 5,
     "teamId": "londrina",
     "wins": 7,
-    "yellow": 78
+    "yellow": 79
   },
   {
     "away": {

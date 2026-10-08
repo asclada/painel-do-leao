@@ -279,9 +279,9 @@
     "round": 31
   },
   {
-    "pDirect": 0.1547,
-    "pPromotion": 0.4484,
-    "pTop6": 0.6056,
+    "pDirect": 0.1552,
+    "pPromotion": 0.4567,
+    "pTop6": 0.63,
     "partial": true,
     "points": 53,
     "position": 5,

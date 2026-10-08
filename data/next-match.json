@@ -1,8 +1,8 @@
 {
   "chances": {
-    "draw": 0.3112,
-    "loss": 0.2504,
-    "win": 0.4384
+    "draw": 0.3138,
+    "loss": 0.2501,
+    "win": 0.4361
   },
   "city": "Belo Horizonte",
   "firstTurn": "Fortaleza 0 x 3 América-MG",
@@ -25,6 +25,6 @@
   "matchId": "america-mg--fortaleza",
   "opponentId": "america-mg",
   "round": 32,
-  "status": "scheduled",
+  "status": "live",
   "venue": "Estádio Raimundo Sampaio (Independência)"
 }

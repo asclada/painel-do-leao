@@ -4695,33 +4695,33 @@
     "venue": "Estádio Italo Mário Limongi"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "londrina",
     "city": "Florianópolis",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "avai",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 2,
     "id": "avai--londrina",
     "kickoffUtc": "2026-10-07T22:30Z",
     "round": 32,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio da Ressacada"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "botafogo-sp",
     "city": "Ponta Grossa",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "operario-pr",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 1,
     "id": "operario-pr--botafogo-sp",
     "kickoffUtc": "2026-10-07T22:30Z",
     "round": 32,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Germano Krüger"
   },
   {
@@ -4736,7 +4736,7 @@
     "kickoffUtc": "2026-10-07T23:30Z",
     "round": 32,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Raimundo Sampaio (Independência)"
   },
   {
@@ -4751,7 +4751,7 @@
     "kickoffUtc": "2026-10-07T23:30Z",
     "round": 32,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Rei Pelé"
   },
   {
@@ -4766,7 +4766,7 @@
     "kickoffUtc": "2026-10-07T23:30Z",
     "round": 32,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Onésio Brasileiro Alvarenga"
   },
   {

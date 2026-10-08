@@ -2306,6 +2306,54 @@
       }
     }
   },
+  "avai--londrina": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 6,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "avai"
+      },
+      {
+        "extra": null,
+        "minute": 32,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "avai"
+      },
+      {
+        "extra": null,
+        "minute": 49,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "londrina"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "avai--londrina",
+    "stats": {
+      "avai": {
+        "corners": 4,
+        "possession": 39.5,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 4,
+        "yellow": 5
+      },
+      "londrina": {
+        "corners": 9,
+        "possession": 60.5,
+        "red": 0,
+        "shots": 19,
+        "shotsOnTarget": 4,
+        "yellow": 1
+      }
+    }
+  },
   "avai--nautico": {
     "goals": [
       {
@@ -10015,6 +10063,54 @@
         "shots": 21,
         "shotsOnTarget": 5,
         "yellow": 1
+      }
+    }
+  },
+  "operario-pr--botafogo-sp": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 1,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "operario-pr"
+      },
+      {
+        "extra": null,
+        "minute": 44,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "botafogo-sp"
+      },
+      {
+        "extra": null,
+        "minute": 54,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "botafogo-sp"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "operario-pr--botafogo-sp",
+    "stats": {
+      "botafogo-sp": {
+        "corners": 4,
+        "possession": 45.1,
+        "red": 0,
+        "shots": 14,
+        "shotsOnTarget": 6,
+        "yellow": 3
+      },
+      "operario-pr": {
+        "corners": 7,
+        "possession": 54.9,
+        "red": 1,
+        "shots": 11,
+        "shotsOnTarget": 3,
+        "yellow": 3
       }
     }
   },
