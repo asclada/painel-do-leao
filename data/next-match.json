@@ -1,30 +1,30 @@
 {
   "chances": {
-    "draw": 0.3138,
-    "loss": 0.2501,
-    "win": 0.4361
+    "draw": 0.2484,
+    "loss": 0.2252,
+    "win": 0.5264
   },
-  "city": "Belo Horizonte",
-  "firstTurn": "Fortaleza 0 x 3 América-MG",
+  "city": "Fortaleza",
+  "firstTurn": "CRB 1 x 1 Fortaleza",
   "formFortaleza": [
-    "V",
     "E",
     "V",
     "E",
-    "E"
+    "E",
+    "V"
   ],
   "formOpponent": [
     "V",
     "D",
+    "V",
     "D",
-    "D",
-    "D"
+    "V"
   ],
-  "home": false,
-  "kickoffUtc": "2026-10-07T23:30Z",
-  "matchId": "america-mg--fortaleza",
-  "opponentId": "america-mg",
-  "round": 32,
-  "status": "live",
-  "venue": "Estádio Raimundo Sampaio (Independência)"
+  "home": true,
+  "kickoffUtc": "2026-10-12T19:00Z",
+  "matchId": "fortaleza--crb",
+  "opponentId": "crb",
+  "round": 33,
+  "status": "scheduled",
+  "venue": "Arena Castelão"
 }

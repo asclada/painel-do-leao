@@ -1,38 +1,61 @@
 {
-  "baseline": 0.1552,
+  "baseline": 0.3009,
   "metric": "direct",
   "rivals": [
     {
-      "awayId": "cuiaba",
+      "awayId": "sao-bernardo",
       "best": "away",
-      "gain": 0.0362,
-      "homeId": "vila-nova",
-      "ifAway": 0.1914,
-      "ifDraw": 0.175,
-      "ifHome": 0.1429,
-      "kickoffUtc": "2026-10-07T23:30Z",
-      "matchId": "vila-nova--cuiaba",
+      "gain": 0.0373,
+      "homeId": "juventude",
+      "ifAway": 0.3382,
+      "ifDraw": 0.3108,
+      "ifHome": 0.2641,
+      "kickoffUtc": "2026-10-11T19:00Z",
+      "matchId": "juventude--sao-bernardo",
       "order": [
         "away",
         "draw",
         "home"
       ],
-      "pAway": 0.1404,
-      "pDraw": 0.2297,
-      "pHome": 0.63,
-      "round": 32,
+      "pAway": 0.2851,
+      "pDraw": 0.2946,
+      "pHome": 0.4204,
+      "round": 33,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0485
+      "swing": 0.074
+    },
+    {
+      "awayId": "vila-nova",
+      "best": "home",
+      "gain": 0.0214,
+      "homeId": "nautico",
+      "ifAway": 0.2495,
+      "ifDraw": 0.2979,
+      "ifHome": 0.3222,
+      "kickoffUtc": "2026-10-11T20:30Z",
+      "matchId": "nautico--vila-nova",
+      "order": [
+        "home",
+        "draw",
+        "away"
+      ],
+      "pAway": 0.2249,
+      "pDraw": 0.2687,
+      "pHome": 0.5064,
+      "round": 33,
+      "sameBottom": false,
+      "sameTop": false,
+      "swing": 0.0727
     },
     {
       "awayId": "novorizontino",
       "best": "home",
-      "gain": 0.0197,
+      "gain": 0.0317,
       "homeId": "nautico",
-      "ifAway": 0.1373,
-      "ifDraw": 0.164,
-      "ifHome": 0.1749,
+      "ifAway": 0.2685,
+      "ifDraw": 0.3141,
+      "ifHome": 0.3326,
       "kickoffUtc": "2026-10-08T22:30Z",
       "matchId": "nautico--novorizontino",
       "order": [
@@ -40,22 +63,45 @@
         "draw",
         "away"
       ],
-      "pAway": 0.432,
-      "pDraw": 0.2467,
-      "pHome": 0.3213,
+      "pAway": 0.4252,
+      "pDraw": 0.2453,
+      "pHome": 0.3295,
       "round": 32,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0376
+      "swing": 0.0641
+    },
+    {
+      "awayId": "ponte-preta",
+      "best": "away",
+      "gain": 0.0482,
+      "homeId": "novorizontino",
+      "ifAway": 0.3491,
+      "ifDraw": 0.3342,
+      "ifHome": 0.2932,
+      "kickoffUtc": "2026-10-12T22:00Z",
+      "matchId": "novorizontino--ponte-preta",
+      "order": [
+        "away",
+        "draw",
+        "home"
+      ],
+      "pAway": 0.0474,
+      "pDraw": 0.1259,
+      "pHome": 0.8267,
+      "round": 33,
+      "sameBottom": false,
+      "sameTop": false,
+      "swing": 0.0559
     },
     {
       "awayId": "criciuma",
       "best": "home",
-      "gain": 0.0091,
+      "gain": 0.0137,
       "homeId": "ceara",
-      "ifAway": 0.1442,
-      "ifDraw": 0.1585,
-      "ifHome": 0.1643,
+      "ifAway": 0.2812,
+      "ifDraw": 0.3075,
+      "ifHome": 0.3145,
       "kickoffUtc": "2026-10-08T22:30Z",
       "matchId": "ceara--criciuma",
       "order": [
@@ -63,37 +109,37 @@
         "draw",
         "away"
       ],
-      "pAway": 0.314,
-      "pDraw": 0.2699,
-      "pHome": 0.416,
+      "pAway": 0.3116,
+      "pDraw": 0.2719,
+      "pHome": 0.4164,
       "round": 32,
       "sameBottom": false,
       "sameTop": true,
-      "swing": 0.0202
+      "swing": 0.0333
     },
     {
-      "awayId": "atletico-go",
-      "best": "home",
-      "gain": 0.006,
-      "homeId": "crb",
-      "ifAway": 0.1439,
-      "ifDraw": 0.1581,
-      "ifHome": 0.1613,
-      "kickoffUtc": "2026-10-07T23:30Z",
-      "matchId": "crb--atletico-go",
+      "awayId": "america-mg",
+      "best": "away",
+      "gain": 0.0172,
+      "homeId": "criciuma",
+      "ifAway": 0.318,
+      "ifDraw": 0.3132,
+      "ifHome": 0.2921,
+      "kickoffUtc": "2026-10-12T22:30Z",
+      "matchId": "criciuma--america-mg",
       "order": [
-        "home",
+        "away",
         "draw",
-        "away"
+        "home"
       ],
-      "pAway": 0.2544,
-      "pDraw": 0.2797,
-      "pHome": 0.4659,
-      "round": 32,
+      "pAway": 0.1412,
+      "pDraw": 0.2619,
+      "pHome": 0.5969,
+      "round": 33,
       "sameBottom": false,
       "sameTop": true,
-      "swing": 0.0173
+      "swing": 0.0259
     }
   ],
-  "round": 32
+  "round": 33
 }

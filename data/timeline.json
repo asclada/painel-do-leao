@@ -1,5 +1,5 @@
 {
-  "headline": "Da lanterna na estreia ao 5º lugar: 15 posições escaladas.",
+  "headline": "Da lanterna na estreia ao 3º lugar: 17 posições escaladas.",
   "milestones": [
     {
       "kind": "worst",
@@ -28,7 +28,7 @@
     {
       "kind": "unbeaten",
       "round": 20,
-      "text": "Rodada 20: início da sequência de 12 jogos sem perder.",
+      "text": "Rodada 20: início da sequência de 13 jogos sem perder.",
       "title": "Começa a invencibilidade"
     },
     {
@@ -412,15 +412,15 @@
       "round": 31
     },
     {
-      "goalsAgainst": null,
-      "goalsFor": null,
+      "goalsAgainst": 0,
+      "goalsFor": 1,
       "home": false,
       "kickoffUtc": "2026-10-07T23:30Z",
       "matchId": "america-mg--fortaleza",
       "opponentId": "america-mg",
-      "points": 53,
-      "position": 5,
-      "result": null,
+      "points": 56,
+      "position": 3,
+      "result": "V",
       "round": 32
     }
   ],
@@ -661,7 +661,7 @@
       8,
       7,
       7,
-      8
+      7
     ],
     "criciuma": [
       6,
@@ -695,7 +695,7 @@
       6,
       5,
       4,
-      4
+      5
     ],
     "cuiaba": [
       12,
@@ -899,7 +899,7 @@
       3,
       4,
       3,
-      3
+      4
     ],
     "operario-pr": [
       7,
@@ -1035,7 +1035,7 @@
       9,
       9,
       9,
-      7
+      8
     ],
     "vila-nova": [
       9,

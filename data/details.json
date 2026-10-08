@@ -271,6 +271,38 @@
       }
     }
   },
+  "america-mg--fortaleza": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 3,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "fortaleza"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "america-mg--fortaleza",
+    "stats": {
+      "america-mg": {
+        "corners": 3,
+        "possession": 51.8,
+        "red": 0,
+        "shots": 8,
+        "shotsOnTarget": 1,
+        "yellow": 3
+      },
+      "fortaleza": {
+        "corners": 5,
+        "possession": 48.2,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 2,
+        "yellow": 2
+      }
+    }
+  },
   "america-mg--goias": {
     "goals": [
       {
@@ -4149,6 +4181,62 @@
         "shots": 11,
         "shotsOnTarget": 6,
         "yellow": 2
+      }
+    }
+  },
+  "crb--atletico-go": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 53,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "crb"
+      },
+      {
+        "extra": null,
+        "minute": 61,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "crb"
+      },
+      {
+        "extra": null,
+        "minute": 72,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 2,
+        "teamId": "crb"
+      },
+      {
+        "extra": 2,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "atletico-go"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "crb--atletico-go",
+    "stats": {
+      "atletico-go": {
+        "corners": 7,
+        "possession": 48.9,
+        "red": 0,
+        "shots": 15,
+        "shotsOnTarget": 2,
+        "yellow": 2
+      },
+      "crb": {
+        "corners": 10,
+        "possession": 51.1,
+        "red": 0,
+        "shots": 21,
+        "shotsOnTarget": 9,
+        "yellow": 1
       }
     }
   },
@@ -13042,6 +13130,29 @@
         "shots": 8,
         "shotsOnTarget": 4,
         "yellow": 8
+      }
+    }
+  },
+  "vila-nova--cuiaba": {
+    "goals": [],
+    "goalsComplete": true,
+    "matchId": "vila-nova--cuiaba",
+    "stats": {
+      "cuiaba": {
+        "corners": 4,
+        "possession": 51.0,
+        "red": 0,
+        "shots": 9,
+        "shotsOnTarget": 1,
+        "yellow": 2
+      },
+      "vila-nova": {
+        "corners": 8,
+        "possession": 49.0,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 3,
+        "yellow": 4
       }
     }
   },

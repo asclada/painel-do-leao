@@ -9,16 +9,16 @@ modelo dizia com o que aconteceu.
 
 ## Jogo a jogo (previsão feita uma rodada antes)
 
-- Jogos avaliados: **305** (rodadas 2 a 32)
+- Jogos avaliados: **308** (rodadas 2 a 32)
 - Brier multiclasse do modelo: **0,641** (quanto menor, melhor)
 - Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,657
 - Chutar 1/3 para cada resultado: 0,667
 - Ganho sobre a referência (skill score): **2,5%**
-- Log loss: 1,062 · resultado mais provável acertou 42% dos jogos
-- Favoritos (acima de 50%): 65 jogos, chance média prevista 57%, venceram 57%
+- Log loss: 1,061 · resultado mais provável acertou 42% dos jogos
+- Favoritos (acima de 50%): 66 jogos, chance média prevista 57%, venceram 56%
 - Resultado mais provável / do meio / menos provável (zebra): 42% / 33% / 25% dos jogos
-- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0026**
-- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,1371. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 87% do valor.
+- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0020**
+- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,1036. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 83% do valor.
 
 **Referência, não comparação direta.** O site Chance de Gol publica os mesmos indicadores para o modelo dele,
 com outro método e todas as competições desde 1998: resultado mais provável / do meio / zebra em 51% / 27% /
@@ -31,12 +31,12 @@ Calibração por faixa (todas as chances de vitória do mandante, empate e vitó
 | Faixa prevista | Casos | Chance média prevista | Aconteceu |
 |---|---:|---:|---:|
 | 0%–10% | 5 | 8% | 20% |
-| 10%–20% | 41 | 16% | 10% |
-| 20%–30% | 360 | 26% | 28% |
-| 30%–40% | 301 | 34% | 36% |
-| 40%–50% | 143 | 45% | 38% |
+| 10%–20% | 42 | 16% | 10% |
+| 20%–30% | 364 | 26% | 27% |
+| 30%–40% | 302 | 34% | 36% |
+| 40%–50% | 145 | 45% | 39% |
 | 50%–60% | 47 | 53% | 45% |
-| 60%–70% | 12 | 64% | 92% |
+| 60%–70% | 13 | 64% | 85% |
 | 70%–80% | 5 | 75% | 80% |
 | 80%–90% | 1 | 81% | 100% |
 
