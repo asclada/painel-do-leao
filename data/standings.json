@@ -69,6 +69,39 @@
     "away": {
       "draws": 5,
       "goalsAgainst": 13,
+      "goalsFor": 28,
+      "losses": 4,
+      "played": 16,
+      "points": 26,
+      "wins": 7
+    },
+    "draws": 9,
+    "goalDiff": 27,
+    "goalsAgainst": 27,
+    "goalsFor": 54,
+    "home": {
+      "draws": 4,
+      "goalsAgainst": 14,
+      "goalsFor": 26,
+      "losses": 3,
+      "played": 16,
+      "points": 31,
+      "wins": 9
+    },
+    "losses": 7,
+    "pct": 59,
+    "played": 32,
+    "points": 57,
+    "position": 3,
+    "red": 2,
+    "teamId": "novorizontino",
+    "wins": 16,
+    "yellow": 69
+  },
+  {
+    "away": {
+      "draws": 5,
+      "goalsAgainst": 13,
       "goalsFor": 12,
       "losses": 5,
       "played": 16,
@@ -92,7 +125,7 @@
     "pct": 58,
     "played": 32,
     "points": 56,
-    "position": 3,
+    "position": 4,
     "red": 8,
     "teamId": "fortaleza",
     "wins": 15,
@@ -100,50 +133,17 @@
   },
   {
     "away": {
-      "draws": 5,
-      "goalsAgainst": 13,
-      "goalsFor": 26,
-      "losses": 4,
-      "played": 15,
-      "points": 23,
-      "wins": 6
-    },
-    "draws": 9,
-    "goalDiff": 25,
-    "goalsAgainst": 27,
-    "goalsFor": 52,
-    "home": {
       "draws": 4,
-      "goalsAgainst": 14,
-      "goalsFor": 26,
-      "losses": 3,
-      "played": 16,
-      "points": 31,
-      "wins": 9
-    },
-    "losses": 7,
-    "pct": 58,
-    "played": 31,
-    "points": 54,
-    "position": 4,
-    "red": 2,
-    "teamId": "novorizontino",
-    "wins": 15,
-    "yellow": 67
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 17,
+      "goalsAgainst": 18,
       "goalsFor": 15,
-      "losses": 5,
-      "played": 15,
+      "losses": 6,
+      "played": 16,
       "points": 22,
       "wins": 6
     },
     "draws": 8,
-    "goalDiff": 6,
-    "goalsAgainst": 27,
+    "goalDiff": 5,
+    "goalsAgainst": 28,
     "goalsFor": 33,
     "home": {
       "draws": 4,
@@ -154,15 +154,15 @@
       "points": 31,
       "wins": 9
     },
-    "losses": 8,
-    "pct": 57,
-    "played": 31,
+    "losses": 9,
+    "pct": 55,
+    "played": 32,
     "points": 53,
     "position": 5,
     "red": 1,
     "teamId": "criciuma",
     "wins": 15,
-    "yellow": 75
+    "yellow": 78
   },
   {
     "away": {
@@ -406,27 +406,60 @@
       "wins": 3
     },
     "draws": 9,
-    "goalDiff": 1,
-    "goalsAgainst": 38,
+    "goalDiff": -1,
+    "goalsAgainst": 40,
     "goalsFor": 39,
     "home": {
       "draws": 3,
-      "goalsAgainst": 13,
+      "goalsAgainst": 15,
       "goalsFor": 19,
-      "losses": 4,
-      "played": 15,
+      "losses": 5,
+      "played": 16,
       "points": 27,
       "wins": 8
     },
-    "losses": 11,
-    "pct": 45,
-    "played": 31,
+    "losses": 12,
+    "pct": 44,
+    "played": 32,
     "points": 42,
     "position": 13,
     "red": 6,
     "teamId": "nautico",
     "wins": 11,
-    "yellow": 87
+    "yellow": 90
+  },
+  {
+    "away": {
+      "draws": 6,
+      "goalsAgainst": 22,
+      "goalsFor": 15,
+      "losses": 7,
+      "played": 16,
+      "points": 15,
+      "wins": 3
+    },
+    "draws": 9,
+    "goalDiff": -4,
+    "goalsAgainst": 39,
+    "goalsFor": 35,
+    "home": {
+      "draws": 3,
+      "goalsAgainst": 17,
+      "goalsFor": 20,
+      "losses": 5,
+      "played": 16,
+      "points": 27,
+      "wins": 8
+    },
+    "losses": 12,
+    "pct": 44,
+    "played": 32,
+    "points": 42,
+    "position": 14,
+    "red": 4,
+    "teamId": "ceara",
+    "wins": 11,
+    "yellow": 72
   },
   {
     "away": {
@@ -455,44 +488,11 @@
     "pct": 44,
     "played": 32,
     "points": 42,
-    "position": 14,
+    "position": 15,
     "red": 9,
     "teamId": "athletic-club",
     "wins": 10,
     "yellow": 74
-  },
-  {
-    "away": {
-      "draws": 6,
-      "goalsAgainst": 22,
-      "goalsFor": 15,
-      "losses": 7,
-      "played": 16,
-      "points": 15,
-      "wins": 3
-    },
-    "draws": 9,
-    "goalDiff": -5,
-    "goalsAgainst": 39,
-    "goalsFor": 34,
-    "home": {
-      "draws": 3,
-      "goalsAgainst": 17,
-      "goalsFor": 19,
-      "losses": 5,
-      "played": 15,
-      "points": 24,
-      "wins": 7
-    },
-    "losses": 12,
-    "pct": 42,
-    "played": 31,
-    "points": 39,
-    "position": 15,
-    "red": 4,
-    "teamId": "ceara",
-    "wins": 10,
-    "yellow": 71
   },
   {
     "away": {

@@ -3584,6 +3584,38 @@
       }
     }
   },
+  "ceara--criciuma": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 88,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "ceara"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "ceara--criciuma",
+    "stats": {
+      "ceara": {
+        "corners": 5,
+        "possession": 50.2,
+        "red": 0,
+        "shots": 16,
+        "shotsOnTarget": 3,
+        "yellow": 1
+      },
+      "criciuma": {
+        "corners": 6,
+        "possession": 49.8,
+        "red": 0,
+        "shots": 15,
+        "shotsOnTarget": 1,
+        "yellow": 3
+      }
+    }
+  },
   "ceara--cuiaba": {
     "goals": [
       {
@@ -9128,6 +9160,46 @@
         "shots": 17,
         "shotsOnTarget": 4,
         "yellow": 4
+      }
+    }
+  },
+  "nautico--novorizontino": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 7,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": null,
+        "minute": 14,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 1,
+        "teamId": "novorizontino"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "nautico--novorizontino",
+    "stats": {
+      "nautico": {
+        "corners": 3,
+        "possession": 66.1,
+        "red": 0,
+        "shots": 6,
+        "shotsOnTarget": 1,
+        "yellow": 3
+      },
+      "novorizontino": {
+        "corners": 4,
+        "possession": 33.9,
+        "red": 0,
+        "shots": 12,
+        "shotsOnTarget": 5,
+        "yellow": 2
       }
     }
   },
