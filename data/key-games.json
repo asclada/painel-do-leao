@@ -1,15 +1,15 @@
 {
-  "baseline": 0.2308,
+  "baseline": 0.23,
   "metric": "direct",
   "rivals": [
     {
       "awayId": "ponte-preta",
       "best": "away",
-      "gain": 0.054,
+      "gain": 0.0533,
       "homeId": "novorizontino",
-      "ifAway": 0.2848,
-      "ifDraw": 0.2686,
-      "ifHome": 0.2226,
+      "ifAway": 0.2833,
+      "ifDraw": 0.2671,
+      "ifHome": 0.2205,
       "kickoffUtc": "2026-10-12T22:00Z",
       "matchId": "novorizontino--ponte-preta",
       "order": [
@@ -17,13 +17,13 @@
         "draw",
         "home"
       ],
-      "pAway": 0.0508,
-      "pDraw": 0.1281,
-      "pHome": 0.8211,
+      "pAway": 0.0512,
+      "pDraw": 0.1309,
+      "pHome": 0.8179,
       "round": 33,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0622
+      "swing": 0.0628
     }
   ],
   "round": 33

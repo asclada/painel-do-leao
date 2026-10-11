@@ -5630,6 +5630,38 @@
       }
     }
   },
+  "cuiaba--avai": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 40,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "avai"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "cuiaba--avai",
+    "stats": {
+      "avai": {
+        "corners": 5,
+        "possession": 32.3,
+        "red": 0,
+        "shots": 4,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      },
+      "cuiaba": {
+        "corners": 13,
+        "possession": 67.7,
+        "red": 0,
+        "shots": 22,
+        "shotsOnTarget": 5,
+        "yellow": 1
+      }
+    }
+  },
   "cuiaba--botafogo-sp": {
     "goals": [
       {
@@ -10597,6 +10629,46 @@
         "shots": 21,
         "shotsOnTarget": 3,
         "yellow": 1
+      }
+    }
+  },
+  "operario-pr--goias": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 16,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "goias"
+      },
+      {
+        "extra": null,
+        "minute": 31,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "goias"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "operario-pr--goias",
+    "stats": {
+      "goias": {
+        "corners": 0,
+        "possession": 40.8,
+        "red": 0,
+        "shots": 6,
+        "shotsOnTarget": 3,
+        "yellow": 0
+      },
+      "operario-pr": {
+        "corners": 14,
+        "possession": 59.2,
+        "red": 0,
+        "shots": 22,
+        "shotsOnTarget": 4,
+        "yellow": 2
       }
     }
   },
