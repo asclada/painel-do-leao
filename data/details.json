@@ -1971,6 +1971,46 @@
       }
     }
   },
+  "atletico-go--sport": {
+    "goals": [
+      {
+        "extra": 4,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "atletico-go"
+      },
+      {
+        "extra": null,
+        "minute": 83,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sport"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "atletico-go--sport",
+    "stats": {
+      "atletico-go": {
+        "corners": 10,
+        "possession": 52.6,
+        "red": 0,
+        "shots": 25,
+        "shotsOnTarget": 5,
+        "yellow": 1
+      },
+      "sport": {
+        "corners": 3,
+        "possession": 47.4,
+        "red": 1,
+        "shots": 10,
+        "shotsOnTarget": 4,
+        "yellow": 1
+      }
+    }
+  },
   "atletico-go--vila-nova": {
     "goals": [
       {
@@ -7968,6 +8008,62 @@
       }
     }
   },
+  "juventude--sao-bernardo": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 23,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "juventude"
+      },
+      {
+        "extra": 2,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 1,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": null,
+        "minute": 49,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": null,
+        "minute": 69,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "juventude--sao-bernardo",
+    "stats": {
+      "juventude": {
+        "corners": 4,
+        "possession": 53.8,
+        "red": 0,
+        "shots": 15,
+        "shotsOnTarget": 4,
+        "yellow": 2
+      },
+      "sao-bernardo": {
+        "corners": 3,
+        "possession": 46.2,
+        "red": 0,
+        "shots": 10,
+        "shotsOnTarget": 4,
+        "yellow": 4
+      }
+    }
+  },
   "juventude--sport": {
     "goals": [
       {
@@ -9408,6 +9504,46 @@
         "shots": 24,
         "shotsOnTarget": 4,
         "yellow": 1
+      }
+    }
+  },
+  "nautico--vila-nova": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 22,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "vila-nova"
+      },
+      {
+        "extra": null,
+        "minute": 43,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "vila-nova"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "nautico--vila-nova",
+    "stats": {
+      "nautico": {
+        "corners": 7,
+        "possession": 57.6,
+        "red": 0,
+        "shots": 16,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      },
+      "vila-nova": {
+        "corners": 4,
+        "possession": 42.4,
+        "red": 0,
+        "shots": 12,
+        "shotsOnTarget": 4,
+        "yellow": 4
       }
     }
   },

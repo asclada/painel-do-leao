@@ -1,38 +1,15 @@
 {
-  "baseline": 0.2732,
+  "baseline": 0.2308,
   "metric": "direct",
   "rivals": [
     {
-      "awayId": "sao-bernardo",
-      "best": "away",
-      "gain": 0.0409,
-      "homeId": "juventude",
-      "ifAway": 0.3142,
-      "ifDraw": 0.2869,
-      "ifHome": 0.2359,
-      "kickoffUtc": "2026-10-11T19:00Z",
-      "matchId": "juventude--sao-bernardo",
-      "order": [
-        "away",
-        "draw",
-        "home"
-      ],
-      "pAway": 0.2813,
-      "pDraw": 0.2939,
-      "pHome": 0.4248,
-      "round": 33,
-      "sameBottom": false,
-      "sameTop": false,
-      "swing": 0.0783
-    },
-    {
       "awayId": "ponte-preta",
       "best": "away",
-      "gain": 0.0623,
+      "gain": 0.054,
       "homeId": "novorizontino",
-      "ifAway": 0.3355,
-      "ifDraw": 0.3131,
-      "ifHome": 0.2621,
+      "ifAway": 0.2848,
+      "ifDraw": 0.2686,
+      "ifHome": 0.2226,
       "kickoffUtc": "2026-10-12T22:00Z",
       "matchId": "novorizontino--ponte-preta",
       "order": [
@@ -40,59 +17,13 @@
         "draw",
         "home"
       ],
-      "pAway": 0.0499,
-      "pDraw": 0.1304,
-      "pHome": 0.8197,
+      "pAway": 0.0508,
+      "pDraw": 0.1281,
+      "pHome": 0.8211,
       "round": 33,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0734
-    },
-    {
-      "awayId": "vila-nova",
-      "best": "home",
-      "gain": 0.0222,
-      "homeId": "nautico",
-      "ifAway": 0.2296,
-      "ifDraw": 0.2752,
-      "ifHome": 0.2955,
-      "kickoffUtc": "2026-10-11T20:30Z",
-      "matchId": "nautico--vila-nova",
-      "order": [
-        "home",
-        "draw",
-        "away"
-      ],
-      "pAway": 0.2541,
-      "pDraw": 0.2873,
-      "pHome": 0.4585,
-      "round": 33,
-      "sameBottom": false,
-      "sameTop": false,
-      "swing": 0.0659
-    },
-    {
-      "awayId": "america-mg",
-      "best": "away",
-      "gain": 0.0072,
-      "homeId": "criciuma",
-      "ifAway": 0.2804,
-      "ifDraw": 0.2783,
-      "ifHome": 0.2701,
-      "kickoffUtc": "2026-10-12T22:30Z",
-      "matchId": "criciuma--america-mg",
-      "order": [
-        "away",
-        "draw",
-        "home"
-      ],
-      "pAway": 0.1367,
-      "pDraw": 0.2609,
-      "pHome": 0.6025,
-      "round": 33,
-      "sameBottom": true,
-      "sameTop": true,
-      "swing": 0.0103
+      "swing": 0.0622
     }
   ],
   "round": 33
