@@ -28,7 +28,7 @@
     {
       "kind": "unbeaten",
       "round": 20,
-      "text": "Rodada 20: início da sequência de 13 jogos sem perder.",
+      "text": "Rodada 20: início da sequência de 14 jogos sem perder.",
       "title": "Começa a invencibilidade"
     },
     {
@@ -424,15 +424,15 @@
       "round": 32
     },
     {
-      "goalsAgainst": null,
-      "goalsFor": null,
+      "goalsAgainst": 2,
+      "goalsFor": 2,
       "home": true,
       "kickoffUtc": "2026-10-12T19:00Z",
       "matchId": "fortaleza--crb",
       "opponentId": "crb",
-      "points": 56,
+      "points": 57,
       "position": 4,
-      "result": null,
+      "result": "E",
       "round": 33
     }
   ],

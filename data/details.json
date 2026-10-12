@@ -6364,6 +6364,62 @@
       }
     }
   },
+  "fortaleza--crb": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 11,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "fortaleza"
+      },
+      {
+        "extra": null,
+        "minute": 42,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "crb"
+      },
+      {
+        "extra": null,
+        "minute": 45,
+        "ownGoal": true,
+        "penalty": false,
+        "period": 1,
+        "teamId": "fortaleza"
+      },
+      {
+        "extra": null,
+        "minute": 54,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "crb"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "fortaleza--crb",
+    "stats": {
+      "crb": {
+        "corners": 0,
+        "possession": 0.0,
+        "red": 0,
+        "shots": 0,
+        "shotsOnTarget": 0,
+        "yellow": 0
+      },
+      "fortaleza": {
+        "corners": 0,
+        "possession": 0.0,
+        "red": 0,
+        "shots": 0,
+        "shotsOnTarget": 0,
+        "yellow": 3
+      }
+    }
+  },
   "fortaleza--criciuma": {
     "goals": [
       {

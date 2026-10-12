@@ -4875,18 +4875,18 @@
     "venue": "Germano Krüger"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "crb",
     "city": "Fortaleza",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "fortaleza",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 2,
     "id": "fortaleza--crb",
     "kickoffUtc": "2026-10-12T19:00Z",
     "round": 33,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Arena Castelão"
   },
   {

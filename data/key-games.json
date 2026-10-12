@@ -1,15 +1,38 @@
 {
-  "baseline": 0.23,
+  "baseline": 0.1517,
   "metric": "direct",
   "rivals": [
     {
+      "awayId": "juventude",
+      "best": "home",
+      "gain": 0.0343,
+      "homeId": "ceara",
+      "ifAway": 0.115,
+      "ifDraw": 0.1616,
+      "ifHome": 0.1861,
+      "kickoffUtc": "2026-10-17T19:30Z",
+      "matchId": "ceara--juventude",
+      "order": [
+        "home",
+        "draw",
+        "away"
+      ],
+      "pAway": 0.3816,
+      "pDraw": 0.3148,
+      "pHome": 0.3035,
+      "round": 34,
+      "sameBottom": false,
+      "sameTop": false,
+      "swing": 0.071
+    },
+    {
       "awayId": "ponte-preta",
       "best": "away",
-      "gain": 0.0533,
+      "gain": 0.045,
       "homeId": "novorizontino",
-      "ifAway": 0.2833,
-      "ifDraw": 0.2671,
-      "ifHome": 0.2205,
+      "ifAway": 0.1968,
+      "ifDraw": 0.1807,
+      "ifHome": 0.1451,
       "kickoffUtc": "2026-10-12T22:00Z",
       "matchId": "novorizontino--ponte-preta",
       "order": [
@@ -17,14 +40,60 @@
         "draw",
         "home"
       ],
-      "pAway": 0.0512,
-      "pDraw": 0.1309,
-      "pHome": 0.8179,
+      "pAway": 0.0496,
+      "pDraw": 0.1263,
+      "pHome": 0.824,
       "round": 33,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0628
+      "swing": 0.0517
+    },
+    {
+      "awayId": "novorizontino",
+      "best": "draw",
+      "gain": 0.0135,
+      "homeId": "vila-nova",
+      "ifAway": 0.1438,
+      "ifDraw": 0.1652,
+      "ifHome": 0.148,
+      "kickoffUtc": "2026-10-18T21:00Z",
+      "matchId": "vila-nova--novorizontino",
+      "order": [
+        "draw",
+        "home",
+        "away"
+      ],
+      "pAway": 0.2909,
+      "pDraw": 0.2844,
+      "pHome": 0.4247,
+      "round": 34,
+      "sameBottom": true,
+      "sameTop": false,
+      "swing": 0.0214
+    },
+    {
+      "awayId": "criciuma",
+      "best": "home",
+      "gain": 0.004,
+      "homeId": "sao-bernardo",
+      "ifAway": 0.1444,
+      "ifDraw": 0.1539,
+      "ifHome": 0.1558,
+      "kickoffUtc": "2026-10-18T19:00Z",
+      "matchId": "sao-bernardo--criciuma",
+      "order": [
+        "home",
+        "draw",
+        "away"
+      ],
+      "pAway": 0.3056,
+      "pDraw": 0.2813,
+      "pHome": 0.413,
+      "round": 34,
+      "sameBottom": true,
+      "sameTop": true,
+      "swing": 0.0113
     }
   ],
-  "round": 33
+  "round": 34
 }
