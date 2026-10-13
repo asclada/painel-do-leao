@@ -10219,6 +10219,78 @@
       }
     }
   },
+  "novorizontino--ponte-preta": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 11,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": null,
+        "minute": 25,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": null,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "ponte-preta"
+      },
+      {
+        "extra": 8,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 1,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": null,
+        "minute": 81,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": null,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "novorizontino"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "novorizontino--ponte-preta",
+    "stats": {
+      "novorizontino": {
+        "corners": 5,
+        "possession": 42.9,
+        "red": 1,
+        "shots": 13,
+        "shotsOnTarget": 7,
+        "yellow": 1
+      },
+      "ponte-preta": {
+        "corners": 3,
+        "possession": 57.1,
+        "red": 2,
+        "shots": 13,
+        "shotsOnTarget": 7,
+        "yellow": 4
+      }
+    }
+  },
   "novorizontino--sao-bernardo": {
     "goals": [],
     "goalsComplete": true,

@@ -1,20 +1,20 @@
 {
   "matches": {
-    "accuracy": 0.4177,
+    "accuracy": 0.4196,
     "bins": [
       {
         "hi": 0.1,
         "lo": 0.0,
-        "n": 5,
-        "observed": 0.2,
-        "predicted": 0.0809
+        "n": 6,
+        "observed": 0.1667,
+        "predicted": 0.0753
       },
       {
         "hi": 0.2,
         "lo": 0.1,
-        "n": 44,
-        "observed": 0.1136,
-        "predicted": 0.1625
+        "n": 45,
+        "observed": 0.1111,
+        "predicted": 0.1617
       },
       {
         "hi": 0.3,
@@ -61,31 +61,31 @@
       {
         "hi": 0.9,
         "lo": 0.8,
-        "n": 1,
+        "n": 2,
         "observed": 1.0,
-        "predicted": 0.8078
+        "predicted": 0.8169
       }
     ],
-    "brier": 0.6446,
-    "brierReference": 0.6599,
+    "brier": 0.6428,
+    "brierReference": 0.6593,
     "brierUniform": 0.6667,
-    "favoriteRate": 0.4177,
-    "favoritesN": 69,
-    "favoritesObserved": 0.5362,
-    "favoritesPredicted": 0.5732,
-    "logLoss": 1.0672,
-    "middleRate": 0.3323,
-    "nMatches": 316,
-    "reliability": 0.0861,
-    "reliabilitySmallBins": 0.0659,
-    "reliabilityWeighted": 0.0018,
+    "favoriteRate": 0.4196,
+    "favoritesN": 70,
+    "favoritesObserved": 0.5429,
+    "favoritesPredicted": 0.5768,
+    "logLoss": 1.0644,
+    "middleRate": 0.3312,
+    "nMatches": 317,
+    "reliability": 0.0774,
+    "reliabilitySmallBins": 0.057,
+    "reliabilityWeighted": 0.0019,
     "rounds": [
       2,
       33
     ],
-    "skill": 0.0231,
-    "upsetRate": 0.25
+    "skill": 0.025,
+    "upsetRate": 0.2492
   },
   "season": null,
-  "summary": "Conferimos as contas com os 316 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 57% de chance de vencer em média, ele venceu 54% das vezes. Contando todos os jogos, deu o resultado mais provável em 42% deles, o do meio em 33% e a zebra (o menos provável) em 25%."
+  "summary": "Conferimos as contas com os 317 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 58% de chance de vencer em média, ele venceu 54% das vezes. Contando todos os jogos, deu o resultado mais provável em 42% deles, o do meio em 33% e a zebra (o menos provável) em 25%."
 }

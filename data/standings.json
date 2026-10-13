@@ -34,6 +34,39 @@
   },
   {
     "away": {
+      "draws": 5,
+      "goalsAgainst": 13,
+      "goalsFor": 28,
+      "losses": 4,
+      "played": 16,
+      "points": 26,
+      "wins": 7
+    },
+    "draws": 9,
+    "goalDiff": 31,
+    "goalsAgainst": 28,
+    "goalsFor": 59,
+    "home": {
+      "draws": 4,
+      "goalsAgainst": 15,
+      "goalsFor": 31,
+      "losses": 3,
+      "played": 17,
+      "points": 34,
+      "wins": 10
+    },
+    "losses": 7,
+    "pct": 61,
+    "played": 33,
+    "points": 60,
+    "position": 2,
+    "red": 3,
+    "teamId": "novorizontino",
+    "wins": 17,
+    "yellow": 70
+  },
+  {
+    "away": {
       "draws": 4,
       "goalsAgainst": 13,
       "goalsFor": 15,
@@ -59,44 +92,11 @@
     "pct": 61,
     "played": 33,
     "points": 60,
-    "position": 2,
+    "position": 3,
     "red": 2,
     "teamId": "juventude",
     "wins": 17,
     "yellow": 72
-  },
-  {
-    "away": {
-      "draws": 5,
-      "goalsAgainst": 13,
-      "goalsFor": 28,
-      "losses": 4,
-      "played": 16,
-      "points": 26,
-      "wins": 7
-    },
-    "draws": 9,
-    "goalDiff": 27,
-    "goalsAgainst": 27,
-    "goalsFor": 54,
-    "home": {
-      "draws": 4,
-      "goalsAgainst": 14,
-      "goalsFor": 26,
-      "losses": 3,
-      "played": 16,
-      "points": 31,
-      "wins": 9
-    },
-    "losses": 7,
-    "pct": 59,
-    "played": 32,
-    "points": 57,
-    "position": 3,
-    "red": 2,
-    "teamId": "novorizontino",
-    "wins": 16,
-    "yellow": 69
   },
   {
     "away": {
@@ -629,17 +629,17 @@
   {
     "away": {
       "draws": 0,
-      "goalsAgainst": 43,
-      "goalsFor": 7,
-      "losses": 15,
-      "played": 16,
+      "goalsAgainst": 48,
+      "goalsFor": 8,
+      "losses": 16,
+      "played": 17,
       "points": 3,
       "wins": 1
     },
     "draws": 4,
-    "goalDiff": -51,
-    "goalsAgainst": 68,
-    "goalsFor": 17,
+    "goalDiff": -55,
+    "goalsAgainst": 73,
+    "goalsFor": 18,
     "home": {
       "draws": 4,
       "goalsAgainst": 25,
@@ -649,14 +649,14 @@
       "points": 10,
       "wins": 2
     },
-    "losses": 25,
-    "pct": 14,
-    "played": 32,
+    "losses": 26,
+    "pct": 13,
+    "played": 33,
     "points": 13,
     "position": 20,
-    "red": 10,
+    "red": 12,
     "teamId": "ponte-preta",
     "wins": 3,
-    "yellow": 91
+    "yellow": 95
   }
 ]

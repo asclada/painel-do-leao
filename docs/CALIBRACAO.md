@@ -9,16 +9,16 @@ modelo dizia com o que aconteceu.
 
 ## Jogo a jogo (previsão feita uma rodada antes)
 
-- Jogos avaliados: **316** (rodadas 2 a 33)
-- Brier multiclasse do modelo: **0,645** (quanto menor, melhor)
-- Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,660
+- Jogos avaliados: **317** (rodadas 2 a 33)
+- Brier multiclasse do modelo: **0,643** (quanto menor, melhor)
+- Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,659
 - Chutar 1/3 para cada resultado: 0,667
-- Ganho sobre a referência (skill score): **2,3%**
-- Log loss: 1,067 · resultado mais provável acertou 42% dos jogos
-- Favoritos (acima de 50%): 69 jogos, chance média prevista 57%, venceram 54%
+- Ganho sobre a referência (skill score): **2,5%**
+- Log loss: 1,064 · resultado mais provável acertou 42% dos jogos
+- Favoritos (acima de 50%): 70 jogos, chance média prevista 58%, venceram 54%
 - Resultado mais provável / do meio / menos provável (zebra): 42% / 33% / 25% dos jogos
-- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0018**
-- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,0861. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 77% do valor.
+- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0019**
+- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,0774. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 74% do valor.
 
 **Referência, não comparação direta.** O site Chance de Gol publica os mesmos indicadores para o modelo dele,
 com outro método e todas as competições desde 1998: resultado mais provável / do meio / zebra em 51% / 27% /
@@ -30,15 +30,15 @@ Calibração por faixa (todas as chances de vitória do mandante, empate e vitó
 
 | Faixa prevista | Casos | Chance média prevista | Aconteceu |
 |---|---:|---:|---:|
-| 0%–10% | 5 | 8% | 20% |
-| 10%–20% | 44 | 16% | 11% |
+| 0%–10% | 6 | 8% | 17% |
+| 10%–20% | 45 | 16% | 11% |
 | 20%–30% | 375 | 26% | 28% |
 | 30%–40% | 305 | 34% | 36% |
 | 40%–50% | 150 | 45% | 39% |
 | 50%–60% | 49 | 53% | 43% |
 | 60%–70% | 14 | 64% | 79% |
 | 70%–80% | 5 | 75% | 80% |
-| 80%–90% | 1 | 81% | 100% |
+| 80%–90% | 2 | 82% | 100% |
 
 ## Temporada (chance de G2 e de G6)
 

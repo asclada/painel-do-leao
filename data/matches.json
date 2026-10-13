@@ -4890,18 +4890,18 @@
     "venue": "Arena Castelão"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "ponte-preta",
     "city": "Novo Horizonte",
-    "homeGoals": null,
+    "homeGoals": 5,
     "homeId": "novorizontino",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 3,
     "id": "novorizontino--ponte-preta",
     "kickoffUtc": "2026-10-12T22:00Z",
     "round": 33,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Dr. Jorge Ismael de Biasi"
   },
   {
@@ -4916,7 +4916,7 @@
     "kickoffUtc": "2026-10-12T22:30Z",
     "round": 33,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Heriberto Hülse"
   },
   {
@@ -4931,7 +4931,7 @@
     "kickoffUtc": "2026-10-13T00:00Z",
     "round": 33,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Santa Cruz"
   },
   {
