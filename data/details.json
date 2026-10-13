@@ -4911,6 +4911,38 @@
       }
     }
   },
+  "criciuma--america-mg": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 49,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "criciuma"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "criciuma--america-mg",
+    "stats": {
+      "america-mg": {
+        "corners": 6,
+        "possession": 43.2,
+        "red": 0,
+        "shots": 9,
+        "shotsOnTarget": 2,
+        "yellow": 2
+      },
+      "criciuma": {
+        "corners": 9,
+        "possession": 56.8,
+        "red": 0,
+        "shots": 19,
+        "shotsOnTarget": 3,
+        "yellow": 3
+      }
+    }
+  },
   "criciuma--athletic-club": {
     "goals": [
       {

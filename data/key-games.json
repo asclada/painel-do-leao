@@ -1,15 +1,15 @@
 {
-  "baseline": 0.1354,
+  "baseline": 0.1282,
   "metric": "direct",
   "rivals": [
     {
       "awayId": "juventude",
       "best": "home",
-      "gain": 0.0301,
+      "gain": 0.0286,
       "homeId": "ceara",
-      "ifAway": 0.1034,
-      "ifDraw": 0.1464,
-      "ifHome": 0.1656,
+      "ifAway": 0.0969,
+      "ifDraw": 0.1356,
+      "ifHome": 0.1568,
       "kickoffUtc": "2026-10-17T19:30Z",
       "matchId": "ceara--juventude",
       "order": [
@@ -17,22 +17,22 @@
         "draw",
         "away"
       ],
-      "pAway": 0.3806,
-      "pDraw": 0.3145,
-      "pHome": 0.3049,
+      "pAway": 0.3785,
+      "pDraw": 0.3175,
+      "pHome": 0.304,
       "round": 34,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0621
+      "swing": 0.0599
     },
     {
       "awayId": "novorizontino",
       "best": "draw",
-      "gain": 0.012,
+      "gain": 0.0118,
       "homeId": "vila-nova",
-      "ifAway": 0.1257,
-      "ifDraw": 0.1474,
-      "ifHome": 0.1329,
+      "ifAway": 0.1207,
+      "ifDraw": 0.14,
+      "ifHome": 0.1266,
       "kickoffUtc": "2026-10-18T21:00Z",
       "matchId": "vila-nova--novorizontino",
       "order": [
@@ -40,22 +40,22 @@
         "home",
         "away"
       ],
-      "pAway": 0.2926,
-      "pDraw": 0.2842,
-      "pHome": 0.4233,
+      "pAway": 0.2969,
+      "pDraw": 0.2838,
+      "pHome": 0.4192,
       "round": 34,
       "sameBottom": true,
       "sameTop": false,
-      "swing": 0.0218
+      "swing": 0.0193
     },
     {
       "awayId": "criciuma",
       "best": "home",
-      "gain": 0.0044,
+      "gain": 0.0053,
       "homeId": "sao-bernardo",
-      "ifAway": 0.1295,
-      "ifDraw": 0.138,
-      "ifHome": 0.1398,
+      "ifAway": 0.1201,
+      "ifDraw": 0.1304,
+      "ifHome": 0.1335,
       "kickoffUtc": "2026-10-18T19:00Z",
       "matchId": "sao-bernardo--criciuma",
       "order": [
@@ -63,13 +63,13 @@
         "draw",
         "away"
       ],
-      "pAway": 0.3014,
-      "pDraw": 0.281,
-      "pHome": 0.4176,
+      "pAway": 0.3023,
+      "pDraw": 0.2744,
+      "pHome": 0.4233,
       "round": 34,
-      "sameBottom": true,
+      "sameBottom": false,
       "sameTop": true,
-      "swing": 0.0103
+      "swing": 0.0134
     }
   ],
   "round": 34

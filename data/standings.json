@@ -142,27 +142,27 @@
       "wins": 6
     },
     "draws": 8,
-    "goalDiff": 5,
+    "goalDiff": 6,
     "goalsAgainst": 28,
-    "goalsFor": 33,
+    "goalsFor": 34,
     "home": {
       "draws": 4,
       "goalsAgainst": 10,
-      "goalsFor": 18,
+      "goalsFor": 19,
       "losses": 3,
-      "played": 16,
-      "points": 31,
-      "wins": 9
+      "played": 17,
+      "points": 34,
+      "wins": 10
     },
     "losses": 9,
-    "pct": 55,
-    "played": 32,
-    "points": 53,
+    "pct": 57,
+    "played": 33,
+    "points": 56,
     "position": 5,
     "red": 1,
     "teamId": "criciuma",
-    "wins": 15,
-    "yellow": 78
+    "wins": 16,
+    "yellow": 81
   },
   {
     "away": {
@@ -596,16 +596,16 @@
   {
     "away": {
       "draws": 2,
-      "goalsAgainst": 31,
+      "goalsAgainst": 32,
       "goalsFor": 9,
-      "losses": 13,
-      "played": 16,
+      "losses": 14,
+      "played": 17,
       "points": 5,
       "wins": 1
     },
     "draws": 5,
-    "goalDiff": -32,
-    "goalsAgainst": 53,
+    "goalDiff": -33,
+    "goalsAgainst": 54,
     "goalsFor": 21,
     "home": {
       "draws": 3,
@@ -616,15 +616,15 @@
       "points": 12,
       "wins": 3
     },
-    "losses": 23,
-    "pct": 18,
-    "played": 32,
+    "losses": 24,
+    "pct": 17,
+    "played": 33,
     "points": 17,
     "position": 19,
     "red": 2,
     "teamId": "america-mg",
     "wins": 4,
-    "yellow": 67
+    "yellow": 69
   },
   {
     "away": {

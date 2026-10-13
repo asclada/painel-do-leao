@@ -119,9 +119,9 @@
         "V"
       ],
       "goalDiff": 15,
-      "pDirect": 0.7066,
-      "pPromotion": 0.8804,
-      "pTop6": 0.2919,
+      "pDirect": 0.7039,
+      "pPromotion": 0.879,
+      "pTop6": 0.2939,
       "played": 33,
       "points": 61,
       "position": 1,
@@ -183,16 +183,16 @@
         "V"
       ],
       "goalDiff": 31,
-      "pDirect": 0.6062,
-      "pPromotion": 0.8756,
-      "pTop6": 0.3875,
+      "pDirect": 0.5995,
+      "pPromotion": 0.8686,
+      "pTop6": 0.3923,
       "played": 33,
       "points": 60,
       "position": 2,
       "remainingAway": 3,
       "remainingHome": 2,
       "remainingVsTop6": 4,
-      "schedulePoints": -1.48,
+      "schedulePoints": -1.53,
       "teamId": "novorizontino"
     },
     {
@@ -248,7 +248,7 @@
       ],
       "goalDiff": 18,
       "pDirect": 0.494,
-      "pPromotion": 0.8055,
+      "pPromotion": 0.8069,
       "pTop6": 0.502,
       "played": 33,
       "points": 60,
@@ -311,9 +311,9 @@
         "E"
       ],
       "goalDiff": 10,
-      "pDirect": 0.1354,
-      "pPromotion": 0.5181,
-      "pTop6": 0.7439,
+      "pDirect": 0.1282,
+      "pPromotion": 0.5075,
+      "pTop6": 0.7375,
       "played": 33,
       "points": 57,
       "position": 4,
@@ -324,16 +324,8 @@
       "teamId": "fortaleza"
     },
     {
-      "difficulty": "Média",
+      "difficulty": "Difícil",
       "fixtures": [
-        {
-          "home": true,
-          "kickoffUtc": "2026-10-12T22:30Z",
-          "matchId": "criciuma--america-mg",
-          "opponentId": "america-mg",
-          "opponentInTop6": false,
-          "round": 33
-        },
         {
           "home": false,
           "kickoffUtc": "2026-10-18T19:00Z",
@@ -377,22 +369,22 @@
       ],
       "form": [
         "D",
+        "V",
+        "V",
         "D",
-        "V",
-        "V",
-        "D"
+        "V"
       ],
-      "goalDiff": 5,
-      "pDirect": 0.0348,
-      "pPromotion": 0.2712,
-      "pTop6": 0.6242,
-      "played": 32,
-      "points": 53,
+      "goalDiff": 6,
+      "pDirect": 0.0516,
+      "pPromotion": 0.3312,
+      "pTop6": 0.7169,
+      "played": 33,
+      "points": 56,
       "position": 5,
       "remainingAway": 3,
-      "remainingHome": 3,
+      "remainingHome": 2,
       "remainingVsTop6": 2,
-      "schedulePoints": 0.24,
+      "schedulePoints": -0.54,
       "teamId": "criciuma"
     },
     {
@@ -447,9 +439,9 @@
         "E"
       ],
       "goalDiff": 10,
-      "pDirect": 0.0123,
-      "pPromotion": 0.2273,
-      "pTop6": 0.4581,
+      "pDirect": 0.0115,
+      "pPromotion": 0.2093,
+      "pTop6": 0.4276,
       "played": 33,
       "points": 53,
       "position": 6,
@@ -511,9 +503,9 @@
         "E"
       ],
       "goalDiff": 4,
-      "pDirect": 0.0092,
-      "pPromotion": 0.2391,
-      "pTop6": 0.5487,
+      "pDirect": 0.0095,
+      "pPromotion": 0.2283,
+      "pTop6": 0.5261,
       "played": 33,
       "points": 52,
       "position": 7,
