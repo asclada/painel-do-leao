@@ -2889,6 +2889,38 @@
       }
     }
   },
+  "botafogo-sp--ceara": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 74,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "botafogo-sp"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "botafogo-sp--ceara",
+    "stats": {
+      "botafogo-sp": {
+        "corners": 8,
+        "possession": 52.5,
+        "red": 0,
+        "shots": 15,
+        "shotsOnTarget": 4,
+        "yellow": 1
+      },
+      "ceara": {
+        "corners": 4,
+        "possession": 47.5,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      }
+    }
+  },
   "botafogo-sp--crb": {
     "goals": [
       {

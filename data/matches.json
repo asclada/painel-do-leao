@@ -4920,18 +4920,18 @@
     "venue": "Heriberto Hülse"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "ceara",
     "city": "Ribeirão Preto",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "botafogo-sp",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "botafogo-sp--ceara",
     "kickoffUtc": "2026-10-13T00:00Z",
     "round": 33,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio Santa Cruz"
   },
   {
