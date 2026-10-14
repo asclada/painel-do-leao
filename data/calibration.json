@@ -1,6 +1,6 @@
 {
   "matches": {
-    "accuracy": 0.4232,
+    "accuracy": 0.4219,
     "bins": [
       {
         "hi": 0.1,
@@ -19,8 +19,8 @@
       {
         "hi": 0.3,
         "lo": 0.2,
-        "n": 377,
-        "observed": 0.2759,
+        "n": 379,
+        "observed": 0.277,
         "predicted": 0.2586
       },
       {
@@ -33,9 +33,9 @@
       {
         "hi": 0.5,
         "lo": 0.4,
-        "n": 150,
-        "observed": 0.3933,
-        "predicted": 0.4493
+        "n": 151,
+        "observed": 0.3907,
+        "predicted": 0.4495
       },
       {
         "hi": 0.6,
@@ -66,26 +66,26 @@
         "predicted": 0.8169
       }
     ],
-    "brier": 0.6413,
-    "brierReference": 0.6579,
+    "brier": 0.642,
+    "brierReference": 0.6585,
     "brierUniform": 0.6667,
-    "favoriteRate": 0.4232,
+    "favoriteRate": 0.4219,
     "favoritesN": 71,
     "favoritesObserved": 0.5493,
     "favoritesPredicted": 0.5771,
-    "logLoss": 1.0623,
-    "middleRate": 0.3292,
-    "nMatches": 319,
-    "reliability": 0.0749,
+    "logLoss": 1.0634,
+    "middleRate": 0.3281,
+    "nMatches": 320,
+    "reliability": 0.0752,
     "reliabilitySmallBins": 0.057,
     "reliabilityWeighted": 0.0018,
     "rounds": [
       2,
       33
     ],
-    "skill": 0.0253,
-    "upsetRate": 0.2476
+    "skill": 0.025,
+    "upsetRate": 0.25
   },
   "season": null,
-  "summary": "Conferimos as contas com os 319 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 58% de chance de vencer em média, ele venceu 55% das vezes. Contando todos os jogos, deu o resultado mais provável em 42% deles, o do meio em 33% e a zebra (o menos provável) em 25%."
+  "summary": "Conferimos as contas com os 320 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 58% de chance de vencer em média, ele venceu 55% das vezes. Contando todos os jogos, deu o resultado mais provável em 42% deles, o do meio em 33% e a zebra (o menos provável) em 25%."
 }

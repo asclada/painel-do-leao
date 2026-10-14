@@ -6719,6 +6719,216 @@
           "position": 2
         }
       }
+    },
+    {
+      "key": "fa861c2106829268",
+      "nSims": 10000,
+      "nextMatches": [
+        {
+          "matchId": "ponte-preta--atletico-go",
+          "pAway": 0.4606,
+          "pDraw": 0.3006,
+          "pHome": 0.2388
+        },
+        {
+          "matchId": "sport--fortaleza",
+          "pAway": 0.3019,
+          "pDraw": 0.2999,
+          "pHome": 0.3982
+        },
+        {
+          "matchId": "ceara--juventude",
+          "pAway": 0.3785,
+          "pDraw": 0.3157,
+          "pHome": 0.3058
+        },
+        {
+          "matchId": "america-mg--operario-pr",
+          "pAway": 0.4543,
+          "pDraw": 0.261,
+          "pHome": 0.2846
+        },
+        {
+          "matchId": "avai--athletic-club",
+          "pAway": 0.3446,
+          "pDraw": 0.2812,
+          "pHome": 0.3742
+        },
+        {
+          "matchId": "crb--botafogo-sp",
+          "pAway": 0.2076,
+          "pDraw": 0.2498,
+          "pHome": 0.5426
+        },
+        {
+          "matchId": "sao-bernardo--criciuma",
+          "pAway": 0.3079,
+          "pDraw": 0.2789,
+          "pHome": 0.4131
+        },
+        {
+          "matchId": "vila-nova--novorizontino",
+          "pAway": 0.2978,
+          "pDraw": 0.2806,
+          "pHome": 0.4216
+        },
+        {
+          "matchId": "goias--nautico",
+          "pAway": 0.3063,
+          "pDraw": 0.2754,
+          "pHome": 0.4183
+        },
+        {
+          "matchId": "londrina--cuiaba",
+          "pAway": 0.2936,
+          "pDraw": 0.2761,
+          "pHome": 0.4303
+        }
+      ],
+      "round": 33,
+      "seed": 90033,
+      "teams": {
+        "america-mg": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0,
+          "pTop6": 0.0,
+          "points": 17,
+          "position": 19
+        },
+        "athletic-club": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0,
+          "pTop6": 0.0001,
+          "points": 43,
+          "position": 13
+        },
+        "atletico-go": {
+          "pDirect": 0.0103,
+          "pPromotion": 0.2096,
+          "pTop6": 0.4426,
+          "points": 53,
+          "position": 6
+        },
+        "avai": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0,
+          "pTop6": 0.0,
+          "points": 36,
+          "position": 17
+        },
+        "botafogo-sp": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0,
+          "pTop6": 0.0,
+          "points": 41,
+          "position": 16
+        },
+        "ceara": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0,
+          "pTop6": 0.0,
+          "points": 42,
+          "position": 15
+        },
+        "crb": {
+          "pDirect": 0.0109,
+          "pPromotion": 0.2269,
+          "pTop6": 0.5224,
+          "points": 52,
+          "position": 7
+        },
+        "criciuma": {
+          "pDirect": 0.0514,
+          "pPromotion": 0.3335,
+          "pTop6": 0.7226,
+          "points": 56,
+          "position": 5
+        },
+        "cuiaba": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0036,
+          "pTop6": 0.0086,
+          "points": 47,
+          "position": 11
+        },
+        "fortaleza": {
+          "pDirect": 0.1299,
+          "pPromotion": 0.5132,
+          "pTop6": 0.7351,
+          "points": 57,
+          "position": 4
+        },
+        "goias": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0237,
+          "pTop6": 0.065,
+          "points": 48,
+          "position": 9
+        },
+        "juventude": {
+          "pDirect": 0.4864,
+          "pPromotion": 0.8035,
+          "pTop6": 0.5091,
+          "points": 60,
+          "position": 3
+        },
+        "londrina": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0,
+          "pTop6": 0.0,
+          "points": 29,
+          "position": 18
+        },
+        "nautico": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0,
+          "pTop6": 0.0,
+          "points": 42,
+          "position": 14
+        },
+        "novorizontino": {
+          "pDirect": 0.6051,
+          "pPromotion": 0.8745,
+          "pTop6": 0.3857,
+          "points": 60,
+          "position": 2
+        },
+        "operario-pr": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0099,
+          "pTop6": 0.0375,
+          "points": 48,
+          "position": 10
+        },
+        "ponte-preta": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0,
+          "pTop6": 0.0,
+          "points": 13,
+          "position": 20
+        },
+        "sao-bernardo": {
+          "pDirect": 0.0,
+          "pPromotion": 0.0048,
+          "pTop6": 0.0103,
+          "points": 46,
+          "position": 12
+        },
+        "sport": {
+          "pDirect": 0.0013,
+          "pPromotion": 0.1189,
+          "pTop6": 0.2681,
+          "points": 51,
+          "position": 8
+        },
+        "vila-nova": {
+          "pDirect": 0.7047,
+          "pPromotion": 0.8779,
+          "pTop6": 0.2929,
+          "points": 61,
+          "position": 1
+        }
+      }
     }
   ],
   "version": 2

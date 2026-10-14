@@ -981,6 +981,62 @@
       }
     }
   },
+  "athletic-club--londrina": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 4,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 1,
+        "teamId": "londrina"
+      },
+      {
+        "extra": null,
+        "minute": 18,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "athletic-club"
+      },
+      {
+        "extra": null,
+        "minute": 84,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 2,
+        "teamId": "londrina"
+      },
+      {
+        "extra": null,
+        "minute": 89,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "athletic-club"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "athletic-club--londrina",
+    "stats": {
+      "athletic-club": {
+        "corners": 6,
+        "possession": 49.1,
+        "red": 0,
+        "shots": 17,
+        "shotsOnTarget": 4,
+        "yellow": 2
+      },
+      "londrina": {
+        "corners": 1,
+        "possession": 50.9,
+        "red": 0,
+        "shots": 14,
+        "shotsOnTarget": 8,
+        "yellow": 1
+      }
+    }
+  },
   "athletic-club--nautico": {
     "goals": [
       {

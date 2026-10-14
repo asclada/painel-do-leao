@@ -4935,24 +4935,24 @@
     "venue": "Estádio Santa Cruz"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "londrina",
     "city": "Sao Joao del Rei",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "athletic-club",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 1,
     "id": "athletic-club--londrina",
     "kickoffUtc": "2026-10-13T22:30Z",
     "round": 33,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Joaquim Portugal"
   },
   {
     "awayGoals": null,
     "awayId": "atletico-go",
-    "city": "Ponte Preta",
+    "city": "Indaiatuba",
     "homeGoals": null,
     "homeId": "ponte-preta",
     "htAwayGoals": null,
@@ -4962,7 +4962,7 @@
     "round": 34,
     "source": "espn",
     "status": "scheduled",
-    "venue": "Moisés Lucarelli"
+    "venue": "Estádio Italo Mário Limongi"
   },
   {
     "awayGoals": null,
