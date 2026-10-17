@@ -35,6 +35,39 @@
   {
     "away": {
       "draws": 5,
+      "goalsAgainst": 15,
+      "goalsFor": 17,
+      "losses": 5,
+      "played": 17,
+      "points": 26,
+      "wins": 7
+    },
+    "draws": 10,
+    "goalDiff": 18,
+    "goalsAgainst": 23,
+    "goalsFor": 41,
+    "home": {
+      "draws": 5,
+      "goalsAgainst": 8,
+      "goalsFor": 24,
+      "losses": 2,
+      "played": 17,
+      "points": 35,
+      "wins": 10
+    },
+    "losses": 7,
+    "pct": 60,
+    "played": 34,
+    "points": 61,
+    "position": 2,
+    "red": 3,
+    "teamId": "juventude",
+    "wins": 17,
+    "yellow": 75
+  },
+  {
+    "away": {
+      "draws": 5,
       "goalsAgainst": 13,
       "goalsFor": 28,
       "losses": 4,
@@ -59,44 +92,11 @@
     "pct": 61,
     "played": 33,
     "points": 60,
-    "position": 2,
+    "position": 3,
     "red": 3,
     "teamId": "novorizontino",
     "wins": 17,
     "yellow": 70
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 13,
-      "goalsFor": 15,
-      "losses": 5,
-      "played": 16,
-      "points": 25,
-      "wins": 7
-    },
-    "draws": 9,
-    "goalDiff": 18,
-    "goalsAgainst": 21,
-    "goalsFor": 39,
-    "home": {
-      "draws": 5,
-      "goalsAgainst": 8,
-      "goalsFor": 24,
-      "losses": 2,
-      "played": 17,
-      "points": 35,
-      "wins": 10
-    },
-    "losses": 7,
-    "pct": 61,
-    "played": 33,
-    "points": 60,
-    "position": 3,
-    "red": 2,
-    "teamId": "juventude",
-    "wins": 17,
-    "yellow": 72
   },
   {
     "away": {
@@ -397,6 +397,39 @@
   },
   {
     "away": {
+      "draws": 6,
+      "goalsAgainst": 23,
+      "goalsFor": 15,
+      "losses": 8,
+      "played": 17,
+      "points": 15,
+      "wins": 3
+    },
+    "draws": 10,
+    "goalDiff": -5,
+    "goalsAgainst": 42,
+    "goalsFor": 37,
+    "home": {
+      "draws": 4,
+      "goalsAgainst": 19,
+      "goalsFor": 22,
+      "losses": 5,
+      "played": 17,
+      "points": 28,
+      "wins": 8
+    },
+    "losses": 13,
+    "pct": 42,
+    "played": 34,
+    "points": 43,
+    "position": 13,
+    "red": 4,
+    "teamId": "ceara",
+    "wins": 11,
+    "yellow": 76
+  },
+  {
+    "away": {
       "draws": 7,
       "goalsAgainst": 21,
       "goalsFor": 19,
@@ -422,7 +455,7 @@
     "pct": 43,
     "played": 33,
     "points": 43,
-    "position": 13,
+    "position": 14,
     "red": 9,
     "teamId": "athletic-club",
     "wins": 10,
@@ -455,44 +488,11 @@
     "pct": 42,
     "played": 33,
     "points": 42,
-    "position": 14,
+    "position": 15,
     "red": 6,
     "teamId": "nautico",
     "wins": 11,
     "yellow": 92
-  },
-  {
-    "away": {
-      "draws": 6,
-      "goalsAgainst": 23,
-      "goalsFor": 15,
-      "losses": 8,
-      "played": 17,
-      "points": 15,
-      "wins": 3
-    },
-    "draws": 9,
-    "goalDiff": -5,
-    "goalsAgainst": 40,
-    "goalsFor": 35,
-    "home": {
-      "draws": 3,
-      "goalsAgainst": 17,
-      "goalsFor": 20,
-      "losses": 5,
-      "played": 16,
-      "points": 27,
-      "wins": 8
-    },
-    "losses": 13,
-    "pct": 42,
-    "played": 33,
-    "points": 42,
-    "position": 15,
-    "red": 4,
-    "teamId": "ceara",
-    "wins": 11,
-    "yellow": 74
   },
   {
     "away": {

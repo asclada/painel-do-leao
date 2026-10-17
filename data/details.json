@@ -3848,6 +3848,62 @@
       }
     }
   },
+  "ceara--juventude": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 68,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 2,
+        "teamId": "juventude"
+      },
+      {
+        "extra": null,
+        "minute": 70,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "ceara"
+      },
+      {
+        "extra": null,
+        "minute": 78,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      },
+      {
+        "extra": 16,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 2,
+        "teamId": "ceara"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "ceara--juventude",
+    "stats": {
+      "ceara": {
+        "corners": 6,
+        "possession": 47.0,
+        "red": 0,
+        "shots": 12,
+        "shotsOnTarget": 4,
+        "yellow": 2
+      },
+      "juventude": {
+        "corners": 6,
+        "possession": 53.0,
+        "red": 1,
+        "shots": 9,
+        "shotsOnTarget": 4,
+        "yellow": 3
+      }
+    }
+  },
   "ceara--londrina": {
     "goals": [
       {

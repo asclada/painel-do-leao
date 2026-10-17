@@ -4980,18 +4980,18 @@
     "venue": "Ilha do Retiro"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "juventude",
     "city": "Fortaleza",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "ceara",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "ceara--juventude",
     "kickoffUtc": "2026-10-17T19:30Z",
     "round": 34,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Arena Castelão"
   },
   {
@@ -5006,7 +5006,7 @@
     "kickoffUtc": "2026-10-17T21:30Z",
     "round": 34,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Raimundo Sampaio (Independência)"
   },
   {
