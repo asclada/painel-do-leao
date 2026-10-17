@@ -166,18 +166,18 @@
   },
   {
     "away": {
-      "draws": 6,
-      "goalsAgainst": 17,
-      "goalsFor": 14,
+      "draws": 7,
+      "goalsAgainst": 18,
+      "goalsFor": 15,
       "losses": 5,
-      "played": 16,
-      "points": 21,
+      "played": 17,
+      "points": 22,
       "wins": 5
     },
-    "draws": 11,
+    "draws": 12,
     "goalDiff": 10,
-    "goalsAgainst": 31,
-    "goalsFor": 41,
+    "goalsAgainst": 32,
+    "goalsFor": 42,
     "home": {
       "draws": 5,
       "goalsAgainst": 14,
@@ -188,14 +188,14 @@
       "wins": 9
     },
     "losses": 8,
-    "pct": 54,
-    "played": 33,
-    "points": 53,
+    "pct": 53,
+    "played": 34,
+    "points": 54,
     "position": 6,
     "red": 4,
     "teamId": "atletico-go",
     "wins": 14,
-    "yellow": 69
+    "yellow": 72
   },
   {
     "away": {
@@ -636,27 +636,27 @@
       "points": 3,
       "wins": 1
     },
-    "draws": 4,
+    "draws": 5,
     "goalDiff": -55,
-    "goalsAgainst": 73,
-    "goalsFor": 18,
+    "goalsAgainst": 74,
+    "goalsFor": 19,
     "home": {
-      "draws": 4,
-      "goalsAgainst": 25,
-      "goalsFor": 10,
+      "draws": 5,
+      "goalsAgainst": 26,
+      "goalsFor": 11,
       "losses": 10,
-      "played": 16,
-      "points": 10,
+      "played": 17,
+      "points": 11,
       "wins": 2
     },
     "losses": 26,
-    "pct": 13,
-    "played": 33,
-    "points": 13,
+    "pct": 14,
+    "played": 34,
+    "points": 14,
     "position": 20,
-    "red": 12,
+    "red": 13,
     "teamId": "ponte-preta",
     "wins": 3,
-    "yellow": 95
+    "yellow": 98
   }
 ]

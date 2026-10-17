@@ -288,12 +288,21 @@
     "round": 32
   },
   {
-    "pDirect": 0.1366,
-    "pPromotion": 0.5151,
-    "pTop6": 0.7307,
+    "pDirect": 0.1299,
+    "pPromotion": 0.5132,
+    "pTop6": 0.7351,
     "partial": false,
     "points": 57,
     "position": 4,
     "round": 33
+  },
+  {
+    "pDirect": 0.1318,
+    "pPromotion": 0.5122,
+    "pTop6": 0.7417,
+    "partial": true,
+    "points": 57,
+    "position": 4,
+    "round": 34
   }
 ]

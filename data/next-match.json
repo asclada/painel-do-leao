@@ -1,8 +1,8 @@
 {
   "chances": {
-    "draw": 0.3001,
-    "loss": 0.396,
-    "win": 0.3039
+    "draw": 0.2982,
+    "loss": 0.4,
+    "win": 0.3018
   },
   "city": "Recife",
   "firstTurn": "Fortaleza 2 x 1 Sport",
@@ -25,6 +25,6 @@
   "matchId": "sport--fortaleza",
   "opponentId": "sport",
   "round": 34,
-  "status": "scheduled",
+  "status": "live",
   "venue": "Ilha do Retiro"
 }

@@ -119,16 +119,16 @@
         "V"
       ],
       "goalDiff": 15,
-      "pDirect": 0.7034,
-      "pPromotion": 0.8804,
-      "pTop6": 0.2942,
+      "pDirect": 0.7007,
+      "pPromotion": 0.8793,
+      "pTop6": 0.2984,
       "played": 33,
       "points": 61,
       "position": 1,
       "remainingAway": 2,
       "remainingHome": 3,
       "remainingVsTop6": 4,
-      "schedulePoints": -0.68,
+      "schedulePoints": -0.66,
       "teamId": "vila-nova"
     },
     {
@@ -183,16 +183,16 @@
         "V"
       ],
       "goalDiff": 31,
-      "pDirect": 0.6006,
-      "pPromotion": 0.87,
-      "pTop6": 0.392,
+      "pDirect": 0.6022,
+      "pPromotion": 0.8763,
+      "pTop6": 0.3919,
       "played": 33,
       "points": 60,
       "position": 2,
       "remainingAway": 3,
       "remainingHome": 2,
       "remainingVsTop6": 4,
-      "schedulePoints": -1.53,
+      "schedulePoints": -1.5,
       "teamId": "novorizontino"
     },
     {
@@ -247,16 +247,16 @@
         "E"
       ],
       "goalDiff": 18,
-      "pDirect": 0.4844,
-      "pPromotion": 0.8,
-      "pTop6": 0.5106,
+      "pDirect": 0.4965,
+      "pPromotion": 0.8047,
+      "pTop6": 0.4995,
       "played": 33,
       "points": 60,
       "position": 3,
       "remainingAway": 3,
       "remainingHome": 2,
       "remainingVsTop6": 1,
-      "schedulePoints": -0.9,
+      "schedulePoints": -0.89,
       "teamId": "juventude"
     },
     {
@@ -311,16 +311,16 @@
         "E"
       ],
       "goalDiff": 10,
-      "pDirect": 0.1366,
-      "pPromotion": 0.5151,
-      "pTop6": 0.7307,
+      "pDirect": 0.1318,
+      "pPromotion": 0.5122,
+      "pTop6": 0.7417,
       "played": 33,
       "points": 57,
       "position": 4,
       "remainingAway": 3,
       "remainingHome": 2,
       "remainingVsTop6": 3,
-      "schedulePoints": -0.4,
+      "schedulePoints": -0.45,
       "teamId": "fortaleza"
     },
     {
@@ -375,29 +375,21 @@
         "V"
       ],
       "goalDiff": 6,
-      "pDirect": 0.052,
-      "pPromotion": 0.332,
-      "pTop6": 0.7232,
+      "pDirect": 0.0539,
+      "pPromotion": 0.3451,
+      "pTop6": 0.745,
       "played": 33,
       "points": 56,
       "position": 5,
       "remainingAway": 3,
       "remainingHome": 2,
       "remainingVsTop6": 2,
-      "schedulePoints": -0.54,
+      "schedulePoints": -0.53,
       "teamId": "criciuma"
     },
     {
-      "difficulty": "Média",
+      "difficulty": "Difícil",
       "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-16T22:30Z",
-          "matchId": "ponte-preta--atletico-go",
-          "opponentId": "ponte-preta",
-          "opponentInTop6": false,
-          "round": 34
-        },
         {
           "home": true,
           "kickoffUtc": "2026-10-24T19:30Z",
@@ -432,23 +424,23 @@
         }
       ],
       "form": [
-        "D",
         "V",
         "V",
         "D",
+        "E",
         "E"
       ],
       "goalDiff": 10,
-      "pDirect": 0.0117,
-      "pPromotion": 0.2177,
-      "pTop6": 0.4298,
-      "played": 33,
-      "points": 53,
+      "pDirect": 0.0021,
+      "pPromotion": 0.1669,
+      "pTop6": 0.3549,
+      "played": 34,
+      "points": 54,
       "position": 6,
-      "remainingAway": 3,
+      "remainingAway": 2,
       "remainingHome": 2,
       "remainingVsTop6": 2,
-      "schedulePoints": -0.17,
+      "schedulePoints": -0.5,
       "teamId": "atletico-go"
     },
     {
@@ -503,16 +495,16 @@
         "E"
       ],
       "goalDiff": 4,
-      "pDirect": 0.01,
-      "pPromotion": 0.2271,
-      "pTop6": 0.5299,
+      "pDirect": 0.0111,
+      "pPromotion": 0.2358,
+      "pTop6": 0.5399,
       "played": 33,
       "points": 52,
       "position": 7,
       "remainingAway": 2,
       "remainingHome": 3,
       "remainingVsTop6": 0,
-      "schedulePoints": 0.75,
+      "schedulePoints": 0.74,
       "teamId": "crb"
     }
   ]

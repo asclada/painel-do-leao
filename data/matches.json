@@ -4950,18 +4950,18 @@
     "venue": "Estádio Joaquim Portugal"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "atletico-go",
     "city": "Indaiatuba",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "ponte-preta",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 1,
     "id": "ponte-preta--atletico-go",
     "kickoffUtc": "2026-10-16T22:30Z",
     "round": 34,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Italo Mário Limongi"
   },
   {
@@ -4976,7 +4976,7 @@
     "kickoffUtc": "2026-10-16T23:30Z",
     "round": 34,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Ilha do Retiro"
   },
   {

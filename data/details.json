@@ -11367,6 +11367,46 @@
       }
     }
   },
+  "ponte-preta--atletico-go": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 42,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "ponte-preta"
+      },
+      {
+        "extra": null,
+        "minute": 87,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "atletico-go"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "ponte-preta--atletico-go",
+    "stats": {
+      "atletico-go": {
+        "corners": 18,
+        "possession": 80.7,
+        "red": 0,
+        "shots": 33,
+        "shotsOnTarget": 6,
+        "yellow": 3
+      },
+      "ponte-preta": {
+        "corners": 1,
+        "possession": 19.3,
+        "red": 1,
+        "shots": 8,
+        "shotsOnTarget": 5,
+        "yellow": 3
+      }
+    }
+  },
   "ponte-preta--avai": {
     "goals": [
       {
