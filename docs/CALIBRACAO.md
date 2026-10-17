@@ -9,8 +9,8 @@ modelo dizia com o que aconteceu.
 
 ## Jogo a jogo (previsão feita uma rodada antes)
 
-- Jogos avaliados: **321** (rodadas 2 a 34)
-- Brier multiclasse do modelo: **0,642** (quanto menor, melhor)
+- Jogos avaliados: **322** (rodadas 2 a 34)
+- Brier multiclasse do modelo: **0,643** (quanto menor, melhor)
 - Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,659
 - Chutar 1/3 para cada resultado: 0,667
 - Ganho sobre a referência (skill score): **2,5%**
@@ -32,8 +32,8 @@ Calibração por faixa (todas as chances de vitória do mandante, empate e vitó
 |---|---:|---:|---:|
 | 0%–10% | 6 | 8% | 17% |
 | 10%–20% | 46 | 16% | 11% |
-| 20%–30% | 380 | 26% | 28% |
-| 30%–40% | 308 | 34% | 36% |
+| 20%–30% | 381 | 26% | 28% |
+| 30%–40% | 310 | 34% | 36% |
 | 40%–50% | 152 | 45% | 39% |
 | 50%–60% | 50 | 53% | 44% |
 | 60%–70% | 14 | 64% | 79% |

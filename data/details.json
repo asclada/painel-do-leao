@@ -13061,6 +13061,46 @@
       }
     }
   },
+  "sport--fortaleza": {
+    "goals": [
+      {
+        "extra": 3,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "fortaleza"
+      },
+      {
+        "extra": null,
+        "minute": 69,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "fortaleza"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "sport--fortaleza",
+    "stats": {
+      "fortaleza": {
+        "corners": 3,
+        "possession": 48.2,
+        "red": 1,
+        "shots": 9,
+        "shotsOnTarget": 4,
+        "yellow": 3
+      },
+      "sport": {
+        "corners": 11,
+        "possession": 51.8,
+        "red": 1,
+        "shots": 20,
+        "shotsOnTarget": 2,
+        "yellow": 3
+      }
+    }
+  },
   "sport--juventude": {
     "goals": [
       {

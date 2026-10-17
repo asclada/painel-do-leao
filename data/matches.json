@@ -4965,18 +4965,18 @@
     "venue": "Estádio Italo Mário Limongi"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "fortaleza",
     "city": "Recife",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "sport",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 0,
     "id": "sport--fortaleza",
     "kickoffUtc": "2026-10-16T23:30Z",
     "round": 34,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Ilha do Retiro"
   },
   {

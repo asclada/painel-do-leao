@@ -2,12 +2,12 @@
   "away": {
     "draws": 5,
     "goalsAgainst": 13,
-    "goalsFor": 12,
+    "goalsFor": 14,
     "losses": 5,
-    "pct": 48,
-    "played": 16,
-    "points": 23,
-    "wins": 6
+    "pct": 51,
+    "played": 17,
+    "points": 26,
+    "wins": 7
   },
   "firstTurn": {
     "pct": 54,
@@ -28,7 +28,7 @@
     },
     {
       "goalsAgainst": 10,
-      "goalsFor": 10,
+      "goalsFor": 11,
       "label": "31–45+"
     },
     {
@@ -38,7 +38,7 @@
     },
     {
       "goalsAgainst": 3,
-      "goalsFor": 2,
+      "goalsFor": 3,
       "label": "61–75"
     },
     {
@@ -49,13 +49,13 @@
   ],
   "halves": {
     "firstAgainst": 17,
-    "firstFor": 20,
+    "firstFor": 21,
     "improved": 7,
-    "kept": 22,
+    "kept": 23,
     "pctSecondHalfFor": 49,
     "pointsSwing": 5,
     "secondAgainst": 12,
-    "secondFor": 19,
+    "secondFor": 20,
     "worsened": 4
   },
   "home": {
@@ -69,34 +69,34 @@
     "wins": 9
   },
   "insights": {
-    "goalBins": "Reta final é com a gente: 11 gols nos últimos 15 minutos.",
-    "halves": "Saldo de +3 no 1º tempo e +7 no 2º: o 2º tempo é o mais forte.",
-    "streaks": "14 jogos sem perder. Última derrota: Vila Nova, em 21/07.",
+    "goalBins": "A faixa mais forte é 31–45+ minutos, com 11 gols.",
+    "halves": "Saldo de +4 no 1º tempo e +8 no 2º: o 2º tempo é o mais forte.",
+    "streaks": "15 jogos sem perder. Última derrota: Vila Nova, em 21/07.",
     "turns": "Ritmo parecido nos dois turnos: 1,6 e 1,9 pontos por jogo.",
-    "venue": "No Castelão o Leão é outro: 67% dos pontos em casa contra 48% fora."
+    "venue": "No Castelão o Leão é outro: 67% dos pontos em casa contra 51% fora."
   },
   "secondTurn": {
-    "pct": 62,
-    "played": 14,
-    "points": 26,
-    "ppg": 1.86
+    "pct": 64,
+    "played": 15,
+    "points": 29,
+    "ppg": 1.93
   },
   "streaks": {
-    "cleanSheets": 14,
-    "currentCount": 14,
+    "cleanSheets": 15,
+    "currentCount": 15,
     "currentKind": "unbeaten",
-    "currentLabel": "14 jogos sem perder",
+    "currentLabel": "15 jogos sem perder",
     "form": [
-      "V",
       "E",
       "E",
       "V",
-      "E"
+      "E",
+      "V"
     ],
     "lastLossDate": "2026-07-22T00:35Z",
     "lastLossOpponentId": "vila-nova",
     "longestCleanSheets": 2,
-    "longestUnbeaten": 14,
+    "longestUnbeaten": 15,
     "longestWins": 3
   }
 }

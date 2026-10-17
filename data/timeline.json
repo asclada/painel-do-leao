@@ -28,7 +28,7 @@
     {
       "kind": "unbeaten",
       "round": 20,
-      "text": "Rodada 20: início da sequência de 14 jogos sem perder.",
+      "text": "Rodada 20: início da sequência de 15 jogos sem perder.",
       "title": "Começa a invencibilidade"
     },
     {
@@ -436,15 +436,15 @@
       "round": 33
     },
     {
-      "goalsAgainst": null,
-      "goalsFor": null,
+      "goalsAgainst": 0,
+      "goalsFor": 2,
       "home": false,
       "kickoffUtc": "2026-10-16T23:30Z",
       "matchId": "sport--fortaleza",
       "opponentId": "sport",
-      "points": 57,
+      "points": 60,
       "position": 4,
-      "result": null,
+      "result": "V",
       "round": 34
     }
   ],
