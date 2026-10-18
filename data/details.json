@@ -2187,6 +2187,29 @@
       }
     }
   },
+  "avai--athletic-club": {
+    "goals": [],
+    "goalsComplete": true,
+    "matchId": "avai--athletic-club",
+    "stats": {
+      "athletic-club": {
+        "corners": 3,
+        "possession": 43.7,
+        "red": 0,
+        "shots": 3,
+        "shotsOnTarget": 1,
+        "yellow": 2
+      },
+      "avai": {
+        "corners": 9,
+        "possession": 56.3,
+        "red": 0,
+        "shots": 25,
+        "shotsOnTarget": 6,
+        "yellow": 4
+      }
+    }
+  },
   "avai--atletico-go": {
     "goals": [
       {
@@ -4517,6 +4540,38 @@
         "shots": 27,
         "shotsOnTarget": 6,
         "yellow": 1
+      }
+    }
+  },
+  "crb--botafogo-sp": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 79,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "botafogo-sp"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "crb--botafogo-sp",
+    "stats": {
+      "botafogo-sp": {
+        "corners": 8,
+        "possession": 33.0,
+        "red": 0,
+        "shots": 9,
+        "shotsOnTarget": 4,
+        "yellow": 3
+      },
+      "crb": {
+        "corners": 7,
+        "possession": 67.0,
+        "red": 0,
+        "shots": 18,
+        "shotsOnTarget": 3,
+        "yellow": 4
       }
     }
   },
@@ -12363,6 +12418,38 @@
         "shots": 12,
         "shotsOnTarget": 5,
         "yellow": 2
+      }
+    }
+  },
+  "sao-bernardo--criciuma": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 35,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "criciuma"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "sao-bernardo--criciuma",
+    "stats": {
+      "criciuma": {
+        "corners": 2,
+        "possession": 46.4,
+        "red": 0,
+        "shots": 9,
+        "shotsOnTarget": 2,
+        "yellow": 1
+      },
+      "sao-bernardo": {
+        "corners": 9,
+        "possession": 53.6,
+        "red": 0,
+        "shots": 6,
+        "shotsOnTarget": 0,
+        "yellow": 1
       }
     }
   },

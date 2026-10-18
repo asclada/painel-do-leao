@@ -119,16 +119,16 @@
         "V"
       ],
       "goalDiff": 15,
-      "pDirect": 0.6964,
-      "pPromotion": 0.8731,
-      "pTop6": 0.3026,
+      "pDirect": 0.6878,
+      "pPromotion": 0.8616,
+      "pTop6": 0.3115,
       "played": 33,
       "points": 61,
       "position": 1,
       "remainingAway": 2,
       "remainingHome": 3,
       "remainingVsTop6": 4,
-      "schedulePoints": -0.64,
+      "schedulePoints": -0.66,
       "teamId": "vila-nova"
     },
     {
@@ -175,16 +175,16 @@
         "E"
       ],
       "goalDiff": 18,
-      "pDirect": 0.3815,
-      "pPromotion": 0.7603,
-      "pTop6": 0.6161,
+      "pDirect": 0.3518,
+      "pPromotion": 0.7383,
+      "pTop6": 0.6466,
       "played": 34,
       "points": 61,
       "position": 2,
       "remainingAway": 2,
       "remainingHome": 2,
       "remainingVsTop6": 1,
-      "schedulePoints": -0.61,
+      "schedulePoints": -0.71,
       "teamId": "juventude"
     },
     {
@@ -239,16 +239,16 @@
         "V"
       ],
       "goalDiff": 31,
-      "pDirect": 0.5683,
-      "pPromotion": 0.861,
-      "pTop6": 0.4255,
+      "pDirect": 0.5603,
+      "pPromotion": 0.8503,
+      "pTop6": 0.4361,
       "played": 33,
       "points": 60,
       "position": 3,
       "remainingAway": 3,
       "remainingHome": 2,
       "remainingVsTop6": 4,
-      "schedulePoints": -1.59,
+      "schedulePoints": -1.58,
       "teamId": "novorizontino"
     },
     {
@@ -295,9 +295,9 @@
         "V"
       ],
       "goalDiff": 12,
-      "pDirect": 0.289,
-      "pPromotion": 0.6905,
-      "pTop6": 0.694,
+      "pDirect": 0.2738,
+      "pPromotion": 0.6661,
+      "pTop6": 0.714,
       "played": 34,
       "points": 60,
       "position": 4,
@@ -310,14 +310,6 @@
     {
       "difficulty": "Média",
       "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-18T19:00Z",
-          "matchId": "sao-bernardo--criciuma",
-          "opponentId": "sao-bernardo",
-          "opponentInTop6": false,
-          "round": 34
-        },
         {
           "home": false,
           "kickoffUtc": "2026-10-23T18:00Z",
@@ -352,27 +344,27 @@
         }
       ],
       "form": [
-        "D",
         "V",
         "V",
         "D",
+        "V",
         "V"
       ],
-      "goalDiff": 6,
-      "pDirect": 0.0551,
-      "pPromotion": 0.3409,
-      "pTop6": 0.7786,
-      "played": 33,
-      "points": 56,
+      "goalDiff": 7,
+      "pDirect": 0.124,
+      "pPromotion": 0.4879,
+      "pTop6": 0.8562,
+      "played": 34,
+      "points": 59,
       "position": 5,
-      "remainingAway": 3,
+      "remainingAway": 2,
       "remainingHome": 2,
       "remainingVsTop6": 2,
-      "schedulePoints": -0.38,
+      "schedulePoints": -0.2,
       "teamId": "criciuma"
     },
     {
-      "difficulty": "Difícil",
+      "difficulty": "Média",
       "fixtures": [
         {
           "home": true,
@@ -416,8 +408,8 @@
       ],
       "goalDiff": 10,
       "pDirect": 0.0022,
-      "pPromotion": 0.162,
-      "pTop6": 0.3684,
+      "pPromotion": 0.1948,
+      "pTop6": 0.4511,
       "played": 34,
       "points": 54,
       "position": 6,
@@ -430,14 +422,6 @@
     {
       "difficulty": "Tranquila",
       "fixtures": [
-        {
-          "home": true,
-          "kickoffUtc": "2026-10-18T19:00Z",
-          "matchId": "crb--botafogo-sp",
-          "opponentId": "botafogo-sp",
-          "opponentInTop6": false,
-          "round": 34
-        },
         {
           "home": true,
           "kickoffUtc": "2026-10-24T21:30Z",
@@ -472,23 +456,23 @@
         }
       ],
       "form": [
-        "D",
         "V",
         "D",
         "V",
-        "E"
+        "E",
+        "D"
       ],
-      "goalDiff": 4,
-      "pDirect": 0.0076,
-      "pPromotion": 0.2316,
-      "pTop6": 0.5799,
-      "played": 33,
+      "goalDiff": 3,
+      "pDirect": 0.0001,
+      "pPromotion": 0.1076,
+      "pTop6": 0.3155,
+      "played": 34,
       "points": 52,
       "position": 7,
       "remainingAway": 2,
-      "remainingHome": 3,
+      "remainingHome": 2,
       "remainingVsTop6": 0,
-      "schedulePoints": 0.74,
+      "schedulePoints": 0.51,
       "teamId": "crb"
     }
   ]
