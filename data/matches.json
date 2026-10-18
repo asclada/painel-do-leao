@@ -5055,18 +5055,18 @@
     "venue": "Estádio Primeiro de Maio"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "novorizontino",
     "city": "Goiãnia",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "vila-nova",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 0,
     "id": "vila-nova--novorizontino",
     "kickoffUtc": "2026-10-18T21:00Z",
     "round": 34,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio Onésio Brasileiro Alvarenga"
   },
   {

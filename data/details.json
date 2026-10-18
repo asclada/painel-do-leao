@@ -14147,6 +14147,62 @@
       }
     }
   },
+  "vila-nova--novorizontino": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 25,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": null,
+        "minute": 62,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "vila-nova"
+      },
+      {
+        "extra": null,
+        "minute": 71,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "vila-nova"
+      },
+      {
+        "extra": 8,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "novorizontino"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "vila-nova--novorizontino",
+    "stats": {
+      "novorizontino": {
+        "corners": 4,
+        "possession": 43.1,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 4,
+        "yellow": 3
+      },
+      "vila-nova": {
+        "corners": 6,
+        "possession": 56.9,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 5,
+        "yellow": 2
+      }
+    }
+  },
   "vila-nova--operario-pr": {
     "goals": [
       {

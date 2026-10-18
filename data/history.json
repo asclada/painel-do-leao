@@ -297,9 +297,9 @@
     "round": 33
   },
   {
-    "pDirect": 0.2738,
-    "pPromotion": 0.6661,
-    "pTop6": 0.714,
+    "pDirect": 0.2892,
+    "pPromotion": 0.6725,
+    "pTop6": 0.6986,
     "partial": true,
     "points": 60,
     "position": 4,

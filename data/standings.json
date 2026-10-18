@@ -9,28 +9,61 @@
       "points": 22,
       "wins": 6
     },
-    "draws": 7,
+    "draws": 8,
     "goalDiff": 15,
-    "goalsAgainst": 31,
-    "goalsFor": 46,
+    "goalsAgainst": 33,
+    "goalsFor": 48,
     "home": {
-      "draws": 3,
-      "goalsAgainst": 11,
-      "goalsFor": 31,
+      "draws": 4,
+      "goalsAgainst": 13,
+      "goalsFor": 33,
       "losses": 1,
-      "played": 16,
-      "points": 39,
+      "played": 17,
+      "points": 40,
       "wins": 12
     },
     "losses": 8,
-    "pct": 62,
-    "played": 33,
-    "points": 61,
+    "pct": 61,
+    "played": 34,
+    "points": 62,
     "position": 1,
     "red": 7,
     "teamId": "vila-nova",
     "wins": 18,
-    "yellow": 91
+    "yellow": 93
+  },
+  {
+    "away": {
+      "draws": 6,
+      "goalsAgainst": 15,
+      "goalsFor": 30,
+      "losses": 4,
+      "played": 17,
+      "points": 27,
+      "wins": 7
+    },
+    "draws": 10,
+    "goalDiff": 31,
+    "goalsAgainst": 30,
+    "goalsFor": 61,
+    "home": {
+      "draws": 4,
+      "goalsAgainst": 15,
+      "goalsFor": 31,
+      "losses": 3,
+      "played": 17,
+      "points": 34,
+      "wins": 10
+    },
+    "losses": 7,
+    "pct": 60,
+    "played": 34,
+    "points": 61,
+    "position": 2,
+    "red": 3,
+    "teamId": "novorizontino",
+    "wins": 17,
+    "yellow": 73
   },
   {
     "away": {
@@ -59,44 +92,11 @@
     "pct": 60,
     "played": 34,
     "points": 61,
-    "position": 2,
+    "position": 3,
     "red": 3,
     "teamId": "juventude",
     "wins": 17,
     "yellow": 75
-  },
-  {
-    "away": {
-      "draws": 5,
-      "goalsAgainst": 13,
-      "goalsFor": 28,
-      "losses": 4,
-      "played": 16,
-      "points": 26,
-      "wins": 7
-    },
-    "draws": 9,
-    "goalDiff": 31,
-    "goalsAgainst": 28,
-    "goalsFor": 59,
-    "home": {
-      "draws": 4,
-      "goalsAgainst": 15,
-      "goalsFor": 31,
-      "losses": 3,
-      "played": 17,
-      "points": 34,
-      "wins": 10
-    },
-    "losses": 7,
-    "pct": 61,
-    "played": 33,
-    "points": 60,
-    "position": 3,
-    "red": 3,
-    "teamId": "novorizontino",
-    "wins": 17,
-    "yellow": 70
   },
   {
     "away": {
