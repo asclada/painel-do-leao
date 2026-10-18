@@ -4995,18 +4995,18 @@
     "venue": "Arena Castelão"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "operario-pr",
     "city": "Belo Horizonte",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "america-mg",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "america-mg--operario-pr",
     "kickoffUtc": "2026-10-17T21:30Z",
     "round": 34,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio Raimundo Sampaio (Independência)"
   },
   {

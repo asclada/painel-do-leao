@@ -299,16 +299,16 @@
   {
     "away": {
       "draws": 4,
-      "goalsAgainst": 23,
+      "goalsAgainst": 24,
       "goalsFor": 21,
-      "losses": 6,
-      "played": 16,
+      "losses": 7,
+      "played": 17,
       "points": 22,
       "wins": 6
     },
     "draws": 9,
-    "goalDiff": -1,
-    "goalsAgainst": 45,
+    "goalDiff": -2,
+    "goalsAgainst": 46,
     "goalsFor": 44,
     "home": {
       "draws": 5,
@@ -319,15 +319,15 @@
       "points": 26,
       "wins": 7
     },
-    "losses": 11,
-    "pct": 48,
-    "played": 33,
+    "losses": 12,
+    "pct": 47,
+    "played": 34,
     "points": 48,
     "position": 10,
     "red": 3,
     "teamId": "operario-pr",
     "wins": 13,
-    "yellow": 80
+    "yellow": 82
   },
   {
     "away": {
@@ -604,27 +604,27 @@
       "wins": 1
     },
     "draws": 5,
-    "goalDiff": -33,
+    "goalDiff": -32,
     "goalsAgainst": 54,
-    "goalsFor": 21,
+    "goalsFor": 22,
     "home": {
       "draws": 3,
       "goalsAgainst": 22,
-      "goalsFor": 12,
+      "goalsFor": 13,
       "losses": 10,
-      "played": 16,
-      "points": 12,
-      "wins": 3
+      "played": 17,
+      "points": 15,
+      "wins": 4
     },
     "losses": 24,
-    "pct": 17,
-    "played": 33,
-    "points": 17,
+    "pct": 20,
+    "played": 34,
+    "points": 20,
     "position": 19,
     "red": 2,
     "teamId": "america-mg",
-    "wins": 4,
-    "yellow": 69
+    "wins": 5,
+    "yellow": 74
   },
   {
     "away": {
