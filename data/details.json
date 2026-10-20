@@ -7594,6 +7594,29 @@
       }
     }
   },
+  "goias--nautico": {
+    "goals": [],
+    "goalsComplete": true,
+    "matchId": "goias--nautico",
+    "stats": {
+      "goias": {
+        "corners": 13,
+        "possession": 55.6,
+        "red": 0,
+        "shots": 24,
+        "shotsOnTarget": 5,
+        "yellow": 2
+      },
+      "nautico": {
+        "corners": 8,
+        "possession": 44.4,
+        "red": 0,
+        "shots": 21,
+        "shotsOnTarget": 4,
+        "yellow": 0
+      }
+    }
+  },
   "goias--novorizontino": {
     "goals": [
       {

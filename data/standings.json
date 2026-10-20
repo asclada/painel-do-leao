@@ -273,28 +273,28 @@
       "points": 20,
       "wins": 5
     },
-    "draws": 6,
+    "draws": 7,
     "goalDiff": -6,
     "goalsAgainst": 40,
     "goalsFor": 34,
     "home": {
-      "draws": 1,
+      "draws": 2,
       "goalsAgainst": 17,
       "goalsFor": 16,
       "losses": 6,
-      "played": 16,
-      "points": 28,
+      "played": 17,
+      "points": 29,
       "wins": 9
     },
     "losses": 13,
     "pct": 48,
-    "played": 33,
-    "points": 48,
+    "played": 34,
+    "points": 49,
     "position": 9,
     "red": 6,
     "teamId": "goias",
     "wins": 14,
-    "yellow": 72
+    "yellow": 74
   },
   {
     "away": {
@@ -463,6 +463,39 @@
   },
   {
     "away": {
+      "draws": 7,
+      "goalsAgainst": 25,
+      "goalsFor": 20,
+      "losses": 7,
+      "played": 17,
+      "points": 16,
+      "wins": 3
+    },
+    "draws": 10,
+    "goalDiff": -3,
+    "goalsAgainst": 42,
+    "goalsFor": 39,
+    "home": {
+      "draws": 3,
+      "goalsAgainst": 17,
+      "goalsFor": 19,
+      "losses": 6,
+      "played": 17,
+      "points": 27,
+      "wins": 8
+    },
+    "losses": 13,
+    "pct": 42,
+    "played": 34,
+    "points": 43,
+    "position": 15,
+    "red": 6,
+    "teamId": "nautico",
+    "wins": 11,
+    "yellow": 92
+  },
+  {
+    "away": {
       "draws": 6,
       "goalsAgainst": 23,
       "goalsFor": 15,
@@ -488,44 +521,11 @@
     "pct": 42,
     "played": 34,
     "points": 43,
-    "position": 15,
+    "position": 16,
     "red": 4,
     "teamId": "ceara",
     "wins": 11,
     "yellow": 76
-  },
-  {
-    "away": {
-      "draws": 6,
-      "goalsAgainst": 25,
-      "goalsFor": 20,
-      "losses": 7,
-      "played": 16,
-      "points": 15,
-      "wins": 3
-    },
-    "draws": 9,
-    "goalDiff": -3,
-    "goalsAgainst": 42,
-    "goalsFor": 39,
-    "home": {
-      "draws": 3,
-      "goalsAgainst": 17,
-      "goalsFor": 19,
-      "losses": 6,
-      "played": 17,
-      "points": 27,
-      "wins": 8
-    },
-    "losses": 13,
-    "pct": 42,
-    "played": 33,
-    "points": 42,
-    "position": 16,
-    "red": 6,
-    "teamId": "nautico",
-    "wins": 11,
-    "yellow": 92
   },
   {
     "away": {

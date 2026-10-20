@@ -5070,18 +5070,18 @@
     "venue": "Estádio Onésio Brasileiro Alvarenga"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "nautico",
     "city": "Goiãnia",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "goias",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "goias--nautico",
     "kickoffUtc": "2026-10-19T22:30Z",
     "round": 34,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio da Serrinha"
   },
   {
