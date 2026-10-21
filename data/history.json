@@ -297,10 +297,10 @@
     "round": 33
   },
   {
-    "pDirect": 0.2946,
-    "pPromotion": 0.6713,
-    "pTop6": 0.6946,
-    "partial": true,
+    "pDirect": 0.2933,
+    "pPromotion": 0.6737,
+    "pTop6": 0.6935,
+    "partial": false,
     "points": 60,
     "position": 4,
     "round": 34

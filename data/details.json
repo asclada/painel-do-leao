@@ -8779,6 +8779,38 @@
       }
     }
   },
+  "londrina--cuiaba": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 35,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "londrina"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "londrina--cuiaba",
+    "stats": {
+      "cuiaba": {
+        "corners": 8,
+        "possession": 64.7,
+        "red": 0,
+        "shots": 24,
+        "shotsOnTarget": 7,
+        "yellow": 0
+      },
+      "londrina": {
+        "corners": 2,
+        "possession": 35.3,
+        "red": 0,
+        "shots": 12,
+        "shotsOnTarget": 2,
+        "yellow": 1
+      }
+    }
+  },
   "londrina--fortaleza": {
     "goals": [
       {

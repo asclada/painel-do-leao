@@ -332,16 +332,16 @@
   {
     "away": {
       "draws": 7,
-      "goalsAgainst": 16,
+      "goalsAgainst": 17,
       "goalsFor": 13,
-      "losses": 5,
-      "played": 16,
+      "losses": 6,
+      "played": 17,
       "points": 19,
       "wins": 4
     },
     "draws": 14,
-    "goalDiff": 6,
-    "goalsAgainst": 26,
+    "goalDiff": 5,
+    "goalsAgainst": 27,
     "goalsFor": 32,
     "home": {
       "draws": 7,
@@ -352,9 +352,9 @@
       "points": 28,
       "wins": 7
     },
-    "losses": 8,
-    "pct": 47,
-    "played": 33,
+    "losses": 9,
+    "pct": 46,
+    "played": 34,
     "points": 47,
     "position": 11,
     "red": 3,
@@ -571,27 +571,27 @@
       "wins": 3
     },
     "draws": 8,
-    "goalDiff": -7,
+    "goalDiff": -6,
     "goalsAgainst": 49,
-    "goalsFor": 42,
+    "goalsFor": 43,
     "home": {
       "draws": 5,
       "goalsAgainst": 20,
-      "goalsFor": 23,
+      "goalsFor": 24,
       "losses": 7,
-      "played": 16,
-      "points": 17,
-      "wins": 4
+      "played": 17,
+      "points": 20,
+      "wins": 5
     },
     "losses": 18,
-    "pct": 29,
-    "played": 33,
-    "points": 29,
+    "pct": 31,
+    "played": 34,
+    "points": 32,
     "position": 18,
     "red": 5,
     "teamId": "londrina",
-    "wins": 7,
-    "yellow": 80
+    "wins": 8,
+    "yellow": 81
   },
   {
     "away": {
