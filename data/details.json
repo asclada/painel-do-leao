@@ -1931,6 +1931,38 @@
       }
     }
   },
+  "atletico-go--novorizontino": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 60,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "novorizontino"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "atletico-go--novorizontino",
+    "stats": {
+      "atletico-go": {
+        "corners": 7,
+        "possession": 67.3,
+        "red": 0,
+        "shots": 24,
+        "shotsOnTarget": 3,
+        "yellow": 4
+      },
+      "novorizontino": {
+        "corners": 5,
+        "possession": 32.7,
+        "red": 0,
+        "shots": 17,
+        "shotsOnTarget": 6,
+        "yellow": 4
+      }
+    }
+  },
   "atletico-go--operario-pr": {
     "goals": [
       {
@@ -12976,6 +13008,70 @@
         "shots": 23,
         "shotsOnTarget": 6,
         "yellow": 3
+      }
+    }
+  },
+  "sao-bernardo--vila-nova": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 2,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "vila-nova"
+      },
+      {
+        "extra": null,
+        "minute": 6,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": null,
+        "minute": 49,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "vila-nova"
+      },
+      {
+        "extra": 6,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": 11,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "sao-bernardo--vila-nova",
+    "stats": {
+      "sao-bernardo": {
+        "corners": 8,
+        "possession": 65.1,
+        "red": 0,
+        "shots": 15,
+        "shotsOnTarget": 7,
+        "yellow": 2
+      },
+      "vila-nova": {
+        "corners": 3,
+        "possession": 34.9,
+        "red": 1,
+        "shots": 13,
+        "shotsOnTarget": 5,
+        "yellow": 1
       }
     }
   },

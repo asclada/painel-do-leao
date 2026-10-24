@@ -1,14 +1,6 @@
 {
   "headToHead": [
     {
-      "awayId": "novorizontino",
-      "homeId": "atletico-go",
-      "kickoffUtc": "2026-10-24T19:30Z",
-      "matchId": "atletico-go--novorizontino",
-      "round": 35,
-      "venue": "Estádio Antônio Accioly"
-    },
-    {
       "awayId": "juventude",
       "homeId": "vila-nova",
       "kickoffUtc": "2026-10-31T21:00Z",
@@ -57,19 +49,59 @@
       "venue": null
     }
   ],
-  "headline": "7 confrontos diretos até o fim: é aí que se decide.",
+  "headline": "O Vila Nova ainda enfrenta 3 times do G6. O Fortaleza, só 2.",
   "teams": [
     {
       "difficulty": "Média",
       "fixtures": [
         {
-          "home": false,
-          "kickoffUtc": "2026-10-24T19:30Z",
-          "matchId": "sao-bernardo--vila-nova",
-          "opponentId": "sao-bernardo",
+          "home": true,
+          "kickoffUtc": "2026-11-01T21:30Z",
+          "matchId": "novorizontino--operario-pr",
+          "opponentId": "operario-pr",
           "opponentInTop6": false,
-          "round": 35
+          "round": 36
         },
+        {
+          "home": true,
+          "kickoffUtc": "2026-11-07T19:10Z",
+          "matchId": "novorizontino--fortaleza",
+          "opponentId": "fortaleza",
+          "opponentInTop6": true,
+          "round": 37
+        },
+        {
+          "home": false,
+          "kickoffUtc": "2026-11-14T20:00Z",
+          "matchId": "criciuma--novorizontino",
+          "opponentId": "criciuma",
+          "opponentInTop6": true,
+          "round": 38
+        }
+      ],
+      "form": [
+        "V",
+        "V",
+        "V",
+        "E",
+        "V"
+      ],
+      "goalDiff": 32,
+      "pDirect": 0.805,
+      "pPromotion": 0.9426,
+      "pTop6": 0.1951,
+      "played": 35,
+      "points": 64,
+      "position": 1,
+      "remainingAway": 1,
+      "remainingHome": 2,
+      "remainingVsTop6": 2,
+      "schedulePoints": -0.31,
+      "teamId": "novorizontino"
+    },
+    {
+      "difficulty": "Média",
+      "fixtures": [
         {
           "home": true,
           "kickoffUtc": "2026-10-31T21:00Z",
@@ -97,79 +129,23 @@
       ],
       "form": [
         "V",
-        "V",
         "E",
         "V",
-        "E"
+        "E",
+        "D"
       ],
-      "goalDiff": 15,
-      "pDirect": 0.6571,
-      "pPromotion": 0.8528,
-      "pTop6": 0.3427,
-      "played": 34,
+      "goalDiff": 14,
+      "pDirect": 0.4624,
+      "pPromotion": 0.7752,
+      "pTop6": 0.5373,
+      "played": 35,
       "points": 62,
-      "position": 1,
-      "remainingAway": 2,
-      "remainingHome": 2,
-      "remainingVsTop6": 3,
-      "schedulePoints": -0.27,
-      "teamId": "vila-nova"
-    },
-    {
-      "difficulty": "Difícil",
-      "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-24T19:30Z",
-          "matchId": "atletico-go--novorizontino",
-          "opponentId": "atletico-go",
-          "opponentInTop6": true,
-          "round": 35
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-01T21:30Z",
-          "matchId": "novorizontino--operario-pr",
-          "opponentId": "operario-pr",
-          "opponentInTop6": false,
-          "round": 36
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-07T19:10Z",
-          "matchId": "novorizontino--fortaleza",
-          "opponentId": "fortaleza",
-          "opponentInTop6": true,
-          "round": 37
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-14T20:00Z",
-          "matchId": "criciuma--novorizontino",
-          "opponentId": "criciuma",
-          "opponentInTop6": true,
-          "round": 38
-        }
-      ],
-      "form": [
-        "E",
-        "V",
-        "V",
-        "V",
-        "E"
-      ],
-      "goalDiff": 31,
-      "pDirect": 0.5621,
-      "pPromotion": 0.8521,
-      "pTop6": 0.4352,
-      "played": 34,
-      "points": 61,
       "position": 2,
-      "remainingAway": 2,
+      "remainingAway": 1,
       "remainingHome": 2,
       "remainingVsTop6": 3,
-      "schedulePoints": -0.86,
-      "teamId": "novorizontino"
+      "schedulePoints": -0.17,
+      "teamId": "vila-nova"
     },
     {
       "difficulty": "Difícil",
@@ -215,9 +191,9 @@
         "E"
       ],
       "goalDiff": 18,
-      "pDirect": 0.3899,
-      "pPromotion": 0.7587,
-      "pTop6": 0.6078,
+      "pDirect": 0.3684,
+      "pPromotion": 0.7613,
+      "pTop6": 0.631,
       "played": 34,
       "points": 61,
       "position": 3,
@@ -243,7 +219,7 @@
           "kickoffUtc": "2026-11-02T19:00Z",
           "matchId": "fortaleza--atletico-go",
           "opponentId": "atletico-go",
-          "opponentInTop6": true,
+          "opponentInTop6": false,
           "round": 36
         },
         {
@@ -271,16 +247,16 @@
         "V"
       ],
       "goalDiff": 12,
-      "pDirect": 0.3179,
-      "pPromotion": 0.703,
-      "pTop6": 0.6694,
+      "pDirect": 0.3076,
+      "pPromotion": 0.709,
+      "pTop6": 0.6839,
       "played": 34,
       "points": 60,
       "position": 4,
       "remainingAway": 2,
       "remainingHome": 2,
-      "remainingVsTop6": 3,
-      "schedulePoints": 0.04,
+      "remainingVsTop6": 2,
+      "schedulePoints": 0.08,
       "teamId": "fortaleza"
     },
     {
@@ -319,73 +295,17 @@
         "D"
       ],
       "goalDiff": 6,
-      "pDirect": 0.0691,
-      "pPromotion": 0.4225,
-      "pTop6": 0.8988,
+      "pDirect": 0.0566,
+      "pPromotion": 0.4331,
+      "pTop6": 0.9249,
       "played": 35,
       "points": 59,
       "position": 5,
       "remainingAway": 1,
       "remainingHome": 2,
       "remainingVsTop6": 2,
-      "schedulePoints": 0.24,
+      "schedulePoints": 0.2,
       "teamId": "criciuma"
-    },
-    {
-      "difficulty": "Média",
-      "fixtures": [
-        {
-          "home": true,
-          "kickoffUtc": "2026-10-24T19:30Z",
-          "matchId": "atletico-go--novorizontino",
-          "opponentId": "novorizontino",
-          "opponentInTop6": true,
-          "round": 35
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-02T19:00Z",
-          "matchId": "fortaleza--atletico-go",
-          "opponentId": "fortaleza",
-          "opponentInTop6": true,
-          "round": 36
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-08T19:00Z",
-          "matchId": "athletic-club--atletico-go",
-          "opponentId": "athletic-club",
-          "opponentInTop6": false,
-          "round": 37
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-14T20:00Z",
-          "matchId": "atletico-go--cuiaba",
-          "opponentId": "cuiaba",
-          "opponentInTop6": false,
-          "round": 38
-        }
-      ],
-      "form": [
-        "V",
-        "V",
-        "D",
-        "E",
-        "E"
-      ],
-      "goalDiff": 10,
-      "pDirect": 0.0039,
-      "pPromotion": 0.1944,
-      "pTop6": 0.445,
-      "played": 34,
-      "points": 54,
-      "position": 6,
-      "remainingAway": 2,
-      "remainingHome": 2,
-      "remainingVsTop6": 2,
-      "schedulePoints": -0.41,
-      "teamId": "atletico-go"
     },
     {
       "difficulty": "Média",
@@ -424,16 +344,64 @@
       ],
       "goalDiff": 9,
       "pDirect": 0.0,
-      "pPromotion": 0.0788,
-      "pTop6": 0.2156,
+      "pPromotion": 0.0988,
+      "pTop6": 0.2742,
       "played": 35,
       "points": 54,
-      "position": 7,
+      "position": 6,
       "remainingAway": 2,
       "remainingHome": 1,
       "remainingVsTop6": 0,
       "schedulePoints": -0.01,
       "teamId": "sport"
+    },
+    {
+      "difficulty": "Média",
+      "fixtures": [
+        {
+          "home": false,
+          "kickoffUtc": "2026-11-02T19:00Z",
+          "matchId": "fortaleza--atletico-go",
+          "opponentId": "fortaleza",
+          "opponentInTop6": true,
+          "round": 36
+        },
+        {
+          "home": false,
+          "kickoffUtc": "2026-11-08T19:00Z",
+          "matchId": "athletic-club--atletico-go",
+          "opponentId": "athletic-club",
+          "opponentInTop6": false,
+          "round": 37
+        },
+        {
+          "home": true,
+          "kickoffUtc": "2026-11-14T20:00Z",
+          "matchId": "atletico-go--cuiaba",
+          "opponentId": "cuiaba",
+          "opponentInTop6": false,
+          "round": 38
+        }
+      ],
+      "form": [
+        "V",
+        "D",
+        "E",
+        "E",
+        "D"
+      ],
+      "goalDiff": 9,
+      "pDirect": 0.0,
+      "pPromotion": 0.1029,
+      "pTop6": 0.2581,
+      "played": 35,
+      "points": 54,
+      "position": 7,
+      "remainingAway": 2,
+      "remainingHome": 1,
+      "remainingVsTop6": 1,
+      "schedulePoints": -0.11,
+      "teamId": "atletico-go"
     }
   ]
 }

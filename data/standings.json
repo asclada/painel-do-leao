@@ -1,51 +1,18 @@
 [
   {
     "away": {
-      "draws": 4,
-      "goalsAgainst": 20,
-      "goalsFor": 15,
-      "losses": 7,
-      "played": 17,
-      "points": 22,
-      "wins": 6
-    },
-    "draws": 8,
-    "goalDiff": 15,
-    "goalsAgainst": 33,
-    "goalsFor": 48,
-    "home": {
-      "draws": 4,
-      "goalsAgainst": 13,
-      "goalsFor": 33,
-      "losses": 1,
-      "played": 17,
-      "points": 40,
-      "wins": 12
-    },
-    "losses": 8,
-    "pct": 61,
-    "played": 34,
-    "points": 62,
-    "position": 1,
-    "red": 7,
-    "teamId": "vila-nova",
-    "wins": 18,
-    "yellow": 93
-  },
-  {
-    "away": {
       "draws": 6,
       "goalsAgainst": 15,
-      "goalsFor": 30,
+      "goalsFor": 31,
       "losses": 4,
-      "played": 17,
-      "points": 27,
-      "wins": 7
+      "played": 18,
+      "points": 30,
+      "wins": 8
     },
     "draws": 10,
-    "goalDiff": 31,
+    "goalDiff": 32,
     "goalsAgainst": 30,
-    "goalsFor": 61,
+    "goalsFor": 62,
     "home": {
       "draws": 4,
       "goalsAgainst": 15,
@@ -56,14 +23,47 @@
       "wins": 10
     },
     "losses": 7,
-    "pct": 60,
-    "played": 34,
-    "points": 61,
-    "position": 2,
+    "pct": 61,
+    "played": 35,
+    "points": 64,
+    "position": 1,
     "red": 3,
     "teamId": "novorizontino",
-    "wins": 17,
-    "yellow": 73
+    "wins": 18,
+    "yellow": 77
+  },
+  {
+    "away": {
+      "draws": 4,
+      "goalsAgainst": 23,
+      "goalsFor": 17,
+      "losses": 8,
+      "played": 18,
+      "points": 22,
+      "wins": 6
+    },
+    "draws": 8,
+    "goalDiff": 14,
+    "goalsAgainst": 36,
+    "goalsFor": 50,
+    "home": {
+      "draws": 4,
+      "goalsAgainst": 13,
+      "goalsFor": 33,
+      "losses": 1,
+      "played": 17,
+      "points": 40,
+      "wins": 12
+    },
+    "losses": 9,
+    "pct": 59,
+    "played": 35,
+    "points": 62,
+    "position": 2,
+    "red": 8,
+    "teamId": "vila-nova",
+    "wins": 18,
+    "yellow": 94
   },
   {
     "away": {
@@ -166,39 +166,6 @@
   },
   {
     "away": {
-      "draws": 7,
-      "goalsAgainst": 18,
-      "goalsFor": 15,
-      "losses": 5,
-      "played": 17,
-      "points": 22,
-      "wins": 5
-    },
-    "draws": 12,
-    "goalDiff": 10,
-    "goalsAgainst": 32,
-    "goalsFor": 42,
-    "home": {
-      "draws": 5,
-      "goalsAgainst": 14,
-      "goalsFor": 27,
-      "losses": 3,
-      "played": 17,
-      "points": 32,
-      "wins": 9
-    },
-    "losses": 8,
-    "pct": 53,
-    "played": 34,
-    "points": 54,
-    "position": 6,
-    "red": 4,
-    "teamId": "atletico-go",
-    "wins": 14,
-    "yellow": 72
-  },
-  {
-    "away": {
       "draws": 5,
       "goalsAgainst": 19,
       "goalsFor": 17,
@@ -224,11 +191,44 @@
     "pct": 51,
     "played": 35,
     "points": 54,
-    "position": 7,
+    "position": 6,
     "red": 5,
     "teamId": "sport",
     "wins": 14,
     "yellow": 78
+  },
+  {
+    "away": {
+      "draws": 7,
+      "goalsAgainst": 18,
+      "goalsFor": 15,
+      "losses": 5,
+      "played": 17,
+      "points": 22,
+      "wins": 5
+    },
+    "draws": 12,
+    "goalDiff": 9,
+    "goalsAgainst": 33,
+    "goalsFor": 42,
+    "home": {
+      "draws": 5,
+      "goalsAgainst": 15,
+      "goalsFor": 27,
+      "losses": 4,
+      "played": 18,
+      "points": 32,
+      "wins": 9
+    },
+    "losses": 9,
+    "pct": 51,
+    "played": 35,
+    "points": 54,
+    "position": 7,
+    "red": 4,
+    "teamId": "atletico-go",
+    "wins": 14,
+    "yellow": 76
   },
   {
     "away": {
@@ -331,6 +331,39 @@
   },
   {
     "away": {
+      "draws": 4,
+      "goalsAgainst": 18,
+      "goalsFor": 27,
+      "losses": 5,
+      "played": 17,
+      "points": 28,
+      "wins": 8
+    },
+    "draws": 10,
+    "goalDiff": 10,
+    "goalsAgainst": 39,
+    "goalsFor": 49,
+    "home": {
+      "draws": 6,
+      "goalsAgainst": 21,
+      "goalsFor": 22,
+      "losses": 7,
+      "played": 18,
+      "points": 21,
+      "wins": 5
+    },
+    "losses": 12,
+    "pct": 47,
+    "played": 35,
+    "points": 49,
+    "position": 11,
+    "red": 2,
+    "teamId": "sao-bernardo",
+    "wins": 13,
+    "yellow": 77
+  },
+  {
+    "away": {
       "draws": 5,
       "goalsAgainst": 16,
       "goalsFor": 14,
@@ -356,7 +389,7 @@
     "pct": 45,
     "played": 35,
     "points": 47,
-    "position": 11,
+    "position": 12,
     "red": 1,
     "teamId": "botafogo-sp",
     "wins": 13,
@@ -389,44 +422,11 @@
     "pct": 46,
     "played": 34,
     "points": 47,
-    "position": 12,
+    "position": 13,
     "red": 3,
     "teamId": "cuiaba",
     "wins": 11,
     "yellow": 64
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 18,
-      "goalsFor": 27,
-      "losses": 5,
-      "played": 17,
-      "points": 28,
-      "wins": 8
-    },
-    "draws": 10,
-    "goalDiff": 9,
-    "goalsAgainst": 37,
-    "goalsFor": 46,
-    "home": {
-      "draws": 6,
-      "goalsAgainst": 19,
-      "goalsFor": 19,
-      "losses": 7,
-      "played": 17,
-      "points": 18,
-      "wins": 4
-    },
-    "losses": 12,
-    "pct": 45,
-    "played": 34,
-    "points": 46,
-    "position": 13,
-    "red": 2,
-    "teamId": "sao-bernardo",
-    "wins": 12,
-    "yellow": 75
   },
   {
     "away": {

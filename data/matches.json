@@ -5145,33 +5145,33 @@
     "venue": "Estádio da Ressacada"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "novorizontino",
     "city": "Goiãnia",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "atletico-go",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "atletico-go--novorizontino",
     "kickoffUtc": "2026-10-24T19:30Z",
     "round": 35,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio Antônio Accioly"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "vila-nova",
     "city": "São Bernardo do Campo ",
-    "homeGoals": null,
+    "homeGoals": 3,
     "homeId": "sao-bernardo",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 1,
     "id": "sao-bernardo--vila-nova",
     "kickoffUtc": "2026-10-24T19:30Z",
     "round": 35,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio Primeiro de Maio"
   },
   {
@@ -5186,7 +5186,7 @@
     "kickoffUtc": "2026-10-24T21:30Z",
     "round": 35,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Rei Pelé"
   },
   {
@@ -5201,7 +5201,7 @@
     "kickoffUtc": "2026-10-24T21:30Z",
     "round": 35,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Italo Mário Limongi"
   },
   {
