@@ -5130,18 +5130,18 @@
     "venue": "Ilha do Retiro"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "botafogo-sp",
     "city": "Florianópolis",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "avai",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 0,
     "id": "avai--botafogo-sp",
     "kickoffUtc": "2026-10-24T19:00Z",
     "round": 35,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio da Ressacada"
   },
   {
@@ -5156,7 +5156,7 @@
     "kickoffUtc": "2026-10-24T19:30Z",
     "round": 35,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Antônio Accioly"
   },
   {
@@ -5171,7 +5171,7 @@
     "kickoffUtc": "2026-10-24T19:30Z",
     "round": 35,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Primeiro de Maio"
   },
   {

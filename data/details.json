@@ -2242,6 +2242,46 @@
       }
     }
   },
+  "avai--botafogo-sp": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 43,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "botafogo-sp"
+      },
+      {
+        "extra": null,
+        "minute": 54,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "botafogo-sp"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "avai--botafogo-sp",
+    "stats": {
+      "avai": {
+        "corners": 14,
+        "possession": 57.9,
+        "red": 0,
+        "shots": 28,
+        "shotsOnTarget": 8,
+        "yellow": 2
+      },
+      "botafogo-sp": {
+        "corners": 2,
+        "possession": 42.1,
+        "red": 0,
+        "shots": 6,
+        "shotsOnTarget": 3,
+        "yellow": 1
+      }
+    }
+  },
   "avai--ceara": {
     "goals": [
       {
