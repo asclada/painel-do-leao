@@ -10760,6 +10760,38 @@
       }
     }
   },
+  "operario-pr--athletic-club": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 29,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "operario-pr"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "operario-pr--athletic-club",
+    "stats": {
+      "athletic-club": {
+        "corners": 10,
+        "possession": 55.3,
+        "red": 1,
+        "shots": 15,
+        "shotsOnTarget": 2,
+        "yellow": 3
+      },
+      "operario-pr": {
+        "corners": 6,
+        "possession": 44.7,
+        "red": 0,
+        "shots": 14,
+        "shotsOnTarget": 3,
+        "yellow": 3
+      }
+    }
+  },
   "operario-pr--atletico-go": {
     "goals": [
       {

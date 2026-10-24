@@ -1,10 +1,10 @@
 {
   "chances": {
-    "draw": 0.2891,
-    "loss": 0.1565,
-    "win": 0.5544
+    "draw": 0.2899,
+    "loss": 0.1609,
+    "win": 0.5492
   },
-  "city": "Ponte Preta",
+  "city": "Indaiatuba",
   "firstTurn": "Fortaleza 2 x 0 Ponte Preta",
   "formFortaleza": [
     "E",
@@ -26,5 +26,5 @@
   "opponentId": "ponte-preta",
   "round": 35,
   "status": "scheduled",
-  "venue": "Moisés Lucarelli"
+  "venue": "Estádio Italo Mário Limongi"
 }

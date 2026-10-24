@@ -1,15 +1,15 @@
 {
-  "baseline": 0.2933,
+  "baseline": 0.2879,
   "metric": "direct",
   "rivals": [
     {
       "awayId": "novorizontino",
       "best": "home",
-      "gain": 0.0389,
+      "gain": 0.039,
       "homeId": "atletico-go",
-      "ifAway": 0.241,
-      "ifDraw": 0.3098,
-      "ifHome": 0.3323,
+      "ifAway": 0.2348,
+      "ifDraw": 0.3017,
+      "ifHome": 0.327,
       "kickoffUtc": "2026-10-24T19:30Z",
       "matchId": "atletico-go--novorizontino",
       "order": [
@@ -17,45 +17,22 @@
         "draw",
         "away"
       ],
-      "pAway": 0.3587,
-      "pDraw": 0.254,
-      "pHome": 0.3874,
+      "pAway": 0.3578,
+      "pDraw": 0.2569,
+      "pHome": 0.3854,
       "round": 35,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0912
-    },
-    {
-      "awayId": "vila-nova",
-      "best": "home",
-      "gain": 0.0391,
-      "homeId": "sao-bernardo",
-      "ifAway": 0.2482,
-      "ifDraw": 0.2944,
-      "ifHome": 0.3325,
-      "kickoffUtc": "2026-10-24T19:30Z",
-      "matchId": "sao-bernardo--vila-nova",
-      "order": [
-        "home",
-        "draw",
-        "away"
-      ],
-      "pAway": 0.3347,
-      "pDraw": 0.2988,
-      "pHome": 0.3665,
-      "round": 35,
-      "sameBottom": false,
-      "sameTop": false,
-      "swing": 0.0842
+      "swing": 0.0922
     },
     {
       "awayId": "nautico",
       "best": "away",
-      "gain": 0.0492,
+      "gain": 0.0537,
       "homeId": "juventude",
-      "ifAway": 0.3426,
-      "ifDraw": 0.3196,
-      "ifHome": 0.2605,
+      "ifAway": 0.3416,
+      "ifDraw": 0.3155,
+      "ifHome": 0.2538,
       "kickoffUtc": "2026-10-26T23:30Z",
       "matchId": "juventude--nautico",
       "order": [
@@ -63,22 +40,45 @@
         "draw",
         "home"
       ],
-      "pAway": 0.2024,
-      "pDraw": 0.2614,
-      "pHome": 0.5363,
+      "pAway": 0.2071,
+      "pDraw": 0.258,
+      "pHome": 0.535,
       "round": 35,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0821
+      "swing": 0.0878
+    },
+    {
+      "awayId": "vila-nova",
+      "best": "home",
+      "gain": 0.0384,
+      "homeId": "sao-bernardo",
+      "ifAway": 0.2415,
+      "ifDraw": 0.29,
+      "ifHome": 0.3263,
+      "kickoffUtc": "2026-10-24T19:30Z",
+      "matchId": "sao-bernardo--vila-nova",
+      "order": [
+        "home",
+        "draw",
+        "away"
+      ],
+      "pAway": 0.3377,
+      "pDraw": 0.3005,
+      "pHome": 0.3617,
+      "round": 35,
+      "sameBottom": false,
+      "sameTop": false,
+      "swing": 0.0848
     },
     {
       "awayId": "criciuma",
       "best": "home",
-      "gain": 0.0188,
+      "gain": 0.0205,
       "homeId": "sport",
-      "ifAway": 0.2606,
-      "ifDraw": 0.2985,
-      "ifHome": 0.3121,
+      "ifAway": 0.2515,
+      "ifDraw": 0.293,
+      "ifHome": 0.3084,
       "kickoffUtc": "2026-10-24T00:00Z",
       "matchId": "sport--criciuma",
       "order": [
@@ -86,13 +86,13 @@
         "draw",
         "away"
       ],
-      "pAway": 0.2903,
-      "pDraw": 0.2747,
-      "pHome": 0.4351,
+      "pAway": 0.2832,
+      "pDraw": 0.2782,
+      "pHome": 0.4387,
       "round": 35,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0516
+      "swing": 0.057
     }
   ],
   "round": 35

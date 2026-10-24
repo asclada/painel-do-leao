@@ -5100,18 +5100,18 @@
     "venue": "Estadio VGD"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "athletic-club",
     "city": "Ponta Grossa",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "operario-pr",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 1,
     "id": "operario-pr--athletic-club",
     "kickoffUtc": "2026-10-23T22:30Z",
     "round": 35,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Germano Krüger"
   },
   {
@@ -5126,7 +5126,7 @@
     "kickoffUtc": "2026-10-24T00:00Z",
     "round": 35,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Ilha do Retiro"
   },
   {
@@ -5192,7 +5192,7 @@
   {
     "awayGoals": null,
     "awayId": "fortaleza",
-    "city": "Ponte Preta",
+    "city": "Indaiatuba",
     "homeGoals": null,
     "homeId": "ponte-preta",
     "htAwayGoals": null,
@@ -5202,7 +5202,7 @@
     "round": 35,
     "source": "espn",
     "status": "scheduled",
-    "venue": "Moisés Lucarelli"
+    "venue": "Estádio Italo Mário Limongi"
   },
   {
     "awayGoals": null,
