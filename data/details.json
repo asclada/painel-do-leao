@@ -13283,6 +13283,54 @@
       }
     }
   },
+  "sport--criciuma": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 76,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sport"
+      },
+      {
+        "extra": 2,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "criciuma"
+      },
+      {
+        "extra": 10,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 2,
+        "teamId": "sport"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "sport--criciuma",
+    "stats": {
+      "criciuma": {
+        "corners": 8,
+        "possession": 53.7,
+        "red": 0,
+        "shots": 25,
+        "shotsOnTarget": 4,
+        "yellow": 3
+      },
+      "sport": {
+        "corners": 0,
+        "possession": 46.3,
+        "red": 0,
+        "shots": 15,
+        "shotsOnTarget": 8,
+        "yellow": 0
+      }
+    }
+  },
   "sport--cuiaba": {
     "goals": [
       {

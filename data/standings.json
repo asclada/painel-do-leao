@@ -134,17 +134,17 @@
   {
     "away": {
       "draws": 4,
-      "goalsAgainst": 18,
-      "goalsFor": 16,
-      "losses": 6,
-      "played": 17,
+      "goalsAgainst": 20,
+      "goalsFor": 17,
+      "losses": 7,
+      "played": 18,
       "points": 25,
       "wins": 7
     },
     "draws": 8,
-    "goalDiff": 7,
-    "goalsAgainst": 28,
-    "goalsFor": 35,
+    "goalDiff": 6,
+    "goalsAgainst": 30,
+    "goalsFor": 36,
     "home": {
       "draws": 4,
       "goalsAgainst": 10,
@@ -154,15 +154,15 @@
       "points": 34,
       "wins": 10
     },
-    "losses": 9,
-    "pct": 58,
-    "played": 34,
+    "losses": 10,
+    "pct": 56,
+    "played": 35,
     "points": 59,
     "position": 5,
     "red": 1,
     "teamId": "criciuma",
     "wins": 17,
-    "yellow": 82
+    "yellow": 85
   },
   {
     "away": {
@@ -199,6 +199,39 @@
   },
   {
     "away": {
+      "draws": 5,
+      "goalsAgainst": 19,
+      "goalsFor": 17,
+      "losses": 7,
+      "played": 17,
+      "points": 20,
+      "wins": 5
+    },
+    "draws": 12,
+    "goalDiff": 9,
+    "goalsAgainst": 38,
+    "goalsFor": 47,
+    "home": {
+      "draws": 7,
+      "goalsAgainst": 19,
+      "goalsFor": 30,
+      "losses": 2,
+      "played": 18,
+      "points": 34,
+      "wins": 9
+    },
+    "losses": 9,
+    "pct": 51,
+    "played": 35,
+    "points": 54,
+    "position": 7,
+    "red": 5,
+    "teamId": "sport",
+    "wins": 14,
+    "yellow": 78
+  },
+  {
+    "away": {
       "draws": 4,
       "goalsAgainst": 29,
       "goalsFor": 20,
@@ -224,7 +257,7 @@
     "pct": 51,
     "played": 34,
     "points": 52,
-    "position": 7,
+    "position": 8,
     "red": 4,
     "teamId": "crb",
     "wins": 15,
@@ -257,44 +290,11 @@
     "pct": 49,
     "played": 35,
     "points": 51,
-    "position": 8,
+    "position": 9,
     "red": 3,
     "teamId": "operario-pr",
     "wins": 14,
     "yellow": 85
-  },
-  {
-    "away": {
-      "draws": 5,
-      "goalsAgainst": 19,
-      "goalsFor": 17,
-      "losses": 7,
-      "played": 17,
-      "points": 20,
-      "wins": 5
-    },
-    "draws": 12,
-    "goalDiff": 8,
-    "goalsAgainst": 37,
-    "goalsFor": 45,
-    "home": {
-      "draws": 7,
-      "goalsAgainst": 18,
-      "goalsFor": 28,
-      "losses": 2,
-      "played": 17,
-      "points": 31,
-      "wins": 8
-    },
-    "losses": 9,
-    "pct": 50,
-    "played": 34,
-    "points": 51,
-    "position": 9,
-    "red": 5,
-    "teamId": "sport",
-    "wins": 13,
-    "yellow": 78
   },
   {
     "away": {

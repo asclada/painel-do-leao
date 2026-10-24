@@ -5115,18 +5115,18 @@
     "venue": "Germano Krüger"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "criciuma",
     "city": "Recife",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "sport",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "sport--criciuma",
     "kickoffUtc": "2026-10-24T00:00Z",
     "round": 35,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Ilha do Retiro"
   },
   {

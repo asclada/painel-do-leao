@@ -103,16 +103,16 @@
         "E"
       ],
       "goalDiff": 15,
-      "pDirect": 0.6261,
-      "pPromotion": 0.8371,
-      "pTop6": 0.3738,
+      "pDirect": 0.6508,
+      "pPromotion": 0.851,
+      "pTop6": 0.3489,
       "played": 34,
       "points": 62,
       "position": 1,
       "remainingAway": 2,
       "remainingHome": 2,
       "remainingVsTop6": 3,
-      "schedulePoints": -0.31,
+      "schedulePoints": -0.27,
       "teamId": "vila-nova"
     },
     {
@@ -159,9 +159,9 @@
         "E"
       ],
       "goalDiff": 31,
-      "pDirect": 0.5379,
-      "pPromotion": 0.8366,
-      "pTop6": 0.4598,
+      "pDirect": 0.5672,
+      "pPromotion": 0.856,
+      "pTop6": 0.4311,
       "played": 34,
       "points": 61,
       "position": 2,
@@ -215,9 +215,9 @@
         "E"
       ],
       "goalDiff": 18,
-      "pDirect": 0.3915,
-      "pPromotion": 0.749,
-      "pTop6": 0.6073,
+      "pDirect": 0.4077,
+      "pPromotion": 0.7643,
+      "pTop6": 0.5904,
       "played": 34,
       "points": 61,
       "position": 3,
@@ -271,9 +271,9 @@
         "V"
       ],
       "goalDiff": 12,
-      "pDirect": 0.2879,
-      "pPromotion": 0.6729,
-      "pTop6": 0.7013,
+      "pDirect": 0.3034,
+      "pPromotion": 0.6943,
+      "pTop6": 0.6833,
       "played": 34,
       "points": 60,
       "position": 4,
@@ -286,14 +286,6 @@
     {
       "difficulty": "Média",
       "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-24T00:00Z",
-          "matchId": "sport--criciuma",
-          "opponentId": "sport",
-          "opponentInTop6": false,
-          "round": 35
-        },
         {
           "home": true,
           "kickoffUtc": "2026-10-30T18:00Z",
@@ -321,22 +313,22 @@
       ],
       "form": [
         "V",
-        "V",
         "D",
         "V",
-        "V"
+        "V",
+        "D"
       ],
-      "goalDiff": 7,
-      "pDirect": 0.1542,
-      "pPromotion": 0.5025,
-      "pTop6": 0.8277,
-      "played": 34,
+      "goalDiff": 6,
+      "pDirect": 0.0674,
+      "pPromotion": 0.4254,
+      "pTop6": 0.9002,
+      "played": 35,
       "points": 59,
       "position": 5,
-      "remainingAway": 2,
+      "remainingAway": 1,
       "remainingHome": 2,
       "remainingVsTop6": 2,
-      "schedulePoints": -0.08,
+      "schedulePoints": 0.25,
       "teamId": "criciuma"
     },
     {
@@ -383,9 +375,9 @@
         "E"
       ],
       "goalDiff": 10,
-      "pDirect": 0.0024,
-      "pPromotion": 0.2023,
-      "pTop6": 0.4705,
+      "pDirect": 0.0034,
+      "pPromotion": 0.1961,
+      "pTop6": 0.4444,
       "played": 34,
       "points": 54,
       "position": 6,
@@ -399,57 +391,49 @@
       "difficulty": "Média",
       "fixtures": [
         {
-          "home": true,
-          "kickoffUtc": "2026-10-24T21:30Z",
-          "matchId": "crb--londrina",
-          "opponentId": "londrina",
-          "opponentInTop6": false,
-          "round": 35
-        },
-        {
           "home": false,
-          "kickoffUtc": "2026-11-02T23:30Z",
-          "matchId": "goias--crb",
-          "opponentId": "goias",
+          "kickoffUtc": "2026-10-31T19:00Z",
+          "matchId": "botafogo-sp--sport",
+          "opponentId": "botafogo-sp",
           "opponentInTop6": false,
           "round": 36
         },
         {
           "home": false,
-          "kickoffUtc": "2026-11-08T00:30Z",
-          "matchId": "nautico--crb",
-          "opponentId": "nautico",
+          "kickoffUtc": "2026-11-06T20:00Z",
+          "matchId": "operario-pr--sport",
+          "opponentId": "operario-pr",
           "opponentInTop6": false,
           "round": 37
         },
         {
           "home": true,
           "kickoffUtc": "2026-11-14T20:00Z",
-          "matchId": "crb--ceara",
-          "opponentId": "ceara",
+          "matchId": "sport--goias",
+          "opponentId": "goias",
           "opponentInTop6": false,
           "round": 38
         }
       ],
       "form": [
         "V",
-        "D",
         "V",
         "E",
-        "D"
+        "D",
+        "V"
       ],
-      "goalDiff": 3,
-      "pDirect": 0.0001,
-      "pPromotion": 0.1163,
-      "pTop6": 0.3267,
-      "played": 34,
-      "points": 52,
+      "goalDiff": 9,
+      "pDirect": 0.0,
+      "pPromotion": 0.0765,
+      "pTop6": 0.2175,
+      "played": 35,
+      "points": 54,
       "position": 7,
       "remainingAway": 2,
-      "remainingHome": 2,
+      "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": 0.5,
-      "teamId": "crb"
+      "schedulePoints": -0.02,
+      "teamId": "sport"
     }
   ]
 }
