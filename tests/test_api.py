@@ -24,10 +24,15 @@ def test_no_choices_matches_pipeline_simulation():
     assert "s-maxage" in r.headers["cache-control"]
 
 
-def test_all_wins():
+def test_all_wins_never_worse_than_all_losses():
+    # roda com os dados do momento (o workflow testa depois de atualizar): nada de limiar fixo, que depende da tabela.
+    # Ex.: com 3 jogos para o fim, vencer tudo não garante mais 99% de acesso direto.
     n = len(load_model().focus_remaining)
-    body = client.get("/api/py/simular", params={"p": "V" * n}).json()
-    assert body["focus"]["pDirect"] > 0.99
+    wins, free, losses = (
+        client.get("/api/py/simular", params={"p": p} if p else {}).json()["focus"]["pDirect"]
+        for p in ("V" * n, "", "D" * n)
+    )
+    assert wins >= free >= losses
 
 
 def test_same_choices_same_answer():
