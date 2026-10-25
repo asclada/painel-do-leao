@@ -1,30 +1,30 @@
 {
   "chances": {
-    "draw": 0.2901,
-    "loss": 0.1612,
-    "win": 0.5487
+    "draw": 0.2848,
+    "loss": 0.2864,
+    "win": 0.4289
   },
-  "city": "Indaiatuba",
-  "firstTurn": "Fortaleza 2 x 0 Ponte Preta",
+  "city": "Fortaleza",
+  "firstTurn": "Atlético-GO 1 x 0 Fortaleza",
   "formFortaleza": [
-    "E",
     "E",
     "V",
     "E",
-    "V"
-  ],
-  "formOpponent": [
-    "D",
-    "D",
-    "D",
-    "D",
+    "V",
     "E"
   ],
-  "home": false,
-  "kickoffUtc": "2026-10-24T21:30Z",
-  "matchId": "ponte-preta--fortaleza",
-  "opponentId": "ponte-preta",
-  "round": 35,
-  "status": "live",
-  "venue": "Estádio Italo Mário Limongi"
+  "formOpponent": [
+    "V",
+    "D",
+    "E",
+    "E",
+    "D"
+  ],
+  "home": true,
+  "kickoffUtc": "2026-11-02T19:00Z",
+  "matchId": "fortaleza--atletico-go",
+  "opponentId": "atletico-go",
+  "round": 36,
+  "status": "scheduled",
+  "venue": "Arena Castelão"
 }

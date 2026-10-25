@@ -306,11 +306,11 @@
     "round": 34
   },
   {
-    "pDirect": 0.3076,
-    "pPromotion": 0.709,
-    "pTop6": 0.6839,
+    "pDirect": 0.1875,
+    "pPromotion": 0.655,
+    "pTop6": 0.8009,
     "partial": true,
-    "points": 60,
+    "points": 61,
     "position": 4,
     "round": 35
   }

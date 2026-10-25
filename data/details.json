@@ -4871,6 +4871,54 @@
       }
     }
   },
+  "crb--londrina": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 33,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "crb"
+      },
+      {
+        "extra": null,
+        "minute": 39,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "crb"
+      },
+      {
+        "extra": null,
+        "minute": 64,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "londrina"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "crb--londrina",
+    "stats": {
+      "crb": {
+        "corners": 9,
+        "possession": 54.6,
+        "red": 0,
+        "shots": 39,
+        "shotsOnTarget": 18,
+        "yellow": 0
+      },
+      "londrina": {
+        "corners": 4,
+        "possession": 45.4,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      }
+    }
+  },
   "crb--nautico": {
     "goals": [
       {
@@ -11936,6 +11984,62 @@
         "red": 1,
         "shots": 13,
         "shotsOnTarget": 3,
+        "yellow": 4
+      }
+    }
+  },
+  "ponte-preta--fortaleza": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 25,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 1,
+        "teamId": "fortaleza"
+      },
+      {
+        "extra": null,
+        "minute": 44,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "ponte-preta"
+      },
+      {
+        "extra": 2,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "ponte-preta"
+      },
+      {
+        "extra": null,
+        "minute": 65,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "fortaleza"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "ponte-preta--fortaleza",
+    "stats": {
+      "fortaleza": {
+        "corners": 9,
+        "possession": 76.4,
+        "red": 0,
+        "shots": 23,
+        "shotsOnTarget": 8,
+        "yellow": 1
+      },
+      "ponte-preta": {
+        "corners": 4,
+        "possession": 23.6,
+        "red": 0,
+        "shots": 14,
+        "shotsOnTarget": 6,
         "yellow": 4
       }
     }

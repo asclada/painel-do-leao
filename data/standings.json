@@ -100,18 +100,18 @@
   },
   {
     "away": {
-      "draws": 5,
-      "goalsAgainst": 13,
-      "goalsFor": 14,
+      "draws": 6,
+      "goalsAgainst": 15,
+      "goalsFor": 16,
       "losses": 5,
-      "played": 17,
-      "points": 26,
+      "played": 18,
+      "points": 27,
       "wins": 7
     },
-    "draws": 12,
+    "draws": 13,
     "goalDiff": 12,
-    "goalsAgainst": 29,
-    "goalsFor": 41,
+    "goalsAgainst": 31,
+    "goalsFor": 43,
     "home": {
       "draws": 7,
       "goalsAgainst": 16,
@@ -122,14 +122,14 @@
       "wins": 9
     },
     "losses": 6,
-    "pct": 59,
-    "played": 34,
-    "points": 60,
+    "pct": 58,
+    "played": 35,
+    "points": 61,
     "position": 4,
     "red": 9,
     "teamId": "fortaleza",
     "wins": 16,
-    "yellow": 82
+    "yellow": 83
   },
   {
     "away": {
@@ -166,6 +166,39 @@
   },
   {
     "away": {
+      "draws": 4,
+      "goalsAgainst": 29,
+      "goalsFor": 20,
+      "losses": 7,
+      "played": 17,
+      "points": 22,
+      "wins": 6
+    },
+    "draws": 7,
+    "goalDiff": 4,
+    "goalsAgainst": 49,
+    "goalsFor": 53,
+    "home": {
+      "draws": 3,
+      "goalsAgainst": 20,
+      "goalsFor": 33,
+      "losses": 5,
+      "played": 18,
+      "points": 33,
+      "wins": 10
+    },
+    "losses": 12,
+    "pct": 52,
+    "played": 35,
+    "points": 55,
+    "position": 6,
+    "red": 4,
+    "teamId": "crb",
+    "wins": 16,
+    "yellow": 86
+  },
+  {
+    "away": {
       "draws": 5,
       "goalsAgainst": 19,
       "goalsFor": 17,
@@ -191,7 +224,7 @@
     "pct": 51,
     "played": 35,
     "points": 54,
-    "position": 6,
+    "position": 7,
     "red": 5,
     "teamId": "sport",
     "wins": 14,
@@ -224,44 +257,11 @@
     "pct": 51,
     "played": 35,
     "points": 54,
-    "position": 7,
+    "position": 8,
     "red": 4,
     "teamId": "atletico-go",
     "wins": 14,
     "yellow": 76
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 29,
-      "goalsFor": 20,
-      "losses": 7,
-      "played": 17,
-      "points": 22,
-      "wins": 6
-    },
-    "draws": 7,
-    "goalDiff": 3,
-    "goalsAgainst": 48,
-    "goalsFor": 51,
-    "home": {
-      "draws": 3,
-      "goalsAgainst": 19,
-      "goalsFor": 31,
-      "losses": 5,
-      "played": 17,
-      "points": 30,
-      "wins": 9
-    },
-    "losses": 12,
-    "pct": 51,
-    "played": 34,
-    "points": 52,
-    "position": 8,
-    "red": 4,
-    "teamId": "crb",
-    "wins": 15,
-    "yellow": 86
   },
   {
     "away": {
@@ -563,17 +563,17 @@
   {
     "away": {
       "draws": 3,
-      "goalsAgainst": 29,
-      "goalsFor": 19,
-      "losses": 11,
-      "played": 17,
+      "goalsAgainst": 31,
+      "goalsFor": 20,
+      "losses": 12,
+      "played": 18,
       "points": 12,
       "wins": 3
     },
     "draws": 8,
-    "goalDiff": -6,
-    "goalsAgainst": 49,
-    "goalsFor": 43,
+    "goalDiff": -7,
+    "goalsAgainst": 51,
+    "goalsFor": 44,
     "home": {
       "draws": 5,
       "goalsAgainst": 20,
@@ -583,15 +583,15 @@
       "points": 20,
       "wins": 5
     },
-    "losses": 18,
-    "pct": 31,
-    "played": 34,
+    "losses": 19,
+    "pct": 30,
+    "played": 35,
     "points": 32,
     "position": 18,
     "red": 5,
     "teamId": "londrina",
     "wins": 8,
-    "yellow": 81
+    "yellow": 83
   },
   {
     "away": {
@@ -636,27 +636,27 @@
       "points": 3,
       "wins": 1
     },
-    "draws": 5,
+    "draws": 6,
     "goalDiff": -55,
-    "goalsAgainst": 74,
-    "goalsFor": 19,
+    "goalsAgainst": 76,
+    "goalsFor": 21,
     "home": {
-      "draws": 5,
-      "goalsAgainst": 26,
-      "goalsFor": 11,
+      "draws": 6,
+      "goalsAgainst": 28,
+      "goalsFor": 13,
       "losses": 10,
-      "played": 17,
-      "points": 11,
+      "played": 18,
+      "points": 12,
       "wins": 2
     },
     "losses": 26,
     "pct": 14,
-    "played": 34,
-    "points": 14,
+    "played": 35,
+    "points": 15,
     "position": 20,
     "red": 13,
     "teamId": "ponte-preta",
     "wins": 3,
-    "yellow": 98
+    "yellow": 102
   }
 ]

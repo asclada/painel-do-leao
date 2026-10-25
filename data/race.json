@@ -9,14 +9,6 @@
       "venue": "Estádio Onésio Brasileiro Alvarenga"
     },
     {
-      "awayId": "atletico-go",
-      "homeId": "fortaleza",
-      "kickoffUtc": "2026-11-02T19:00Z",
-      "matchId": "fortaleza--atletico-go",
-      "round": 36,
-      "venue": "Arena Castelão"
-    },
-    {
       "awayId": "criciuma",
       "homeId": "vila-nova",
       "kickoffUtc": "2026-11-06T20:00Z",
@@ -87,16 +79,16 @@
         "V"
       ],
       "goalDiff": 32,
-      "pDirect": 0.805,
-      "pPromotion": 0.9426,
-      "pTop6": 0.1951,
+      "pDirect": 0.8405,
+      "pPromotion": 0.9512,
+      "pTop6": 0.1595,
       "played": 35,
       "points": 64,
       "position": 1,
       "remainingAway": 1,
       "remainingHome": 2,
       "remainingVsTop6": 2,
-      "schedulePoints": -0.31,
+      "schedulePoints": -0.28,
       "teamId": "novorizontino"
     },
     {
@@ -135,9 +127,9 @@
         "D"
       ],
       "goalDiff": 14,
-      "pDirect": 0.4624,
-      "pPromotion": 0.7752,
-      "pTop6": 0.5373,
+      "pDirect": 0.5079,
+      "pPromotion": 0.7933,
+      "pTop6": 0.4919,
       "played": 35,
       "points": 62,
       "position": 2,
@@ -191,9 +183,9 @@
         "E"
       ],
       "goalDiff": 18,
-      "pDirect": 0.3684,
-      "pPromotion": 0.7613,
-      "pTop6": 0.631,
+      "pDirect": 0.3974,
+      "pPromotion": 0.7696,
+      "pTop6": 0.6018,
       "played": 34,
       "points": 61,
       "position": 3,
@@ -206,14 +198,6 @@
     {
       "difficulty": "Média",
       "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-24T21:30Z",
-          "matchId": "ponte-preta--fortaleza",
-          "opponentId": "ponte-preta",
-          "opponentInTop6": false,
-          "round": 35
-        },
         {
           "home": true,
           "kickoffUtc": "2026-11-02T19:00Z",
@@ -241,22 +225,22 @@
       ],
       "form": [
         "E",
-        "E",
         "V",
         "E",
-        "V"
+        "V",
+        "E"
       ],
       "goalDiff": 12,
-      "pDirect": 0.3076,
-      "pPromotion": 0.709,
-      "pTop6": 0.6839,
-      "played": 34,
-      "points": 60,
+      "pDirect": 0.1875,
+      "pPromotion": 0.655,
+      "pTop6": 0.8009,
+      "played": 35,
+      "points": 61,
       "position": 4,
-      "remainingAway": 2,
+      "remainingAway": 1,
       "remainingHome": 2,
       "remainingVsTop6": 2,
-      "schedulePoints": 0.08,
+      "schedulePoints": -0.22,
       "teamId": "fortaleza"
     },
     {
@@ -295,9 +279,9 @@
         "D"
       ],
       "goalDiff": 6,
-      "pDirect": 0.0566,
-      "pPromotion": 0.4331,
-      "pTop6": 0.9249,
+      "pDirect": 0.0667,
+      "pPromotion": 0.4462,
+      "pTop6": 0.9093,
       "played": 35,
       "points": 59,
       "position": 5,
@@ -306,6 +290,54 @@
       "remainingVsTop6": 2,
       "schedulePoints": 0.2,
       "teamId": "criciuma"
+    },
+    {
+      "difficulty": "Média",
+      "fixtures": [
+        {
+          "home": false,
+          "kickoffUtc": "2026-11-02T23:30Z",
+          "matchId": "goias--crb",
+          "opponentId": "goias",
+          "opponentInTop6": false,
+          "round": 36
+        },
+        {
+          "home": false,
+          "kickoffUtc": "2026-11-08T00:30Z",
+          "matchId": "nautico--crb",
+          "opponentId": "nautico",
+          "opponentInTop6": false,
+          "round": 37
+        },
+        {
+          "home": true,
+          "kickoffUtc": "2026-11-14T20:00Z",
+          "matchId": "crb--ceara",
+          "opponentId": "ceara",
+          "opponentInTop6": false,
+          "round": 38
+        }
+      ],
+      "form": [
+        "D",
+        "V",
+        "E",
+        "D",
+        "V"
+      ],
+      "goalDiff": 4,
+      "pDirect": 0.0,
+      "pPromotion": 0.1795,
+      "pTop6": 0.5039,
+      "played": 35,
+      "points": 55,
+      "position": 6,
+      "remainingAway": 2,
+      "remainingHome": 1,
+      "remainingVsTop6": 0,
+      "schedulePoints": 0.11,
+      "teamId": "crb"
     },
     {
       "difficulty": "Média",
@@ -344,64 +376,16 @@
       ],
       "goalDiff": 9,
       "pDirect": 0.0,
-      "pPromotion": 0.0988,
-      "pTop6": 0.2742,
-      "played": 35,
-      "points": 54,
-      "position": 6,
-      "remainingAway": 2,
-      "remainingHome": 1,
-      "remainingVsTop6": 0,
-      "schedulePoints": -0.01,
-      "teamId": "sport"
-    },
-    {
-      "difficulty": "Média",
-      "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-02T19:00Z",
-          "matchId": "fortaleza--atletico-go",
-          "opponentId": "fortaleza",
-          "opponentInTop6": true,
-          "round": 36
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-08T19:00Z",
-          "matchId": "athletic-club--atletico-go",
-          "opponentId": "athletic-club",
-          "opponentInTop6": false,
-          "round": 37
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-14T20:00Z",
-          "matchId": "atletico-go--cuiaba",
-          "opponentId": "cuiaba",
-          "opponentInTop6": false,
-          "round": 38
-        }
-      ],
-      "form": [
-        "V",
-        "D",
-        "E",
-        "E",
-        "D"
-      ],
-      "goalDiff": 9,
-      "pDirect": 0.0,
-      "pPromotion": 0.1029,
-      "pTop6": 0.2581,
+      "pPromotion": 0.0833,
+      "pTop6": 0.2273,
       "played": 35,
       "points": 54,
       "position": 7,
       "remainingAway": 2,
       "remainingHome": 1,
-      "remainingVsTop6": 1,
-      "schedulePoints": -0.11,
-      "teamId": "atletico-go"
+      "remainingVsTop6": 0,
+      "schedulePoints": -0.01,
+      "teamId": "sport"
     }
   ]
 }

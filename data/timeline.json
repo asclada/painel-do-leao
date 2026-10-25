@@ -28,7 +28,7 @@
     {
       "kind": "unbeaten",
       "round": 20,
-      "text": "Rodada 20: início da sequência de 15 jogos sem perder.",
+      "text": "Rodada 20: início da sequência de 16 jogos sem perder.",
       "title": "Começa a invencibilidade"
     },
     {
@@ -448,15 +448,15 @@
       "round": 34
     },
     {
-      "goalsAgainst": null,
-      "goalsFor": null,
+      "goalsAgainst": 2,
+      "goalsFor": 2,
       "home": false,
       "kickoffUtc": "2026-10-24T21:30Z",
       "matchId": "ponte-preta--fortaleza",
       "opponentId": "ponte-preta",
-      "points": 60,
+      "points": 61,
       "position": 4,
-      "result": null,
+      "result": "E",
       "round": 35
     }
   ],
@@ -570,7 +570,7 @@
       6,
       6,
       6,
-      7
+      8
     ],
     "avai": [
       4,
@@ -718,7 +718,7 @@
       7,
       7,
       7,
-      8
+      6
     ],
     "criciuma": [
       6,
@@ -1125,7 +1125,7 @@
       8,
       8,
       8,
-      6
+      7
     ],
     "vila-nova": [
       9,
