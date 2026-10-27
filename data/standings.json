@@ -398,16 +398,16 @@
   {
     "away": {
       "draws": 7,
-      "goalsAgainst": 17,
+      "goalsAgainst": 18,
       "goalsFor": 13,
-      "losses": 6,
-      "played": 17,
+      "losses": 7,
+      "played": 18,
       "points": 19,
       "wins": 4
     },
     "draws": 14,
-    "goalDiff": 5,
-    "goalsAgainst": 27,
+    "goalDiff": 4,
+    "goalsAgainst": 28,
     "goalsFor": 32,
     "home": {
       "draws": 7,
@@ -418,15 +418,15 @@
       "points": 28,
       "wins": 7
     },
-    "losses": 9,
-    "pct": 46,
-    "played": 34,
+    "losses": 10,
+    "pct": 45,
+    "played": 35,
     "points": 47,
     "position": 13,
     "red": 3,
     "teamId": "cuiaba",
     "wins": 11,
-    "yellow": 64
+    "yellow": 65
   },
   {
     "away": {
@@ -604,27 +604,27 @@
       "wins": 1
     },
     "draws": 5,
-    "goalDiff": -32,
+    "goalDiff": -31,
     "goalsAgainst": 54,
-    "goalsFor": 22,
+    "goalsFor": 23,
     "home": {
       "draws": 3,
       "goalsAgainst": 22,
-      "goalsFor": 13,
+      "goalsFor": 14,
       "losses": 10,
-      "played": 17,
-      "points": 15,
-      "wins": 4
+      "played": 18,
+      "points": 18,
+      "wins": 5
     },
     "losses": 24,
-    "pct": 20,
-    "played": 34,
-    "points": 20,
+    "pct": 22,
+    "played": 35,
+    "points": 23,
     "position": 19,
     "red": 2,
     "teamId": "america-mg",
-    "wins": 5,
-    "yellow": 74
+    "wins": 6,
+    "yellow": 76
   },
   {
     "away": {

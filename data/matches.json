@@ -5205,18 +5205,18 @@
     "venue": "Estádio Italo Mário Limongi"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "cuiaba",
     "city": "Belo Horizonte",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "america-mg",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "america-mg--cuiaba",
     "kickoffUtc": "2026-10-26T22:30Z",
     "round": 35,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Raimundo Sampaio (Independência)"
   },
   {
@@ -5231,7 +5231,7 @@
     "kickoffUtc": "2026-10-26T23:30Z",
     "round": 35,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Alfredo Jaconi"
   },
   {

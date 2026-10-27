@@ -271,6 +271,38 @@
       }
     }
   },
+  "america-mg--cuiaba": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 58,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "america-mg"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "america-mg--cuiaba",
+    "stats": {
+      "america-mg": {
+        "corners": 2,
+        "possession": 44.2,
+        "red": 0,
+        "shots": 6,
+        "shotsOnTarget": 2,
+        "yellow": 2
+      },
+      "cuiaba": {
+        "corners": 12,
+        "possession": 55.8,
+        "red": 0,
+        "shots": 24,
+        "shotsOnTarget": 6,
+        "yellow": 1
+      }
+    }
+  },
   "america-mg--fortaleza": {
     "goals": [
       {
