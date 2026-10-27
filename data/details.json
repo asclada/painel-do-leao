@@ -8415,6 +8415,62 @@
       }
     }
   },
+  "juventude--nautico": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 7,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "juventude"
+      },
+      {
+        "extra": null,
+        "minute": 40,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "juventude"
+      },
+      {
+        "extra": null,
+        "minute": 50,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      },
+      {
+        "extra": 6,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "juventude--nautico",
+    "stats": {
+      "juventude": {
+        "corners": 4,
+        "possession": 50.5,
+        "red": 0,
+        "shots": 24,
+        "shotsOnTarget": 11,
+        "yellow": 2
+      },
+      "nautico": {
+        "corners": 3,
+        "possession": 49.5,
+        "red": 0,
+        "shots": 15,
+        "shotsOnTarget": 4,
+        "yellow": 4
+      }
+    }
+  },
   "juventude--novorizontino": {
     "goals": [],
     "goalsComplete": true,

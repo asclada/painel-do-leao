@@ -5220,18 +5220,18 @@
     "venue": "Estádio Raimundo Sampaio (Independência)"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "nautico",
     "city": "Caxias do Sul",
-    "homeGoals": null,
+    "homeGoals": 4,
     "homeId": "juventude",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 2,
     "id": "juventude--nautico",
     "kickoffUtc": "2026-10-26T23:30Z",
     "round": 35,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Alfredo Jaconi"
   },
   {

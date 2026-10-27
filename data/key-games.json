@@ -1,38 +1,15 @@
 {
-  "baseline": 0.186,
+  "baseline": 0.1424,
   "metric": "direct",
   "rivals": [
     {
-      "awayId": "nautico",
-      "best": "away",
-      "gain": 0.0548,
-      "homeId": "juventude",
-      "ifAway": 0.2408,
-      "ifDraw": 0.214,
-      "ifHome": 0.1494,
-      "kickoffUtc": "2026-10-26T23:30Z",
-      "matchId": "juventude--nautico",
-      "order": [
-        "away",
-        "draw",
-        "home"
-      ],
-      "pAway": 0.1983,
-      "pDraw": 0.255,
-      "pHome": 0.5466,
-      "round": 35,
-      "sameBottom": false,
-      "sameTop": false,
-      "swing": 0.0914
-    },
-    {
       "awayId": "operario-pr",
       "best": "away",
-      "gain": 0.0491,
+      "gain": 0.0543,
       "homeId": "novorizontino",
-      "ifAway": 0.2351,
-      "ifDraw": 0.2117,
-      "ifHome": 0.1534,
+      "ifAway": 0.1967,
+      "ifDraw": 0.1724,
+      "ifHome": 0.1098,
       "kickoffUtc": "2026-11-01T21:30Z",
       "matchId": "novorizontino--operario-pr",
       "order": [
@@ -40,22 +17,22 @@
         "draw",
         "home"
       ],
-      "pAway": 0.1926,
-      "pDraw": 0.2152,
-      "pHome": 0.5922,
+      "pAway": 0.1921,
+      "pDraw": 0.2186,
+      "pHome": 0.5893,
       "round": 36,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0817
+      "swing": 0.087
     },
     {
       "awayId": "juventude",
       "best": "draw",
-      "gain": 0.0497,
+      "gain": 0.0323,
       "homeId": "vila-nova",
-      "ifAway": 0.1638,
-      "ifDraw": 0.2357,
-      "ifHome": 0.169,
+      "ifAway": 0.1134,
+      "ifDraw": 0.1746,
+      "ifHome": 0.1389,
       "kickoffUtc": "2026-10-31T21:00Z",
       "matchId": "vila-nova--juventude",
       "order": [
@@ -63,36 +40,13 @@
         "home",
         "away"
       ],
-      "pAway": 0.2666,
-      "pDraw": 0.2884,
-      "pHome": 0.4449,
-      "round": 36,
-      "sameBottom": true,
-      "sameTop": false,
-      "swing": 0.0718
-    },
-    {
-      "awayId": "ponte-preta",
-      "best": "away",
-      "gain": 0.0099,
-      "homeId": "criciuma",
-      "ifAway": 0.1958,
-      "ifDraw": 0.1945,
-      "ifHome": 0.1836,
-      "kickoffUtc": "2026-10-30T18:00Z",
-      "matchId": "criciuma--ponte-preta",
-      "order": [
-        "away",
-        "draw",
-        "home"
-      ],
-      "pAway": 0.0718,
-      "pDraw": 0.178,
-      "pHome": 0.7501,
+      "pAway": 0.2599,
+      "pDraw": 0.2935,
+      "pHome": 0.4466,
       "round": 36,
       "sameBottom": false,
-      "sameTop": true,
-      "swing": 0.0122
+      "sameTop": false,
+      "swing": 0.0612
     }
   ],
   "round": 36
