@@ -4007,6 +4007,46 @@
       }
     }
   },
+  "ceara--goias": {
+    "goals": [
+      {
+        "extra": 2,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "goias"
+      },
+      {
+        "extra": 5,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "goias"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "ceara--goias",
+    "stats": {
+      "ceara": {
+        "corners": 3,
+        "possession": 33.5,
+        "red": 0,
+        "shots": 16,
+        "shotsOnTarget": 4,
+        "yellow": 4
+      },
+      "goias": {
+        "corners": 8,
+        "possession": 66.5,
+        "red": 0,
+        "shots": 20,
+        "shotsOnTarget": 11,
+        "yellow": 1
+      }
+    }
+  },
   "ceara--juventude": {
     "goals": [
       {

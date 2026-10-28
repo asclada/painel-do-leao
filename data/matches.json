@@ -5235,34 +5235,34 @@
     "venue": "Alfredo Jaconi"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "goias",
     "city": "Fortaleza",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "ceara",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "ceara--goias",
     "kickoffUtc": "2026-10-27T23:00Z",
     "round": 35,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Arena Castelão"
   },
   {
     "awayGoals": null,
     "awayId": "ponte-preta",
-    "city": null,
+    "city": "Criciúma",
     "homeGoals": null,
     "homeId": "criciuma",
     "htAwayGoals": null,
     "htHomeGoals": null,
     "id": "criciuma--ponte-preta",
-    "kickoffUtc": "2026-10-30T18:00Z",
+    "kickoffUtc": "2026-10-30T22:30Z",
     "round": 36,
     "source": "espn",
     "status": "scheduled",
-    "venue": null
+    "venue": "Heriberto Hülse"
   },
   {
     "awayGoals": null,
