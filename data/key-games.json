@@ -1,15 +1,15 @@
 {
-  "baseline": 0.1466,
+  "baseline": 0.1463,
   "metric": "direct",
   "rivals": [
     {
       "awayId": "operario-pr",
       "best": "away",
-      "gain": 0.0529,
+      "gain": 0.0525,
       "homeId": "novorizontino",
-      "ifAway": 0.1995,
-      "ifDraw": 0.1771,
-      "ifHome": 0.1147,
+      "ifAway": 0.1988,
+      "ifDraw": 0.177,
+      "ifHome": 0.1132,
       "kickoffUtc": "2026-11-01T21:30Z",
       "matchId": "novorizontino--operario-pr",
       "order": [
@@ -17,22 +17,22 @@
         "draw",
         "home"
       ],
-      "pAway": 0.1922,
-      "pDraw": 0.216,
-      "pHome": 0.5917,
+      "pAway": 0.1932,
+      "pDraw": 0.2243,
+      "pHome": 0.5825,
       "round": 36,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0849
+      "swing": 0.0856
     },
     {
       "awayId": "juventude",
       "best": "draw",
-      "gain": 0.0332,
+      "gain": 0.0342,
       "homeId": "vila-nova",
-      "ifAway": 0.1163,
-      "ifDraw": 0.1797,
-      "ifHome": 0.1421,
+      "ifAway": 0.1174,
+      "ifDraw": 0.1805,
+      "ifHome": 0.1429,
       "kickoffUtc": "2026-10-31T20:30Z",
       "matchId": "vila-nova--juventude",
       "order": [
@@ -40,13 +40,13 @@
         "home",
         "away"
       ],
-      "pAway": 0.2587,
-      "pDraw": 0.2949,
-      "pHome": 0.4464,
+      "pAway": 0.2648,
+      "pDraw": 0.2907,
+      "pHome": 0.4446,
       "round": 36,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0634
+      "swing": 0.0631
     }
   ],
   "round": 36

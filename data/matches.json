@@ -5265,18 +5265,18 @@
     "venue": "Heriberto Hülse"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "sport",
     "city": "Ribeirão Preto",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "botafogo-sp",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 1,
     "id": "botafogo-sp--sport",
     "kickoffUtc": "2026-10-31T19:00Z",
     "round": 36,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Santa Cruz"
   },
   {
@@ -5291,7 +5291,7 @@
     "kickoffUtc": "2026-10-31T20:30Z",
     "round": 36,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Onésio Brasileiro Alvarenga"
   },
   {

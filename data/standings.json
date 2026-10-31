@@ -199,18 +199,18 @@
   },
   {
     "away": {
-      "draws": 5,
-      "goalsAgainst": 19,
-      "goalsFor": 17,
+      "draws": 6,
+      "goalsAgainst": 20,
+      "goalsFor": 18,
       "losses": 7,
-      "played": 17,
-      "points": 20,
+      "played": 18,
+      "points": 21,
       "wins": 5
     },
-    "draws": 12,
+    "draws": 13,
     "goalDiff": 9,
-    "goalsAgainst": 38,
-    "goalsFor": 47,
+    "goalsAgainst": 39,
+    "goalsFor": 48,
     "home": {
       "draws": 7,
       "goalsAgainst": 19,
@@ -222,13 +222,13 @@
     },
     "losses": 9,
     "pct": 51,
-    "played": 35,
-    "points": 54,
+    "played": 36,
+    "points": 55,
     "position": 7,
     "red": 5,
     "teamId": "sport",
     "wins": 14,
-    "yellow": 78
+    "yellow": 79
   },
   {
     "away": {
@@ -372,28 +372,28 @@
       "points": 23,
       "wins": 6
     },
-    "draws": 8,
+    "draws": 9,
     "goalDiff": 2,
-    "goalsAgainst": 38,
-    "goalsFor": 40,
+    "goalsAgainst": 39,
+    "goalsFor": 41,
     "home": {
-      "draws": 3,
-      "goalsAgainst": 22,
-      "goalsFor": 26,
+      "draws": 4,
+      "goalsAgainst": 23,
+      "goalsFor": 27,
       "losses": 7,
-      "played": 17,
-      "points": 24,
+      "played": 18,
+      "points": 25,
       "wins": 7
     },
     "losses": 14,
-    "pct": 45,
-    "played": 35,
-    "points": 47,
+    "pct": 44,
+    "played": 36,
+    "points": 48,
     "position": 12,
     "red": 1,
     "teamId": "botafogo-sp",
     "wins": 13,
-    "yellow": 85
+    "yellow": 86
   },
   {
     "away": {

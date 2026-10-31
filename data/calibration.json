@@ -1,6 +1,6 @@
 {
   "matches": {
-    "accuracy": 0.4164,
+    "accuracy": 0.4152,
     "bins": [
       {
         "hi": 0.1,
@@ -19,23 +19,23 @@
       {
         "hi": 0.3,
         "lo": 0.2,
-        "n": 402,
-        "observed": 0.2761,
+        "n": 403,
+        "observed": 0.2779,
         "predicted": 0.259
       },
       {
         "hi": 0.4,
         "lo": 0.3,
-        "n": 330,
-        "observed": 0.3667,
+        "n": 331,
+        "observed": 0.3656,
         "predicted": 0.3428
       },
       {
         "hi": 0.5,
         "lo": 0.4,
-        "n": 159,
-        "observed": 0.3836,
-        "predicted": 0.4486
+        "n": 160,
+        "observed": 0.3812,
+        "predicted": 0.4483
       },
       {
         "hi": 0.6,
@@ -66,26 +66,26 @@
         "predicted": 0.8169
       }
     ],
-    "brier": 0.6419,
-    "brierReference": 0.6583,
+    "brier": 0.6424,
+    "brierReference": 0.6588,
     "brierUniform": 0.6667,
-    "favoriteRate": 0.4164,
+    "favoriteRate": 0.4152,
     "favoritesN": 76,
     "favoritesObserved": 0.5526,
     "favoritesPredicted": 0.5783,
-    "logLoss": 1.0629,
-    "middleRate": 0.3343,
-    "nMatches": 341,
-    "reliability": 0.0753,
+    "logLoss": 1.0638,
+    "middleRate": 0.3333,
+    "nMatches": 342,
+    "reliability": 0.0757,
     "reliabilitySmallBins": 0.0565,
     "reliabilityWeighted": 0.002,
     "rounds": [
       2,
       36
     ],
-    "skill": 0.025,
-    "upsetRate": 0.2493
+    "skill": 0.0248,
+    "upsetRate": 0.2515
   },
   "season": null,
-  "summary": "Conferimos as contas com os 341 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 58% de chance de vencer em média, ele venceu 55% das vezes. Contando todos os jogos, deu o resultado mais provável em 42% deles, o do meio em 33% e a zebra (o menos provável) em 25%."
+  "summary": "Conferimos as contas com os 342 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 58% de chance de vencer em média, ele venceu 55% das vezes. Contando todos os jogos, deu o resultado mais provável em 42% deles, o do meio em 33% e a zebra (o menos provável) em 25%."
 }

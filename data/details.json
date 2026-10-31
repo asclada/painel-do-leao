@@ -3672,6 +3672,46 @@
       }
     }
   },
+  "botafogo-sp--sport": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 39,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "botafogo-sp"
+      },
+      {
+        "extra": 1,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "sport"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "botafogo-sp--sport",
+    "stats": {
+      "botafogo-sp": {
+        "corners": 11,
+        "possession": 53.8,
+        "red": 0,
+        "shots": 18,
+        "shotsOnTarget": 1,
+        "yellow": 1
+      },
+      "sport": {
+        "corners": 0,
+        "possession": 46.2,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 4,
+        "yellow": 1
+      }
+    }
+  },
   "botafogo-sp--vila-nova": {
     "goals": [
       {

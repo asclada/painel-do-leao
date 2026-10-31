@@ -79,9 +79,9 @@
         "V"
       ],
       "goalDiff": 32,
-      "pDirect": 0.7905,
-      "pPromotion": 0.9361,
-      "pTop6": 0.2095,
+      "pDirect": 0.7867,
+      "pPromotion": 0.9329,
+      "pTop6": 0.2133,
       "played": 35,
       "points": 64,
       "position": 1,
@@ -127,9 +127,9 @@
         "V"
       ],
       "goalDiff": 22,
-      "pDirect": 0.5597,
-      "pPromotion": 0.855,
-      "pTop6": 0.4402,
+      "pDirect": 0.5595,
+      "pPromotion": 0.8539,
+      "pTop6": 0.4405,
       "played": 35,
       "points": 64,
       "position": 2,
@@ -175,9 +175,9 @@
         "D"
       ],
       "goalDiff": 14,
-      "pDirect": 0.4347,
-      "pPromotion": 0.7573,
-      "pTop6": 0.5651,
+      "pDirect": 0.4365,
+      "pPromotion": 0.7497,
+      "pTop6": 0.5633,
       "played": 35,
       "points": 62,
       "position": 3,
@@ -215,9 +215,9 @@
         "V"
       ],
       "goalDiff": 8,
-      "pDirect": 0.0685,
-      "pPromotion": 0.4769,
-      "pTop6": 0.928,
+      "pDirect": 0.071,
+      "pPromotion": 0.4894,
+      "pTop6": 0.9277,
       "played": 36,
       "points": 62,
       "position": 4,
@@ -263,9 +263,9 @@
         "E"
       ],
       "goalDiff": 12,
-      "pDirect": 0.1466,
-      "pPromotion": 0.6073,
-      "pTop6": 0.8381,
+      "pDirect": 0.1463,
+      "pPromotion": 0.6138,
+      "pTop6": 0.8418,
       "played": 35,
       "points": 61,
       "position": 5,
@@ -312,8 +312,8 @@
       ],
       "goalDiff": 4,
       "pDirect": 0.0,
-      "pPromotion": 0.1674,
-      "pTop6": 0.4726,
+      "pPromotion": 0.175,
+      "pTop6": 0.5064,
       "played": 35,
       "points": 55,
       "position": 6,
@@ -326,14 +326,6 @@
     {
       "difficulty": "Média",
       "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-31T19:00Z",
-          "matchId": "botafogo-sp--sport",
-          "opponentId": "botafogo-sp",
-          "opponentInTop6": false,
-          "round": 36
-        },
         {
           "home": false,
           "kickoffUtc": "2026-11-06T20:00Z",
@@ -353,22 +345,22 @@
       ],
       "form": [
         "V",
-        "V",
         "E",
         "D",
-        "V"
+        "V",
+        "E"
       ],
       "goalDiff": 9,
       "pDirect": 0.0,
-      "pPromotion": 0.0689,
-      "pTop6": 0.1921,
-      "played": 35,
-      "points": 54,
+      "pPromotion": 0.0464,
+      "pTop6": 0.1336,
+      "played": 36,
+      "points": 55,
       "position": 7,
-      "remainingAway": 2,
+      "remainingAway": 1,
       "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": -0.16,
+      "schedulePoints": -0.04,
       "teamId": "sport"
     }
   ]
