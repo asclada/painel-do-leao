@@ -1,14 +1,6 @@
 {
   "headToHead": [
     {
-      "awayId": "juventude",
-      "homeId": "vila-nova",
-      "kickoffUtc": "2026-10-31T20:30Z",
-      "matchId": "vila-nova--juventude",
-      "round": 36,
-      "venue": "Estádio Onésio Brasileiro Alvarenga"
-    },
-    {
       "awayId": "criciuma",
       "homeId": "vila-nova",
       "kickoffUtc": "2026-11-06T20:00Z",
@@ -41,8 +33,48 @@
       "venue": null
     }
   ],
-  "headline": "O Vila Nova ainda enfrenta 3 times do G6. O Fortaleza, só 2.",
+  "headline": "4 confrontos diretos até o fim: é aí que se decide.",
   "teams": [
+    {
+      "difficulty": "Média",
+      "fixtures": [
+        {
+          "home": false,
+          "kickoffUtc": "2026-11-06T20:00Z",
+          "matchId": "cuiaba--juventude",
+          "opponentId": "cuiaba",
+          "opponentInTop6": false,
+          "round": 37
+        },
+        {
+          "home": true,
+          "kickoffUtc": "2026-11-14T20:00Z",
+          "matchId": "juventude--botafogo-sp",
+          "opponentId": "botafogo-sp",
+          "opponentInTop6": false,
+          "round": 38
+        }
+      ],
+      "form": [
+        "V",
+        "E",
+        "E",
+        "V",
+        "E"
+      ],
+      "goalDiff": 22,
+      "pDirect": 0.6235,
+      "pPromotion": 0.8792,
+      "pTop6": 0.3765,
+      "played": 36,
+      "points": 65,
+      "position": 1,
+      "remainingAway": 1,
+      "remainingHome": 1,
+      "remainingVsTop6": 0,
+      "schedulePoints": -0.49,
+      "teamId": "juventude"
+    },
     {
       "difficulty": "Média",
       "fixtures": [
@@ -79,77 +111,21 @@
         "V"
       ],
       "goalDiff": 32,
-      "pDirect": 0.7867,
-      "pPromotion": 0.9329,
-      "pTop6": 0.2133,
-      "played": 35,
-      "points": 64,
-      "position": 1,
-      "remainingAway": 1,
-      "remainingHome": 2,
-      "remainingVsTop6": 2,
-      "schedulePoints": -0.36,
-      "teamId": "novorizontino"
-    },
-    {
-      "difficulty": "Difícil",
-      "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-10-31T20:30Z",
-          "matchId": "vila-nova--juventude",
-          "opponentId": "vila-nova",
-          "opponentInTop6": true,
-          "round": 36
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-06T20:00Z",
-          "matchId": "cuiaba--juventude",
-          "opponentId": "cuiaba",
-          "opponentInTop6": false,
-          "round": 37
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-14T20:00Z",
-          "matchId": "juventude--botafogo-sp",
-          "opponentId": "botafogo-sp",
-          "opponentInTop6": false,
-          "round": 38
-        }
-      ],
-      "form": [
-        "V",
-        "V",
-        "E",
-        "E",
-        "V"
-      ],
-      "goalDiff": 22,
-      "pDirect": 0.5595,
-      "pPromotion": 0.8539,
-      "pTop6": 0.4405,
+      "pDirect": 0.8164,
+      "pPromotion": 0.9423,
+      "pTop6": 0.1836,
       "played": 35,
       "points": 64,
       "position": 2,
-      "remainingAway": 2,
-      "remainingHome": 1,
-      "remainingVsTop6": 1,
-      "schedulePoints": -1.11,
-      "teamId": "juventude"
+      "remainingAway": 1,
+      "remainingHome": 2,
+      "remainingVsTop6": 2,
+      "schedulePoints": -0.37,
+      "teamId": "novorizontino"
     },
     {
       "difficulty": "Média",
       "fixtures": [
-        {
-          "home": true,
-          "kickoffUtc": "2026-10-31T20:30Z",
-          "matchId": "vila-nova--juventude",
-          "opponentId": "juventude",
-          "opponentInTop6": true,
-          "round": 36
-        },
         {
           "home": true,
           "kickoffUtc": "2026-11-06T20:00Z",
@@ -168,23 +144,23 @@
         }
       ],
       "form": [
-        "V",
         "E",
         "V",
         "E",
-        "D"
+        "D",
+        "E"
       ],
       "goalDiff": 14,
-      "pDirect": 0.4365,
-      "pPromotion": 0.7497,
-      "pTop6": 0.5633,
-      "played": 35,
-      "points": 62,
+      "pDirect": 0.2955,
+      "pPromotion": 0.6828,
+      "pTop6": 0.7045,
+      "played": 36,
+      "points": 63,
       "position": 3,
       "remainingAway": 1,
-      "remainingHome": 2,
-      "remainingVsTop6": 3,
-      "schedulePoints": -0.16,
+      "remainingHome": 1,
+      "remainingVsTop6": 2,
+      "schedulePoints": -0.06,
       "teamId": "vila-nova"
     },
     {
@@ -215,16 +191,16 @@
         "V"
       ],
       "goalDiff": 8,
-      "pDirect": 0.071,
-      "pPromotion": 0.4894,
-      "pTop6": 0.9277,
+      "pDirect": 0.0903,
+      "pPromotion": 0.4998,
+      "pTop6": 0.9085,
       "played": 36,
       "points": 62,
       "position": 4,
       "remainingAway": 1,
       "remainingHome": 1,
       "remainingVsTop6": 2,
-      "schedulePoints": -0.94,
+      "schedulePoints": -0.88,
       "teamId": "criciuma"
     },
     {
@@ -263,9 +239,9 @@
         "E"
       ],
       "goalDiff": 12,
-      "pDirect": 0.1463,
-      "pPromotion": 0.6138,
-      "pTop6": 0.8418,
+      "pDirect": 0.1742,
+      "pPromotion": 0.6259,
+      "pTop6": 0.8133,
       "played": 35,
       "points": 61,
       "position": 5,
@@ -312,8 +288,8 @@
       ],
       "goalDiff": 4,
       "pDirect": 0.0,
-      "pPromotion": 0.175,
-      "pTop6": 0.5064,
+      "pPromotion": 0.1777,
+      "pTop6": 0.4981,
       "played": 35,
       "points": 55,
       "position": 6,
@@ -352,8 +328,8 @@
       ],
       "goalDiff": 9,
       "pDirect": 0.0,
-      "pPromotion": 0.0464,
-      "pTop6": 0.1336,
+      "pPromotion": 0.0498,
+      "pTop6": 0.1381,
       "played": 36,
       "points": 55,
       "position": 7,

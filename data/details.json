@@ -14610,6 +14610,62 @@
       }
     }
   },
+  "vila-nova--juventude": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 55,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "vila-nova"
+      },
+      {
+        "extra": null,
+        "minute": 76,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      },
+      {
+        "extra": null,
+        "minute": 83,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "vila-nova"
+      },
+      {
+        "extra": null,
+        "minute": 86,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "vila-nova--juventude",
+    "stats": {
+      "juventude": {
+        "corners": 2,
+        "possession": 40.5,
+        "red": 1,
+        "shots": 12,
+        "shotsOnTarget": 9,
+        "yellow": 2
+      },
+      "vila-nova": {
+        "corners": 9,
+        "possession": 59.5,
+        "red": 1,
+        "shots": 20,
+        "shotsOnTarget": 7,
+        "yellow": 1
+      }
+    }
+  },
   "vila-nova--londrina": {
     "goals": [
       {

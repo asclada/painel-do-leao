@@ -5280,18 +5280,18 @@
     "venue": "Estádio Santa Cruz"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "juventude",
     "city": "Goiãnia",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "vila-nova",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "vila-nova--juventude",
     "kickoffUtc": "2026-10-31T20:30Z",
     "round": 36,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio Onésio Brasileiro Alvarenga"
   },
   {
@@ -5306,7 +5306,7 @@
     "kickoffUtc": "2026-10-31T22:30Z",
     "round": 36,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio dos Aflitos"
   },
   {

@@ -2,6 +2,39 @@
   {
     "away": {
       "draws": 6,
+      "goalsAgainst": 17,
+      "goalsFor": 19,
+      "losses": 5,
+      "played": 18,
+      "points": 27,
+      "wins": 7
+    },
+    "draws": 11,
+    "goalDiff": 22,
+    "goalsAgainst": 25,
+    "goalsFor": 47,
+    "home": {
+      "draws": 5,
+      "goalsAgainst": 8,
+      "goalsFor": 28,
+      "losses": 2,
+      "played": 18,
+      "points": 38,
+      "wins": 11
+    },
+    "losses": 7,
+    "pct": 60,
+    "played": 36,
+    "points": 65,
+    "position": 1,
+    "red": 4,
+    "teamId": "juventude",
+    "wins": 18,
+    "yellow": 79
+  },
+  {
+    "away": {
+      "draws": 6,
       "goalsAgainst": 15,
       "goalsFor": 31,
       "losses": 4,
@@ -26,42 +59,9 @@
     "pct": 61,
     "played": 35,
     "points": 64,
-    "position": 1,
-    "red": 3,
-    "teamId": "novorizontino",
-    "wins": 18,
-    "yellow": 77
-  },
-  {
-    "away": {
-      "draws": 5,
-      "goalsAgainst": 15,
-      "goalsFor": 17,
-      "losses": 5,
-      "played": 17,
-      "points": 26,
-      "wins": 7
-    },
-    "draws": 10,
-    "goalDiff": 22,
-    "goalsAgainst": 23,
-    "goalsFor": 45,
-    "home": {
-      "draws": 5,
-      "goalsAgainst": 8,
-      "goalsFor": 28,
-      "losses": 2,
-      "played": 18,
-      "points": 38,
-      "wins": 11
-    },
-    "losses": 7,
-    "pct": 61,
-    "played": 35,
-    "points": 64,
     "position": 2,
     "red": 3,
-    "teamId": "juventude",
+    "teamId": "novorizontino",
     "wins": 18,
     "yellow": 77
   },
@@ -75,28 +75,28 @@
       "points": 22,
       "wins": 6
     },
-    "draws": 8,
+    "draws": 9,
     "goalDiff": 14,
-    "goalsAgainst": 36,
-    "goalsFor": 50,
+    "goalsAgainst": 38,
+    "goalsFor": 52,
     "home": {
-      "draws": 4,
-      "goalsAgainst": 13,
-      "goalsFor": 33,
+      "draws": 5,
+      "goalsAgainst": 15,
+      "goalsFor": 35,
       "losses": 1,
-      "played": 17,
-      "points": 40,
+      "played": 18,
+      "points": 41,
       "wins": 12
     },
     "losses": 9,
-    "pct": 59,
-    "played": 35,
-    "points": 62,
+    "pct": 58,
+    "played": 36,
+    "points": 63,
     "position": 3,
-    "red": 8,
+    "red": 9,
     "teamId": "vila-nova",
     "wins": 18,
-    "yellow": 94
+    "yellow": 95
   },
   {
     "away": {
