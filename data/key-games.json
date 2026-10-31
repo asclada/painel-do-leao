@@ -1,15 +1,15 @@
 {
-  "baseline": 0.1436,
+  "baseline": 0.1466,
   "metric": "direct",
   "rivals": [
     {
       "awayId": "operario-pr",
       "best": "away",
-      "gain": 0.0522,
+      "gain": 0.0529,
       "homeId": "novorizontino",
-      "ifAway": 0.1958,
-      "ifDraw": 0.1728,
-      "ifHome": 0.1133,
+      "ifAway": 0.1995,
+      "ifDraw": 0.1771,
+      "ifHome": 0.1147,
       "kickoffUtc": "2026-11-01T21:30Z",
       "matchId": "novorizontino--operario-pr",
       "order": [
@@ -17,59 +17,36 @@
         "draw",
         "home"
       ],
-      "pAway": 0.1965,
-      "pDraw": 0.2155,
-      "pHome": 0.588,
+      "pAway": 0.1922,
+      "pDraw": 0.216,
+      "pHome": 0.5917,
       "round": 36,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0826
+      "swing": 0.0849
     },
     {
       "awayId": "juventude",
       "best": "draw",
-      "gain": 0.0328,
+      "gain": 0.0332,
       "homeId": "vila-nova",
-      "ifAway": 0.1144,
-      "ifDraw": 0.1764,
-      "ifHome": 0.1419,
-      "kickoffUtc": "2026-10-31T21:00Z",
+      "ifAway": 0.1163,
+      "ifDraw": 0.1797,
+      "ifHome": 0.1421,
+      "kickoffUtc": "2026-10-31T20:30Z",
       "matchId": "vila-nova--juventude",
       "order": [
         "draw",
         "home",
         "away"
       ],
-      "pAway": 0.2631,
-      "pDraw": 0.2889,
-      "pHome": 0.448,
+      "pAway": 0.2587,
+      "pDraw": 0.2949,
+      "pHome": 0.4464,
       "round": 36,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.062
-    },
-    {
-      "awayId": "ponte-preta",
-      "best": "away",
-      "gain": 0.0083,
-      "homeId": "criciuma",
-      "ifAway": 0.152,
-      "ifDraw": 0.1505,
-      "ifHome": 0.1411,
-      "kickoffUtc": "2026-10-30T22:30Z",
-      "matchId": "criciuma--ponte-preta",
-      "order": [
-        "away",
-        "draw",
-        "home"
-      ],
-      "pAway": 0.0767,
-      "pDraw": 0.1797,
-      "pHome": 0.7436,
-      "round": 36,
-      "sameBottom": true,
-      "sameTop": true,
-      "swing": 0.0108
+      "swing": 0.0634
     }
   ],
   "round": 36

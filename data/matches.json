@@ -5250,18 +5250,18 @@
     "venue": "Arena Castelão"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "ponte-preta",
     "city": "Criciúma",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "criciuma",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 1,
     "id": "criciuma--ponte-preta",
     "kickoffUtc": "2026-10-30T22:30Z",
     "round": 36,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Heriberto Hülse"
   },
   {
@@ -5288,7 +5288,7 @@
     "htAwayGoals": null,
     "htHomeGoals": null,
     "id": "vila-nova--juventude",
-    "kickoffUtc": "2026-10-31T21:00Z",
+    "kickoffUtc": "2026-10-31T20:30Z",
     "round": 36,
     "source": "espn",
     "status": "scheduled",
@@ -5402,17 +5402,17 @@
   {
     "awayGoals": null,
     "awayId": "londrina",
-    "city": null,
+    "city": "Ribeirão Preto",
     "homeGoals": null,
     "homeId": "botafogo-sp",
     "htAwayGoals": null,
     "htHomeGoals": null,
     "id": "botafogo-sp--londrina",
-    "kickoffUtc": "2026-11-06T20:00Z",
+    "kickoffUtc": "2026-11-05T22:30Z",
     "round": 37,
     "source": "espn",
     "status": "scheduled",
-    "venue": null
+    "venue": "Estádio Santa Cruz"
   },
   {
     "awayGoals": null,

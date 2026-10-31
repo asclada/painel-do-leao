@@ -5869,6 +5869,46 @@
       }
     }
   },
+  "criciuma--ponte-preta": {
+    "goals": [
+      {
+        "extra": 5,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "criciuma"
+      },
+      {
+        "extra": null,
+        "minute": 89,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "criciuma"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "criciuma--ponte-preta",
+    "stats": {
+      "criciuma": {
+        "corners": 12,
+        "possession": 73.0,
+        "red": 0,
+        "shots": 31,
+        "shotsOnTarget": 7,
+        "yellow": 5
+      },
+      "ponte-preta": {
+        "corners": 3,
+        "possession": 27.0,
+        "red": 1,
+        "shots": 5,
+        "shotsOnTarget": 2,
+        "yellow": 4
+      }
+    }
+  },
   "criciuma--sao-bernardo": {
     "goals": [
       {

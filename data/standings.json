@@ -100,6 +100,39 @@
   },
   {
     "away": {
+      "draws": 4,
+      "goalsAgainst": 20,
+      "goalsFor": 17,
+      "losses": 7,
+      "played": 18,
+      "points": 25,
+      "wins": 7
+    },
+    "draws": 8,
+    "goalDiff": 8,
+    "goalsAgainst": 30,
+    "goalsFor": 38,
+    "home": {
+      "draws": 4,
+      "goalsAgainst": 10,
+      "goalsFor": 21,
+      "losses": 3,
+      "played": 18,
+      "points": 37,
+      "wins": 11
+    },
+    "losses": 10,
+    "pct": 57,
+    "played": 36,
+    "points": 62,
+    "position": 4,
+    "red": 1,
+    "teamId": "criciuma",
+    "wins": 18,
+    "yellow": 90
+  },
+  {
+    "away": {
       "draws": 6,
       "goalsAgainst": 15,
       "goalsFor": 16,
@@ -125,44 +158,11 @@
     "pct": 58,
     "played": 35,
     "points": 61,
-    "position": 4,
+    "position": 5,
     "red": 9,
     "teamId": "fortaleza",
     "wins": 16,
     "yellow": 83
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 20,
-      "goalsFor": 17,
-      "losses": 7,
-      "played": 18,
-      "points": 25,
-      "wins": 7
-    },
-    "draws": 8,
-    "goalDiff": 6,
-    "goalsAgainst": 30,
-    "goalsFor": 36,
-    "home": {
-      "draws": 4,
-      "goalsAgainst": 10,
-      "goalsFor": 19,
-      "losses": 3,
-      "played": 17,
-      "points": 34,
-      "wins": 10
-    },
-    "losses": 10,
-    "pct": 56,
-    "played": 35,
-    "points": 59,
-    "position": 5,
-    "red": 1,
-    "teamId": "criciuma",
-    "wins": 17,
-    "yellow": 85
   },
   {
     "away": {
@@ -629,16 +629,16 @@
   {
     "away": {
       "draws": 0,
-      "goalsAgainst": 48,
+      "goalsAgainst": 50,
       "goalsFor": 8,
-      "losses": 16,
-      "played": 17,
+      "losses": 17,
+      "played": 18,
       "points": 3,
       "wins": 1
     },
     "draws": 6,
-    "goalDiff": -55,
-    "goalsAgainst": 76,
+    "goalDiff": -57,
+    "goalsAgainst": 78,
     "goalsFor": 21,
     "home": {
       "draws": 6,
@@ -649,14 +649,14 @@
       "points": 12,
       "wins": 2
     },
-    "losses": 26,
+    "losses": 27,
     "pct": 14,
-    "played": 35,
+    "played": 36,
     "points": 15,
     "position": 20,
-    "red": 13,
+    "red": 14,
     "teamId": "ponte-preta",
     "wins": 3,
-    "yellow": 102
+    "yellow": 106
   }
 ]
