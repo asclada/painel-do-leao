@@ -571,42 +571,42 @@
       "wins": 3
     },
     "draws": 8,
-    "goalDiff": -7,
-    "goalsAgainst": 51,
-    "goalsFor": 44,
+    "goalDiff": -9,
+    "goalsAgainst": 54,
+    "goalsFor": 45,
     "home": {
       "draws": 5,
-      "goalsAgainst": 20,
-      "goalsFor": 24,
-      "losses": 7,
-      "played": 17,
+      "goalsAgainst": 23,
+      "goalsFor": 25,
+      "losses": 8,
+      "played": 18,
       "points": 20,
       "wins": 5
     },
-    "losses": 19,
+    "losses": 20,
     "pct": 30,
-    "played": 35,
+    "played": 36,
     "points": 32,
     "position": 18,
     "red": 5,
     "teamId": "londrina",
     "wins": 8,
-    "yellow": 83
+    "yellow": 86
   },
   {
     "away": {
       "draws": 2,
-      "goalsAgainst": 32,
-      "goalsFor": 9,
+      "goalsAgainst": 33,
+      "goalsFor": 12,
       "losses": 14,
-      "played": 17,
-      "points": 5,
-      "wins": 1
+      "played": 18,
+      "points": 8,
+      "wins": 2
     },
     "draws": 5,
-    "goalDiff": -31,
-    "goalsAgainst": 54,
-    "goalsFor": 23,
+    "goalDiff": -29,
+    "goalsAgainst": 55,
+    "goalsFor": 26,
     "home": {
       "draws": 3,
       "goalsAgainst": 22,
@@ -617,14 +617,14 @@
       "wins": 5
     },
     "losses": 24,
-    "pct": 22,
-    "played": 35,
-    "points": 23,
+    "pct": 24,
+    "played": 36,
+    "points": 26,
     "position": 19,
     "red": 2,
     "teamId": "america-mg",
-    "wins": 6,
-    "yellow": 76
+    "wins": 7,
+    "yellow": 78
   },
   {
     "away": {

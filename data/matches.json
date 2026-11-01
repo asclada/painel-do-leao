@@ -5310,18 +5310,18 @@
     "venue": "Estádio dos Aflitos"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 3,
     "awayId": "america-mg",
     "city": "Londrina",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "londrina",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 2,
+    "htHomeGoals": 0,
     "id": "londrina--america-mg",
     "kickoffUtc": "2026-11-01T19:00Z",
     "round": 36,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estadio VGD"
   },
   {

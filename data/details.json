@@ -8830,6 +8830,62 @@
       }
     }
   },
+  "londrina--america-mg": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 21,
+        "ownGoal": true,
+        "penalty": false,
+        "period": 1,
+        "teamId": "america-mg"
+      },
+      {
+        "extra": null,
+        "minute": 30,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "america-mg"
+      },
+      {
+        "extra": null,
+        "minute": 60,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 2,
+        "teamId": "america-mg"
+      },
+      {
+        "extra": null,
+        "minute": 64,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "londrina"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "londrina--america-mg",
+    "stats": {
+      "america-mg": {
+        "corners": 3,
+        "possession": 47.0,
+        "red": 0,
+        "shots": 7,
+        "shotsOnTarget": 5,
+        "yellow": 2
+      },
+      "londrina": {
+        "corners": 7,
+        "possession": 53.0,
+        "red": 0,
+        "shots": 16,
+        "shotsOnTarget": 3,
+        "yellow": 3
+      }
+    }
+  },
   "londrina--athletic-club": {
     "goals": [
       {
