@@ -5295,18 +5295,18 @@
     "venue": "Estádio Onésio Brasileiro Alvarenga"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "avai",
     "city": "Recife",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "nautico",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 1,
     "id": "nautico--avai",
     "kickoffUtc": "2026-10-31T22:30Z",
     "round": 36,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio dos Aflitos"
   },
   {

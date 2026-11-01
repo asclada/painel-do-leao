@@ -1,15 +1,15 @@
 {
-  "baseline": 0.1742,
+  "baseline": 0.1782,
   "metric": "direct",
   "rivals": [
     {
       "awayId": "operario-pr",
       "best": "away",
-      "gain": 0.0446,
+      "gain": 0.0451,
       "homeId": "novorizontino",
-      "ifAway": 0.2188,
-      "ifDraw": 0.1996,
-      "ifHome": 0.1461,
+      "ifAway": 0.2233,
+      "ifDraw": 0.2064,
+      "ifHome": 0.1475,
       "kickoffUtc": "2026-11-01T21:30Z",
       "matchId": "novorizontino--operario-pr",
       "order": [
@@ -17,13 +17,13 @@
         "draw",
         "home"
       ],
-      "pAway": 0.1902,
-      "pDraw": 0.2202,
-      "pHome": 0.5897,
+      "pAway": 0.1921,
+      "pDraw": 0.2131,
+      "pHome": 0.5948,
       "round": 36,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0727
+      "swing": 0.0758
     }
   ],
   "round": 36

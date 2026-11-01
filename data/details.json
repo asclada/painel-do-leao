@@ -9730,6 +9730,38 @@
       }
     }
   },
+  "nautico--avai": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 23,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "nautico"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "nautico--avai",
+    "stats": {
+      "avai": {
+        "corners": 7,
+        "possession": 49.8,
+        "red": 0,
+        "shots": 17,
+        "shotsOnTarget": 6,
+        "yellow": 4
+      },
+      "nautico": {
+        "corners": 7,
+        "possession": 50.2,
+        "red": 0,
+        "shots": 16,
+        "shotsOnTarget": 7,
+        "yellow": 5
+      }
+    }
+  },
   "nautico--botafogo-sp": {
     "goals": [
       {
