@@ -36,6 +36,46 @@
   "headline": "4 confrontos diretos até o fim: é aí que se decide.",
   "teams": [
     {
+      "difficulty": "Difícil",
+      "fixtures": [
+        {
+          "home": true,
+          "kickoffUtc": "2026-11-07T19:10Z",
+          "matchId": "novorizontino--fortaleza",
+          "opponentId": "fortaleza",
+          "opponentInTop6": true,
+          "round": 37
+        },
+        {
+          "home": false,
+          "kickoffUtc": "2026-11-14T20:00Z",
+          "matchId": "criciuma--novorizontino",
+          "opponentId": "criciuma",
+          "opponentInTop6": true,
+          "round": 38
+        }
+      ],
+      "form": [
+        "V",
+        "V",
+        "E",
+        "V",
+        "V"
+      ],
+      "goalDiff": 33,
+      "pDirect": 0.9275,
+      "pPromotion": 0.9796,
+      "pTop6": 0.0725,
+      "played": 36,
+      "points": 67,
+      "position": 1,
+      "remainingAway": 1,
+      "remainingHome": 1,
+      "remainingVsTop6": 2,
+      "schedulePoints": -0.59,
+      "teamId": "novorizontino"
+    },
+    {
       "difficulty": "Média",
       "fixtures": [
         {
@@ -63,65 +103,17 @@
         "E"
       ],
       "goalDiff": 22,
-      "pDirect": 0.6287,
-      "pPromotion": 0.8821,
-      "pTop6": 0.3714,
+      "pDirect": 0.615,
+      "pPromotion": 0.8795,
+      "pTop6": 0.385,
       "played": 36,
       "points": 65,
-      "position": 1,
+      "position": 2,
       "remainingAway": 1,
       "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": -0.49,
+      "schedulePoints": -0.38,
       "teamId": "juventude"
-    },
-    {
-      "difficulty": "Média",
-      "fixtures": [
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-01T21:30Z",
-          "matchId": "novorizontino--operario-pr",
-          "opponentId": "operario-pr",
-          "opponentInTop6": false,
-          "round": 36
-        },
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-07T19:10Z",
-          "matchId": "novorizontino--fortaleza",
-          "opponentId": "fortaleza",
-          "opponentInTop6": true,
-          "round": 37
-        },
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-14T20:00Z",
-          "matchId": "criciuma--novorizontino",
-          "opponentId": "criciuma",
-          "opponentInTop6": true,
-          "round": 38
-        }
-      ],
-      "form": [
-        "V",
-        "V",
-        "V",
-        "E",
-        "V"
-      ],
-      "goalDiff": 32,
-      "pDirect": 0.8131,
-      "pPromotion": 0.9392,
-      "pTop6": 0.187,
-      "played": 35,
-      "points": 64,
-      "position": 2,
-      "remainingAway": 1,
-      "remainingHome": 2,
-      "remainingVsTop6": 2,
-      "schedulePoints": -0.37,
-      "teamId": "novorizontino"
     },
     {
       "difficulty": "Média",
@@ -151,9 +143,9 @@
         "E"
       ],
       "goalDiff": 14,
-      "pDirect": 0.2893,
-      "pPromotion": 0.6765,
-      "pTop6": 0.7107,
+      "pDirect": 0.2425,
+      "pPromotion": 0.6654,
+      "pTop6": 0.7574,
       "played": 36,
       "points": 63,
       "position": 3,
@@ -191,9 +183,9 @@
         "V"
       ],
       "goalDiff": 8,
-      "pDirect": 0.0944,
-      "pPromotion": 0.5012,
-      "pTop6": 0.9049,
+      "pDirect": 0.0722,
+      "pPromotion": 0.4915,
+      "pTop6": 0.9272,
       "played": 36,
       "points": 62,
       "position": 4,
@@ -239,9 +231,9 @@
         "E"
       ],
       "goalDiff": 12,
-      "pDirect": 0.1746,
-      "pPromotion": 0.6281,
-      "pTop6": 0.8141,
+      "pDirect": 0.1427,
+      "pPromotion": 0.618,
+      "pTop6": 0.845,
       "played": 35,
       "points": 61,
       "position": 5,
@@ -288,8 +280,8 @@
       ],
       "goalDiff": 4,
       "pDirect": 0.0,
-      "pPromotion": 0.1808,
-      "pTop6": 0.501,
+      "pPromotion": 0.1747,
+      "pTop6": 0.5048,
       "played": 35,
       "points": 55,
       "position": 6,
@@ -328,8 +320,8 @@
       ],
       "goalDiff": 9,
       "pDirect": 0.0,
-      "pPromotion": 0.0514,
-      "pTop6": 0.1393,
+      "pPromotion": 0.0522,
+      "pTop6": 0.1427,
       "played": 36,
       "points": 55,
       "position": 7,

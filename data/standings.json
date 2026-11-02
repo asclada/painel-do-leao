@@ -2,6 +2,39 @@
   {
     "away": {
       "draws": 6,
+      "goalsAgainst": 15,
+      "goalsFor": 31,
+      "losses": 4,
+      "played": 18,
+      "points": 30,
+      "wins": 8
+    },
+    "draws": 10,
+    "goalDiff": 33,
+    "goalsAgainst": 31,
+    "goalsFor": 64,
+    "home": {
+      "draws": 4,
+      "goalsAgainst": 16,
+      "goalsFor": 33,
+      "losses": 3,
+      "played": 18,
+      "points": 37,
+      "wins": 11
+    },
+    "losses": 7,
+    "pct": 62,
+    "played": 36,
+    "points": 67,
+    "position": 1,
+    "red": 3,
+    "teamId": "novorizontino",
+    "wins": 19,
+    "yellow": 81
+  },
+  {
+    "away": {
+      "draws": 6,
       "goalsAgainst": 17,
       "goalsFor": 19,
       "losses": 5,
@@ -26,44 +59,11 @@
     "pct": 60,
     "played": 36,
     "points": 65,
-    "position": 1,
+    "position": 2,
     "red": 4,
     "teamId": "juventude",
     "wins": 18,
     "yellow": 79
-  },
-  {
-    "away": {
-      "draws": 6,
-      "goalsAgainst": 15,
-      "goalsFor": 31,
-      "losses": 4,
-      "played": 18,
-      "points": 30,
-      "wins": 8
-    },
-    "draws": 10,
-    "goalDiff": 32,
-    "goalsAgainst": 30,
-    "goalsFor": 62,
-    "home": {
-      "draws": 4,
-      "goalsAgainst": 15,
-      "goalsFor": 31,
-      "losses": 3,
-      "played": 17,
-      "points": 34,
-      "wins": 10
-    },
-    "losses": 7,
-    "pct": 61,
-    "played": 35,
-    "points": 64,
-    "position": 2,
-    "red": 3,
-    "teamId": "novorizontino",
-    "wins": 18,
-    "yellow": 77
   },
   {
     "away": {
@@ -299,50 +299,17 @@
   {
     "away": {
       "draws": 4,
-      "goalsAgainst": 24,
-      "goalsFor": 21,
-      "losses": 7,
-      "played": 17,
-      "points": 22,
-      "wins": 6
-    },
-    "draws": 9,
-    "goalDiff": -1,
-    "goalsAgainst": 46,
-    "goalsFor": 45,
-    "home": {
-      "draws": 5,
-      "goalsAgainst": 22,
-      "goalsFor": 24,
+      "goalsAgainst": 19,
+      "goalsFor": 29,
       "losses": 5,
       "played": 18,
-      "points": 29,
-      "wins": 8
-    },
-    "losses": 12,
-    "pct": 49,
-    "played": 35,
-    "points": 51,
-    "position": 10,
-    "red": 3,
-    "teamId": "operario-pr",
-    "wins": 14,
-    "yellow": 85
-  },
-  {
-    "away": {
-      "draws": 4,
-      "goalsAgainst": 18,
-      "goalsFor": 27,
-      "losses": 5,
-      "played": 17,
-      "points": 28,
-      "wins": 8
+      "points": 31,
+      "wins": 9
     },
     "draws": 10,
-    "goalDiff": 10,
-    "goalsAgainst": 39,
-    "goalsFor": 49,
+    "goalDiff": 11,
+    "goalsAgainst": 40,
+    "goalsFor": 51,
     "home": {
       "draws": 6,
       "goalsAgainst": 21,
@@ -353,14 +320,47 @@
       "wins": 5
     },
     "losses": 12,
-    "pct": 47,
-    "played": 35,
-    "points": 49,
-    "position": 11,
+    "pct": 48,
+    "played": 36,
+    "points": 52,
+    "position": 10,
     "red": 2,
     "teamId": "sao-bernardo",
-    "wins": 13,
-    "yellow": 77
+    "wins": 14,
+    "yellow": 78
+  },
+  {
+    "away": {
+      "draws": 4,
+      "goalsAgainst": 26,
+      "goalsFor": 22,
+      "losses": 8,
+      "played": 18,
+      "points": 22,
+      "wins": 6
+    },
+    "draws": 9,
+    "goalDiff": -2,
+    "goalsAgainst": 48,
+    "goalsFor": 46,
+    "home": {
+      "draws": 5,
+      "goalsAgainst": 22,
+      "goalsFor": 24,
+      "losses": 5,
+      "played": 18,
+      "points": 29,
+      "wins": 8
+    },
+    "losses": 13,
+    "pct": 47,
+    "played": 36,
+    "points": 51,
+    "position": 11,
+    "red": 3,
+    "teamId": "operario-pr",
+    "wins": 14,
+    "yellow": 91
   },
   {
     "away": {
@@ -406,21 +406,21 @@
       "wins": 4
     },
     "draws": 14,
-    "goalDiff": 4,
-    "goalsAgainst": 28,
-    "goalsFor": 32,
+    "goalDiff": 3,
+    "goalsAgainst": 30,
+    "goalsFor": 33,
     "home": {
       "draws": 7,
-      "goalsAgainst": 10,
-      "goalsFor": 19,
-      "losses": 3,
-      "played": 17,
+      "goalsAgainst": 12,
+      "goalsFor": 20,
+      "losses": 4,
+      "played": 18,
       "points": 28,
       "wins": 7
     },
-    "losses": 10,
-    "pct": 45,
-    "played": 35,
+    "losses": 11,
+    "pct": 44,
+    "played": 36,
     "points": 47,
     "position": 13,
     "red": 3,

@@ -6636,6 +6636,54 @@
       }
     }
   },
+  "cuiaba--sao-bernardo": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 14,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": 2,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "cuiaba"
+      },
+      {
+        "extra": null,
+        "minute": 58,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "cuiaba--sao-bernardo",
+    "stats": {
+      "cuiaba": {
+        "corners": 6,
+        "possession": 56.9,
+        "red": 0,
+        "shots": 20,
+        "shotsOnTarget": 5,
+        "yellow": 0
+      },
+      "sao-bernardo": {
+        "corners": 3,
+        "possession": 43.1,
+        "red": 0,
+        "shots": 9,
+        "shotsOnTarget": 5,
+        "yellow": 1
+      }
+    }
+  },
   "cuiaba--sport": {
     "goals": [],
     "goalsComplete": true,
@@ -10950,6 +10998,54 @@
         "shots": 19,
         "shotsOnTarget": 7,
         "yellow": 3
+      }
+    }
+  },
+  "novorizontino--operario-pr": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 34,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": null,
+        "minute": 38,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": null,
+        "minute": 51,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "operario-pr"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "novorizontino--operario-pr",
+    "stats": {
+      "novorizontino": {
+        "corners": 8,
+        "possession": 45.9,
+        "red": 0,
+        "shots": 26,
+        "shotsOnTarget": 7,
+        "yellow": 4
+      },
+      "operario-pr": {
+        "corners": 0,
+        "possession": 54.1,
+        "red": 0,
+        "shots": 4,
+        "shotsOnTarget": 1,
+        "yellow": 6
       }
     }
   },
