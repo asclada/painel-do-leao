@@ -315,11 +315,11 @@
     "round": 35
   },
   {
-    "pDirect": 0.1427,
-    "pPromotion": 0.618,
-    "pTop6": 0.845,
+    "pDirect": 0.0733,
+    "pPromotion": 0.5889,
+    "pTop6": 0.9266,
     "partial": true,
-    "points": 61,
+    "points": 62,
     "position": 5,
     "round": 36
   }

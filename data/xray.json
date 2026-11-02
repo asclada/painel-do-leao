@@ -51,7 +51,7 @@
     "firstAgainst": 19,
     "firstFor": 22,
     "improved": 8,
-    "kept": 23,
+    "kept": 24,
     "pctSecondHalfFor": 49,
     "pointsSwing": 6,
     "secondAgainst": 12,
@@ -59,44 +59,44 @@
     "worsened": 4
   },
   "home": {
-    "draws": 7,
+    "draws": 8,
     "goalsAgainst": 16,
     "goalsFor": 27,
     "losses": 1,
-    "pct": 67,
-    "played": 17,
-    "points": 34,
+    "pct": 65,
+    "played": 18,
+    "points": 35,
     "wins": 9
   },
   "insights": {
     "goalBins": "O ponto de atenção: 12 gols sofridos entre 31–45+ minutos.",
     "halves": "Saldo de +3 no 1º tempo e +9 no 2º: o 2º tempo é o mais forte.",
-    "streaks": "16 jogos sem perder. Última derrota: Vila Nova, em 21/07.",
-    "turns": "Ritmo parecido nos dois turnos: 1,6 e 1,9 pontos por jogo.",
-    "venue": "No Castelão o Leão é outro: 67% dos pontos em casa contra 50% fora."
+    "streaks": "17 jogos sem perder. Última derrota: Vila Nova, em 21/07.",
+    "turns": "Ritmo parecido nos dois turnos: 1,6 e 1,8 pontos por jogo.",
+    "venue": "No Castelão o Leão é outro: 65% dos pontos em casa contra 50% fora."
   },
   "secondTurn": {
-    "pct": 62,
-    "played": 16,
-    "points": 30,
-    "ppg": 1.88
+    "pct": 61,
+    "played": 17,
+    "points": 31,
+    "ppg": 1.82
   },
   "streaks": {
-    "cleanSheets": 15,
-    "currentCount": 16,
+    "cleanSheets": 16,
+    "currentCount": 17,
     "currentKind": "unbeaten",
-    "currentLabel": "16 jogos sem perder",
+    "currentLabel": "17 jogos sem perder",
     "form": [
-      "E",
       "V",
       "E",
       "V",
+      "E",
       "E"
     ],
     "lastLossDate": "2026-07-22T00:35Z",
     "lastLossOpponentId": "vila-nova",
     "longestCleanSheets": 2,
-    "longestUnbeaten": 16,
+    "longestUnbeaten": 17,
     "longestWins": 3
   }
 }

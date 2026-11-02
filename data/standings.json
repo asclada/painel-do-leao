@@ -141,28 +141,28 @@
       "points": 27,
       "wins": 7
     },
-    "draws": 13,
+    "draws": 14,
     "goalDiff": 12,
     "goalsAgainst": 31,
     "goalsFor": 43,
     "home": {
-      "draws": 7,
+      "draws": 8,
       "goalsAgainst": 16,
       "goalsFor": 27,
       "losses": 1,
-      "played": 17,
-      "points": 34,
+      "played": 18,
+      "points": 35,
       "wins": 9
     },
     "losses": 6,
-    "pct": 58,
-    "played": 35,
-    "points": 61,
+    "pct": 57,
+    "played": 36,
+    "points": 62,
     "position": 5,
     "red": 9,
     "teamId": "fortaleza",
     "wins": 16,
-    "yellow": 83
+    "yellow": 87
   },
   {
     "away": {
@@ -232,15 +232,15 @@
   },
   {
     "away": {
-      "draws": 7,
+      "draws": 8,
       "goalsAgainst": 18,
       "goalsFor": 15,
       "losses": 5,
-      "played": 17,
-      "points": 22,
+      "played": 18,
+      "points": 23,
       "wins": 5
     },
-    "draws": 12,
+    "draws": 13,
     "goalDiff": 9,
     "goalsAgainst": 33,
     "goalsFor": 42,
@@ -255,13 +255,13 @@
     },
     "losses": 9,
     "pct": 51,
-    "played": 35,
-    "points": 54,
+    "played": 36,
+    "points": 55,
     "position": 8,
-    "red": 4,
+    "red": 5,
     "teamId": "atletico-go",
     "wins": 14,
-    "yellow": 76
+    "yellow": 80
   },
   {
     "away": {

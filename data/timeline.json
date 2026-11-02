@@ -28,7 +28,7 @@
     {
       "kind": "unbeaten",
       "round": 20,
-      "text": "Rodada 20: início da sequência de 16 jogos sem perder.",
+      "text": "Rodada 20: início da sequência de 17 jogos sem perder.",
       "title": "Começa a invencibilidade"
     },
     {
@@ -460,15 +460,15 @@
       "round": 35
     },
     {
-      "goalsAgainst": null,
-      "goalsFor": null,
+      "goalsAgainst": 0,
+      "goalsFor": 0,
       "home": true,
       "kickoffUtc": "2026-11-02T19:00Z",
       "matchId": "fortaleza--atletico-go",
       "opponentId": "atletico-go",
-      "points": 61,
+      "points": 62,
       "position": 5,
-      "result": null,
+      "result": "E",
       "round": 36
     }
   ],

@@ -5355,18 +5355,18 @@
     "venue": "Estádio Dr. Jorge Ismael de Biasi"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "atletico-go",
     "city": "Fortaleza",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "fortaleza",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "fortaleza--atletico-go",
     "kickoffUtc": "2026-11-02T19:00Z",
     "round": 36,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Arena Castelão"
   },
   {
@@ -5381,7 +5381,7 @@
     "kickoffUtc": "2026-11-02T21:00Z",
     "round": 36,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Joaquim Portugal"
   },
   {

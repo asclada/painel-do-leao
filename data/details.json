@@ -6843,6 +6843,29 @@
       }
     }
   },
+  "fortaleza--atletico-go": {
+    "goals": [],
+    "goalsComplete": true,
+    "matchId": "fortaleza--atletico-go",
+    "stats": {
+      "atletico-go": {
+        "corners": 10,
+        "possession": 43.7,
+        "red": 1,
+        "shots": 19,
+        "shotsOnTarget": 5,
+        "yellow": 4
+      },
+      "fortaleza": {
+        "corners": 7,
+        "possession": 56.3,
+        "red": 0,
+        "shots": 16,
+        "shotsOnTarget": 2,
+        "yellow": 4
+      }
+    }
+  },
   "fortaleza--avai": {
     "goals": [
       {
