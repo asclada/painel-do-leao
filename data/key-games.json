@@ -1,15 +1,15 @@
 {
-  "baseline": 0.0733,
+  "baseline": 0.0722,
   "metric": "direct",
   "rivals": [
     {
       "awayId": "juventude",
       "best": "home",
-      "gain": 0.0239,
+      "gain": 0.0229,
       "homeId": "cuiaba",
-      "ifAway": 0.0343,
-      "ifDraw": 0.0861,
-      "ifHome": 0.0973,
+      "ifAway": 0.0352,
+      "ifDraw": 0.0839,
+      "ifHome": 0.0951,
       "kickoffUtc": "2026-11-06T20:00Z",
       "matchId": "cuiaba--juventude",
       "order": [
@@ -17,22 +17,22 @@
         "draw",
         "away"
       ],
-      "pAway": 0.3258,
-      "pDraw": 0.3017,
-      "pHome": 0.3725,
+      "pAway": 0.3241,
+      "pDraw": 0.3038,
+      "pHome": 0.3721,
       "round": 37,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.063
+      "swing": 0.06
     },
     {
       "awayId": "criciuma",
       "best": "draw",
-      "gain": 0.0121,
+      "gain": 0.0129,
       "homeId": "vila-nova",
-      "ifAway": 0.0537,
-      "ifDraw": 0.0854,
-      "ifHome": 0.0735,
+      "ifAway": 0.0517,
+      "ifDraw": 0.085,
+      "ifHome": 0.0736,
       "kickoffUtc": "2026-11-06T20:00Z",
       "matchId": "vila-nova--criciuma",
       "order": [
@@ -40,13 +40,13 @@
         "home",
         "away"
       ],
-      "pAway": 0.2064,
-      "pDraw": 0.2585,
-      "pHome": 0.5351,
+      "pAway": 0.2078,
+      "pDraw": 0.2516,
+      "pHome": 0.5406,
       "round": 37,
       "sameBottom": false,
       "sameTop": false,
-      "swing": 0.0317
+      "swing": 0.0333
     }
   ],
   "round": 37

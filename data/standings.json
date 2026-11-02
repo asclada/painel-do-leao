@@ -430,6 +430,39 @@
   },
   {
     "away": {
+      "draws": 8,
+      "goalsAgainst": 22,
+      "goalsFor": 19,
+      "losses": 6,
+      "played": 18,
+      "points": 20,
+      "wins": 4
+    },
+    "draws": 14,
+    "goalDiff": 1,
+    "goalsAgainst": 41,
+    "goalsFor": 42,
+    "home": {
+      "draws": 6,
+      "goalsAgainst": 19,
+      "goalsFor": 23,
+      "losses": 5,
+      "played": 18,
+      "points": 27,
+      "wins": 7
+    },
+    "losses": 11,
+    "pct": 44,
+    "played": 36,
+    "points": 47,
+    "position": 14,
+    "red": 10,
+    "teamId": "athletic-club",
+    "wins": 11,
+    "yellow": 82
+  },
+  {
+    "away": {
       "draws": 7,
       "goalsAgainst": 29,
       "goalsFor": 20,
@@ -455,7 +488,7 @@
     "pct": 43,
     "played": 36,
     "points": 46,
-    "position": 14,
+    "position": 15,
     "red": 6,
     "teamId": "nautico",
     "wins": 12,
@@ -463,51 +496,18 @@
   },
   {
     "away": {
-      "draws": 8,
-      "goalsAgainst": 22,
-      "goalsFor": 19,
-      "losses": 6,
+      "draws": 6,
+      "goalsAgainst": 25,
+      "goalsFor": 16,
+      "losses": 9,
       "played": 18,
-      "points": 20,
-      "wins": 4
-    },
-    "draws": 14,
-    "goalDiff": 0,
-    "goalsAgainst": 40,
-    "goalsFor": 40,
-    "home": {
-      "draws": 6,
-      "goalsAgainst": 18,
-      "goalsFor": 21,
-      "losses": 5,
-      "played": 17,
-      "points": 24,
-      "wins": 6
-    },
-    "losses": 11,
-    "pct": 42,
-    "played": 35,
-    "points": 44,
-    "position": 15,
-    "red": 10,
-    "teamId": "athletic-club",
-    "wins": 10,
-    "yellow": 81
-  },
-  {
-    "away": {
-      "draws": 6,
-      "goalsAgainst": 23,
-      "goalsFor": 15,
-      "losses": 8,
-      "played": 17,
       "points": 15,
       "wins": 3
     },
     "draws": 10,
-    "goalDiff": -7,
-    "goalsAgainst": 44,
-    "goalsFor": 37,
+    "goalDiff": -8,
+    "goalsAgainst": 46,
+    "goalsFor": 38,
     "home": {
       "draws": 4,
       "goalsAgainst": 21,
@@ -517,15 +517,15 @@
       "points": 28,
       "wins": 8
     },
-    "losses": 14,
-    "pct": 41,
-    "played": 35,
+    "losses": 15,
+    "pct": 40,
+    "played": 36,
     "points": 43,
     "position": 16,
     "red": 4,
     "teamId": "ceara",
     "wins": 11,
-    "yellow": 80
+    "yellow": 82
   },
   {
     "away": {

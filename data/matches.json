@@ -5370,18 +5370,18 @@
     "venue": "Arena Castelão"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "ceara",
     "city": "Sao Joao del Rei",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "athletic-club",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 1,
     "id": "athletic-club--ceara",
     "kickoffUtc": "2026-11-02T21:00Z",
     "round": 36,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio Joaquim Portugal"
   },
   {

@@ -830,6 +830,54 @@
       }
     }
   },
+  "athletic-club--ceara": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 22,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "ceara"
+      },
+      {
+        "extra": null,
+        "minute": 35,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "athletic-club"
+      },
+      {
+        "extra": null,
+        "minute": 65,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "athletic-club"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "athletic-club--ceara",
+    "stats": {
+      "athletic-club": {
+        "corners": 4,
+        "possession": 49.1,
+        "red": 0,
+        "shots": 21,
+        "shotsOnTarget": 5,
+        "yellow": 1
+      },
+      "ceara": {
+        "corners": 3,
+        "possession": 50.9,
+        "red": 0,
+        "shots": 17,
+        "shotsOnTarget": 5,
+        "yellow": 2
+      }
+    }
+  },
   "athletic-club--crb": {
     "goals": [
       {
