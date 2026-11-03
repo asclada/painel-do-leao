@@ -5385,18 +5385,18 @@
     "venue": "Estádio Joaquim Portugal"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "crb",
     "city": "Goiãnia",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "goias",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 1,
     "id": "goias--crb",
     "kickoffUtc": "2026-11-02T23:30Z",
     "round": 36,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio da Serrinha"
   },
   {

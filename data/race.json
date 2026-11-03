@@ -63,9 +63,9 @@
         "V"
       ],
       "goalDiff": 33,
-      "pDirect": 0.9335,
-      "pPromotion": 0.9817,
-      "pTop6": 0.0665,
+      "pDirect": 0.9353,
+      "pPromotion": 0.9823,
+      "pTop6": 0.0647,
       "played": 36,
       "points": 67,
       "position": 1,
@@ -103,9 +103,9 @@
         "E"
       ],
       "goalDiff": 22,
-      "pDirect": 0.6488,
-      "pPromotion": 0.887,
-      "pTop6": 0.3512,
+      "pDirect": 0.6433,
+      "pPromotion": 0.8829,
+      "pTop6": 0.3567,
       "played": 36,
       "points": 65,
       "position": 2,
@@ -143,9 +143,9 @@
         "E"
       ],
       "goalDiff": 14,
-      "pDirect": 0.2631,
-      "pPromotion": 0.6751,
-      "pTop6": 0.7369,
+      "pDirect": 0.2722,
+      "pPromotion": 0.6767,
+      "pTop6": 0.7278,
       "played": 36,
       "points": 63,
       "position": 3,
@@ -183,9 +183,9 @@
         "V"
       ],
       "goalDiff": 8,
-      "pDirect": 0.0825,
-      "pPromotion": 0.5128,
-      "pTop6": 0.9175,
+      "pDirect": 0.0799,
+      "pPromotion": 0.5097,
+      "pTop6": 0.9202,
       "played": 36,
       "points": 62,
       "position": 4,
@@ -223,9 +223,9 @@
         "E"
       ],
       "goalDiff": 12,
-      "pDirect": 0.0722,
-      "pPromotion": 0.5836,
-      "pTop6": 0.9278,
+      "pDirect": 0.0693,
+      "pPromotion": 0.5928,
+      "pTop6": 0.9307,
       "played": 36,
       "points": 62,
       "position": 5,
@@ -238,14 +238,6 @@
     {
       "difficulty": "Média",
       "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-02T23:30Z",
-          "matchId": "goias--crb",
-          "opponentId": "goias",
-          "opponentInTop6": false,
-          "round": 36
-        },
         {
           "home": false,
           "kickoffUtc": "2026-11-08T00:30Z",
@@ -264,64 +256,64 @@
         }
       ],
       "form": [
-        "D",
         "V",
         "E",
         "D",
-        "V"
+        "V",
+        "D"
       ],
-      "goalDiff": 4,
+      "goalDiff": 3,
       "pDirect": 0.0,
-      "pPromotion": 0.1961,
-      "pTop6": 0.5524,
-      "played": 35,
+      "pPromotion": 0.1089,
+      "pTop6": 0.3127,
+      "played": 36,
       "points": 55,
       "position": 6,
-      "remainingAway": 2,
+      "remainingAway": 1,
       "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": 0.08,
+      "schedulePoints": 0.19,
       "teamId": "crb"
     },
     {
-      "difficulty": "Média",
+      "difficulty": "Tranquila",
       "fixtures": [
         {
-          "home": false,
-          "kickoffUtc": "2026-11-06T20:00Z",
-          "matchId": "operario-pr--sport",
-          "opponentId": "operario-pr",
+          "home": true,
+          "kickoffUtc": "2026-11-08T22:15Z",
+          "matchId": "goias--ponte-preta",
+          "opponentId": "ponte-preta",
           "opponentInTop6": false,
           "round": 37
         },
         {
-          "home": true,
+          "home": false,
           "kickoffUtc": "2026-11-14T20:00Z",
           "matchId": "sport--goias",
-          "opponentId": "goias",
+          "opponentId": "sport",
           "opponentInTop6": false,
           "round": 38
         }
       ],
       "form": [
         "V",
-        "E",
-        "D",
         "V",
-        "E"
+        "E",
+        "V",
+        "V"
       ],
-      "goalDiff": 9,
+      "goalDiff": -3,
       "pDirect": 0.0,
-      "pPromotion": 0.0528,
-      "pTop6": 0.1469,
+      "pPromotion": 0.1202,
+      "pTop6": 0.3549,
       "played": 36,
       "points": 55,
       "position": 7,
       "remainingAway": 1,
       "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": -0.04,
-      "teamId": "sport"
+      "schedulePoints": 0.81,
+      "teamId": "goias"
     }
   ]
 }

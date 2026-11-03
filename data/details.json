@@ -7817,6 +7817,54 @@
       }
     }
   },
+  "goias--crb": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 42,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "goias"
+      },
+      {
+        "extra": null,
+        "minute": 76,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "goias"
+      },
+      {
+        "extra": null,
+        "minute": 80,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "crb"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "goias--crb",
+    "stats": {
+      "crb": {
+        "corners": 9,
+        "possession": 53.4,
+        "red": 0,
+        "shots": 25,
+        "shotsOnTarget": 7,
+        "yellow": 1
+      },
+      "goias": {
+        "corners": 4,
+        "possession": 46.6,
+        "red": 0,
+        "shots": 12,
+        "shotsOnTarget": 3,
+        "yellow": 4
+      }
+    }
+  },
   "goias--criciuma": {
     "goals": [
       {
