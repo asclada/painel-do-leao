@@ -2872,6 +2872,54 @@
       }
     }
   },
+  "avai--sao-bernardo": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 71,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": null,
+        "minute": 79,
+        "ownGoal": true,
+        "penalty": false,
+        "period": 2,
+        "teamId": "avai"
+      },
+      {
+        "extra": null,
+        "minute": 85,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "avai"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "avai--sao-bernardo",
+    "stats": {
+      "avai": {
+        "corners": 8,
+        "possession": 48.1,
+        "red": 0,
+        "shots": 18,
+        "shotsOnTarget": 8,
+        "yellow": 0
+      },
+      "sao-bernardo": {
+        "corners": 5,
+        "possession": 51.9,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 5,
+        "yellow": 3
+      }
+    }
+  },
   "avai--sport": {
     "goals": [
       {
@@ -10981,6 +11029,54 @@
         "shots": 25,
         "shotsOnTarget": 6,
         "yellow": 0
+      }
+    }
+  },
+  "novorizontino--fortaleza": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 8,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "fortaleza"
+      },
+      {
+        "extra": null,
+        "minute": 28,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "novorizontino"
+      },
+      {
+        "extra": null,
+        "minute": 71,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "novorizontino"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "novorizontino--fortaleza",
+    "stats": {
+      "fortaleza": {
+        "corners": 2,
+        "possession": 51.4,
+        "red": 2,
+        "shots": 5,
+        "shotsOnTarget": 1,
+        "yellow": 1
+      },
+      "novorizontino": {
+        "corners": 6,
+        "possession": 48.6,
+        "red": 1,
+        "shots": 18,
+        "shotsOnTarget": 4,
+        "yellow": 1
       }
     }
   },

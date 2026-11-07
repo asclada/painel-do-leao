@@ -1,30 +1,30 @@
 {
   "chances": {
-    "draw": 0.2825,
-    "loss": 0.4349,
-    "win": 0.2826
+    "draw": 0.2807,
+    "loss": 0.2799,
+    "win": 0.4393
   },
-  "city": "Novo Horizonte",
-  "firstTurn": "Fortaleza 1 x 0 Novorizontino",
+  "city": "Fortaleza",
+  "firstTurn": "Vila Nova 2 x 1 Fortaleza",
   "formFortaleza": [
-    "V",
     "E",
     "V",
     "E",
-    "E"
+    "E",
+    "D"
   ],
   "formOpponent": [
-    "V",
-    "V",
     "E",
     "V",
-    "V"
+    "E",
+    "D",
+    "E"
   ],
-  "home": false,
-  "kickoffUtc": "2026-11-07T19:10Z",
-  "matchId": "novorizontino--fortaleza",
-  "opponentId": "novorizontino",
-  "round": 37,
+  "home": true,
+  "kickoffUtc": "2026-11-14T20:00Z",
+  "matchId": "fortaleza--vila-nova",
+  "opponentId": "vila-nova",
+  "round": 38,
   "status": "scheduled",
-  "venue": "Estádio Dr. Jorge Ismael de Biasi"
+  "venue": "Arena Castelão"
 }

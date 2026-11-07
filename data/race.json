@@ -1,14 +1,6 @@
 {
   "headToHead": [
     {
-      "awayId": "fortaleza",
-      "homeId": "novorizontino",
-      "kickoffUtc": "2026-11-07T19:10Z",
-      "matchId": "novorizontino--fortaleza",
-      "round": 37,
-      "venue": "Estádio Dr. Jorge Ismael de Biasi"
-    },
-    {
       "awayId": "criciuma",
       "homeId": "vila-nova",
       "kickoffUtc": "2026-11-07T23:00Z",
@@ -33,19 +25,11 @@
       "venue": null
     }
   ],
-  "headline": "4 confrontos diretos até o fim: é aí que se decide.",
+  "headline": "O Vila Nova ainda enfrenta 2 times do G6. O Fortaleza, só 1.",
   "teams": [
     {
-      "difficulty": "Difícil",
+      "difficulty": "Média",
       "fixtures": [
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-07T19:10Z",
-          "matchId": "novorizontino--fortaleza",
-          "opponentId": "fortaleza",
-          "opponentInTop6": true,
-          "round": 37
-        },
         {
           "home": false,
           "kickoffUtc": "2026-11-14T20:00Z",
@@ -57,22 +41,22 @@
       ],
       "form": [
         "V",
-        "V",
         "E",
+        "V",
         "V",
         "V"
       ],
-      "goalDiff": 33,
-      "pDirect": 0.9341,
-      "pPromotion": 0.9796,
-      "pTop6": 0.0659,
-      "played": 36,
-      "points": 67,
+      "goalDiff": 34,
+      "pDirect": 1.0,
+      "pPromotion": 1.0,
+      "pTop6": 0.0,
+      "played": 37,
+      "points": 70,
       "position": 1,
       "remainingAway": 1,
-      "remainingHome": 1,
-      "remainingVsTop6": 2,
-      "schedulePoints": -0.58,
+      "remainingHome": 0,
+      "remainingVsTop6": 1,
+      "schedulePoints": -0.45,
       "teamId": "novorizontino"
     },
     {
@@ -103,9 +87,9 @@
         "E"
       ],
       "goalDiff": 22,
-      "pDirect": 0.643,
-      "pPromotion": 0.8861,
-      "pTop6": 0.357,
+      "pDirect": 0.6488,
+      "pPromotion": 0.8858,
+      "pTop6": 0.3513,
       "played": 36,
       "points": 65,
       "position": 2,
@@ -143,9 +127,9 @@
         "E"
       ],
       "goalDiff": 14,
-      "pDirect": 0.2698,
-      "pPromotion": 0.6837,
-      "pTop6": 0.7302,
+      "pDirect": 0.2769,
+      "pPromotion": 0.6885,
+      "pTop6": 0.7231,
       "played": 36,
       "points": 63,
       "position": 3,
@@ -183,9 +167,9 @@
         "V"
       ],
       "goalDiff": 8,
-      "pDirect": 0.0857,
-      "pPromotion": 0.5156,
-      "pTop6": 0.9143,
+      "pDirect": 0.0743,
+      "pPromotion": 0.5492,
+      "pTop6": 0.9256,
       "played": 36,
       "points": 62,
       "position": 4,
@@ -199,14 +183,6 @@
       "difficulty": "Média",
       "fixtures": [
         {
-          "home": false,
-          "kickoffUtc": "2026-11-07T19:10Z",
-          "matchId": "novorizontino--fortaleza",
-          "opponentId": "novorizontino",
-          "opponentInTop6": true,
-          "round": 37
-        },
-        {
           "home": true,
           "kickoffUtc": "2026-11-14T20:00Z",
           "matchId": "fortaleza--vila-nova",
@@ -216,23 +192,23 @@
         }
       ],
       "form": [
-        "V",
         "E",
         "V",
         "E",
-        "E"
+        "E",
+        "D"
       ],
-      "goalDiff": 12,
-      "pDirect": 0.0674,
-      "pPromotion": 0.5847,
-      "pTop6": 0.9326,
-      "played": 36,
+      "goalDiff": 11,
+      "pDirect": 0.0,
+      "pPromotion": 0.5154,
+      "pTop6": 1.0,
+      "played": 37,
       "points": 62,
       "position": 5,
-      "remainingAway": 1,
+      "remainingAway": 0,
       "remainingHome": 1,
-      "remainingVsTop6": 2,
-      "schedulePoints": -0.38,
+      "remainingVsTop6": 1,
+      "schedulePoints": 0.25,
       "teamId": "fortaleza"
     },
     {
@@ -264,8 +240,8 @@
       ],
       "goalDiff": 3,
       "pDirect": 0.0,
-      "pPromotion": 0.1376,
-      "pTop6": 0.3946,
+      "pPromotion": 0.1391,
+      "pTop6": 0.3903,
       "played": 36,
       "points": 55,
       "position": 6,
@@ -304,15 +280,15 @@
       ],
       "goalDiff": -3,
       "pDirect": 0.0,
-      "pPromotion": 0.1293,
-      "pTop6": 0.3856,
+      "pPromotion": 0.1336,
+      "pTop6": 0.3874,
       "played": 36,
       "points": 55,
       "position": 7,
       "remainingAway": 1,
       "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": 0.8,
+      "schedulePoints": 0.79,
       "teamId": "goias"
     }
   ]

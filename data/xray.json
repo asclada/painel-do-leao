@@ -1,11 +1,11 @@
 {
   "away": {
     "draws": 6,
-    "goalsAgainst": 15,
-    "goalsFor": 16,
-    "losses": 5,
-    "pct": 50,
-    "played": 18,
+    "goalsAgainst": 17,
+    "goalsFor": 17,
+    "losses": 6,
+    "pct": 47,
+    "played": 19,
     "points": 27,
     "wins": 7
   },
@@ -18,11 +18,11 @@
   "goalBins": [
     {
       "goalsAgainst": 5,
-      "goalsFor": 4,
+      "goalsFor": 5,
       "label": "1–15"
     },
     {
-      "goalsAgainst": 2,
+      "goalsAgainst": 3,
       "goalsFor": 7,
       "label": "16–30"
     },
@@ -37,7 +37,7 @@
       "label": "46–60"
     },
     {
-      "goalsAgainst": 3,
+      "goalsAgainst": 4,
       "goalsFor": 4,
       "label": "61–75"
     },
@@ -48,15 +48,15 @@
     }
   ],
   "halves": {
-    "firstAgainst": 19,
-    "firstFor": 22,
+    "firstAgainst": 20,
+    "firstFor": 23,
     "improved": 8,
     "kept": 24,
-    "pctSecondHalfFor": 49,
-    "pointsSwing": 6,
-    "secondAgainst": 12,
+    "pctSecondHalfFor": 48,
+    "pointsSwing": 5,
+    "secondAgainst": 13,
     "secondFor": 21,
-    "worsened": 4
+    "worsened": 5
   },
   "home": {
     "draws": 8,
@@ -70,31 +70,31 @@
   },
   "insights": {
     "goalBins": "O ponto de atenção: 12 gols sofridos entre 31–45+ minutos.",
-    "halves": "Saldo de +3 no 1º tempo e +9 no 2º: o 2º tempo é o mais forte.",
-    "streaks": "17 jogos sem perder. Última derrota: Vila Nova, em 21/07.",
-    "turns": "Ritmo parecido nos dois turnos: 1,6 e 1,8 pontos por jogo.",
-    "venue": "No Castelão o Leão é outro: 65% dos pontos em casa contra 50% fora."
+    "halves": "Saldo de +3 no 1º tempo e +8 no 2º: o 2º tempo é o mais forte.",
+    "streaks": "16 jogos sem ser vazado na Série B.",
+    "turns": "Ritmo parecido nos dois turnos: 1,6 e 1,7 pontos por jogo.",
+    "venue": "No Castelão o Leão é outro: 65% dos pontos em casa contra 47% fora."
   },
   "secondTurn": {
-    "pct": 61,
-    "played": 17,
+    "pct": 57,
+    "played": 18,
     "points": 31,
-    "ppg": 1.82
+    "ppg": 1.72
   },
   "streaks": {
     "cleanSheets": 16,
-    "currentCount": 17,
-    "currentKind": "unbeaten",
-    "currentLabel": "17 jogos sem perder",
+    "currentCount": 3,
+    "currentKind": "winless",
+    "currentLabel": "3 jogos sem vencer",
     "form": [
-      "V",
       "E",
       "V",
       "E",
-      "E"
+      "E",
+      "D"
     ],
-    "lastLossDate": "2026-07-22T00:35Z",
-    "lastLossOpponentId": "vila-nova",
+    "lastLossDate": "2026-11-07T19:10Z",
+    "lastLossOpponentId": "novorizontino",
     "longestCleanSheets": 2,
     "longestUnbeaten": 17,
     "longestWins": 3
