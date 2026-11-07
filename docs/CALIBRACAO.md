@@ -9,12 +9,12 @@ modelo dizia com o que aconteceu.
 
 ## Jogo a jogo (previsão feita uma rodada antes)
 
-- Jogos avaliados: **351** (rodadas 2 a 37)
+- Jogos avaliados: **352** (rodadas 2 a 37)
 - Brier multiclasse do modelo: **0,642** (quanto menor, melhor)
-- Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,658
+- Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,657
 - Chutar 1/3 para cada resultado: 0,667
-- Ganho sobre a referência (skill score): **2,4%**
-- Log loss: 1,064 · resultado mais provável acertou 42% dos jogos
+- Ganho sobre a referência (skill score): **2,3%**
+- Log loss: 1,063 · resultado mais provável acertou 42% dos jogos
 - Favoritos (acima de 50%): 78 jogos, chance média prevista 58%, venceram 55%
 - Resultado mais provável / do meio / menos provável (zebra): 42% / 33% / 25% dos jogos
 - Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0015**
@@ -32,8 +32,8 @@ Calibração por faixa (todas as chances de vitória do mandante, empate e vitó
 |---|---:|---:|---:|
 | 0%–10% | 7 | 8% | 14% |
 | 10%–20% | 51 | 16% | 12% |
-| 20%–30% | 418 | 26% | 28% |
-| 30%–40% | 332 | 34% | 36% |
+| 20%–30% | 419 | 26% | 27% |
+| 30%–40% | 334 | 34% | 37% |
 | 40%–50% | 167 | 45% | 39% |
 | 50%–60% | 55 | 54% | 45% |
 | 60%–70% | 15 | 64% | 73% |

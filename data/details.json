@@ -12189,6 +12189,70 @@
       }
     }
   },
+  "operario-pr--sport": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 6,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "sport"
+      },
+      {
+        "extra": null,
+        "minute": 14,
+        "ownGoal": true,
+        "penalty": false,
+        "period": 1,
+        "teamId": "operario-pr"
+      },
+      {
+        "extra": null,
+        "minute": 38,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "sport"
+      },
+      {
+        "extra": 5,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "operario-pr"
+      },
+      {
+        "extra": null,
+        "minute": 53,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "operario-pr"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "operario-pr--sport",
+    "stats": {
+      "operario-pr": {
+        "corners": 9,
+        "possession": 44.6,
+        "red": 0,
+        "shots": 23,
+        "shotsOnTarget": 6,
+        "yellow": 5
+      },
+      "sport": {
+        "corners": 6,
+        "possession": 55.4,
+        "red": 1,
+        "shots": 12,
+        "shotsOnTarget": 4,
+        "yellow": 2
+      }
+    }
+  },
   "operario-pr--vila-nova": {
     "goals": [],
     "goalsComplete": true,
