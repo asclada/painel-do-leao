@@ -1,8 +1,8 @@
 {
   "chances": {
-    "draw": 0.2807,
-    "loss": 0.2799,
-    "win": 0.4393
+    "draw": 0.2793,
+    "loss": 0.2823,
+    "win": 0.4384
   },
   "city": "Fortaleza",
   "firstTurn": "Vila Nova 2 x 1 Fortaleza",
@@ -14,11 +14,11 @@
     "D"
   ],
   "formOpponent": [
-    "E",
     "V",
     "E",
     "D",
-    "E"
+    "E",
+    "V"
   ],
   "home": true,
   "kickoffUtc": "2026-11-14T20:00Z",

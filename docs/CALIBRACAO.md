@@ -9,16 +9,16 @@ modelo dizia com o que aconteceu.
 
 ## Jogo a jogo (previsão feita uma rodada antes)
 
-- Jogos avaliados: **354** (rodadas 2 a 37)
-- Brier multiclasse do modelo: **0,642** (quanto menor, melhor)
+- Jogos avaliados: **356** (rodadas 2 a 37)
+- Brier multiclasse do modelo: **0,641** (quanto menor, melhor)
 - Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,656
 - Chutar 1/3 para cada resultado: 0,667
-- Ganho sobre a referência (skill score): **2,1%**
-- Log loss: 1,064 · resultado mais provável acertou 42% dos jogos
-- Favoritos (acima de 50%): 78 jogos, chance média prevista 58%, venceram 55%
+- Ganho sobre a referência (skill score): **2,2%**
+- Log loss: 1,062 · resultado mais provável acertou 42% dos jogos
+- Favoritos (acima de 50%): 79 jogos, chance média prevista 58%, venceram 56%
 - Resultado mais provável / do meio / menos provável (zebra): 42% / 33% / 25% dos jogos
-- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0015**
-- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,0595. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 76% do valor.
+- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0014**
+- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,0577. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 78% do valor.
 
 **Referência, não comparação direta.** O site Chance de Gol publica os mesmos indicadores para o modelo dele,
 com outro método e todas as competições desde 1998: resultado mais provável / do meio / zebra em 51% / 27% /
@@ -32,10 +32,10 @@ Calibração por faixa (todas as chances de vitória do mandante, empate e vitó
 |---|---:|---:|---:|
 | 0%–10% | 7 | 8% | 14% |
 | 10%–20% | 51 | 16% | 12% |
-| 20%–30% | 423 | 26% | 27% |
-| 30%–40% | 334 | 34% | 37% |
+| 20%–30% | 425 | 26% | 27% |
+| 30%–40% | 337 | 34% | 36% |
 | 40%–50% | 169 | 45% | 39% |
-| 50%–60% | 55 | 54% | 45% |
+| 50%–60% | 56 | 54% | 46% |
 | 60%–70% | 15 | 64% | 73% |
 | 70%–80% | 6 | 75% | 83% |
 | 80%–90% | 2 | 82% | 100% |

@@ -5460,33 +5460,33 @@
     "venue": "Estádio Dr. Jorge Ismael de Biasi"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "juventude",
     "city": "Cuiabá",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "cuiaba",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 1,
+    "htHomeGoals": 0,
     "id": "cuiaba--juventude",
     "kickoffUtc": "2026-11-07T23:00Z",
     "round": 37,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Arena Pantanal"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "criciuma",
     "city": "Goiãnia",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "vila-nova",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 1,
     "id": "vila-nova--criciuma",
     "kickoffUtc": "2026-11-07T23:00Z",
     "round": 37,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Onésio Brasileiro Alvarenga"
   },
   {
@@ -5501,7 +5501,7 @@
     "kickoffUtc": "2026-11-08T00:30Z",
     "round": 37,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio dos Aflitos"
   },
   {

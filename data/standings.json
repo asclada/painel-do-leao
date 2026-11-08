@@ -35,17 +35,17 @@
   {
     "away": {
       "draws": 6,
-      "goalsAgainst": 17,
-      "goalsFor": 19,
+      "goalsAgainst": 18,
+      "goalsFor": 21,
       "losses": 5,
-      "played": 18,
-      "points": 27,
-      "wins": 7
+      "played": 19,
+      "points": 30,
+      "wins": 8
     },
     "draws": 11,
-    "goalDiff": 22,
-    "goalsAgainst": 25,
-    "goalsFor": 47,
+    "goalDiff": 23,
+    "goalsAgainst": 26,
+    "goalsFor": 49,
     "home": {
       "draws": 5,
       "goalsAgainst": 8,
@@ -56,14 +56,14 @@
       "wins": 11
     },
     "losses": 7,
-    "pct": 60,
-    "played": 36,
-    "points": 65,
+    "pct": 61,
+    "played": 37,
+    "points": 68,
     "position": 2,
     "red": 4,
     "teamId": "juventude",
-    "wins": 18,
-    "yellow": 79
+    "wins": 19,
+    "yellow": 82
   },
   {
     "away": {
@@ -76,41 +76,41 @@
       "wins": 6
     },
     "draws": 9,
-    "goalDiff": 14,
+    "goalDiff": 15,
     "goalsAgainst": 38,
-    "goalsFor": 52,
+    "goalsFor": 53,
     "home": {
       "draws": 5,
       "goalsAgainst": 15,
-      "goalsFor": 35,
+      "goalsFor": 36,
       "losses": 1,
-      "played": 18,
-      "points": 41,
-      "wins": 12
+      "played": 19,
+      "points": 44,
+      "wins": 13
     },
     "losses": 9,
-    "pct": 58,
-    "played": 36,
-    "points": 63,
+    "pct": 59,
+    "played": 37,
+    "points": 66,
     "position": 3,
     "red": 9,
     "teamId": "vila-nova",
-    "wins": 18,
-    "yellow": 95
+    "wins": 19,
+    "yellow": 96
   },
   {
     "away": {
       "draws": 4,
-      "goalsAgainst": 20,
+      "goalsAgainst": 21,
       "goalsFor": 17,
-      "losses": 7,
-      "played": 18,
+      "losses": 8,
+      "played": 19,
       "points": 25,
       "wins": 7
     },
     "draws": 8,
-    "goalDiff": 8,
-    "goalsAgainst": 30,
+    "goalDiff": 7,
+    "goalsAgainst": 31,
     "goalsFor": 38,
     "home": {
       "draws": 4,
@@ -121,15 +121,15 @@
       "points": 37,
       "wins": 11
     },
-    "losses": 10,
-    "pct": 57,
-    "played": 36,
+    "losses": 11,
+    "pct": 56,
+    "played": 37,
     "points": 62,
     "position": 4,
     "red": 1,
     "teamId": "criciuma",
     "wins": 18,
-    "yellow": 90
+    "yellow": 93
   },
   {
     "away": {
@@ -406,27 +406,27 @@
       "wins": 4
     },
     "draws": 14,
-    "goalDiff": 3,
-    "goalsAgainst": 30,
-    "goalsFor": 33,
+    "goalDiff": 2,
+    "goalsAgainst": 32,
+    "goalsFor": 34,
     "home": {
       "draws": 7,
-      "goalsAgainst": 12,
-      "goalsFor": 20,
-      "losses": 4,
-      "played": 18,
+      "goalsAgainst": 14,
+      "goalsFor": 21,
+      "losses": 5,
+      "played": 19,
       "points": 28,
       "wins": 7
     },
-    "losses": 11,
-    "pct": 44,
-    "played": 36,
+    "losses": 12,
+    "pct": 42,
+    "played": 37,
     "points": 47,
     "position": 13,
     "red": 3,
     "teamId": "cuiaba",
     "wins": 11,
-    "yellow": 65
+    "yellow": 69
   },
   {
     "away": {

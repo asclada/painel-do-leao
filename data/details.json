@@ -6589,6 +6589,54 @@
       }
     }
   },
+  "cuiaba--juventude": {
+    "goals": [
+      {
+        "extra": 7,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "juventude"
+      },
+      {
+        "extra": null,
+        "minute": 54,
+        "ownGoal": true,
+        "penalty": false,
+        "period": 2,
+        "teamId": "cuiaba"
+      },
+      {
+        "extra": null,
+        "minute": 64,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "cuiaba--juventude",
+    "stats": {
+      "cuiaba": {
+        "corners": 2,
+        "possession": 53.2,
+        "red": 0,
+        "shots": 20,
+        "shotsOnTarget": 11,
+        "yellow": 4
+      },
+      "juventude": {
+        "corners": 2,
+        "possession": 46.8,
+        "red": 0,
+        "shots": 14,
+        "shotsOnTarget": 4,
+        "yellow": 3
+      }
+    }
+  },
   "cuiaba--londrina": {
     "goals": [
       {
@@ -15015,6 +15063,38 @@
         "shots": 8,
         "shotsOnTarget": 4,
         "yellow": 8
+      }
+    }
+  },
+  "vila-nova--criciuma": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 11,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "vila-nova"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "vila-nova--criciuma",
+    "stats": {
+      "criciuma": {
+        "corners": 7,
+        "possession": 60.9,
+        "red": 0,
+        "shots": 4,
+        "shotsOnTarget": 1,
+        "yellow": 3
+      },
+      "vila-nova": {
+        "corners": 8,
+        "possession": 39.1,
+        "red": 0,
+        "shots": 14,
+        "shotsOnTarget": 3,
+        "yellow": 1
       }
     }
   },

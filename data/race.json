@@ -1,14 +1,6 @@
 {
   "headToHead": [
     {
-      "awayId": "criciuma",
-      "homeId": "vila-nova",
-      "kickoffUtc": "2026-11-07T23:00Z",
-      "matchId": "vila-nova--criciuma",
-      "round": 37,
-      "venue": "Estádio Onésio Brasileiro Alvarenga"
-    },
-    {
       "awayId": "novorizontino",
       "homeId": "criciuma",
       "kickoffUtc": "2026-11-14T20:00Z",
@@ -25,7 +17,7 @@
       "venue": null
     }
   ],
-  "headline": "O Vila Nova ainda enfrenta 2 times do G6. O Fortaleza, só 1.",
+  "headline": "Tabela mais tranquila entre os candidatos: Goiás.",
   "teams": [
     {
       "difficulty": "Média",
@@ -63,14 +55,6 @@
       "difficulty": "Média",
       "fixtures": [
         {
-          "home": false,
-          "kickoffUtc": "2026-11-07T23:00Z",
-          "matchId": "cuiaba--juventude",
-          "opponentId": "cuiaba",
-          "opponentInTop6": false,
-          "round": 37
-        },
-        {
           "home": true,
           "kickoffUtc": "2026-11-14T20:00Z",
           "matchId": "juventude--botafogo-sp",
@@ -80,36 +64,28 @@
         }
       ],
       "form": [
-        "V",
         "E",
         "E",
         "V",
-        "E"
+        "E",
+        "V"
       ],
-      "goalDiff": 22,
-      "pDirect": 0.6488,
-      "pPromotion": 0.8858,
-      "pTop6": 0.3513,
-      "played": 36,
-      "points": 65,
+      "goalDiff": 23,
+      "pDirect": 0.8534,
+      "pPromotion": 0.9552,
+      "pTop6": 0.1467,
+      "played": 37,
+      "points": 68,
       "position": 2,
-      "remainingAway": 1,
+      "remainingAway": 0,
       "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": -0.37,
+      "schedulePoints": 0.01,
       "teamId": "juventude"
     },
     {
       "difficulty": "Média",
       "fixtures": [
-        {
-          "home": true,
-          "kickoffUtc": "2026-11-07T23:00Z",
-          "matchId": "vila-nova--criciuma",
-          "opponentId": "criciuma",
-          "opponentInTop6": true,
-          "round": 37
-        },
         {
           "home": false,
           "kickoffUtc": "2026-11-14T20:00Z",
@@ -120,36 +96,28 @@
         }
       ],
       "form": [
-        "E",
         "V",
         "E",
         "D",
-        "E"
+        "E",
+        "V"
       ],
-      "goalDiff": 14,
-      "pDirect": 0.2769,
-      "pPromotion": 0.6885,
-      "pTop6": 0.7231,
-      "played": 36,
-      "points": 63,
+      "goalDiff": 15,
+      "pDirect": 0.1467,
+      "pPromotion": 0.6713,
+      "pTop6": 0.8534,
+      "played": 37,
+      "points": 66,
       "position": 3,
       "remainingAway": 1,
-      "remainingHome": 1,
-      "remainingVsTop6": 2,
-      "schedulePoints": -0.05,
+      "remainingHome": 0,
+      "remainingVsTop6": 1,
+      "schedulePoints": -0.29,
       "teamId": "vila-nova"
     },
     {
-      "difficulty": "Difícil",
+      "difficulty": "Média",
       "fixtures": [
-        {
-          "home": false,
-          "kickoffUtc": "2026-11-07T23:00Z",
-          "matchId": "vila-nova--criciuma",
-          "opponentId": "vila-nova",
-          "opponentInTop6": true,
-          "round": 37
-        },
         {
           "home": true,
           "kickoffUtc": "2026-11-14T20:00Z",
@@ -160,23 +128,23 @@
         }
       ],
       "form": [
-        "D",
         "V",
         "V",
         "D",
-        "V"
+        "V",
+        "D"
       ],
-      "goalDiff": 8,
-      "pDirect": 0.0743,
-      "pPromotion": 0.5492,
-      "pTop6": 0.9256,
-      "played": 36,
+      "goalDiff": 7,
+      "pDirect": 0.0,
+      "pPromotion": 0.482,
+      "pTop6": 1.0,
+      "played": 37,
       "points": 62,
       "position": 4,
-      "remainingAway": 1,
+      "remainingAway": 0,
       "remainingHome": 1,
-      "remainingVsTop6": 2,
-      "schedulePoints": -0.86,
+      "remainingVsTop6": 1,
+      "schedulePoints": -0.31,
       "teamId": "criciuma"
     },
     {
@@ -200,7 +168,7 @@
       ],
       "goalDiff": 11,
       "pDirect": 0.0,
-      "pPromotion": 0.5154,
+      "pPromotion": 0.518,
       "pTop6": 1.0,
       "played": 37,
       "points": 62,
@@ -240,8 +208,8 @@
       ],
       "goalDiff": 3,
       "pDirect": 0.0,
-      "pPromotion": 0.1391,
-      "pTop6": 0.3903,
+      "pPromotion": 0.1505,
+      "pTop6": 0.3977,
       "played": 36,
       "points": 55,
       "position": 6,
@@ -280,8 +248,8 @@
       ],
       "goalDiff": -3,
       "pDirect": 0.0,
-      "pPromotion": 0.1336,
-      "pTop6": 0.3874,
+      "pPromotion": 0.1355,
+      "pTop6": 0.3871,
       "played": 36,
       "points": 55,
       "position": 7,
