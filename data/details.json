@@ -758,6 +758,70 @@
       }
     }
   },
+  "athletic-club--atletico-go": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 14,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "athletic-club"
+      },
+      {
+        "extra": null,
+        "minute": 61,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "athletic-club"
+      },
+      {
+        "extra": null,
+        "minute": 67,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "atletico-go"
+      },
+      {
+        "extra": null,
+        "minute": 70,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 2,
+        "teamId": "atletico-go"
+      },
+      {
+        "extra": null,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "atletico-go"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "athletic-club--atletico-go",
+    "stats": {
+      "athletic-club": {
+        "corners": 0,
+        "possession": 29.9,
+        "red": 1,
+        "shots": 11,
+        "shotsOnTarget": 4,
+        "yellow": 2
+      },
+      "atletico-go": {
+        "corners": 12,
+        "possession": 70.1,
+        "red": 0,
+        "shots": 23,
+        "shotsOnTarget": 5,
+        "yellow": 1
+      }
+    }
+  },
   "athletic-club--avai": {
     "goals": [
       {

@@ -5505,18 +5505,18 @@
     "venue": "Estádio dos Aflitos"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 3,
     "awayId": "atletico-go",
     "city": "Sao Joao del Rei",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "athletic-club",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 1,
     "id": "athletic-club--atletico-go",
     "kickoffUtc": "2026-11-08T19:00Z",
     "round": 37,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Joaquim Portugal"
   },
   {

@@ -199,6 +199,39 @@
   },
   {
     "away": {
+      "draws": 8,
+      "goalsAgainst": 20,
+      "goalsFor": 18,
+      "losses": 5,
+      "played": 19,
+      "points": 26,
+      "wins": 6
+    },
+    "draws": 13,
+    "goalDiff": 10,
+    "goalsAgainst": 35,
+    "goalsFor": 45,
+    "home": {
+      "draws": 5,
+      "goalsAgainst": 15,
+      "goalsFor": 27,
+      "losses": 4,
+      "played": 18,
+      "points": 32,
+      "wins": 9
+    },
+    "losses": 9,
+    "pct": 52,
+    "played": 37,
+    "points": 58,
+    "position": 7,
+    "red": 5,
+    "teamId": "atletico-go",
+    "wins": 15,
+    "yellow": 81
+  },
+  {
+    "away": {
       "draws": 5,
       "goalsAgainst": 23,
       "goalsFor": 20,
@@ -224,44 +257,11 @@
     "pct": 51,
     "played": 36,
     "points": 55,
-    "position": 7,
+    "position": 8,
     "red": 6,
     "teamId": "goias",
     "wins": 16,
     "yellow": 79
-  },
-  {
-    "away": {
-      "draws": 8,
-      "goalsAgainst": 18,
-      "goalsFor": 15,
-      "losses": 5,
-      "played": 18,
-      "points": 23,
-      "wins": 5
-    },
-    "draws": 13,
-    "goalDiff": 9,
-    "goalsAgainst": 33,
-    "goalsFor": 42,
-    "home": {
-      "draws": 5,
-      "goalsAgainst": 15,
-      "goalsFor": 27,
-      "losses": 4,
-      "played": 18,
-      "points": 32,
-      "wins": 9
-    },
-    "losses": 9,
-    "pct": 51,
-    "played": 36,
-    "points": 55,
-    "position": 8,
-    "red": 5,
-    "teamId": "atletico-go",
-    "wins": 14,
-    "yellow": 80
   },
   {
     "away": {
@@ -439,27 +439,27 @@
       "wins": 4
     },
     "draws": 14,
-    "goalDiff": 1,
-    "goalsAgainst": 41,
-    "goalsFor": 42,
+    "goalDiff": 0,
+    "goalsAgainst": 44,
+    "goalsFor": 44,
     "home": {
       "draws": 6,
-      "goalsAgainst": 19,
-      "goalsFor": 23,
-      "losses": 5,
-      "played": 18,
+      "goalsAgainst": 22,
+      "goalsFor": 25,
+      "losses": 6,
+      "played": 19,
       "points": 27,
       "wins": 7
     },
-    "losses": 11,
-    "pct": 44,
-    "played": 36,
+    "losses": 12,
+    "pct": 42,
+    "played": 37,
     "points": 47,
     "position": 14,
-    "red": 10,
+    "red": 11,
     "teamId": "athletic-club",
     "wins": 11,
-    "yellow": 82
+    "yellow": 84
   },
   {
     "away": {

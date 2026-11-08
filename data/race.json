@@ -17,7 +17,7 @@
       "venue": null
     }
   ],
-  "headline": "Tabela mais tranquila entre os candidatos: Goiás.",
+  "headline": "Tabela mais tranquila entre os candidatos: Atlético-GO.",
   "teams": [
     {
       "difficulty": "Média",
@@ -71,16 +71,16 @@
         "V"
       ],
       "goalDiff": 23,
-      "pDirect": 0.8534,
-      "pPromotion": 0.953,
-      "pTop6": 0.1467,
+      "pDirect": 0.851,
+      "pPromotion": 0.951,
+      "pTop6": 0.1489,
       "played": 37,
       "points": 68,
       "position": 2,
       "remainingAway": 0,
       "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": 0.01,
+      "schedulePoints": 0.0,
       "teamId": "juventude"
     },
     {
@@ -103,9 +103,9 @@
         "V"
       ],
       "goalDiff": 15,
-      "pDirect": 0.1467,
-      "pPromotion": 0.6576,
-      "pTop6": 0.8534,
+      "pDirect": 0.1489,
+      "pPromotion": 0.6465,
+      "pTop6": 0.851,
       "played": 37,
       "points": 66,
       "position": 3,
@@ -136,7 +136,7 @@
       ],
       "goalDiff": 7,
       "pDirect": 0.0,
-      "pPromotion": 0.4863,
+      "pPromotion": 0.4829,
       "pTop6": 1.0,
       "played": 37,
       "points": 62,
@@ -168,7 +168,7 @@
       ],
       "goalDiff": 11,
       "pDirect": 0.0,
-      "pPromotion": 0.5137,
+      "pPromotion": 0.5171,
       "pTop6": 1.0,
       "played": 37,
       "points": 62,
@@ -176,7 +176,7 @@
       "remainingAway": 0,
       "remainingHome": 1,
       "remainingVsTop6": 1,
-      "schedulePoints": 0.25,
+      "schedulePoints": 0.24,
       "teamId": "fortaleza"
     },
     {
@@ -200,8 +200,8 @@
       ],
       "goalDiff": 6,
       "pDirect": 0.0,
-      "pPromotion": 0.308,
-      "pTop6": 0.7836,
+      "pPromotion": 0.272,
+      "pTop6": 0.6695,
       "played": 37,
       "points": 58,
       "position": 6,
@@ -212,44 +212,36 @@
       "teamId": "crb"
     },
     {
-      "difficulty": "Tranquila",
+      "difficulty": "Média",
       "fixtures": [
         {
           "home": true,
-          "kickoffUtc": "2026-11-08T22:15Z",
-          "matchId": "goias--ponte-preta",
-          "opponentId": "ponte-preta",
-          "opponentInTop6": false,
-          "round": 37
-        },
-        {
-          "home": false,
           "kickoffUtc": "2026-11-14T20:00Z",
-          "matchId": "sport--goias",
-          "opponentId": "sport",
+          "matchId": "atletico-go--cuiaba",
+          "opponentId": "cuiaba",
           "opponentInTop6": false,
           "round": 38
         }
       ],
       "form": [
-        "V",
-        "V",
         "E",
-        "V",
+        "E",
+        "D",
+        "E",
         "V"
       ],
-      "goalDiff": -3,
+      "goalDiff": 10,
       "pDirect": 0.0,
-      "pPromotion": 0.0493,
-      "pTop6": 0.142,
-      "played": 36,
-      "points": 55,
+      "pPromotion": 0.0858,
+      "pTop6": 0.2041,
+      "played": 37,
+      "points": 58,
       "position": 7,
-      "remainingAway": 1,
+      "remainingAway": 0,
       "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": 0.8,
-      "teamId": "goias"
+      "schedulePoints": 0.36,
+      "teamId": "atletico-go"
     }
   ]
 }
