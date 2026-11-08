@@ -10201,6 +10201,29 @@
       }
     }
   },
+  "nautico--crb": {
+    "goals": [],
+    "goalsComplete": false,
+    "matchId": "nautico--crb",
+    "stats": {
+      "crb": {
+        "corners": 0,
+        "possession": 0.0,
+        "red": 0,
+        "shots": 0,
+        "shotsOnTarget": 0,
+        "yellow": 1
+      },
+      "nautico": {
+        "corners": 0,
+        "possession": 0.0,
+        "red": 0,
+        "shots": 0,
+        "shotsOnTarget": 0,
+        "yellow": 2
+      }
+    }
+  },
   "nautico--criciuma": {
     "goals": [
       {

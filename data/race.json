@@ -48,7 +48,7 @@
       "remainingAway": 1,
       "remainingHome": 0,
       "remainingVsTop6": 1,
-      "schedulePoints": -0.45,
+      "schedulePoints": -0.44,
       "teamId": "novorizontino"
     },
     {
@@ -72,7 +72,7 @@
       ],
       "goalDiff": 23,
       "pDirect": 0.8534,
-      "pPromotion": 0.9552,
+      "pPromotion": 0.953,
       "pTop6": 0.1467,
       "played": 37,
       "points": 68,
@@ -104,7 +104,7 @@
       ],
       "goalDiff": 15,
       "pDirect": 0.1467,
-      "pPromotion": 0.6713,
+      "pPromotion": 0.6576,
       "pTop6": 0.8534,
       "played": 37,
       "points": 66,
@@ -112,7 +112,7 @@
       "remainingAway": 1,
       "remainingHome": 0,
       "remainingVsTop6": 1,
-      "schedulePoints": -0.29,
+      "schedulePoints": -0.28,
       "teamId": "vila-nova"
     },
     {
@@ -136,7 +136,7 @@
       ],
       "goalDiff": 7,
       "pDirect": 0.0,
-      "pPromotion": 0.482,
+      "pPromotion": 0.4863,
       "pTop6": 1.0,
       "played": 37,
       "points": 62,
@@ -168,7 +168,7 @@
       ],
       "goalDiff": 11,
       "pDirect": 0.0,
-      "pPromotion": 0.518,
+      "pPromotion": 0.5137,
       "pTop6": 1.0,
       "played": 37,
       "points": 62,
@@ -183,14 +183,6 @@
       "difficulty": "Média",
       "fixtures": [
         {
-          "home": false,
-          "kickoffUtc": "2026-11-08T00:30Z",
-          "matchId": "nautico--crb",
-          "opponentId": "nautico",
-          "opponentInTop6": false,
-          "round": 37
-        },
-        {
           "home": true,
           "kickoffUtc": "2026-11-14T20:00Z",
           "matchId": "crb--ceara",
@@ -200,23 +192,23 @@
         }
       ],
       "form": [
-        "V",
         "E",
         "D",
         "V",
-        "D"
+        "D",
+        "V"
       ],
-      "goalDiff": 3,
+      "goalDiff": 6,
       "pDirect": 0.0,
-      "pPromotion": 0.1505,
-      "pTop6": 0.3977,
-      "played": 36,
-      "points": 55,
+      "pPromotion": 0.308,
+      "pTop6": 0.7836,
+      "played": 37,
+      "points": 58,
       "position": 6,
-      "remainingAway": 1,
+      "remainingAway": 0,
       "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": 0.18,
+      "schedulePoints": 0.35,
       "teamId": "crb"
     },
     {
@@ -248,15 +240,15 @@
       ],
       "goalDiff": -3,
       "pDirect": 0.0,
-      "pPromotion": 0.1355,
-      "pTop6": 0.3871,
+      "pPromotion": 0.0493,
+      "pTop6": 0.142,
       "played": 36,
       "points": 55,
       "position": 7,
       "remainingAway": 1,
       "remainingHome": 1,
       "remainingVsTop6": 0,
-      "schedulePoints": 0.79,
+      "schedulePoints": 0.8,
       "teamId": "goias"
     }
   ]

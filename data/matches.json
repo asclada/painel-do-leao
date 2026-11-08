@@ -5490,10 +5490,10 @@
     "venue": "Estádio Onésio Brasileiro Alvarenga"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 3,
     "awayId": "crb",
     "city": "Recife",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "nautico",
     "htAwayGoals": null,
     "htHomeGoals": null,
@@ -5501,7 +5501,7 @@
     "kickoffUtc": "2026-11-08T00:30Z",
     "round": 37,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio dos Aflitos"
   },
   {

@@ -1,6 +1,6 @@
 {
   "matches": {
-    "accuracy": 0.4213,
+    "accuracy": 0.4202,
     "bins": [
       {
         "hi": 0.1,
@@ -19,9 +19,9 @@
       {
         "hi": 0.3,
         "lo": 0.2,
-        "n": 425,
-        "observed": 0.2729,
-        "predicted": 0.2595
+        "n": 427,
+        "observed": 0.274,
+        "predicted": 0.2596
       },
       {
         "hi": 0.4,
@@ -33,9 +33,9 @@
       {
         "hi": 0.5,
         "lo": 0.4,
-        "n": 169,
-        "observed": 0.3905,
-        "predicted": 0.4479
+        "n": 170,
+        "observed": 0.3882,
+        "predicted": 0.448
       },
       {
         "hi": 0.6,
@@ -66,26 +66,26 @@
         "predicted": 0.8169
       }
     ],
-    "brier": 0.6412,
-    "brierReference": 0.6557,
+    "brier": 0.6417,
+    "brierReference": 0.656,
     "brierUniform": 0.6667,
-    "favoriteRate": 0.4213,
+    "favoriteRate": 0.4202,
     "favoritesN": 79,
     "favoritesObserved": 0.557,
     "favoritesPredicted": 0.5785,
-    "logLoss": 1.0624,
-    "middleRate": 0.3287,
-    "nMatches": 356,
-    "reliability": 0.0577,
+    "logLoss": 1.063,
+    "middleRate": 0.3305,
+    "nMatches": 357,
+    "reliability": 0.058,
     "reliabilitySmallBins": 0.045,
     "reliabilityWeighted": 0.0014,
     "rounds": [
       2,
       37
     ],
-    "skill": 0.0221,
-    "upsetRate": 0.25
+    "skill": 0.0219,
+    "upsetRate": 0.2493
   },
   "season": null,
-  "summary": "Conferimos as contas com os 356 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 58% de chance de vencer em média, ele venceu 56% das vezes. Contando todos os jogos, deu o resultado mais provável em 42% deles, o do meio em 33% e a zebra (o menos provável) em 25%."
+  "summary": "Conferimos as contas com os 357 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 58% de chance de vencer em média, ele venceu 56% das vezes. Contando todos os jogos, deu o resultado mais provável em 42% deles, o do meio em 33% e a zebra (o menos provável) em 25%."
 }

@@ -168,16 +168,16 @@
     "away": {
       "draws": 4,
       "goalsAgainst": 31,
-      "goalsFor": 21,
+      "goalsFor": 24,
       "losses": 8,
-      "played": 18,
-      "points": 22,
-      "wins": 6
+      "played": 19,
+      "points": 25,
+      "wins": 7
     },
     "draws": 7,
-    "goalDiff": 3,
+    "goalDiff": 6,
     "goalsAgainst": 51,
-    "goalsFor": 54,
+    "goalsFor": 57,
     "home": {
       "draws": 3,
       "goalsAgainst": 20,
@@ -188,14 +188,14 @@
       "wins": 10
     },
     "losses": 13,
-    "pct": 51,
-    "played": 36,
-    "points": 55,
+    "pct": 52,
+    "played": 37,
+    "points": 58,
     "position": 6,
     "red": 4,
     "teamId": "crb",
-    "wins": 16,
-    "yellow": 87
+    "wins": 17,
+    "yellow": 88
   },
   {
     "away": {
@@ -472,27 +472,27 @@
       "wins": 3
     },
     "draws": 10,
-    "goalDiff": -6,
-    "goalsAgainst": 46,
+    "goalDiff": -9,
+    "goalsAgainst": 49,
     "goalsFor": 40,
     "home": {
       "draws": 3,
-      "goalsAgainst": 17,
+      "goalsAgainst": 20,
       "goalsFor": 20,
-      "losses": 6,
-      "played": 18,
+      "losses": 7,
+      "played": 19,
       "points": 30,
       "wins": 9
     },
-    "losses": 14,
-    "pct": 43,
-    "played": 36,
+    "losses": 15,
+    "pct": 41,
+    "played": 37,
     "points": 46,
     "position": 15,
     "red": 6,
     "teamId": "nautico",
     "wins": 12,
-    "yellow": 101
+    "yellow": 103
   },
   {
     "away": {
