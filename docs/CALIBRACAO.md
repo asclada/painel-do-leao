@@ -1,7 +1,7 @@
 # Calibração do modelo
 
 > Gerado automaticamente pelo pipeline (`pipeline/calc/calibration.py`) a cada atualização dos dados.
-> Dados até a rodada 36.
+> Dados até a rodada 37.
 
 O backtest refaz a conta do jeito que o modelo teria feito depois de cada rodada, usando **só os jogos
 disputados até ali** (mesmo modelo, semente fixa por rodada). Com esses retratos dá para comparar o que o
@@ -9,16 +9,16 @@ modelo dizia com o que aconteceu.
 
 ## Jogo a jogo (previsão feita uma rodada antes)
 
-- Jogos avaliados: **358** (rodadas 2 a 37)
-- Brier multiclasse do modelo: **0,642** (quanto menor, melhor)
+- Jogos avaliados: **360** (rodadas 2 a 37)
+- Brier multiclasse do modelo: **0,641** (quanto menor, melhor)
 - Referência (só a frequência de mandante/empate/visitante da liga até ali): 0,656
 - Chutar 1/3 para cada resultado: 0,667
-- Ganho sobre a referência (skill score): **2,2%**
-- Log loss: 1,063 · resultado mais provável acertou 42% dos jogos
-- Favoritos (acima de 50%): 79 jogos, chance média prevista 58%, venceram 56%
+- Ganho sobre a referência (skill score): **2,3%**
+- Log loss: 1,062 · resultado mais provável acertou 42% dos jogos
+- Favoritos (acima de 50%): 80 jogos, chance média prevista 58%, venceram 56%
 - Resultado mais provável / do meio / menos provável (zebra): 42% / 33% / 25% dos jogos
-- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0015**
-- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,0583. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 77% do valor.
+- Calibração ponderada pelo número de casos (média do quadrado da distância entre a chance prevista e o que aconteceu, faixa a faixa; quanto menor, melhor): **0,0016**
+- No formato do Chance de Gol (soma dos quadrados da distância entre a frequência real e o meio de cada faixa de 10%, sem ponderar): 0,0604. Com poucos jogos essa conta é dominada pelas faixas pequenas: as de menos de 30 casos respondem por 77% do valor.
 
 **Referência, não comparação direta.** O site Chance de Gol publica os mesmos indicadores para o modelo dele,
 com outro método e todas as competições desde 1998: resultado mais provável / do meio / zebra em 51% / 27% /
@@ -30,14 +30,14 @@ Calibração por faixa (todas as chances de vitória do mandante, empate e vitó
 
 | Faixa prevista | Casos | Chance média prevista | Aconteceu |
 |---|---:|---:|---:|
-| 0%–10% | 7 | 8% | 14% |
-| 10%–20% | 51 | 16% | 12% |
-| 20%–30% | 428 | 26% | 27% |
+| 0%–10% | 8 | 8% | 12% |
+| 10%–20% | 52 | 16% | 12% |
+| 20%–30% | 430 | 26% | 27% |
 | 30%–40% | 338 | 34% | 37% |
-| 40%–50% | 171 | 45% | 39% |
+| 40%–50% | 172 | 45% | 38% |
 | 50%–60% | 56 | 54% | 46% |
 | 60%–70% | 15 | 64% | 73% |
-| 70%–80% | 6 | 75% | 83% |
+| 70%–80% | 7 | 74% | 86% |
 | 80%–90% | 2 | 82% | 100% |
 
 ## Temporada (chance de G2 e de G6)

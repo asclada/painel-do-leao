@@ -3960,6 +3960,38 @@
       }
     }
   },
+  "ceara--america-mg": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 51,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "america-mg"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "ceara--america-mg",
+    "stats": {
+      "america-mg": {
+        "corners": 1,
+        "possession": 36.1,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 6,
+        "yellow": 3
+      },
+      "ceara": {
+        "corners": 9,
+        "possession": 63.9,
+        "red": 0,
+        "shots": 30,
+        "shotsOnTarget": 6,
+        "yellow": 4
+      }
+    }
+  },
   "ceara--athletic-club": {
     "goals": [],
     "goalsComplete": true,
@@ -8373,6 +8405,38 @@
         "shots": 10,
         "shotsOnTarget": 3,
         "yellow": 2
+      }
+    }
+  },
+  "goias--ponte-preta": {
+    "goals": [
+      {
+        "extra": 5,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "goias"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "goias--ponte-preta",
+    "stats": {
+      "goias": {
+        "corners": 10,
+        "possession": 69.3,
+        "red": 0,
+        "shots": 24,
+        "shotsOnTarget": 1,
+        "yellow": 5
+      },
+      "ponte-preta": {
+        "corners": 4,
+        "possession": 30.7,
+        "red": 0,
+        "shots": 6,
+        "shotsOnTarget": 0,
+        "yellow": 1
       }
     }
   },
