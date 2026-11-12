@@ -464,17 +464,17 @@
   {
     "away": {
       "draws": 7,
-      "goalsAgainst": 29,
-      "goalsFor": 20,
-      "losses": 8,
-      "played": 18,
+      "goalsAgainst": 31,
+      "goalsFor": 21,
+      "losses": 9,
+      "played": 19,
       "points": 16,
       "wins": 3
     },
     "draws": 10,
-    "goalDiff": -9,
-    "goalsAgainst": 49,
-    "goalsFor": 40,
+    "goalDiff": -10,
+    "goalsAgainst": 51,
+    "goalsFor": 41,
     "home": {
       "draws": 3,
       "goalsAgainst": 20,
@@ -484,15 +484,15 @@
       "points": 30,
       "wins": 9
     },
-    "losses": 15,
-    "pct": 41,
-    "played": 37,
+    "losses": 16,
+    "pct": 40,
+    "played": 38,
     "points": 46,
     "position": 15,
     "red": 6,
     "teamId": "nautico",
     "wins": 12,
-    "yellow": 103
+    "yellow": 104
   },
   {
     "away": {
@@ -571,27 +571,27 @@
       "wins": 3
     },
     "draws": 8,
-    "goalDiff": -13,
-    "goalsAgainst": 58,
-    "goalsFor": 45,
+    "goalDiff": -12,
+    "goalsAgainst": 59,
+    "goalsFor": 47,
     "home": {
       "draws": 5,
-      "goalsAgainst": 23,
-      "goalsFor": 25,
+      "goalsAgainst": 24,
+      "goalsFor": 27,
       "losses": 8,
-      "played": 18,
-      "points": 20,
-      "wins": 5
+      "played": 19,
+      "points": 23,
+      "wins": 6
     },
     "losses": 21,
-    "pct": 29,
-    "played": 37,
-    "points": 32,
+    "pct": 31,
+    "played": 38,
+    "points": 35,
     "position": 18,
     "red": 5,
     "teamId": "londrina",
-    "wins": 8,
-    "yellow": 89
+    "wins": 9,
+    "yellow": 91
   },
   {
     "away": {

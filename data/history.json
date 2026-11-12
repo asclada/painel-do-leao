@@ -325,11 +325,20 @@
   },
   {
     "pDirect": 0.0,
-    "pPromotion": 0.5119,
+    "pPromotion": 0.5126,
     "pTop6": 1.0,
     "partial": false,
     "points": 62,
     "position": 5,
     "round": 37
+  },
+  {
+    "pDirect": 0.0,
+    "pPromotion": 0.5151,
+    "pTop6": 1.0,
+    "partial": true,
+    "points": 62,
+    "position": 5,
+    "round": 38
   }
 ]

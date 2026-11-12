@@ -9769,6 +9769,54 @@
       }
     }
   },
+  "londrina--nautico": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 80,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "nautico"
+      },
+      {
+        "extra": null,
+        "minute": 88,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "londrina"
+      },
+      {
+        "extra": 1,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "londrina"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "londrina--nautico",
+    "stats": {
+      "londrina": {
+        "corners": 3,
+        "possession": 54.2,
+        "red": 0,
+        "shots": 12,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      },
+      "nautico": {
+        "corners": 3,
+        "possession": 45.8,
+        "red": 0,
+        "shots": 10,
+        "shotsOnTarget": 1,
+        "yellow": 1
+      }
+    }
+  },
   "londrina--novorizontino": {
     "goals": [
       {
