@@ -339,28 +339,28 @@
       "points": 31,
       "wins": 9
     },
-    "draws": 10,
+    "draws": 11,
     "goalDiff": 10,
-    "goalsAgainst": 42,
-    "goalsFor": 52,
+    "goalsAgainst": 44,
+    "goalsFor": 54,
     "home": {
-      "draws": 6,
-      "goalsAgainst": 21,
-      "goalsFor": 22,
+      "draws": 7,
+      "goalsAgainst": 23,
+      "goalsFor": 24,
       "losses": 7,
-      "played": 18,
-      "points": 21,
+      "played": 19,
+      "points": 22,
       "wins": 5
     },
     "losses": 13,
-    "pct": 47,
-    "played": 37,
-    "points": 52,
+    "pct": 46,
+    "played": 38,
+    "points": 53,
     "position": 11,
-    "red": 2,
+    "red": 3,
     "teamId": "sao-bernardo",
     "wins": 14,
-    "yellow": 81
+    "yellow": 84
   },
   {
     "away": {
@@ -397,6 +397,39 @@
   },
   {
     "away": {
+      "draws": 9,
+      "goalsAgainst": 24,
+      "goalsFor": 21,
+      "losses": 6,
+      "played": 19,
+      "points": 21,
+      "wins": 4
+    },
+    "draws": 15,
+    "goalDiff": 0,
+    "goalsAgainst": 46,
+    "goalsFor": 46,
+    "home": {
+      "draws": 6,
+      "goalsAgainst": 22,
+      "goalsFor": 25,
+      "losses": 6,
+      "played": 19,
+      "points": 27,
+      "wins": 7
+    },
+    "losses": 12,
+    "pct": 42,
+    "played": 38,
+    "points": 48,
+    "position": 13,
+    "red": 11,
+    "teamId": "athletic-club",
+    "wins": 11,
+    "yellow": 88
+  },
+  {
+    "away": {
       "draws": 7,
       "goalsAgainst": 18,
       "goalsFor": 13,
@@ -422,44 +455,11 @@
     "pct": 42,
     "played": 37,
     "points": 47,
-    "position": 13,
+    "position": 14,
     "red": 3,
     "teamId": "cuiaba",
     "wins": 11,
     "yellow": 69
-  },
-  {
-    "away": {
-      "draws": 8,
-      "goalsAgainst": 22,
-      "goalsFor": 19,
-      "losses": 6,
-      "played": 18,
-      "points": 20,
-      "wins": 4
-    },
-    "draws": 14,
-    "goalDiff": 0,
-    "goalsAgainst": 44,
-    "goalsFor": 44,
-    "home": {
-      "draws": 6,
-      "goalsAgainst": 22,
-      "goalsFor": 25,
-      "losses": 6,
-      "played": 19,
-      "points": 27,
-      "wins": 7
-    },
-    "losses": 12,
-    "pct": 42,
-    "played": 37,
-    "points": 47,
-    "position": 14,
-    "red": 11,
-    "teamId": "athletic-club",
-    "wins": 11,
-    "yellow": 84
   },
   {
     "away": {

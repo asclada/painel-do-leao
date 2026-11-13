@@ -5580,18 +5580,18 @@
     "venue": "Estádio Italo Mário Limongi"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "athletic-club",
     "city": "São Bernardo do Campo ",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "sao-bernardo",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "sao-bernardo--athletic-club",
     "kickoffUtc": "2026-11-12T23:00Z",
     "round": 38,
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Estádio Primeiro de Maio"
   },
   {

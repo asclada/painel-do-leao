@@ -13458,6 +13458,62 @@
       }
     }
   },
+  "sao-bernardo--athletic-club": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 46,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "athletic-club"
+      },
+      {
+        "extra": null,
+        "minute": 50,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": null,
+        "minute": 82,
+        "ownGoal": false,
+        "penalty": true,
+        "period": 2,
+        "teamId": "sao-bernardo"
+      },
+      {
+        "extra": null,
+        "minute": 85,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "athletic-club"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "sao-bernardo--athletic-club",
+    "stats": {
+      "athletic-club": {
+        "corners": 1,
+        "possession": 53.3,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 5,
+        "yellow": 4
+      },
+      "sao-bernardo": {
+        "corners": 2,
+        "possession": 46.7,
+        "red": 1,
+        "shots": 14,
+        "shotsOnTarget": 5,
+        "yellow": 3
+      }
+    }
+  },
   "sao-bernardo--atletico-go": {
     "goals": [
       {
