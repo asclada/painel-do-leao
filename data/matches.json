@@ -5565,18 +5565,18 @@
     "venue": "Estadio VGD"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 2,
     "awayId": "operario-pr",
     "city": "Indaiatuba",
-    "homeGoals": null,
+    "homeGoals": 0,
     "homeId": "ponte-preta",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "ponte-preta--operario-pr",
     "kickoffUtc": "2026-11-12T22:00Z",
     "round": 38,
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Italo Mário Limongi"
   },
   {
@@ -5591,7 +5591,7 @@
     "kickoffUtc": "2026-11-12T23:00Z",
     "round": 38,
     "source": "espn",
-    "status": "scheduled",
+    "status": "live",
     "venue": "Estádio Primeiro de Maio"
   },
   {

@@ -13250,6 +13250,46 @@
       }
     }
   },
+  "ponte-preta--operario-pr": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 72,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "operario-pr"
+      },
+      {
+        "extra": 2,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "operario-pr"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "ponte-preta--operario-pr",
+    "stats": {
+      "operario-pr": {
+        "corners": 2,
+        "possession": 51.8,
+        "red": 0,
+        "shots": 8,
+        "shotsOnTarget": 4,
+        "yellow": 2
+      },
+      "ponte-preta": {
+        "corners": 2,
+        "possession": 48.2,
+        "red": 0,
+        "shots": 8,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      }
+    }
+  },
   "ponte-preta--sao-bernardo": {
     "goals": [
       {
