@@ -1,5 +1,5 @@
 {
-  "headline": "Da lanterna na estreia ao 5º lugar: 15 posições escaladas.",
+  "headline": "Da lanterna na estreia ao 4º lugar: 16 posições escaladas.",
   "milestones": [
     {
       "kind": "worst",
@@ -478,15 +478,15 @@
       "round": 37
     },
     {
-      "goalsAgainst": null,
-      "goalsFor": null,
+      "goalsAgainst": 0,
+      "goalsFor": 1,
       "home": true,
       "kickoffUtc": "2026-11-14T19:30Z",
       "matchId": "fortaleza--vila-nova",
       "opponentId": "vila-nova",
-      "points": 62,
-      "position": 5,
-      "result": null,
+      "points": 65,
+      "position": 4,
+      "result": "V",
       "round": 38
     }
   ],
@@ -609,7 +609,7 @@
       8,
       9,
       8,
-      8
+      6
     ],
     "avai": [
       4,
@@ -769,7 +769,7 @@
       6,
       6,
       6,
-      6
+      7
     ],
     "criciuma": [
       6,
@@ -809,7 +809,7 @@
       5,
       4,
       4,
-      4
+      5
     ],
     "cuiaba": [
       12,
@@ -889,7 +889,7 @@
       9,
       7,
       7,
-      7
+      8
     ],
     "juventude": [
       19,
@@ -1089,7 +1089,7 @@
       10,
       11,
       10,
-      9
+      10
     ],
     "ponte-preta": [
       14,
@@ -1209,7 +1209,7 @@
       7,
       8,
       9,
-      10
+      9
     ],
     "vila-nova": [
       9,

@@ -103,6 +103,46 @@
       }
     }
   },
+  "america-mg--avai": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 60,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "avai"
+      },
+      {
+        "extra": null,
+        "minute": 71,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "avai"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "america-mg--avai",
+    "stats": {
+      "america-mg": {
+        "corners": 7,
+        "possession": 52.4,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 3,
+        "yellow": 2
+      },
+      "avai": {
+        "corners": 4,
+        "possession": 47.6,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 4,
+        "yellow": 2
+      }
+    }
+  },
   "america-mg--botafogo-sp": {
     "goals": [
       {
@@ -1880,6 +1920,38 @@
         "red": 0,
         "shots": 11,
         "shotsOnTarget": 4,
+        "yellow": 3
+      }
+    }
+  },
+  "atletico-go--cuiaba": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 61,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "atletico-go"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "atletico-go--cuiaba",
+    "stats": {
+      "atletico-go": {
+        "corners": 8,
+        "possession": 64.5,
+        "red": 0,
+        "shots": 18,
+        "shotsOnTarget": 4,
+        "yellow": 2
+      },
+      "cuiaba": {
+        "corners": 4,
+        "possession": 35.5,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 3,
         "yellow": 3
       }
     }
@@ -5007,6 +5079,46 @@
       }
     }
   },
+  "crb--ceara": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 16,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "ceara"
+      },
+      {
+        "extra": null,
+        "minute": 88,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "crb"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "crb--ceara",
+    "stats": {
+      "ceara": {
+        "corners": 6,
+        "possession": 20.2,
+        "red": 1,
+        "shots": 7,
+        "shotsOnTarget": 2,
+        "yellow": 3
+      },
+      "crb": {
+        "corners": 14,
+        "possession": 79.8,
+        "red": 0,
+        "shots": 42,
+        "shotsOnTarget": 11,
+        "yellow": 2
+      }
+    }
+  },
   "crb--criciuma": {
     "goals": [
       {
@@ -6114,6 +6226,38 @@
         "shots": 12,
         "shotsOnTarget": 4,
         "yellow": 4
+      }
+    }
+  },
+  "criciuma--novorizontino": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 68,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "novorizontino"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "criciuma--novorizontino",
+    "stats": {
+      "criciuma": {
+        "corners": 4,
+        "possession": 60.6,
+        "red": 1,
+        "shots": 9,
+        "shotsOnTarget": 3,
+        "yellow": 1
+      },
+      "novorizontino": {
+        "corners": 4,
+        "possession": 39.4,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 4,
+        "yellow": 3
       }
     }
   },
@@ -7809,6 +7953,38 @@
       }
     }
   },
+  "fortaleza--vila-nova": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 45,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "fortaleza"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "fortaleza--vila-nova",
+    "stats": {
+      "fortaleza": {
+        "corners": 3,
+        "possession": 41.7,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 4,
+        "yellow": 3
+      },
+      "vila-nova": {
+        "corners": 7,
+        "possession": 58.3,
+        "red": 0,
+        "shots": 13,
+        "shotsOnTarget": 5,
+        "yellow": 4
+      }
+    }
+  },
   "goias--america-mg": {
     "goals": [
       {
@@ -8733,6 +8909,46 @@
         "shots": 11,
         "shotsOnTarget": 6,
         "yellow": 1
+      }
+    }
+  },
+  "juventude--botafogo-sp": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 57,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      },
+      {
+        "extra": null,
+        "minute": 65,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "juventude"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "juventude--botafogo-sp",
+    "stats": {
+      "botafogo-sp": {
+        "corners": 1,
+        "possession": 49.8,
+        "red": 0,
+        "shots": 9,
+        "shotsOnTarget": 2,
+        "yellow": 3
+      },
+      "juventude": {
+        "corners": 7,
+        "possession": 50.2,
+        "red": 0,
+        "shots": 20,
+        "shotsOnTarget": 4,
+        "yellow": 2
       }
     }
   },
@@ -14718,6 +14934,54 @@
         "shots": 20,
         "shotsOnTarget": 2,
         "yellow": 3
+      }
+    }
+  },
+  "sport--goias": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 22,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "sport"
+      },
+      {
+        "extra": null,
+        "minute": 41,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 1,
+        "teamId": "sport"
+      },
+      {
+        "extra": 4,
+        "minute": 90,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "sport"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "sport--goias",
+    "stats": {
+      "goias": {
+        "corners": 9,
+        "possession": 57.2,
+        "red": 0,
+        "shots": 21,
+        "shotsOnTarget": 3,
+        "yellow": 3
+      },
+      "sport": {
+        "corners": 4,
+        "possession": 42.8,
+        "red": 1,
+        "shots": 13,
+        "shotsOnTarget": 7,
+        "yellow": 4
       }
     }
   },

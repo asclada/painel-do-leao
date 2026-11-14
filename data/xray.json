@@ -28,7 +28,7 @@
     },
     {
       "goalsAgainst": 12,
-      "goalsFor": 11,
+      "goalsFor": 12,
       "label": "31–45+"
     },
     {
@@ -49,10 +49,10 @@
   ],
   "halves": {
     "firstAgainst": 20,
-    "firstFor": 23,
+    "firstFor": 24,
     "improved": 8,
-    "kept": 24,
-    "pctSecondHalfFor": 48,
+    "kept": 25,
+    "pctSecondHalfFor": 47,
     "pointsSwing": 5,
     "secondAgainst": 13,
     "secondFor": 21,
@@ -61,37 +61,37 @@
   "home": {
     "draws": 8,
     "goalsAgainst": 16,
-    "goalsFor": 27,
+    "goalsFor": 28,
     "losses": 1,
-    "pct": 65,
-    "played": 18,
-    "points": 35,
-    "wins": 9
+    "pct": 67,
+    "played": 19,
+    "points": 38,
+    "wins": 10
   },
   "insights": {
-    "goalBins": "O ponto de atenção: 12 gols sofridos entre 31–45+ minutos.",
-    "halves": "Saldo de +3 no 1º tempo e +8 no 2º: o 2º tempo é o mais forte.",
-    "streaks": "16 jogos sem ser vazado na Série B.",
-    "turns": "Ritmo parecido nos dois turnos: 1,6 e 1,7 pontos por jogo.",
-    "venue": "No Castelão o Leão é outro: 65% dos pontos em casa contra 47% fora."
+    "goalBins": "A faixa mais forte é 31–45+ minutos, com 12 gols.",
+    "halves": "Saldo de +4 no 1º tempo e +8 no 2º: o 2º tempo é o mais forte.",
+    "streaks": "17 jogos sem ser vazado na Série B.",
+    "turns": "Ritmo parecido nos dois turnos: 1,6 e 1,8 pontos por jogo.",
+    "venue": "No Castelão o Leão é outro: 67% dos pontos em casa contra 47% fora."
   },
   "secondTurn": {
-    "pct": 57,
-    "played": 18,
-    "points": 31,
-    "ppg": 1.72
+    "pct": 60,
+    "played": 19,
+    "points": 34,
+    "ppg": 1.79
   },
   "streaks": {
-    "cleanSheets": 16,
-    "currentCount": 3,
-    "currentKind": "winless",
-    "currentLabel": "3 jogos sem vencer",
+    "cleanSheets": 17,
+    "currentCount": 1,
+    "currentKind": "none",
+    "currentLabel": "Venceu o último jogo",
     "form": [
-      "E",
       "V",
       "E",
       "E",
-      "D"
+      "D",
+      "V"
     ],
     "lastLossDate": "2026-11-07T19:10Z",
     "lastLossOpponentId": "novorizontino",

@@ -1,14 +1,14 @@
 {
   "dataStatus": {
     "delayed": false,
-    "lastSuccessAt": "2026-11-13T01:30:20Z"
+    "lastSuccessAt": "2026-11-14T22:00:25Z"
   },
   "fortalezaId": "fortaleza",
   "hasGoalMinutes": true,
   "hasHalfTime": true,
-  "lastCompletedRound": 37,
+  "lastCompletedRound": 38,
   "provider": "espn",
   "season": 2026,
-  "seasonState": "regular",
-  "updatedAt": "2026-11-13T01:30:20Z"
+  "seasonState": "playoffs",
+  "updatedAt": "2026-11-14T22:00:25Z"
 }

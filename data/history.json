@@ -334,11 +334,11 @@
   },
   {
     "pDirect": 0.0,
-    "pPromotion": 0.5193,
+    "pPromotion": 0.6724,
     "pTop6": 1.0,
-    "partial": true,
-    "points": 62,
-    "position": 5,
+    "partial": false,
+    "points": 65,
+    "position": 4,
     "round": 38
   }
 ]
