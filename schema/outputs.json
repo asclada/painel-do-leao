@@ -130,6 +130,83 @@
       "title": "DataStatus",
       "type": "object"
     },
+    "FocusTie": {
+      "additionalProperties": false,
+      "description": "O confronto do Fortaleza, com as contas do próximo jogo.",
+      "properties": {
+        "opponentId": {
+          "type": "string"
+        },
+        "better": {
+          "type": "boolean"
+        },
+        "nextLeg": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pAdvance": {
+          "type": "number"
+        },
+        "pAdvanceStart": {
+          "type": "number"
+        },
+        "legChances": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MatchChances"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "margins": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/MarginRow"
+          },
+          "type": "array"
+        },
+        "scores": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ScoreCell"
+          },
+          "type": "array"
+        },
+        "headToHead": {
+          "items": {
+            "$ref": "#/$defs/H2HGame"
+          },
+          "type": "array"
+        },
+        "focus": {
+          "$ref": "#/$defs/TapeSide"
+        },
+        "opponent": {
+          "$ref": "#/$defs/TapeSide"
+        }
+      },
+      "required": [
+        "opponentId",
+        "better",
+        "nextLeg",
+        "pAdvance",
+        "pAdvanceStart",
+        "headToHead",
+        "focus",
+        "opponent"
+      ],
+      "title": "FocusTie",
+      "type": "object"
+    },
     "GoalBin": {
       "additionalProperties": false,
       "properties": {
@@ -149,6 +226,39 @@
         "goalsAgainst"
       ],
       "title": "GoalBin",
+      "type": "object"
+    },
+    "H2HGame": {
+      "additionalProperties": false,
+      "properties": {
+        "round": {
+          "type": "integer"
+        },
+        "kickoffUtc": {
+          "type": "string"
+        },
+        "homeId": {
+          "type": "string"
+        },
+        "awayId": {
+          "type": "string"
+        },
+        "homeGoals": {
+          "type": "integer"
+        },
+        "awayGoals": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "round",
+        "kickoffUtc",
+        "homeId",
+        "awayId",
+        "homeGoals",
+        "awayGoals"
+      ],
+      "title": "H2HGame",
       "type": "object"
     },
     "HalfSplit": {
@@ -372,6 +482,28 @@
         "currentPoints"
       ],
       "title": "MagicNumbers",
+      "type": "object"
+    },
+    "MarginRow": {
+      "additionalProperties": false,
+      "description": "Resultado do próximo jogo pela diferença de gols (−3 = perder por 3 ou mais; +3 = vencer por 3 ou mais).",
+      "properties": {
+        "margin": {
+          "type": "integer"
+        },
+        "p": {
+          "type": "number"
+        },
+        "pAdvance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "margin",
+        "p",
+        "pAdvance"
+      ],
+      "title": "MarginRow",
       "type": "object"
     },
     "MatchCalibration": {
@@ -658,6 +790,21 @@
             }
           ],
           "default": null
+        },
+        "leg": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "venueGuessed": {
+          "default": false,
+          "type": "boolean"
         }
       },
       "required": [
@@ -674,6 +821,205 @@
         "formOpponent"
       ],
       "title": "NextMatch",
+      "type": "object"
+    },
+    "PlayoffLeg": {
+      "additionalProperties": false,
+      "properties": {
+        "matchId": {
+          "type": "string"
+        },
+        "leg": {
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "kickoffUtc": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "homeId": {
+          "type": "string"
+        },
+        "awayId": {
+          "type": "string"
+        },
+        "homeGoals": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "awayGoals": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "venue": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "city": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "venueGuessed": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "matchId",
+        "leg",
+        "kickoffUtc",
+        "status",
+        "homeId",
+        "awayId"
+      ],
+      "title": "PlayoffLeg",
+      "type": "object"
+    },
+    "PlayoffTie": {
+      "additionalProperties": false,
+      "description": "Um confronto: 3º x 6º ou 4º x 5º. A melhor campanha decide em casa e passa com empate no placar somado.",
+      "properties": {
+        "betterId": {
+          "type": "string"
+        },
+        "worseId": {
+          "type": "string"
+        },
+        "betterPosition": {
+          "type": "integer"
+        },
+        "worsePosition": {
+          "type": "integer"
+        },
+        "legs": {
+          "items": {
+            "$ref": "#/$defs/PlayoffLeg"
+          },
+          "type": "array"
+        },
+        "aggregateBetter": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "aggregateWorse": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "winnerId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "pBetter": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "betterId",
+        "worseId",
+        "betterPosition",
+        "worsePosition",
+        "legs",
+        "pBetter"
+      ],
+      "title": "PlayoffTie",
+      "type": "object"
+    },
+    "Playoffs": {
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "enum": [
+            "upcoming",
+            "between_legs",
+            "finished"
+          ],
+          "type": "string"
+        },
+        "nDraws": {
+          "type": "integer"
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "ties": {
+          "items": {
+            "$ref": "#/$defs/PlayoffTie"
+          },
+          "type": "array"
+        },
+        "focus": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FocusTie"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "state",
+        "nDraws",
+        "seed",
+        "ties",
+        "focus"
+      ],
+      "title": "Playoffs",
       "type": "object"
     },
     "PointsDist": {
@@ -877,6 +1223,110 @@
       "title": "Record",
       "type": "object"
     },
+    "Retro": {
+      "additionalProperties": false,
+      "properties": {
+        "moments": {
+          "items": {
+            "$ref": "#/$defs/RetroMoment"
+          },
+          "type": "array"
+        },
+        "bestPosition": {
+          "type": "integer"
+        },
+        "bestPositionRound": {
+          "type": "integer"
+        },
+        "worstPosition": {
+          "type": "integer"
+        },
+        "worstPositionRound": {
+          "type": "integer"
+        },
+        "roundsInG6": {
+          "type": "integer"
+        },
+        "rounds": {
+          "type": "integer"
+        },
+        "longestUnbeaten": {
+          "type": "integer"
+        },
+        "clinchRound": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "moments",
+        "bestPosition",
+        "bestPositionRound",
+        "worstPosition",
+        "worstPositionRound",
+        "roundsInG6",
+        "rounds",
+        "longestUnbeaten",
+        "clinchRound"
+      ],
+      "title": "Retro",
+      "type": "object"
+    },
+    "RetroMoment": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "start",
+            "worst",
+            "coach",
+            "run",
+            "clinch",
+            "biggest_win",
+            "final"
+          ],
+          "type": "string"
+        },
+        "round": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "pG6": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "position": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "round",
+        "title",
+        "text",
+        "pG6",
+        "position"
+      ],
+      "title": "RetroMoment",
+      "type": "object"
+    },
     "RivalGame": {
       "additionalProperties": false,
       "properties": {
@@ -967,6 +1417,32 @@
       "title": "RivalGame",
       "type": "object"
     },
+    "ScoreCell": {
+      "additionalProperties": false,
+      "description": "Um placar do próximo jogo do Leão no confronto, na visão do Leão.",
+      "properties": {
+        "focusGoals": {
+          "type": "integer"
+        },
+        "opponentGoals": {
+          "type": "integer"
+        },
+        "p": {
+          "type": "number"
+        },
+        "pAdvance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "focusGoals",
+        "opponentGoals",
+        "p",
+        "pAdvance"
+      ],
+      "title": "ScoreCell",
+      "type": "object"
+    },
     "SeasonCalibration": {
       "additionalProperties": false,
       "properties": {
@@ -984,6 +1460,31 @@
             "$ref": "#/$defs/CalibrationBin"
           },
           "type": "array"
+        },
+        "finalG6": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "checks": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/SnapshotCheck"
+          },
+          "type": "array"
+        },
+        "summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -1032,6 +1533,39 @@
         "focusPoints"
       ],
       "title": "Simulation",
+      "type": "object"
+    },
+    "SnapshotCheck": {
+      "additionalProperties": false,
+      "description": "O G6 que o modelo apontava depois de uma rodada (os 6 com mais chance) contra o G6 final.",
+      "properties": {
+        "round": {
+          "type": "integer"
+        },
+        "predictedG6": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "hits": {
+          "type": "integer"
+        },
+        "focusPG6": {
+          "type": "number"
+        },
+        "focusPosition": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "round",
+        "predictedG6",
+        "hits",
+        "focusPG6",
+        "focusPosition"
+      ],
+      "title": "SnapshotCheck",
       "type": "object"
     },
     "StandingRow": {
@@ -1193,6 +1727,136 @@
         "form"
       ],
       "title": "Streaks",
+      "type": "object"
+    },
+    "TapeSide": {
+      "additionalProperties": false,
+      "description": "Raio-x de um dos times do confronto, só com os pontos corridos.",
+      "properties": {
+        "teamId": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "points": {
+          "type": "integer"
+        },
+        "played": {
+          "type": "integer"
+        },
+        "wins": {
+          "type": "integer"
+        },
+        "draws": {
+          "type": "integer"
+        },
+        "losses": {
+          "type": "integer"
+        },
+        "goalsFor": {
+          "type": "integer"
+        },
+        "goalsAgainst": {
+          "type": "integer"
+        },
+        "home": {
+          "$ref": "#/$defs/VenueSplit"
+        },
+        "away": {
+          "$ref": "#/$defs/VenueSplit"
+        },
+        "cleanSheets": {
+          "type": "integer"
+        },
+        "failedToScore": {
+          "type": "integer"
+        },
+        "lateGoalsFor": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "lateGoalsAgainst": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "secondHalfFor": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "secondHalfAgainst": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "last10Points": {
+          "type": "integer"
+        },
+        "form": {
+          "items": {
+            "enum": [
+              "V",
+              "E",
+              "D"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "longestUnbeaten": {
+          "type": "integer"
+        },
+        "expectedGoals": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "teamId",
+        "position",
+        "points",
+        "played",
+        "wins",
+        "draws",
+        "losses",
+        "goalsFor",
+        "goalsAgainst",
+        "home",
+        "away",
+        "cleanSheets",
+        "failedToScore",
+        "last10Points",
+        "form",
+        "longestUnbeaten",
+        "expectedGoals"
+      ],
+      "title": "TapeSide",
       "type": "object"
     },
     "Team": {
@@ -1671,6 +2335,26 @@
     },
     "calibration": {
       "$ref": "#/$defs/Calibration"
+    },
+    "playoffs": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Playoffs"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "retro": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Retro"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   },
   "required": [
@@ -1684,7 +2368,9 @@
     "simulation",
     "history",
     "keyGames",
-    "calibration"
+    "calibration",
+    "playoffs",
+    "retro"
   ],
   "title": "Outputs",
   "type": "object"

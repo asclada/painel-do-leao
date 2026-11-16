@@ -19,6 +19,11 @@ SEASON = 2026
 TOTAL_ROUNDS = 38
 N_TEAMS = 20
 FORTALEZA_ID = "fortaleza"
+# Playoffs (mata-mata de ida e volta): jogos da ESPN a partir deste instante são da fase final. Eles repetem pares de
+# times dos pontos corridos (Criciúma x Fortaleza também foi a rodada 24), então ganham id próprio ("po-...") e ficam em
+# data/playoff-matches.json, fora da tabela. 15/11/2026 00h em Fortaleza = dia seguinte à rodada 38.
+PLAYOFFS_START = "2026-11-15T03:00:00Z"
+PLAYOFF_ID_PREFIX = "po-"
 TIMEZONE = "America/Fortaleza"
 
 # --- Provedores -------------------------------------------------------------

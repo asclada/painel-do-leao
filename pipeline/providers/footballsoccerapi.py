@@ -19,8 +19,8 @@ from pydantic import BaseModel, ConfigDict, ValidationError, model_validator
 
 from pipeline.config import FSA_BASE, FSA_LEAGUE, SEASON
 from pipeline.http import PoliteClient
-from pipeline.models import Match, MatchStatus, SeasonData, Team, match_id
-from pipeline.providers.base import ProviderError
+from pipeline.models import Match, MatchStatus, PlayoffMatch, SeasonData, Team, match_id, playoff_match_id
+from pipeline.providers.base import ProviderError, is_playoff_kickoff
 
 
 def norm(s: str | None) -> str:
@@ -122,10 +122,15 @@ class FootballSoccerApiProvider:
             cursor = (body.get("meta") or {}).get("next_cursor")
             if not cursor:
                 break
-        return SeasonData(provider="footballsoccerapi", matches=self.normalize(rows))
+        parsed = self.normalize(rows)
+        return SeasonData(
+            provider="footballsoccerapi",
+            matches=[m for m in parsed if isinstance(m, Match)],
+            playoff_matches=[m for m in parsed if isinstance(m, PlayoffMatch)],
+        )
 
-    def normalize(self, rows: list[dict]) -> list[Match]:
-        out: dict[str, Match] = {}
+    def normalize(self, rows: list[dict]) -> list[Match | PlayoffMatch]:
+        out: dict[str, Match | PlayoffMatch] = {}
         for row in rows:
             try:
                 r = RawFsaMatch.model_validate(row)
@@ -133,14 +138,14 @@ class FootballSoccerApiProvider:
                 raise ProviderError(f"footballsoccerapi mudou o formato: {exc}") from exc
             home = self.team(r.home_team_id, r.home_team_name)
             away = self.team(r.away_team_id, r.away_team_name)
-            mid = match_id(home, away)
-            if mid not in self.rounds:
+            playoff = is_playoff_kickoff(r.kickoff_utc)
+            mid = playoff_match_id(home, away) if playoff else match_id(home, away)
+            if not playoff and mid not in self.rounds:
                 continue
             status: MatchStatus = STATUS.get(r.match_status.lower(), "live" if "play" in r.match_status.lower() or "half" in r.match_status.lower() else "scheduled")  # type: ignore[assignment]
             done = status == "finished"
-            out[mid] = Match(
+            common = dict(
                 id=mid,
-                round=self.rounds[mid],
                 kickoff_utc=r.kickoff_utc,
                 status=status,
                 home_id=home,
@@ -153,4 +158,5 @@ class FootballSoccerApiProvider:
                 city=r.city_name,
                 source="footballsoccerapi",
             )
+            out[mid] = PlayoffMatch(**common) if playoff else Match(round=self.rounds[mid], **common)
         return list(out.values())

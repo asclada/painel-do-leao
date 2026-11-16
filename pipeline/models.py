@@ -1,7 +1,7 @@
 """Modelos pydantic normalizados (independentes do provedor).
 
 Os JSON em /data usam camelCase (alias_generator); em Python, snake_case.
-Importa só pydantic: pode ir para a função Python da Vercel.
+Importa só pydantic (e o config, só stdlib): pode ir para a função Python da Vercel.
 """
 
 from __future__ import annotations
@@ -10,6 +10,8 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 from pydantic.alias_generators import to_camel
+
+from pipeline.config import PLAYOFF_ID_PREFIX
 
 TeamId = str
 MatchStatus = Literal["scheduled", "live", "finished", "postponed", "cancelled"]
@@ -56,6 +58,23 @@ class Match(Model):
     source: ProviderName
 
 
+class PlayoffMatch(Model):
+    """Jogo dos playoffs (ida ou volta). A ordem dos jogos de cada confronto sai do horário (calc/playoffs.py)."""
+
+    id: str  # "po-{mandante}--{visitante}"
+    kickoff_utc: str
+    status: MatchStatus
+    home_id: TeamId
+    away_id: TeamId
+    home_goals: int | None = None
+    away_goals: int | None = None
+    ht_home_goals: int | None = None
+    ht_away_goals: int | None = None
+    venue: str | None = None
+    city: str | None = None
+    source: ProviderName
+
+
 class GoalEvent(Model):
     team_id: TeamId  # time que ganhou o gol (gol contra já corrigido)
     minute: int  # 1..90 (45+2 -> 45, 90+3 -> 90)
@@ -87,6 +106,7 @@ class SeasonData(Model):
     provider: ProviderName
     matches: list[Match]
     details: dict[str, MatchDetails] = {}
+    playoff_matches: list[PlayoffMatch] = []  # fase final (fora da tabela dos pontos corridos)
 
 
 class Record(Model):
@@ -131,3 +151,7 @@ class FetchState(Model):
 
 def match_id(home_id: TeamId, away_id: TeamId) -> str:
     return f"{home_id}--{away_id}"
+
+
+def playoff_match_id(home_id: TeamId, away_id: TeamId) -> str:
+    return f"{PLAYOFF_ID_PREFIX}{match_id(home_id, away_id)}"

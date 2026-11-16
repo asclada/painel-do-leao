@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from typing import Protocol
 
-from pipeline.config import MANUAL
+from pipeline.config import MANUAL, PLAYOFFS_START
 from pipeline.models import SeasonData, Team
 
 
@@ -18,6 +19,15 @@ class DataProvider(Protocol):
         """Busca jogos. `dates` (YYYYMMDD) limita a consulta quando o provedor permite;
         None = temporada inteira."""
         ...
+
+
+def is_playoff_kickoff(kickoff_utc: str) -> bool:
+    """Jogo da fase final? (a partir de PLAYOFFS_START, ver pipeline/config.py)"""
+
+    def dt(s: str) -> datetime:
+        return datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+    return dt(kickoff_utc) >= dt(PLAYOFFS_START)
 
 
 def load_teams() -> list[Team]:

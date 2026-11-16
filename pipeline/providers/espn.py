@@ -22,12 +22,14 @@ from pipeline.models import (
     Match,
     MatchDetails,
     MatchStatus,
+    PlayoffMatch,
     SeasonData,
     Team,
     TeamStats,
     match_id,
+    playoff_match_id,
 )
-from pipeline.providers.base import ProviderError
+from pipeline.providers.base import ProviderError, is_playoff_kickoff
 
 ESPN_TZ = ZoneInfo("America/New_York")
 
@@ -214,7 +216,7 @@ class EspnProvider:
     def fetch(self, dates: list[str] | None) -> SeasonData:
         """Busca as datas pedidas. Com `dates=None`, busca a temporada inteira
         (1 chamada para descobrir o calendário + 1 por data com jogo)."""
-        matches: dict[str, Match] = {}
+        matches: dict[str, Match | PlayoffMatch] = {}
         details: dict[str, MatchDetails] = {}
         if dates is None:
             today = datetime.now(ESPN_TZ).strftime("%Y%m%d")
@@ -222,7 +224,12 @@ class EspnProvider:
             dates = [d for d in self.calendar if d != today]
         for d in dates:
             self._collect(self.scoreboard(d), matches, details)
-        return SeasonData(provider="espn", matches=list(matches.values()), details=details)
+        return SeasonData(
+            provider="espn",
+            matches=[m for m in matches.values() if isinstance(m, Match)],
+            playoff_matches=[m for m in matches.values() if isinstance(m, PlayoffMatch)],
+            details=details,
+        )
 
     # -- normalização -------------------------------------------------------------
 
@@ -236,7 +243,7 @@ class EspnProvider:
             if det is not None:
                 details[m.id] = det
 
-    def parse_event(self, ev: RawEvent) -> tuple[Match, MatchDetails | None] | None:
+    def parse_event(self, ev: RawEvent) -> tuple[Match | PlayoffMatch, MatchDetails | None] | None:
         comp = ev.competitions[0]
         sides = {c.homeAway: c for c in comp.competitors}
         if set(sides) != {"home", "away"}:
@@ -248,9 +255,11 @@ class EspnProvider:
             home, away = self.by_espn_id[home_raw.team.id], self.by_espn_id[away_raw.team.id]
         except KeyError as exc:
             raise ProviderError(f"ESPN evento {ev.id}: time desconhecido {exc}") from exc
-        mid = match_id(home, away)
-        if mid not in self.rounds:
-            return None  # não é jogo da fase de pontos corridos (ex.: playoff)
+        playoff = is_playoff_kickoff(comp.date)
+        # playoffs repetem pares dos pontos corridos: id próprio para não sobrescrever o jogo da tabela
+        mid = playoff_match_id(home, away) if playoff else match_id(home, away)
+        if not playoff and mid not in self.rounds:
+            return None  # não é jogo da fase de pontos corridos
         status = map_status(comp.status.type)
         finished = status == "finished"
         hg = int(home_raw.score) if finished and home_raw.score is not None else None
@@ -262,9 +271,8 @@ class EspnProvider:
             det, ht = self._details(mid, comp, home, away, hg or 0, ag or 0)
 
         venue = comp.venue
-        match = Match(
+        common = dict(
             id=mid,
-            round=self.rounds[mid],
             kickoff_utc=comp.date,
             status=status,
             home_id=home,
@@ -277,6 +285,7 @@ class EspnProvider:
             city=venue.address.city if venue and venue.address else None,
             source="espn",
         )
+        match = PlayoffMatch(**common) if playoff else Match(round=self.rounds[mid], **common)
         return match, det
 
     def _details(self, mid, comp, home, away, hg, ag):

@@ -29,6 +29,8 @@ export const PTS_EXACT = 5;
 export const PTS_RESULT = 2;
 export const GOALS_MAX = 9;
 export const LAST_ROUND = 38;
+/** Ida (39) e volta (40) dos playoffs: o palpite segue numerado por "rodada" por dentro (lib/playoff-rules.ts). */
+export const MAX_ROUND = 40;
 export const STORAGE_KEY = "fen:palpites";
 
 // ---------------------------------------------------------------- pontos
@@ -95,6 +97,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   { id: "carteirinha", title: "Sócio de carteirinha", rule: "Deu palpite em 3 rodadas seguidas." },
   { id: "vidente", title: "Vidente", rule: "Acertou o resultado em 3 palpites seguidos." },
   { id: "ate-o-fim", title: "Até o fim", rule: "Deu palpite na última rodada." },
+  { id: "mata-mata", title: "Mata-mata", rule: "Deu palpite nos dois jogos dos playoffs." },
 ];
 
 export const SECADOR_MIN = 5;
@@ -122,6 +125,9 @@ export function unlockedAchievements(scored: Scored[]): Set<string> {
     }
     if (game.rivals && game.rivals.stumbled >= SECADOR_MIN) got.add("secador");
     if (guess.round === LAST_ROUND) got.add("ate-o-fim");
+  }
+  if (valid.some((s) => s.guess.round === MAX_ROUND - 1) && valid.some((s) => s.guess.round === MAX_ROUND)) {
+    got.add("mata-mata");
   }
 
   // sequências por rodada (3 seguidas)
@@ -157,7 +163,7 @@ export function decodeGuesses(raw: string | null | undefined): Guess[] {
     if (!m) continue;
     const round = Number(m[1]);
     const at = parseInt(m[4], 36);
-    if (round < 1 || round > LAST_ROUND || !Number.isFinite(at)) continue;
+    if (round < 1 || round > MAX_ROUND || !Number.isFinite(at)) continue;
     out.set(round, { round, home: Number(m[2]), away: Number(m[3]), at });
   }
   return [...out.values()].sort((a, b) => a.round - b.round);

@@ -3,7 +3,7 @@ import { FORTALEZA } from "@/lib/data";
 import { PalpiteCard, STORY } from "@/lib/og/cards";
 import { crestDataUrl } from "@/lib/og/crests";
 import { ogFonts } from "@/lib/og/fonts";
-import { GOALS_MAX } from "@/lib/palpite";
+import { GOALS_MAX, MAX_ROUND } from "@/lib/palpite";
 import { palpiteGames } from "@/lib/palpite-data";
 
 function int(raw: string | null, max: number) {
@@ -22,8 +22,8 @@ export async function GET(req: Request) {
   const m = /^(\d)-(\d)$/.exec(q.get("g") ?? "");
   if (!game || !m) return new Response("Palpite inválido.", { status: 400 });
   const guess = { home: Math.min(Number(m[1]), GOALS_MAX), away: Math.min(Number(m[2]), GOALS_MAX) };
-  const t = int(q.get("t"), 5 * 38);
-  const n = int(q.get("q"), 38);
+  const t = int(q.get("t"), 5 * MAX_ROUND);
+  const n = int(q.get("q"), MAX_ROUND);
   const homeId = game.home ? FORTALEZA : game.opponentId;
   const awayId = game.home ? game.opponentId : FORTALEZA;
   const [home, away] = await Promise.all([crestDataUrl(homeId), crestDataUrl(awayId)]);

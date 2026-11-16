@@ -15,11 +15,14 @@ import numpy as np
 
 from pipeline.calc.backtest import Backtest
 from pipeline.calc.standings import compute_standings
+from pipeline.config import FORTALEZA_ID
 from pipeline.models import Match, Model, Team
 
 N_BINS = 10
 SMALL_BIN = 30  # faixas com menos casos que isso são ruído (ver reliability_small_bins)
 MIN_FAVORITES = 30  # abaixo disso a frase do site não aparece
+CHECK_ROUNDS = (10, 19, 30)  # "o G6 que o modelo apontava" nessas rodadas
+HIGH_G6 = 0.8  # "quando o modelo dava 80% ou mais de G6"
 
 
 class CalibrationBin(Model):
@@ -57,11 +60,24 @@ class MatchCalibration(Model):
     reliability_weighted: float
 
 
+class SnapshotCheck(Model):
+    """O G6 que o modelo apontava depois de uma rodada (os 6 com mais chance) contra o G6 final."""
+
+    round: int
+    predicted_g6: list[str]  # os 6 times com mais chance de G6, do maior para o menor
+    hits: int  # quantos deles terminaram no G6
+    focus_p_g6: float  # chance de G6 do Fortaleza naquele momento
+    focus_position: int
+
+
 class SeasonCalibration(Model):
     n: int  # pares (time, rodada)
     brier_direct: float
     brier_g6: float
     bins_g6: list[CalibrationBin]
+    final_g6: list[str] = []  # do 1º ao 6º
+    checks: list[SnapshotCheck] = []  # rodadas CHECK_ROUNDS
+    summary: str | None = None  # frase para o site
 
 
 class Calibration(Model):
@@ -160,12 +176,46 @@ def season_calibration(backtest: Backtest, teams: list[Team], matches: list[Matc
             direct.append(final[tid] <= 2)
             g6.append(final[tid] <= 6)
     pd, pg, yd, yg = (np.asarray(x, float) for x in (p_direct, p_g6, direct, g6))
+    final_g6 = [tid for tid, pos in sorted(final.items(), key=lambda x: x[1]) if pos <= 6]
+    checks = []
+    by_round = {b.round: b for b in backtest.rounds}
+    for r in CHECK_ROUNDS:
+        snap = by_round.get(r)
+        if snap is None:
+            continue
+        ranked = sorted(snap.teams.items(), key=lambda kv: (-(kv[1].p_direct + kv[1].p_top6), kv[1].position))
+        top = [tid for tid, _ in ranked[:6]]
+        f = snap.teams.get(FORTALEZA_ID)
+        checks.append(SnapshotCheck(
+            round=r, predicted_g6=top, hits=sum(1 for t in top if t in final_g6),
+            focus_p_g6=_r(min(1.0, f.p_direct + f.p_top6)) if f else 0.0, focus_position=f.position if f else 0,
+        ))
+    high = pg >= HIGH_G6
+    low = pg <= 1 - HIGH_G6
+    summary = None
+    if high.sum() >= 20 and low.sum() >= 20:
+        summary = (
+            f"Nas {len(backtest.rounds)} rodadas, sempre com o que se sabia até ali: quando o modelo dava 80% ou mais "
+            f"de chance de um time terminar no G6, ele terminou lá {_times(yg[high].mean())}; quando "
+            f"dava 20% ou menos, só {_pct_int(yg[low].mean())} terminaram."
+        )
     return SeasonCalibration(
         n=len(pd),
         brier_direct=_r(((pd - yd) ** 2).mean()),
         brier_g6=_r(((pg - yg) ** 2).mean()),
         bins_g6=_bins(pg, yg),
+        final_g6=final_g6,
+        checks=checks,
+        summary=summary,
     )
+
+
+def _times(x: float) -> str:
+    return "em todas as vezes" if x >= 1 else f"em {_pct_int(x)} das vezes"
+
+
+def _pct_int(x: float) -> str:
+    return f"{round(100 * float(x))}%"
 
 
 def summary_phrase(mc: MatchCalibration | None) -> str | None:
@@ -260,6 +310,10 @@ def calibration_markdown(cal: Calibration, last_round: int) -> str:
         ]
         lines += [f"| {_pct(b.lo)}–{_pct(b.hi)} | {b.n} | {_pct(b.predicted)} | {_pct(b.observed)} |"
                   for b in sc.bins_g6]
+        if sc.checks:
+            lines += ["", f"G6 final: {', '.join(sc.final_g6)}.", "",
+                      "| Depois da rodada | Os 6 com mais chance de G6 | Acertos | Chance do Fortaleza |", "|---:|---|---:|---:|"]
+            lines += [f"| {c.round} | {', '.join(c.predicted_g6)} | {c.hits} de 6 | {_pct(c.focus_p_g6)} |" for c in sc.checks]
     else:
         lines += [
             "Só dá para avaliar quando os pontos corridos terminarem: aí a chance de G2 e de G6 de cada time, em",

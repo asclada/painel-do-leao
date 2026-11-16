@@ -36,8 +36,10 @@ from pipeline.calc.key_games import compute_key_games
 from pipeline.calc.milestones import auto_milestones, headline, load_manual, select_milestones
 from pipeline.calc.model_input import build_model_input
 from pipeline.calc.next_match import compute_next_match
+from pipeline.calc.playoffs import compute_playoffs, playoff_next_match
 from pipeline.crests import ensure_crests
 from pipeline.calc.race import compute_race
+from pipeline.calc.retro import compute_retro
 from pipeline.calc.standings import compute_standings
 from pipeline.calc.streaks import compute_streaks
 from pipeline.calc.timeline import positions_by_round, team_timeline
@@ -46,6 +48,8 @@ from pipeline.config import DATA, FORTALEZA_ID, N_SIMS_PIPELINE, ROOT, SEASON, T
 from pipeline.fetch import (
     DETAILS_FILE,
     MATCHES_FILE,
+    PLAYOFF_MATCHES_FILE,
+    all_matches,
     data_status,
     iso,
     load_cached,
@@ -63,7 +67,7 @@ from pipeline.providers.base import ProviderError, load_rounds, load_teams
 from pipeline.providers.espn import EspnProvider, LocalCacheClient
 
 OUTPUT_FILES = ["meta", "teams", "standings", "timeline", "xray", "race", "next-match",
-                "simulation", "model", "history", "backtest", "key-games", "calibration"]
+                "simulation", "model", "history", "backtest", "key-games", "calibration", "playoffs", "retro"]
 BACKTEST_FILE = DATA / "backtest.json"
 CALIBRATION_DOC = ROOT / "docs" / "CALIBRACAO.md"
 
@@ -133,6 +137,15 @@ def next_match_chances(model: ModelInput, match_id: str, seed: int) -> MatchChan
                         loss=round(float(p_away if home else p_home), 4))
 
 
+def season_state(matches: list, playoffs) -> str:
+    """regular = pontos corridos; playoffs = mata-mata do Leão em andamento; finished = acabou para o Leão."""
+    if any(m.status != "finished" for m in matches):
+        return "regular"
+    if playoffs is None or playoffs.focus is None or playoffs.state == "finished":
+        return "finished"
+    return "playoffs"
+
+
 def compute_outputs(
     season: SeasonData, teams: list[Team], previous_backtest: Backtest | None = None, log=print
 ) -> dict[str, Any]:
@@ -197,6 +210,9 @@ def compute_outputs(
     nxt = compute_next_match(matches, FORTALEZA_ID, names)
     if nxt is not None:
         nxt.chances = next_match_chances(model, nxt.match_id, seed)
+    playoffs = compute_playoffs(standings, matches, season.playoff_matches, details, model)
+    if nxt is None and playoffs is not None:
+        nxt = playoff_next_match(playoffs, matches)
     key_games = compute_key_games(model, sim, N_SIMS_PIPELINE, seed)
 
     # backtest e calibração (só as rodadas novas são simuladas)
@@ -205,12 +221,13 @@ def compute_outputs(
     fort_odds = next(o for o in odds if o.team_id == FORTALEZA_ID)
     partial = any(m.status == "finished" and m.round > last_round for m in matches)
     history = chance_history(backtest, fort_odds, fort_row, last_round, partial)
+    retro = compute_retro(FORTALEZA_ID, teams, matches, points, history, names)
 
     return {
         "meta_fields": dict(
             season=SEASON, fortaleza_id=FORTALEZA_ID, last_completed_round=last_round,
             has_goal_minutes=has_goal_minutes, has_half_time=has_half_time,
-            season_state="regular" if any(m.status != "finished" for m in matches) else "playoffs",
+            season_state=season_state(matches, playoffs),
         ),
         "teams": [t.model_dump(by_alias=True, exclude={"aliases"}) for t in teams],
         "standings": [r.dump() for r in standings],
@@ -224,6 +241,8 @@ def compute_outputs(
         "key-games": key_games.dump(),
         "backtest": backtest.dump(),
         "calibration": calibration.dump(),
+        "playoffs": playoffs.dump() if playoffs else None,
+        "retro": retro.dump() if retro else None,
         "calibration_doc": calibration_markdown(calibration, last_round),
     }
 
@@ -231,7 +250,7 @@ def compute_outputs(
 def write_outputs(out: dict[str, Any], provider: str | None, now: datetime, status: dict | None = None) -> bool:
     changed = False
     for name in ["teams", "standings", "timeline", "xray", "race", "next-match", "simulation", "model",
-                 "history", "key-games", "backtest", "calibration"]:
+                 "history", "key-games", "backtest", "calibration", "playoffs", "retro"]:
         changed |= write_json(DATA / f"{name}.json", out[name])
     write_text(CALIBRATION_DOC, out["calibration_doc"])
 
@@ -281,6 +300,7 @@ def main(argv: list[str] | None = None) -> int:
         espn = None
         if args.offline:
             MATCHES_FILE.unlink(missing_ok=True)
+            PLAYOFF_MATCHES_FILE.unlink(missing_ok=True)
             espn = EspnProvider(teams, rounds, client=LocalCacheClient())
         try:
             res = run_fetch(teams, rounds, now=now, force=args.force, espn=espn)
@@ -289,7 +309,7 @@ def main(argv: list[str] | None = None) -> int:
             # nenhum provedor respondeu: o site passa a avisar que os dados podem estar atrasados
             cached = load_cached()
             if cached is not None:
-                write_data_status(data_status(cached.matches, load_state(), now))
+                write_data_status(data_status(all_matches(cached), load_state(), now))
             return 1
         season = res.season
         provider = res.provider_used
@@ -312,8 +332,9 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     changed = write_json(MATCHES_FILE, [m.dump() for m in season.matches])
+    changed |= write_json(PLAYOFF_MATCHES_FILE, [m.dump() for m in season.playoff_matches])
     changed |= write_json(DETAILS_FILE, {k: v.dump() for k, v in sorted(season.details.items())})
-    status = data_status(season.matches, res.state if res is not None else load_state(), now)
+    status = data_status(all_matches(season), res.state if res is not None else load_state(), now)
     changed |= write_outputs(out, provider, now, status)
     if res is not None:
         save_state(res.state)
@@ -325,7 +346,9 @@ def main(argv: list[str] | None = None) -> int:
     print(
         f"Provedor: {provider or 'cache'} | chamadas: {calls} | rodada concluída: "
         f"{out['meta_fields']['last_completed_round']} | Fortaleza: {row['position']}º, {row['points']} pts | "
-        f"acesso {fort['pPromotion']:.1%} (direto {fort['pDirect']:.1%}) | dados mudaram: {changed}"
+        f"acesso {fort['pPromotion']:.1%} (direto {fort['pDirect']:.1%}) | "
+        + (f"passar no mata-mata {po['focus']['pAdvance']:.1%} | " if (po := out["playoffs"]) and po["focus"] else "")
+        + f"dados mudaram: {changed}"
     )
     return 0
 

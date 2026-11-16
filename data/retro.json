@@ -1,0 +1,68 @@
+{
+  "bestPosition": 1,
+  "bestPositionRound": 7,
+  "clinchRound": 36,
+  "longestUnbeaten": 17,
+  "moments": [
+    {
+      "kind": "start",
+      "pG6": 0.1403,
+      "position": 20,
+      "round": 1,
+      "text": "Rodada 1: Botafogo-SP 4 x 0 Fortaleza. O Leão saiu em 20º, com 14% de chance de terminar no G6.",
+      "title": "A largada"
+    },
+    {
+      "kind": "biggest_win",
+      "pG6": 0.5,
+      "position": 1,
+      "round": 7,
+      "text": "Rodada 7: Fortaleza 4 x 1 Goiás.",
+      "title": "A maior vitória"
+    },
+    {
+      "kind": "worst",
+      "pG6": 0.333,
+      "position": 8,
+      "round": 14,
+      "text": "Depois da rodada 14, o Leão estava em 8º, fora do G6, com 22 pontos. A chance de terminar no G6 era de 33%.",
+      "title": "O pior momento"
+    },
+    {
+      "kind": "coach",
+      "pG6": 0.6227,
+      "position": 3,
+      "round": 21,
+      "text": "Rodada 21: estreia de Paulo Autuori no banco, no 1 x 1 com o Cuiabá. Ele chegou depois da saída de Thiago Carpini, em 23/07; na rodada 20 o time ainda foi comandado por um interino. Antes dele, a chance de G6 estava em 63%.",
+      "title": "Estreia de Paulo Autuori"
+    },
+    {
+      "kind": "run",
+      "pG6": 1.0,
+      "position": 5,
+      "round": 36,
+      "text": "Das rodadas 20 a 36, a maior sequência invicta da campanha. A chance de G6 foi de 52% para 100%.",
+      "title": "17 jogos sem perder"
+    },
+    {
+      "kind": "clinch",
+      "pG6": 1.0,
+      "position": 5,
+      "round": 36,
+      "text": "Depois da rodada 36, a vaga no G6 ficou garantida na matemática, sem depender de nenhuma conta do modelo.",
+      "title": "Vaga garantida"
+    },
+    {
+      "kind": "final",
+      "pG6": 1.0,
+      "position": 4,
+      "round": 38,
+      "text": "Rodada 38: Fortaleza 1 x 0 Vila Nova. O Leão terminou em 4º, com 65 pontos.",
+      "title": "Fim dos pontos corridos"
+    }
+  ],
+  "rounds": 38,
+  "roundsInG6": 32,
+  "worstPosition": 8,
+  "worstPositionRound": 14
+}

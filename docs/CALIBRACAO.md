@@ -58,3 +58,11 @@ Calibração por faixa (todas as chances de vitória do mandante, empate e vitó
 | 70%–80% | 34 | 75% | 65% |
 | 80%–90% | 24 | 85% | 100% |
 | 90%–100% | 49 | 98% | 100% |
+
+G6 final: novorizontino, juventude, vila-nova, fortaleza, criciuma, atletico-go.
+
+| Depois da rodada | Os 6 com mais chance de G6 | Acertos | Chance do Fortaleza |
+|---:|---|---:|---:|
+| 10 | sao-bernardo, nautico, sport, vila-nova, fortaleza, novorizontino | 3 de 6 | 54% |
+| 19 | criciuma, operario-pr, juventude, vila-nova, novorizontino, fortaleza | 5 de 6 | 52% |
+| 30 | vila-nova, juventude, fortaleza, novorizontino, atletico-go, crb | 5 de 6 | 86% |

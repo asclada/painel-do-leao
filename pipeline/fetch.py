@@ -20,18 +20,20 @@ from pipeline.config import (
     ESPN_ISSUE_AFTER_FAILURES,
     MATCH_DONE_AFTER,
     N_TEAMS,
+    PLAYOFFS_START,
     RAW,
     STALE_MATCH_AFTER,
     STALE_RECHECK_EVERY,
     TOTAL_ROUNDS,
 )
-from pipeline.models import FetchState, Match, MatchDetails, SeasonData, Team
+from pipeline.models import FetchState, Match, MatchDetails, PlayoffMatch, SeasonData, Team
 from pipeline.providers.base import ProviderError
 from pipeline.providers.espn import EspnProvider, espn_date_key
 
 STATE_FILE = RAW / "state.json"
 MATCHES_FILE = DATA / "matches.json"
 DETAILS_FILE = DATA / "details.json"
+PLAYOFF_MATCHES_FILE = DATA / "playoff-matches.json"
 UPCOMING_WINDOW = timedelta(days=3)  # reconfere horários dos jogos dos próximos dias
 DELAY_GRACE = timedelta(hours=2)  # folga antes de avisar no site que um resultado está atrasado
 
@@ -61,14 +63,23 @@ def load_cached() -> SeasonData | None:
     if DETAILS_FILE.exists():
         raw = json.loads(DETAILS_FILE.read_text(encoding="utf-8"))
         details = {k: MatchDetails.model_validate(v) for k, v in raw.items()}
+    playoff = []
+    if PLAYOFF_MATCHES_FILE.exists():
+        raw = json.loads(PLAYOFF_MATCHES_FILE.read_text(encoding="utf-8"))
+        playoff = [PlayoffMatch.model_validate(m) for m in raw]
     provider = "espn" if any(m.source == "espn" for m in matches) else "footballsoccerapi"
-    return SeasonData(provider=provider, matches=matches, details=details)
+    return SeasonData(provider=provider, matches=matches, details=details, playoff_matches=playoff)
+
+
+def all_matches(season: SeasonData) -> list[Match | PlayoffMatch]:
+    """Pontos corridos + playoffs (para decidir quando consultar e avisar atraso)."""
+    return [*season.matches, *season.playoff_matches]
 
 
 # --- Decisão: consultar ou não ------------------------------------------------------
 
 
-def due_matches(matches: list[Match], state: FetchState, now: datetime) -> list[Match]:
+def due_matches(matches: list[Match | PlayoffMatch], state: FetchState, now: datetime) -> list[Match | PlayoffMatch]:
     """Jogos que já deveriam ter terminado e ainda não estão como encerrados."""
     due = []
     for m in matches:
@@ -89,18 +100,46 @@ def plan_dates(cached: SeasonData | None, state: FetchState, now: datetime, forc
     """Datas a consultar na ESPN. None = carga completa; [] = nada a fazer."""
     if cached is None or not cached.matches:
         return None
-    due = due_matches(cached.matches, state, now)
+    games = all_matches(cached)
+    due = due_matches(games, state, now)
     # jogos encerrados que vieram do reserva: buscar os detalhes na ESPN
-    backfill = [m for m in cached.matches if m.status == "finished" and m.source != "espn"]
-    if not due and not backfill and not force:
+    backfill = [m for m in games if m.status == "finished" and m.source != "espn"]
+    # playoffs: descobre os confrontos e reconfere horário/estádio nos dias antes do jogo
+    playoff_dates = playoff_dates_to_check(cached, state, now)
+    if not due and not backfill and not playoff_dates and not force:
         return []
-    dates = {espn_date_key(m.kickoff_utc) for m in due + backfill}
+    dates = {espn_date_key(m.kickoff_utc) for m in due + backfill} | set(playoff_dates)
     # aproveita a ida para reconferir horários dos próximos dias
-    for m in cached.matches:
+    for m in games:
         ko = parse_dt(m.kickoff_utc)
         if m.status == "scheduled" and now <= ko <= now + UPCOMING_WINDOW:
             dates.add(espn_date_key(m.kickoff_utc))
     return sorted(dates)
+
+
+PLAYOFF_RECHECK_EVERY = timedelta(hours=12)  # reconfere data/horário/estádio dos jogos dos playoffs nos dias antes
+
+
+def playoff_dates_to_check(cached: SeasonData, state: FetchState, now: datetime) -> list[str]:
+    """Datas da fase final a consultar mesmo sem jogo encerrado (só depois de a tabela fechar):
+    - do calendário da ESPN sem confronto conhecido (ainda "a definir"), no máximo 1x por dia;
+    - dos jogos dos próximos dias, no máximo a cada 12 h: a ESPN confirma horário e estádio perto do jogo, e sem
+      jogo terminando nada mais dispararia a consulta."""
+    if any(m.status != "finished" for m in cached.matches):
+        return []
+
+    def stale(d: str, every: timedelta) -> bool:
+        last = state.date_checked_at.get(d)
+        return last is None or now - parse_dt(last) >= every
+
+    first = PLAYOFFS_START[:10].replace("-", "")  # dia (não o fuso de Nova York, que voltaria para o dia 14)
+    known = {espn_date_key(m.kickoff_utc) for m in cached.playoff_matches}
+    out = {d for d in state.calendar if d >= first and d not in known and stale(d, STALE_RECHECK_EVERY)}
+    for m in cached.playoff_matches:
+        d = espn_date_key(m.kickoff_utc)
+        if m.status == "scheduled" and now <= parse_dt(m.kickoff_utc) <= now + UPCOMING_WINDOW and stale(d, PLAYOFF_RECHECK_EVERY):
+            out.add(d)
+    return sorted(out)
 
 
 # --- Mescla e validação -----------------------------------------------------------
@@ -117,7 +156,16 @@ def merge(cached: SeasonData | None, fresh: SeasonData) -> SeasonData:
         matches[m.id] = m
     details.update(fresh.details)
     ordered = sorted(matches.values(), key=lambda m: (m.round, m.kickoff_utc, m.id))
-    return SeasonData(provider=fresh.provider, matches=ordered, details=details)
+    playoff = {m.id: m for m in (cached.playoff_matches if cached else [])}
+    for m in fresh.playoff_matches:
+        old = playoff.get(m.id)
+        if old and old.status == "finished" and old.source == "espn" and m.source != "espn":
+            continue
+        playoff[m.id] = m
+    return SeasonData(
+        provider=fresh.provider, matches=ordered, details=details,
+        playoff_matches=sorted(playoff.values(), key=lambda m: (m.kickoff_utc, m.id)),
+    )
 
 
 def validate_season(season: SeasonData, teams: list[Team]) -> None:
@@ -175,8 +223,8 @@ def run_fetch(
         fetched = set(dates or []) | ({*espn.calendar} if dates is None else set())
         extra = {d for d in espn.calendar if d not in known and d not in fetched} if known else set()
         if cached and dates:
-            fresh_ids = {m.id for m in fresh.matches}
-            vanished = [m for m in cached.matches
+            fresh_ids = {m.id for m in all_matches(fresh)}
+            vanished = [m for m in all_matches(cached)
                         if espn_date_key(m.kickoff_utc) in dates and m.id not in fresh_ids
                         and m.status != "finished"]
             if vanished:
@@ -229,7 +277,7 @@ def run_fetch(
     return result
 
 
-def data_status(matches: list[Match], state: FetchState, now: datetime) -> dict:
+def data_status(matches: list[Match | PlayoffMatch], state: FetchState, now: datetime) -> dict:
     """Dados atrasados = a ESPN falhou seguidamente e ainda há jogo que já deveria ter terminado sem resultado
     (se o reserva trouxe tudo, não há atraso)."""
     pending = any(

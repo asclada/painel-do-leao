@@ -1,1 +1,32 @@
-null
+{
+  "chances": {
+    "draw": 0.3407,
+    "loss": 0.3496,
+    "win": 0.3097
+  },
+  "city": "Criciúma",
+  "firstTurn": null,
+  "formFortaleza": [
+    "V",
+    "E",
+    "E",
+    "D",
+    "V"
+  ],
+  "formOpponent": [
+    "V",
+    "D",
+    "V",
+    "D",
+    "D"
+  ],
+  "home": false,
+  "kickoffUtc": "2026-11-21T20:00Z",
+  "leg": 1,
+  "matchId": "po-criciuma--fortaleza",
+  "opponentId": "criciuma",
+  "round": 39,
+  "status": "scheduled",
+  "venue": "Heriberto Hülse",
+  "venueGuessed": true
+}

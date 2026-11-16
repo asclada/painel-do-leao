@@ -1,4 +1,4 @@
-import { meta, nextMatch, simulation, standings, teams } from "@/lib/data";
+import { meta, nextMatch, playoffs, simulation, standings, teams } from "@/lib/data";
 import matchesJson from "@/data/matches.json";
 
 /**
@@ -52,6 +52,19 @@ export function GET() {
         })),
       },
       matches,
+      // playoffs: confrontos, placares, chance de passar e as contas do confronto do Leão (null nos pontos corridos)
+      playoffs: playoffs && {
+        state: playoffs.state,
+        ties: playoffs.ties,
+        focus: playoffs.focus && {
+          opponentId: playoffs.focus.opponentId,
+          better: playoffs.focus.better,
+          nextLeg: playoffs.focus.nextLeg,
+          pAdvance: playoffs.focus.pAdvance,
+          pAdvanceStart: playoffs.focus.pAdvanceStart,
+          legChances: playoffs.focus.legChances,
+        },
+      },
     },
     { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300" } },
   );

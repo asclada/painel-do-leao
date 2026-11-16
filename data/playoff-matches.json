@@ -1,0 +1,58 @@
+[
+  {
+    "awayGoals": null,
+    "awayId": "vila-nova",
+    "city": null,
+    "homeGoals": null,
+    "homeId": "atletico-go",
+    "htAwayGoals": null,
+    "htHomeGoals": null,
+    "id": "po-atletico-go--vila-nova",
+    "kickoffUtc": "2026-11-21T20:00Z",
+    "source": "espn",
+    "status": "scheduled",
+    "venue": null
+  },
+  {
+    "awayGoals": null,
+    "awayId": "fortaleza",
+    "city": null,
+    "homeGoals": null,
+    "homeId": "criciuma",
+    "htAwayGoals": null,
+    "htHomeGoals": null,
+    "id": "po-criciuma--fortaleza",
+    "kickoffUtc": "2026-11-21T20:00Z",
+    "source": "espn",
+    "status": "scheduled",
+    "venue": null
+  },
+  {
+    "awayGoals": null,
+    "awayId": "criciuma",
+    "city": null,
+    "homeGoals": null,
+    "homeId": "fortaleza",
+    "htAwayGoals": null,
+    "htHomeGoals": null,
+    "id": "po-fortaleza--criciuma",
+    "kickoffUtc": "2026-11-28T20:00Z",
+    "source": "espn",
+    "status": "scheduled",
+    "venue": null
+  },
+  {
+    "awayGoals": null,
+    "awayId": "atletico-go",
+    "city": null,
+    "homeGoals": null,
+    "homeId": "vila-nova",
+    "htAwayGoals": null,
+    "htHomeGoals": null,
+    "id": "po-vila-nova--atletico-go",
+    "kickoffUtc": "2026-11-28T20:00Z",
+    "source": "espn",
+    "status": "scheduled",
+    "venue": null
+  }
+]

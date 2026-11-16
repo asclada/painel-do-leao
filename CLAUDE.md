@@ -71,6 +71,33 @@ simulador "E se?" e raio-x. Atualiza sozinho (cron com tentativa a cada 30 min).
   Analytics: `desafio_criado`, `duelo_respondido`, `palpite_feito`, `cartao_gerado` em todo ShareButton com imagem,
   `backup_palpites`). O projeto está no plano grátis (Hobby, confirmado pelo Lucas em 30/09): eventos personalizados
   não aparecem no painel; por enquanto contar pelas chamadas das rotas `/api/card/*` em Observability.
+- **Playoffs (14/11, pedido do Lucas: "todas as sugestões"):** com a tabela fechada o site entra no modo playoffs
+  (`meta.seasonState` = `playoffs`; `finished` quando o confronto do Leão acaba; `playoffMode` em `lib/data.ts`).
+  **Pipeline:** jogos da ESPN a partir de `PLAYOFFS_START` (`pipeline/config.py`) viram `PlayoffMatch` com id
+  `po-{mandante}--{visitante}` em `data/playoff-matches.json` (o par Criciúma x Fortaleza também é a rodada 24: sem o
+  prefixo, a ida sobrescreveria o jogo da tabela). `fetch.playoff_dates_to_check` descobre os confrontos no calendário
+  (1x/dia enquanto "a definir") e reconfere horário/estádio nos 3 dias antes de cada jogo (a cada 12 h).
+  `pipeline/calc/playoffs.py` → `data/playoffs.json`: os dois confrontos (3º x 6º, 4º x 5º), placar somado, chance de
+  passar (conta exata pela distribuição de gols, a mesma força sorteada nos dois jogos, forças dos pontos corridos),
+  e para o Leão: V/E/D do próximo jogo, `margins` (chance de subir para cada resultado do próximo jogo), `scores`
+  (mapa de placares 0–4), `pAdvanceStart` (antes da ida) e o raio-x lado a lado (`focus`/`opponent`, `headToHead`).
+  O próximo jogo vira a ida/volta (`next-match.json → leg`, `round` = 39/40, `venueGuessed` = estádio mais usado pelo
+  mandante, "(a confirmar)" na tela). `pipeline/calc/retro.py` → `data/retro.json`: momentos da campanha (largada,
+  maior vitória, pior posição da rodada 10 em diante, troca de técnico dos marcos confirmados, maior invencibilidade,
+  vaga no G6 garantida na matemática, fim), chance de G6 = direto + playoffs. `calibration.season.checks`: o G6 que o
+  modelo apontava depois das rodadas 10/19/30 contra o final.
+  **Site (ordem nos playoffs):** topo (`PlayoffHeroCard`: chance de subir + placar somado + regra) → **O confronto**:
+  palpite do jogo, "Do que o Leão precisa" (`components/playoffs/Confronto.tsx`: regra, tabela por resultado, mapa de
+  placares recolhido, o outro confronto), "Raio-x do confronto" (`TaleOfTape`), "Simulador do confronto"
+  (`ConfrontoSimulator`, recolhido, `?c=1-2_1-1` na ordem de cada jogo; abre sozinho com `?c=`) → **A campanha**:
+  retrospectiva (`Retrospective` + `RetroChart`), campanha em números, montanha-russa, "O modelo acertou?"
+  (`ModelCheck`) → raio-x do time, jogos, compartilhar. Saem: chances de acesso direto/G6, "Como a chance mudou",
+  "Até a rodada 38", simulador dos pontos corridos, "Pra secar" e corrida (o código continua para a próxima
+  temporada). Menu próprio (`NAV_PLAYOFFS` em `app/page.tsx`). Regras puras em `lib/playoff-rules.ts` (o navegador
+  importa sem levar os JSON); com dados em `lib/playoffs.ts`. Palpite: ida = rodada 39, volta = 40 (`MAX_ROUND`;
+  na tela "Playoffs · ida"), conquista "Mata-mata". Cards: `/api/card/acesso`, `/conta`, `/proximo-jogo` e a prévia
+  do link mudam sozinhos; novos `/api/card/retrospectiva` e `/api/card/confronto?c=`. Evento `confronto_simulado`.
+  A ESPN não traz pênaltis nem prorrogação: o regulamento não tem (empate no placar somado = melhor campanha).
 - **Dados atrasados:** `meta.dataStatus` (`pipeline/fetch.py::data_status`): `delayed` só com ESPN falhando ≥2x E
   jogo que já deveria ter acabado sem resultado; não mexe no `updatedAt`. Banner em `components/DataStatusBanner.tsx`.
 - **`/api/status` (03/10):** `app/api/status/route.ts`, rota estática (`force-static`) gerada no build com o que está NO AR em
@@ -237,6 +264,6 @@ simulador "E se?" e raio-x. Atualiza sozinho (cron com tentativa a cada 30 min).
   "bayesiano completo").
 - Pendente do Lucas: testes no celular (M10) e revisão dos textos (M11).
 
-_Última atualização: 30/09/2026 (auditoria: desempate com confronto direto, hierarquia em blocos, "Pra secar"
+_Última atualização: 14/11/2026 (modo playoffs). Antes: 30/09/2026 (auditoria: desempate com confronto direto, hierarquia em blocos, "Pra secar"
 enxuto, seções recolhidas, "Meu Leão" e "jogos do Leão que mais mexem" removidos, licença "todos os direitos
 reservados"). Em 03/10/2026: rota `/api/status`._
