@@ -1,58 +1,58 @@
 [
   {
     "awayGoals": null,
-    "awayId": "vila-nova",
-    "city": null,
-    "homeGoals": null,
-    "homeId": "atletico-go",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
-    "id": "po-atletico-go--vila-nova",
-    "kickoffUtc": "2026-11-21T20:00Z",
-    "source": "espn",
-    "status": "scheduled",
-    "venue": null
-  },
-  {
-    "awayGoals": null,
     "awayId": "fortaleza",
-    "city": null,
+    "city": "Criciúma",
     "homeGoals": null,
     "homeId": "criciuma",
     "htAwayGoals": null,
     "htHomeGoals": null,
     "id": "po-criciuma--fortaleza",
-    "kickoffUtc": "2026-11-21T20:00Z",
+    "kickoffUtc": "2026-11-22T19:00Z",
     "source": "espn",
     "status": "scheduled",
-    "venue": null
+    "venue": "Heriberto Hülse"
   },
   {
     "awayGoals": null,
-    "awayId": "criciuma",
-    "city": null,
+    "awayId": "vila-nova",
+    "city": "Goiãnia",
     "homeGoals": null,
-    "homeId": "fortaleza",
+    "homeId": "atletico-go",
     "htAwayGoals": null,
     "htHomeGoals": null,
-    "id": "po-fortaleza--criciuma",
-    "kickoffUtc": "2026-11-28T20:00Z",
+    "id": "po-atletico-go--vila-nova",
+    "kickoffUtc": "2026-11-22T21:30Z",
     "source": "espn",
     "status": "scheduled",
-    "venue": null
+    "venue": "Estádio Antônio Accioly"
   },
   {
     "awayGoals": null,
     "awayId": "atletico-go",
-    "city": null,
+    "city": "Goiãnia",
     "homeGoals": null,
     "homeId": "vila-nova",
     "htAwayGoals": null,
     "htHomeGoals": null,
     "id": "po-vila-nova--atletico-go",
-    "kickoffUtc": "2026-11-28T20:00Z",
+    "kickoffUtc": "2026-11-27T23:00Z",
     "source": "espn",
     "status": "scheduled",
-    "venue": null
+    "venue": "Estádio Onésio Brasileiro Alvarenga"
+  },
+  {
+    "awayGoals": null,
+    "awayId": "criciuma",
+    "city": "Fortaleza",
+    "homeGoals": null,
+    "homeId": "fortaleza",
+    "htAwayGoals": null,
+    "htHomeGoals": null,
+    "id": "po-fortaleza--criciuma",
+    "kickoffUtc": "2026-11-28T23:00Z",
+    "source": "espn",
+    "status": "scheduled",
+    "venue": "Arena Castelão"
   }
 ]

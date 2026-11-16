@@ -328,12 +328,12 @@
           "city": "Goiãnia",
           "homeGoals": null,
           "homeId": "atletico-go",
-          "kickoffUtc": "2026-11-21T20:00Z",
+          "kickoffUtc": "2026-11-22T21:30Z",
           "leg": 1,
           "matchId": "po-atletico-go--vila-nova",
           "status": "scheduled",
           "venue": "Estádio Antônio Accioly",
-          "venueGuessed": true
+          "venueGuessed": false
         },
         {
           "awayGoals": null,
@@ -341,12 +341,12 @@
           "city": "Goiãnia",
           "homeGoals": null,
           "homeId": "vila-nova",
-          "kickoffUtc": "2026-11-28T20:00Z",
+          "kickoffUtc": "2026-11-27T23:00Z",
           "leg": 2,
           "matchId": "po-vila-nova--atletico-go",
           "status": "scheduled",
           "venue": "Estádio Onésio Brasileiro Alvarenga",
-          "venueGuessed": true
+          "venueGuessed": false
         }
       ],
       "pBetter": 0.5793,
@@ -366,12 +366,12 @@
           "city": "Criciúma",
           "homeGoals": null,
           "homeId": "criciuma",
-          "kickoffUtc": "2026-11-21T20:00Z",
+          "kickoffUtc": "2026-11-22T19:00Z",
           "leg": 1,
           "matchId": "po-criciuma--fortaleza",
           "status": "scheduled",
           "venue": "Heriberto Hülse",
-          "venueGuessed": true
+          "venueGuessed": false
         },
         {
           "awayGoals": null,
@@ -379,12 +379,12 @@
           "city": "Fortaleza",
           "homeGoals": null,
           "homeId": "fortaleza",
-          "kickoffUtc": "2026-11-28T20:00Z",
+          "kickoffUtc": "2026-11-28T23:00Z",
           "leg": 2,
           "matchId": "po-fortaleza--criciuma",
           "status": "scheduled",
           "venue": "Arena Castelão",
-          "venueGuessed": true
+          "venueGuessed": false
         }
       ],
       "pBetter": 0.6705,

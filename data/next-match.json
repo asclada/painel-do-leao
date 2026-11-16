@@ -21,12 +21,12 @@
     "D"
   ],
   "home": false,
-  "kickoffUtc": "2026-11-21T20:00Z",
+  "kickoffUtc": "2026-11-22T19:00Z",
   "leg": 1,
   "matchId": "po-criciuma--fortaleza",
   "opponentId": "criciuma",
   "round": 39,
   "status": "scheduled",
   "venue": "Heriberto Hülse",
-  "venueGuessed": true
+  "venueGuessed": false
 }
