@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { readableText } from "@/lib/color";
 import { chanceChange, same, scoreLine } from "@/lib/chance";
 import { accessChances } from "@/lib/clinch";
-import { fortalezaOdds, fortalezaRow, FORTALEZA, standings, teamById, xray } from "@/lib/data";
+import { fortalezaOdds, fortalezaRow, FORTALEZA, playoffMode, playoffs, retro, standings, teamById, xray } from "@/lib/data";
 import type { Curiosity } from "@/lib/curiosities";
 import { kickoffLabel, pct, pct1, plural, venueName } from "@/lib/format";
 import type { NextMatch, Team } from "@/lib/generated/outputs";
@@ -15,6 +15,8 @@ import { finalPoints, predictionPersona } from "@/lib/simulator-text";
 import type { Pick } from "@/lib/challenge";
 import { type PalpiteGame, scoreGuess, verdictText } from "@/lib/palpite";
 import { situation } from "@/lib/situation";
+import { LAST_REGULAR_ROUND, type LegScore, legName, roundLabel, tieOutcome } from "@/lib/playoff-rules";
+import { advanceLabel, focus, focusTie, legForFocus, legScoreLine, rulePhrase } from "@/lib/playoffs";
 
 export const STORY = { width: 1080, height: 1920 } as const;
 
@@ -139,6 +141,7 @@ function BigChance({ label, value, hint, color, size }: { label: string; value: 
  * (decisão do Lucas, 30/09): acesso direto e ir aos playoffs.
  */
 export function AccessCard() {
+  if (playoffMode && focus) return <PlayoffAccessCard />;
   const sit = situation(standings, FORTALEZA);
   const ch = accessChances(FORTALEZA, fortalezaOdds);
 
@@ -178,6 +181,7 @@ export function AccessCard() {
 
 /** Card "A conta mudou": as duas chances antes da rodada do último jogo x agora (lib/chance.ts). */
 export function ChangeCard() {
+  if (playoffMode && focus) return <PlayoffChangeCard />;
   const change = chanceChange();
   if (!change) return <AccessCard />;
   const { game } = change;
@@ -349,7 +353,7 @@ export function NextMatchStoryCard({
   const [home, away] = match.home ? [fort, opp] : [opp, fort];
   const ch = match.chances;
   return (
-    <Frame sub={`Próximo jogo · Rodada ${match.round}`} cta="Acompanhe o Leão em">
+    <Frame sub={match.leg ? `Próximo jogo · Playoffs, ${legName(match.leg).toLowerCase()}` : `Próximo jogo · Rodada ${match.round}`} cta="Acompanhe o Leão em">
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "0 60px" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <StoryCrest team={home} src={crests.home} />
@@ -359,7 +363,7 @@ export function NextMatchStoryCard({
         <div style={{ fontSize: 56, fontWeight: 800, marginTop: 70 }}>{kickoffLabel(match.kickoffUtc)}</div>
         {match.venue && (
           <div style={{ fontSize: 40, color: C.muted, marginTop: 12 }}>
-            {`Estádio: ${venueName(match.venue)}${match.city ? ` · ${match.city}` : ""}`}
+            {`Estádio: ${venueName(match.venue)}${match.city ? ` · ${match.city}` : ""}${match.venueGuessed ? " (a confirmar)" : ""}`}
           </div>
         )}
         {ch && (
@@ -544,6 +548,7 @@ export const OG = { width: 1200, height: 630 } as const;
 export const OG_ALT = `${SITE_NAME}: posição do Fortaleza na Série B e as chances de acesso`;
 
 export function OgCard() {
+  if (playoffMode && focus) return <PlayoffOgCard />;
   const sit = situation(standings, FORTALEZA);
   const ch = accessChances(FORTALEZA, fortalezaOdds);
   return (
@@ -630,7 +635,7 @@ export function PalpiteCard({
   );
 
   return (
-    <Frame sub={`Palpite da rodada ${game.round}`} cta={game.score ? "Dê o seu palpite em" : "E você, quanto crava? Palpite em"}>
+    <Frame sub={game.round > LAST_REGULAR_ROUND ? `Palpite · ${roundLabel(game.round)}` : `Palpite da rodada ${game.round}`} cta={game.score ? "Dê o seu palpite em" : "E você, quanto crava? Palpite em"}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "0 60px" }}>
         <div style={{ fontFamily: "Bebas", fontSize: 130, lineHeight: 0.9, color: C.win }}>Cravei</div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: 50 }}>
@@ -661,5 +666,218 @@ export function PalpiteCard({
         )}
       </div>
     </Frame>
+  );
+}
+
+// ---------------------------------------------------------------- Playoffs
+
+function aggregateNow() {
+  if (!focusTie || !focus) return null;
+  const played = focusTie.legs.map(legForFocus).filter((x): x is { f: number; o: number } => x !== null);
+  return played.length ? tieOutcome(focus.better, played) : null;
+}
+
+/** "Chance de subir" nos playoffs: o confronto, a chance de passar, o placar somado e os dois jogos. */
+function PlayoffAccessCard() {
+  if (!focus || !focusTie || !playoffs) return null;
+  const opp = teamById[focus.opponentId];
+  const agg = aggregateNow();
+  const finished = playoffs.state === "finished";
+  return (
+    <Frame sub={`Fortaleza nos playoffs · ${focusTie.betterPosition}º x ${focusTie.worsePosition}º`} cta="Acompanhe o confronto em">
+      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
+        <div style={{ fontSize: 50, fontWeight: 800 }}>{`Fortaleza x ${opp.name}`}</div>
+        {finished ? (
+          <div style={{ fontFamily: "Bebas", fontSize: 200, lineHeight: 0.9, color: C.win, marginTop: 40 }}>
+            {focus.pAdvance >= 0.5 ? "Acesso!" : "Fim do sonho"}
+          </div>
+        ) : (
+          <div style={{ display: "flex", flexDirection: "column", marginTop: 40 }}>
+            <div style={{ fontSize: 46, fontWeight: 700 }}>Chance de subir para a Série A</div>
+            <div style={{ fontFamily: "Bebas", fontSize: 360, lineHeight: 0.9, color: C.win, marginTop: 6 }}>{advanceLabel(focus.pAdvance)}</div>
+          </div>
+        )}
+        {agg && (
+          <div style={{ display: "flex", flexDirection: "column", marginTop: 50 }}>
+            <div style={{ fontSize: 36, color: C.muted }}>Placar somado</div>
+            <div style={{ fontFamily: "Bebas", fontSize: 110, lineHeight: 0.95 }}>{`Fortaleza ${agg.f} x ${agg.o} ${opp.name}`}</div>
+          </div>
+        )}
+        <div style={{ display: "flex", flexDirection: "column", marginTop: 60, paddingTop: 40, borderTop: `2px solid ${C.line}`, gap: 18 }}>
+          {focusTie.legs.map((l) => (
+            <div key={l.matchId} style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ fontSize: 34, color: C.muted }}>{legName(l.leg)}</div>
+              <div style={{ fontSize: 42, fontWeight: 700 }}>
+                {legForFocus(l) ? legScoreLine(l) : `${teamById[l.homeId].name} x ${teamById[l.awayId].name} · ${kickoffLabel(l.kickoffUtc)}`}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ fontSize: 34, color: C.muted, marginTop: 44 }}>{rulePhrase(focus.better, focus.opponentId)}</div>
+      </div>
+    </Frame>
+  );
+}
+
+/** "A conta mudou" nos playoffs: a chance de subir antes da ida x agora. */
+function PlayoffChangeCard() {
+  if (!focus || !focusTie) return null;
+  const first = focusTie.legs.find((l) => l.leg === 1);
+  if (!first || !legForFocus(first)) return <PlayoffAccessCard />;
+  const s = { from: focus.pAdvanceStart, to: focus.pAdvance };
+  const verb = same(s) ? "praticamente igual" : s.to > s.from ? "subiu" : "caiu";
+  return (
+    <Frame sub="Fortaleza nos playoffs" cta="Acompanhe a conta em">
+      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
+        <div style={{ fontSize: 60, fontWeight: 800 }}>A conta mudou</div>
+        <div style={{ fontSize: 40, color: C.muted, marginTop: 12 }}>{`Ida: ${legScoreLine(first)}`}</div>
+        <div style={{ fontSize: 44, fontWeight: 700, marginTop: 90 }}>{`Chance de subir: ${verb}`}</div>
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 30, marginTop: 10 }}>
+          {!same(s) && <div style={{ fontFamily: "Bebas", fontSize: 150, lineHeight: 0.9, color: C.muted }}>{pct1(s.from)}</div>}
+          {!same(s) && <div style={{ fontFamily: "Bebas", fontSize: 90, lineHeight: 1, color: C.muted }}>→</div>}
+          <div style={{ fontFamily: "Bebas", fontSize: 260, lineHeight: 0.9, color: C.win }}>{advanceLabel(s.to)}</div>
+        </div>
+        <div style={{ fontSize: 36, color: C.muted, marginTop: 30 }}>Antes da ida → agora</div>
+      </div>
+    </Frame>
+  );
+}
+
+/** Retrospectiva dos pontos corridos: os momentos da campanha, com a posição e a chance de G6 em cada um. */
+export function RetroCard() {
+  if (!retro) return <AccessCard />;
+  return (
+    <Frame sub="A campanha na Série B" cta="A história completa em">
+      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
+        <div style={{ fontSize: 64, fontWeight: 800 }}>A campanha em momentos</div>
+        <div style={{ display: "flex", flexDirection: "column", marginTop: 40, gap: 26 }}>
+          {retro.moments.map((m, i) => (
+            <div key={`${m.kind}-${m.round}`} style={{ display: "flex", alignItems: "center", gap: 28 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 64,
+                  height: 64,
+                  borderRadius: 64,
+                  background: C.blue,
+                  fontSize: 32,
+                  fontWeight: 800,
+                }}
+              >
+                {String(i + 1)}
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+                <div style={{ fontSize: 40, fontWeight: 800 }}>{m.title}</div>
+                <div style={{ fontSize: 30, color: C.muted }}>
+                  {`Rodada ${m.round} · ${m.position}º${m.pG6 != null ? ` · ${pct(m.pG6)} de chance de G6` : ""}`}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ display: "flex", gap: 40, marginTop: 56, paddingTop: 36, borderTop: `2px solid ${C.line}` }}>
+          {(
+            [
+              [`${fortalezaRow.position}º`, "lugar final"],
+              [String(fortalezaRow.points), "pontos"],
+              [String(retro.longestUnbeaten), "jogos sem perder"],
+            ] as const
+          ).map(([big, label]) => (
+            <div key={label} style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+              <div style={{ fontFamily: "Bebas", fontSize: 130, lineHeight: 0.9 }}>{big}</div>
+              <div style={{ fontSize: 30, color: C.muted }}>{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Frame>
+  );
+}
+
+/** "Meu confronto": os placares que o torcedor escolheu para a ida e a volta, o placar somado e quem sobe. */
+export function ConfrontoCard({ legs }: { legs: LegScore[] }) {
+  if (!focus || !focusTie) return <AccessCard />;
+  const opp = teamById[focus.opponentId];
+  const forFocus = focusTie.legs.map((l, i) =>
+    l.homeId === FORTALEZA ? { f: legs[i].home, o: legs[i].away } : { f: legs[i].away, o: legs[i].home },
+  );
+  const r = tieOutcome(focus.better, forFocus);
+  const oppWith = `${opp.article === "a" ? "a" : "o"} ${opp.name}`;
+  return (
+    <Frame sub="Meu palpite para o confronto" cta="Monte o seu em">
+      <div style={{ display: "flex", flexDirection: "column", padding: "0 80px" }}>
+        {focusTie.legs.map((l, i) => (
+          <div key={l.matchId} style={{ display: "flex", flexDirection: "column", marginBottom: 46 }}>
+            <div style={{ fontSize: 38, color: C.muted }}>{legName(l.leg)}</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 24, marginTop: 6 }}>
+              <div style={{ fontSize: 56, fontWeight: 800, flex: 1 }}>{teamById[l.homeId].name}</div>
+              <div style={{ fontFamily: "Bebas", fontSize: 150, lineHeight: 0.9 }}>{`${legs[i].home} x ${legs[i].away}`}</div>
+              <div style={{ fontSize: 56, fontWeight: 800, flex: 1, textAlign: "right", justifyContent: "flex-end", display: "flex" }}>
+                {teamById[l.awayId].name}
+              </div>
+            </div>
+          </div>
+        ))}
+        <div style={{ display: "flex", flexDirection: "column", paddingTop: 40, borderTop: `2px solid ${C.line}` }}>
+          <div style={{ fontSize: 38, color: C.muted }}>Placar somado</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 120, lineHeight: 0.95 }}>{`Fortaleza ${r.f} x ${r.o} ${opp.name}`}</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 190, lineHeight: 0.9, color: r.advances ? C.win : C.white, marginTop: 30 }}>
+            {r.advances ? "O Leão sobe!" : `Sobe ${oppWith}`}
+          </div>
+          {r.byTiebreak && (
+            <div style={{ fontSize: 36, color: C.muted, marginTop: 10 }}>Empate no placar somado: passa a melhor campanha.</div>
+          )}
+        </div>
+      </div>
+    </Frame>
+  );
+}
+
+/** Prévia do link nos playoffs: o confronto e a chance de subir. */
+function PlayoffOgCard() {
+  if (!focus || !focusTie) return null;
+  const opp = teamById[focus.opponentId];
+  const agg = aggregateNow();
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        background: `radial-gradient(900px 500px at 20% -150px, rgba(29,78,216,0.5), ${C.bg} 70%)`,
+        color: C.white,
+        fontFamily: "Inter",
+      }}
+    >
+      <Tricolor height={12} />
+      <div style={{ display: "flex", flex: 1, padding: "56px 72px 48px" }}>
+        <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+          <div style={{ fontFamily: "Bebas", fontSize: 60 }}>{SITE_NAME}</div>
+          <div style={{ fontSize: 28, color: C.muted }}>{`Playoffs da Série B · ${focusTie.betterPosition}º x ${focusTie.worsePosition}º`}</div>
+          <div style={{ display: "flex", flexDirection: "column", marginTop: "auto" }}>
+            <div style={{ fontFamily: "Bebas", fontSize: 110, lineHeight: 0.9 }}>{`Fortaleza x ${opp.name}`}</div>
+            <div style={{ fontSize: 30, color: C.muted, marginTop: 8 }}>
+              {agg ? `Placar somado: Fortaleza ${agg.f} x ${agg.o} ${opp.name}` : `${fortalezaRow.position}º lugar nos pontos corridos, ${plural(fortalezaRow.points, "ponto")}`}
+            </div>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            alignItems: "flex-end",
+            paddingLeft: 40,
+            borderLeft: `3px solid ${C.line}`,
+          }}
+        >
+          <div style={{ fontSize: 30, fontWeight: 700 }}>Chance de subir</div>
+          <div style={{ fontFamily: "Bebas", fontSize: 190, lineHeight: 0.85, color: C.win }}>{advanceLabel(focus.pAdvance)}</div>
+        </div>
+      </div>
+    </div>
   );
 }

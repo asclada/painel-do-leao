@@ -44,6 +44,7 @@ import {
   unlockedAchievements,
   verdictText,
 } from "@/lib/palpite";
+import { roundLabel, roundShort } from "@/lib/playoff-rules";
 import { saveGuesses, useGuesses } from "@/lib/palpite-store";
 import { trackUsage } from "@/lib/track";
 import { useNow } from "@/lib/useNow";
@@ -108,7 +109,7 @@ export function Palpite({ games, open, teams, crests, fortalezaId, siteUrl, site
           <LifeBuoy size={22} className="shrink-0" aria-hidden />
           <p className="flex-1">
             <strong>Este link traz {plural(fromLink.length, "palpite")} guardados.</strong> Quer trazer para este
-            aparelho? Na mesma rodada, vale o palpite do link.
+            aparelho? No mesmo jogo, vale o palpite do link.
           </p>
           <div className="flex gap-2">
             <button
@@ -265,7 +266,7 @@ function OpenGame({
         <span className="inline-flex items-center gap-2 rounded-full bg-blue px-4 py-1.5 text-sm text-white ring-1 ring-white/20">
           <span className="font-bold">Seu palpite</span>
           <span aria-hidden className="h-1 w-1 rounded-full bg-white/70" />
-          <span>Rodada {game.round}</span>
+          <span>{roundLabel(game.round)}</span>
         </span>
       </p>
 
@@ -424,7 +425,7 @@ function History({ scored, names }: { scored: Scored[]; names: (g: PalpiteGame) 
           const onTime = s.guess.at * 1000 < Date.parse(s.game.kickoffUtc);
           return (
             <li key={s.guess.round} className="flex items-center gap-3 py-2.5 text-sm">
-              <span className="w-8 shrink-0 text-muted tabular">R{s.game.round}</span>
+              <span className="w-10 shrink-0 text-muted tabular">{roundShort(s.game.round)}</span>
               <span className="min-w-0 flex-1">
                 <span className="block truncate font-semibold">
                   {t.home.name} x {t.away.name}

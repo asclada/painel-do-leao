@@ -20,6 +20,8 @@ export interface Outputs {
   history: HistoryEntry[];
   keyGames: KeyGames;
   calibration: Calibration;
+  playoffs: Playoffs | null;
+  retro: Retro | null;
 }
 export interface Meta {
   season: number;
@@ -214,6 +216,8 @@ export interface NextMatch {
   formFortaleza: ("V" | "E" | "D")[];
   formOpponent: ("V" | "E" | "D")[];
   chances?: MatchChances | null;
+  leg?: number | null;
+  venueGuessed?: boolean;
 }
 /**
  * Chance de cada resultado de um jogo, na visão do Fortaleza (mesmo modelo da simulação).
@@ -342,4 +346,137 @@ export interface SeasonCalibration {
   brierDirect: number;
   brierG6: number;
   binsG6: CalibrationBin[];
+  finalG6?: string[];
+  checks?: SnapshotCheck[];
+  summary?: string | null;
+}
+/**
+ * O G6 que o modelo apontava depois de uma rodada (os 6 com mais chance) contra o G6 final.
+ */
+export interface SnapshotCheck {
+  round: number;
+  predictedG6: string[];
+  hits: number;
+  focusPG6: number;
+  focusPosition: number;
+}
+export interface Playoffs {
+  state: "upcoming" | "between_legs" | "finished";
+  nDraws: number;
+  seed: number;
+  ties: PlayoffTie[];
+  focus: FocusTie | null;
+}
+/**
+ * Um confronto: 3º x 6º ou 4º x 5º. A melhor campanha decide em casa e passa com empate no placar somado.
+ */
+export interface PlayoffTie {
+  betterId: string;
+  worseId: string;
+  betterPosition: number;
+  worsePosition: number;
+  legs: PlayoffLeg[];
+  aggregateBetter?: number | null;
+  aggregateWorse?: number | null;
+  winnerId?: string | null;
+  pBetter: number;
+}
+export interface PlayoffLeg {
+  matchId: string;
+  leg: 1 | 2;
+  kickoffUtc: string;
+  status: string;
+  homeId: string;
+  awayId: string;
+  homeGoals?: number | null;
+  awayGoals?: number | null;
+  venue?: string | null;
+  city?: string | null;
+  venueGuessed?: boolean;
+}
+/**
+ * O confronto do Fortaleza, com as contas do próximo jogo.
+ */
+export interface FocusTie {
+  opponentId: string;
+  better: boolean;
+  nextLeg: number | null;
+  pAdvance: number;
+  pAdvanceStart: number;
+  legChances?: MatchChances | null;
+  margins?: MarginRow[];
+  scores?: ScoreCell[];
+  headToHead: H2HGame[];
+  focus: TapeSide;
+  opponent: TapeSide;
+}
+/**
+ * Resultado do próximo jogo pela diferença de gols (−3 = perder por 3 ou mais; +3 = vencer por 3 ou mais).
+ */
+export interface MarginRow {
+  margin: number;
+  p: number;
+  pAdvance: number;
+}
+/**
+ * Um placar do próximo jogo do Leão no confronto, na visão do Leão.
+ */
+export interface ScoreCell {
+  focusGoals: number;
+  opponentGoals: number;
+  p: number;
+  pAdvance: number;
+}
+export interface H2HGame {
+  round: number;
+  kickoffUtc: string;
+  homeId: string;
+  awayId: string;
+  homeGoals: number;
+  awayGoals: number;
+}
+/**
+ * Raio-x de um dos times do confronto, só com os pontos corridos.
+ */
+export interface TapeSide {
+  teamId: string;
+  position: number;
+  points: number;
+  played: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  home: VenueSplit;
+  away: VenueSplit;
+  cleanSheets: number;
+  failedToScore: number;
+  lateGoalsFor?: number | null;
+  lateGoalsAgainst?: number | null;
+  secondHalfFor?: number | null;
+  secondHalfAgainst?: number | null;
+  last10Points: number;
+  form: ("V" | "E" | "D")[];
+  longestUnbeaten: number;
+  expectedGoals: number;
+}
+export interface Retro {
+  moments: RetroMoment[];
+  bestPosition: number;
+  bestPositionRound: number;
+  worstPosition: number;
+  worstPositionRound: number;
+  roundsInG6: number;
+  rounds: number;
+  longestUnbeaten: number;
+  clinchRound: number | null;
+}
+export interface RetroMoment {
+  kind: "start" | "worst" | "coach" | "run" | "clinch" | "biggest_win" | "final";
+  round: number;
+  title: string;
+  text: string;
+  pG6: number | null;
+  position: number;
 }

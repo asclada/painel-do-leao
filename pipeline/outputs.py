@@ -197,6 +197,140 @@ class NextMatch(Model):
     form_fortaleza: list[Result]
     form_opponent: list[Result]
     chances: MatchChances | None = None
+    # playoffs: 1 = ida, 2 = volta (round = 38 + leg, numeração usada pelo palpite); None nos pontos corridos
+    leg: int | None = None
+    venue_guessed: bool = False  # estádio ainda não confirmado pela ESPN (o mais usado pelo mandante)
+
+
+# --- Retrospectiva dos pontos corridos -------------------------------------------------
+
+
+class RetroMoment(Model):
+    kind: Literal["start", "worst", "coach", "run", "clinch", "biggest_win", "final"]
+    round: int
+    title: str
+    text: str
+    p_g6: float | None  # chance de terminar no G6 (1º ao 6º) depois daquela rodada
+    position: int
+
+
+class Retro(Model):
+    moments: list[RetroMoment]
+    best_position: int
+    best_position_round: int
+    worst_position: int  # da rodada 10 em diante
+    worst_position_round: int
+    rounds_in_g6: int
+    rounds: int
+    longest_unbeaten: int
+    clinch_round: int | None  # vaga no G6 garantida na matemática
+
+
+# --- Playoffs (mata-mata de ida e volta) ------------------------------------------------
+
+
+class PlayoffLeg(Model):
+    match_id: str  # "po-{mandante}--{visitante}"
+    leg: Literal[1, 2]
+    kickoff_utc: str
+    status: str
+    home_id: str
+    away_id: str
+    home_goals: int | None = None
+    away_goals: int | None = None
+    venue: str | None = None
+    city: str | None = None
+    venue_guessed: bool = False  # a ESPN ainda não informou: estádio mais usado pelo mandante na temporada
+
+
+class PlayoffTie(Model):
+    """Um confronto: 3º x 6º ou 4º x 5º. A melhor campanha decide em casa e passa com empate no placar somado."""
+
+    better_id: str
+    worse_id: str
+    better_position: int
+    worse_position: int
+    legs: list[PlayoffLeg]
+    aggregate_better: int | None = None  # soma dos jogos já disputados (None antes da ida)
+    aggregate_worse: int | None = None
+    winner_id: str | None = None
+    p_better: float  # chance de a melhor campanha passar, agora
+
+
+class ScoreCell(Model):
+    """Um placar do próximo jogo do Leão no confronto, na visão do Leão."""
+
+    focus_goals: int
+    opponent_goals: int
+    p: float  # chance de o jogo terminar assim
+    p_advance: float  # chance de o Leão passar se o jogo terminar assim
+
+
+class MarginRow(Model):
+    """Resultado do próximo jogo pela diferença de gols (−3 = perder por 3 ou mais; +3 = vencer por 3 ou mais)."""
+
+    margin: int
+    p: float
+    p_advance: float
+
+
+class TapeSide(Model):
+    """Raio-x de um dos times do confronto, só com os pontos corridos."""
+
+    team_id: str
+    position: int
+    points: int
+    played: int
+    wins: int
+    draws: int
+    losses: int
+    goals_for: int
+    goals_against: int
+    home: VenueSplit
+    away: VenueSplit
+    clean_sheets: int
+    failed_to_score: int
+    late_goals_for: int | None = None  # do minuto 76 em diante
+    late_goals_against: int | None = None
+    second_half_for: int | None = None
+    second_half_against: int | None = None
+    last10_points: int  # pontos nos últimos 10 jogos
+    form: list[Result]
+    longest_unbeaten: int
+    expected_goals: float  # gols esperados no próximo jogo do confronto (média do modelo)
+
+
+class H2HGame(Model):
+    round: int
+    kickoff_utc: str
+    home_id: str
+    away_id: str
+    home_goals: int
+    away_goals: int
+
+
+class FocusTie(Model):
+    """O confronto do Fortaleza, com as contas do próximo jogo."""
+
+    opponent_id: str
+    better: bool  # o Leão tem a melhor campanha (volta em casa, empate no placar somado é dele)
+    next_leg: int | None  # 1 = ida, 2 = volta, None = confronto encerrado
+    p_advance: float  # chance de o Leão passar (= subir), agora
+    p_advance_start: float  # a mesma chance antes da ida (para "a conta mudou")
+    leg_chances: MatchChances | None = None  # V/E/D do Leão no próximo jogo do confronto
+    margins: list[MarginRow] = []
+    scores: list[ScoreCell] = []  # placares de 0 a 4 gols para cada lado
+    head_to_head: list[H2HGame]  # jogos dos dois nos pontos corridos
+    focus: TapeSide
+    opponent: TapeSide
+
+
+class Playoffs(Model):
+    state: Literal["upcoming", "between_legs", "finished"]  # do confronto do Leão
+    n_draws: int
+    seed: int
+    ties: list[PlayoffTie]
+    focus: FocusTie | None  # None se o Leão não está nos playoffs
 
 
 # --- Simulação --------------------------------------------------------------------
@@ -238,3 +372,5 @@ class Outputs(Model):
     history: list[HistoryEntry]
     key_games: KeyGames
     calibration: Calibration
+    playoffs: Playoffs | None
+    retro: Retro | None

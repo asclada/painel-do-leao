@@ -11,13 +11,17 @@ import historyJson from "@/data/history.json";
 import modelJson from "@/data/model.json";
 import keyGamesJson from "@/data/key-games.json";
 import calibrationJson from "@/data/calibration.json";
+import playoffsJson from "@/data/playoffs.json";
+import retroJson from "@/data/retro.json";
 import type {
   Calibration,
   HistoryEntry,
   KeyGames,
   Meta,
   NextMatch,
+  Playoffs,
   Race,
+  Retro,
   Simulation,
   StandingRow,
   Team,
@@ -37,6 +41,11 @@ export const simulation = simulationJson as Simulation;
 export const history = historyJson as HistoryEntry[];
 export const keyGames = keyGamesJson as KeyGames;
 export const calibration = calibrationJson as Calibration;
+export const playoffs = playoffsJson as Playoffs | null;
+export const retro = retroJson as Retro | null;
+
+/** Pontos corridos encerrados: o site mostra o mata-mata (seasonState "playoffs") ou o resultado final ("finished"). */
+export const playoffMode = meta.seasonState !== "regular";
 
 export const teamById = Object.fromEntries(teams.map((t) => [t.id, t])) as Record<string, Team>;
 export const FORTALEZA = meta.fortalezaId;

@@ -4,7 +4,9 @@
 import backtestJson from "@/data/backtest.json";
 import matchesJson from "@/data/matches.json";
 import { FORTALEZA, nextMatch, timeline } from "@/lib/data";
-import { LAST_ROUND, type GameChances, type PalpiteGame } from "@/lib/palpite";
+import { MAX_ROUND, type GameChances, type PalpiteGame } from "@/lib/palpite";
+import { LAST_REGULAR_ROUND } from "@/lib/playoff-rules";
+import { focusTie } from "@/lib/playoffs";
 
 /** O palpite começou a valer na rodada 31 (30/09/2026); antes disso não há o que conferir. */
 export const FIRST_PALPITE_ROUND = 31;
@@ -72,8 +74,23 @@ function buildGames(): PalpiteGame[] {
       rivals: rivalsFor(p.round),
     });
   }
+  // playoffs: ida = rodada 39, volta = rodada 40 (as chances de cada jogo só existem antes dele, no próximo jogo)
+  for (const leg of focusTie?.legs ?? []) {
+    if (leg.status !== "finished" || leg.homeGoals == null || leg.awayGoals == null) continue;
+    const home = leg.homeId === FORTALEZA;
+    games.push({
+      round: LAST_REGULAR_ROUND + leg.leg,
+      matchId: leg.matchId,
+      kickoffUtc: leg.kickoffUtc,
+      home,
+      opponentId: home ? leg.awayId : leg.homeId,
+      score: { home: leg.homeGoals, away: leg.awayGoals },
+      chances: null,
+      rivals: null,
+    });
+  }
   const next = nextMatch;
-  if (next && next.round <= LAST_ROUND && !games.some((g) => g.round === next.round)) {
+  if (next && next.round <= MAX_ROUND && !games.some((g) => g.round === next.round)) {
     games.push({
       round: next.round,
       matchId: next.matchId,
@@ -91,6 +108,6 @@ function buildGames(): PalpiteGame[] {
 /** Jogos com palpite: os já disputados desde a rodada 31 e o próximo jogo do Leão (o único aberto). */
 export const palpiteGames: PalpiteGame[] = buildGames();
 
-/** O jogo aberto para palpite agora (o próximo do Leão nos pontos corridos). */
+/** O jogo aberto para palpite agora (o próximo do Leão, nos pontos corridos ou nos playoffs). */
 export const openGame: PalpiteGame | null =
   palpiteGames.find((g) => g.round === nextMatch?.round && g.score === null) ?? null;

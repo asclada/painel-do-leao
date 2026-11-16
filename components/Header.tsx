@@ -4,17 +4,8 @@ import { useEffect, useState } from "react";
 import { relativeTime } from "@/lib/format";
 import { useNow } from "@/lib/useNow";
 
-const NAV = [
-  ["agora", "Agora"],
-  ["palpite", "Palpite"],
-  ["campanha", "Campanha"],
-  ["chance", "Chances"],
-  ["simulador", "Simulador"],
-  ["corrida", "Corrida"],
-  ["para-postar", "Compartilhar"],
-] as const;
-
-export function Header({ name, updatedAt }: { name: string; updatedAt: string | null }) {
+/** Menu: [âncora, rótulo]. A página passa o dos pontos corridos ou o dos playoffs. */
+export function Header({ name, updatedAt, nav }: { name: string; updatedAt: string | null; nav: [string, string][] }) {
   const now = useNow();
   const ago = now !== null && updatedAt ? relativeTime(updatedAt, now) : null;
   const [scrolled, setScrolled] = useState(false);
@@ -40,7 +31,7 @@ export function Header({ name, updatedAt }: { name: string; updatedAt: string | 
       </div>
       <nav aria-label="Seções" className="mx-auto max-w-[1100px]">
         <ul className="flex gap-2 overflow-x-auto px-4 py-3 [scrollbar-width:none]">
-          {NAV.map(([id, label]) => (
+          {nav.map(([id, label]) => (
             <li key={id}>
               <a
                 href={`#${id}`}

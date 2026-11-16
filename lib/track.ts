@@ -9,7 +9,8 @@ export type UsageEvent =
   | { name: "duelo_respondido" }
   | { name: "palpite_feito"; rodada: number }
   | { name: "cartao_gerado"; tipo: string }
-  | { name: "backup_palpites"; acao: "copiado" | "restaurado" };
+  | { name: "backup_palpites"; acao: "copiado" | "restaurado" }
+  | { name: "confronto_simulado" };
 
 export function trackUsage({ name, ...props }: UsageEvent) {
   try {

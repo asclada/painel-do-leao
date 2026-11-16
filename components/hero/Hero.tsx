@@ -1,10 +1,11 @@
 import Image from "next/image";
 import escudo from "@/assets/escudo-fortaleza.png";
 import { NextMatchCard } from "@/components/hero/NextMatchCard";
+import { PLAYOFF_INTRO, PlayoffHeroCard } from "@/components/playoffs/PlayoffHeroCard";
 import { ShareButton } from "@/components/share/ShareButton";
 import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { FormDots } from "@/components/ui/FormDots";
-import { fortalezaOdds, fortalezaRow, FORTALEZA, nextMatch, standings, xray } from "@/lib/data";
+import { fortalezaOdds, fortalezaRow, FORTALEZA, nextMatch, playoffMode, playoffs, standings, xray } from "@/lib/data";
 import { accessChances, clinchBadge } from "@/lib/clinch";
 import { plural } from "@/lib/format";
 import { situation } from "@/lib/situation";
@@ -45,16 +46,21 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
           </div>
           <span className="tricolor hidden h-1 w-10 shrink-0 rounded-full lg:block" aria-hidden />
           <p className="max-w-2xl text-center text-[15px] leading-snug text-white/90 sm:text-base">
-            Aqui você acompanha o Fortaleza na Série B: a posição na tabela, as chances de acesso à Série A e os
-            jogos que faltam. Tudo se atualiza sozinho depois de cada rodada.
+            {playoffMode && playoffs?.focus
+              ? PLAYOFF_INTRO
+              : "Aqui você acompanha o Fortaleza na Série B: a posição na tabela, as chances de acesso à Série A e os jogos que faltam. Tudo se atualiza sozinho depois de cada rodada."}
           </p>
           <span className="tricolor hidden h-1 w-10 shrink-0 rotate-180 rounded-full lg:block" aria-hidden />
           <Image src={escudo} alt="" aria-hidden loading="eager" className="hidden h-11 w-auto shrink-0 lg:block" />
         </div>
 
         <div className="grid gap-5 lg:grid-cols-2 lg:gap-6">
-          {/* mesma altura do card ao lado: a sobra se divide por igual entre os blocos (justify-between), sem buraco
-              acima do "Compartilhar" (pedido do Lucas, 01/10) */}
+          {/* nos playoffs, o card da esquerda vira o confronto. Pontos corridos: mesma altura do card ao lado, a sobra
+              se divide por igual entre os blocos (justify-between), sem buraco acima do "Compartilhar" (pedido do
+              Lucas, 01/10) */}
+          {playoffMode && playoffs?.focus ? (
+            <PlayoffHeroCard anchor={anchor} />
+          ) : (
           <div className="flex min-w-0 flex-col justify-between gap-5 rounded-3xl bg-surface p-5 ring-1 ring-line sm:gap-6 sm:p-7">
             {/* selo no mesmo estilo do "Próximo jogo" */}
             <h1 id={`${anchor}-title`} className="flex justify-center">
@@ -133,6 +139,7 @@ export function Hero({ anchor = "agora" }: { anchor?: string }) {
               />
             </div>
           </div>
+          )}
 
           {nextMatch && (
             <div className="min-w-0">

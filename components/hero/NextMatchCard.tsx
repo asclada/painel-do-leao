@@ -6,6 +6,7 @@ import { crestSrc } from "@/lib/crests";
 import { FORTALEZA, teamById } from "@/lib/data";
 import { kickoffLabel, pct, venueName } from "@/lib/format";
 import type { MatchChances, NextMatch, Team } from "@/lib/generated/outputs";
+import { focus, focusTie, legForFocus, legName, legScoreLine, needPhrase } from "@/lib/playoffs";
 
 // Os dois escudos do mesmo tamanho (pedido do Lucas, 29/09).
 const CREST_BOX = "h-[88px] w-[88px] sm:h-[104px] sm:w-[104px]";
@@ -47,7 +48,7 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
         <span className="inline-flex items-center gap-2 rounded-full bg-blue px-4 py-1.5 text-sm text-white shadow-[0_4px_16px_rgb(29_78_216/0.45)] ring-1 ring-white/20 sm:text-base">
           <span className="font-bold">Próximo jogo</span>
           <span aria-hidden className="h-1 w-1 rounded-full bg-white/70" />
-          <span>Rodada {match.round}</span>
+          <span>{match.leg ? `Playoffs · ${legName(match.leg).replace("Jogo de ", "")}` : `Rodada ${match.round}`}</span>
         </span>
       </p>
 
@@ -74,13 +75,17 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
           <p className="mt-0.5 text-base text-muted">
             Estádio: <span className="text-white">{venueName(match.venue)}</span>
             {match.city && ` · ${match.city}`}
+            {match.venueGuessed && " (a confirmar)"}
           </p>
         )}
       </div>
 
-      {/* duas informações separadas por um traço (pedido do Lucas, 01/10); 1º turno discreto. No celular, uma
-          embaixo da outra (cada uma inteira na sua linha) com um traço curto entre elas; com mais espaço, duas colunas
-          com título em cima e o traço vertical no meio, qualquer que seja o tamanho do nome do adversário */}
+      {/* pontos corridos: duas informações separadas por um traço (pedido do Lucas, 01/10); 1º turno discreto. No
+          celular, uma embaixo da outra (cada uma inteira na sua linha) com um traço curto entre elas; com mais espaço,
+          duas colunas com título em cima e o traço vertical no meio, qualquer que seja o tamanho do nome do adversário */}
+      {match.leg ? (
+        <PlayoffInfo leg={match.leg} />
+      ) : (
       <div
         className={`mt-4 flex flex-col items-center gap-2 border-t border-line pt-4 text-center text-sm text-muted sm:grid sm:gap-3 ${
           match.firstTurn ? "sm:grid-cols-[1fr_auto_1fr]" : "sm:grid-cols-1"
@@ -102,6 +107,7 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
           <FormDots form={match.formOpponent} size="sm" />
         </div>
       </div>
+      )}
 
       {match.chances && <MatchChancesBar chances={match.chances} />}
 
@@ -114,6 +120,42 @@ export function NextMatchCard({ match }: { match: NextMatch }) {
           Dê seu palpite para o placar
         </a>
       </p>
+    </div>
+  );
+}
+
+/**
+ * Nos playoffs, no lugar do "1º turno": antes da ida, os dois jogos contra o adversário nos pontos corridos; antes da
+ * volta, o placar da ida e do que o Leão precisa.
+ */
+function PlayoffInfo({ leg }: { leg: number }) {
+  if (!focus || !focusTie) return null;
+  const first = focusTie.legs.find((l) => l.leg === 1);
+  const firstScore = first ? legForFocus(first) : null;
+  if (leg === 2 && first && firstScore) {
+    const need = needPhrase(firstScore.f - firstScore.o, focus.better);
+    return (
+      <div className="mt-4 border-t border-line pt-4 text-center">
+        <p className="text-sm text-muted">Ida: {legScoreLine(first)}</p>
+        <p className="mt-1 text-lg font-semibold">
+          Na volta, o Leão {need}
+        </p>
+      </div>
+    );
+  }
+  const h2h = focus.headToHead;
+  if (!h2h.length) return null;
+  return (
+    <div className="mt-4 border-t border-line pt-4 text-center text-sm text-muted">
+      <p>Os dois na Série B</p>
+      <ul className="mt-1 space-y-0.5 text-white">
+        {h2h.map((g) => (
+          <li key={g.round}>
+            {teamById[g.homeId].name} {g.homeGoals} x {g.awayGoals} {teamById[g.awayId].name}
+            <span className="text-muted"> · rodada {g.round}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

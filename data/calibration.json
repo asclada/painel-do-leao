@@ -161,7 +161,60 @@
     ],
     "brierDirect": 0.0683,
     "brierG6": 0.1189,
-    "n": 760
+    "checks": [
+      {
+        "focusPG6": 0.5442,
+        "focusPosition": 5,
+        "hits": 3,
+        "predictedG6": [
+          "sao-bernardo",
+          "nautico",
+          "sport",
+          "vila-nova",
+          "fortaleza",
+          "novorizontino"
+        ],
+        "round": 10
+      },
+      {
+        "focusPG6": 0.5167,
+        "focusPosition": 5,
+        "hits": 5,
+        "predictedG6": [
+          "criciuma",
+          "operario-pr",
+          "juventude",
+          "vila-nova",
+          "novorizontino",
+          "fortaleza"
+        ],
+        "round": 19
+      },
+      {
+        "focusPG6": 0.8631,
+        "focusPosition": 3,
+        "hits": 5,
+        "predictedG6": [
+          "vila-nova",
+          "juventude",
+          "fortaleza",
+          "novorizontino",
+          "atletico-go",
+          "crb"
+        ],
+        "round": 30
+      }
+    ],
+    "finalG6": [
+      "novorizontino",
+      "juventude",
+      "vila-nova",
+      "fortaleza",
+      "criciuma",
+      "atletico-go"
+    ],
+    "n": 760,
+    "summary": "Nas 38 rodadas, sempre com o que se sabia até ali: quando o modelo dava 80% ou mais de chance de um time terminar no G6, ele terminou lá em todas as vezes; quando dava 20% ou menos, só 7% terminaram."
   },
   "summary": "Conferimos as contas com os 370 jogos já disputados, sempre usando só o que se sabia na rodada anterior: quando um time aparecia como favorito, com 58% de chance de vencer em média, ele venceu 56% das vezes. Contando todos os jogos, deu o resultado mais provável em 43% deles, o do meio em 32% e a zebra (o menos provável) em 25%."
 }
