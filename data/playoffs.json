@@ -369,7 +369,7 @@
           "kickoffUtc": "2026-11-22T19:00Z",
           "leg": 1,
           "matchId": "po-criciuma--fortaleza",
-          "status": "scheduled",
+          "status": "live",
           "venue": "Heriberto Hülse",
           "venueGuessed": false
         },
