@@ -12835,6 +12835,38 @@
       }
     }
   },
+  "po-criciuma--fortaleza": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 55,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "criciuma"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "po-criciuma--fortaleza",
+    "stats": {
+      "criciuma": {
+        "corners": 0,
+        "possession": 0.0,
+        "red": 0,
+        "shots": 0,
+        "shotsOnTarget": 0,
+        "yellow": 2
+      },
+      "fortaleza": {
+        "corners": 0,
+        "possession": 0.0,
+        "red": 0,
+        "shots": 0,
+        "shotsOnTarget": 0,
+        "yellow": 3
+      }
+    }
+  },
   "ponte-preta--america-mg": {
     "goals": [
       {

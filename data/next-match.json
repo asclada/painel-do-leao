@@ -1,10 +1,10 @@
 {
   "chances": {
-    "draw": 0.3407,
-    "loss": 0.3496,
-    "win": 0.3097
+    "draw": 0.3081,
+    "loss": 0.2413,
+    "win": 0.4506
   },
-  "city": "Criciúma",
+  "city": "Fortaleza",
   "firstTurn": null,
   "formFortaleza": [
     "V",
@@ -20,13 +20,13 @@
     "D",
     "D"
   ],
-  "home": false,
-  "kickoffUtc": "2026-11-22T19:00Z",
-  "leg": 1,
-  "matchId": "po-criciuma--fortaleza",
+  "home": true,
+  "kickoffUtc": "2026-11-28T23:00Z",
+  "leg": 2,
+  "matchId": "po-fortaleza--criciuma",
   "opponentId": "criciuma",
-  "round": 39,
-  "status": "live",
-  "venue": "Heriberto Hülse",
+  "round": 40,
+  "status": "scheduled",
+  "venue": "Arena Castelão",
   "venueGuessed": false
 }

@@ -14,7 +14,7 @@
       },
       "cleanSheets": 17,
       "draws": 14,
-      "expectedGoals": 0.82,
+      "expectedGoals": 1.16,
       "failedToScore": 9,
       "form": [
         "V",
@@ -67,48 +67,48 @@
       }
     ],
     "legChances": {
-      "draw": 0.3407,
-      "loss": 0.3496,
-      "win": 0.3097
+      "draw": 0.3081,
+      "loss": 0.2413,
+      "win": 0.4506
     },
     "margins": [
       {
         "margin": -3,
-        "p": 0.0409,
-        "pAdvance": 0.0613
+        "p": 0.0224,
+        "pAdvance": 0.0
       },
       {
         "margin": -2,
-        "p": 0.0909,
-        "pAdvance": 0.2047
+        "p": 0.0576,
+        "pAdvance": 0.0
       },
       {
         "margin": -1,
-        "p": 0.2179,
-        "pAdvance": 0.451
+        "p": 0.1613,
+        "pAdvance": 0.0
       },
       {
         "margin": 0,
-        "p": 0.3407,
-        "pAdvance": 0.7599
+        "p": 0.3081,
+        "pAdvance": 0.0
       },
       {
         "margin": 1,
-        "p": 0.1989,
-        "pAdvance": 0.9205
+        "p": 0.2453,
+        "pAdvance": 1.0
       },
       {
         "margin": 2,
-        "p": 0.0776,
-        "pAdvance": 0.9777
+        "p": 0.1279,
+        "pAdvance": 1.0
       },
       {
         "margin": 3,
-        "p": 0.0332,
-        "pAdvance": 0.9956
+        "p": 0.0774,
+        "pAdvance": 1.0
       }
     ],
-    "nextLeg": 1,
+    "nextLeg": 2,
     "opponent": {
       "away": {
         "draws": 4,
@@ -122,7 +122,7 @@
       },
       "cleanSheets": 17,
       "draws": 8,
-      "expectedGoals": 0.89,
+      "expectedGoals": 0.74,
       "failedToScore": 11,
       "form": [
         "V",
@@ -157,164 +157,164 @@
       "wins": 18
     },
     "opponentId": "criciuma",
-    "pAdvance": 0.6703,
-    "pAdvanceStart": 0.6703,
+    "pAdvance": 0.4506,
+    "pAdvanceStart": 0.6695,
     "scores": [
       {
         "focusGoals": 0,
         "opponentGoals": 0,
-        "p": 0.2043,
-        "pAdvance": 0.7603
+        "p": 0.1693,
+        "pAdvance": 0.0
       },
       {
         "focusGoals": 0,
         "opponentGoals": 1,
-        "p": 0.1595,
-        "pAdvance": 0.4511
+        "p": 0.1103,
+        "pAdvance": 0.0
       },
       {
         "focusGoals": 0,
         "opponentGoals": 2,
-        "p": 0.0715,
-        "pAdvance": 0.2048
+        "p": 0.0426,
+        "pAdvance": 0.0
       },
       {
         "focusGoals": 0,
         "opponentGoals": 3,
+        "p": 0.0128,
+        "pAdvance": 0.0
+      },
+      {
+        "focusGoals": 0,
+        "opponentGoals": 4,
+        "p": 0.0034,
+        "pAdvance": 0.0
+      },
+      {
+        "focusGoals": 1,
+        "opponentGoals": 0,
+        "p": 0.1707,
+        "pAdvance": 1.0
+      },
+      {
+        "focusGoals": 1,
+        "opponentGoals": 1,
+        "p": 0.1111,
+        "pAdvance": 0.0
+      },
+      {
+        "focusGoals": 1,
+        "opponentGoals": 2,
+        "p": 0.0428,
+        "pAdvance": 0.0
+      },
+      {
+        "focusGoals": 1,
+        "opponentGoals": 3,
+        "p": 0.0129,
+        "pAdvance": 0.0
+      },
+      {
+        "focusGoals": 1,
+        "opponentGoals": 4,
+        "p": 0.0034,
+        "pAdvance": 0.0
+      },
+      {
+        "focusGoals": 2,
+        "opponentGoals": 0,
+        "p": 0.0971,
+        "pAdvance": 1.0
+      },
+      {
+        "focusGoals": 2,
+        "opponentGoals": 1,
+        "p": 0.0631,
+        "pAdvance": 1.0
+      },
+      {
+        "focusGoals": 2,
+        "opponentGoals": 2,
         "p": 0.0243,
-        "pAdvance": 0.0767
-      },
-      {
-        "focusGoals": 0,
-        "opponentGoals": 4,
-        "p": 0.007,
-        "pAdvance": 0.025
-      },
-      {
-        "focusGoals": 1,
-        "opponentGoals": 0,
-        "p": 0.1443,
-        "pAdvance": 0.9206
-      },
-      {
-        "focusGoals": 1,
-        "opponentGoals": 1,
-        "p": 0.1127,
-        "pAdvance": 0.7594
-      },
-      {
-        "focusGoals": 1,
-        "opponentGoals": 2,
-        "p": 0.0505,
-        "pAdvance": 0.4506
-      },
-      {
-        "focusGoals": 1,
-        "opponentGoals": 3,
-        "p": 0.0172,
-        "pAdvance": 0.2046
-      },
-      {
-        "focusGoals": 1,
-        "opponentGoals": 4,
-        "p": 0.0049,
-        "pAdvance": 0.0766
-      },
-      {
-        "focusGoals": 2,
-        "opponentGoals": 0,
-        "p": 0.0602,
-        "pAdvance": 0.9778
-      },
-      {
-        "focusGoals": 2,
-        "opponentGoals": 1,
-        "p": 0.047,
-        "pAdvance": 0.9201
-      },
-      {
-        "focusGoals": 2,
-        "opponentGoals": 2,
-        "p": 0.0211,
-        "pAdvance": 0.7588
+        "pAdvance": 0.0
       },
       {
         "focusGoals": 2,
         "opponentGoals": 3,
-        "p": 0.0072,
-        "pAdvance": 0.4507
+        "p": 0.0073,
+        "pAdvance": 0.0
       },
       {
         "focusGoals": 2,
         "opponentGoals": 4,
-        "p": 0.0021,
-        "pAdvance": 0.2048
-      },
-      {
-        "focusGoals": 3,
-        "opponentGoals": 0,
-        "p": 0.0195,
-        "pAdvance": 0.9944
-      },
-      {
-        "focusGoals": 3,
-        "opponentGoals": 1,
-        "p": 0.0153,
-        "pAdvance": 0.9775
-      },
-      {
-        "focusGoals": 3,
-        "opponentGoals": 2,
-        "p": 0.0069,
-        "pAdvance": 0.9196
-      },
-      {
-        "focusGoals": 3,
-        "opponentGoals": 3,
-        "p": 0.0023,
-        "pAdvance": 0.7584
-      },
-      {
-        "focusGoals": 3,
-        "opponentGoals": 4,
-        "p": 0.0007,
-        "pAdvance": 0.451
-      },
-      {
-        "focusGoals": 4,
-        "opponentGoals": 0,
-        "p": 0.0055,
-        "pAdvance": 0.9987
-      },
-      {
-        "focusGoals": 4,
-        "opponentGoals": 1,
-        "p": 0.0043,
-        "pAdvance": 0.9943
-      },
-      {
-        "focusGoals": 4,
-        "opponentGoals": 2,
         "p": 0.0019,
-        "pAdvance": 0.9772
+        "pAdvance": 0.0
+      },
+      {
+        "focusGoals": 3,
+        "opponentGoals": 0,
+        "p": 0.0412,
+        "pAdvance": 1.0
+      },
+      {
+        "focusGoals": 3,
+        "opponentGoals": 1,
+        "p": 0.0267,
+        "pAdvance": 1.0
+      },
+      {
+        "focusGoals": 3,
+        "opponentGoals": 2,
+        "p": 0.0103,
+        "pAdvance": 1.0
+      },
+      {
+        "focusGoals": 3,
+        "opponentGoals": 3,
+        "p": 0.0031,
+        "pAdvance": 0.0
+      },
+      {
+        "focusGoals": 3,
+        "opponentGoals": 4,
+        "p": 0.0008,
+        "pAdvance": 0.0
+      },
+      {
+        "focusGoals": 4,
+        "opponentGoals": 0,
+        "p": 0.0146,
+        "pAdvance": 1.0
+      },
+      {
+        "focusGoals": 4,
+        "opponentGoals": 1,
+        "p": 0.0094,
+        "pAdvance": 1.0
+      },
+      {
+        "focusGoals": 4,
+        "opponentGoals": 2,
+        "p": 0.0036,
+        "pAdvance": 1.0
       },
       {
         "focusGoals": 4,
         "opponentGoals": 3,
-        "p": 0.0007,
-        "pAdvance": 0.9192
+        "p": 0.0011,
+        "pAdvance": 1.0
       },
       {
         "focusGoals": 4,
         "opponentGoals": 4,
-        "p": 0.0002,
-        "pAdvance": 0.7586
+        "p": 0.0003,
+        "pAdvance": 0.0
       }
     ]
   },
   "nDraws": 20000,
-  "seed": 39000,
-  "state": "upcoming",
+  "seed": 39001,
+  "state": "between_legs",
   "ties": [
     {
       "aggregateBetter": null,
@@ -349,27 +349,27 @@
           "venueGuessed": false
         }
       ],
-      "pBetter": 0.5793,
+      "pBetter": 0.5779,
       "winnerId": null,
       "worseId": "atletico-go",
       "worsePosition": 6
     },
     {
-      "aggregateBetter": null,
-      "aggregateWorse": null,
+      "aggregateBetter": 0,
+      "aggregateWorse": 1,
       "betterId": "fortaleza",
       "betterPosition": 4,
       "legs": [
         {
-          "awayGoals": null,
+          "awayGoals": 0,
           "awayId": "fortaleza",
           "city": "Criciúma",
-          "homeGoals": null,
+          "homeGoals": 1,
           "homeId": "criciuma",
           "kickoffUtc": "2026-11-22T19:00Z",
           "leg": 1,
           "matchId": "po-criciuma--fortaleza",
-          "status": "live",
+          "status": "finished",
           "venue": "Heriberto Hülse",
           "venueGuessed": false
         },
@@ -387,7 +387,7 @@
           "venueGuessed": false
         }
       ],
-      "pBetter": 0.6705,
+      "pBetter": 0.4501,
       "winnerId": null,
       "worseId": "criciuma",
       "worsePosition": 5

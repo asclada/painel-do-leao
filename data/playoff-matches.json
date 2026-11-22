@@ -1,16 +1,16 @@
 [
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "fortaleza",
     "city": "Criciúma",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "criciuma",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "po-criciuma--fortaleza",
     "kickoffUtc": "2026-11-22T19:00Z",
     "source": "espn",
-    "status": "live",
+    "status": "finished",
     "venue": "Heriberto Hülse"
   },
   {
