@@ -14,7 +14,7 @@
       },
       "cleanSheets": 17,
       "draws": 14,
-      "expectedGoals": 1.16,
+      "expectedGoals": 1.17,
       "failedToScore": 9,
       "form": [
         "V",
@@ -67,34 +67,34 @@
       }
     ],
     "legChances": {
-      "draw": 0.3081,
-      "loss": 0.2413,
-      "win": 0.4506
+      "draw": 0.3082,
+      "loss": 0.2407,
+      "win": 0.4511
     },
     "margins": [
       {
         "margin": -3,
-        "p": 0.0224,
+        "p": 0.0222,
         "pAdvance": 0.0
       },
       {
         "margin": -2,
-        "p": 0.0576,
+        "p": 0.0575,
         "pAdvance": 0.0
       },
       {
         "margin": -1,
-        "p": 0.1613,
+        "p": 0.1611,
         "pAdvance": 0.0
       },
       {
         "margin": 0,
-        "p": 0.3081,
+        "p": 0.3082,
         "pAdvance": 0.0
       },
       {
         "margin": 1,
-        "p": 0.2453,
+        "p": 0.2454,
         "pAdvance": 1.0
       },
       {
@@ -104,7 +104,7 @@
       },
       {
         "margin": 3,
-        "p": 0.0774,
+        "p": 0.0778,
         "pAdvance": 1.0
       }
     ],
@@ -157,25 +157,25 @@
       "wins": 18
     },
     "opponentId": "criciuma",
-    "pAdvance": 0.4506,
-    "pAdvanceStart": 0.6695,
+    "pAdvance": 0.4511,
+    "pAdvanceStart": 0.6705,
     "scores": [
       {
         "focusGoals": 0,
         "opponentGoals": 0,
-        "p": 0.1693,
+        "p": 0.1694,
         "pAdvance": 0.0
       },
       {
         "focusGoals": 0,
         "opponentGoals": 1,
-        "p": 0.1103,
+        "p": 0.11,
         "pAdvance": 0.0
       },
       {
         "focusGoals": 0,
         "opponentGoals": 2,
-        "p": 0.0426,
+        "p": 0.0424,
         "pAdvance": 0.0
       },
       {
@@ -187,7 +187,7 @@
       {
         "focusGoals": 0,
         "opponentGoals": 4,
-        "p": 0.0034,
+        "p": 0.0033,
         "pAdvance": 0.0
       },
       {
@@ -199,7 +199,7 @@
       {
         "focusGoals": 1,
         "opponentGoals": 1,
-        "p": 0.1111,
+        "p": 0.1109,
         "pAdvance": 0.0
       },
       {
@@ -223,7 +223,7 @@
       {
         "focusGoals": 2,
         "opponentGoals": 0,
-        "p": 0.0971,
+        "p": 0.097,
         "pAdvance": 1.0
       },
       {
@@ -235,13 +235,13 @@
       {
         "focusGoals": 2,
         "opponentGoals": 2,
-        "p": 0.0243,
+        "p": 0.0244,
         "pAdvance": 0.0
       },
       {
         "focusGoals": 2,
         "opponentGoals": 3,
-        "p": 0.0073,
+        "p": 0.0074,
         "pAdvance": 0.0
       },
       {
@@ -259,13 +259,13 @@
       {
         "focusGoals": 3,
         "opponentGoals": 1,
-        "p": 0.0267,
+        "p": 0.0268,
         "pAdvance": 1.0
       },
       {
         "focusGoals": 3,
         "opponentGoals": 2,
-        "p": 0.0103,
+        "p": 0.0104,
         "pAdvance": 1.0
       },
       {
@@ -289,13 +289,13 @@
       {
         "focusGoals": 4,
         "opponentGoals": 1,
-        "p": 0.0094,
+        "p": 0.0095,
         "pAdvance": 1.0
       },
       {
         "focusGoals": 4,
         "opponentGoals": 2,
-        "p": 0.0036,
+        "p": 0.0037,
         "pAdvance": 1.0
       },
       {
@@ -313,25 +313,25 @@
     ]
   },
   "nDraws": 20000,
-  "seed": 39001,
+  "seed": 39002,
   "state": "between_legs",
   "ties": [
     {
-      "aggregateBetter": null,
-      "aggregateWorse": null,
+      "aggregateBetter": 1,
+      "aggregateWorse": 1,
       "betterId": "vila-nova",
       "betterPosition": 3,
       "legs": [
         {
-          "awayGoals": null,
+          "awayGoals": 1,
           "awayId": "vila-nova",
           "city": "Goiãnia",
-          "homeGoals": null,
+          "homeGoals": 1,
           "homeId": "atletico-go",
           "kickoffUtc": "2026-11-22T21:30Z",
           "leg": 1,
           "matchId": "po-atletico-go--vila-nova",
-          "status": "scheduled",
+          "status": "finished",
           "venue": "Estádio Antônio Accioly",
           "venueGuessed": false
         },
@@ -349,7 +349,7 @@
           "venueGuessed": false
         }
       ],
-      "pBetter": 0.5779,
+      "pBetter": 0.7729,
       "winnerId": null,
       "worseId": "atletico-go",
       "worsePosition": 6
@@ -387,7 +387,7 @@
           "venueGuessed": false
         }
       ],
-      "pBetter": 0.4501,
+      "pBetter": 0.4493,
       "winnerId": null,
       "worseId": "criciuma",
       "worsePosition": 5

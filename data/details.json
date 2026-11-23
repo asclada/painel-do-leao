@@ -12835,6 +12835,29 @@
       }
     }
   },
+  "po-atletico-go--vila-nova": {
+    "goals": [],
+    "goalsComplete": false,
+    "matchId": "po-atletico-go--vila-nova",
+    "stats": {
+      "atletico-go": {
+        "corners": 0,
+        "possession": 0.0,
+        "red": 0,
+        "shots": 0,
+        "shotsOnTarget": 0,
+        "yellow": 0
+      },
+      "vila-nova": {
+        "corners": 0,
+        "possession": 0.0,
+        "red": 0,
+        "shots": 0,
+        "shotsOnTarget": 0,
+        "yellow": 0
+      }
+    }
+  },
   "po-criciuma--fortaleza": {
     "goals": [
       {

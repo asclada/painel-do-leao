@@ -14,17 +14,17 @@
     "venue": "Heriberto Hülse"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 1,
     "awayId": "vila-nova",
     "city": "Goiãnia",
-    "homeGoals": null,
+    "homeGoals": 1,
     "homeId": "atletico-go",
     "htAwayGoals": null,
     "htHomeGoals": null,
     "id": "po-atletico-go--vila-nova",
     "kickoffUtc": "2026-11-22T21:30Z",
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Antônio Accioly"
   },
   {

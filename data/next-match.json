@@ -1,8 +1,8 @@
 {
   "chances": {
-    "draw": 0.3081,
-    "loss": 0.2413,
-    "win": 0.4506
+    "draw": 0.3082,
+    "loss": 0.2407,
+    "win": 0.4511
   },
   "city": "Fortaleza",
   "firstTurn": null,
