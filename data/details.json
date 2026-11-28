@@ -12890,6 +12890,46 @@
       }
     }
   },
+  "po-vila-nova--atletico-go": {
+    "goals": [
+      {
+        "extra": null,
+        "minute": 53,
+        "ownGoal": true,
+        "penalty": false,
+        "period": 2,
+        "teamId": "vila-nova"
+      },
+      {
+        "extra": null,
+        "minute": 77,
+        "ownGoal": false,
+        "penalty": false,
+        "period": 2,
+        "teamId": "vila-nova"
+      }
+    ],
+    "goalsComplete": true,
+    "matchId": "po-vila-nova--atletico-go",
+    "stats": {
+      "atletico-go": {
+        "corners": 7,
+        "possession": 66.2,
+        "red": 0,
+        "shots": 11,
+        "shotsOnTarget": 1,
+        "yellow": 2
+      },
+      "vila-nova": {
+        "corners": 3,
+        "possession": 33.8,
+        "red": 0,
+        "shots": 15,
+        "shotsOnTarget": 5,
+        "yellow": 3
+      }
+    }
+  },
   "ponte-preta--america-mg": {
     "goals": [
       {

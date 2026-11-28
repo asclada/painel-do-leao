@@ -28,17 +28,17 @@
     "venue": "Estádio Antônio Accioly"
   },
   {
-    "awayGoals": null,
+    "awayGoals": 0,
     "awayId": "atletico-go",
     "city": "Goiãnia",
-    "homeGoals": null,
+    "homeGoals": 2,
     "homeId": "vila-nova",
-    "htAwayGoals": null,
-    "htHomeGoals": null,
+    "htAwayGoals": 0,
+    "htHomeGoals": 0,
     "id": "po-vila-nova--atletico-go",
     "kickoffUtc": "2026-11-27T23:00Z",
     "source": "espn",
-    "status": "scheduled",
+    "status": "finished",
     "venue": "Estádio Onésio Brasileiro Alvarenga"
   },
   {
